@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ControlType>
+  <Name>FileUpload</Name>
+  <Assembly>CodeTorch.Web</Assembly>
+  <Class>CodeTorch.Web.FieldTemplates.FileUpload</Class>
+</ControlType>

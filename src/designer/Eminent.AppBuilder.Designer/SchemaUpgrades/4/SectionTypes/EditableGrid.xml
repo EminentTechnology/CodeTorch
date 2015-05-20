@@ -1,0 +1,6 @@
+﻿<?xml version="1.0"?>
+<SectionType>
+  <Name>EditableGrid</Name>
+  <Assembly>CodeTorch.Web</Assembly>
+  <Class>CodeTorch.Web.SectionControls.EditableGridSectionControl</Class>
+</SectionType>

@@ -1,0 +1,16 @@
+﻿When adding a new control type for configuration we need to edit the following:
+BaseControl class xml include attributes
+BaseControl.GetNewControl
+ControlCollectionEditor.CreateNewItemTypes
+BaseSection.Controls
+
+Then add a new FieldTemplate in web project:
+Typically add a ctrl 
+Implement overrides such as InitControl and LoadControl
+
+Then in client web project- add 
+ascx in templates/controls folder
+
+Then add in client config project  - add
+control type to config
+

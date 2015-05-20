@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<ScreenType>
+  <Name>Edit</Name>
+  <Description><![CDATA[Add and Edit Page Type]]></Description>
+  <TemplateFile><![CDATA[~/templates/pages/EditForm.aspx]]></TemplateFile>
+  <Actions>
+    <Action>AfterPopulateScreen</Action>
+  </Actions>
+  <Routines>
+    <Routine>SetScreenObjects</Routine>
+  </Routines>
+</ScreenType>

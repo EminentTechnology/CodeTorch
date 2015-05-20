@@ -1,0 +1,736 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CodeTorch.Designer</RootNamespace>
+    <AssemblyName>CodeTorch.Designer</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <ManifestCertificateThumbprint>DA7BE36628A2ADA72117994D2C771761DACC723E</ManifestCertificateThumbprint>
+    <ManifestKeyFile>Eminent.AppBuilder.Designer_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>true</GenerateManifests>
+    <SignManifests>false</SignManifests>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>d:\Sandbox\Eminent-AppBuilder\Builds\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>true</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://download.codetorch.com/</InstallUrl>
+    <SupportUrl>http://support.eminenttechnology.com</SupportUrl>
+    <ProductName>CodeTorch Designer</ProductName>
+    <PublisherName>Eminent Technology</PublisherName>
+    <SuiteName>CodeTorch</SuiteName>
+    <MinimumRequiredVersion>1.0.0.166</MinimumRequiredVersion>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>173</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <ExcludeDeploymentUrl>true</ExcludeDeploymentUrl>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Obfuscate|AnyCPU'">
+    <OutputPath>bin\Obfuscate\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>..\packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\packages\Unity.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception">
+      <HintPath>..\packages\Unity.Interception.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration">
+      <HintPath>..\packages\Unity.Interception.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.Compatibility" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0" />
+    <Reference Include="RestSharp, Version=104.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RestSharp.104.4.0\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.WinControls, Version=2015.1.225.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.RadDock, Version=2015.1.225.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.RadMarkupEditor, Version=2015.1.225.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.RichTextBox, Version=2015.1.225.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.VisualStudio2012Dark, Version=2015.1.225.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.VisualStudio2012Light, Version=2015.1.225.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.Windows8, Version=2015.1.225.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.UI, Version=2015.1.225.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="TelerikCommon, Version=2015.1.225.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\VersionInfo.cs">
+      <Link>Properties\VersionInfo.cs</Link>
+    </Compile>
+    <Compile Include="Code\ICodeTransformer.cs" />
+    <Compile Include="Code\Constants.cs" />
+    <Compile Include="Code\ErrorManager.cs" />
+    <Compile Include="Code\GoogleTranslateResponse.cs" />
+    <Compile Include="Code\MenuItemTreeNode.cs" />
+    <Compile Include="Code\ObjectTreeNode.cs" />
+    <Compile Include="Code\Project.cs" />
+    <Compile Include="Code\ProjectItemWindow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Code\ProjectMRU.cs" />
+    <Compile Include="Code\ProjectMRUItem.cs" />
+    <Compile Include="Code\RecentSet.cs" />
+    <Compile Include="Designers\PropertyValueChanged\IPropertyValueChangedCommand.cs" />
+    <Compile Include="Designers\PropertyValueChanged\ScreenPageTemplateChangedCommand.cs" />
+    <Compile Include="Editors\MarkupEditor.cs" />
+    <Compile Include="Editors\MarkupEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editors\MarkupEditorForm.Designer.cs">
+      <DependentUpon>MarkupEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\GridUniqueNamerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GridUniqueNamerForm.Designer.cs">
+      <DependentUpon>GridUniqueNamerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LicenseDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LicenseDialog.Designer.cs">
+      <DependentUpon>LicenseDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm2.Designer.cs">
+      <DependentUpon>MainForm2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MenuCodeNamerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MenuCodeNamerForm.Designer.cs">
+      <DependentUpon>MenuCodeNamerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NewDataCommandDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewDataCommandDialog.Designer.cs">
+      <DependentUpon>NewDataCommandDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LoginDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoginDialog.Designer.cs">
+      <DependentUpon>LoginDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NewItemDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewItemDialog.Designer.cs">
+      <DependentUpon>NewItemDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NewControlTypeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewControlTypeDialog.Designer.cs">
+      <DependentUpon>NewControlTypeDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NewMenuDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewMenuDialog.Designer.cs">
+      <DependentUpon>NewMenuDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NewScreenDialog2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewScreenDialog2.Designer.cs">
+      <DependentUpon>NewScreenDialog2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NewPermissionDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewPermissionDialog.Designer.cs">
+      <DependentUpon>NewPermissionDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NewScreenWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewScreenWizard.Designer.cs">
+      <DependentUpon>NewScreenWizard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ProjectConnections.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProjectConnections.Designer.cs">
+      <DependentUpon>ProjectConnections.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ResourceTranslationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ResourceTranslationForm.Designer.cs">
+      <DependentUpon>ResourceTranslationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SchemaUpgrades\3\ScreenTransformer.cs" />
+    <Compile Include="SchemaUpgrades\4\AppTransformer.cs" />
+    <Compile Include="SchemaUpgrades\4\WorkflowTransformer.cs" />
+    <Compile Include="SchemaUpgrades\4\ScreenTransformer.cs" />
+    <Compile Include="SchemaUpgrades\4\MenuTransformer.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="UserControls\SectionDesigner.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SectionDesigner.Designer.cs">
+      <DependentUpon>SectionDesigner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SectionZoneDesigner.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SectionZoneDesigner.Designer.cs">
+      <DependentUpon>SectionZoneDesigner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\com.codetorch.licensing\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Editors\MarkupEditorForm.resx">
+      <DependentUpon>MarkupEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GridUniqueNamerForm.resx">
+      <DependentUpon>GridUniqueNamerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LicenseDialog.resx">
+      <DependentUpon>LicenseDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm2.resx">
+      <DependentUpon>MainForm2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MenuCodeNamerForm.resx">
+      <DependentUpon>MenuCodeNamerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewDataCommandDialog.resx">
+      <DependentUpon>NewDataCommandDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoginDialog.resx">
+      <DependentUpon>LoginDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewItemDialog.resx">
+      <DependentUpon>NewItemDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewControlTypeDialog.resx">
+      <DependentUpon>NewControlTypeDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewMenuDialog.resx">
+      <DependentUpon>NewMenuDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewScreenDialog2.resx">
+      <DependentUpon>NewScreenDialog2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewPermissionDialog.resx">
+      <DependentUpon>NewPermissionDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewScreenWizard.resx">
+      <DependentUpon>NewScreenWizard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProjectConnections.resx">
+      <DependentUpon>ProjectConnections.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ResourceTranslationForm.resx">
+      <DependentUpon>ResourceTranslationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UserControls\SectionDesigner.resx">
+      <DependentUpon>SectionDesigner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SectionZoneDesigner.resx">
+      <DependentUpon>SectionZoneDesigner.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Web References\com.codetorch.licensing\LicenseService.wsdl" />
+    <None Include="Web References\com.codetorch.licensing\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewDocumentHS.BMP" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditInformationHS.BMP" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FillUpHS.BMP" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CodeTorch.Core.Design\CodeTorch.Core.Design.csproj">
+      <Project>{68ab6f55-edda-48d0-a0e8-16eab83d0703}</Project>
+      <Name>CodeTorch.Core.Design</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\core\CodeTorch.Core\CodeTorch.Core.csproj">
+      <Project>{ffa210b6-b65e-4cb3-9a43-e546f132e78a}</Project>
+      <Name>CodeTorch.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CodeTorch.Data.SqlServer\CodeTorch.Data.SqlServer.csproj">
+      <Project>{cff06607-17a4-4351-9566-b54569c5bffe}</Project>
+      <Name>CodeTorch.Data.SqlServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CodeTorch.Documents\CodeTorch.Documents.csproj">
+      <Project>{b4035297-224c-404c-925d-0807f7d5ec25}</Project>
+      <Name>CodeTorch.Documents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CodeTorch.Email\CodeTorch.Email.csproj">
+      <Project>{0ea15c58-9f7a-4fda-9ad5-38f3c8c42a00}</Project>
+      <Name>CodeTorch.Email</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CodeTorch.Lookups\CodeTorch.Lookups.csproj">
+      <Project>{6d1a61e4-7b66-4806-83eb-a60fb464ca0d}</Project>
+      <Name>CodeTorch.Lookups</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CodeTorch.Security\CodeTorch.Security.csproj">
+      <Project>{11648974-1332-4970-a870-d4f5d477e09e}</Project>
+      <Name>CodeTorch.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CodeTorch.Workflows\CodeTorch.Workflows.csproj">
+      <Project>{e7879d50-16dd-4930-b64a-e07a8c791cba}</Project>
+      <Name>CodeTorch.Workflows</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RefreshDocViewHS.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RefreshDocView.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Eminent.AppBuilder.Designer_TemporaryKey.pfx" />
+    <None Include="Resources\newCommandToolStripButton.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AddTabInstructions.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://appbuilder.eminenttechnology.com/service/licenseservice.asmx">
+      <UrlBehavior>Static</UrlBehavior>
+      <RelPath>Web References\com.codetorch.licensing\</RelPath>
+      <UpdateFromURL>http://appbuilder.eminenttechnology.com/service/licenseservice.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Eminent_AppBuilder_Designer_com_codetorch_licensing_LicenseService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\com.codetorch.licensing\LicenseService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SaveAll.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SchemaUpgrades\5\DataCommands\Lookup_Save.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\5\DataCommands\Lookup_Deactivate.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\5\DataCommands\Role_AddAllPermissions.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\5\DataCommands\Permission_Save.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\Resource_GetByCulture.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\Resource_GetByResourceSet.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\Resource_GetByResourceSetCulture.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\Resource_Save.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\WorkflowTypes\Default.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\Document_Insert.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\Lookup_Deactivate.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\Lookup_GetActiveItems.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\Lookup_GetActiveItemsWithCulture.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\Lookup_GetItems.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\Lookup_GetItemsWithCulture.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\Lookup_GetTypes.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\Lookup_Save.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\Mail_InsertAddress.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\Mail_InsertAttachment.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\Mail_InsertMailMessage.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\Role_GetByUserIDAndRoleName.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\Role_GetByUserNameAndRoleName.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\Sequence_Save.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\SMS_Send.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\User_GetByUserName.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\User_GetPermissionsByUserID.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\User_GetPermissionsByUserName.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\Workflow_Delete.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\Workflow_GetCurrentStep.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\Workflow_Insert.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\Workflow_InsertStep.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataCommands\Workflow_SetEntityStatus.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\PageTemplates\Default.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\PageTemplates\DefaultNoForm.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\PageTemplates\DefaultWithMenu.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\PageTemplates\Picker.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\SectionTypes\Alert.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\SectionTypes\ButtonList.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\SectionTypes\Content.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\SectionTypes\Criteria.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\SectionTypes\Details.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\SectionTypes\Edit.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\SectionTypes\EditableGrid.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\SectionTypes\Grid.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\SectionTypes\LinkList.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\SectionTypes\RDLCViewer.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\SectionTypes\Template.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ScreenTypes\Comments.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ScreenTypes\Content.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ScreenTypes\CriteriaListEdit.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ScreenTypes\Dashboard.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ScreenTypes\Documents.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ScreenTypes\Edit.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ScreenTypes\List.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ScreenTypes\ListEdit.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ScreenTypes\Login.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ScreenTypes\Logout.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ScreenTypes\Overview.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ScreenTypes\Picker.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ScreenTypes\Redirect.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ScreenTypes\ReportExport.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ScreenTypes\ReportViewer.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ScreenTypes\Screen.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ScreenTypes\Search.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ScreenTypes\SMSAction.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ControlTypes\AutoCompleteBox.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ControlTypes\Button.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ControlTypes\CheckBox.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ControlTypes\DatePicker.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ControlTypes\DropDownList.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ControlTypes\Editor.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ControlTypes\EmailAddress.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ControlTypes\FileUpload.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ControlTypes\HyperLink.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ControlTypes\Label.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ControlTypes\ListBox.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ControlTypes\ListBox_Lookup.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ControlTypes\LookupDropDownList.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ControlTypes\MultiComboDropDownListBox.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ControlTypes\NumericTextBox.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ControlTypes\Password.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ControlTypes\Picker.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ControlTypes\SocialShare.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ControlTypes\TextArea.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ControlTypes\TextBox.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ControlTypes\TreeView.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ControlTypes\Workflow.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\ControlTypes\WorkflowStatusPicker.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DocumentRepositories\DB.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DocumentRepositories\S3.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DocumentRepositoryTypes\DB.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DocumentRepositoryTypes\S3.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\EmailConnections\Default.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\EmailConnectionTypes\DB.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataConnections\Default.xml" />
+    <EmbeddedResource Include="SchemaUpgrades\4\DataConnectionTypes\SqlServer.xml" />
+    <None Include="AddControlInstructions.txt" />
+    <Content Include="codetorch.ico" />
+    <EmbeddedResource Include="SchemaUpgrades\2\Screen.xslt">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Resources\logo.ico" />
+    <Content Include="Resources\picker.png" />
+    <Content Include="Resources\dashboard.png" />
+    <Content Include="Resources\base_business_contacts.png" />
+    <Content Include="Resources\EntityDataModel_ADODotNetDataService.png" />
+    <Content Include="Resources\gear_2.bmp" />
+    <Content Include="Resources\menu.bmp" />
+    <Content Include="Resources\DataSet_TableView.bmp" />
+    <Content Include="Resources\Overlay_share.ico" />
+    <Content Include="Resources\sequence.bmp" />
+    <Content Include="Resources\security.ico" />
+    <Content Include="Resources\services.ico" />
+    <Content Include="Resources\template.bmp" />
+    <Content Include="Resources\ThumbnailView.png" />
+    <Content Include="Resources\group.png" />
+    <Content Include="Resources\VSProject_database.bmp" />
+    <Content Include="Resources\dashboard_1.bmp" />
+    <Content Include="Resources\layout.bmp" />
+    <Content Include="Resources\page.template.ico" />
+    <Content Include="Resources\screen.bmp" />
+    <Content Include="Resources\workflow.png" />
+    <None Include="Resources\Play.bmp" />
+    <Content Include="Resources\VSFolder_closed.bmp" />
+    <Content Include="Resources\VSFolder_open.bmp" />
+    <Content Include="Resources\Web.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="Microsoft.VisualBasic.PowerPacks.Vs">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Telerik.WinControls.Themes.Office2007Silver">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Telerik.WinControls.Themes.Office2010Blue">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Telerik.WinControls.Themes.Office2010Silver">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Telerik.WinControls.Themes.TelerikMetro">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!--___BEGIN_CRYPTO_OBFUSCATOR___-->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Obfuscate|AnyCPU' ">
+    <CO_FirstProject>False</CO_FirstProject>
+    <CO_LastProject>True</CO_LastProject>
+    <CO_Config>Obfuscate|AnyCPU</CO_Config>
+    <CO_ProjectFilePath>..\Eminent-AppBuilder-Designer_Obfuscate_AnyCPU.obproj</CO_ProjectFilePath>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Obfuscate|AnyCPU' ">
+    <CO_ObjFiles Include="..\Eminent.AppBuilder.Core\obj\Obfuscate\Eminent.AppBuilder.Core.dll;..\Eminent.CodeGenerator\obj\Obfuscate\Eminent.CodeGenerator.dll">
+      <InProject>false</InProject>
+    </CO_ObjFiles>
+    <CO_BinFiles Include="..\Eminent.AppBuilder.Core\bin\Obfuscate\Eminent.AppBuilder.Core.dll;..\Eminent.CodeGenerator\bin\Obfuscate\Eminent.CodeGenerator.dll">
+      <InProject>false</InProject>
+    </CO_BinFiles>
+  </ItemGroup>
+  <Import Project="C:\Program Files (x86)\LogicNP Software\Crypto Obfuscator For .Net 2013 R2\CryptoObfuscator.targets" />
+  <!--___END_CRYPTO_OBFUSCATOR___-->
+</Project>

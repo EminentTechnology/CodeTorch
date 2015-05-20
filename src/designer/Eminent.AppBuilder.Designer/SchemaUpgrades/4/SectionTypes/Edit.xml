@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<SectionType>
+  <Name>Edit</Name>
+  <Assembly>CodeTorch.Web</Assembly>
+  <Class>CodeTorch.Web.SectionControls.PageSectionControl</Class>
+  <Actions>
+    <Action>AfterPopulateSection</Action>
+  </Actions>
+  <Routines>
+    <Routine>SetScreenObjects</Routine>
+  </Routines>
+</SectionType>

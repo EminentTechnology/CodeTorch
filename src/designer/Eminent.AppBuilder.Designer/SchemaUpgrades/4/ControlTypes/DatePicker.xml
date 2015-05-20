@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ControlType>
+  <Name>DatePicker</Name>
+  <Assembly>CodeTorch.Web</Assembly>
+  <Class>CodeTorch.Web.FieldTemplates.DatePicker</Class>
+</ControlType>

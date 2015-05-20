@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ControlType>
+  <Name>WorkflowStatus</Name>
+  <Assembly>CodeTorch.Web</Assembly>
+  <Class>CodeTorch.Web.FieldTemplates.WorkflowStatus</Class>
+</ControlType>

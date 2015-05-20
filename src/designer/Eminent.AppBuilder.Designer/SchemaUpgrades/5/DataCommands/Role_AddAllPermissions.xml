@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataCommand xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Role_AddAllPermissions</Name>
+  <DataConnection>Default</DataConnection>
+  <Type>Text</Type>
+  <Text>
+    declare @RoleID varchar(50)
+    SELECT @RoleID=RoleID FROM Role WHERE RoleName=@RoleName
+    if(@RoleID IS NOT NULL)
+    begin
+    insert into rolepermission
+    select @roleid, p.PermissionName, 1, p.createdon, p.createdby, p.modifiedon, p.modifiedby 
+    from permission  p
+    left outer join rolepermission rp
+    	on p.permissionname = rp.permissionname and rp.roleid = @roleid
+    where rp.permissionname is null
+    end
+  </Text>
+  <ReturnType>Integer</ReturnType>
+  <Parameters>
+    <Parameter>
+      <Name>@RoleName</Name>
+      <Type>String</Type>
+      <Size>100</Size>
+      <Direction>In</Direction>
+      <TypeName>nvarchar</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    
+    
+  </Parameters>
+  <Columns />
+</DataCommand>

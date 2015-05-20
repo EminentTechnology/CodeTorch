@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ControlType>
+  <Name>ListBox</Name>
+  <Assembly>CodeTorch.Web</Assembly>
+  <Class>CodeTorch.Web.FieldTemplates.ListBox</Class>
+</ControlType>

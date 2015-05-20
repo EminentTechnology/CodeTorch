@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://licensing.codetorch.com/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://licensing.codetorch.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://licensing.codetorch.com/">
+      <s:element name="GetAvailableLicenses">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAvailableLicensesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAvailableLicensesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActivateLicense">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LicenseID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MachineName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActivateLicenseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ActivateLicenseResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAvailableLicensesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAvailableLicenses" />
+  </wsdl:message>
+  <wsdl:message name="GetAvailableLicensesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAvailableLicensesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActivateLicenseSoapIn">
+    <wsdl:part name="parameters" element="tns:ActivateLicense" />
+  </wsdl:message>
+  <wsdl:message name="ActivateLicenseSoapOut">
+    <wsdl:part name="parameters" element="tns:ActivateLicenseResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAvailableLicensesHttpGetIn">
+    <wsdl:part name="UserName" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAvailableLicensesHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="ActivateLicenseHttpGetIn">
+    <wsdl:part name="UserName" type="s:string" />
+    <wsdl:part name="LicenseID" type="s:string" />
+    <wsdl:part name="MID" type="s:string" />
+    <wsdl:part name="MachineName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ActivateLicenseHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="GetAvailableLicensesHttpPostIn">
+    <wsdl:part name="UserName" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAvailableLicensesHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="ActivateLicenseHttpPostIn">
+    <wsdl:part name="UserName" type="s:string" />
+    <wsdl:part name="LicenseID" type="s:string" />
+    <wsdl:part name="MID" type="s:string" />
+    <wsdl:part name="MachineName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ActivateLicenseHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:portType name="LicenseServiceSoap">
+    <wsdl:operation name="GetAvailableLicenses">
+      <wsdl:input message="tns:GetAvailableLicensesSoapIn" />
+      <wsdl:output message="tns:GetAvailableLicensesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActivateLicense">
+      <wsdl:input message="tns:ActivateLicenseSoapIn" />
+      <wsdl:output message="tns:ActivateLicenseSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="LicenseServiceHttpGet">
+    <wsdl:operation name="GetAvailableLicenses">
+      <wsdl:input message="tns:GetAvailableLicensesHttpGetIn" />
+      <wsdl:output message="tns:GetAvailableLicensesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActivateLicense">
+      <wsdl:input message="tns:ActivateLicenseHttpGetIn" />
+      <wsdl:output message="tns:ActivateLicenseHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="LicenseServiceHttpPost">
+    <wsdl:operation name="GetAvailableLicenses">
+      <wsdl:input message="tns:GetAvailableLicensesHttpPostIn" />
+      <wsdl:output message="tns:GetAvailableLicensesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActivateLicense">
+      <wsdl:input message="tns:ActivateLicenseHttpPostIn" />
+      <wsdl:output message="tns:ActivateLicenseHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LicenseServiceSoap" type="tns:LicenseServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAvailableLicenses">
+      <soap:operation soapAction="http://licensing.codetorch.com/GetAvailableLicenses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActivateLicense">
+      <soap:operation soapAction="http://licensing.codetorch.com/ActivateLicense" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LicenseServiceSoap12" type="tns:LicenseServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAvailableLicenses">
+      <soap12:operation soapAction="http://licensing.codetorch.com/GetAvailableLicenses" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActivateLicense">
+      <soap12:operation soapAction="http://licensing.codetorch.com/ActivateLicense" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LicenseServiceHttpGet" type="tns:LicenseServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetAvailableLicenses">
+      <http:operation location="/GetAvailableLicenses" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActivateLicense">
+      <http:operation location="/ActivateLicense" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LicenseServiceHttpPost" type="tns:LicenseServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetAvailableLicenses">
+      <http:operation location="/GetAvailableLicenses" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActivateLicense">
+      <http:operation location="/ActivateLicense" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LicenseService">
+    <wsdl:port name="LicenseServiceSoap" binding="tns:LicenseServiceSoap">
+      <soap:address location="http://appbuilder.eminenttechnology.com/service/licenseservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LicenseServiceSoap12" binding="tns:LicenseServiceSoap12">
+      <soap12:address location="http://appbuilder.eminenttechnology.com/service/licenseservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LicenseServiceHttpGet" binding="tns:LicenseServiceHttpGet">
+      <http:address location="http://appbuilder.eminenttechnology.com/service/licenseservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LicenseServiceHttpPost" binding="tns:LicenseServiceHttpPost">
+      <http:address location="http://appbuilder.eminenttechnology.com/service/licenseservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

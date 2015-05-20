@@ -1,0 +1,6 @@
+﻿<?xml version="1.0"?>
+<SectionType>
+  <Name>Template</Name>
+  <Assembly>CodeTorch.Web</Assembly>
+  <Class>CodeTorch.Web.SectionControls.TemplateSectionControl</Class>
+</SectionType>

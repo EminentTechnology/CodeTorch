@@ -1,0 +1,6 @@
+﻿<?xml version="1.0"?>
+<SectionType>
+  <Name>Criteria</Name>
+  <Assembly>CodeTorch.Web</Assembly>
+  <Class>CodeTorch.Web.SectionControls.CriteriaSectionControl</Class>
+</SectionType>

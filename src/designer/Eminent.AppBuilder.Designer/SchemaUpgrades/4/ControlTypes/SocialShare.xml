@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ControlType>
+  <Name>SocialShare</Name>
+  <Assembly>CodeTorch.Web</Assembly>
+  <Class>CodeTorch.Web.FieldTemplates.SocialShare</Class>
+</ControlType>

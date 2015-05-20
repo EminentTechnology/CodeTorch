@@ -1,0 +1,50 @@
+Instructions on how to add a new tab to AppBuilder Designer
+
+1. Create class to represent single instance of configuration item
+2. Add class collection to CodeTorch.Core.Configuration 
+
+Create Load method for class
+see ControlType.Load
+
+Create Savemethod for class
+see ControlType.Save 
+
+Create GetItemCount for class
+see ControlType.GetItemCount
+
+Create GetByName (or GetByCode)
+see Lookup.GetByName
+
+(Optional) for treeview create GetItemsByFolderName
+see Screen.GetItemsByFolderName
+
+(Optional) for treeview create GetDistinctFolders
+see Screen.GetDistinctFolders
+
+3. Create class to represent configuration object in CodeTorch.Core.ConfigurationObjects - eg ControlTypeConfigurationObject - implement IConfigurationObject interface
+4. Add mapping for ConfigurationObject in CodeTorch.Core.ConfigurationObjectFactory - inlcudes dictionary and constant
+
+
+10.Add record to CodeTorch.Designer.Constants -- ENTITY_
+NOTE: for treeview use screens as example
+
+
+11.Add record to CodeTorch.Designer.Forms.MainForm2.LoadSolutionExplorer //.SetupAppBuilderTabs
+
+12.Add record to CodeTorch.Designer.Forms.MainForm2.GetEntityInstanceName
+
+13.Add record to CodeTorch.Designer.Forms.MainForm2.GetNewFormDialog
+NOTE: Most items can reuse NewItemDialog - however if you need special screen for creating then you will need to create a new dialog screen
+
+14. if using  NewItemDialog also add record to the following methods:
+CodeTorch.Designer.Forms.NewItemDialog.ValidateExistingControl - reference GetItemCount in class
+CodeTorch.Designer.Forms.NewItemDialog.Save_Click - you can set defaults here for new items
+
+
+15. (Optional) - If item uses treeview like screen we only support 2 levels and you will need to add a record to
+CodeTorch.Designer.Forms.MainForm.GetItemsByFolderName
+
+16. (Optional) - If item uses treeview add a record to
+CodeTorch.Designer.Forms.MainForm.GetDistinctFolders
+
+17. (Optional) - If item needs special context menus add a record to CodeTorch.Designer.Forms.MainForm2.GetItemContextMenu

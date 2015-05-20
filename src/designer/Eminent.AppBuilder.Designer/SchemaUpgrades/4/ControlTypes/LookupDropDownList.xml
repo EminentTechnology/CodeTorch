@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<ControlType>
+  <Name>LookupDropDownList</Name>
+  <Assembly>CodeTorch.Web</Assembly>
+  <Class>CodeTorch.Web.FieldTemplates.DropDownListBox_Lookup</Class>
+  <Actions>
+    <Action>SelectedIndexChanged</Action>
+  </Actions>
+  <Routines>
+    <Routine>SetScreenObjects</Routine>
+  </Routines>
+</ControlType>

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0"?>
+<SectionType>
+  <Name>ButtonList</Name>
+  <Assembly>CodeTorch.Web</Assembly>
+  <Class>CodeTorch.Web.SectionControls.ButtonListSectionControl</Class>
+</SectionType>

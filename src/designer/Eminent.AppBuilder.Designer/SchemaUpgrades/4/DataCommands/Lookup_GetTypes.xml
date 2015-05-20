@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataCommand xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Lookup_GetTypes</Name>
+  <Type>Text</Type>
+  <Text>
+    SELECT Distinct LookupType FROM Lookup
+    Order By LookupType
+  </Text>
+  <ReturnType>DataTable</ReturnType>
+  <Parameters />
+  <Columns>
+    <Column>
+      <Name>LookupType</Name>
+      <Type>String</Type>
+    </Column>
+  </Columns>
+</DataCommand>

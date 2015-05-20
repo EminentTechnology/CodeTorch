@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2B385878-F208-4181-B275-9E86230FB730}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Eminent.AppBuilder.BuildTasks</RootNamespace>
+    <AssemblyName>Eminent.AppBuilder.BuildTasks</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Obfuscate|AnyCPU'">
+    <OutputPath>bin\Obfuscate\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>..\packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\packages\Unity.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception">
+      <HintPath>..\packages\Unity.Interception.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration">
+      <HintPath>..\packages\Unity.Interception.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="NAnt.Core">
+      <HintPath>..\..\Tools\nant\bin\NAnt.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CodeTorch.Core\_Common\Compiler.cs">
+      <Link>Compiler.cs</Link>
+    </Compile>
+    <Compile Include="..\VersionInfo.cs">
+      <Link>Properties\VersionInfo.cs</Link>
+    </Compile>
+    <Compile Include="AppBuilderCompiler.cs" />
+    <Compile Include="DataLayerBase.cs" />
+    <Compile Include="MenuDB.cs" />
+    <Compile Include="MenuLoader.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <!--___BEGIN_CRYPTO_OBFUSCATOR___-->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Obfuscate|AnyCPU' ">
+    <CO_FirstProject>False</CO_FirstProject>
+    <CO_LastProject>True</CO_LastProject>
+    <CO_Config>Obfuscate|AnyCPU</CO_Config>
+    <CO_ProjectFilePath>..\Eminent-AppBuilder_Obfuscate_AnyCPU.obproj</CO_ProjectFilePath>
+  </PropertyGroup>
+  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Obfuscate|AnyCPU' ">
+    <CO_ObjFiles Include="..\Eminent.AppBuilder.Web\obj\Obfuscate\Eminent.AppBuilder.Web.dll;..\Eminent.AppBuilder.LicenseGenerator\obj\Obfuscate\AppBuilderLicenseGen.exe;..\EmailNotificationEngine\obj\Obfuscate\EmailNotificationEngine.exe;..\Eminent.AppBuilder.Designer\obj\Obfuscate\Eminent.AppBuilder.Designer.exe;..\Eminent.AppBuilder.Core\obj\Obfuscate\Eminent.AppBuilder.Core.dll;..\Eminent.CodeGenerator\obj\Obfuscate\Eminent.CodeGenerator.dll;..\Eminent.AppBuilder.Exporter.Utility.Web\obj\Obfuscate\Eminent.AppBuilder.Exporter.Utility.Web.dll;..\Eminent.AppBuilder.Exporter.Utility\obj\Obfuscate\Eminent.AppBuilder.Exporter.Utility.dll;..\Eminent.Job.Helper\obj\Obfuscate\Eminent.Job.Helper.dll;..\Eminent.AppBuilder.Web.DBResourceProvider\obj\Obfuscate\Eminent.AppBuilder.Web.DbResourceProvider.dll">
+      <InProject>false</InProject>
+    </CO_ObjFiles>
+    <CO_BinFiles Include="..\Eminent.AppBuilder.Web\bin\Obfuscate\Eminent.AppBuilder.Web.dll;..\Eminent.AppBuilder.LicenseGenerator\bin\Obfuscate\AppBuilderLicenseGen.exe;..\EmailNotificationEngine\bin\Obfuscate\EmailNotificationEngine.exe;..\Eminent.AppBuilder.Designer\bin\Obfuscate\Eminent.AppBuilder.Designer.exe;..\Eminent.AppBuilder.Core\bin\Obfuscate\Eminent.AppBuilder.Core.dll;..\Eminent.CodeGenerator\bin\Obfuscate\Eminent.CodeGenerator.dll;..\Eminent.AppBuilder.Exporter.Utility.Web\bin\Obfuscate\Eminent.AppBuilder.Exporter.Utility.Web.dll;..\Eminent.AppBuilder.Exporter.Utility\bin\Obfuscate\Eminent.AppBuilder.Exporter.Utility.dll;..\Eminent.Job.Helper\bin\Obfuscate\Eminent.Job.Helper.dll;..\Eminent.AppBuilder.Web.DBResourceProvider\bin\Obfuscate\Eminent.AppBuilder.Web.DbResourceProvider.dll">
+      <InProject>false</InProject>
+    </CO_BinFiles>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="C:\Program Files (x86)\LogicNP Software\Crypto Obfuscator For .Net 2013 R2\CryptoObfuscator.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>Copy /Y $(TargetDir)eminent*.* d:\Sandbox\SiteBuilder\code\References\AppBuilder</PostBuildEvent>
+  </PropertyGroup>
+  <!--___END_CRYPTO_OBFUSCATOR___-->
+</Project>

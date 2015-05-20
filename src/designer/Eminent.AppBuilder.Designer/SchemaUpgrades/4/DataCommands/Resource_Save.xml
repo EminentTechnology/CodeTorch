@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataCommand xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Resource_Save</Name>
+  <DataConnection>Default</DataConnection>
+  <Type>StoredProcedure</Type>
+  <Text>Resource_Save</Text>
+  <ReturnType>Integer</ReturnType>
+  <Parameters>
+    <Parameter>
+      <Name>@ResourceID</Name>
+      <Type>Guid</Type>
+      <Size>16</Size>
+      <Direction>In</Direction>
+      <TypeName>uniqueidentifier</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@CultureCode</Name>
+      <Type>String</Type>
+      <Size>100</Size>
+      <Direction>In</Direction>
+      <TypeName>nvarchar</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@ResourceSet</Name>
+      <Type>String</Type>
+      <Size>510</Size>
+      <Direction>In</Direction>
+      <TypeName>nvarchar</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@ResourceKey</Name>
+      <Type>String</Type>
+      <Size>510</Size>
+      <Direction>In</Direction>
+      <TypeName>nvarchar</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@ResourceValue</Name>
+      <Type>String</Type>
+      <Size>-1</Size>
+      <Direction>In</Direction>
+      <TypeName>nvarchar</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+  </Parameters>
+  <Columns />
+</DataCommand>

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataCommand xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Sequence_Save</Name>
+  <Type>Text</Type>
+  <Text>
+    declare @rowcount int
+    UPDATE Sequence SET SequencePrefix = IsNull(@SequencePrefix,'') WHERE SequenceName=@SequenceName
+    set @rowcount = @@rowcount
+    if(@rowcount=0)
+    begin
+      INSERT Sequence (SequenceID, SequenceName, SequencePrefix, SeedValue, NextValue, Increment) VALUES (NewID(), @SequenceName, IsNull(@SequencePrefix,''), @SeedValue, @SeedValue, @Increment) 
+    end
+  </Text>
+  <ReturnType>Integer</ReturnType>
+  <Parameters>
+    <Parameter>
+      <Name>@SequenceName</Name>
+      <Type>String</Type>
+      <Size>255</Size>
+      <Direction>In</Direction>
+      <TypeName>nvarchar</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@SequencePrefix</Name>
+      <Type>String</Type>
+      <Size>255</Size>
+      <Direction>In</Direction>
+      <TypeName>nvarchar</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@SeedValue</Name>
+      <Type>Int64</Type>
+      <Size>4</Size>
+      <Direction>In</Direction>
+      <TypeName>bigint</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@Increment</Name>
+      <Type>Int64</Type>
+      <Size>4</Size>
+      <Direction>In</Direction>
+      <TypeName>bigint</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+  </Parameters>
+  <Columns />
+</DataCommand>

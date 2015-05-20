@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ScreenType>
+  <Name>ListEdit</Name>
+  <Description><![CDATA[List Edit]]></Description>
+  <TemplateFile><![CDATA[~/templates/pages/ListEdit.aspx]]></TemplateFile>
+</ScreenType>

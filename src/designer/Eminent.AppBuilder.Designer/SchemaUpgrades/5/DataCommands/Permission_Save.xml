@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataCommand xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Permission_Save</Name>
+  <DataConnection>Default</DataConnection>
+  <Type>Text</Type>
+  <Text>
+    declare @rowcount int
+    UPDATE Permission SET Category = @PermissionCategory, Description = @PermissionDescription, ModifiedOn=GetUTCDate(), ModifiedBy='SYSTEM' WHERE PermissionName=@PermissionName
+    set @rowcount = @@rowcount
+    if(@rowcount=0)
+    begin
+    INSERT Permission (PermissionName, Category, Description, CreatedOn, CreatedBy, ModifiedOn, ModifiedBy ) VALUES (@PermissionName, @PermissionCategory, @PermissionDescription,  GetUTCDate(), 'SYSTEM', GetUTCDate(), 'SYSTEM')
+    end
+  </Text>
+  <ReturnType>Integer</ReturnType>
+  <Parameters>
+    <Parameter>
+      <Name>@PermissionName</Name>
+      <Type>String</Type>
+      <Size>100</Size>
+      <Direction>In</Direction>
+      <TypeName>nvarchar</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@PermissionCategory</Name>
+      <Type>String</Type>
+      <Size>100</Size>
+      <Direction>In</Direction>
+      <TypeName>nvarchar</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@PermissionDescription</Name>
+      <Type>String</Type>
+      <Size>255</Size>
+      <Direction>In</Direction>
+      <TypeName>nvarchar</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+
+  </Parameters>
+  <Columns />
+</DataCommand>

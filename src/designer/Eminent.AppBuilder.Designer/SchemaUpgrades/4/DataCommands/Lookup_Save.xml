@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataCommand xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Lookup_Save</Name>
+  <Type>Text</Type>
+  <Text>
+    declare @rowcount int 
+    UPDATE LOOKUP SET LookupDescription = @LookupDescription, LookupSort = @LookupSort, Status=1, ModifiedOn=GetUTCDate(), ModifiedBy='SYSTEM' WHERE LookupType =@LookupType AND LookupValue=@LookupValue
+    set @rowcount = @@rowcount 
+    if(@rowcount=0) 
+    begin 
+    INSERT LOOKUP (LookupType, LookupValue, LookupDescription, LookupSort, Status, CreatedOn, CreatedBy, ModifiedOn, ModifiedBy ) VALUES (@LookupType, @LookupValue, @LookupDescription, @LookupSort, 1, GetUTCDate(), 'SYSTEM', GetUTCDate(), 'SYSTEM')
+    end
+  </Text>
+  <ReturnType>Integer</ReturnType>
+  <Parameters>
+    <Parameter>
+      <Name>@rowcount</Name>
+      <Type>String</Type>
+      <Size>200</Size>
+      <Direction>In</Direction>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@LookupDescription</Name>
+      <Type>String</Type>
+      <Size>200</Size>
+      <Direction>In</Direction>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@LookupSort</Name>
+      <Type>String</Type>
+      <Size>200</Size>
+      <Direction>In</Direction>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@LookupType</Name>
+      <Type>String</Type>
+      <Size>200</Size>
+      <Direction>In</Direction>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@LookupValue</Name>
+      <Type>String</Type>
+      <Size>200</Size>
+      <Direction>In</Direction>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@</Name>
+      <Type>String</Type>
+      <Size>200</Size>
+      <Direction>In</Direction>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+  </Parameters>
+  <Columns />
+</DataCommand>

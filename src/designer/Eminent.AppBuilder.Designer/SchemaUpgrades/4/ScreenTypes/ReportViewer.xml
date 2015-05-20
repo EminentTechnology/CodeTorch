@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ScreenType>
+  <Name>ReportViewer</Name>
+  <Description><![CDATA[Page Type For RDLC Export]]></Description>
+  <TemplateFile><![CDATA[~/templates/pages/RDLCViewerPage.aspx]]></TemplateFile>
+</ScreenType>

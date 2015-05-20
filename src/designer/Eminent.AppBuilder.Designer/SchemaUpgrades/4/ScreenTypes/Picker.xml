@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ScreenType>
+  <Name>Picker</Name>
+  <Description><![CDATA[Picker Page]]></Description>
+  <TemplateFile><![CDATA[~/templates/pages/PickerPage.aspx]]></TemplateFile>
+</ScreenType>

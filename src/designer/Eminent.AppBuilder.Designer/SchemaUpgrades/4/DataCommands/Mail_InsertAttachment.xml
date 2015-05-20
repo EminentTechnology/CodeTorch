@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataCommand xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Mail_InsertAttachment</Name>
+  <DataConnection>Default</DataConnection>
+  <Type>StoredProcedure</Type>
+  <Text>Mail_InsertAttachment</Text>
+  <ReturnType>Integer</ReturnType>
+  <Parameters>
+    <Parameter>
+      <Name>@MailMessageAttachmentID</Name>
+      <Type>Guid</Type>
+      <Size>16</Size>
+      <Direction>In</Direction>
+      <TypeName>uniqueidentifier</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@MailMessageID</Name>
+      <Type>Guid</Type>
+      <Size>16</Size>
+      <Direction>In</Direction>
+      <TypeName>uniqueidentifier</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@DocumentID</Name>
+      <Type>String</Type>
+      <Size>50</Size>
+      <Direction>In</Direction>
+      <TypeName>varchar</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+  </Parameters>
+  <Columns />
+</DataCommand>
