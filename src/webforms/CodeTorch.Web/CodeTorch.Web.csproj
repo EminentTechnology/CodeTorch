@@ -285,9 +285,6 @@
       <UserProperties Notes="&lt;Notes Project=&quot;3f8c0b87-f3d4-4b3d-b327-1376f9164b3c&quot; xmlns=&quot;clr-namespace:StickyNotes.Model;assembly=StickyNotes&quot;&gt;&lt;Notes.StickyNotes&gt;&lt;Note FilePath=&quot;&quot; Content=&quot;&quot; Date=&quot;2009-08-10T10:51:35.0811973+01:00&quot; /&gt;&lt;Note FilePath=&quot;C:\sandbox\eminent-appbuilder\Source\Eminent.AppBuilder.Web\Templates\BasePage.cs&quot; Content=&quot;&quot; Date=&quot;2009-08-10T10:52:58.3931973+01:00&quot; /&gt;&lt;/Notes.StickyNotes&gt;&lt;/Notes&gt;" />
     </VisualStudio>
   </ProjectExtensions>
-  <PropertyGroup>
-    <PostBuildEvent>if $(ConfigurationName) == Debug Copy /Y $(TargetDir)codetorch*.* D:\Sandbox\second\bestill\code\source\BeStill.Web.Admin\bin
-</PostBuildEvent>
-  </PropertyGroup>
+
 
 </Project>
