@@ -81,14 +81,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <!--___BEGIN_CRYPTO_OBFUSCATOR___-->
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Obfuscate|AnyCPU' ">
-    <CO_FirstProject>True</CO_FirstProject>
-    <CO_LastProject>False</CO_LastProject>
-    <CO_Config>Obfuscate|AnyCPU</CO_Config>
-    <CO_ProjectFilePath>..\Eminent-AppBuilder-Designer_Obfuscate_AnyCPU.obproj</CO_ProjectFilePath>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <Import Project="C:\Program Files (x86)\LogicNP Software\Crypto Obfuscator For .Net 2013 R2\CryptoObfuscator.targets" />
-  <!--___END_CRYPTO_OBFUSCATOR___-->
+
 </Project>

@@ -289,26 +289,5 @@
     <PostBuildEvent>if $(ConfigurationName) == Debug Copy /Y $(TargetDir)codetorch*.* D:\Sandbox\second\bestill\code\source\BeStill.Web.Admin\bin
 </PostBuildEvent>
   </PropertyGroup>
-  <!--___BEGIN_CRYPTO_OBFUSCATOR___-->
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Obfuscate|AnyCPU' ">
-    <CO_FirstProject>False</CO_FirstProject>
-    <CO_LastProject>True</CO_LastProject>
-    <CO_Config>Obfuscate|AnyCPU</CO_Config>
-    <CO_ProjectFilePath>..\Eminent-AppBuilder-Web_Obfuscate_AnyCPU.obproj</CO_ProjectFilePath>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Obfuscate|AnyCPU' ">
-    <CO_ObjFiles Include="..\Eminent.AppBuilder.Core\obj\Obfuscate\Eminent.AppBuilder.Core.dll;..\Eminent.CodeGenerator\obj\Obfuscate\Eminent.CodeGenerator.dll">
-      <InProject>false</InProject>
-    </CO_ObjFiles>
-    <CO_BinFiles Include="..\Eminent.AppBuilder.Core\bin\Obfuscate\Eminent.AppBuilder.Core.dll;..\Eminent.CodeGenerator\bin\Obfuscate\Eminent.CodeGenerator.dll">
-      <InProject>false</InProject>
-    </CO_BinFiles>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="C:\Program Files (x86)\LogicNP Software\Crypto Obfuscator For .Net 2013 R2\CryptoObfuscator.targets" />
-  <!--___END_CRYPTO_OBFUSCATOR___-->
+
 </Project>
