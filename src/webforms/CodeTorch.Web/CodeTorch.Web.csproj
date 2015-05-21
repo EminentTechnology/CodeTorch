@@ -143,9 +143,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\VersionInfo.cs">
-      <Link>Properties\VersionInfo.cs</Link>
-    </Compile>
     <Compile Include="ActionCommands\ActionCommandStrategyFactory.cs" />
     <Compile Include="ActionCommands\ResizePhotoActionCommand.cs" />
     <Compile Include="ActionCommands\InvokeSearchMessageActionCommand.cs" />

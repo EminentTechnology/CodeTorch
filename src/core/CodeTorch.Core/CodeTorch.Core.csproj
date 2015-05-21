@@ -94,9 +94,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\VersionInfo.cs">
-      <Link>Properties\VersionInfo.cs</Link>
-    </Compile>
     <Compile Include="Attributes\CustomEditorAttribute.cs" />
     <Compile Include="Attributes\PropertyValueChangedCommandAttribute.cs" />
     <Compile Include="Commands\ResizePhotoCommand.cs" />
