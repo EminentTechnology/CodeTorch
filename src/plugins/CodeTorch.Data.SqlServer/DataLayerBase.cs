@@ -83,17 +83,7 @@ namespace CodeTorch.Data.SqlServer
                 throw new Exception(String.Format("Data Connection is not configured correctly"));
             }
 
-            ////if (_ConnectionInfo == null)
-            ////{
-            ////    DatabaseProviderFactory factory = new DatabaseProviderFactory();
-
-            ////    return factory.CreateDefault();  //DatabaseFactory.CreateDatabase();
-            ////}
-            ////else
-            ////{
-            ////    return new SqlDatabase(_ConnectionInfo.GetConnectionString());
-
-            ////}
+          
 
             return retVal;
 
