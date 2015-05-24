@@ -1,0 +1,12 @@
+steps to add a new section
+1. Create class that inherits from BaseSection - this goes in portable
+2. add custom properties you will use for configuration purposes
+3. add attributes to support proper serialization from designer - 
+***used in Screen.Sections
+***used in EdiableGridSection.Sections
+4. Create class (Renderer) that inherits from BaseSectionControl - 
+typically named SectionControl - this goes in platform specific project and also has a property called Me that
+is tied to the fully qualified type in PCL; override/implement the needed methods so it can populate and be rendered
+5. *** add class to SectionCollectionEditor.CreateNewItemTypes - this is so we can add a new section in designer
+6. Add configuration of section to your configs SectionTypes.xml
+7. Rebuild config dll - test

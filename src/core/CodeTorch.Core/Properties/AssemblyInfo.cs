@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyProduct("CodeTorch.Core")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: AssemblyCopyright("Copyright © Eminent Technology 2014")]
+[assembly: AssemblyCopyright("Copyright © Eminent Technology 2015")]
 [assembly: AssemblyCompany("Eminent Technology")]
 
 

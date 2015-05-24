@@ -8,11 +8,12 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("CodeTorch.Core.Design")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("CodeTorch.Core.Design")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+[assembly: AssemblyCopyright("Copyright © Eminent Technology 2015")]
+[assembly: AssemblyCompany("Eminent Technology")]
+
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
@@ -22,3 +23,6 @@ using System.Runtime.InteropServices;
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("266dde1e-938d-47b0-b1ab-c6df7767bfa2")]
 
+
+[assembly: AssemblyFileVersion("2.0.958")]
+[assembly: AssemblyVersion("2.0.958")]

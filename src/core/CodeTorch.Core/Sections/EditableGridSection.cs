@@ -49,6 +49,7 @@ namespace CodeTorch.Core
         [XmlArrayItem(ElementName = "ButtonListSection", Type = typeof(ButtonListSection))]
         [XmlArrayItem(ElementName = "ContentSection", Type = typeof(ContentSection))]
         [XmlArrayItem(ElementName = "CriteriaSection", Type = typeof(CriteriaSection))]
+        [XmlArrayItem(ElementName = "CustomSection", Type = typeof(CustomSection))]
         [XmlArrayItem(ElementName = "DetailsSection", Type = typeof(DetailsSection))]
         [XmlArrayItem(ElementName = "EditableGridSection", Type = typeof(EditableGridSection))]
         [XmlArrayItem(ElementName = "EditSection", Type = typeof(EditSection))]

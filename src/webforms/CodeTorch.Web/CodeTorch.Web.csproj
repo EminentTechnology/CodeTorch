@@ -203,6 +203,7 @@
     <Compile Include="Providers\EmbeddedResourceVirtualPathProvider\EmbeddedResource.cs" />
     <Compile Include="Providers\EmbeddedResourceVirtualPathProvider\EmbeddedResourceProvider.cs" />
     <Compile Include="Providers\EmbeddedResourceVirtualPathProvider\EmbeddedResourceVirtualFile.cs" />
+    <Compile Include="SectionControls\CustomSectionControl.cs" />
     <Compile Include="Special\WorkflowStatusPicker.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>

@@ -26,6 +26,7 @@ namespace CodeTorch.Core.Design
                 typeof(ButtonListSection),
                 typeof(ContentSection),
                 typeof(CriteriaSection),
+                typeof(CustomSection),
                 typeof(DetailsSection),
                 typeof(EditableGridSection),
                 typeof(EditSection),

@@ -111,6 +111,7 @@
     <Compile Include="Commands\NavigateToUrlCommand.cs" />
     <Compile Include="Commands\InsertUpdateSaveCommand.cs" />
     <Compile Include="ConfigurationObjects\AppConfigurationObject.cs" />
+    <Compile Include="Sections\CustomSection.cs" />
     <Compile Include="_Common\ConfigurationObjectFactory.cs" />
     <Compile Include="ConfigurationObjects\ControlTypeConfigurationObject.cs" />
     <Compile Include="ConfigurationObjects\SectionTypeConfigurationObject.cs" />
