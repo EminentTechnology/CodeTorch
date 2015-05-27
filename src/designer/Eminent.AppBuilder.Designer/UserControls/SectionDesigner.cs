@@ -14,7 +14,7 @@ namespace CodeTorch.Designer.UserControls
     {
         public CodeTorch.Core.Screen Screen;
         public SectionDivider Zone;
-        public BaseSection Section;
+        public Section Section;
         
 
         public SectionDesigner()

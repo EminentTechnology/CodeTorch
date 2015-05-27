@@ -16,7 +16,7 @@ namespace CodeTorch.Core
     public class Screen
     {
         bool _ValidateRequest = true;
-        private List<BaseSection> _Sections = new List<BaseSection>();
+        private List<Section> _Sections = new List<Section>();
         private CodeTorch.Core.Action _OnPageLoad = new CodeTorch.Core.Action();
         private CodeTorch.Core.Action _OnPageInit = new CodeTorch.Core.Action();
 
@@ -121,21 +121,8 @@ namespace CodeTorch.Core
         [Category("Sections")]
         [Description("List of page sections")]
         [XmlArray("Sections")]
-        [XmlArrayItem(ElementName = "AlertSection", Type = typeof(AlertSection))]
-        [XmlArrayItem(ElementName = "ButtonListSection", Type = typeof(ButtonListSection))]
-        [XmlArrayItem(ElementName = "ContentSection", Type = typeof(ContentSection))]
-        [XmlArrayItem(ElementName = "CriteriaSection", Type = typeof(CriteriaSection))]
-        [XmlArrayItem(ElementName = "CustomSection", Type = typeof(CustomSection))]
-        [XmlArrayItem(ElementName = "DetailsSection", Type = typeof(DetailsSection))]
-        [XmlArrayItem(ElementName = "EditableGridSection", Type = typeof(EditableGridSection))]
-        [XmlArrayItem(ElementName = "EditSection", Type = typeof(EditSection))]
-        [XmlArrayItem(ElementName = "GridSection", Type = typeof(GridSection))]
-        [XmlArrayItem(ElementName = "ImageSection", Type = typeof(ImageSection))]
-        [XmlArrayItem(ElementName = "LinkListSection", Type = typeof(LinkListSection))]
-        [XmlArrayItem(ElementName = "RDLCViewerSection", Type = typeof(RDLCViewerSection))]
-        [XmlArrayItem(ElementName = "TemplateSection", Type = typeof(TemplateSection))]
         [Editor("CodeTorch.Core.Design.SectionCollectionEditor,CodeTorch.Core.Design", typeof(UITypeEditor))]
-        public virtual List<BaseSection> Sections
+        public virtual List<Section> Sections
         {
             get
             {
@@ -211,7 +198,11 @@ namespace CodeTorch.Core
 
             string pageType = doc.Root.Element("Type").Value;
 
-            XmlSerializer serializer = new XmlSerializer(typeof(Screen));
+            var arr = SectionType.GetTypeArray();
+
+            XmlSerializer serializer = new XmlSerializer(typeof(Screen),
+                arr
+                );
 
             XmlReader reader = doc.CreateReader();
             reader.MoveToContent();
@@ -257,7 +248,7 @@ namespace CodeTorch.Core
         {
             if(sections != null)
             {
-                foreach (BaseSection sectionObj in sections)
+                foreach (Section sectionObj in sections)
                 {
                     if (sectionObj is EditSection)
                     {
@@ -273,11 +264,11 @@ namespace CodeTorch.Core
             }
         }
 
-        private static void TieControlsToSections(Screen screen, List<BaseSection> sections)
+        private static void TieControlsToSections(Screen screen, List<Section> sections)
         {
             if (sections != null)
             {
-                foreach (BaseSection section in sections)
+                foreach (Section section in sections)
                 {
                     foreach (BaseControl control in section.Controls)
                     {
@@ -291,7 +282,7 @@ namespace CodeTorch.Core
 
         private static void SetupGridColumns(Screen screen)
         {
-            foreach (BaseSection sectionObj in screen.Sections)
+            foreach (Section sectionObj in screen.Sections)
             {
                 if (sectionObj is GridSection)
                 {
@@ -344,7 +335,7 @@ namespace CodeTorch.Core
 
             string filePath = String.Format("{0}Screens\\{1}\\{2}.xml", ConfigPath, item.Folder, item.Name);
 
-            ConfigurationLoader.SerializeObjectToFile(item, filePath);
+            ConfigurationLoader.SerializeObjectToFile(item, filePath, SectionType.GetTypeArray());
 
         }
 

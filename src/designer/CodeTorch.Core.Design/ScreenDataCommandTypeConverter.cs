@@ -35,9 +35,9 @@ namespace CodeTorch.Core.Design
 
             
 
-            if (context.Instance is BaseSection)
+            if (context.Instance is Section)
             {
-                BaseSection section = (BaseSection)context.Instance;
+                Section section = (Section)context.Instance;
 
                 if (section.Parent != null)
                 {
@@ -114,9 +114,9 @@ namespace CodeTorch.Core.Design
                 DropDownListControl control = (DropDownListControl)context.Instance;
 
                 
-                if (control.Parent is BaseSection)
+                if (control.Parent is Section)
                 {
-                    BaseSection section = (BaseSection)control.Parent;
+                    Section section = (Section)control.Parent;
 
                     
                     if (section.Parent != null)
@@ -168,9 +168,9 @@ namespace CodeTorch.Core.Design
                 ListBoxControl control = (ListBoxControl)context.Instance;
 
 
-                if (control.Parent is BaseSection)
+                if (control.Parent is Section)
                 {
-                    BaseSection section = (BaseSection)control.Parent;
+                    Section section = (Section)control.Parent;
 
                     
                     if (section.Parent != null)
@@ -223,9 +223,9 @@ namespace CodeTorch.Core.Design
                 TreeViewControl control = (TreeViewControl)context.Instance;
 
 
-                if (control.Parent is BaseSection)
+                if (control.Parent is Section)
                 {
-                    BaseSection section = (BaseSection)control.Parent;
+                    Section section = (Section)control.Parent;
 
                     
                     if (section.Parent != null)
@@ -277,9 +277,9 @@ namespace CodeTorch.Core.Design
             {
                 WorkflowStatusControl workflowStatus = (WorkflowStatusControl)context.Instance;
 
-                if (workflowStatus.Parent is BaseSection)
+                if (workflowStatus.Parent is Section)
                 {
-                    BaseSection section = (BaseSection)workflowStatus.Parent;
+                    Section section = (Section)workflowStatus.Parent;
 
                     
                     if (section.Parent != null)

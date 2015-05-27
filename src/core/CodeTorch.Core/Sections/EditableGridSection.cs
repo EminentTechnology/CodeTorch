@@ -12,7 +12,7 @@ namespace CodeTorch.Core
     public class EditableGridSection: GridSection
     {
         ScreenInputType _EntityInputType = ScreenInputType.QueryString;
-        private List<BaseSection> _Sections = new List<BaseSection>();
+        private List<Section> _Sections = new List<Section>();
 
         public override string Type
         {
@@ -45,21 +45,21 @@ namespace CodeTorch.Core
         [Category("Sections")]
         [Description("List of page sections")]
         [XmlArray("Sections")]
-        [XmlArrayItem(ElementName = "AlertSection", Type = typeof(AlertSection))]
-        [XmlArrayItem(ElementName = "ButtonListSection", Type = typeof(ButtonListSection))]
-        [XmlArrayItem(ElementName = "ContentSection", Type = typeof(ContentSection))]
-        [XmlArrayItem(ElementName = "CriteriaSection", Type = typeof(CriteriaSection))]
-        [XmlArrayItem(ElementName = "CustomSection", Type = typeof(CustomSection))]
-        [XmlArrayItem(ElementName = "DetailsSection", Type = typeof(DetailsSection))]
-        [XmlArrayItem(ElementName = "EditableGridSection", Type = typeof(EditableGridSection))]
-        [XmlArrayItem(ElementName = "EditSection", Type = typeof(EditSection))]
-        [XmlArrayItem(ElementName = "GridSection", Type = typeof(GridSection))]
-        [XmlArrayItem(ElementName = "ImageSection", Type = typeof(ImageSection))]
-        [XmlArrayItem(ElementName = "LinkListSection", Type = typeof(LinkListSection))]
-        [XmlArrayItem(ElementName = "RDLCViewerSection", Type = typeof(RDLCViewerSection))]
-        [XmlArrayItem(ElementName = "TemplateSection", Type = typeof(TemplateSection))]
+        //[XmlArrayItem(ElementName = "AlertSection", Type = typeof(AlertSection))]
+        //[XmlArrayItem(ElementName = "ButtonListSection", Type = typeof(ButtonListSection))]
+        //[XmlArrayItem(ElementName = "ContentSection", Type = typeof(ContentSection))]
+        //[XmlArrayItem(ElementName = "CriteriaSection", Type = typeof(CriteriaSection))]
+        //[XmlArrayItem(ElementName = "CustomSection", Type = typeof(CustomSection))]
+        //[XmlArrayItem(ElementName = "DetailsSection", Type = typeof(DetailsSection))]
+        //[XmlArrayItem(ElementName = "EditableGridSection", Type = typeof(EditableGridSection))]
+        //[XmlArrayItem(ElementName = "EditSection", Type = typeof(EditSection))]
+        //[XmlArrayItem(ElementName = "GridSection", Type = typeof(GridSection))]
+        //[XmlArrayItem(ElementName = "ImageSection", Type = typeof(ImageSection))]
+        //[XmlArrayItem(ElementName = "LinkListSection", Type = typeof(LinkListSection))]
+        //[XmlArrayItem(ElementName = "RDLCViewerSection", Type = typeof(RDLCViewerSection))]
+        //[XmlArrayItem(ElementName = "TemplateSection", Type = typeof(TemplateSection))]
         [Editor("CodeTorch.Core.Design.SectionCollectionEditor,CodeTorch.Core.Design", typeof(UITypeEditor))]
-        public List<BaseSection> Sections
+        public List<Section> Sections
         {
             get
             {

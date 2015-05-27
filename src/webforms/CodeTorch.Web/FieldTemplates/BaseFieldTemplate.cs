@@ -23,7 +23,7 @@ namespace CodeTorch.Web.FieldTemplates
         public BaseControl BaseControl { get; set; }
         public Screen Screen { get; set; }
    
-        public BaseSection Section { get; set; }
+        public Section Section { get; set; }
         public object ValueObject { get; set; }
         public object RecordObject { get; set; }
 

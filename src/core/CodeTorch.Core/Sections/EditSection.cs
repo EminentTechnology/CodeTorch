@@ -8,7 +8,7 @@ using System.ComponentModel;
 namespace CodeTorch.Core
 {
     [Serializable]
-    public class EditSection: BaseSection
+    public class EditSection: Section
     {
 
         public override string Type

@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Xml.Serialization;
 
 namespace CodeTorch.Core
 {
     [Serializable]
-    public class AlertSection : BaseSection
+    public class AlertSection : Section
     {
         public override string Type
         {

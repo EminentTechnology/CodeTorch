@@ -381,9 +381,9 @@ namespace CodeTorch.Core.Design
         private static StandardValuesCollection GetDataFieldColumns(ITypeDescriptorContext context, StandardValuesCollection list)
         {
             BaseControl control = (BaseControl)context.Instance;
-            if ((control.Parent != null) && (control.Parent is BaseSection))
+            if ((control.Parent != null) && (control.Parent is Section))
             {
-                BaseSection section = (BaseSection)control.Parent;
+                Section section = (Section)control.Parent;
 
                 if ((section.Parent != null) && (section.Parent is Screen))
                 {

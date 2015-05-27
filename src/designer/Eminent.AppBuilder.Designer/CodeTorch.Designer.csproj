@@ -285,7 +285,8 @@
     <Compile Include="SchemaUpgrades\4\WorkflowTransformer.cs" />
     <Compile Include="SchemaUpgrades\4\ScreenTransformer.cs" />
     <Compile Include="SchemaUpgrades\4\MenuTransformer.cs" />
-    <Compile Include="SchemaUpgrades\5\SectionTypeTransformer.cs" />
+    <Compile Include="SchemaUpgrades\6\ScreenTransformer.cs" />
+    <Compile Include="SchemaUpgrades\6\SectionTypeTransformer.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="UserControls\SectionDesigner.cs">
       <SubType>UserControl</SubType>
@@ -357,6 +358,7 @@
     <EmbeddedResource Include="Forms\ResourceTranslationForm.resx">
       <DependentUpon>ResourceTranslationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -449,27 +451,27 @@
       <Project>{ffa210b6-b65e-4cb3-9a43-e546f132e78a}</Project>
       <Name>CodeTorch.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CodeTorch.Data.SqlServer\CodeTorch.Data.SqlServer.csproj">
+    <ProjectReference Include="..\..\plugins\CodeTorch.Data.SqlServer\CodeTorch.Data.SqlServer.csproj">
       <Project>{cff06607-17a4-4351-9566-b54569c5bffe}</Project>
       <Name>CodeTorch.Data.SqlServer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CodeTorch.Documents\CodeTorch.Documents.csproj">
+    <ProjectReference Include="..\..\plugins\CodeTorch.Documents\CodeTorch.Documents.csproj">
       <Project>{b4035297-224c-404c-925d-0807f7d5ec25}</Project>
       <Name>CodeTorch.Documents</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CodeTorch.Email\CodeTorch.Email.csproj">
+    <ProjectReference Include="..\..\plugins\CodeTorch.Email\CodeTorch.Email.csproj">
       <Project>{0ea15c58-9f7a-4fda-9ad5-38f3c8c42a00}</Project>
       <Name>CodeTorch.Email</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CodeTorch.Lookups\CodeTorch.Lookups.csproj">
+    <ProjectReference Include="..\..\plugins\CodeTorch.Lookups\CodeTorch.Lookups.csproj">
       <Project>{6d1a61e4-7b66-4806-83eb-a60fb464ca0d}</Project>
       <Name>CodeTorch.Lookups</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CodeTorch.Security\CodeTorch.Security.csproj">
+    <ProjectReference Include="..\..\plugins\CodeTorch.Security\CodeTorch.Security.csproj">
       <Project>{11648974-1332-4970-a870-d4f5d477e09e}</Project>
       <Name>CodeTorch.Security</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CodeTorch.Workflows\CodeTorch.Workflows.csproj">
+    <ProjectReference Include="..\..\plugins\CodeTorch.Workflows\CodeTorch.Workflows.csproj">
       <Project>{e7879d50-16dd-4930-b64a-e07a8c791cba}</Project>
       <Name>CodeTorch.Workflows</Name>
     </ProjectReference>
@@ -704,9 +706,7 @@
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SchemaUpgrades\6\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

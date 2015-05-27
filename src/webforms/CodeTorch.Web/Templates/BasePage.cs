@@ -571,17 +571,17 @@ namespace CodeTorch.Web.Templates
             return retVal;
         }
 
-        public void RenderPageSections(string screenLayout, Screen screen, List<BaseSection> sections, bool isNewRecord)
+        public void RenderPageSections(string screenLayout, Screen screen, List<Section> sections, bool isNewRecord)
         {
             RenderPageSections(this.SectionLayout, screenLayout, screen, sections, isNewRecord, SectionMode.All, "Screen.Sections");
         }
 
-        public void RenderPageSections(string screenLayout, Screen screen, List<BaseSection> sections, bool isNewRecord, SectionMode Mode, string ResourceKeyPrefix)
+        public void RenderPageSections(string screenLayout, Screen screen, List<Section> sections, bool isNewRecord, SectionMode Mode, string ResourceKeyPrefix)
         {
             RenderPageSections(this.SectionLayout, screenLayout, screen, sections, isNewRecord, Mode, ResourceKeyPrefix);
         }
 
-        public void RenderPageSections(PlaceHolder holder, string screenLayout, Screen screen, List<BaseSection> sections, bool isNewRecord, SectionMode Mode, string ResourceKeyPrefix)
+        public void RenderPageSections(PlaceHolder holder, string screenLayout, Screen screen, List<Section> sections, bool isNewRecord, SectionMode Mode, string ResourceKeyPrefix)
         {
 
             SectionZoneLayout layout = null;
@@ -607,7 +607,7 @@ namespace CodeTorch.Web.Templates
 
         }
 
-        private void GenerateSectionDivs(PlaceHolder holder, HtmlGenericControl parent, List<BaseSection> sections, SectionMode Mode, string ResourceKeyPrefix, List<SectionDivider> dividers)
+        private void GenerateSectionDivs(PlaceHolder holder, HtmlGenericControl parent, List<Section> sections, SectionMode Mode, string ResourceKeyPrefix, List<SectionDivider> dividers)
         {
             foreach (SectionDivider d in dividers)
             {
@@ -648,10 +648,10 @@ namespace CodeTorch.Web.Templates
             }
         }
 
-        private void IterateSectionsToRender(List<BaseSection> sections, SectionMode Mode, string ResourceKeyPrefix, SectionDivider d, HtmlGenericControl div)
+        private void IterateSectionsToRender(List<Section> sections, SectionMode Mode, string ResourceKeyPrefix, SectionDivider d, HtmlGenericControl div)
         {
 
-            foreach (BaseSection section in sections)
+            foreach (Section section in sections)
             {
                 if (section.ContentPane.ToLower() == d.Name.ToLower())
                 {
@@ -724,7 +724,7 @@ namespace CodeTorch.Web.Templates
             return layout;
         }
 
-        private void RenderSection(HtmlGenericControl div, Screen screen, BaseSection section, string ResourceKeyPrefix)
+        private void RenderSection(HtmlGenericControl div, Screen screen, Section section, string ResourceKeyPrefix)
         {
 
 
@@ -789,7 +789,7 @@ namespace CodeTorch.Web.Templates
 
 
 
-        private BaseSectionControl GetSectionControl(Screen screen, BaseSection section, string ResourceKeyPrefix)
+        private BaseSectionControl GetSectionControl(Screen screen, Section section, string ResourceKeyPrefix)
         {
             BaseSectionControl sectionControl = null;
             SectionType sectionType = SectionType.GetSectionType(section);

@@ -69,9 +69,9 @@ namespace CodeTorch.Core.Design
 
             if (Context.Instance != null)
             {
-                if (Context.Instance is BaseSection)
+                if (Context.Instance is Section)
                 {
-                    BaseSection section = (BaseSection)Context.Instance;
+                    Section section = (Section)Context.Instance;
                     if (section.Controls.Count > 0)
                     {
                         BaseControl copy = section.Controls[section.Controls.Count - 1];

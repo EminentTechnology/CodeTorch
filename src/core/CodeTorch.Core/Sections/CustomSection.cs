@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace CodeTorch.Core
 {
     [Serializable]
-    public class CustomSection: BaseSection
+    public class CustomSection: Section
     {
         public override string Type
         {

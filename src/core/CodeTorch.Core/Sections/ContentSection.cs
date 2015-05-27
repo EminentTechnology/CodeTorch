@@ -8,7 +8,7 @@ using System.Linq;
 namespace CodeTorch.Core
 {
     [Serializable]
-    public class ContentSection : BaseSection
+    public class ContentSection : Section
     {
         public override string Type
         {

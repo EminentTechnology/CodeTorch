@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 namespace CodeTorch.Core
 {
     [Serializable]
-    public class ButtonListSection : BaseSection
+    public class ButtonListSection : Section
     {
         
 

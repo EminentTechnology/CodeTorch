@@ -101,7 +101,7 @@ namespace CodeTorch.Web.ActionCommands
                     parameters = pageDB.GetPopulatedCommandParameters(Me.DefaultCommand, Page);
                     DataTable retVal = dataCommandDB.GetDataForDataCommand(Me.DefaultCommand, parameters);
 
-                    foreach (BaseSection section in Page.Screen.Sections)
+                    foreach (Section section in Page.Screen.Sections)
                     {
                         Page.PopulateFormByDataTable(section.Controls, retVal);
                     }
@@ -132,7 +132,7 @@ namespace CodeTorch.Web.ActionCommands
                     parameters = pageDB.GetPopulatedCommandParameters(Me.RetrieveCommand, Page);
                     DataTable retVal = dataCommandDB.GetDataForDataCommand(Me.RetrieveCommand, parameters);
 
-                    foreach (BaseSection section in Page.Screen.Sections)
+                    foreach (Section section in Page.Screen.Sections)
                     {
                         Page.PopulateFormByDataTable(section.Controls, retVal);
 

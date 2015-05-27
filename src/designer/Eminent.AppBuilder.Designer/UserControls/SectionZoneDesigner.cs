@@ -36,13 +36,13 @@ namespace CodeTorch.Designer.UserControls
 
 
             SectionsPanel.RowCount = sections.Count();
-            foreach (BaseSection section in sections)
+            foreach (Section section in sections)
             {
                 AddSections(section);
             }
         }
 
-        private void AddSections(BaseSection section)
+        private void AddSections(Section section)
         {
             SectionDesigner s = new SectionDesigner();
 

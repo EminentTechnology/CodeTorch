@@ -22,7 +22,7 @@ namespace CodeTorch.Web.SectionControls
     {
         App app;
         public Screen Screen { get; set; }
-        public BaseSection Section { get; set; }
+        public Section Section { get; set; }
         public string ResourceKeyPrefix = "";
 
         protected PlaceHolder SectionPlaceHolder;
@@ -249,7 +249,7 @@ namespace CodeTorch.Web.SectionControls
         }
 
 
-        public void AddControl(Screen Screen, BaseSection Section, Control parent, BaseControl control)
+        public void AddControl(Screen Screen, Section Section, Control parent, BaseControl control)
         {
             try
             {

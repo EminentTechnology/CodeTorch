@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 namespace CodeTorch.Core
 {
     [Serializable]
-    public class LinkListSection : BaseSection
+    public class LinkListSection : Section
     {
         PermissionCheck _Permission = new PermissionCheck();
 

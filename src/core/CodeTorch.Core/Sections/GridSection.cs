@@ -7,7 +7,7 @@ using System.ComponentModel;
 namespace CodeTorch.Core
 {
     [Serializable]
-    public class GridSection: BaseSection
+    public class GridSection: Section
     {
         public override string Type
         {

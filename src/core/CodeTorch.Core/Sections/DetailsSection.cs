@@ -7,7 +7,7 @@ using System.Text;
 namespace CodeTorch.Core
 {
     [Serializable]
-    public class DetailsSection: BaseSection
+    public class DetailsSection: Section
     {
         public override string Type
         {

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace CodeTorch.Designer.SchemaUpgrades._5
+namespace CodeTorch.Designer.SchemaUpgrades._6
 {
     public class SectionTypeTransformer : ICodeTransformer
     {

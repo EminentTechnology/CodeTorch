@@ -759,7 +759,7 @@ namespace CodeTorch.Web
 
         }
 
-        public static void HandleEditableGridItemCreated(BasePage page, RadGrid Grid, CodeTorch.Core.Grid GridConfig, List<BaseSection> Sections, string SectionZoneLayout, bool DisplayAddButton, object source, GridItemEventArgs e)
+        public static void HandleEditableGridItemCreated(BasePage page, RadGrid Grid, CodeTorch.Core.Grid GridConfig, List<Section> Sections, string SectionZoneLayout, bool DisplayAddButton, object source, GridItemEventArgs e)
         {
 
 

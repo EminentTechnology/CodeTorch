@@ -21,9 +21,9 @@ namespace CodeTorch.Core.Design
              SectionZoneLayout layout = null;
 
 
-            if (context.Instance is BaseSection)
+            if (context.Instance is Section)
             {
-                BaseSection section = (BaseSection)context.Instance;
+                Section section = (Section)context.Instance;
                
 
                 if (section.Parent != null)

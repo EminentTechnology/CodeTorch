@@ -74,12 +74,12 @@ namespace CodeTorch.Designer.Forms
         private void ProcessScreen(Core.Screen screen)
         {
             Grid grid;
-            List<BaseSection> sections;
+            List<Section> sections;
             GridSection gridSection;
 
 
 
-            foreach (BaseSection section in screen.Sections)
+            foreach (Section section in screen.Sections)
             {
                 if (section is GridSection)
                 {

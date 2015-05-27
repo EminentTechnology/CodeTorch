@@ -27,7 +27,7 @@ namespace CodeTorch.Core.Design
 
         protected override string GetDisplayText(object value)
         {
-            BaseSection section = (BaseSection)value;
+            Section section = (Section)value;
 
             string retVal = section.Name;
 
@@ -37,7 +37,7 @@ namespace CodeTorch.Core.Design
         protected override object CreateInstance(Type itemType)
         {
             object retVal = base.CreateInstance(itemType);
-            ((BaseSection)retVal).Parent = Context.Instance;
+            ((Section)retVal).Parent = Context.Instance;
 
            
 

@@ -272,7 +272,10 @@ namespace CodeTorch.Core
         {
             LoadItem("App", "App.xml", "App", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
 
+            LoadItems("SectionTypes", "SectionType", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
+
             LoadItems("ControlTypes", "ControlType", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
+            LoadItems("ScreenTypes", "ScreenType", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
             //LoadItems("DashboardComponents", "DashboardComponent", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
             //LoadItems("DashboardComponentTypes", "DashboardComponentType", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
             LoadItems("DataCommands", "DataCommand", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
@@ -288,8 +291,8 @@ namespace CodeTorch.Core
             LoadItems("Pickers", "Picker", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
             LoadItems("RestServices", "RestService", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
             LoadItems("Screens", "Screen", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            LoadItems("ScreenTypes", "ScreenType", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            LoadItems("SectionTypes", "SectionType", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
+            
+            
             LoadItems("Sequences", "Sequence", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
             LoadItems("Workflows", "Workflow", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
             LoadItems("WorkflowTypes", "WorkflowType", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
@@ -361,10 +364,20 @@ namespace CodeTorch.Core
 
        
 
-        public static void SerializeObjectToFile(Object item, string filePath)
+        public static void SerializeObjectToFile(Object item, string filePath, Type[] extraTypes = null)
         {
 
-            System.Xml.Serialization.XmlSerializer x = new System.Xml.Serialization.XmlSerializer(item.GetType());
+            System.Xml.Serialization.XmlSerializer x = null;
+
+            if (extraTypes == null)
+            {
+                x = new System.Xml.Serialization.XmlSerializer(item.GetType());
+            }
+            else
+            {
+                x = new System.Xml.Serialization.XmlSerializer(item.GetType(), extraTypes); 
+            }
+            
             XmlWriterSettings settings = new XmlWriterSettings();
             settings.Indent = true;
             settings.CloseOutput = true;

@@ -6,7 +6,7 @@ using System.Linq;
 namespace CodeTorch.Core
 {
     [Serializable]
-    public class TemplateSection : BaseSection
+    public class TemplateSection : Section
     {
         public override string Type
         {

@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 namespace CodeTorch.Core
 {
     [Serializable]
-    public class RDLCViewerSection : BaseSection
+    public class RDLCViewerSection : Section
     {
         public override string Type
         {

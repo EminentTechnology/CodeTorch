@@ -63,7 +63,7 @@ namespace CodeTorch.Designer.Forms
         public MainForm2 MainForm { get; set; }
 
         Dictionary<string, ScreenDataCommand> DataCommands = new Dictionary<string, ScreenDataCommand>();
-        Dictionary<string, BaseSection> Sections = new Dictionary<string, BaseSection>();
+        Dictionary<string, Section> Sections = new Dictionary<string, Section>();
 
         
         
@@ -380,7 +380,7 @@ namespace CodeTorch.Designer.Forms
 
             if(Sections.ContainsKey("SECTION_" + index.ToString()))
             {
-                BaseSection section = Sections["SECTION_" + index.ToString()];
+                Section section = Sections["SECTION_" + index.ToString()];
 
                 switch (section.Type.ToLower())
                 { 
@@ -423,7 +423,7 @@ namespace CodeTorch.Designer.Forms
             {
                 string SectionKey = "SECTION_" + keyIndex.ToString();
 
-                BaseSection section = null;
+                Section section = null;
 
                 bool CreateNewSection = true;
 
@@ -441,7 +441,7 @@ namespace CodeTorch.Designer.Forms
                 if(CreateNewSection)
                 { 
                     //create section of that type and add to sections collection
-                    section = BaseSection.GetNewSection(Type);
+                    section = Section.GetNewSection(Type);
                     Sections[SectionKey] = section;
                 }
 
@@ -1288,7 +1288,7 @@ namespace CodeTorch.Designer.Forms
                 section.DefaultCommand = GetDataCommandNameByKey("Default");
 
                 //lop through all sectins that start with section and add them to editable grid 
-                foreach (KeyValuePair<string, BaseSection> s in this.Sections)
+                foreach (KeyValuePair<string, Section> s in this.Sections)
                 {
                     if (s.Key.ToLower().StartsWith("section_"))
                     {
@@ -1353,7 +1353,7 @@ namespace CodeTorch.Designer.Forms
                 section.DefaultCommand = GetDataCommandNameByKey("Default");
 
                 //lop through all sectins that start with section and add them to editable grid 
-                foreach (KeyValuePair<string, BaseSection> s in this.Sections)
+                foreach (KeyValuePair<string, Section> s in this.Sections)
                 {
                     if (s.Key.ToLower().StartsWith("section_"))
                     {
@@ -2136,7 +2136,7 @@ namespace CodeTorch.Designer.Forms
         private void ProcessSections(Core.Screen screen)
         {
             
-            foreach (BaseSection section in this.Sections.Values)
+            foreach (Section section in this.Sections.Values)
             {
                 //add screen data command for grids in sections when it does not exist
                 if (section is GridSection)
@@ -2753,7 +2753,7 @@ namespace CodeTorch.Designer.Forms
             List<string> remove = new List<string>();
 
             //loop through every control in existing details or edit sections
-            foreach (BaseSection section in Sections.Values)
+            foreach (Section section in Sections.Values)
             {
                 if ((section is DetailsSection) || (section is EditSection))
                 {

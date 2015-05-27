@@ -51,7 +51,7 @@ namespace CodeTorch.Core
 
         }
 
-        public static SectionType GetSectionType(BaseSection item)
+        public static SectionType GetSectionType(Section item)
         {
             SectionType sectionType = Configuration.GetInstance().SectionTypes
                             .Where(s =>

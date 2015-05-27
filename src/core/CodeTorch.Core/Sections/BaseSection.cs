@@ -11,7 +11,7 @@ namespace CodeTorch.Core
 {
     [Serializable]
     [TypeConverter(typeof(ExpandableObjectConverter))]
-    public class BaseSection
+    public class Section
     {
         private bool _Visible = true;
         PermissionCheck _Permission = new PermissionCheck();
@@ -150,7 +150,7 @@ namespace CodeTorch.Core
         }
 
 
-        public static IEnumerable<ResourceItem> GetResourceKeys(Screen Screen, BaseSection Section, String Prefix)
+        public static IEnumerable<ResourceItem> GetResourceKeys(Screen Screen, Section Section, String Prefix)
         {
             List<ResourceItem> retVal = new List<ResourceItem>();
 
@@ -189,7 +189,7 @@ namespace CodeTorch.Core
             return retVal;
         }
 
-        protected static void AddResourceKey(List<ResourceItem> keys, Screen screen, BaseSection section, string Prefix, string ResourceKey, string DefaultValue)
+        protected static void AddResourceKey(List<ResourceItem> keys, Screen screen, Section section, string Prefix, string ResourceKey, string DefaultValue)
         {
             ResourceItem key = new Core.ResourceItem();
 
@@ -210,50 +210,14 @@ namespace CodeTorch.Core
             }
         }
 
-        public static BaseSection GetNewSection(string type)
+        public static Section GetNewSection(string type)
         {
-            BaseSection retval = null;
+            SectionType sectionType = SectionType.GetByName(type);
+            string assemblyQualifiedName = String.Format("{0}, {1}", sectionType.AbstractionClass, sectionType.AbstractionAssembly);
 
-            switch (type.ToLower())
-            {
-                case "alert":
-                    retval = new AlertSection();
-                    break;
-                case "buttonlist":
-                    retval = new ButtonListSection();
-                    break;
-                case "content":
-                    retval = new ContentSection();
-                    break;
-                case "criteria":
-                    retval = new CriteriaSection();
-                    break;
-                case "details":
-                    retval = new DetailsSection();
-                    break;
-                case "edit":
-                    retval = new EditSection();
-                    break;
-                case "editablegrid":
-                    retval = new EditableGridSection();
-                    break;
-                case "grid":
-                    retval = new GridSection();
-                    break;
-                case "image":
-                    retval = new ImageSection();
-                    break;
-                case "linklist":
-                    retval = new LinkListSection();
-                    break;
-                case "rdlcviewer":
-                    retval = new RDLCViewerSection();
-                    break;
-                case "template":
-                    retval = new TemplateSection();
-                    break;
-            }
-
+            Type t = System.Type.GetType(assemblyQualifiedName, false, true);
+            Section retval = (Section)Activator.CreateInstance(t);
+            
             return retval;
         }
     }

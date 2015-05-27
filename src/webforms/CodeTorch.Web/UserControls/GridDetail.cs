@@ -21,7 +21,7 @@ namespace CodeTorch.Web.UserControls
     
 
         public Screen Screen { get; set; }
-        public List<BaseSection> Sections { get; set; }
+        public List<Section> Sections { get; set; }
 
         public List<BaseSectionControl> SectionControls = new List<BaseSectionControl>();
 
@@ -95,7 +95,7 @@ namespace CodeTorch.Web.UserControls
 
             
 
-            List<BaseSection> baseSections = Sections.ConvertAll(x => (BaseSection)x);
+            List<Section> baseSections = Sections.ConvertAll(x => (Section)x);
             page.RenderPageSections(this.SectionLayout, SectionZoneLayout, Screen, baseSections, false, Mode, "Screen.Sections.");
            
 
@@ -165,7 +165,7 @@ namespace CodeTorch.Web.UserControls
 
             PopulateSections();
 
-            foreach (BaseSection section in Sections)
+            foreach (Section section in Sections)
             {
                 page.PopulateFormByDataRowView(item, section.Controls, ((DataRowView)DataItem), true);
 
@@ -180,7 +180,7 @@ namespace CodeTorch.Web.UserControls
 
             PopulateSections();
 
-            foreach (BaseSection section in Sections)
+            foreach (Section section in Sections)
             {
                 page.PopulateFormByDataTable(item, section.Controls, data, true);
 
@@ -189,13 +189,13 @@ namespace CodeTorch.Web.UserControls
 
         internal void ExecuteAfterPopulateSections()
         {
-            foreach (BaseSection section in Sections)
+            foreach (Section section in Sections)
             {
                 ExecuteAfterPopulateSection(section);
             }
         }
 
-        private void ExecuteAfterPopulateSection(BaseSection Section)
+        private void ExecuteAfterPopulateSection(Section Section)
         {
             try
             {

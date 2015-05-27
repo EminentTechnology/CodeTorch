@@ -6,7 +6,7 @@ using System.Text;
 namespace CodeTorch.Core
 {
     [Serializable]
-    public class ImageSection: BaseSection
+    public class ImageSection: Section
     {
         public override string Type
         {
