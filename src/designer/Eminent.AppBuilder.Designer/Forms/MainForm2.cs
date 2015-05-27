@@ -402,8 +402,12 @@ namespace CodeTorch.Designer.Forms
                     transformers.Add(new CodeTorch.Designer.SchemaUpgrades._4.MenuTransformer());
                     transformers.Add(new CodeTorch.Designer.SchemaUpgrades._4.ScreenTransformer());
                     transformers.Add(new CodeTorch.Designer.SchemaUpgrades._4.WorkflowTransformer());
-                    break; 
-                  
+                    break;
+                case 6:
+
+                    transformers.Add(new CodeTorch.Designer.SchemaUpgrades._5.SectionTypeTransformer());
+                    break;
+
             }
 
             foreach (ICodeTransformer transformer in transformers)

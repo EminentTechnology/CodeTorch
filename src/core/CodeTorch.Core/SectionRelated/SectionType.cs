@@ -16,6 +16,8 @@ namespace CodeTorch.Core
         public string Assembly { get; set; }
         public string Class { get; set; }
 
+        public string AbstractionAssembly { get; set; }
+        public string AbstractionClass { get; set; }
 
 
         public static void Load(XDocument doc)
@@ -94,6 +96,24 @@ namespace CodeTorch.Core
                             .SingleOrDefault();
 
             return item;
+        }
+
+        public static Type[] GetTypeArray()
+        {
+            List<Type> types = new List<Type>();
+
+            foreach (SectionType section in Configuration.GetInstance().SectionTypes)
+            {
+                string assemblyQualifiedName = String.Format("{0}, {1}", section.AbstractionClass, section.AbstractionAssembly);
+                Type t = Type.GetType(assemblyQualifiedName, false, true);
+
+                if (t != null)
+                {
+                    types.Add(t);
+                }
+            }
+
+            return types.ToArray();
         }
     }
 }

@@ -20,23 +20,9 @@ namespace CodeTorch.Core.Design
 
         protected override Type[] CreateNewItemTypes()
         {
-            return new Type[]
-            {
-                typeof(AlertSection),
-                typeof(ButtonListSection),
-                typeof(ContentSection),
-                typeof(CriteriaSection),
-                typeof(CustomSection),
-                typeof(DetailsSection),
-                typeof(EditableGridSection),
-                typeof(EditSection),
-                typeof(GridSection),
-                typeof(ImageSection),
-                typeof(LinkListSection),
-                typeof(RDLCViewerSection),
-                typeof(TemplateSection)
+            Type[] types = SectionType.GetTypeArray();
             
-            };
+            return types;
         }
 
         protected override string GetDisplayText(object value)
