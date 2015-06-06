@@ -405,6 +405,7 @@ namespace CodeTorch.Designer.Forms
                     break;
                 case 6:
 
+                    transformers.Add(new CodeTorch.Designer.SchemaUpgrades._6.AppTransformer());
                     transformers.Add(new CodeTorch.Designer.SchemaUpgrades._6.SectionTypeTransformer());
                     transformers.Add(new CodeTorch.Designer.SchemaUpgrades._6.ScreenTransformer());
                     break;

@@ -1308,7 +1308,7 @@ namespace CodeTorch.Web.Templates
         }
 
 
-        public void ExecuteAction(CodeTorch.Core.Action sourceAction)
+        public virtual void ExecuteAction(CodeTorch.Core.Action sourceAction)
         {
             if (sourceAction != null)
             {
@@ -1324,7 +1324,7 @@ namespace CodeTorch.Web.Templates
             }
         }
 
-        public void DisplaySuccessAlert(string Message)
+        public virtual void DisplaySuccessAlert(string Message)
         {
             DisplayAlertMessage message = new DisplayAlertMessage();
 
@@ -1334,7 +1334,7 @@ namespace CodeTorch.Web.Templates
             this.MessageBus.Publish(message);
         }
 
-        public void DisplayWarningAlert(string Message)
+        public virtual void DisplayWarningAlert(string Message)
         {
             DisplayAlertMessage message = new DisplayAlertMessage();
 
@@ -1344,7 +1344,7 @@ namespace CodeTorch.Web.Templates
             this.MessageBus.Publish(message);
         }
 
-        public void DisplayInfoAlert(string Message)
+        public virtual void DisplayInfoAlert(string Message)
         {
             DisplayAlertMessage message = new DisplayAlertMessage();
 
@@ -1354,7 +1354,7 @@ namespace CodeTorch.Web.Templates
             this.MessageBus.Publish(message);
         }
 
-        public void DisplayErrorAlert(string Message)
+        public virtual void DisplayErrorAlert(string Message)
         {
             DisplayAlertMessage message = new DisplayAlertMessage();
 
@@ -1364,13 +1364,23 @@ namespace CodeTorch.Web.Templates
             this.MessageBus.Publish(message);
         }
 
-        public void DisplayErrorAlert(Exception ex)
+        public virtual void DisplayErrorAlert(Exception ex)
         {
             DisplayAlertMessage message = new DisplayAlertMessage();
 
+            string errorMessageFormat = "<strong>The following error(s) occurred</strong>:<ul><li>{0}</li></ul>";
+
+            if (app != null)
+            {
+                if (app.DefaultErrorMessageFormatString != null)
+                {
+                    errorMessageFormat = app.DefaultErrorMessageFormatString;
+                }
+            }
+            
             message.IsDismissable = false;
             message.AlertType = DisplayAlertMessage.ALERT_DANGER;
-            message.Text = String.Format("<strong>The following error(s) occurred</strong>:<ul><li>{0}</li></ul>", ex.Message);
+            message.Text = String.Format(errorMessageFormat, ex.Message);
             this.MessageBus.Publish(message);
         }
 
@@ -1409,9 +1419,9 @@ namespace CodeTorch.Web.Templates
             }
         }
 
-        
 
-        public FormViewMode DetermineMode(string EntityID, ScreenInputType EntityInputType)
+
+        public virtual FormViewMode DetermineMode(string EntityID, ScreenInputType EntityInputType)
         {
             FormViewMode retVal = FormViewMode.ReadOnly;
 

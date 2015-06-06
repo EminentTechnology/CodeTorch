@@ -49,6 +49,8 @@ namespace CodeTorch.Core
         public string DefaultPageTemplate { get; set; }
         public string DefaultConnection { get; set; }
         public string DefaultMenu { get; set; }
+
+        public string DefaultErrorMessageFormatString { get; set; }
         public string DefaultZoneLayout { get; set; }
         public string AdminRole { get; set; }
         public string DevelopmentBaseUrl { get; set; }
