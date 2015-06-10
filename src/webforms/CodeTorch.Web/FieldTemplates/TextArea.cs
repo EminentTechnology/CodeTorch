@@ -32,7 +32,7 @@ namespace CodeTorch.Web.FieldTemplates
             {
                 if (_Me == null)
                 {
-                    _Me = (TextAreaControl)this.BaseControl;
+                    _Me = (TextAreaControl)this.Widget;
                 }
                 return _Me;
             }

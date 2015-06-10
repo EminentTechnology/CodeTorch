@@ -37,7 +37,7 @@ namespace CodeTorch.Web.FieldTemplates
             {
                 if (_Me == null)
                 {
-                    _Me = (FileUploadControl)this.BaseControl;
+                    _Me = (FileUploadControl)this.Widget;
                 }
                 return _Me;
             }

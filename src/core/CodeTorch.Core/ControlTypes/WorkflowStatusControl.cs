@@ -14,7 +14,7 @@ namespace CodeTorch.Core
     }
 
     [Serializable]
-    public class WorkflowStatusControl: BaseControl
+    public class WorkflowStatusControl: Widget
     {
         bool _ReloadAfterStatusChange = true;
         ScreenInputType _EntityInputType = ScreenInputType.QueryString;

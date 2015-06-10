@@ -69,6 +69,9 @@ namespace CodeTorch.Designer.SchemaUpgrades._6
 
             string localName = section.Name.LocalName;
 
+            XElement controls = section.Element("Controls");
+            ProcessControls(Document, controls);
+
             if (localName == "EditableGridSection")
             {
                 XElement gridSections = section.Element("Sections");
@@ -88,8 +91,35 @@ namespace CodeTorch.Designer.SchemaUpgrades._6
             return retVal;
         }
 
+        private void ProcessControls(XDocument document, XElement controls)
+        {
+            if (controls != null)
+            {
+                foreach (XElement control in controls.Elements())
+                {
 
 
-        
+                    ProcessControl(Document, control);
+                }
+
+                controls.Name = "Widgets";
+            }
+            
+        }
+
+        private void ProcessControl(XDocument document, XElement control)
+        {
+            XNamespace xsi = "http://www.w3.org/2001/XMLSchema-instance";
+
+            string localName = control.Name.LocalName ;
+
+            if (!localName.ToLower().EndsWith("control"))
+            {
+                localName += "Control";
+            }
+
+            control.Name = "Widget";
+            control.SetAttributeValue(xsi + "type", localName);
+        }
     }
 }

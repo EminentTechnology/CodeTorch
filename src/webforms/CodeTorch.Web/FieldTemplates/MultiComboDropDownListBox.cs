@@ -47,7 +47,7 @@ namespace CodeTorch.Web.FieldTemplates
             {
                 if (_Me == null)
                 {
-                    _Me = (MultiComboDropDownListControl)this.BaseControl;
+                    _Me = (MultiComboDropDownListControl)this.Widget;
                 }
                 return _Me;
             }

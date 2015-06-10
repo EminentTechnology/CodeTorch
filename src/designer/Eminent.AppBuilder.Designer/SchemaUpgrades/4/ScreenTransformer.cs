@@ -76,9 +76,9 @@ namespace CodeTorch.Designer.SchemaUpgrades._4
 
 
             //process section controls
-            if (section.Element("Controls") != null)
+            if (section.Element("Widgets") != null)
             {
-                foreach (XElement control in section.Element("Controls").Elements())
+                foreach (XElement control in section.Element("Widgets").Elements())
                 {
                     ProcessControl(Document, section, control);
                 }

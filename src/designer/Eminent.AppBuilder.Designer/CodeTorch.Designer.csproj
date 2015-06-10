@@ -286,6 +286,7 @@
     <Compile Include="SchemaUpgrades\4\ScreenTransformer.cs" />
     <Compile Include="SchemaUpgrades\4\MenuTransformer.cs" />
     <Compile Include="SchemaUpgrades\6\AppTransformer.cs" />
+    <Compile Include="SchemaUpgrades\6\ControlTypeTransformer.cs" />
     <Compile Include="SchemaUpgrades\6\ScreenTransformer.cs" />
     <Compile Include="SchemaUpgrades\6\SectionTypeTransformer.cs" />
     <Compile Include="Settings.cs" />

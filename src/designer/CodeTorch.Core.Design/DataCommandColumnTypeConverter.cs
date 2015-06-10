@@ -131,7 +131,7 @@ namespace CodeTorch.Core.Design
                 }
             }
 
-            if (context.Instance is BaseControl)
+            if (context.Instance is Widget)
             {
                 //if propery is DataField
                 if (context.PropertyDescriptor.Name.ToLower() == "datafield")
@@ -380,7 +380,7 @@ namespace CodeTorch.Core.Design
 
         private static StandardValuesCollection GetDataFieldColumns(ITypeDescriptorContext context, StandardValuesCollection list)
         {
-            BaseControl control = (BaseControl)context.Instance;
+            Widget control = (Widget)context.Instance;
             if ((control.Parent != null) && (control.Parent is Section))
             {
                 Section section = (Section)control.Parent;

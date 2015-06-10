@@ -1119,7 +1119,7 @@
             this.radLabel26.Name = "radLabel26";
             this.radLabel26.Size = new System.Drawing.Size(95, 18);
             this.radLabel26.TabIndex = 76;
-            this.radLabel26.Text = " Controls per row:";
+            this.radLabel26.Text = " Widgets per row:";
             // 
             // radLabel33
             // 
@@ -2045,7 +2045,7 @@
             this.radLabel55.Name = "radLabel55";
             this.radLabel55.Size = new System.Drawing.Size(99, 18);
             this.radLabel55.TabIndex = 79;
-            this.radLabel55.Text = "Assigned Controls:";
+            this.radLabel55.Text = "Assigned Widgets:";
             // 
             // AssignedSectionControlsList
             // 

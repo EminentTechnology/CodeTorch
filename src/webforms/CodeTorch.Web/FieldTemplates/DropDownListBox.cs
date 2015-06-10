@@ -41,7 +41,7 @@ namespace CodeTorch.Web.FieldTemplates
             {
                 if (_Me == null)
                 {
-                    _Me = (DropDownListControl)this.BaseControl;
+                    _Me = (DropDownListControl)this.Widget;
                 }
                 return _Me;
             }
@@ -435,7 +435,7 @@ namespace CodeTorch.Web.FieldTemplates
             return "$ctrl";
         }
 
-        public override System.Web.UI.WebControls.BaseValidator GetRequiredValidator(BaseControl control, bool IsControlEditable, string requiredErrorMessage)
+        public override System.Web.UI.WebControls.BaseValidator GetRequiredValidator(Widget control, bool IsControlEditable, string requiredErrorMessage)
         {
             System.Web.UI.WebControls.CustomValidator val = new CustomValidator();
 

@@ -46,7 +46,7 @@ namespace CodeTorch.Core.Design
 
             try
             {
-                ((BaseValidator)retVal).Name = String.Format("{0}{1}", ((BaseControl)Context.Instance).Name, retVal.GetType().Name);
+                ((BaseValidator)retVal).Name = String.Format("{0}{1}", ((Widget)Context.Instance).Name, retVal.GetType().Name);
             }
             catch { }
 

@@ -38,7 +38,7 @@ namespace CodeTorch.Web.FieldTemplates
             {
                 if (_Me == null)
                 {
-                    _Me = (AutoCompleteBoxControl)this.BaseControl;
+                    _Me = (AutoCompleteBoxControl)this.Widget;
                 }
                 return _Me;
             }

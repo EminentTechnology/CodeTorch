@@ -6,7 +6,7 @@ using System.Text;
 namespace CodeTorch.Core
 {
     [Serializable]
-    public class CheckBoxControl: BaseControl
+    public class CheckBoxControl: Widget
     {
         public string CheckedValue { get; set; }
         public string UncheckedValue { get; set; }

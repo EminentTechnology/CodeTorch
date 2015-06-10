@@ -198,10 +198,10 @@ namespace CodeTorch.Core
 
             string pageType = doc.Root.Element("Type").Value;
 
-            var arr = SectionType.GetTypeArray();
+            var combinedTypes = GetExtraTypes();
 
             XmlSerializer serializer = new XmlSerializer(typeof(Screen),
-                arr
+                combinedTypes
                 );
 
             XmlReader reader = doc.CreateReader();
@@ -253,7 +253,7 @@ namespace CodeTorch.Core
                     if (sectionObj is EditSection)
                     {
                         EditSection section = (EditSection)sectionObj;
-                        foreach (BaseControl control in section.Controls)
+                        foreach (Widget control in section.Widgets)
                         {
                             control.Parent = section;
                         }
@@ -270,7 +270,7 @@ namespace CodeTorch.Core
             {
                 foreach (Section section in sections)
                 {
-                    foreach (BaseControl control in section.Controls)
+                    foreach (Widget control in section.Widgets)
                     {
                         control.Parent = section;
                     }
@@ -335,8 +335,17 @@ namespace CodeTorch.Core
 
             string filePath = String.Format("{0}Screens\\{1}\\{2}.xml", ConfigPath, item.Folder, item.Name);
 
-            ConfigurationLoader.SerializeObjectToFile(item, filePath, SectionType.GetTypeArray());
+            ConfigurationLoader.SerializeObjectToFile(item, filePath, GetExtraTypes());
 
+        }
+
+        private static Type[] GetExtraTypes()
+        {
+            var sectionTypes = SectionType.GetTypeArray();
+            var widgetTypes = ControlType.GetTypeArray();
+
+            var combinedTypes = sectionTypes.Concat(widgetTypes).ToArray();
+            return combinedTypes;
         }
 
         public static List<Screen> GetByFolder(string FolderName)

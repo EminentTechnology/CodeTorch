@@ -32,7 +32,7 @@ namespace CodeTorch.Web.FieldTemplates
             {
                 if (_Me == null)
                 {
-                    _Me = (LookupListBoxControl)this.BaseControl;
+                    _Me = (LookupListBoxControl)this.Widget;
                 }
                 return _Me;
             }

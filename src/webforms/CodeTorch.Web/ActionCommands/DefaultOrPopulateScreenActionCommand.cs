@@ -103,7 +103,7 @@ namespace CodeTorch.Web.ActionCommands
 
                     foreach (Section section in Page.Screen.Sections)
                     {
-                        Page.PopulateFormByDataTable(section.Controls, retVal);
+                        Page.PopulateFormByDataTable(section.Widgets, retVal);
                     }
                 }
             }
@@ -134,7 +134,7 @@ namespace CodeTorch.Web.ActionCommands
 
                     foreach (Section section in Page.Screen.Sections)
                     {
-                        Page.PopulateFormByDataTable(section.Controls, retVal);
+                        Page.PopulateFormByDataTable(section.Widgets, retVal);
 
 
                     }

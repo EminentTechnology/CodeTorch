@@ -11,7 +11,7 @@ namespace CodeTorch.Core
 
 
     [Serializable]
-    public class MultiComboDropDownListControl : BaseControl
+    public class MultiComboDropDownListControl : Widget
     {
         public bool AutoPostBack { get; set; }
         public bool IncludeAdditionalListItem { get; set; }

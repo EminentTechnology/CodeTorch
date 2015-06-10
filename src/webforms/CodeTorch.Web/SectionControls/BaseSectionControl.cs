@@ -249,7 +249,7 @@ namespace CodeTorch.Web.SectionControls
         }
 
 
-        public void AddControl(Screen Screen, Section Section, Control parent, BaseControl control)
+        public void AddControl(Screen Screen, Section Section, Control parent, Widget control)
         {
             try
             {
@@ -414,11 +414,11 @@ namespace CodeTorch.Web.SectionControls
                     }
 
                     //assign base control, section and screen references
-                    ctrl.BaseControl = control;
+                    ctrl.Widget = control;
                     if (!IsControlEditable)
                     {
 
-                        readOnlyCtrl.BaseControl = CreateLabelControlFromBaseControl(control);
+                        readOnlyCtrl.Widget = CreateLabelControlFromWidget(control);
                         readOnlyCtrl.Value = ctrl.Value;
                         readOnlyCtrl.SetDisplayText(ctrl.DisplayText);
                     }
@@ -563,7 +563,7 @@ namespace CodeTorch.Web.SectionControls
             return ctrl;
         }
 
-        private static bool DetermineIfControlIsEditable(BaseControl control, bool IsControlVisible, bool IsControlEditable)
+        private static bool DetermineIfControlIsEditable(Widget control, bool IsControlVisible, bool IsControlEditable)
         {
             if ((IsControlVisible) && (control.EditPermission.CheckPermission))
             {
@@ -572,7 +572,7 @@ namespace CodeTorch.Web.SectionControls
             return IsControlEditable;
         }
 
-        private static bool DetermineControlVisibility(BaseControl control, bool IsControlVisible)
+        private static bool DetermineControlVisibility(Widget control, bool IsControlVisible)
         {
             //Set initial control visibility
             IsControlVisible = control.Visible;
@@ -587,7 +587,7 @@ namespace CodeTorch.Web.SectionControls
 
 
 
-        private LabelControl CreateLabelControlFromBaseControl(BaseControl control)
+        private LabelControl CreateLabelControlFromWidget(Widget control)
         {
             LabelControl retVal = new LabelControl();
 
@@ -599,7 +599,7 @@ namespace CodeTorch.Web.SectionControls
             return retVal;
         }
 
-        private System.Web.UI.WebControls.BaseValidator GetValidator(BaseControl control, Core.BaseValidator validator)
+        private System.Web.UI.WebControls.BaseValidator GetValidator(Widget control, Core.BaseValidator validator)
         {
             System.Web.UI.WebControls.BaseValidator retVal = null;
             //string validationErrorMessage = null;

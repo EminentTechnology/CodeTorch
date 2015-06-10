@@ -7,7 +7,7 @@ using System.ComponentModel;
 namespace CodeTorch.Core
 {
     [Serializable]
-    public class HyperLinkControl: BaseControl
+    public class HyperLinkControl: Widget
     {
 
         public override string Type

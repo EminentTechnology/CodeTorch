@@ -76,7 +76,7 @@ namespace CodeTorch.Web.SectionControls
 
             try
             {
-                //AlertHolder.Controls.Clear();
+                //AlertHolder.Widgets.Clear();
 
                 string alertClass = "alert";
                 string alertTypeClass = null; 

@@ -34,7 +34,7 @@ namespace CodeTorch.Web.FieldTemplates
             {
                 if (_Me == null)
                 {
-                    _Me = (EmailAddressControl)this.BaseControl;
+                    _Me = (EmailAddressControl)this.Widget;
                 }
                 return _Me;
             }

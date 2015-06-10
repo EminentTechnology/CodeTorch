@@ -29,7 +29,7 @@ namespace CodeTorch.Core
     }
 
     [Serializable]
-    public class FileUploadControl : BaseControl
+    public class FileUploadControl : Widget
     {
         ScreenInputType _EntityInputType = ScreenInputType.QueryString;
         bool _EnableInlineProgress = true;

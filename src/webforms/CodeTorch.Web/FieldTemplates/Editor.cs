@@ -31,7 +31,7 @@ namespace CodeTorch.Web.FieldTemplates
             {
                 if (_Me == null)
                 {
-                    _Me = (EditorControl)this.BaseControl;
+                    _Me = (EditorControl)this.Widget;
                 }
                 return _Me;
             }
@@ -125,7 +125,7 @@ namespace CodeTorch.Web.FieldTemplates
                 //editor modes
                 SetupEditorModes();
 
-                //this.Controls.Add(ctrl);
+                //this.Widgets.Add(ctrl);
 
             }
             catch (Exception ex)

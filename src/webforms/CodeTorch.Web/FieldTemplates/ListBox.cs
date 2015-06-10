@@ -40,7 +40,7 @@ namespace CodeTorch.Web.FieldTemplates
             {
                 if (_Me == null)
                 {
-                    _Me = (ListBoxControl)this.BaseControl;
+                    _Me = (ListBoxControl)this.Widget;
                 }
                 return _Me;
             }

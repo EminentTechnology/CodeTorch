@@ -7,7 +7,7 @@ using System.Text;
 namespace CodeTorch.Core
 {
     [Serializable]
-    public class ButtonControl: BaseControl
+    public class ButtonControl: Widget
     {
 
         public override string Type

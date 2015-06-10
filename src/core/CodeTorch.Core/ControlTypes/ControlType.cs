@@ -20,6 +20,9 @@ namespace CodeTorch.Core
         public string Assembly { get; set; }
         public string Class { get; set; }
 
+        public string AbstractionAssembly { get; set; }
+        public string AbstractionClass { get; set; }
+
 
         private StringCollection _Actions = new StringCollection();
         private StringCollection _Routines = new StringCollection();
@@ -92,7 +95,7 @@ namespace CodeTorch.Core
         
         }
 
-        public static ControlType GetControlType(BaseControl control)
+        public static ControlType GetControlType(Widget control)
         {
             ControlType controlType = Configuration.GetInstance().ControlTypes
                             .Where(c =>
@@ -142,6 +145,24 @@ namespace CodeTorch.Core
             }
 
             return retVal;
+        }
+
+        public static Type[] GetTypeArray()
+        {
+            List<Type> types = new List<Type>();
+
+            foreach (ControlType widget in Configuration.GetInstance().ControlTypes)
+            {
+                string assemblyQualifiedName = String.Format("{0}, {1}", widget.AbstractionClass, widget.AbstractionAssembly);
+                Type t = Type.GetType(assemblyQualifiedName, false, true);
+
+                if (t != null)
+                {
+                    types.Add(t);
+                }
+            }
+
+            return types.ToArray();
         }
     }
 

@@ -1266,7 +1266,7 @@ namespace CodeTorch.Designer.Forms
                 section.ContainerElement = grid.ContainerElement;
                 section.ContainerMode = grid.ContainerMode;
                 section.ContentPane = grid.ContentPane;
-                section.Controls = grid.Controls;
+                section.Widgets = grid.Widgets;
                 section.CssClass = grid.CssClass;
                 section.Permission = grid.Permission;
                 section.Grid = grid.Grid;
@@ -1331,7 +1331,7 @@ namespace CodeTorch.Designer.Forms
                 section.ContainerElement = grid.ContainerElement;
                 section.ContainerMode = grid.ContainerMode;
                 section.ContentPane = grid.ContentPane;
-                section.Controls = grid.Controls;
+                section.Widgets = grid.Widgets;
                 section.CssClass = grid.CssClass;
                 section.Permission = grid.Permission;
                 section.Grid = grid.Grid;
@@ -1444,7 +1444,7 @@ namespace CodeTorch.Designer.Forms
             control.LabelCssClass = "col-md-12";
             control.ControlContainerCssClass = "col-md-12";
 
-            edit.Controls.Add(control);
+            edit.Widgets.Add(control);
 
             PasswordControl password = new PasswordControl();
             password.Name = "Password"; 
@@ -1465,7 +1465,7 @@ namespace CodeTorch.Designer.Forms
             password.LabelCssClass = "col-md-12";
             password.ControlContainerCssClass = "col-md-12";
 
-            edit.Controls.Add(password);
+            edit.Widgets.Add(password);
 
             screen.Sections.Add(edit);
 
@@ -1646,9 +1646,9 @@ namespace CodeTorch.Designer.Forms
                 criteriaSection.RowElement = "div";
                 criteriaSection.RowCssClass = "row";
 
-                if (criteriaSection.Controls.Count > 0)
+                if (criteriaSection.Widgets.Count > 0)
                 {
-                    if (criteriaSection.Controls[criteriaSection.Controls.Count - 1].Name.ToLower() != "searchbutton")
+                    if (criteriaSection.Widgets[criteriaSection.Widgets.Count - 1].Name.ToLower() != "searchbutton")
                     {
                         ButtonControl button = new ButtonControl();
 
@@ -1668,7 +1668,7 @@ namespace CodeTorch.Designer.Forms
 
                         button.OnClick.Commands.Add(command);
 
-                        criteriaSection.Controls.Add(button);
+                        criteriaSection.Widgets.Add(button);
                     }
                 }
             }
@@ -1961,7 +1961,7 @@ namespace CodeTorch.Designer.Forms
             control.LabelCssClass = "col-md-12";
             control.ControlContainerCssClass = "col-md-12";
 
-            edit.Controls.Add(control);
+            edit.Widgets.Add(control);
             screen.Sections.Add(edit);
 
             //add buttons
@@ -2351,7 +2351,7 @@ namespace CodeTorch.Designer.Forms
             control.ControlContainerCssClass = "col-md-10";
             control.Visible = true;
 
-            edit.Controls.Add(control);
+            edit.Widgets.Add(control);
 
             FileUploadControl fcontrol = new FileUploadControl();
             fcontrol.Name = "FilesToUpload";
@@ -2381,7 +2381,7 @@ namespace CodeTorch.Designer.Forms
 
             fcontrol.Visible = true;;
 
-            edit.Controls.Add(fcontrol);
+            edit.Widgets.Add(fcontrol);
 
             screen.Sections.Add(edit);
 
@@ -2643,7 +2643,7 @@ namespace CodeTorch.Designer.Forms
 
         private void LoadSectionControlsPage(bool UseDetailsSection, DetailsSection detailsSection, EditSection editSection)
         {
-            List<BaseControl> assignedControls = null;
+            List<Widget> assignedControls = null;
 
             if (UseDetailsSection)
             {
@@ -2653,7 +2653,7 @@ namespace CodeTorch.Designer.Forms
                 this.SectionIntroText.DataBindings.Clear();
                 this.SectionIntroText.DataBindings.Add("Text", detailsSection, "IntroText");
 
-                assignedControls = detailsSection.Controls;
+                assignedControls = detailsSection.Widgets;
             }
             else
             {
@@ -2663,7 +2663,7 @@ namespace CodeTorch.Designer.Forms
                 this.SectionIntroText.DataBindings.Clear();
                 this.SectionIntroText.DataBindings.Add("Text", editSection, "IntroText");
 
-                assignedControls = editSection.Controls;
+                assignedControls = editSection.Widgets;
             }
 
             PopulateAvailableSectionControls();
@@ -2757,7 +2757,7 @@ namespace CodeTorch.Designer.Forms
             {
                 if ((section is DetailsSection) || (section is EditSection))
                 {
-                    foreach (var c in section.Controls)
+                    foreach (var c in section.Widgets)
                     {
                         if (availableControls.Contains(c.Name))
                         {
@@ -2863,9 +2863,9 @@ namespace CodeTorch.Designer.Forms
                     )
                 ).ToList<ScreenDataCommandParameter>();
 
-                List<BaseControl> removeControl = new List<BaseControl>();
+                List<Widget> removeControl = new List<Widget>();
                 //remove parameters that are no longer there - from controls
-                foreach (BaseControl control in criteriaSection.Controls)
+                foreach (Widget control in criteriaSection.Widgets)
                 {
                     if (!parameters.Exists(x => x.Name.Replace("@", "").ToLower() == control.Name.ToLower()))
                     {
@@ -2873,16 +2873,16 @@ namespace CodeTorch.Designer.Forms
                     }
                 }
 
-                foreach (BaseControl control in removeControl)
+                foreach (Widget control in removeControl)
                 {
-                    criteriaSection.Controls.Remove(control);
+                    criteriaSection.Widgets.Remove(control);
                 }
 
                 //remove parameters that are already there - from parameters
                 List<ScreenDataCommandParameter> removeParameter = new List<ScreenDataCommandParameter>();
                 foreach (ScreenDataCommandParameter p in parameters)
                 {
-                    if (criteriaSection.Controls.Exists(x => x.Name.ToLower() == p.Name.Replace("@", "").ToLower()))
+                    if (criteriaSection.Widgets.Exists(x => x.Name.ToLower() == p.Name.Replace("@", "").ToLower()))
                     {
                         removeParameter.Add(p);
                     }
@@ -2912,13 +2912,13 @@ namespace CodeTorch.Designer.Forms
                     control.HelpTextCssClass = "help-block";
                     control.Parent = criteriaSection;
 
-                    criteriaSection.Controls.Add(control);
+                    criteriaSection.Widgets.Add(control);
                 }
 
             }
             else
             {
-                criteriaSection.Controls.Clear();
+                criteriaSection.Widgets.Clear();
             }
             return criteriaSection;
         }
@@ -3163,7 +3163,7 @@ namespace CodeTorch.Designer.Forms
             CriteriaControlList.DisplayMember = "";
             CriteriaControlList.DisplayMember = "Name";
             CriteriaControlList.ValueMember = "Name";
-            CriteriaControlList.DataSource = section.Controls;
+            CriteriaControlList.DataSource = section.Widgets;
             CriteriaControlList.Refresh();
             CriteriaControlList.Update();
 
@@ -3248,18 +3248,18 @@ namespace CodeTorch.Designer.Forms
             RadMenuItem item = (RadMenuItem)sender;
             if (CriteriaControlPropertyGrid.SelectedObject != null)
             { 
-                BaseControl current = (BaseControl) CriteriaControlPropertyGrid.SelectedObject;
+                Widget current = (Widget) CriteriaControlPropertyGrid.SelectedObject;
 
                 if(current.Type.ToLower() != item.Text.ToLower())
                 {
-                    BaseControl newControl = GetNewControl(item, current);
+                    Widget newControl = GetNewControl(item, current);
 
                     int ControlIndex = 0;
-                    for (int i = 0; i <= (currentCriteriaSection.Controls.Count - 1); i++)
+                    for (int i = 0; i <= (currentCriteriaSection.Widgets.Count - 1); i++)
                     {
-                        if (currentCriteriaSection.Controls[i].Name == newControl.Name)
+                        if (currentCriteriaSection.Widgets[i].Name == newControl.Name)
                         {
-                            currentCriteriaSection.Controls[i] = newControl;
+                            currentCriteriaSection.Widgets[i] = newControl;
                             ControlIndex = i;
                             break;
                         }
@@ -3282,12 +3282,12 @@ namespace CodeTorch.Designer.Forms
             RadMenuItem item = (RadMenuItem)sender;
             if (this.SectionControlPropertyGrid.SelectedObject != null)
             {
-                BaseControl current = (BaseControl)SectionControlPropertyGrid.SelectedObject;
+                Widget current = (Widget)SectionControlPropertyGrid.SelectedObject;
 
                 if (current.Type.ToLower() != item.Text.ToLower())
                 {
-                    BaseControl newControl = GetNewControl(item, current);
-                    List<BaseControl> controls = UseDetailsSection ? currentDetailsSection.Controls : currentEditSection.Controls;
+                    Widget newControl = GetNewControl(item, current);
+                    List<Widget> controls = UseDetailsSection ? currentDetailsSection.Widgets : currentEditSection.Widgets;
 
                     int ControlIndex = 0;
                     for (int i = 0; i <= (controls.Count - 1); i++)
@@ -3296,11 +3296,11 @@ namespace CodeTorch.Designer.Forms
                         {
                             if (UseDetailsSection)
                             {
-                                currentDetailsSection.Controls[i] = newControl;
+                                currentDetailsSection.Widgets[i] = newControl;
                             }
                             else
                             {
-                                currentEditSection.Controls[i] = newControl;
+                                currentEditSection.Widgets[i] = newControl;
                             }
                             ControlIndex = i;
                             break;
@@ -3318,9 +3318,9 @@ namespace CodeTorch.Designer.Forms
             }
         }
 
-        private static BaseControl GetNewControl(RadMenuItem item, BaseControl current)
+        private static Widget GetNewControl(RadMenuItem item, Widget current)
         {
-            BaseControl newControl = BaseControl.GetNewControl(item.Text);
+            Widget newControl = Widget.GetNewControl(item.Text);
 
             newControl.ControlContainerCssClass = current.ControlContainerCssClass;
             newControl.ControlContainerElement = current.ControlContainerElement;
@@ -3673,9 +3673,9 @@ namespace CodeTorch.Designer.Forms
             CriteriaControlPropertyGrid.Visible = true;
             ConvertCriteriaControl.Visible = true;
 
-            BaseControl control = (BaseControl)CriteriaControlList.Items[SelectedIndex].DataBoundItem;
+            Widget control = (Widget)CriteriaControlList.Items[SelectedIndex].DataBoundItem;
             CriteriaSelectedControlLabel.Text = String.Format("Control: {0} - {1}", control.Name, control.Type);
-            CriteriaControlPropertyGrid.SelectedObject = control; // BaseControl.ConvertToSpecificControl(control);
+            CriteriaControlPropertyGrid.SelectedObject = control; // Widget.ConvertToSpecificControl(control);
 
 
         }
@@ -3708,11 +3708,11 @@ namespace CodeTorch.Designer.Forms
                 int oldIndex = CriteriaControlList.SelectedIndex;
                 int newIndex = CriteriaControlList.SelectedIndex-1;
 
-                var item = currentCriteriaSection.Controls[CriteriaControlList.SelectedIndex];
-                currentCriteriaSection.Controls.RemoveAt(CriteriaControlList.SelectedIndex);
+                var item = currentCriteriaSection.Widgets[CriteriaControlList.SelectedIndex];
+                currentCriteriaSection.Widgets.RemoveAt(CriteriaControlList.SelectedIndex);
 
                 if (newIndex > oldIndex) newIndex--;
-                currentCriteriaSection.Controls.Insert(newIndex, item);
+                currentCriteriaSection.Widgets.Insert(newIndex, item);
 
                 LoadCriteriaPage(currentCriteriaSection);
                 CriteriaControlList.SelectedIndex = newIndex;
@@ -3727,10 +3727,10 @@ namespace CodeTorch.Designer.Forms
                 int oldIndex = CriteriaControlList.SelectedIndex;
                 int newIndex = CriteriaControlList.SelectedIndex + 1;
 
-                var item = currentCriteriaSection.Controls[CriteriaControlList.SelectedIndex];
-                currentCriteriaSection.Controls.RemoveAt(CriteriaControlList.SelectedIndex);
+                var item = currentCriteriaSection.Widgets[CriteriaControlList.SelectedIndex];
+                currentCriteriaSection.Widgets.RemoveAt(CriteriaControlList.SelectedIndex);
 
-                currentCriteriaSection.Controls.Insert(newIndex, item);
+                currentCriteriaSection.Widgets.Insert(newIndex, item);
 
                 LoadCriteriaPage(currentCriteriaSection);
                 CriteriaControlList.SelectedIndex = newIndex;
@@ -3855,7 +3855,7 @@ namespace CodeTorch.Designer.Forms
 
             GridColumn column = (GridColumn)this.GridColumns.Items[SelectedIndex].DataBoundItem;
             GridSelectedColumnLabel.Text = String.Format("Column: {0} - {1}", column.HeaderText, column.ColumnType);
-            GridColumnPropertyGrid.SelectedObject = column; // BaseControl.ConvertToSpecificControl(control);
+            GridColumnPropertyGrid.SelectedObject = column; // Widget.ConvertToSpecificControl(control);
 
 
         }
@@ -3969,7 +3969,7 @@ namespace CodeTorch.Designer.Forms
                 {
 
 
-                    BaseControl control = null;
+                    Widget control = null;
 
                     if (screenType == ScreenType.Overview)
                     {
@@ -4017,11 +4017,11 @@ namespace CodeTorch.Designer.Forms
 
                     if (UseDetailsSection)
                     {
-                        currentDetailsSection.Controls.Add(control);
+                        currentDetailsSection.Widgets.Add(control);
                     }
                     else
                     {
-                        currentEditSection.Controls.Add(control);
+                        currentEditSection.Widgets.Add(control);
                     }
 
                 }
@@ -4038,11 +4038,11 @@ namespace CodeTorch.Designer.Forms
             {
                 if (UseDetailsSection)
                 {
-                    currentDetailsSection.Controls.RemoveAt(AssignedSectionControlsList.SelectedIndex);
+                    currentDetailsSection.Widgets.RemoveAt(AssignedSectionControlsList.SelectedIndex);
                 }
                 else
                 {
-                    currentEditSection.Controls.RemoveAt(AssignedSectionControlsList.SelectedIndex);
+                    currentEditSection.Widgets.RemoveAt(AssignedSectionControlsList.SelectedIndex);
                 }
 
                 LoadSectionControlsPage(UseDetailsSection, currentDetailsSection, currentEditSection);
@@ -4063,19 +4063,19 @@ namespace CodeTorch.Designer.Forms
                 int oldIndex = AssignedSectionControlsList.SelectedIndex;
                 int newIndex = AssignedSectionControlsList.SelectedIndex + 1;
 
-                var item = UseDetailsSection ? currentDetailsSection.Controls[AssignedSectionControlsList.SelectedIndex] : currentEditSection.Controls[AssignedSectionControlsList.SelectedIndex];
+                var item = UseDetailsSection ? currentDetailsSection.Widgets[AssignedSectionControlsList.SelectedIndex] : currentEditSection.Widgets[AssignedSectionControlsList.SelectedIndex];
 
                 if (UseDetailsSection)
                 {
-                    currentDetailsSection.Controls.RemoveAt(oldIndex);
+                    currentDetailsSection.Widgets.RemoveAt(oldIndex);
 
-                    currentDetailsSection.Controls.Insert(newIndex, item);
+                    currentDetailsSection.Widgets.Insert(newIndex, item);
                 }
                 else
                 {
-                    currentEditSection.Controls.RemoveAt(oldIndex);
+                    currentEditSection.Widgets.RemoveAt(oldIndex);
 
-                    currentEditSection.Controls.Insert(newIndex, item);
+                    currentEditSection.Widgets.Insert(newIndex, item);
                 }
 
                 LoadSectionControlsPage(UseDetailsSection, currentDetailsSection, currentEditSection);
@@ -4092,23 +4092,23 @@ namespace CodeTorch.Designer.Forms
                 int oldIndex = AssignedSectionControlsList.SelectedIndex;
                 int newIndex = AssignedSectionControlsList.SelectedIndex - 1;
 
-                var item = UseDetailsSection ? currentDetailsSection.Controls[AssignedSectionControlsList.SelectedIndex] : currentEditSection.Controls[AssignedSectionControlsList.SelectedIndex];
+                var item = UseDetailsSection ? currentDetailsSection.Widgets[AssignedSectionControlsList.SelectedIndex] : currentEditSection.Widgets[AssignedSectionControlsList.SelectedIndex];
 
                 if (UseDetailsSection)
                 {
-                    currentDetailsSection.Controls.RemoveAt(oldIndex);
+                    currentDetailsSection.Widgets.RemoveAt(oldIndex);
 
                     if (newIndex > oldIndex) newIndex--;
 
-                    currentDetailsSection.Controls.Insert(newIndex, item);
+                    currentDetailsSection.Widgets.Insert(newIndex, item);
                 }
                 else
                 {
-                    currentEditSection.Controls.RemoveAt(oldIndex);
+                    currentEditSection.Widgets.RemoveAt(oldIndex);
 
                     if (newIndex > oldIndex) newIndex--;
 
-                    currentEditSection.Controls.Insert(newIndex, item);
+                    currentEditSection.Widgets.Insert(newIndex, item);
                 }
 
                 LoadSectionControlsPage(UseDetailsSection, currentDetailsSection, currentEditSection);
@@ -4124,7 +4124,7 @@ namespace CodeTorch.Designer.Forms
         {
             if (this.AssignedSectionControlsList.SelectedIndex >= 0)
             {
-                BaseControl item = (BaseControl)AssignedSectionControlsList.SelectedItem.DataBoundItem;
+                Widget item = (Widget)AssignedSectionControlsList.SelectedItem.DataBoundItem;
 
 
                 this.SectionControlPropertyGrid.SelectedObject = null;
@@ -4149,7 +4149,7 @@ namespace CodeTorch.Designer.Forms
             this.ConvertSectionControl.Visible = true;
             this.SectionControlPropertyGrid.Visible = true;
 
-            BaseControl control = (BaseControl)this.AssignedSectionControlsList.Items[SelectedIndex].DataBoundItem;
+            Widget control = (Widget)this.AssignedSectionControlsList.Items[SelectedIndex].DataBoundItem;
             SectionControlNameLabel.Text = String.Format("Control: {0} - {1}", control.Name, control.Type);
             SectionControlPropertyGrid.SelectedObject = control;
 

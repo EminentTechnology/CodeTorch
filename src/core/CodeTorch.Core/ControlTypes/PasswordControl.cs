@@ -7,7 +7,7 @@ using System.ComponentModel;
 namespace CodeTorch.Core
 {
     [Serializable]
-    public class PasswordControl: BaseControl
+    public class PasswordControl: Widget
     {
         string _PasswordAlgorithm = "HashProvider";
 

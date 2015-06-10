@@ -36,7 +36,7 @@ namespace CodeTorch.Web.FieldTemplates
             {
                 if (_Me == null)
                 {
-                    _Me = (SocialShareControl)this.BaseControl;
+                    _Me = (SocialShareControl)this.Widget;
                 }
                 return _Me;
             }

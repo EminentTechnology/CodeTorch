@@ -54,7 +54,7 @@ namespace CodeTorch.Core
 
         public override string ToString()
         {
-            return String.Format("{0} - {1} Controls", Name, this.Controls.Count);
+            return String.Format("{0} - {1} Widgets", Name, this.Widgets.Count);
         }
 
         

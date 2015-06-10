@@ -20,7 +20,7 @@ namespace CodeTorch.Web.FieldTemplates
         protected DataTable _Settings = null;
 
 
-        public BaseControl BaseControl { get; set; }
+        public Widget Widget { get; set; }
         public Screen Screen { get; set; }
    
         public Section Section { get; set; }
@@ -164,9 +164,9 @@ namespace CodeTorch.Web.FieldTemplates
             
             if(String.IsNullOrEmpty(this.ResourceKeyPrefix))
             {
-                if (BaseControl != null)
+                if (Widget != null)
                 {
-                    ActualResourceKey = String.Format("{0}.{1}", BaseControl.Name, ResourceKey);
+                    ActualResourceKey = String.Format("{0}.{1}", Widget.Name, ResourceKey);
                 }
                 else
                 {
@@ -175,7 +175,7 @@ namespace CodeTorch.Web.FieldTemplates
             }
             else
             {
-                ActualResourceKey = String.Format("{0}.{1}.{2}", this.ResourceKeyPrefix, BaseControl.Name, ResourceKey);
+                ActualResourceKey = String.Format("{0}.{1}.{2}", this.ResourceKeyPrefix, Widget.Name, ResourceKey);
             }
 
             
@@ -298,7 +298,7 @@ namespace CodeTorch.Web.FieldTemplates
             return true;
         }
 
-        public virtual System.Web.UI.WebControls.BaseValidator GetRequiredValidator(BaseControl control, bool IsControlEditable, string requiredErrorMessage)
+        public virtual System.Web.UI.WebControls.BaseValidator GetRequiredValidator(Widget control, bool IsControlEditable, string requiredErrorMessage)
         {
             EnsureChildControls();
             System.Web.UI.WebControls.BaseValidator val = new RequiredFieldValidator();

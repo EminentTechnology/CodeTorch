@@ -21,39 +21,14 @@ namespace CodeTorch.Core.Design
         protected override Type[] CreateNewItemTypes()
         {
 
-            return new Type[]
-            {
-                typeof(AutoCompleteBoxControl),
-                typeof(ButtonControl),
-                typeof(CheckBoxControl),
-                typeof(DatePickerControl),
-                typeof(DropDownListControl),
-                typeof(EditorControl),
-                typeof(EmailAddressControl),
-                typeof(FileUploadControl),
-                typeof(GenericControl),
-                typeof(HyperLinkControl),
-                typeof(LabelControl),
-                typeof(ListBoxControl),
-                typeof(LookupDropDownListControl),
-                typeof(LookupListBoxControl),
-                typeof(MultiComboDropDownListControl),
-                typeof(NumericTextBoxControl),
-                typeof(PasswordControl),
-                typeof(PhotoPickerControl),
-                typeof(PickerControl),
-                typeof(SocialShareControl),
-                typeof(TextAreaControl),
-                typeof(TextBoxControl),
-                typeof(TreeViewControl),
-                typeof(WorkflowStatusControl)
-            
-            };
+            Type[] types = ControlType.GetTypeArray();
+
+            return types;
         }
 
         protected override string GetDisplayText(object value)
         {
-            BaseControl control = (BaseControl)value;
+            Widget control = (Widget)value;
 
             string retVal = control.Label;
 
@@ -72,39 +47,39 @@ namespace CodeTorch.Core.Design
                 if (Context.Instance is Section)
                 {
                     Section section = (Section)Context.Instance;
-                    if (section.Controls.Count > 0)
+                    if (section.Widgets.Count > 0)
                     {
-                        BaseControl copy = section.Controls[section.Controls.Count - 1];
+                        Widget copy = section.Widgets[section.Widgets.Count - 1];
 
-                        ((BaseControl)retVal).ControlContainerCssClass = copy.ControlContainerCssClass;
-                        ((BaseControl)retVal).ControlContainerElement = copy.ControlContainerElement;
-                        ((BaseControl)retVal).ControlGroupCssClass = copy.ControlGroupCssClass;
-                        ((BaseControl)retVal).ControlGroupElement = copy.ControlGroupElement;
-                        ((BaseControl)retVal).HelpTextElement = copy.HelpTextElement;
-                        ((BaseControl)retVal).HelpTextCssClass = copy.HelpTextCssClass;
-                        ((BaseControl)retVal).LabelContainerCssClass = copy.LabelContainerCssClass;
-                        ((BaseControl)retVal).LabelContainerElement = copy.LabelContainerElement;
-                        ((BaseControl)retVal).LabelRendersBeforeControl = copy.LabelRendersBeforeControl;
-                        ((BaseControl)retVal).LabelCssClass = copy.LabelCssClass;
+                        ((Widget)retVal).ControlContainerCssClass = copy.ControlContainerCssClass;
+                        ((Widget)retVal).ControlContainerElement = copy.ControlContainerElement;
+                        ((Widget)retVal).ControlGroupCssClass = copy.ControlGroupCssClass;
+                        ((Widget)retVal).ControlGroupElement = copy.ControlGroupElement;
+                        ((Widget)retVal).HelpTextElement = copy.HelpTextElement;
+                        ((Widget)retVal).HelpTextCssClass = copy.HelpTextCssClass;
+                        ((Widget)retVal).LabelContainerCssClass = copy.LabelContainerCssClass;
+                        ((Widget)retVal).LabelContainerElement = copy.LabelContainerElement;
+                        ((Widget)retVal).LabelRendersBeforeControl = copy.LabelRendersBeforeControl;
+                        ((Widget)retVal).LabelCssClass = copy.LabelCssClass;
 
                     }
                     else
                     {
-                        ((BaseControl)retVal).LabelCssClass = "col-md-4";
-                        ((BaseControl)retVal).ControlContainerCssClass = "col-md-8";
-                        ((BaseControl)retVal).ControlContainerElement = "div";
-                        ((BaseControl)retVal).ControlGroupCssClass = "form-group";
-                        ((BaseControl)retVal).ControlGroupElement = "div";
-                        ((BaseControl)retVal).HelpTextElement = "span";
-                        ((BaseControl)retVal).HelpTextCssClass = "help-block";
-                        ((BaseControl)retVal).LabelContainerCssClass = "";
-                        ((BaseControl)retVal).LabelContainerElement = "";
-                        ((BaseControl)retVal).LabelRendersBeforeControl = true;
+                        ((Widget)retVal).LabelCssClass = "col-md-4";
+                        ((Widget)retVal).ControlContainerCssClass = "col-md-8";
+                        ((Widget)retVal).ControlContainerElement = "div";
+                        ((Widget)retVal).ControlGroupCssClass = "form-group";
+                        ((Widget)retVal).ControlGroupElement = "div";
+                        ((Widget)retVal).HelpTextElement = "span";
+                        ((Widget)retVal).HelpTextCssClass = "help-block";
+                        ((Widget)retVal).LabelContainerCssClass = "";
+                        ((Widget)retVal).LabelContainerElement = "";
+                        ((Widget)retVal).LabelRendersBeforeControl = true;
                         
                     }
                 }
 
-                ((BaseControl)retVal).Parent = Context.Instance;
+                ((Widget)retVal).Parent = Context.Instance;
             }
 
             return retVal;

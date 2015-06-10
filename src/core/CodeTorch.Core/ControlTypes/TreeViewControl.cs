@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace CodeTorch.Core
 {
     [Serializable]
-    public class TreeViewControl : BaseControl
+    public class TreeViewControl : Widget
     {
 
         public bool DisplayCheckBoxes { get; set; }

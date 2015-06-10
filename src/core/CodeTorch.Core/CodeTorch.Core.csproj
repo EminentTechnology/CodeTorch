@@ -250,7 +250,7 @@
     <Compile Include="Workflow\WorkflowStep.cs" />
     <Compile Include="_Common\ActionReference.cs" />
     <Compile Include="_Common\App.cs" />
-    <Compile Include="ControlTypes\BaseControl.cs" />
+    <Compile Include="ControlTypes\Widget.cs" />
     <Compile Include="ControlTypes\CheckBoxControl.cs" />
     <Compile Include="ControlTypes\DatePickerControl.cs" />
     <Compile Include="ControlTypes\DropDownListControl.cs" />
@@ -289,7 +289,7 @@
     <Compile Include="SaveActions\EditSaveAction.cs" />
     <Compile Include="SaveActions\ListEditSaveAction.cs" />
     <Compile Include="ScreenRelated\PickerScreenActionLink.cs" />
-    <Compile Include="Sections\BaseSection.cs" />
+    <Compile Include="Sections\Section.cs" />
     <Compile Include="Sections\DetailsSection.cs" />
     <Compile Include="Sections\EditSection.cs" />
     <Compile Include="_Common\Configuration.cs" />

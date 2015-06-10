@@ -144,7 +144,7 @@ namespace CodeTorch.Web.UserControls
         public void SettingSectionTitle(string mode)
         {
 
-            //foreach (Control control in LeftPane.Controls)
+            //foreach (Control control in LeftPane.Widgets)
             //{
             //    if (control != null)
             //    {
@@ -167,7 +167,7 @@ namespace CodeTorch.Web.UserControls
 
             foreach (Section section in Sections)
             {
-                page.PopulateFormByDataRowView(item, section.Controls, ((DataRowView)DataItem), true);
+                page.PopulateFormByDataRowView(item, section.Widgets, ((DataRowView)DataItem), true);
 
             }
 
@@ -182,7 +182,7 @@ namespace CodeTorch.Web.UserControls
 
             foreach (Section section in Sections)
             {
-                page.PopulateFormByDataTable(item, section.Controls, data, true);
+                page.PopulateFormByDataTable(item, section.Widgets, data, true);
 
             }
         }

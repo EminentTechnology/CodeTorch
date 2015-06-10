@@ -27,7 +27,7 @@ namespace CodeTorch.Web.FieldTemplates
             {
                 if (_Me == null)
                 {
-                    _Me = (HyperLinkControl)this.BaseControl;
+                    _Me = (HyperLinkControl)this.Widget;
                 }
                 return _Me;
             }

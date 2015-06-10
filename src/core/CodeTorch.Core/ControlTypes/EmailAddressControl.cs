@@ -6,7 +6,7 @@ using System.Text;
 namespace CodeTorch.Core
 {
     [Serializable]
-    public class EmailAddressControl: BaseControl
+    public class EmailAddressControl: Widget
     {
 
         public override string Type

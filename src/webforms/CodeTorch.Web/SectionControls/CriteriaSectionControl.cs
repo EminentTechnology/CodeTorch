@@ -97,7 +97,7 @@ namespace CodeTorch.Web.SectionControls
         {
 
     
-            int NoOfCriteriaFields = criteria.Controls.Count;
+            int NoOfCriteriaFields = criteria.Widgets.Count;
             int RowCount = (NoOfCriteriaFields / criteria.ControlsPerRow);
 
      
@@ -137,7 +137,7 @@ namespace CodeTorch.Web.SectionControls
                 while (ColumnIndex <= rowEnd)
                 {
 
-                    BaseControl control = Me.Controls[ColumnIndex];
+                    Widget control = Me.Widgets[ColumnIndex];
 
                     column = null;
 

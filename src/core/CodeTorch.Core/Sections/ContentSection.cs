@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing.Design;
 using System.Linq;
+using System.Xml.Serialization;
 
 namespace CodeTorch.Core
 {
@@ -27,16 +28,19 @@ namespace CodeTorch.Core
         public string Content { get; set; }
 
         #region Hidden Overrides
+        [XmlArray("Widgets")]
+        [Category("Widgets")]
+        [Description("List of section widgets")]
         [Browsable(false)]
-        public override List<BaseControl> Controls
+        public override List<Widget> Widgets
         {
             get
             {
-                return base.Controls;
+                return base.Widgets;
             }
             set
             {
-                base.Controls = value;
+                base.Widgets = value;
             }
         }
         #endregion

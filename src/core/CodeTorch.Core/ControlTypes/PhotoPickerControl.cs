@@ -6,7 +6,7 @@ using System.Text;
 namespace CodeTorch.Core
 {
     [Serializable]
-    public class PhotoPickerControl: BaseControl
+    public class PhotoPickerControl: Widget
     {
         public string EntityID { get; set; }
         public string EntityType { get; set; }

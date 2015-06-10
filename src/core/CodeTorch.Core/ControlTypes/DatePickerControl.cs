@@ -7,7 +7,7 @@ using System.ComponentModel;
 namespace CodeTorch.Core
 {
     [Serializable]
-    public class DatePickerControl: BaseControl
+    public class DatePickerControl: Widget
     {
         
 

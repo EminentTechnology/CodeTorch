@@ -62,7 +62,7 @@ namespace CodeTorch.Core
     }
 
     [Serializable]
-    public class AutoCompleteBoxControl : BaseControl
+    public class AutoCompleteBoxControl : Widget
     {
         bool _AllowTokenEditing = true;
         bool _EnableClientFiltering = true;

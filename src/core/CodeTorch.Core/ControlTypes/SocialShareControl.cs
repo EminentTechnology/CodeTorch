@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 namespace CodeTorch.Core
 {
     [Serializable]
-    public class SocialShareControl : BaseControl
+    public class SocialShareControl : Widget
     {
         public override string Type
         {

@@ -1,6 +1,6 @@
 ﻿
 using Telerik.WinControls.UI;
-//using Telerik.Windows.Controls;
+//using Telerik.Windows.Widgets;
 namespace CodeTorch.Core.Design
 {
     partial class ContentEditorForm

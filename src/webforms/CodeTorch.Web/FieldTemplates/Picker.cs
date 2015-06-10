@@ -66,7 +66,7 @@ namespace CodeTorch.Web.FieldTemplates
             {
                 if (_Me == null)
                 {
-                    _Me = (PickerControl)this.BaseControl;
+                    _Me = (PickerControl)this.Widget;
                 }
                 return _Me;
             }

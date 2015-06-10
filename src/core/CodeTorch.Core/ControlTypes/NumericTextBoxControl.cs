@@ -7,7 +7,7 @@ using System.ComponentModel;
 namespace CodeTorch.Core
 {
     [Serializable]
-    public class NumericTextBoxControl: BaseControl
+    public class NumericTextBoxControl: Widget
     {
 
         public override string Type

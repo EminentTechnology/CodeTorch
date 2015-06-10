@@ -28,7 +28,7 @@ namespace CodeTorch.Web.FieldTemplates
             {
                 if (_Me == null)
                 {
-                    _Me = (LabelControl)this.BaseControl;
+                    _Me = (LabelControl)this.Widget;
                 }
                 return _Me;
             }
@@ -93,7 +93,7 @@ namespace CodeTorch.Web.FieldTemplates
                     ctrl.SkinID = Me.SkinID;
                 }
 
-                //this.Controls.Add(ctrl);
+                //this.Widgets.Add(ctrl);
 
             }
             catch (Exception ex)

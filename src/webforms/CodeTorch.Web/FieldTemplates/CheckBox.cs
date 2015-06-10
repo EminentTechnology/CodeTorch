@@ -31,7 +31,7 @@ namespace CodeTorch.Web.FieldTemplates
             {
                 if (_Me == null)
                 {
-                    _Me = (CheckBoxControl)this.BaseControl;
+                    _Me = (CheckBoxControl)this.Widget;
                 }
                 return _Me;
             }

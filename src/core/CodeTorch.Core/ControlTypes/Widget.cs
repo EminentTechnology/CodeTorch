@@ -17,30 +17,7 @@ namespace CodeTorch.Core
     }
 
     [Serializable]
-    [XmlInclude(typeof(ButtonControl))]
-    [XmlInclude(typeof(CheckBoxControl))]
-    [XmlInclude(typeof(DatePickerControl))]
-    [XmlInclude(typeof(DropDownListControl))]
-    [XmlInclude(typeof(EditorControl))]
-    [XmlInclude(typeof(EmailAddressControl))]
-    [XmlInclude(typeof(FileUploadControl))]
-    [XmlInclude(typeof(GenericControl))]
-    [XmlInclude(typeof(HyperLinkControl))]
-    [XmlInclude(typeof(LabelControl))]
-    [XmlInclude(typeof(ListBoxControl))]
-    [XmlInclude(typeof(LookupDropDownListControl))]
-    [XmlInclude(typeof(LookupListBoxControl))]
-    [XmlInclude(typeof(MultiComboDropDownListControl))]
-    [XmlInclude(typeof(NumericTextBoxControl))]
-    [XmlInclude(typeof(PasswordControl))]
-    [XmlInclude(typeof(PhotoPickerControl))]
-    [XmlInclude(typeof(PickerControl))]
-    [XmlInclude(typeof(SocialShareControl))]
-    [XmlInclude(typeof(TextAreaControl))]
-    [XmlInclude(typeof(TextBoxControl))]
-    [XmlInclude(typeof(TreeViewControl))]
-    [XmlInclude(typeof(WorkflowStatusControl))]
-    public class BaseControl
+    public class Widget
     {
         private bool _Visible = true;
         private bool _LabelRendersBeforeControl = true;
@@ -176,163 +153,32 @@ namespace CodeTorch.Core
         public object Parent { get; set; }
 
 
-        public static BaseControl GetNewControl(string type)
+        public static Widget GetNewControl(string type)
         {
-            BaseControl retval = null;
+            ControlType widgetType = ControlType.GetControlType(type);
+            string assemblyQualifiedName = String.Format("{0}, {1}", widgetType.AbstractionClass, widgetType.AbstractionAssembly);
 
-            switch (type.ToLower())
-            {
-                case "autocompletebox":
-                    retval = new AutoCompleteBoxControl();
-                    break;
-                case "button":
-                    retval = new ButtonControl();
-                    break;
-                case "checkbox":
-                    retval = new CheckBoxControl();
-                    break;
-                case "datepicker":
-                    retval = new DatePickerControl();
-                    break;
-                case "dropdownlist":
-                    retval = new DropDownListControl();
-                    break;
-                case "emailaddress":
-                    retval = new EmailAddressControl();
-                    break;
-                case "editor":
-                    retval = new EditorControl();
-                    break;
-                case "fileupload":
-                    retval = new FileUploadControl();
-                    break;
-                case "hyperlink":
-                    retval = new HyperLinkControl();
-                    break;
-                case "label":
-                    retval = new LabelControl();
-                    break;
-                case "listbox":
-                    retval = new ListBoxControl();
-                    break;
-                case "lookupdropdownlist":
-                    retval = new LookupDropDownListControl();
-                    break;
-                case "lookuplistbox":
-                    retval = new LookupListBoxControl();
-                    break;
-                case "multicombodropdownlist":
-                    retval = new MultiComboDropDownListControl();
-                    break;
-                case "numerictextbox":
-                    retval = new NumericTextBoxControl();
-                    break;
-                case "password":
-                    retval = new PasswordControl();
-                    break;
-                case "photopicker":
-                    retval = new PhotoPickerControl();
-                    break;
-                case "picker":
-                    retval = new PickerControl();
-                    break;
-                case "socialshare":
-                    retval = new SocialShareControl();
-                    break;
-                case "textarea":
-                    retval = new TextAreaControl();
-                    break;
-                case "textbox":
-                    retval = new TextBoxControl();
-                    break;
-                case "treeview":
-                    retval = new TreeViewControl();
-                    break;
-                case "workflowstatus":
-                    retval = new WorkflowStatusControl();
-                    break;
-            }
+            Type t = System.Type.GetType(assemblyQualifiedName, false, true);
+            Widget retval = (Widget)Activator.CreateInstance(t);
+
+            
 
             return retval;
         }
 
-        public static object ConvertToSpecificControl(BaseControl control)
+        public static object ConvertToSpecificControl(Widget control)
         {
-            object retval = null;
+            object retVal = null;
 
-          
+            ControlType widgetType = ControlType.GetControlType(control.GetType().Name);
+            string assemblyQualifiedName = String.Format("{0}, {1}", widgetType.AbstractionClass, widgetType.AbstractionAssembly);
 
-            switch (control.Type.ToLower())
-            {
-                case "button":
-                    retval = (ButtonControl) control;
-                    break;
-                case "checkbox":
-                    retval = (CheckBoxControl) control;
-                    break;
-                case "datepicker":
-                    retval = (DatePickerControl) control;
-                    break;
-                case "dropdownlist":
-                    retval = (DropDownListControl) control;
-                    break;
-                case "emailaddress":
-                    retval = (EmailAddressControl) control;
-                    break;
-                case "editor":
-                    retval = (EditorControl) control;
-                    break;
-                case "fileupload":
-                    retval = (FileUploadControl) control;
-                    break;
-                case "hyperlink":
-                    retval = (HyperLinkControl) control;
-                    break;
-                case "label":
-                    retval = (LabelControl) control;
-                    break;
-                case "listbox":
-                    retval = (ListBoxControl) control;
-                    break;
-                case "lookupdropdownlist":
-                    retval = (LookupDropDownListControl) control;
-                    break;
-                case "lookuplistbox":
-                    retval = (LookupListBoxControl) control;
-                    break;
-                case "multicombodropdownlist":
-                    retval = (MultiComboDropDownListControl) control;
-                    break;
-                case "numerictextbox":
-                    retval = (NumericTextBoxControl) control;
-                    break;
-                case "password":
-                    retval = (PasswordControl) control;
-                    break;
-                case "photopicker":
-                    retval = (PhotoPickerControl) control;
-                    break;
-                case "picker":
-                    retval = (PickerControl) control;
-                    break;
-                case "socialshare":
-                    retval = (SocialShareControl) control;
-                    break;
-                case "textarea":
-                    retval = (TextAreaControl) control;
-                    break;
-                case "textbox":
-                    retval = (TextBoxControl) control;
-                    break;
-                case "treeview":
-                    retval = (TreeViewControl) control;
-                    break;
-                case "workflowstatus":
-                    retval = (WorkflowStatusControl) control;
-                    break;
-            }
+            Type t = System.Type.GetType(assemblyQualifiedName, false, true);
+            retVal = Convert.ChangeType(control, t);
 
-            return retval;
+
+
+            return retVal;
         }
 
         PermissionCheck _VisiblePermission = new PermissionCheck();
@@ -358,7 +204,7 @@ namespace CodeTorch.Core
         [TypeConverter("CodeTorch.Core.Design.DataCommandColumnTypeConverter,CodeTorch.Core.Design")]
         public string ReadOnlyDataField { get; set; }
 
-        public static IEnumerable<ResourceItem> GetResourceKeys(Screen Screen, BaseControl Control, String Prefix)
+        public static IEnumerable<ResourceItem> GetResourceKeys(Screen Screen, Widget Control, String Prefix)
         {
             List<ResourceItem> retVal = new List<ResourceItem>();
 
@@ -427,7 +273,7 @@ namespace CodeTorch.Core
             return retVal;
         }
 
-        protected static void AddResourceKey(List<ResourceItem> keys, Screen screen, BaseControl control, string Prefix, string ResourceKey, string DefaultValue)
+        protected static void AddResourceKey(List<ResourceItem> keys, Screen screen, Widget control, string Prefix, string ResourceKey, string DefaultValue)
         {
             ResourceItem key = new Core.ResourceItem();
 

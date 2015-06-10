@@ -19,7 +19,7 @@ namespace CodeTorch.Core
     }
 
     [Serializable]
-    public class ListBoxControl : BaseControl
+    public class ListBoxControl : Widget
     {
         public bool AutoPostBack { get; set; }
         public bool DisplayCheckBoxes { get; set; }

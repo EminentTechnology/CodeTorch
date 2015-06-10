@@ -29,7 +29,7 @@ namespace CodeTorch.Web.FieldTemplates
             {
                 if (_Me == null)
                 {
-                    _Me = (DatePickerControl)this.BaseControl;
+                    _Me = (DatePickerControl)this.Widget;
                 }
                 return _Me;
             }

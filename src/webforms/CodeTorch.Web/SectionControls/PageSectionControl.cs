@@ -94,7 +94,7 @@ namespace CodeTorch.Web.SectionControls
             
 
 
-            foreach (BaseControl control in Section.Controls)
+            foreach (Widget control in Section.Widgets)
             {
                 AddControl(Screen, Section, groupContainer, control);
             }
@@ -125,7 +125,7 @@ namespace CodeTorch.Web.SectionControls
                 parameters = GetParameters(DataCommandName);
                 DataTable data = dataCommandDB.GetDataForDataCommand(DataCommandName, parameters);
 
-                page.PopulateFormByDataTable(Section.Controls, data);
+                page.PopulateFormByDataTable(Section.Widgets, data);
 
             }
 

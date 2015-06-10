@@ -55,7 +55,7 @@ namespace CodeTorch.Web.FieldTemplates
             {
                 if (_Me == null)
                 {
-                    _Me = (WorkflowStatusControl)this.BaseControl;
+                    _Me = (WorkflowStatusControl)this.Widget;
                 }
                 return _Me;
             }

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 namespace CodeTorch.Core
 {
     [Serializable]
-    public class TextAreaControl: BaseControl
+    public class TextAreaControl: Widget
     {
 
         public override string Type

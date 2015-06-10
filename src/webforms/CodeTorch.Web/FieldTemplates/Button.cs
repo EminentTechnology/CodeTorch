@@ -32,7 +32,7 @@ namespace CodeTorch.Web.FieldTemplates
             {
                 if (_Me == null)
                 {
-                    _Me = (ButtonControl)this.BaseControl;
+                    _Me = (ButtonControl)this.Widget;
                 }
                 return _Me;
             }
@@ -89,7 +89,7 @@ namespace CodeTorch.Web.FieldTemplates
 
                 
 
-               // this.Controls.Add(ctrl);
+               // this.Widgets.Add(ctrl);
 
             }
             catch (Exception ex)

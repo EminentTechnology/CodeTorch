@@ -81,37 +81,14 @@ namespace CodeTorch.Core
         
 
 
-        private List<BaseControl> _Controls = new List<BaseControl>();
+        private List<Widget> _Controls = new List<Widget>();
 
 
-        [XmlArray("Controls")]
-        [XmlArrayItem(ElementName = "AutoCompleteBoxControl", Type = typeof(AutoCompleteBoxControl))]
-        [XmlArrayItem(ElementName = "ButtonControl", Type = typeof(ButtonControl))]
-        [XmlArrayItem(ElementName = "CheckBoxControl", Type = typeof(CheckBoxControl))]
-        [XmlArrayItem(ElementName = "DatePickerControl", Type = typeof(DatePickerControl))]
-        [XmlArrayItem(ElementName = "DropDownListControl", Type = typeof(DropDownListControl))]
-        [XmlArrayItem(ElementName = "EditorControl", Type = typeof(EditorControl))]
-        [XmlArrayItem(ElementName = "EmailAddressControl", Type = typeof(EmailAddressControl))]
-        [XmlArrayItem(ElementName = "FileUploadControl", Type = typeof(FileUploadControl))]
-        [XmlArrayItem(ElementName = "GenericControl", Type = typeof(GenericControl))]
-        [XmlArrayItem(ElementName = "HyperLinkControl", Type = typeof(HyperLinkControl))]
-        [XmlArrayItem(ElementName = "LabelControl", Type = typeof(LabelControl))]
-        [XmlArrayItem(ElementName = "ListBoxControl", Type = typeof(ListBoxControl))]
-        [XmlArrayItem(ElementName = "LookupDropDownListControl", Type = typeof(LookupDropDownListControl))]
-        [XmlArrayItem(ElementName = "LookupListBoxControl", Type = typeof(LookupListBoxControl))]
-        [XmlArrayItem(ElementName = "MultiComboDropDownListControl", Type = typeof(MultiComboDropDownListControl))]
-        [XmlArrayItem(ElementName = "NumericTextBox", Type = typeof(NumericTextBoxControl))]
-        [XmlArrayItem(ElementName = "PasswordControl", Type = typeof(PasswordControl))]
-        [XmlArrayItem(ElementName = "PickerControl", Type = typeof(PickerControl))]
-        [XmlArrayItem(ElementName = "SocialShareControl", Type = typeof(SocialShareControl))]
-        [XmlArrayItem(ElementName = "TextAreaControl", Type = typeof(TextAreaControl))]
-        [XmlArrayItem(ElementName = "TextBoxControl", Type = typeof(TextBoxControl))]
-        [XmlArrayItem(ElementName = "TreeViewControl", Type = typeof(TreeViewControl))]
-        [XmlArrayItem(ElementName = "WorkflowStatusControl", Type = typeof(WorkflowStatusControl))]
-        [Category("Controls")]
-        [Description("List of section controls")]
+        [XmlArray("Widgets")]
+        [Category("Widgets")]
+        [Description("List of section widgets")]
         [Editor("CodeTorch.Core.Design.ControlCollectionEditor,CodeTorch.Core.Design", typeof(UITypeEditor))]  
-        public virtual List<BaseControl> Controls
+        public virtual List<Widget> Widgets
         {
             get
             {
@@ -157,10 +134,10 @@ namespace CodeTorch.Core
             AddResourceKey(retVal, Screen, Section, Prefix, "Name", Section.Name);
             
 
-            foreach (BaseControl control in Section.Controls)
+            foreach (Widget control in Section.Widgets)
             { 
                 string ResourceKeyPrefix = String.Format("{0}.{1}", Prefix,Section.Name);
-                retVal.AddRange(BaseControl.GetResourceKeys(Screen,control, ResourceKeyPrefix));
+                retVal.AddRange(Widget.GetResourceKeys(Screen,control, ResourceKeyPrefix));
             }
 
             switch (Section.Type.ToLower())

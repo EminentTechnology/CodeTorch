@@ -27,7 +27,7 @@ namespace CodeTorch.Web.FieldTemplates
             {
                 if (_Me == null)
                 {
-                    _Me = (PasswordControl)this.BaseControl;
+                    _Me = (PasswordControl)this.Widget;
                 }
                 return _Me;
             }

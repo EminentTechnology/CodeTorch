@@ -7,7 +7,7 @@ using System.ComponentModel;
 namespace CodeTorch.Core
 {
     [Serializable]
-    public class LookupDropDownListControl: BaseControl
+    public class LookupDropDownListControl: Widget
     {
         public bool AutoPostBack { get; set; }
         public bool IncludeAdditionalListItem { get; set; }

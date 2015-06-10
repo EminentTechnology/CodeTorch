@@ -22,7 +22,7 @@ namespace CodeTorch.Core
     }
 
     [Serializable]
-    public class DropDownListControl: BaseControl
+    public class DropDownListControl: Widget
     {
         public override string Type
         {

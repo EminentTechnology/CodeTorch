@@ -1239,7 +1239,7 @@ namespace CodeTorch.Designer.SchemaUpgrades._3
                     new XElement("Permission",
                         new XElement("CheckPermission", false)
                     ),
-                    new XElement("Controls")
+                    new XElement("Widgets")
                 );
 
             XElement emailElement = new XElement("EmailAddressControl",
@@ -1273,13 +1273,13 @@ namespace CodeTorch.Designer.SchemaUpgrades._3
 
             if (UserNameLabel.ToLower().Contains("email"))
             {
-                loginSection.Element("Controls").Add(emailElement);
+                loginSection.Element("Widgets").Add(emailElement);
             }
             else
             {
-                loginSection.Element("Controls").Add(usernameElement);
+                loginSection.Element("Widgets").Add(usernameElement);
             }
-            loginSection.Element("Controls").Add(passwordElement);
+            loginSection.Element("Widgets").Add(passwordElement);
             Document.Root.Element("Sections").Add(loginSection);
 
             XElement loginButton = new XElement("Button",
@@ -1942,7 +1942,7 @@ namespace CodeTorch.Designer.SchemaUpgrades._3
                     new XElement("Permission",
                         new XElement("CheckPermission", false)
                     ),
-                    new XElement("Controls")
+                    new XElement("Widgets")
                 );
 
             if (
@@ -1964,7 +1964,7 @@ namespace CodeTorch.Designer.SchemaUpgrades._3
                            new XElement("LookupType", "DOCUMENT_TYPE")
                            );
 
-                EditSection.Element("Controls").Add(docTypesLookupElement);
+                EditSection.Element("Widgets").Add(docTypesLookupElement);
             }
             else
             {
@@ -1994,11 +1994,11 @@ namespace CodeTorch.Designer.SchemaUpgrades._3
                             new XElement("DataValueField", DocumentTypeCodeFieldValue)
                             );
 
-                EditSection.Element("Controls").Add(docTypesDropdownElement);
+                EditSection.Element("Widgets").Add(docTypesDropdownElement);
             }
 
 
-            EditSection.Element("Controls").Add(fileUploadElement);
+            EditSection.Element("Widgets").Add(fileUploadElement);
 
             Document.Root.Element("Sections").Add(EditSection);
 
@@ -2580,9 +2580,9 @@ namespace CodeTorch.Designer.SchemaUpgrades._3
                     );
 
                 bool hasControls = false;
-                if (criteria.Element("Controls") != null)
+                if (criteria.Element("Widgets") != null)
                 {
-                    hasControls = criteria.Element("Controls").HasElements;
+                    hasControls = criteria.Element("Widgets").HasElements;
                 }
 
                 if (hasControls)
@@ -2607,7 +2607,7 @@ namespace CodeTorch.Designer.SchemaUpgrades._3
                                )
                         );
 
-                    criteria.Element("Controls").Add(criteriaButton);
+                    criteria.Element("Widgets").Add(criteriaButton);
 
                     if (AddFirst)
                         Document.Root.Element("Sections").AddFirst(criteria);
@@ -2677,9 +2677,9 @@ namespace CodeTorch.Designer.SchemaUpgrades._3
                                 ConvertAfterPopulateSection(Document, gridSection);
 
                                 //process section controls
-                                if (gridSection.Element("Controls") != null)
+                                if (gridSection.Element("Widgets") != null)
                                 {
-                                    foreach (XElement control in gridSection.Element("Controls").Elements())
+                                    foreach (XElement control in gridSection.Element("Widgets").Elements())
                                     {
                                         ConvertControl(Document, gridSection, control);
                                     }
@@ -2692,9 +2692,9 @@ namespace CodeTorch.Designer.SchemaUpgrades._3
                     ConvertAfterPopulateSection(Document, section);
 
                     //process section controls
-                    if (section.Element("Controls") != null)
+                    if (section.Element("Widgets") != null)
                     {
-                        foreach (XElement control in section.Element("Controls").Elements())
+                        foreach (XElement control in section.Element("Widgets").Elements())
                         {
                             ConvertControl(Document, section, control);
                         }
@@ -2820,9 +2820,9 @@ namespace CodeTorch.Designer.SchemaUpgrades._3
 
         private static void ConvertSectionControlsActions( XElement section)
         {
-            if ((section.Element("Controls") != null) && (section.Element("Controls").HasElements))
+            if ((section.Element("Widgets") != null) && (section.Element("Widgets").HasElements))
             {
-                foreach (XElement control in section.Element("Controls").Elements())
+                foreach (XElement control in section.Element("Widgets").Elements())
                 {
                     if (
                         (control.Name.LocalName == "DropDownListControl") ||
@@ -3618,7 +3618,7 @@ namespace CodeTorch.Designer.SchemaUpgrades._3
                     new XElement("Permission",
                         new XElement("CheckPermission", false)
                     ),
-                    new XElement("Controls",
+                    new XElement("Widgets",
                         new XElement("TextAreaControl",
                             new XElement("Name", "Comments"),
                             new XElement("LabelRenderingMode", "None"),

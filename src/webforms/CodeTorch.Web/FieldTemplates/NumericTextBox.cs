@@ -28,7 +28,7 @@ namespace CodeTorch.Web.FieldTemplates
             {
                 if (_Me == null)
                 {
-                    _Me = (NumericTextBoxControl)this.BaseControl;
+                    _Me = (NumericTextBoxControl)this.Widget;
                 }
                 return _Me;
             }

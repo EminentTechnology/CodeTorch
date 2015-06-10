@@ -26,13 +26,13 @@ namespace CodeTorch.Designer.UserControls
         {
             SectionLabel.DataBindings.Add("Text", Section, "Name");
 
-            foreach (BaseControl control in Section.Controls)
+            foreach (Widget control in Section.Widgets)
             {
                 AddControls(control);
             }
         }
 
-        private void AddControls(BaseControl control)
+        private void AddControls(Widget control)
         {
             //throw new NotImplementedException();
         }

@@ -8,7 +8,7 @@ using System.ComponentModel;
 namespace CodeTorch.Core
 {
     [Serializable]
-    public class PickerControl: BaseControl
+    public class PickerControl: Widget
     {
         [TypeConverter("CodeTorch.Core.Design.PickerTypeConverterConverter,CodeTorch.Core.Design")]
         public string Picker { get; set; }

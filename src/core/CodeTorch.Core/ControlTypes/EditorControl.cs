@@ -19,7 +19,7 @@ namespace CodeTorch.Core
     }
 
     [Serializable]
-    public class EditorControl : BaseControl
+    public class EditorControl : Widget
     {
         bool _EnableDesignMode = true;
         bool _EnablePreviewMode = true;

@@ -34,7 +34,7 @@ namespace CodeTorch.Web.FieldTemplates
             {
                 if (_Me == null)
                 {
-                    _Me = (TreeViewControl)this.BaseControl;
+                    _Me = (TreeViewControl)this.Widget;
                 }
                 return _Me;
             }

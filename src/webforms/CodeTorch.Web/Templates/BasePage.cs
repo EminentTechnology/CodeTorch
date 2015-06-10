@@ -873,25 +873,25 @@ namespace CodeTorch.Web.Templates
         }
 
         #region PopulateFormByDataTable
-        public void PopulateFormByDataTable(List<BaseControl> controls, DataTable data)
+        public void PopulateFormByDataTable(List<Widget> controls, DataTable data)
         {
 
             PopulateFormByDataTable(null, controls, data, false);
         }
 
-        public void PopulateFormByDataTable(List<BaseControl> controls, DataTable data, bool RefreshControls)
+        public void PopulateFormByDataTable(List<Widget> controls, DataTable data, bool RefreshControls)
         {
             PopulateFormByDataTable(null, controls, data, RefreshControls);
         }
 
-        public void PopulateFormByDataTable(Control container, List<BaseControl> controls, DataTable data, bool RefreshControls)
+        public void PopulateFormByDataTable(Control container, List<Widget> controls, DataTable data, bool RefreshControls)
         {
 
             if (data.Rows.Count >= 1)
             {
                 DataRow row = data.Rows[0];
 
-                foreach (BaseControl control in controls)
+                foreach (Widget control in controls)
                 {
                     string DataField = null;
                     //determine if we are in edit mode - check label ends with _ReadOnly_Label
@@ -955,22 +955,22 @@ namespace CodeTorch.Web.Templates
         #endregion
 
         #region PopulateFormByDataRowView
-        public void PopulateFormByDataRowView(List<BaseControl> controls, DataRowView data)
+        public void PopulateFormByDataRowView(List<Widget> controls, DataRowView data)
         {
 
             PopulateFormByDataRowView(null, controls, data, false);
         }
 
-        public void PopulateFormByDataRowView(List<BaseControl> controls, DataRowView data, bool RefreshControls)
+        public void PopulateFormByDataRowView(List<Widget> controls, DataRowView data, bool RefreshControls)
         {
 
             PopulateFormByDataRowView(null, controls, data, RefreshControls);
         }
 
-        public void PopulateFormByDataRowView(Control container, List<BaseControl> controls, DataRowView data, bool RefreshControls)
+        public void PopulateFormByDataRowView(Control container, List<Widget> controls, DataRowView data, bool RefreshControls)
         {
 
-            foreach (BaseControl control in controls)
+            foreach (Widget control in controls)
             {
                 if (!String.IsNullOrEmpty(control.DataField))
                 {
@@ -1010,10 +1010,10 @@ namespace CodeTorch.Web.Templates
 
         #endregion
 
-        public void RefeshForm(Control container, List<BaseControl> controls)
+        public void RefeshForm(Control container, List<Widget> controls)
         {
 
-            foreach (BaseControl control in controls)
+            foreach (Widget control in controls)
             {
                 if (!String.IsNullOrEmpty(control.DataField))
                 {

@@ -97,7 +97,7 @@ namespace CodeTorch.Web.Controls
             }
 
             //if(control != null)
-            //    this.Controls.Add(control);
+            //    this.Widgets.Add(control);
 
             
         }
@@ -255,10 +255,10 @@ namespace CodeTorch.Web.Controls
                             //    }
 
                             //    //newLink.Text = MenuFunctions.GetMenuItemText(app, this.Page, ResourceSet, resourceKeyPrefix, row["MenuItemName"].ToString());
-                            //    newMenuItem.Controls.Add(newLink);
+                            //    newMenuItem.Widgets.Add(newLink);
 
 
-                            //    list.Controls.Add(newMenuItem);
+                            //    list.Widgets.Add(newMenuItem);
 
                                 
                             //}

@@ -6,7 +6,7 @@ using System.Text;
 namespace CodeTorch.Core
 {
     [Serializable]
-    public class TextBoxControl: BaseControl
+    public class TextBoxControl: Widget
     {
 
         public override string Type
