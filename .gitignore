@@ -16,3 +16,4 @@ artifacts/
 *.dbmdl
 *.apk
 _ReSharper.*
+!lib/**
