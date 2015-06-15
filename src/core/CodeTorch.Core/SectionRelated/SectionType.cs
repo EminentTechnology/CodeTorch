@@ -98,22 +98,29 @@ namespace CodeTorch.Core
             return item;
         }
 
+        private static Type[] loadedTypes = null;
         public static Type[] GetTypeArray()
         {
-            List<Type> types = new List<Type>();
 
-            foreach (SectionType section in Configuration.GetInstance().SectionTypes)
+            if (loadedTypes == null)
             {
-                string assemblyQualifiedName = String.Format("{0}, {1}", section.AbstractionClass, section.AbstractionAssembly);
-                Type t = Type.GetType(assemblyQualifiedName, false, true);
+                List<Type> types = new List<Type>();
 
-                if (t != null)
+                foreach (SectionType section in Configuration.GetInstance().SectionTypes)
                 {
-                    types.Add(t);
-                }
-            }
+                    string assemblyQualifiedName = String.Format("{0}, {1}", section.AbstractionClass, section.AbstractionAssembly);
+                    Type t = Type.GetType(assemblyQualifiedName, false, true);
 
-            return types.ToArray();
+                    if (t != null)
+                    {
+                        types.Add(t);
+                    }
+                }
+
+                loadedTypes = types.ToArray();
+            }
+            
+            return loadedTypes;
         }
     }
 }

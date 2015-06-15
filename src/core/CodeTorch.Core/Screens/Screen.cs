@@ -193,6 +193,7 @@ namespace CodeTorch.Core
 
         }
 
+        private static XmlSerializer serializer = null;
         public static void Load(XDocument doc, string FolderName)
         {
 
@@ -200,9 +201,14 @@ namespace CodeTorch.Core
 
             var combinedTypes = GetExtraTypes();
 
-            XmlSerializer serializer = new XmlSerializer(typeof(Screen),
+            
+            if (serializer == null)
+            {
+                serializer = new XmlSerializer(typeof(Screen),
                 combinedTypes
                 );
+            }
+
 
             XmlReader reader = doc.CreateReader();
             reader.MoveToContent();
