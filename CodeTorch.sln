@@ -5,9 +5,9 @@ VisualStudioVersion = 14.0.22823.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Core", "01 - Core", "{FE58FA56-27DE-4413-A6A6-56B0BA82F36B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Web", "02 - Web", "{9C1F6770-F7D0-4507-8EC6-A93DA8A6AB35}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Web", "03 - Web", "{9C1F6770-F7D0-4507-8EC6-A93DA8A6AB35}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 -Plugins", "03 -Plugins", "{20093622-107E-4B37-8763-714F6A3B5E89}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 -Plugins", "04 -Plugins", "{20093622-107E-4B37-8763-714F6A3B5E89}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eminent.CodeGenerator", "src\core\Eminent.CodeGenerator\Eminent.CodeGenerator.csproj", "{ACABE9A8-825E-46A4-8A52-EC44DA8357F7}"
 EndProject
@@ -26,6 +26,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTorch.Security", "src\plugins\CodeTorch.Security\CodeTorch.Security.csproj", "{11648974-1332-4970-A870-D4F5D477E09E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTorch.Workflows", "src\plugins\CodeTorch.Workflows\CodeTorch.Workflows.csproj", "{E7879D50-16DD-4930-B64A-E07A8C791CBA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Designer", "02 - Designer", "{17DC8D3E-FAB9-4D50-8212-DCE5DD758CBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTorch.Core.Design", "src\designer\CodeTorch.Core.Design\CodeTorch.Core.Design.csproj", "{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTorch.Designer", "src\designer\Eminent.AppBuilder.Designer\CodeTorch.Designer.csproj", "{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -259,6 +265,54 @@ Global
 		{E7879D50-16DD-4930-B64A-E07A8C791CBA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E7879D50-16DD-4930-B64A-E07A8C791CBA}.Release|x86.ActiveCfg = Release|Any CPU
 		{E7879D50-16DD-4930-B64A-E07A8C791CBA}.Release|x86.Build.0 = Release|Any CPU
+		{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703}.Debug|ARM.Build.0 = Debug|Any CPU
+		{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703}.Debug|x86.Build.0 = Debug|Any CPU
+		{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703}.Obfuscate|Any CPU.ActiveCfg = Release|Any CPU
+		{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703}.Obfuscate|Any CPU.Build.0 = Release|Any CPU
+		{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703}.Obfuscate|ARM.ActiveCfg = Release|Any CPU
+		{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703}.Obfuscate|ARM.Build.0 = Release|Any CPU
+		{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703}.Obfuscate|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703}.Obfuscate|Mixed Platforms.Build.0 = Release|Any CPU
+		{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703}.Obfuscate|x86.ActiveCfg = Release|Any CPU
+		{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703}.Obfuscate|x86.Build.0 = Release|Any CPU
+		{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703}.Release|ARM.ActiveCfg = Release|Any CPU
+		{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703}.Release|ARM.Build.0 = Release|Any CPU
+		{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703}.Release|x86.ActiveCfg = Release|Any CPU
+		{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703}.Release|x86.Build.0 = Release|Any CPU
+		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Debug|ARM.Build.0 = Debug|Any CPU
+		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Debug|x86.Build.0 = Debug|Any CPU
+		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Obfuscate|Any CPU.ActiveCfg = Obfuscate|Any CPU
+		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Obfuscate|Any CPU.Build.0 = Obfuscate|Any CPU
+		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Obfuscate|ARM.ActiveCfg = Obfuscate|Any CPU
+		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Obfuscate|ARM.Build.0 = Obfuscate|Any CPU
+		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Obfuscate|Mixed Platforms.ActiveCfg = Obfuscate|Any CPU
+		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Obfuscate|Mixed Platforms.Build.0 = Obfuscate|Any CPU
+		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Obfuscate|x86.ActiveCfg = Obfuscate|Any CPU
+		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Obfuscate|x86.Build.0 = Obfuscate|Any CPU
+		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Release|ARM.ActiveCfg = Release|Any CPU
+		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Release|ARM.Build.0 = Release|Any CPU
+		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Release|x86.ActiveCfg = Release|Any CPU
+		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -273,9 +327,11 @@ Global
 		{6D1A61E4-7B66-4806-83EB-A60FB464CA0D} = {20093622-107E-4B37-8763-714F6A3B5E89}
 		{11648974-1332-4970-A870-D4F5D477E09E} = {20093622-107E-4B37-8763-714F6A3B5E89}
 		{E7879D50-16DD-4930-B64A-E07A8C791CBA} = {20093622-107E-4B37-8763-714F6A3B5E89}
+		{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703} = {17DC8D3E-FAB9-4D50-8212-DCE5DD758CBB}
+		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E} = {17DC8D3E-FAB9-4D50-8212-DCE5DD758CBB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Security.Cryptography.5.0.505.0\lib\NET35
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Security.Cryptography.5.0.505.0\lib\NET35
 	EndGlobalSection
 EndGlobal
