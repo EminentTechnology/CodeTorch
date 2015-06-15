@@ -24,7 +24,7 @@
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
     <TargetFrameworkProfile />
-    <PublishUrl>d:\Sandbox\Eminent-AppBuilder\Builds\</PublishUrl>
+    <PublishUrl>D:\Sandbox\CodeTorchDesignerBuilds\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -152,15 +152,30 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Telerik.WinControls, Version=2015.1.225.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.WinControls.RadDock, Version=2015.1.225.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.WinControls.RadMarkupEditor, Version=2015.1.225.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.WinControls.RichTextBox, Version=2015.1.225.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.WinControls.Themes.VisualStudio2012Dark, Version=2015.1.225.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.WinControls.Themes.VisualStudio2012Light, Version=2015.1.225.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.WinControls.Themes.Windows8, Version=2015.1.225.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
-    <Reference Include="Telerik.WinControls.UI, Version=2015.1.225.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
-    <Reference Include="TelerikCommon, Version=2015.1.225.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\Telerik\UI for WinForms\Bin40\Telerik.WinControls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.RadDock, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\Telerik\UI for WinForms\Bin40\Telerik.WinControls.RadDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.RichTextEditor, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\Telerik\UI for WinForms\Bin40\Telerik.WinControls.RichTextEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.Themes.VisualStudio2012Dark, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\Telerik\UI for WinForms\Bin40\Telerik.WinControls.Themes.VisualStudio2012Dark.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.UI, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\Telerik\UI for WinForms\Bin40\Telerik.WinControls.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="TelerikCommon, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\Telerik\UI for WinForms\Bin40\TelerikCommon.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\VersionInfo.cs">
@@ -378,7 +393,9 @@
       <DependentUpon>SectionZoneDesigner.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -445,10 +462,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CodeTorch.Core.Design\CodeTorch.Core.Design.csproj">
-      <Project>{68ab6f55-edda-48d0-a0e8-16eab83d0703}</Project>
-      <Name>CodeTorch.Core.Design</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\core\CodeTorch.Core\CodeTorch.Core.csproj">
       <Project>{ffa210b6-b65e-4cb3-9a43-e546f132e78a}</Project>
       <Name>CodeTorch.Core</Name>
@@ -456,14 +469,6 @@
     <ProjectReference Include="..\..\plugins\CodeTorch.Data.SqlServer\CodeTorch.Data.SqlServer.csproj">
       <Project>{cff06607-17a4-4351-9566-b54569c5bffe}</Project>
       <Name>CodeTorch.Data.SqlServer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\plugins\CodeTorch.Documents\CodeTorch.Documents.csproj">
-      <Project>{b4035297-224c-404c-925d-0807f7d5ec25}</Project>
-      <Name>CodeTorch.Documents</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\plugins\CodeTorch.Email\CodeTorch.Email.csproj">
-      <Project>{0ea15c58-9f7a-4fda-9ad5-38f3c8c42a00}</Project>
-      <Name>CodeTorch.Email</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\plugins\CodeTorch.Lookups\CodeTorch.Lookups.csproj">
       <Project>{6d1a61e4-7b66-4806-83eb-a60fb464ca0d}</Project>
@@ -476,6 +481,10 @@
     <ProjectReference Include="..\..\plugins\CodeTorch.Workflows\CodeTorch.Workflows.csproj">
       <Project>{e7879d50-16dd-4930-b64a-e07a8c791cba}</Project>
       <Name>CodeTorch.Workflows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CodeTorch.Core.Design\CodeTorch.Core.Design.csproj">
+      <Project>{68ab6f55-edda-48d0-a0e8-16eab83d0703}</Project>
+      <Name>CodeTorch.Core.Design</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

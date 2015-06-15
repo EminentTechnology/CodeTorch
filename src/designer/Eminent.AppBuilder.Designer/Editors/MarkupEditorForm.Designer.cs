@@ -30,7 +30,7 @@
         {
             this.Apply = new Telerik.WinControls.UI.RadButton();
             this.Cancel = new Telerik.WinControls.UI.RadButton();
-            this.markup = new Telerik.WinControls.RichTextBox.RadRichTextBox();
+            this.markup = new Telerik.WinControls.UI.RadRichTextEditor();
             ((System.ComponentModel.ISupportInitialize)(this.Apply)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Cancel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.markup)).BeginInit();
@@ -91,6 +91,6 @@
 
         private Telerik.WinControls.UI.RadButton Apply;
         private Telerik.WinControls.UI.RadButton Cancel;
-        private Telerik.WinControls.RichTextBox.RadRichTextBox markup;
+        private Telerik.WinControls.UI.RadRichTextEditor markup;
     }
 }

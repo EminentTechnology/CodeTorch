@@ -6,9 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Telerik.WinControls.RichTextBox.FormatProviders.Txt;
-
-
+using Telerik.WinForms.Documents.FormatProviders.Txt;
 
 namespace CodeTorch.Designer.Editors
 {
