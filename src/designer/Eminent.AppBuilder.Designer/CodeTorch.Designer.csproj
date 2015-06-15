@@ -92,41 +92,26 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+      <HintPath>..\..\..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
-      <HintPath>..\packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation">
-      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Unity.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Configuration">
-      <HintPath>..\packages\Unity.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Interception">
-      <HintPath>..\packages\Unity.Interception.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.Interception.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration">
-      <HintPath>..\packages\Unity.Interception.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.Compatibility" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0" />
-    <Reference Include="RestSharp, Version=104.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RestSharp.104.4.0\lib\net4\RestSharp.dll</HintPath>
+    <Reference Include="RestSharp, Version=105.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\RestSharp.105.1.0\lib\net45\RestSharp.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -466,9 +451,21 @@
       <Project>{ffa210b6-b65e-4cb3-9a43-e546f132e78a}</Project>
       <Name>CodeTorch.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\core\Eminent.CodeGenerator\Eminent.CodeGenerator.csproj">
+      <Project>{acabe9a8-825e-46a4-8a52-ec44da8357f7}</Project>
+      <Name>Eminent.CodeGenerator</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\plugins\CodeTorch.Data.SqlServer\CodeTorch.Data.SqlServer.csproj">
       <Project>{cff06607-17a4-4351-9566-b54569c5bffe}</Project>
       <Name>CodeTorch.Data.SqlServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\plugins\CodeTorch.Documents\CodeTorch.Documents.csproj">
+      <Project>{b4035297-224c-404c-925d-0807f7d5ec25}</Project>
+      <Name>CodeTorch.Documents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\plugins\CodeTorch.Email\CodeTorch.Email.csproj">
+      <Project>{0ea15c58-9f7a-4fda-9ad5-38f3c8c42a00}</Project>
+      <Name>CodeTorch.Email</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\plugins\CodeTorch.Lookups\CodeTorch.Lookups.csproj">
       <Project>{6d1a61e4-7b66-4806-83eb-a60fb464ca0d}</Project>
@@ -481,6 +478,10 @@
     <ProjectReference Include="..\..\plugins\CodeTorch.Workflows\CodeTorch.Workflows.csproj">
       <Project>{e7879d50-16dd-4930-b64a-e07a8c791cba}</Project>
       <Name>CodeTorch.Workflows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\webforms\CodeTorch.Web\CodeTorch.Web.csproj">
+      <Project>{3f8c0b87-f3d4-4b3d-b327-1376f9164b3c}</Project>
+      <Name>CodeTorch.Web</Name>
     </ProjectReference>
     <ProjectReference Include="..\CodeTorch.Core.Design\CodeTorch.Core.Design.csproj">
       <Project>{68ab6f55-edda-48d0-a0e8-16eab83d0703}</Project>
