@@ -12,7 +12,7 @@ namespace CodeTorch.Web
         public CodeTorch.Core.Action Action { get; set; }
         public BasePage Page { get; set; }
 
-        internal void Execute()
+        public void Execute()
         {
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required))
             {

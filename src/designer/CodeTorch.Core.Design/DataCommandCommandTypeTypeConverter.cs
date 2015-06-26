@@ -35,7 +35,7 @@ namespace CodeTorch.Core.Design
 
                 if(!String.IsNullOrEmpty(DataConnectionName))
                 {
-                    DataConnection connection = Configuration.GetInstance().DataConnections.Where(c => c.Name.ToLower() == command.DataConnection.ToLower()).SingleOrDefault();
+                    DataConnection connection = Configuration.GetInstance().DataConnections.Where(c => c.Name.ToLower() == DataConnectionName.ToLower()).SingleOrDefault();
 
                     if(connection != null)
                     {

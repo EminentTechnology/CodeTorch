@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.22823.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - Core", "01 - Core", "{FE58FA56-27DE-4413-A6A6-56B0BA82F36B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Web", "03 - Web", "{9C1F6770-F7D0-4507-8EC6-A93DA8A6AB35}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Platforms", "03 - Platforms", "{9C1F6770-F7D0-4507-8EC6-A93DA8A6AB35}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 -Plugins", "04 -Plugins", "{20093622-107E-4B37-8763-714F6A3B5E89}"
 EndProject
@@ -32,6 +32,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTorch.Core.Design", "src\designer\CodeTorch.Core.Design\CodeTorch.Core.Design.csproj", "{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTorch.Designer", "src\designer\Eminent.AppBuilder.Designer\CodeTorch.Designer.csproj", "{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05 - Tools", "05 - Tools", "{B5C0F26E-F55B-4F41-AFA2-92B1F2798A3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTorch.BuildTasks", "src\tools\CodeTorch.BuildTasks\CodeTorch.BuildTasks.csproj", "{2B385878-F208-4181-B275-9E86230FB730}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -313,6 +317,30 @@ Global
 		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Release|x86.ActiveCfg = Release|Any CPU
 		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E}.Release|x86.Build.0 = Release|Any CPU
+		{2B385878-F208-4181-B275-9E86230FB730}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B385878-F208-4181-B275-9E86230FB730}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B385878-F208-4181-B275-9E86230FB730}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{2B385878-F208-4181-B275-9E86230FB730}.Debug|ARM.Build.0 = Debug|Any CPU
+		{2B385878-F208-4181-B275-9E86230FB730}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2B385878-F208-4181-B275-9E86230FB730}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2B385878-F208-4181-B275-9E86230FB730}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2B385878-F208-4181-B275-9E86230FB730}.Debug|x86.Build.0 = Debug|Any CPU
+		{2B385878-F208-4181-B275-9E86230FB730}.Obfuscate|Any CPU.ActiveCfg = Obfuscate|Any CPU
+		{2B385878-F208-4181-B275-9E86230FB730}.Obfuscate|Any CPU.Build.0 = Obfuscate|Any CPU
+		{2B385878-F208-4181-B275-9E86230FB730}.Obfuscate|ARM.ActiveCfg = Obfuscate|Any CPU
+		{2B385878-F208-4181-B275-9E86230FB730}.Obfuscate|ARM.Build.0 = Obfuscate|Any CPU
+		{2B385878-F208-4181-B275-9E86230FB730}.Obfuscate|Mixed Platforms.ActiveCfg = Obfuscate|Any CPU
+		{2B385878-F208-4181-B275-9E86230FB730}.Obfuscate|Mixed Platforms.Build.0 = Obfuscate|Any CPU
+		{2B385878-F208-4181-B275-9E86230FB730}.Obfuscate|x86.ActiveCfg = Obfuscate|Any CPU
+		{2B385878-F208-4181-B275-9E86230FB730}.Obfuscate|x86.Build.0 = Obfuscate|Any CPU
+		{2B385878-F208-4181-B275-9E86230FB730}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B385878-F208-4181-B275-9E86230FB730}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B385878-F208-4181-B275-9E86230FB730}.Release|ARM.ActiveCfg = Release|Any CPU
+		{2B385878-F208-4181-B275-9E86230FB730}.Release|ARM.Build.0 = Release|Any CPU
+		{2B385878-F208-4181-B275-9E86230FB730}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{2B385878-F208-4181-B275-9E86230FB730}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{2B385878-F208-4181-B275-9E86230FB730}.Release|x86.ActiveCfg = Release|Any CPU
+		{2B385878-F208-4181-B275-9E86230FB730}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -329,6 +357,7 @@ Global
 		{E7879D50-16DD-4930-B64A-E07A8C791CBA} = {20093622-107E-4B37-8763-714F6A3B5E89}
 		{68AB6F55-EDDA-48D0-A0E8-16EAB83D0703} = {17DC8D3E-FAB9-4D50-8212-DCE5DD758CBB}
 		{9A8288D1-A0D0-4823-AB4C-46F6FEBB833E} = {17DC8D3E-FAB9-4D50-8212-DCE5DD758CBB}
+		{2B385878-F208-4181-B275-9E86230FB730} = {B5C0F26E-F55B-4F41-AFA2-92B1F2798A3A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45
