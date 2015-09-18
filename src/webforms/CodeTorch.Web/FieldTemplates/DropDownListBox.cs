@@ -161,7 +161,7 @@ namespace CodeTorch.Web.FieldTemplates
                     ctrl.Width = new Unit(Me.Width);
                 }
 
-                ctrl.CssClass = "form-control";
+                //ctrl.CssClass = "form-control";
                 if (!String.IsNullOrEmpty(Me.CssClass))
                 {
                     ctrl.CssClass += " " + Me.CssClass;
