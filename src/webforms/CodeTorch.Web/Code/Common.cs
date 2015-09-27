@@ -504,6 +504,7 @@ namespace CodeTorch.Web
                         (!String.IsNullOrEmpty(svc.Resource)) &&
                         (!svc.Resource.Contains("{"))
                     )
+                    orderby svc.Name
                     select svc;
 
             var restServicesDynamic = from svc in CodeTorch.Core.Configuration.GetInstance().RestServices
@@ -512,7 +513,8 @@ namespace CodeTorch.Web
                     (!String.IsNullOrEmpty(svc.Resource)) &&
                     (svc.Resource.Contains("{"))
                 )
-                    select svc;
+                orderby svc.Name
+                select svc;
 
             AddRestRoutes(routes, routeHandler, restServicesStatic);
             AddRestRoutes(routes, routeHandler, restServicesDynamic);
