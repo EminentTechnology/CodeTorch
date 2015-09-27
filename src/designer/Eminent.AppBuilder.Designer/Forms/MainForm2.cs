@@ -1304,7 +1304,10 @@ namespace CodeTorch.Designer.Forms
                 Workflow item = (Workflow)node.Object;
 
                 DataConnection connection = Project.GetDefaultDataConnection();
-                WorkflowService.GetInstance().GetProvider(item).Save(connection,item);
+                var provider = WorkflowService.GetInstance().GetProvider(item);
+                provider.Connection = connection;
+                    
+                provider.Save(item);
                 
 
                 MessageBox.Show(String.Format("Workflow {0} was saved successfully to the database", item.Code));
@@ -1325,9 +1328,9 @@ namespace CodeTorch.Designer.Forms
 
                 DataConnection connection = Project.GetDefaultDataConnection();
                 ILookupProvider lookup = LookupService.GetInstance().LookupProvider;
-                
+                lookup.Connection = connection;
 
-                lookup.Save(connection,item);
+                lookup.Save(item);
 
                 MessageBox.Show(String.Format("Lookup {0} was saved successfully to the database", item.Name));
             }
@@ -1349,10 +1352,11 @@ namespace CodeTorch.Designer.Forms
                 
                 int i = 0;
                 DataConnection connection = Project.GetDefaultDataConnection();
+                lookup.Connection = connection;
                 foreach (Lookup item in Configuration.GetInstance().Lookups)
                 {
                     i++;
-                    lookup.Save(connection, item);
+                    lookup.Save( item);
                 }
 
                 MessageBox.Show(String.Format("{0} lookup(s) were saved successfully to the database", i));
@@ -1520,7 +1524,8 @@ namespace CodeTorch.Designer.Forms
         {
             try
             {
-                ResourceTranslationForm form = new ResourceTranslationForm();
+                DataConnection connection = Project.GetDefaultDataConnection();
+                ResourceTranslationForm form = new ResourceTranslationForm(connection);
                 
                 form.ShowDialog();
             }

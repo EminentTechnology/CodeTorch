@@ -6,12 +6,14 @@ namespace CodeTorch.Core.Interfaces
 {
     public interface ILookupProvider
     {
+        DataConnection Connection { get; set; }
         void Initialize(string config);
 
         Lookup GetLookupItems(string lookupType, string lookupDescription);
 
         Lookup GetLookupItems(string cultureCode, string lookupType, string lookupDescription);
 
+       
         Lookup GetActiveLookupItems(string lookupType, string lookupDescription, string lookupValue);
 
         Lookup GetActiveLookupItems(string cultureCode, string lookupType, string lookupDescription, string lookupValue);
@@ -19,7 +21,7 @@ namespace CodeTorch.Core.Interfaces
         List<Lookup> GetLookupTypes();
 
         void Save(Lookup lookup);
-        void Save(DataConnection connection, Lookup lookup);
+       
 
        
         

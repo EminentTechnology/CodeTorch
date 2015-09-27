@@ -9,9 +9,9 @@ namespace CodeTorch.Core
 {
     public class Localization
     {
-        public static List<ResourceItem> GetResourceKeys()
+        public static List<ResourceItem> GetResourceKeys(DataConnection connection = null)
         {
-            return PopulateResourceKeys();
+            return PopulateResourceKeys(connection);
         
         }
 
@@ -46,7 +46,7 @@ namespace CodeTorch.Core
             return retVal;
         }
 
-        private static List<ResourceItem> PopulateResourceKeys()
+        private static List<ResourceItem> PopulateResourceKeys(DataConnection connection = null)
         {
             List<ResourceItem> retVal = new List<ResourceItem>();
 
@@ -62,11 +62,11 @@ namespace CodeTorch.Core
 
             foreach (Lookup lookup in Configuration.GetInstance().Lookups)
             {
-                ILookupProvider lookupDB = LookupService.GetInstance().LookupProvider;
-
                 
+                ILookupProvider lookupDB = LookupService.GetInstance().LookupProvider;
+                lookupDB.Connection = connection;
 
-                Lookup data = lookupDB.GetLookupItems( lookup.Name, null);
+                Lookup data = data = lookupDB.GetLookupItems(lookup.Name, null);
 
                 foreach (LookupItem row in data.Items)
                 {

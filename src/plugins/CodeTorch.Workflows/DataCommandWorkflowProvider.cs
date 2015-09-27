@@ -45,6 +45,7 @@ namespace CodeTorch.Workflows
 
         private const string ColumnCurrentStepCode = "CurrentStepCode";
 
+        public DataConnection Connection { get; set; }
         public void Initialize(List<CodeTorch.Core.Setting> settings)
         {
             
@@ -67,7 +68,7 @@ namespace CodeTorch.Workflows
             parameters.Add(p);
 
             //get data from data command
-            DataTable data = sql.GetDataForDataCommand(DataCommandWorkflowGetCurrentStep, parameters);
+            DataTable data = GetDataForDataCommand(DataCommandWorkflowGetCurrentStep, parameters);
 
             
             if (data.Rows.Count > 0)
@@ -171,7 +172,7 @@ namespace CodeTorch.Workflows
             parameters.Add(p);
 
             //get data from data command
-            sql.ExecuteDataCommand(DataCommandWorkflowSetStep, parameters);
+            ExecuteDataCommand(DataCommandWorkflowSetStep, parameters);
 
             
         }
@@ -199,27 +200,27 @@ namespace CodeTorch.Workflows
             parameters.Add(p);
 
             //get data from data command
-            sql.ExecuteDataCommand(DataCommandWorkflowSetEntityStatus, parameters);
+            ExecuteDataCommand(DataCommandWorkflowSetEntityStatus, parameters);
 
             
         }
 
-        public void Save(DataConnection connection, CodeTorch.Core.Workflow workflow)
+        public void Save(CodeTorch.Core.Workflow workflow)
         {
-                Delete(connection, workflow);
+                Delete( workflow);
 
-                InsertWorkflow(connection, workflow);
+                InsertWorkflow( workflow);
 
                 int StepSequence = 0;
                 foreach (WorkflowStep step in workflow.Steps)
                 {
                     StepSequence++;
-                    InsertWorkflowStep(connection, workflow, step, StepSequence);
+                    InsertWorkflowStep( workflow, step, StepSequence);
                 }
             
         }
 
-        public void Delete(DataConnection connection, CodeTorch.Core.Workflow workflow)
+        public void Delete( CodeTorch.Core.Workflow workflow)
         {
             List<ScreenDataCommandParameter> parameters = new List<ScreenDataCommandParameter>();
             ScreenDataCommandParameter p = null;
@@ -227,12 +228,10 @@ namespace CodeTorch.Workflows
             p = new ScreenDataCommandParameter(ParameterWorkflowCode, workflow.Code);
             parameters.Add(p);
 
-            
-            DataCommand command = DataCommand.GetDataCommand(DataCommandWorkflowDelete);
-            sql.ExecuteCommand(null, connection, command, parameters, command.Text);
+           ExecuteDataCommand(DataCommandWorkflowDelete, parameters);
         }
 
-        private void InsertWorkflow(DataConnection connection,CodeTorch.Core.Workflow workflow)
+        private void InsertWorkflow(CodeTorch.Core.Workflow workflow)
         {
             List<ScreenDataCommandParameter> parameters = new List<ScreenDataCommandParameter>();
             ScreenDataCommandParameter p = null;
@@ -256,16 +255,10 @@ namespace CodeTorch.Workflows
             parameters.Add(p);
 
 
-            DataCommand command = DataCommand.GetDataCommand(DataCommandWorkflowInsert);
-
-
-            if (command == null)
-                throw new Exception(String.Format("DataCommand {0} could not be found in configuration", DataCommandWorkflowInsert));
-
-            sql.ExecuteCommand(null, connection, command, parameters, command.Text);
+            ExecuteDataCommand(DataCommandWorkflowInsert, parameters);
         }
 
-        private void InsertWorkflowStep(DataConnection connection,CodeTorch.Core.Workflow workflow, WorkflowStep step, int stepSequence)
+        private void InsertWorkflowStep(CodeTorch.Core.Workflow workflow, WorkflowStep step, int stepSequence)
         {
             List<ScreenDataCommandParameter> parameters = new List<ScreenDataCommandParameter>();
             ScreenDataCommandParameter p = null;
@@ -287,8 +280,45 @@ namespace CodeTorch.Workflows
 
 
 
-            DataCommand command = DataCommand.GetDataCommand(DataCommandWorkflowInsertStep);
-            sql.ExecuteCommand(null, connection, command, parameters, command.Text);
+           ExecuteDataCommand(DataCommandWorkflowInsertStep, parameters);
+        }
+
+        private void ExecuteDataCommand(string dataCommand, List<ScreenDataCommandParameter> parameters)
+        {
+            if (Connection == null)
+            {
+                sql.ExecuteDataCommand(dataCommand, parameters);
+            }
+            else
+            {
+                DataCommand command = DataCommand.GetDataCommand(dataCommand);
+
+                if (command == null)
+                    throw new Exception(String.Format("DataCommand {0} could not be found in configuration", dataCommand));
+
+                sql.ExecuteCommand(null, Connection, command, parameters, command.Text);
+            }
+        }
+
+        private DataTable GetDataForDataCommand(string dataCommand, List<ScreenDataCommandParameter> parameters)
+        {
+            DataTable retVal = null;
+
+            if (Connection == null)
+            {
+                retVal = sql.GetDataForDataCommand(dataCommand, parameters);
+            }
+            else
+            {
+                DataCommand command = DataCommand.GetDataCommand(dataCommand);
+
+                if (command == null)
+                    throw new Exception(String.Format("DataCommand {0} could not be found in configuration", dataCommand));
+
+                retVal = sql.GetData(null, Connection, command, parameters, command.Text);
+            }
+
+            return retVal;
         }
     }
 }

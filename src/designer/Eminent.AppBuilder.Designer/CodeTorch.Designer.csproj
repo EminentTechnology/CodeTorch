@@ -489,6 +489,10 @@
       <Project>{6d1a61e4-7b66-4806-83eb-a60fb464ca0d}</Project>
       <Name>CodeTorch.Lookups</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\plugins\CodeTorch.Resources.Web\CodeTorch.Resources.Web.csproj">
+      <Project>{c7ef18bf-da82-41fe-9f4d-cb7f12a62af8}</Project>
+      <Name>CodeTorch.Resources.Web</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\plugins\CodeTorch.Security\CodeTorch.Security.csproj">
       <Project>{11648974-1332-4970-a870-d4f5d477e09e}</Project>
       <Name>CodeTorch.Security</Name>

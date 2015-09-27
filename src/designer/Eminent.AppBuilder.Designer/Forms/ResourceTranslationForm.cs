@@ -15,21 +15,22 @@ namespace CodeTorch.Designer.Forms
     {
         App app;
         List<ResourceItem> keys;
-        
 
-        public ResourceTranslationForm()
+        private readonly DataConnection connection;
+        public ResourceTranslationForm(DataConnection connection)
         {
             InitializeComponent();
 
             app = CodeTorch.Core.Configuration.GetInstance().App;
+            this.connection = connection;
         }
 
         private void ResourceTranslationForm_Load(object sender, EventArgs e)
         {
             try
             {
-
-                keys = Localization.GetResourceKeys();
+                
+                keys = Localization.GetResourceKeys(connection);
 
                 SetupProgressBar(keys);
 
@@ -57,6 +58,8 @@ namespace CodeTorch.Designer.Forms
             try
             {
                 IResourceProvider resource = ResourceService.GetInstance().ResourceProvider;
+                resource.Connection = connection;
+
                 StartButton.Enabled = false;
 
                 
@@ -87,7 +90,7 @@ namespace CodeTorch.Designer.Forms
                         key.CultureCode = CultureCode.Text;
                     }
 
-                    resource.Save(keys, ForceUpdate.Checked);
+                    resource.Save( keys, ForceUpdate.Checked);
                 }
                 else
                 {

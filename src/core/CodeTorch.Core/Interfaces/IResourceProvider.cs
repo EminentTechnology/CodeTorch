@@ -9,6 +9,7 @@ namespace CodeTorch.Core.Interfaces
     public interface IResourceProvider
     {
         void Initialize(string config);
+        DataConnection Connection { get; set; }
         List<ResourceItem> GetResourceItemsByResourceSet(string resourceSet);
         List<ResourceItem> GetResourceItemsByCulture(string cultureCode);
         List<ResourceItem> GetResourceItemsByResourceSetCulture(string resourceSet, string cultureCode);

@@ -33,6 +33,8 @@ namespace CodeTorch.Lookups
         private const string ColumnLookupDescription = "LookupDescription";
         private const string ColumnLookupSort = "LookupSort";
 
+        public DataConnection Connection { get; set; }
+
         public void Initialize(string config)
         {
             //read any special config needed for specific implementation
@@ -52,14 +54,13 @@ namespace CodeTorch.Lookups
             parameters.Add(p);
 
             //get data from data command
-            DataTable dt = sql.GetDataForDataCommand(DataCommandLookupGetItems, parameters);
+            DataTable dt = GetDataForDataCommand(DataCommandLookupGetItems, parameters);
 
             retVal = PopulateLookup(retVal, dt);
 
             return retVal;
         }
 
-        
 
         public CodeTorch.Core.Lookup GetLookupItems(string cultureCode, string lookupType, string lookupDescription)
         {
@@ -78,7 +79,7 @@ namespace CodeTorch.Lookups
             parameters.Add(p);
 
             //get data from data command
-            DataTable dt = sql.GetDataForDataCommand(DataCommandLookupGetItemsWithCulture, parameters);
+            DataTable dt = GetDataForDataCommand(DataCommandLookupGetItemsWithCulture, parameters);
 
             retVal = PopulateLookup(retVal, dt);
 
@@ -102,7 +103,7 @@ namespace CodeTorch.Lookups
             parameters.Add(p);
 
             //get data from data command
-            DataTable dt = sql.GetDataForDataCommand(DataCommandLookupGetActiveItems, parameters);
+            DataTable dt = GetDataForDataCommand(DataCommandLookupGetActiveItems, parameters);
 
             retVal = PopulateLookup(retVal, dt);
 
@@ -129,7 +130,7 @@ namespace CodeTorch.Lookups
             parameters.Add(p);
 
             //get data from data command
-            DataTable dt = sql.GetDataForDataCommand(DataCommandLookupGetActiveItemsWithCulture, parameters);
+            DataTable dt = GetDataForDataCommand(DataCommandLookupGetActiveItemsWithCulture, parameters);
 
             retVal = PopulateLookup(retVal, dt);
 
@@ -144,7 +145,7 @@ namespace CodeTorch.Lookups
             
 
             //get data from data command
-            DataTable dt = sql.GetDataForDataCommand(DataCommandLookupGetTypes, parameters);
+            DataTable dt = GetDataForDataCommand(DataCommandLookupGetTypes, parameters);
 
             if (dt.Rows.Count > 0)
             {
@@ -173,7 +174,7 @@ namespace CodeTorch.Lookups
             parameters.Add(p);
 
             //deactivate all lookup items
-            sql.ExecuteDataCommand(DataCommandLookupDeactivate, parameters);
+            ExecuteDataCommand(DataCommandLookupDeactivate, parameters);
 
             foreach (LookupItem item in lookup.Items)
             {
@@ -200,49 +201,7 @@ namespace CodeTorch.Lookups
             }
         }
 
-        public void Save(DataConnection connection, Lookup lookup)
-        {
-            List<ScreenDataCommandParameter> parameters = new List<ScreenDataCommandParameter>();
-            ScreenDataCommandParameter p = null;
-
-
-            p = new ScreenDataCommandParameter(ParameterLookupType, lookup.Name);
-            parameters.Add(p);
-            DataCommand command = DataCommand.GetDataCommand(DataCommandLookupDeactivate);
-
-            if (command == null)
-                throw new Exception(String.Format("DataCommand {0} could not be found in configuration", DataCommandLookupDeactivate));
-
-            //deactivate all lookup items
-            sql.ExecuteCommand(null, connection, command , parameters, command.Text);
-
-            command = DataCommand.GetDataCommand(DataCommandLookupSave);
-            foreach (LookupItem item in lookup.Items)
-            {
-                //reactivate lookups items 1 by 1
-                parameters = new List<ScreenDataCommandParameter>();
-                p = null;
-
-                
-
-                p = new ScreenDataCommandParameter(ParameterLookupType, lookup.Name);
-                parameters.Add(p);
-
-                p = new ScreenDataCommandParameter(ParameterLookupValue, item.Value);
-                parameters.Add(p);
-
-                p = new ScreenDataCommandParameter(ParameterLookupDescription, item.Description);
-                parameters.Add(p);
-
-                p = new ScreenDataCommandParameter(ParameterSort, item.Sort);
-                parameters.Add(p);
-
-                //save lookups to db 
-                sql.ExecuteCommand(null, connection, command , parameters, command.Text);
-                
-            }
-        }
-
+       
         private static Lookup PopulateLookup(Lookup retVal, DataTable dt)
         {
             if (dt.Rows.Count > 0)
@@ -261,6 +220,44 @@ namespace CodeTorch.Lookups
                     retVal.Items.Add(item);
                 }
             }
+            return retVal;
+        }
+
+        private void ExecuteDataCommand(string dataCommand, List<ScreenDataCommandParameter> parameters)
+        {
+            if (Connection == null)
+            {
+                sql.ExecuteDataCommand(dataCommand, parameters);
+            }
+            else
+            {
+                DataCommand command = DataCommand.GetDataCommand(dataCommand);
+
+                if (command == null)
+                    throw new Exception(String.Format("DataCommand {0} could not be found in configuration", dataCommand));
+
+                sql.ExecuteCommand(null, Connection, command, parameters, command.Text);
+            }
+        }
+
+        private DataTable GetDataForDataCommand(string dataCommand, List<ScreenDataCommandParameter> parameters)
+        {
+            DataTable retVal = null;
+
+            if (Connection == null)
+            {
+                retVal = sql.GetDataForDataCommand(dataCommand, parameters);
+            }
+            else
+            {
+                DataCommand command = DataCommand.GetDataCommand(dataCommand);
+
+                if (command == null)
+                    throw new Exception(String.Format("DataCommand {0} could not be found in configuration", dataCommand));
+
+                retVal = sql.GetData(null, Connection, command, parameters, command.Text);
+            }
+
             return retVal;
         }
     }

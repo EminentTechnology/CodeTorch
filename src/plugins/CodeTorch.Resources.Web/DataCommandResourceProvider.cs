@@ -37,6 +37,8 @@ namespace CodeTorch.Resources.Web
             
         }
 
+        public DataConnection Connection { get; set; }
+
         public List<CodeTorch.Core.ResourceItem> GetResourceItemsByResourceSet(string resourceSet)
         {
             
@@ -47,7 +49,7 @@ namespace CodeTorch.Resources.Web
             parameters.Add(p);
 
             //get data from data command
-            DataTable dt = sql.GetDataForDataCommand(DataCommandResourceGetByResourceSet, parameters);
+            DataTable dt = GetDataForDataCommand(DataCommandResourceGetByResourceSet, parameters);
 
             List<CodeTorch.Core.ResourceItem> retVal = PopulateResourceItems(dt);
             return retVal;
@@ -62,7 +64,7 @@ namespace CodeTorch.Resources.Web
             parameters.Add(p);
 
             //get data from data command
-            DataTable dt = sql.GetDataForDataCommand(DataCommandResourceGetByCulture, parameters);
+            DataTable dt = GetDataForDataCommand(DataCommandResourceGetByCulture, parameters);
 
             List<CodeTorch.Core.ResourceItem> retVal = PopulateResourceItems(dt);
             return retVal;
@@ -80,7 +82,7 @@ namespace CodeTorch.Resources.Web
             parameters.Add(p);
 
             //get data from data command
-            DataTable dt = sql.GetDataForDataCommand(DataCommandResourceGetByResourceSetCulture, parameters);
+            DataTable dt = GetDataForDataCommand(DataCommandResourceGetByResourceSetCulture, parameters);
 
             List<CodeTorch.Core.ResourceItem> retVal = PopulateResourceItems(dt);
             return retVal;
@@ -108,13 +110,18 @@ namespace CodeTorch.Resources.Web
             p = new ScreenDataCommandParameter(ParameterResourceValue, item.Value);
             parameters.Add(p);
 
-            //get data from data command
-            sql.ExecuteDataCommand(DataCommandResourceSave, parameters);
 
-            
+
+
+            ExecuteDataCommand(DataCommandResourceSave, parameters);
+
+
+
 
             return true;
         }
+
+        
 
         public bool Save(List<CodeTorch.Core.ResourceItem> items, bool updateExistingItems)
         {
@@ -143,6 +150,45 @@ namespace CodeTorch.Resources.Web
                 retVal.Add(item);
             }
 
+
+            return retVal;
+        }
+
+
+        private void ExecuteDataCommand(string dataCommand, List<ScreenDataCommandParameter> parameters)
+        {
+            if (Connection == null)
+            {
+                sql.ExecuteDataCommand(dataCommand, parameters);
+            }
+            else
+            {
+                DataCommand command = DataCommand.GetDataCommand(dataCommand);
+
+                if (command == null)
+                    throw new Exception(String.Format("DataCommand {0} could not be found in configuration", dataCommand));
+
+                sql.ExecuteCommand(null, Connection, command, parameters, command.Text);
+            }
+        }
+
+        private DataTable GetDataForDataCommand(string dataCommand, List<ScreenDataCommandParameter> parameters)
+        {
+            DataTable retVal = null;
+
+            if (Connection == null)
+            {
+                retVal = sql.GetDataForDataCommand(dataCommand, parameters);
+            }
+            else
+            {
+                DataCommand command = DataCommand.GetDataCommand(dataCommand);
+
+                if (command == null)
+                    throw new Exception(String.Format("DataCommand {0} could not be found in configuration", dataCommand));
+
+                retVal = sql.GetData(null, Connection, command, parameters, command.Text);
+            }
 
             return retVal;
         }

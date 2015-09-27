@@ -8,6 +8,7 @@ namespace CodeTorch.Core.Interfaces
 {
     public interface IWorkflowProvider
     {
+        DataConnection Connection { get; set; }
         void Initialize(List<Setting> settings);
 
         WorkflowStep GetCurrentWorkflowStep(Workflow workflow, string entityIDValue);
@@ -19,10 +20,10 @@ namespace CodeTorch.Core.Interfaces
         void SetEntityStatus(CodeTorch.Core.Workflow workflow, WorkflowStep step, string entityIDValue);
 
         
-        void Save(DataConnection connection, CodeTorch.Core.Workflow workflow);
+        void Save(CodeTorch.Core.Workflow workflow);
          
 
-        void Delete(DataConnection connection, CodeTorch.Core.Workflow workflow);
+        void Delete(CodeTorch.Core.Workflow workflow);
         
     }
 }
