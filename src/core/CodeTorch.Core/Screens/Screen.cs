@@ -51,6 +51,13 @@ namespace CodeTorch.Core
         [Category("Security")]
         public virtual bool RequireAuthentication { get; set; }
 
+        bool _SupportsTransactions = true;
+        [Category("Misc")]
+        public bool SupportsTransactions {
+            get { return _SupportsTransactions; }
+            set { _SupportsTransactions = value; }
+        }
+
         [Category("Security")]
         public bool ValidateRequest
         {
