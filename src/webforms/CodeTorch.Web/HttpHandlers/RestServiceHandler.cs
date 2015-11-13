@@ -588,51 +588,70 @@ namespace CodeTorch.Web.HttpHandlers
                     //currently onlu supports storage to database
                     if (HttpContext.Current.Request.ContentType.ToLower().Contains("multipart"))
                     {
-                        HttpPostedFile file = HttpContext.Current.Request.Files[parameter.InputKey] as HttpPostedFile;
+                        HttpPostedFile file = null;
+
+                        
+                        if (HttpContext.Current.Request.Files.Count == 1)
+                        {
+                            file = HttpContext.Current.Request.Files[0] as HttpPostedFile;
+                        }
+                        else
+                        {
+                            file = HttpContext.Current.Request.Files[parameter.InputKey] as HttpPostedFile;
+                        }
+                        
                         if (file != null)
                         {
                             if (file.ContentLength > 0)
                             {
                                 DocumentService documentService = DocumentService.GetInstance();
 
-                                
-
                                 if (String.IsNullOrEmpty(parameter.Default))
                                 {
-                                    throw new Exception(String.Format("Parameter {0} is missing document repository type setting - please set DefaultValue", parameter.Name));
+                                    retVal = ReadFully(file.InputStream);
                                 }
+                                else
+                                {
+                                    DocumentRepository repo = DocumentRepository.GetByName(parameter.Default);
 
-                                DocumentRepository repo = DocumentRepository.GetByName(parameter.Default);
+                                    if (repo == null)
+                                    {
+                                        throw new Exception(String.Format("Parameter {0} is assigned to a missing document repository  - {1}. Please check configuration.", parameter.Name, parameter.Default));
+                                    }
 
-                                if (repo == null)
-                                { 
-                                    throw new Exception(String.Format("Parameter {0} is assigned to a missing document repository  - {1}. Please check configuration.", parameter.Name, parameter.Default));
+                                    IDocumentProvider documentProvider = documentService.GetProvider(repo);
+                                    if (documentProvider == null)
+                                    {
+                                        throw new Exception(String.Format("Parameter {0} is assigned to document repository  - {1}. The provider for this repository could not be found. Please check configuration", parameter.Name, parameter.Default));
+                                    }
+
+                                    // AppendDocumentID(DocumentID);
+                                    Document document = new Document();//need to clone from config
+
+                                    document.FileName = file.FileName;
+                                    document.ContentType = file.ContentType;
+
+                                    if (String.IsNullOrEmpty(document.ContentType))
+                                    {
+                                        document.ContentType = "application / octet - stream";
+                                    }
+
+                                    document.Size = Convert.ToInt32(file.ContentLength);
+                                    document.Stream = file.InputStream;
+                                    document.EntityID = "TEMP";
+                                    document.EntityType = "TEMP";
+
+
+                                    document.Settings.Add(new Setting("ModifiedBy", "SYSTEM"));
+
+                                    //perform actual upload
+                                    document.ID = documentProvider.Upload(document);
+
+
+                                    retVal = document.ID;
                                 }
-
-                                IDocumentProvider documentProvider = documentService.GetProvider(repo);
-                                if (documentProvider == null)
-                                { 
-                                    throw new Exception(String.Format("Parameter {0} is assigned to document repository  - {1}. The provider for this repository could not be found. Please check configuration", parameter.Name, parameter.Default));
-                                }
-
-                                // AppendDocumentID(DocumentID);
-                                Document document = new Document();//need to clone from config
-
-                                document.FileName = file.FileName;
-                                document.ContentType = file.ContentType;
-                                document.Size = Convert.ToInt32(file.ContentLength);
-                                document.Stream = file.InputStream;
-                                document.EntityID = "TEMP";
-                                document.EntityType = "TEMP";
 
                                 
-                                document.Settings.Add(new Setting("ModifiedBy", "SYSTEM"));
-                                
-                                //perform actual upload
-                                document.ID = documentProvider.Upload(document);
-
-
-                                retVal = document.ID;
                             }
                         }
                         
@@ -726,6 +745,20 @@ namespace CodeTorch.Web.HttpHandlers
             }
 
             return retVal;
+        }
+
+        static byte[] ReadFully(Stream input)
+        {
+            byte[] buffer = new byte[16 * 1024];
+            using (MemoryStream ms = new MemoryStream())
+            {
+                int read;
+                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    ms.Write(buffer, 0, read);
+                }
+                return ms.ToArray();
+            }
         }
 
         private void BuildXmlObjectResponse(App app, BaseRestServiceMethod method, XmlDocument doc, XmlWriter xml)
