@@ -68,6 +68,11 @@ namespace CodeTorch.Email
                     InsertAddress(message, address, "BCC");
                 }
 
+                foreach (EmailAddress address in message.ReplyTo)
+                {
+                    InsertAddress(message, address, "REPLYTO");
+                }
+
                 foreach (EmailAttachment attachment in message.Attachments)
                 {
                     InsertAttachment(message, attachment);

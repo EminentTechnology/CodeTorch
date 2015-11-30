@@ -335,6 +335,7 @@ namespace CodeTorch.Core
                 DataTable cc = GetAddresses(tran, "cc", workflowCode, fromWorkflowStepCode, toWorkflowStepCode, entityID, comment, userName);
                 DataTable bcc = GetAddresses(tran, "bcc", workflowCode, fromWorkflowStepCode, toWorkflowStepCode, entityID, comment, userName);
                 DataTable to = GetAddresses(tran, "to", workflowCode, fromWorkflowStepCode, toWorkflowStepCode, entityID, comment, userName);
+                DataTable replyto = GetAddresses(tran, "to", workflowCode, fromWorkflowStepCode, toWorkflowStepCode, entityID, comment, userName);
                 DataTable attachments = GetAttachments(tran, workflowCode, fromWorkflowStepCode, toWorkflowStepCode, entityID, comment, userName);
                 DataTable mailitems = GetMailItems(to);
 
@@ -422,6 +423,15 @@ namespace CodeTorch.Core
                         address.Address = a["Address"].ToString();
 
                         message.BCC.Add(address);
+                    }
+
+                    foreach (DataRow a in replyto.Select(String.Format("(TO = '{0}') OR (TO IS NULL)", mail["TO"])))
+                    {
+                        address = new EmailAddress();
+                        address.DisplayName = a["DisplayName"].ToString();
+                        address.Address = a["Address"].ToString();
+
+                        message.ReplyTo.Add(address);
                     }
 
                     //attachments

@@ -27,6 +27,7 @@ namespace CodeTorch.Core
 
         EmailAddress _From = new EmailAddress();
         List<EmailAddress> _To = new List<EmailAddress>();
+        List<EmailAddress> _ReplyTo = new List<EmailAddress>();
         List<EmailAddress> _CC = new List<EmailAddress>();
         List<EmailAddress> _BCC = new List<EmailAddress>();
         List<EmailAttachment> _Attachments = new List<EmailAttachment>();
@@ -37,7 +38,12 @@ namespace CodeTorch.Core
             set { _From = value; }
         }
 
-       
+        public List<EmailAddress> ReplyTo
+        {
+            get { return _ReplyTo; }
+            set { _ReplyTo = value; }
+        }
+
 
         public List<EmailAddress> To
         {
