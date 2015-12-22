@@ -197,7 +197,7 @@ namespace CodeTorch.Lookups
                 parameters.Add(p);
 
                 //save lookups to db 
-                sql.ExecuteDataCommand(DataCommandLookupSave, parameters);
+                ExecuteDataCommand(DataCommandLookupSave, parameters);
             }
         }
 
