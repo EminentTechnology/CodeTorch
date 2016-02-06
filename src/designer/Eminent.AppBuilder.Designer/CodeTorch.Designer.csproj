@@ -124,7 +124,6 @@
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.Compatibility" />
-    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0" />
     <Reference Include="RestSharp, Version=105.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\RestSharp.105.1.0\lib\net45\RestSharp.dll</HintPath>
       <Private>True</Private>
@@ -501,10 +500,6 @@
       <Project>{e7879d50-16dd-4930-b64a-e07a8c791cba}</Project>
       <Name>CodeTorch.Workflows</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\webforms\CodeTorch.Web\CodeTorch.Web.csproj">
-      <Project>{3f8c0b87-f3d4-4b3d-b327-1376f9164b3c}</Project>
-      <Name>CodeTorch.Web</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CodeTorch.Core.Design\CodeTorch.Core.Design.csproj">
       <Project>{68ab6f55-edda-48d0-a0e8-16eab83d0703}</Project>
       <Name>CodeTorch.Core.Design</Name>
@@ -689,16 +684,6 @@
     <Content Include="Resources\Web.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <PublishFile Include="Microsoft.VisualBasic.PowerPacks.Vs">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
     <PublishFile Include="Telerik.WinControls">
       <Visible>False</Visible>
       <Group>
