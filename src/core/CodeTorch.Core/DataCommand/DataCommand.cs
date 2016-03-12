@@ -132,7 +132,7 @@ namespace CodeTorch.Core
         {
 
             string ConfigPath = ConfigurationLoader.GetFileConfigurationPath();
-            XmlSerializer x = new XmlSerializer(item.GetType());
+            //XmlSerializer x = new XmlSerializer(item.GetType());
 
             if (!Directory.Exists(String.Format("{0}DataCommands", ConfigPath)))
             {
