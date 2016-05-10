@@ -64,8 +64,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if $(ConfigurationName) == Debug Copy /Y $(TargetDir)codetorch*.* D:\Sandbox\ontrack\code\Source\packages\CodeTorch.Documents.4.0.963\lib\net40
-if $(ConfigurationName) == Debug Copy /Y $(TargetDir)codetorch*.* D:\Sandbox\ontrack\code\Source\KCI.Ontrack.Services.Provider\bin</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
