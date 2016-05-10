@@ -109,7 +109,7 @@ namespace CodeTorch.Web.FieldTemplates
                     }
                     else
                     {
-                       retVal = d.Value.ToString("dd MMM yyyy");
+                       retVal = d.Value.ToString(ctrl.DateInput.DateFormat);
                     }
 
                     
@@ -137,7 +137,26 @@ namespace CodeTorch.Web.FieldTemplates
         {
             get
             {
-                return Value;
+                string retVal = String.Empty;
+
+                DateTime? d = ctrl.SelectedDate;
+
+                if (d.HasValue)
+                {
+                    if (d.Value.ToShortDateString() == "1/1/0001")
+                    {
+                        retVal = null;
+                    }
+                    else
+                    {
+                        retVal = d.Value.ToString(ctrl.DateInput.DisplayDateFormat);
+                    }
+
+
+                }
+
+
+                return retVal;
             }
 
         }
