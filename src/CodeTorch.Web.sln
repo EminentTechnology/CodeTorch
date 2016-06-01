@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTorch.Web", "webforms\CodeTorch.Web\CodeTorch.Web.csproj", "{3F8C0B87-F3D4-4B3D-B327-1376F9164B3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTorch.Core", "core\CodeTorch.Core\CodeTorch.Core.csproj", "{FFA210B6-B65E-4CB3-9A43-E546F132E78A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eminent.CodeGenerator", "core\Eminent.CodeGenerator\Eminent.CodeGenerator.csproj", "{ACABE9A8-825E-46A4-8A52-EC44DA8357F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTorch.Workflows", "plugins\CodeTorch.Workflows\CodeTorch.Workflows.csproj", "{E7879D50-16DD-4930-B64A-E07A8C791CBA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Obfuscate|Any CPU = Obfuscate|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F8C0B87-F3D4-4B3D-B327-1376F9164B3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F8C0B87-F3D4-4B3D-B327-1376F9164B3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F8C0B87-F3D4-4B3D-B327-1376F9164B3C}.Obfuscate|Any CPU.ActiveCfg = Obfuscate|Any CPU
+		{3F8C0B87-F3D4-4B3D-B327-1376F9164B3C}.Obfuscate|Any CPU.Build.0 = Obfuscate|Any CPU
+		{3F8C0B87-F3D4-4B3D-B327-1376F9164B3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F8C0B87-F3D4-4B3D-B327-1376F9164B3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFA210B6-B65E-4CB3-9A43-E546F132E78A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFA210B6-B65E-4CB3-9A43-E546F132E78A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFA210B6-B65E-4CB3-9A43-E546F132E78A}.Obfuscate|Any CPU.ActiveCfg = Obfuscate|Any CPU
+		{FFA210B6-B65E-4CB3-9A43-E546F132E78A}.Obfuscate|Any CPU.Build.0 = Obfuscate|Any CPU
+		{FFA210B6-B65E-4CB3-9A43-E546F132E78A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFA210B6-B65E-4CB3-9A43-E546F132E78A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACABE9A8-825E-46A4-8A52-EC44DA8357F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACABE9A8-825E-46A4-8A52-EC44DA8357F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACABE9A8-825E-46A4-8A52-EC44DA8357F7}.Obfuscate|Any CPU.ActiveCfg = Release|Any CPU
+		{ACABE9A8-825E-46A4-8A52-EC44DA8357F7}.Obfuscate|Any CPU.Build.0 = Release|Any CPU
+		{ACABE9A8-825E-46A4-8A52-EC44DA8357F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACABE9A8-825E-46A4-8A52-EC44DA8357F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7879D50-16DD-4930-B64A-E07A8C791CBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7879D50-16DD-4930-B64A-E07A8C791CBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7879D50-16DD-4930-B64A-E07A8C791CBA}.Obfuscate|Any CPU.ActiveCfg = Release|Any CPU
+		{E7879D50-16DD-4930-B64A-E07A8C791CBA}.Obfuscate|Any CPU.Build.0 = Release|Any CPU
+		{E7879D50-16DD-4930-B64A-E07A8C791CBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7879D50-16DD-4930-B64A-E07A8C791CBA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = webforms\CodeTorch.Web\packages\Unity.2.1.505.0\lib\NET35;webforms\CodeTorch.Web\packages\Unity.Interception.2.1.505.0\lib\NET35;webforms\CodeTorch.Web\packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;webforms\CodeTorch.Web\packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35;webforms\CodeTorch.Web\packages\EnterpriseLibrary.Security.Cryptography.5.0.505.0\lib\NET35
+	EndGlobalSection
+EndGlobal
