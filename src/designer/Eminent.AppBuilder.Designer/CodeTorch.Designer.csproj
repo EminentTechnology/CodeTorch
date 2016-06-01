@@ -472,6 +472,10 @@
       <Project>{acabe9a8-825e-46a4-8a52-ec44da8357f7}</Project>
       <Name>Eminent.CodeGenerator</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\plugins\CodeTorch.Data.Object\CodeTorch.Data.Object.csproj">
+      <Project>{b0d533f4-f147-4493-8545-a7cd0bb990d8}</Project>
+      <Name>CodeTorch.Data.Object</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\plugins\CodeTorch.Data.SqlServer\CodeTorch.Data.SqlServer.csproj">
       <Project>{cff06607-17a4-4351-9566-b54569c5bffe}</Project>
       <Name>CodeTorch.Data.SqlServer</Name>
