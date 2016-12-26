@@ -4,10 +4,11 @@ using System.Xml.Linq;
 using CodeTorch.Core.Interfaces;
 using System.IO;
 using System.Collections.Generic;
+using CodeTorch.Abstractions;
 
 namespace CodeTorch.Core.ConfigurationObjects
 {
-    public class SectionTypeConfigurationObject: IConfigurationObject
+    public class SectionTypeConfigurationObject: IConfigurationObject2, IConfigurationManager<SectionType>
     {
         public string ConfigurationFolder { get { return "SectionTypes"; } }
 
@@ -51,6 +52,11 @@ namespace CodeTorch.Core.ConfigurationObjects
             }
 
             return retVal;
+        }
+
+        SectionType IConfigurationManager<SectionType>.Load(XDocument doc, string path)
+        {
+            return SectionType.Load(doc);
         }
     }
 }

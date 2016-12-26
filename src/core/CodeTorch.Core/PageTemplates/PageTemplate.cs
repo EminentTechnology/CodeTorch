@@ -34,7 +34,7 @@ namespace CodeTorch.Core
 
         }
 
-        public static void Load(XDocument doc)
+        public static PageTemplate Load(XDocument doc)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(PageTemplate));
             XmlReader reader = doc.CreateReader();
@@ -51,7 +51,7 @@ namespace CodeTorch.Core
                 throw new ApplicationException(String.Format("Error occurred while processing PageTemplate - {0}", doc.Root.FirstNode.ToString()), ex);
             }
 
-            Configuration.GetInstance().PageTemplates.Add(item);
+            return item;
 
         }
 

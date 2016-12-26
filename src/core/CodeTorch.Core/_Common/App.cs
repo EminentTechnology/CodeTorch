@@ -7,6 +7,7 @@ using System.Xml;
 using System.IO;
 using System.Xml.Linq;
 using System.ComponentModel;
+using CodeTorch.Abstractions;
 
 namespace CodeTorch.Core
 {
@@ -121,13 +122,13 @@ namespace CodeTorch.Core
         [XmlArrayItem("Property")]
         public List<String> ProfileProperties;
 
-        public static void Load(XDocument doc)
+        public static App Load(XDocument doc)
         {
             App item = Populate(doc);
 
-            Configuration.GetInstance().App = item;
+            //Configuration.GetInstance().App = item;
 
-          
+            return item;
 
         }
 
@@ -172,5 +173,12 @@ namespace CodeTorch.Core
         {
             return 1;
         }
+
+        public App Load(XDocument doc, string path)
+        {
+            return App.Load(doc);
+        }
+
+   
     }
 }

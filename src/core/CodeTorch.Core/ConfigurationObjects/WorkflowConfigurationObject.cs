@@ -4,10 +4,11 @@ using System.Xml.Linq;
 using CodeTorch.Core.Interfaces;
 using System.IO;
 using System.Collections.Generic;
+using CodeTorch.Abstractions;
 
 namespace CodeTorch.Core.ConfigurationObjects
 {
-    public class WorkflowConfigurationObject: IConfigurationObject
+    public class WorkflowConfigurationObject: IConfigurationObject2, IConfigurationManager<Workflow>
     {
         public string ConfigurationFolder { get { return "Workflows"; } }
 
@@ -51,6 +52,11 @@ namespace CodeTorch.Core.ConfigurationObjects
             }
 
             return retVal;
+        }
+
+        Workflow IConfigurationManager<Workflow>.Load(XDocument doc, string path)
+        {
+            return Workflow.Load(doc);
         }
     }
 }

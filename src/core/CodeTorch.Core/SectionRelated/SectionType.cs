@@ -20,7 +20,7 @@ namespace CodeTorch.Core
         public string AbstractionClass { get; set; }
 
 
-        public static void Load(XDocument doc)
+        public static SectionType Load(XDocument doc)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(SectionType));
             XmlReader reader = doc.CreateReader();
@@ -37,7 +37,7 @@ namespace CodeTorch.Core
                 throw new ApplicationException(String.Format("Error occurred while processing SectionType", doc.Root.FirstNode.ToString()), ex);
             }
 
-            Configuration.GetInstance().SectionTypes.Add(item);
+            return item;
 
         }
 

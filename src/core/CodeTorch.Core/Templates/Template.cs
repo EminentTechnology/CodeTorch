@@ -36,7 +36,7 @@ namespace CodeTorch.Core
 
 
 
-        public static void Load(XDocument doc)
+        public static Template Load(XDocument doc)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(Template));
             XmlReader reader = doc.CreateReader();
@@ -54,7 +54,7 @@ namespace CodeTorch.Core
                 throw new ApplicationException(String.Format("Error occurred while processing Template", doc.Root.FirstNode.ToString()), ex);
             }
 
-            Configuration.GetInstance().Templates.Add(item);
+            return item;
 
         }
 

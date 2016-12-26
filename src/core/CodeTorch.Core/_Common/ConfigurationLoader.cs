@@ -15,12 +15,17 @@ using System.Deployment.Application;
 using System.Windows.Forms;
 using CodeTorch.Core.Interfaces;
 using CodeTorch.Core.ConfigurationObjects;
+using CodeTorch.Abstractions;
+using System.Threading.Tasks;
 
 namespace CodeTorch.Core
 {
 
     public class ConfigurationLoader
     {
+
+        public static IConfigurationStore Store { get; set; }
+
         public static App GetAppObject()
         {
             App retVal = null;
@@ -95,231 +100,114 @@ namespace CodeTorch.Core
             return retVal;
         }
 
+
+        public async static Task LoadConfiguration()
+        {
+            var config = Configuration.GetInstance();
+
+            if (Store == null)
+                throw new ArgumentNullException("Store");
+            
+            //load the special app object
+            var app = await Store.GetItem<App>("App");
+            config.App = app;
+
+
+            //load all the other objects
+            
+            await LoadItems<SectionType>(config, config.SectionTypes);
+            await LoadItems<ScreenType>(config, config.ScreenTypes);
+            await LoadItems<Lookup>(config, config.Lookups);
+            await LoadItems<ControlType>(config, config.ControlTypes);
+
+            await LoadItems<DataCommand>(config, config.DataCommands);
+            await LoadItems<DataConnection>(config, config.DataConnections);
+            await LoadItems<DataConnectionType>(config, config.DataConnectionTypes);
+            await LoadItems<Menu>(config, config.Menus);
+            await LoadItems<Permission>(config, config.Permissions);
+
+            await LoadItems<Picker>(config, config.Pickers);
+            await LoadItems<RestService>(config, config.RestServices);
+            await LoadItems<Screen>(config, config.Screens);
+            await LoadItems<Sequence>(config, config.Sequences);
+            await LoadItems<Workflow>(config, config.Workflows);
+            await LoadItems<WorkflowType>(config, config.WorkflowTypes);
+
+
+            await LoadItems<PageTemplate>(config, config.PageTemplates);
+            await LoadItems<SectionZoneLayout>(config, config.SectionZoneLayouts);
+            await LoadItems<DocumentRepository>(config, config.DocumentRepositories);
+            await LoadItems<DocumentRepositoryType>(config, config.DocumentRepositoryTypes);
+            await LoadItems<EmailConnection>(config, config.EmailConnections);
+            await LoadItems<EmailConnectionType>(config, config.EmailConnectionTypes);
+
+
+        }
+
+        static async Task LoadItems<T>(Configuration config, List<T> data)
+        {
+            
+            var items = await Store.GetItems<T>();
+            data.AddRange(items);
+        }
+
+        [Obsolete("LoadWebConfiguration is deprecated, please use LoadConfiguration instead.")]
         public static void LoadWebConfiguration()
         {
-           
-                //default load is from resource dll - this is method called from 
-                string configMode = ConfigurationManager.AppSettings["APPBUILDER_CONFIG_MODE"];
-
-                if ((!String.IsNullOrEmpty(configMode)) && (configMode.ToLower() == "folder"))
-                {
-                    //Load config from folder
-                    LoadFromConfigurationFolder(ConfigurationManager.AppSettings["APPBUILDER_CONFIG_FOLDER"]);
-                }
-                else
-                {
-                    //load config from dll - default behaviour
-                    string binPath = null;
-
-                    if (HttpContext.Current != null)
-                    {
-                        binPath = HttpContext.Current.Server.MapPath(@"~/bin");
-                    }
-                    else
-                    {
-                        Assembly assembly = Assembly.GetExecutingAssembly();
-
-                        if (ApplicationDeployment.IsNetworkDeployed)
-                        {
-
-                            binPath = String.Format("{0}\\", Application.UserAppDataPath);
-                        }
-                        else
-                        {
-                            binPath = String.Format("{0}\\", System.IO.Path.GetDirectoryName(assembly.Location));
-                        }
-
-
-                    }
-
-
-
-
-                    LoadFromConfigurationDLL
-                        (
-                            String.Format("{1}", binPath, ConfigurationManager.AppSettings["APPBUILDER_CONFIG_DLL"]),
-                            ConfigurationManager.AppSettings["APPBUILDER_CONFIG_DLL_NAMESPACE"]
-                        );
-                }
-
-          
+            LoadConfiguration();
         }
 
-        public static void LoadFromConfigurationFolder(string ConfigurationPath)
+
+
+        public static void SerializeObjectToFile(Object item, string filePath, Type[] extraTypes = null)
         {
-            //by default attempt to load Configuration dll
 
-            if (!String.IsNullOrEmpty(ConfigurationPath))
+            System.Xml.Serialization.XmlSerializer x = null;
+
+            if (extraTypes == null)
             {
-                if (!ConfigurationPath.EndsWith("\\"))
-                    ConfigurationPath += "\\";
-
-                Configuration.GetInstance().ConfigurationPath = ConfigurationPath;
-
-                LoadFromFilePath(ConfigurationPath);
-            }
-
-
-        }
-
-        private static void LoadFromConfigurationDLL(string fileName, string configNamespace)
-        {
-            try
-            {
-                if ((String.IsNullOrEmpty(fileName)) || (String.IsNullOrEmpty(configNamespace)))
-                {
-                    throw new ApplicationException("CodeTorch configuration has not been configured correctly");
-                }
-                else
-                {
-                    LoadConfigObjects(null, fileName, configNamespace);
-                }
-            }
-            catch (Exception e)
-            {
-                throw new ApplicationException(fileName + ": " + e.Message);
-            }
-        }
-
-        private static void LoadItems(string Folder, string TypeName, string ConfigPath, string ConfigResourceDLL, string ConfigNamespace)
-        {
-            if (ConfigPath != null)
-            {
-                LoadDirectoryItems(ConfigPath + Folder, TypeName);
+                x = new System.Xml.Serialization.XmlSerializer(item.GetType());
             }
             else
             {
-                LoadResourceItems(Folder, TypeName, ConfigResourceDLL, ConfigNamespace);
+                x = new System.Xml.Serialization.XmlSerializer(item.GetType(), extraTypes);
+            }
+
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.Indent = true;
+            settings.CloseOutput = true;
+
+            using (XmlWriter writer = XmlWriter.Create(filePath, settings))
+            {
+                x.Serialize(writer, item);
+                writer.Close();
             }
         }
 
-        private static void LoadItem(string Folder, string FileName, string TypeName, string ConfigPath, string ConfigResourceDLL, string ConfigNamespace)
+
+
+        public static string GetFileConfigurationPath()
         {
-            if (ConfigPath != null)
-            {
-                LoadFile(TypeName, String.Format("{0}{1}\\{2}",ConfigPath,Folder,FileName));
-            }
-            else
-            {
-                System.Reflection.Assembly configAssembly = System.Reflection.Assembly.Load(ConfigResourceDLL);
-                string item = String.Format("{0}.{1}.{2}", ConfigNamespace, Folder, FileName);
-                LoadResourceItem(Folder, TypeName, ConfigNamespace, configAssembly, item);
-            }
+            string ConfigPath = Configuration.GetInstance().ConfigurationPath;
+            return ConfigPath;
         }
 
-        private static void LoadResourceItems(string Folder, string entityName, string ConfigResourceDLL, string ConfigNamespace)
+
+
+        public static void ReloadConfigurationItems(string ConfigurationFolder, string ConfigurationItemType)
         {
-            IConfigurationObject config = ConfigurationObjectFactory.CreateConfigurationObject(entityName);
-            config.ClearAll();
-
-            System.Reflection.Assembly configAssembly = System.Reflection.Assembly.Load(ConfigResourceDLL);
-
-            var retVal = from item in configAssembly.GetManifestResourceNames()
-                         where 
-                         (
-                            (item.ToLower().StartsWith(String.Format("{0}.{1}.", ConfigNamespace.ToLower(), Folder.ToLower()))) &&
-                            (item.ToLower().EndsWith(".xml"))
-                         )
-                         orderby item
-                         select item
-                         ;
-
-            List<string> items = retVal.ToList<string>();
-
-            foreach (string item in items)
-            {
-                LoadResourceItem(Folder, entityName, ConfigNamespace, configAssembly, item);
-            }
-
-           
+            throw new NotImplementedException();
         }
 
-        private static void LoadResourceItem(string Folder, string TypeName, string ConfigNamespace, System.Reflection.Assembly configAssembly, string item)
-        {
-            string itemName = item.Substring(ConfigNamespace.Length + 1);
-            string[] tokens = itemName.Split('.');
-
-            using (Stream fileStream = configAssembly.GetManifestResourceStream(item))
-            {
-                using (XmlTextReader xreader = new XmlTextReader(fileStream))
-                {
-                    XDocument doc = XDocument.Load(xreader);
-
-                    IConfigurationObject config = ConfigurationObjectFactory.CreateConfigurationObject(TypeName);
-
-                    if (tokens.Length == 3)
-                    {
-                        //simple folder/child relationship
-                        config.Load(doc, Folder);
-                    }
-                    else
-                    {
-                        config.Load(doc, tokens[1]);
-
-                    }
-
-                    
-                    
-
-                }
-            }
-        }
-
+       
         
+
        
 
-        private static void LoadConfigObjects(string ConfigFolderPath, string ConfigResourceDLL, string ConfigNamespace)
-        {
-            LoadItem("App", "App.xml", "App", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-
-            LoadItems("SectionTypes", "SectionType", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-
-            LoadItems("ControlTypes", "ControlType", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            LoadItems("ScreenTypes", "ScreenType", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            //LoadItems("DashboardComponents", "DashboardComponent", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            //LoadItems("DashboardComponentTypes", "DashboardComponentType", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            LoadItems("DataCommands", "DataCommand", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            LoadItems("DataConnections", "DataConnection", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            LoadItems("DataConnectionTypes", "DataConnectionType", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            //TODO: Email Templates
-            //LoadItems("EmailTemplates", "EmailTemplate", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            
-            //LoadItems("Groups", "Group", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            LoadItems("Lookups", "Lookup", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            LoadItems("Menus", "Menu", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            LoadItems("Permissions", "Permission", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            LoadItems("Pickers", "Picker", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            LoadItems("RestServices", "RestService", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            LoadItems("Screens", "Screen", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            
-            
-            LoadItems("Sequences", "Sequence", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            LoadItems("Workflows", "Workflow", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            LoadItems("WorkflowTypes", "WorkflowType", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            LoadItems("Templates", "Template", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            LoadItems("PageTemplates", "PageTemplate", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            LoadItems("SectionZoneLayouts", "SectionZoneLayout", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            LoadItems("DocumentRepositories", "DocumentRepository", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            LoadItems("DocumentRepositoryTypes", "DocumentRepositoryType", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            LoadItems("EmailConnections", "EmailConnection", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            LoadItems("EmailConnectionTypes", "EmailConnectionType", ConfigFolderPath, ConfigResourceDLL, ConfigNamespace);
-            
-            
-        }
+       
         
 
-        private static void LoadFromFilePath(string ConfigPath)
-        {
-            LoadConfigObjects(ConfigPath, null, null);
-        }
-
-        private static void LoadDirectoryItems(string FolderPath, string TypeName)
-        {
-            if (Directory.Exists(FolderPath))
-            {
-                LoadDirectoryItems(FolderPath, TypeName, true);
-            }
-        }
+       
 
         private static void LoadDirectoryItems(string FolderPath, string entityName, bool ClearCollection)
         {
@@ -330,7 +218,7 @@ namespace CodeTorch.Core
 
                 if (ClearCollection)
                 {
-                    IConfigurationObject config = ConfigurationObjectFactory.CreateConfigurationObject(entityName);
+                    IConfigurationObject2 config = ConfigurationObjectFactory.CreateConfigurationObject(entityName);
                     config.ClearAll();
                 }
 
@@ -353,7 +241,7 @@ namespace CodeTorch.Core
                 XDocument doc = XDocument.Load(file);
                 string folder = Path.GetDirectoryName(file).Substring(Path.GetDirectoryName(file).LastIndexOf("\\") + 1);
                 
-                IConfigurationObject config = ConfigurationObjectFactory.CreateConfigurationObject(entityName);
+                IConfigurationObject2 config = ConfigurationObjectFactory.CreateConfigurationObject(entityName);
                 config.Load(doc,folder);
             }
             catch (Exception ex)
@@ -362,9 +250,7 @@ namespace CodeTorch.Core
             }
         }
 
-       
-
-        public static void SerializeObjectToFile(Object item, string filePath, Type[] extraTypes = null)
+        public static void LoadFromConfigurationFolder(string configurationPath)
         {
 
             System.Xml.Serialization.XmlSerializer x = null;
@@ -388,25 +274,8 @@ namespace CodeTorch.Core
                 x.Serialize(writer, item);
                 writer.Close();
             }
+            throw new NotImplementedException();
         }
-
-
-
-        public static string GetFileConfigurationPath()
-        {
-            string ConfigPath = Configuration.GetInstance().ConfigurationPath;
-            return ConfigPath;
-        }
-
-
-      
-        public static void ReloadConfigurationItems(string ConfigurationFolder, string ConfigurationItemType)
-        {
-            string ConfigPath = ConfigurationLoader.GetFileConfigurationPath();
-            LoadDirectoryItems(ConfigPath + ConfigurationFolder, ConfigurationItemType);
-        }
-
-
     }
 
 

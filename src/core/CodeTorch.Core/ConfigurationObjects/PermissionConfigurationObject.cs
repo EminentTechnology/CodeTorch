@@ -4,10 +4,11 @@ using System.Xml.Linq;
 using CodeTorch.Core.Interfaces;
 using System.IO;
 using System.Collections.Generic;
+using CodeTorch.Abstractions;
 
 namespace CodeTorch.Core.ConfigurationObjects
 {
-    public class PermissionConfigurationObject: IConfigurationObject
+    public class PermissionConfigurationObject: IConfigurationObject2, IConfigurationManager<Permission>
     {
         public string ConfigurationFolder { get { return "Permissions"; } }
 
@@ -51,6 +52,11 @@ namespace CodeTorch.Core.ConfigurationObjects
             }
 
             return retVal;
+        }
+
+        Permission IConfigurationManager<Permission>.Load(XDocument doc, string path)
+        {
+            return Permission.Load(doc);
         }
     }
 }

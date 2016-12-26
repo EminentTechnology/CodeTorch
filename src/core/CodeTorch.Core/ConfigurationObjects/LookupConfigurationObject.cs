@@ -4,10 +4,11 @@ using System.Xml.Linq;
 using CodeTorch.Core.Interfaces;
 using System.IO;
 using System.Collections.Generic;
+using CodeTorch.Abstractions;
 
 namespace CodeTorch.Core.ConfigurationObjects
 {
-    public class LookupConfigurationObject: IConfigurationObject
+    public class LookupConfigurationObject: IConfigurationObject2, IConfigurationManager<Lookup>
     {
         public string ConfigurationFolder { get { return "Lookups"; } }
 
@@ -51,6 +52,11 @@ namespace CodeTorch.Core.ConfigurationObjects
             }
 
             return retVal;
+        }
+
+        Lookup IConfigurationManager<Lookup>.Load(XDocument doc, string path)
+        {
+            return Lookup.Load(doc);
         }
     }
 }

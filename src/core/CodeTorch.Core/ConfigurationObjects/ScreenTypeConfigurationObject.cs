@@ -4,10 +4,11 @@ using System.Xml.Linq;
 using CodeTorch.Core.Interfaces;
 using System.IO;
 using System.Collections.Generic;
+using CodeTorch.Abstractions;
 
 namespace CodeTorch.Core.ConfigurationObjects
 {
-    public class ScreenTypeConfigurationObject: IConfigurationObject
+    public class ScreenTypeConfigurationObject: IConfigurationObject2, IConfigurationManager<ScreenType>
     {
         public string ConfigurationFolder { get { return "ScreenTypes"; } }
 
@@ -51,6 +52,11 @@ namespace CodeTorch.Core.ConfigurationObjects
             }
 
             return retVal;
+        }
+
+        ScreenType IConfigurationManager<ScreenType>.Load(XDocument doc, string path)
+        {
+            return ScreenType.Load(doc);
         }
     }
 }

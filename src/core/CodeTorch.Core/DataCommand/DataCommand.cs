@@ -114,7 +114,7 @@ namespace CodeTorch.Core
         [Category("Processing Hooks")]
         public string PostProcessingClass { get; set; }
 
-        public static void Load(XDocument doc)
+        public static DataCommand Load(XDocument doc)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(DataCommand));
             XmlReader reader = doc.CreateReader();
@@ -122,7 +122,7 @@ namespace CodeTorch.Core
 
             DataCommand command = (DataCommand)serializer.Deserialize(reader);
 
-            Configuration.GetInstance().DataCommands.Add(command);
+            return command;
 
         }
 

@@ -24,7 +24,7 @@ namespace CodeTorch.Core
         public Int64 SeedValue { get { return _SeedValue; } set { _SeedValue = value; } }
         public Int64 Increment { get { return _Increment; } set { _Increment = value; } }
 
-        public static void Load(XDocument doc)
+        public static Sequence Load(XDocument doc)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(Sequence));
             XmlReader reader = doc.CreateReader();
@@ -41,7 +41,7 @@ namespace CodeTorch.Core
                 throw new ApplicationException(String.Format("Error occurred while processing Sequence - {0}", doc.Root.FirstNode.ToString()), ex);
             }
 
-            Configuration.GetInstance().Sequences.Add(item);
+            return item;
 
         }
 

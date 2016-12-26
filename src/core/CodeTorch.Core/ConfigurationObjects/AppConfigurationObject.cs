@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using CodeTorch.Abstractions;
 
 namespace CodeTorch.Core.ConfigurationObjects
 {
-    public class AppConfigurationObject: IConfigurationObject
+    public class AppConfigurationObject: IConfigurationObject2, IConfigurationManager<App>
     {
         public string ConfigurationFolder { get { return "App"; } }
 
@@ -47,8 +48,10 @@ namespace CodeTorch.Core.ConfigurationObjects
 
             return retVal;
         }
-        
 
-        
+        App IConfigurationManager<App>.Load(XDocument doc, string path)
+        {
+            return App.Load(doc);
+        }
     }
 }

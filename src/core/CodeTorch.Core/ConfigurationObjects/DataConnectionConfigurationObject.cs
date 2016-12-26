@@ -1,4 +1,5 @@
-﻿using CodeTorch.Core.Interfaces;
+﻿using CodeTorch.Abstractions;
+using CodeTorch.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,7 +10,7 @@ using System.Xml.Linq;
 
 namespace CodeTorch.Core.ConfigurationObjects
 {
-    public class DataConnectionConfigurationObject: IConfigurationObject
+    public class DataConnectionConfigurationObject: IConfigurationObject2, IConfigurationManager<DataConnection>
     {
         public string ConfigurationFolder { get { return "DataConnections"; } }
 
@@ -53,6 +54,11 @@ namespace CodeTorch.Core.ConfigurationObjects
             }
 
             return retVal;
+        }
+
+        DataConnection IConfigurationManager<DataConnection>.Load(XDocument doc, string path)
+        {
+            return DataConnection.Load(doc);
         }
     }
 }

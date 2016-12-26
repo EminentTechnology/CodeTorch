@@ -41,7 +41,7 @@ namespace CodeTorch.Core
             }
         }
 
-        public static void Load(XDocument doc)
+        public static EmailConnection Load(XDocument doc)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(EmailConnection));
             XmlReader reader = doc.CreateReader();
@@ -58,7 +58,7 @@ namespace CodeTorch.Core
                 throw new ApplicationException(String.Format("Error occurred while processing EmailConnection - {0}", doc.Root.FirstNode.ToString()), ex);
             }
 
-            Configuration.GetInstance().EmailConnections.Add(item);
+            return item;
 
         }
 

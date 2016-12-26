@@ -44,7 +44,7 @@ namespace CodeTorch.Core
 
         }
 
-        public static void Load(XDocument doc)
+        public static Menu Load(XDocument doc)
         {
 
             XmlSerializer serializer = new XmlSerializer(typeof(Menu));
@@ -62,7 +62,7 @@ namespace CodeTorch.Core
                 throw new ApplicationException(String.Format("Error occurred while processing Menu", doc.Root.FirstNode.ToString()), ex);
             }
 
-            Configuration.GetInstance().Menus.Add(menu);
+            return menu;
 
         }
 

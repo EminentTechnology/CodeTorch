@@ -66,7 +66,7 @@ namespace CodeTorch.Core
             }
         }
 
-        public static void Load(XDocument doc)
+        public static Workflow Load(XDocument doc)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(Workflow));
             XmlReader reader = doc.CreateReader();
@@ -84,7 +84,7 @@ namespace CodeTorch.Core
                 throw new ApplicationException(String.Format("Error occurred while processing Workflow", doc.Root.FirstNode.ToString()), ex);
             }
 
-            Configuration.GetInstance().Workflows.Add(item);
+            return item;
 
         }
 

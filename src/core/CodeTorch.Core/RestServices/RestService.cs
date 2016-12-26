@@ -53,7 +53,7 @@ namespace CodeTorch.Core
 
         
 
-        public static void Load(XDocument doc)
+        public static RestService Load(XDocument doc)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(RestService));
             XmlReader reader = doc.CreateReader();
@@ -70,7 +70,7 @@ namespace CodeTorch.Core
                 throw new ApplicationException(String.Format("Error occurred while processing RestService - {0}", doc.Root.FirstNode.ToString()), ex);
             }
 
-            Configuration.GetInstance().RestServices.Add(item);
+            return item;
 
         }
 
