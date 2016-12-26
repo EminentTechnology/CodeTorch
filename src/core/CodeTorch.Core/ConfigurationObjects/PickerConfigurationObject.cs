@@ -4,10 +4,11 @@ using System.Xml.Linq;
 using CodeTorch.Core.Interfaces;
 using System.IO;
 using System.Collections.Generic;
+using CodeTorch.Abstractions;
 
 namespace CodeTorch.Core.ConfigurationObjects
 {
-    public class PickerConfigurationObject: IConfigurationObject
+    public class PickerConfigurationObject: IConfigurationObject2, IConfigurationManager<Picker>
     {
         public string ConfigurationFolder { get { return "Pickers"; } }
 
@@ -51,6 +52,11 @@ namespace CodeTorch.Core.ConfigurationObjects
             }
 
             return retVal;
+        }
+
+        Picker IConfigurationManager<Picker>.Load(XDocument doc, string path)
+        {
+            return Picker.Load(doc);
         }
     }
 }

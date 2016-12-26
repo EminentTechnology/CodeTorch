@@ -42,7 +42,7 @@ namespace CodeTorch.Core
 
         }
 
-        public static void Load(XDocument doc)
+        public static DataConnection Load(XDocument doc)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(DataConnection));
             XmlReader reader = doc.CreateReader();
@@ -59,7 +59,7 @@ namespace CodeTorch.Core
                 throw new ApplicationException(String.Format("Error occurred while processing DataConnection - {0}", doc.Root.FirstNode.ToString()), ex);
             }
 
-            Configuration.GetInstance().DataConnections.Add(item);
+            return item;
 
         }
 

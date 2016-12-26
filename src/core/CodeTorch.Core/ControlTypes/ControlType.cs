@@ -60,7 +60,7 @@ namespace CodeTorch.Core
         }
 
        
-        public static void Load(XDocument doc)
+        public static ControlType Load(XDocument doc)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(ControlType));
             XmlReader reader = doc.CreateReader();
@@ -77,7 +77,7 @@ namespace CodeTorch.Core
                 throw new ApplicationException(String.Format("Error occurred while processing ControlType - {0}", doc.Root.FirstNode.ToString()), ex);
             }
 
-            Configuration.GetInstance().ControlTypes.Add(item);
+            return item;
 
         }
 

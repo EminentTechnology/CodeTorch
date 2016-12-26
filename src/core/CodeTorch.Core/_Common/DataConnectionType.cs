@@ -57,7 +57,7 @@ namespace CodeTorch.Core
 
         }
 
-        public static void Load(XDocument doc)
+        public static DataConnectionType Load(XDocument doc)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(DataConnectionType));
             XmlReader reader = doc.CreateReader();
@@ -74,7 +74,7 @@ namespace CodeTorch.Core
                 throw new ApplicationException(String.Format("Error occurred while processing DataConnectionType - {0}", doc.Root.FirstNode.ToString()), ex);
             }
 
-            Configuration.GetInstance().DataConnectionTypes.Add(item);
+            return item;
 
         }
 

@@ -95,7 +95,7 @@ namespace CodeTorch.Designer.Forms
                     this.Text = string.Format("CodeTorch Designer - v {0} - {1}", GetDisplayVersion(), Project.Name);
                     PerformSchemaVersionChecks();
 
-                    ConfigurationLoader.LoadFromConfigurationFolder(ConfigurationPath);
+                   ConfigurationLoader.LoadFromConfigurationFolder(ConfigurationPath);
 
                     
                     LoadStartPage();
@@ -1009,7 +1009,7 @@ namespace CodeTorch.Designer.Forms
                     string objectTypeName = o.GetType().Name;
                     
 
-                    IConfigurationObject config = ConfigurationObjectFactory.CreateConfigurationObject(node.EntityType);
+                    IConfigurationObject2 config = ConfigurationObjectFactory.CreateConfigurationObject(node.EntityType);
                     config.Save(o);
 
                     retVal = true;
@@ -1183,7 +1183,7 @@ namespace CodeTorch.Designer.Forms
                 if (result == DialogResult.OK)
                 {
                     //TODO: close this document ifit is open
-                    IConfigurationObject config = ConfigurationObjectFactory.CreateConfigurationObject(node.EntityType);
+                    IConfigurationObject2 config = ConfigurationObjectFactory.CreateConfigurationObject(node.EntityType);
                     config.Delete(node.Object);
 
                     

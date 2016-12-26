@@ -12,7 +12,7 @@ namespace CodeTorch.Core
     {
         public const string ENTITY_TYPE_APP = "App";
         public const string ENTITY_TYPE_CONTROL_TYPE = "ControlType";
-        public const string ENTITY_TYPE_DASHBOARD_COMPONENT = "DashboardComponent";
+
         
 
         public const string ENTITY_TYPE_DATA_CONNECTION = "DataConnection";
@@ -44,11 +44,11 @@ namespace CodeTorch.Core
 
        
 
-        private static Dictionary<string, Func<IConfigurationObject>> configurationObjectMap = new Dictionary<string, Func<IConfigurationObject>>()
+        private static Dictionary<string, Func<IConfigurationObject2>> configurationObjectMap = new Dictionary<string, Func<IConfigurationObject2>>()
         {
             {ENTITY_TYPE_APP, () => { return new AppConfigurationObject(); }},
             {ENTITY_TYPE_CONTROL_TYPE, () => { return new ControlTypeConfigurationObject(); }},
-            {ENTITY_TYPE_DASHBOARD_COMPONENT, () => { return new DashboardComponentConfigurationObject(); }},
+
             {ENTITY_TYPE_DATA_COMMAND, () => { return new DataCommandConfigurationObject(); }},
             {ENTITY_TYPE_DATA_CONNECTION, () => { return new DataConnectionConfigurationObject(); }},
             {ENTITY_TYPE_DATA_CONNECTION_TYPE, () => { return new DataConnectionTypeConfigurationObject(); }},
@@ -72,7 +72,7 @@ namespace CodeTorch.Core
             {ENTITY_TYPE_WORKFLOW_TYPE, () => { return new WorkflowTypeConfigurationObject(); }}
         };
 
-        public static IConfigurationObject CreateConfigurationObject(string entityName)
+        public static IConfigurationObject2 CreateConfigurationObject(string entityName)
         {
             return configurationObjectMap[entityName]();
         }

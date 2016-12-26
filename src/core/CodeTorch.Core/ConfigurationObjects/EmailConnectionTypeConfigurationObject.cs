@@ -4,10 +4,11 @@ using System.Xml.Linq;
 using CodeTorch.Core.Interfaces;
 using System.IO;
 using System.Collections.Generic;
+using CodeTorch.Abstractions;
 
 namespace CodeTorch.Core.ConfigurationObjects
 {
-    public class EmailConnectionTypeConfigurationObject: IConfigurationObject
+    public class EmailConnectionTypeConfigurationObject: IConfigurationObject2, IConfigurationManager<EmailConnectionType>
     {
         public string ConfigurationFolder { get { return "EmailConnectionTypes"; } }
 
@@ -51,6 +52,11 @@ namespace CodeTorch.Core.ConfigurationObjects
             }
 
             return retVal;
+        }
+
+        EmailConnectionType IConfigurationManager<EmailConnectionType>.Load(XDocument doc, string path)
+        {
+            return EmailConnectionType.Load(doc);
         }
     }
 }

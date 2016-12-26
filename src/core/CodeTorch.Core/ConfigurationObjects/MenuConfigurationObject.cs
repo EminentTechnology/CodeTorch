@@ -4,10 +4,11 @@ using System.Xml.Linq;
 using CodeTorch.Core.Interfaces;
 using System.IO;
 using System.Collections.Generic;
+using CodeTorch.Abstractions;
 
 namespace CodeTorch.Core.ConfigurationObjects
 {
-    public class MenuConfigurationObject: IConfigurationObject
+    public class MenuConfigurationObject: IConfigurationObject2, IConfigurationManager<Menu>
     {
         public string ConfigurationFolder { get { return "Menus"; } }
 
@@ -51,6 +52,11 @@ namespace CodeTorch.Core.ConfigurationObjects
             }
 
             return retVal;
+        }
+
+        Menu IConfigurationManager<Menu>.Load(XDocument doc, string path)
+        {
+            return Menu.Load(doc);
         }
     }
 }

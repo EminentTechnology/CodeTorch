@@ -4,10 +4,11 @@ using System.Xml.Linq;
 using CodeTorch.Core.Interfaces;
 using System.IO;
 using System.Collections.Generic;
+using CodeTorch.Abstractions;
 
 namespace CodeTorch.Core.ConfigurationObjects
 {
-    public class DocumentRepositoryConfigurationObject: IConfigurationObject
+    public class DocumentRepositoryConfigurationObject: IConfigurationObject2, IConfigurationManager<DocumentRepository>
     {
         public string ConfigurationFolder { get { return "DocumentRepositories"; } }
 
@@ -51,6 +52,11 @@ namespace CodeTorch.Core.ConfigurationObjects
             }
 
             return retVal;
+        }
+
+        DocumentRepository IConfigurationManager<DocumentRepository>.Load(XDocument doc, string path)
+        {
+            return DocumentRepository.Load(doc);
         }
     }
 }

@@ -4,10 +4,11 @@ using System.Xml.Linq;
 using CodeTorch.Core.Interfaces;
 using System.IO;
 using System.Collections.Generic;
+using CodeTorch.Abstractions;
 
 namespace CodeTorch.Core.ConfigurationObjects
 {
-    public class ScreenConfigurationObject: IConfigurationObject
+    public class ScreenConfigurationObject: IConfigurationObject2, IConfigurationManager<Screen>
     {
         public string ConfigurationFolder { get { return "Screens"; } }
 
@@ -58,6 +59,12 @@ namespace CodeTorch.Core.ConfigurationObjects
             }
 
             return retVal;
+        }
+
+        Screen IConfigurationManager<Screen>.Load(XDocument doc, string path)
+        {
+            string folder = Path.GetDirectoryName(path).Substring(Path.GetDirectoryName(path).LastIndexOf("\\") + 1);
+            return Screen.Load(doc, folder);
         }
     }
 }

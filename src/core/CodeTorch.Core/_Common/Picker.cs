@@ -43,7 +43,7 @@ namespace CodeTorch.Core
         [Category("Appearance")]
         public int Width { get { return _Width; } set { _Width = value; } }
 
-        public static void Load(XDocument doc)
+        public static Picker Load(XDocument doc)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(Picker));
             XmlReader reader = doc.CreateReader();
@@ -60,7 +60,7 @@ namespace CodeTorch.Core
                 throw new ApplicationException(String.Format("Error occurred while processing Picker - {0}", doc.Root.FirstNode.ToString()), ex);
             }
 
-            Configuration.GetInstance().Pickers.Add(item);
+            return item;
 
         }
 

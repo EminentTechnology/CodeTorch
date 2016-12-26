@@ -128,7 +128,6 @@
     <Compile Include="ConfigurationObjects\EmailConnectionTypeConfigurationObject.cs" />
     <Compile Include="ConfigurationObjects\DocumentRepositoryConfigurationObject.cs" />
     <Compile Include="ConfigurationObjects\DocumentRepositoryTypeConfigurationObject.cs" />
-    <Compile Include="ConfigurationObjects\DashboardComponentConfigurationObject.cs" />
     <Compile Include="ConfigurationObjects\DataCommandConfigurationObject.cs" />
     <Compile Include="ConfigurationObjects\LookupConfigurationObject.cs" />
     <Compile Include="ConfigurationObjects\MenuConfigurationObject.cs" />
@@ -350,6 +349,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CodeTorch.Abstractions\CodeTorch.Abstractions.csproj">
+      <Project>{d4c1a8a6-0150-49d9-9ec6-e1561366fe47}</Project>
+      <Name>CodeTorch.Abstractions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Eminent.CodeGenerator\Eminent.CodeGenerator.csproj">
       <Project>{ACABE9A8-825E-46A4-8A52-EC44DA8357F7}</Project>
       <Name>Eminent.CodeGenerator</Name>

@@ -28,7 +28,7 @@ namespace CodeTorch.Core
             return screenType;
         }
 
-        public static void Load(System.Xml.Linq.XDocument doc)
+        public static ScreenType Load(System.Xml.Linq.XDocument doc)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(ScreenType));
             XmlReader reader = doc.CreateReader();
@@ -45,7 +45,7 @@ namespace CodeTorch.Core
                 throw new ApplicationException(String.Format("Error occurred while processing {0}", doc.Root.FirstNode.ToString()), ex);
             }
 
-            Configuration.GetInstance().ScreenTypes.Add(item);
+            return item;
         }
 
         public static void Save(ScreenType item)

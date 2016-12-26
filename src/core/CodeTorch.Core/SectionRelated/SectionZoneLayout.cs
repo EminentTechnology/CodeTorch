@@ -37,7 +37,7 @@ namespace CodeTorch.Core
 
         }
 
-        public static void Load(XDocument doc)
+        public static SectionZoneLayout Load(XDocument doc)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(SectionZoneLayout));
             XmlReader reader = doc.CreateReader();
@@ -54,7 +54,7 @@ namespace CodeTorch.Core
                 throw new ApplicationException(String.Format("Error occurred while processing SectionZoneLayout - {0}", doc.Root.FirstNode.ToString()), ex);
             }
 
-            Configuration.GetInstance().SectionZoneLayouts.Add(item);
+            return item;
 
         }
 

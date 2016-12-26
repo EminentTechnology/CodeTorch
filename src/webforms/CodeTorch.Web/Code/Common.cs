@@ -20,6 +20,7 @@ using CodeTorch.Web.SectionControls;
 using System.Web.Hosting;
 using CodeTorch.Web.Providers.EmbeddedResourceVirtualPathProvider;
 using CodeTorch.Core.Services;
+using CodeTorch.Abstractions;
 
 namespace CodeTorch.Web
 {
@@ -480,7 +481,7 @@ namespace CodeTorch.Web
             
         }
 
-        public static void LoadWebConfiguration(RouteCollection routes)
+        public static async System.Threading.Tasks.Task LoadWebConfiguration(IConfigurationStore store, RouteCollection routes)
         {
             //load virtual path provider
             HostingEnvironment.RegisterVirtualPathProvider(new EmbeddedResourceProvider() 
@@ -488,7 +489,8 @@ namespace CodeTorch.Web
                 {Assembly.GetExecutingAssembly()}
             });
 
-            CodeTorch.Core.ConfigurationLoader.LoadWebConfiguration();
+            CodeTorch.Core.ConfigurationLoader.Store = store;
+            await CodeTorch.Core.ConfigurationLoader.LoadConfiguration();
 
             
 

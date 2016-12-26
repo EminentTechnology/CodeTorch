@@ -43,7 +43,7 @@ namespace CodeTorch.Core
 
         }
 
-        public static void Load(XDocument doc)
+        public static DocumentRepository Load(XDocument doc)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(DocumentRepository));
             XmlReader reader = doc.CreateReader();
@@ -60,7 +60,7 @@ namespace CodeTorch.Core
                 throw new ApplicationException(String.Format("Error occurred while processing DocumentRepository - {0}", doc.Root.FirstNode.ToString()), ex);
             }
 
-            Configuration.GetInstance().DocumentRepositories.Add(item);
+            return item;
 
         }
 

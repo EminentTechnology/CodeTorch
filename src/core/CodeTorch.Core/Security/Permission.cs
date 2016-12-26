@@ -20,7 +20,7 @@ namespace CodeTorch.Core
 
 
 
-        public static void Load(XDocument doc)
+        public static Permission Load(XDocument doc)
         {
             var retVal = from permission in doc.Elements("Permission")
                          select new Permission
@@ -31,7 +31,7 @@ namespace CodeTorch.Core
                          };
 
             Permission val = retVal.First<Permission>();
-            Configuration.GetInstance().Permissions.Add(val);
+            return val;
 
         }
 

@@ -201,7 +201,7 @@ namespace CodeTorch.Core
         }
 
         private static XmlSerializer serializer = null;
-        public static void Load(XDocument doc, string FolderName)
+        public static Screen Load(XDocument doc, string FolderName)
         {
 
             string pageType = doc.Root.Element("Type").Value;
@@ -231,12 +231,14 @@ namespace CodeTorch.Core
                 Screen.SetupControls(screen);
 
 
-                Configuration.GetInstance().Screens.Add(screen);
+                
             }
             catch (Exception ex)
             {
                 throw new ApplicationException(String.Format("Error occurred while processing Screen - {0}", doc.Root.FirstNode.ToString()), ex);
             }
+
+            return screen;
 
         }
 

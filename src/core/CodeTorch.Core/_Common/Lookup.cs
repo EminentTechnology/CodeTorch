@@ -39,7 +39,7 @@ namespace CodeTorch.Core
         
 
 
-        public static void Load(XDocument doc)
+        public static Lookup Load(XDocument doc)
         {
             
             XmlSerializer serializer = new XmlSerializer(typeof(Lookup));
@@ -61,7 +61,7 @@ namespace CodeTorch.Core
                 throw new ApplicationException(String.Format("Error occurred while processing Lookup - {0}", doc.Root.FirstNode.ToString()), ex);
             }
 
-            Configuration.GetInstance().Lookups.Add(item);
+            return item;
 
         }
 

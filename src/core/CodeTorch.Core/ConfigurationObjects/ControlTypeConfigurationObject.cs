@@ -1,4 +1,5 @@
-﻿using CodeTorch.Core.Interfaces;
+﻿using CodeTorch.Abstractions;
+using CodeTorch.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,7 +10,7 @@ using System.Xml.Linq;
 
 namespace CodeTorch.Core.ConfigurationObjects
 {
-    public class ControlTypeConfigurationObject: IConfigurationObject
+    public class ControlTypeConfigurationObject: IConfigurationObject2, IConfigurationManager<ControlType>
     {
         public string ConfigurationFolder { get { return "ControlTypes"; } }
 
@@ -53,6 +54,11 @@ namespace CodeTorch.Core.ConfigurationObjects
             }
 
             return retVal;
+        }
+
+        ControlType IConfigurationManager<ControlType>.Load(XDocument doc, string path)
+        {
+            return ControlType.Load(doc);
         }
     }
 }
