@@ -48,7 +48,7 @@ namespace CodeTorch.Designer.Forms
 
         private void ValidateExistingMenu(Control ctrl, string Caption, ref bool IsErrorPresent, StringBuilder errors)
         {
-            var retVal = from menu in Configuration.GetInstance().Menus
+            var retVal = from menu in Core.Configuration.GetInstance().Menus
                          where menu.Name.ToLower() == MenuName.Text.ToLower()
                          select menu;
 
@@ -102,7 +102,7 @@ namespace CodeTorch.Designer.Forms
                     CodeTorch.Core.Menu menu = new CodeTorch.Core.Menu();
                     menu.Name = MenuName.Text;
 
-                    Configuration.GetInstance().Menus.Add(menu);
+                    Core.Configuration.GetInstance().Menus.Add(menu);
                     CodeTorch.Core.Menu.Save(menu);
                    
                     this.DialogResult = DialogResult.OK;

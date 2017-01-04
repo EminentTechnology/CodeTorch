@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Screen xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>DataCommandOverview.aspx</Name>
+  <PageTemplate>
+    <Mode>Static</Mode>
+    <Name>DefaultWithMenu</Name>
+  </PageTemplate>
+  <Type>Screen</Type>
+  <Folder>CodeTorch</Folder>
+  <RequireAuthentication>false</RequireAuthentication>
+  <SupportsTransactions>true</SupportsTransactions>
+  <ValidateRequest>true</ValidateRequest>
+  <IsBackend>false</IsBackend>
+  <Menu>
+    <Name>CodeTorchDataCommandMenu</Name>
+    <DisplayMenu>true</DisplayMenu>
+  </Menu>
+  <Title>
+    <UseCommand>true</UseCommand>
+    <CommandFormatString>Data Command - {Name}</CommandFormatString>
+    <CommandName>DataCommand_GetByName</CommandName>
+  </Title>
+  <SubTitle>
+    <Name>Overview</Name>
+    <UseCommand>false</UseCommand>
+  </SubTitle>
+  <ScreenPermission>
+    <CheckPermission>false</CheckPermission>
+  </ScreenPermission>
+  <Sections>
+    <Section xsi:type="AlertSection">
+      <Name>Alert</Name>
+      <Type>Alert</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Top</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <IncludeValidationSummary>true</IncludeValidationSummary>
+    </Section>
+    <Section xsi:type="DetailsSection">
+      <Name>General Info</Name>
+      <CssClass />
+      <Type>Details</Type>
+      <Mode>All</Mode>
+      <ContainerMode>Panel</ContainerMode>
+      <Visible>true</Visible>
+      <ContainerElement>fieldset </ContainerElement>
+      <ContainerCssClass>form-horizontal</ContainerCssClass>
+      <ContentPane>Left</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets>
+        <Widget xsi:type="LabelControl">
+          <Name>Name</Name>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass>col-md-10</ControlContainerCssClass>
+          <Label>Name</Label>
+          <LabelCssClass>col-md-2</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>form-group</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>Label</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <DataField>Name</DataField>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+        </Widget>
+        <Widget xsi:type="LabelControl">
+          <Name>DataConnection</Name>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass>col-md-10</ControlContainerCssClass>
+          <Label>Connection</Label>
+          <LabelCssClass>col-md-2</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>form-group</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>Label</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <DataField>DataConnection</DataField>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+        </Widget>
+        <Widget xsi:type="LabelControl">
+          <Name>Type</Name>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass>col-md-10</ControlContainerCssClass>
+          <Label>Type</Label>
+          <LabelCssClass>col-md-2</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>form-group</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>Label</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <DataField>Type</DataField>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+        </Widget>
+        <Widget xsi:type="LabelControl">
+          <Name>ReturnType</Name>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass>col-md-10</ControlContainerCssClass>
+          <Label>Return Type</Label>
+          <LabelCssClass>col-md-2</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>form-group</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>Label</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <DataField>ReturnType</DataField>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+        </Widget>
+      </Widgets>
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+    </Section>
+    <Section xsi:type="DetailsSection">
+      <Name>Pre Processing Hooks</Name>
+      <Type>Details</Type>
+      <Mode>All</Mode>
+      <ContainerMode>Panel</ContainerMode>
+      <Visible>true</Visible>
+      <ContainerElement>fieldset </ContainerElement>
+      <ContainerCssClass>form-horizontal</ContainerCssClass>
+      <ContentPane>Left</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets>
+        <Widget xsi:type="LabelControl">
+          <Name>PreProcessingAssembly</Name>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass>col-md-10</ControlContainerCssClass>
+          <Label>Assembly</Label>
+          <LabelCssClass>col-md-2</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>form-group</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>Label</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <DataField>PreProcessingAssembly</DataField>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+        </Widget>
+        <Widget xsi:type="LabelControl">
+          <Name>PreProcessingClass</Name>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass>col-md-10</ControlContainerCssClass>
+          <Label>Class</Label>
+          <LabelCssClass>col-md-2</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>form-group</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>Label</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <DataField>PreProcessingClass</DataField>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+        </Widget>
+      </Widgets>
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+    </Section>
+    <Section xsi:type="DetailsSection">
+      <Name>Post Processing Hooks</Name>
+      <Type>Details</Type>
+      <Mode>All</Mode>
+      <ContainerMode>Panel</ContainerMode>
+      <Visible>true</Visible>
+      <ContainerElement>fieldset </ContainerElement>
+      <ContainerCssClass>form-horizontal</ContainerCssClass>
+      <ContentPane>Left</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets>
+        <Widget xsi:type="LabelControl">
+          <Name>PostProcessingAssembly</Name>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass>col-md-10</ControlContainerCssClass>
+          <Label>Assembly</Label>
+          <LabelCssClass>col-md-2</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>form-group</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>Label</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <DataField>PostProcessingAssembly</DataField>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+        </Widget>
+        <Widget xsi:type="LabelControl">
+          <Name>PostProcessingClass</Name>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass>col-md-10</ControlContainerCssClass>
+          <Label>Class</Label>
+          <LabelCssClass>col-md-2</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>form-group</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>Label</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <DataField>PostProcessingClass</DataField>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+        </Widget>
+      </Widgets>
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+    </Section>
+  </Sections>
+  <SectionZoneLayout>SingleColumn</SectionZoneLayout>
+  <Settings />
+  <Scripts />
+  <DataCommands>
+    <DataCommand>
+      <Name>DataCommand_GetByName</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@name</Name>
+          <InputType>QueryString</InputType>
+          <InputKey>Command</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+  </DataCommands>
+  <OnPageLoad>
+    <Commands>
+      <DefaultOrPopulateScreenCommand>
+        <Name>DefaultOrPopulateScreen</Name>
+        <Type>DefaultOrPopulateScreenCommand</Type>
+        <EntityID>Command</EntityID>
+        <EntityInputType>QueryString</EntityInputType>
+        <RetrieveCommand>DataCommand_GetByName</RetrieveCommand>
+        <ExecuteOnPostBack>false</ExecuteOnPostBack>
+      </DefaultOrPopulateScreenCommand>
+    </Commands>
+  </OnPageLoad>
+  <OnPageInit>
+    <Commands>
+      <RenderPageSectionsCommand>
+        <Name>RenderPageSections</Name>
+        <Type>RenderPageSectionsCommand</Type>
+        <EntityInputType>QueryString</EntityInputType>
+        <Mode>Simple</Mode>
+      </RenderPageSectionsCommand>
+    </Commands>
+  </OnPageInit>
+</Screen>

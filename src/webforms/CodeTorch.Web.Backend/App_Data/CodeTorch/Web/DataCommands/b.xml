@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataCommand xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>b</Name>
+  <DataConnection>Default</DataConnection>
+  <Type>StoredProcedure</Type>
+  <Text>CDCWarning_Get</Text>
+  <ReturnType>DataTable</ReturnType>
+  <Parameters />
+  <Columns>
+    <Column>
+      <Name>dfg</Name>
+      <Type>dfg</Type>
+    </Column>
+    <Column>
+      <Name>cvb</Name>
+      <Type>bvc</Type>
+    </Column>
+  </Columns>
+</DataCommand>

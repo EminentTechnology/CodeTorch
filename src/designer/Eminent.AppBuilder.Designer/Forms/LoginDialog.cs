@@ -309,7 +309,7 @@ namespace CodeTorch.Designer.Forms
                     ProjectMRUItem item = new ProjectMRUItem(ProjectName.Text, this.ProjectFile);
                     AddToMRU(item);
 
-                    Configuration.GetInstance().ConfigurationPath = ConfigurationPath;
+                    Core.Configuration.GetInstance().ConfigurationPath = ConfigurationPath;
          
                     this.DialogResult = DialogResult.OK;
 

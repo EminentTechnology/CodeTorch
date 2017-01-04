@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Menu xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>CodeTorchDataCommandMenu</Name>
+  <RequiresAuthentication>false</RequiresAuthentication>
+  <Items>
+    <Item>
+      <Name>Overview</Name>
+      <Location>~/App/CodeTorch/DataCommandOverview.aspx</Location>
+      <Context>Command</Context>
+      <Items />
+      <UseCommand>false</UseCommand>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+    </Item>
+    <Item>
+      <Name>Edit</Name>
+      <Location>~/App/CodeTorch/DataCommandEdit.aspx</Location>
+      <Context>Command</Context>
+      <Items />
+      <UseCommand>false</UseCommand>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+    </Item>
+    <Item>
+      <Name>Parameters</Name>
+      <Location>~/App/CodeTorch/DataCommandParameters.aspx</Location>
+      <Context>Command</Context>
+      <Items />
+      <UseCommand>false</UseCommand>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+    </Item>
+    <Item>
+      <Name>Columns</Name>
+      <Location>~/App/CodeTorch/DataCommandColumns.aspx</Location>
+      <Context>Command</Context>
+      <Items />
+      <UseCommand>false</UseCommand>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+    </Item>
+    <Item>
+      <Name>Refresh Schema</Name>
+      <Location>~/App/CodeTorch/DataCommandRefreshSchema.aspx</Location>
+      <Context>Command</Context>
+      <Target />
+      <Items />
+      <UseCommand>false</UseCommand>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+    </Item>
+  </Items>
+</Menu>

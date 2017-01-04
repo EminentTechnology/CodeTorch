@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ControlType>
+  <Name>TreeView</Name>
+  <Assembly>CodeTorch.Web</Assembly>
+  <Class>CodeTorch.Web.FieldTemplates.TreeView</Class>
+  <AbstractionAssembly>CodeTorch.Core</AbstractionAssembly>
+  <AbstractionClass>CodeTorch.Core.TreeViewControl</AbstractionClass>
+</ControlType>

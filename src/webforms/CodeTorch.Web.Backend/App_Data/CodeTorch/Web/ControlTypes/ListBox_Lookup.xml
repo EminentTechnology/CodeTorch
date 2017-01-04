@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ControlType>
+  <Name>LookupListBox</Name>
+  <Assembly>CodeTorch.Web</Assembly>
+  <Class>CodeTorch.Web.FieldTemplates.LookupListBox</Class>
+  <AbstractionAssembly>CodeTorch.Core</AbstractionAssembly>
+  <AbstractionClass>CodeTorch.Core.LookupListBoxControl</AbstractionClass>
+</ControlType>

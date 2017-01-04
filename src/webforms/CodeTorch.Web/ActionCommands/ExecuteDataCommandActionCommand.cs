@@ -1,4 +1,5 @@
-﻿using CodeTorch.Core;
+﻿using CodeTorch.Abstractions;
+using CodeTorch.Core;
 using CodeTorch.Core.Commands;
 using CodeTorch.Core.Services;
 using CodeTorch.Web.Data;
@@ -31,7 +32,8 @@ namespace CodeTorch.Web.ActionCommands
 
             DataCommandService dataCommandDB = DataCommandService.GetInstance();
             PageDB pageDB = new PageDB();
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+            ILog log = Resolver.Resolve<ILogManager>().GetLogger(this.GetType());
 
             try
             {

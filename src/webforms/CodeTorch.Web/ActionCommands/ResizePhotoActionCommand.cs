@@ -38,9 +38,9 @@ namespace CodeTorch.Web.ActionCommands
 
         public void ExecuteCommand()
         {
-            
 
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+            Abstractions.ILog log = Resolver.Resolve<Abstractions.ILogManager>().GetLogger(this.GetType());
 
             try
             {
@@ -70,7 +70,7 @@ namespace CodeTorch.Web.ActionCommands
 
         private void DownloadResizedDocument()
         {
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            Abstractions.ILog log = Resolver.Resolve<Abstractions.ILogManager>().GetLogger(this.GetType());
 
             try
             {

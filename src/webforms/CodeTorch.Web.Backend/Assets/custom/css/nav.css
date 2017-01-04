@@ -1,0 +1,307 @@
+﻿/*menu containers*/
+.menu
+{
+    margin: 0px;
+    padding: 0px;
+}
+#smoothmenu1 UL.siteNav
+{
+    padding: 0px;
+    margin: 0px;
+    width: 870px;
+    display: block;
+    height: 28px;
+    color: #666666;
+    font-size:12px;
+    
+}
+
+/*top level - first menu item*/
+
+#smoothmenu1 UL LI.siteNavFirst A,
+#smoothmenu1 UL LI.siteNavFirst A:hover,
+#smoothmenu1 UL LI.siteNavFirst A.selected
+{
+    padding: 0px 0px 0px 40px;
+    margin: 0px;
+    line-height: 28px;
+    width: 70px;
+    display: block;
+    height: 28px;
+}
+
+#smoothmenu1 UL LI.siteNavFirst A
+{
+    background-image: url(../images/menuFirst.gif);
+    background-repeat: no-repeat;
+    border-right: #e7e7e7 1px solid;
+    color: #666666;
+}
+
+#smoothmenu1 UL LI.siteNavFirst A:hover
+{
+    background-image: url(../images/menuFirstonHover.gif);
+    background-repeat: no-repeat;
+    color: #3399cc;
+}
+
+/*normal top level menu items - not begin or close items*/
+#smoothmenu1 UL.siteNav LI.center A,
+#smoothmenu1 UL.siteNav LI.center A:hover,
+#smoothmenu1 UL.siteNav LI.center A.selected
+{
+    padding: 0px 3.5em;
+    width:inherit;
+    line-height: 28px;
+    list-style-type: none;
+    height: 28px;
+    display: block;
+    background-repeat: repeat-x;
+}
+
+#smoothmenu1 UL.siteNav LI.center A
+{
+    background-image: url(../images/onOut.gif);
+    background-repeat: repeat-x;
+    color: #666666;
+    border-right: #e7e7e7 1px solid;
+}
+
+
+#smoothmenu1 UL.siteNav LI.center A:hover
+{
+    background-image: url(../images/onHover.gif);
+    background-repeat: repeat-x;
+    color: #3399cc;
+}
+#smoothmenu1 UL.siteNav LI.center A.selected
+{
+    background-image: url(../images/onHover.gif);
+    color: #3399cc;
+}
+
+/*2nd level menu items */
+#smoothmenu1 UL.siteNav LI.center UL LI A,
+#smoothmenu1 UL.siteNav LI.center UL LI A:hover,
+#smoothmenu1 UL.siteNav LI.center UL LI A:active,
+#smoothmenu1 UL.siteNav LI.center UL LI A:visited
+{
+    padding:0px 0px 0px 10px;
+    background-image: none;
+    border-width: 0px;
+    margin: 0px;
+    width: 160px;
+    font-family: "TrebuchetMS" , Arial, sans-serif;
+    height: 26px;
+}
+
+
+#smoothmenu1 UL.siteNav LI.center UL LI A:hover
+{
+    color: #3399cc;
+    text-decoration: underline;
+}
+
+/*top level - last menu item*/
+#smoothmenu1 UL LI.siteNavLast A,
+#smoothmenu1 UL LI.siteNavLast A:hover,
+#smoothmenu1 UL LI.siteNavLast A.selected
+{
+    padding:0px 0px 0px 45px;
+    margin: 0px;    
+    line-height: 28px;
+    height: 28px;
+    display: block;
+    background-repeat: no-repeat;
+    width:145px;
+
+}
+
+#smoothmenu1 UL LI.siteNavLast A
+{
+    background-image: url(../images/lastMenu.gif);
+    color: #666666;
+}
+
+#smoothmenu1 UL LI.siteNavLast A.selected
+{
+    background-image: url(../images/lastMenuHover.gif);
+    color: #3399cc;
+}
+#smoothmenu1 UL LI.siteNavLast A:hover
+{
+    background-image: url(../images/lastMenuHover.gif);
+    color: #3399cc;
+}
+
+/*2nd level menu items for last menu item*/
+#smoothmenu1 UL LI.siteNavLast UL LI A:active
+{
+    background-image: none;
+    padding-bottom: 0px;
+    line-height: 24px;
+    border-right-width: 0px;
+    margin: 0px;
+    padding-left: 10px;
+    width: 160px;
+    padding-right: 0px;
+    display: block;
+    font-family: "Trebuchet MS" , Arial, sans-serif;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    height: 26px;
+    color: #666666;
+    border-left-width: 0px;
+    text-decoration: none;
+    padding-top: 0px;
+}
+#smoothmenu1 UL LI.siteNavLast UL LI A:visited
+{
+    background-image: none;
+    padding-bottom: 0px;
+    line-height: 24px;
+    border-right-width: 0px;
+    margin: 0px;
+    padding-left: 10px;
+    width: 160px;
+    padding-right: 0px;
+    display: block;
+    font-family: "Trebuchet MS" , Arial, sans-serif;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    height: 26px;
+    color: #666666;
+    border-left-width: 0px;
+    text-decoration: none;
+    padding-top: 0px;
+}
+#smoothmenu1 UL LI.siteNavLast UL LI A:link
+{
+    background-image: none;
+    padding-bottom: 0px;
+    line-height: 24px;
+    border-right-width: 0px;
+    margin: 0px;
+    padding-left: 10px;
+    width: 160px;
+    padding-right: 0px;
+    display: block;
+    font-family: "Trebuchet MS" , Arial, sans-serif;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    height: 26px;
+    color: #666666;
+    border-left-width: 0px;
+    text-decoration: none;
+    padding-top: 0px;
+}
+#smoothmenu1 UL LI.siteNavLast UL LI A:hover
+{
+    background-image: none;
+    padding-bottom: 0px;
+    line-height: 24px;
+    margin: 0px;
+    padding-left: 10px;
+    width: 160px;
+    padding-right: 0px;
+    display: block;
+    font-family: "Trebuchet MS" , Arial, sans-serif;
+    height: 26px;
+    color: #3399cc;
+    text-decoration: underline;
+    padding-top: 0px;
+}
+
+/*caret for dropdown*/
+.caret
+{
+    padding-bottom: 0px;
+    border-right-width: 0px;
+    margin: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    padding-top: 0px;
+}
+
+
+/*New Menu Starts Here*/
+		
+	
+	/* remove the list style */
+	#nav {
+		margin:0; 
+		padding:0; 
+		list-style:none;
+	}	
+	
+		/* make the LI display inline */
+		/* it's position relative so that position absolute */
+		/* can be used in submenu */
+		#nav li {
+			float:left; 
+			display:block; 
+			width:100px; 
+			background:#ccc; 
+			position:relative;
+			z-index:50; 
+			margin:0 1px;
+		}
+		
+		/* this is the parent menu */
+		#nav li a {
+			display:block; 
+			padding:8px 5px 0 5px; 
+			height:23px; 
+			text-decoration:none; 
+			color:#fff; 
+			text-align:center; 
+			color:#333;
+		}
+ 
+		#nav li a:hover {
+			color:#fff;
+		}
+	
+		/* you can make a different style for default selected value */
+		#nav a.selected {
+			color:#f00;
+		}
+	
+		/* submenu, it's hidden by default */
+		#nav ul {
+			position:absolute; 
+			left:0; 
+			display:none; 
+			margin:0 0 0 -1px; 
+			padding:0; 
+			list-style:none;
+		}
+		
+		#nav ul li {
+			width:100px; 
+			float:left; 
+			border-top:1px solid #fff;
+		}
+		
+		/* display block will make the link fill the whole area of LI */
+		#nav ul a {
+			display:block;  
+			height:15px;
+			padding: 8px 5px; 
+			color:#666;
+		}
+		
+		#nav ul a:hover {
+			text-decoration:underline;	
+		}
+ 
+		/* fix ie6 small issue */
+		/* we should always avoid using hack like this */
+		/* should put it into separate file : ) */
+		*html #nav ul {
+			margin:0 0 0 -2px;
+		}
+ 

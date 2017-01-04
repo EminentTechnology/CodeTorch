@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ControlType>
+  <Name>EmailAddress</Name>
+  <Assembly>CodeTorch.Web</Assembly>
+  <Class>CodeTorch.Web.FieldTemplates.EmailAddress</Class>
+  <AbstractionAssembly>CodeTorch.Core</AbstractionAssembly>
+  <AbstractionClass>CodeTorch.Core.EmailAddressControl</AbstractionClass>
+</ControlType>

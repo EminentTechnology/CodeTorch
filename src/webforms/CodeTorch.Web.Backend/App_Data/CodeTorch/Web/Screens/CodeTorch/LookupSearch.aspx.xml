@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Screen xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>LookupSearch.aspx</Name>
+  <PageTemplate>
+    <Mode>Static</Mode>
+    <Name>Default</Name>
+  </PageTemplate>
+  <Type>Screen</Type>
+  <Folder>CodeTorch</Folder>
+  <RequireAuthentication>false</RequireAuthentication>
+  <SupportsTransactions>true</SupportsTransactions>
+  <ValidateRequest>true</ValidateRequest>
+  <Menu>
+    <DisplayMenu>false</DisplayMenu>
+  </Menu>
+  <Title>
+    <Name>Lookups</Name>
+    <UseCommand>false</UseCommand>
+  </Title>
+  <SubTitle>
+    <Name>Search</Name>
+    <UseCommand>false</UseCommand>
+  </SubTitle>
+  <ScreenPermission>
+    <CheckPermission>false</CheckPermission>
+  </ScreenPermission>
+  <Sections>
+    <Section xsi:type="AlertSection">
+      <Name>Alert</Name>
+      <Type>Alert</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Top</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <IncludeValidationSummary>false</IncludeValidationSummary>
+    </Section>
+    <Section xsi:type="LinkListSection">
+      <ID>Links</ID>
+      <CssClass>section-links</CssClass>
+      <Type>LinkList</Type>
+      <Mode>All</Mode>
+      <ContainerMode>Plain</ContainerMode>
+      <Visible>true</Visible>
+      <ContainerElement>ul</ContainerElement>
+      <ContentPane>Top</ContentPane>
+      <Permission>
+        <Name />
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <ItemElement>li</ItemElement>
+      <Items>
+        <Item>
+          <Text>&lt;span class='glyphicon glyphicon-plus'/&gt; Add Lookup</Text>
+          <Url>~/App/CodeTorch/LookupCreate.aspx</Url>
+          <Visible>true</Visible>
+          <Permission>
+            <CheckPermission>false</CheckPermission>
+          </Permission>
+        </Item>
+      </Items>
+    </Section>
+    <Section xsi:type="CriteriaSection">
+      <Name>Criteria</Name>
+      <IntroText>Locate any lookups in the system by entering data into the fields below:</IntroText>
+      <Type>Criteria</Type>
+      <Mode>All</Mode>
+      <ContainerMode>Panel</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Left</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets>
+        <Widget xsi:type="TextBoxControl">
+          <Name>Name</Name>
+          <ControlCssClass>form-group</ControlCssClass>
+          <Label>Type</Label>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>TextBox</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <DataField>Name</DataField>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+        </Widget>
+        <Widget xsi:type="ButtonControl">
+          <Name>ButtonSearch</Name>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>form-group</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>Button</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <CssClass>btn btn-primary criteria-button</CssClass>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+          <Text>Search</Text>
+          <CausesValidation>false</CausesValidation>
+          <OnClick>
+            <Commands>
+              <InvokeSearchMessageCommand>
+                <Name>CriteriaClick</Name>
+                <Type>InvokeSearchMessageCommand</Type>
+              </InvokeSearchMessageCommand>
+            </Commands>
+          </OnClick>
+        </Widget>
+      </Widgets>
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <ControlsPerRow>4</ControlsPerRow>
+      <ActionButtonText>Search</ActionButtonText>
+      <RowElement>div</RowElement>
+      <RowCssClass>row</RowCssClass>
+      <ColumnElement>div</ColumnElement>
+      <ColumnCssClass>col-md-3</ColumnCssClass>
+      <HelpText>Locate any ENTITY in the system by entering data into the fields below:</HelpText>
+      <ContainerWidth>90%</ContainerWidth>
+    </Section>
+    <Section xsi:type="GridSection">
+      <Name>Lookups</Name>
+      <IntroText>Select lookup from the following list:</IntroText>
+      <Type>Grid</Type>
+      <Mode>All</Mode>
+      <ContainerMode>Panel</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Left</ContentPane>
+      <SelectDataCommand>Lookup_Search</SelectDataCommand>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <ActionLink>
+        <ShowLink>false</ShowLink>
+        <Permission>
+          <CheckPermission>false</CheckPermission>
+        </Permission>
+      </ActionLink>
+      <LoadDataOnPageLoad>true</LoadDataOnPageLoad>
+      <Grid>
+        <Name>Lookups</Name>
+        <HelpText />
+        <DataKeyNames>Name</DataKeyNames>
+        <DataKeyParameterNames>Name</DataKeyParameterNames>
+        <SelectDataCommand>Lookup_Search</SelectDataCommand>
+        <DeleteDataCommand>Lookup_Delete</DeleteDataCommand>
+        <AllowDelete>true</AllowDelete>
+        <AllowPaging>true</AllowPaging>
+        <PageSize>20</PageSize>
+        <AllowSorting>true</AllowSorting>
+        <SortOrder>Ascending</SortOrder>
+        <Columns>
+          <HyperLinkGridColumn>
+            <HeaderStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </HeaderStyle>
+            <ItemStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </ItemStyle>
+            <FooterStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </FooterStyle>
+            <HeaderText>Type</HeaderText>
+            <ColumnType>HyperLinkGridColumn</ColumnType>
+            <SortExpression>Name</SortExpression>
+            <VisiblePermission>
+              <CheckPermission>false</CheckPermission>
+            </VisiblePermission>
+            <ExportPermission>
+              <CheckPermission>false</CheckPermission>
+            </ExportPermission>
+            <LinkPermission>
+              <CheckPermission>false</CheckPermission>
+            </LinkPermission>
+            <IncludeInExport>true</IncludeInExport>
+            <DataNavigateUrlFields>Name</DataNavigateUrlFields>
+            <DataNavigateUrlFormatString>~/App/CodeTorch/LookupOverview.aspx?LookupType={0}</DataNavigateUrlFormatString>
+            <DataTextField>Name</DataTextField>
+          </HyperLinkGridColumn>
+          <DeleteGridColumn>
+            <HeaderStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </HeaderStyle>
+            <ItemStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </ItemStyle>
+            <FooterStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </FooterStyle>
+            <ColumnType>DeleteGridColumn</ColumnType>
+            <VisiblePermission>
+              <CheckPermission>false</CheckPermission>
+            </VisiblePermission>
+            <ExportPermission>
+              <CheckPermission>false</CheckPermission>
+            </ExportPermission>
+            <LinkPermission>
+              <CheckPermission>false</CheckPermission>
+            </LinkPermission>
+            <IncludeInExport>true</IncludeInExport>
+            <Text>[Delete]</Text>
+            <ConfirmText>WARNING: You are about to delete this item.\r\nPress OK to DELETE this item.\r\nPress CANCEL to LEAVE this item alone</ConfirmText>
+            <ButtonType>Link</ButtonType>
+          </DeleteGridColumn>
+        </Columns>
+        <GroupByExpressions />
+        <GroupLoadMode>Server</GroupLoadMode>
+        <GroupsDefaultExpanded>true</GroupsDefaultExpanded>
+        <GroupingEnabled>false</GroupingEnabled>
+        <ShowGroupPanel>false</ShowGroupPanel>
+        <AllowGroupExpandCollapse>false</AllowGroupExpandCollapse>
+        <ShowRefreshButton>true</ShowRefreshButton>
+        <ShowExportToCsvButton>true</ShowExportToCsvButton>
+        <ShowExportToExcelButton>false</ShowExportToExcelButton>
+        <ShowExportToPdfButton>false</ShowExportToPdfButton>
+        <ShowExportToWordButton>false</ShowExportToWordButton>
+        <ExportIgnorePaging>true</ExportIgnorePaging>
+        <ExportOpenInNewWindow>true</ExportOpenInNewWindow>
+        <ExportHideStructureColumns>true</ExportHideStructureColumns>
+        <AllowScroll>false</AllowScroll>
+        <UseStaticHeaders>false</UseStaticHeaders>
+        <FrozenColumnsCount>0</FrozenColumnsCount>
+        <SaveScrollPosition>true</SaveScrollPosition>
+        <CsvEncloseDataWithQuotes>false</CsvEncloseDataWithQuotes>
+        <CsvColumnDelimiter>Comma</CsvColumnDelimiter>
+        <CsvRowDelimiter>NewLine</CsvRowDelimiter>
+        <AllowRowsDragDrop>false</AllowRowsDragDrop>
+        <AllowRowSelect>false</AllowRowSelect>
+        <EnableDragToSelectRows>false</EnableDragToSelectRows>
+      </Grid>
+    </Section>
+  </Sections>
+  <SectionZoneLayout>SingleColumn</SectionZoneLayout>
+  <Settings />
+  <Scripts />
+  <DataCommands>
+    <DataCommand>
+      <Name>Lookup_Search</Name>
+      <Parameters>
+        <Parameter>
+          <Name>Name</Name>
+          <InputType>Control</InputType>
+          <InputKey>Name</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+    <DataCommand>
+      <Name>Lookup_Delete</Name>
+      <Parameters>
+        <Parameter>
+          <Name>Name</Name>
+          <InputType>Special</InputType>
+          <InputKey>Null</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+  </DataCommands>
+  <OnPageLoad>
+    <Commands>
+      <DefaultOrPopulateScreenCommand>
+        <Name>DefaultOrPopulateScreen</Name>
+        <Type>DefaultOrPopulateScreenCommand</Type>
+        <EntityInputType>QueryString</EntityInputType>
+        <ExecuteOnPostBack>false</ExecuteOnPostBack>
+      </DefaultOrPopulateScreenCommand>
+    </Commands>
+  </OnPageLoad>
+  <OnPageInit>
+    <Commands>
+      <RenderPageSectionsCommand>
+        <Name>RenderPageSections</Name>
+        <Type>RenderPageSectionsCommand</Type>
+        <EntityInputType>QueryString</EntityInputType>
+        <Mode>Simple</Mode>
+      </RenderPageSectionsCommand>
+    </Commands>
+  </OnPageInit>
+</Screen>

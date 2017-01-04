@@ -139,7 +139,7 @@ namespace CodeTorch.Web.SectionControls
         void Grid_ItemCreated(object sender, GridItemEventArgs e)
         {
 
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            Abstractions.ILog log = Resolver.Resolve<Abstractions.ILogManager>().GetLogger(this.GetType());
 
             try
             {
@@ -157,7 +157,7 @@ namespace CodeTorch.Web.SectionControls
 
         void Grid_DeleteCommand(object source, GridCommandEventArgs e)
         {
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            Abstractions.ILog log = Resolver.Resolve<Abstractions.ILogManager>().GetLogger(this.GetType());
 
             try
             {
@@ -173,7 +173,7 @@ namespace CodeTorch.Web.SectionControls
         void Grid_NeedDataSource(object source, GridNeedDataSourceEventArgs e)
         {
 
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            Abstractions.ILog log = Resolver.Resolve<Abstractions.ILogManager>().GetLogger(this.GetType());
 
             try
             {
@@ -191,7 +191,7 @@ namespace CodeTorch.Web.SectionControls
         {
 
 
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            Abstractions.ILog log = Resolver.Resolve<Abstractions.ILogManager>().GetLogger(this.GetType());
 
             try
             {
@@ -206,7 +206,7 @@ namespace CodeTorch.Web.SectionControls
 
         void Grid_ItemDataBound(object source, GridItemEventArgs e)
         {
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            Abstractions.ILog log = Resolver.Resolve<Abstractions.ILogManager>().GetLogger(this.GetType());
 
             try
             {
@@ -221,7 +221,7 @@ namespace CodeTorch.Web.SectionControls
 
         void Grid_GridExporting(object source, GridExportingArgs e)
         {
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            Abstractions.ILog log = Resolver.Resolve<Abstractions.ILogManager>().GetLogger(this.GetType());
 
             try
             {
@@ -255,7 +255,7 @@ namespace CodeTorch.Web.SectionControls
 
         private void FillGrid(PerformSearchMessage message)
         {
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            Abstractions.ILog log = Resolver.Resolve<Abstractions.ILogManager>().GetLogger(this.GetType());
 
             try
             {

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ControlType>
+  <Name>TextArea</Name>
+  <Assembly>CodeTorch.Web</Assembly>
+  <Class>CodeTorch.Web.FieldTemplates.TextArea</Class>
+  <AbstractionAssembly>CodeTorch.Core</AbstractionAssembly>
+  <AbstractionClass>CodeTorch.Core.TextAreaControl</AbstractionClass>
+</ControlType>

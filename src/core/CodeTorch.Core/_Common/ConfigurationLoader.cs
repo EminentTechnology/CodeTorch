@@ -110,7 +110,11 @@ namespace CodeTorch.Core
             
             //load the special app object
             var app = await Store.GetItem<App>("App");
-            config.App = app;
+            if(app != null)
+            {
+                config.App = app;
+            }
+            
 
 
             //load all the other objects
@@ -196,7 +200,8 @@ namespace CodeTorch.Core
 
         public static void ReloadConfigurationItems(string ConfigurationFolder, string ConfigurationItemType)
         {
-            throw new NotImplementedException();
+            IConfigurationObject2 config = ConfigurationObjectFactory.CreateConfigurationObject(ConfigurationItemType);
+            config.ClearAll();
         }
 
        
@@ -250,9 +255,10 @@ namespace CodeTorch.Core
             }
         }
 
-        public static void LoadFromConfigurationFolder(string configurationPath)
+        public static async Task LoadFromConfigurationFolder(IConfigurationStore store)
         {
-            throw new NotImplementedException();
+            CodeTorch.Core.ConfigurationLoader.Store = store;
+            await LoadConfiguration();
         }
     }
 

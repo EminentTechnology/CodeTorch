@@ -14,12 +14,14 @@ namespace CodeTorch.Tests
     public class FileConfigurationStoreTests
     {
         const string TestPath = @"D:\Sandbox\dfsp\src\DFSP.Web\App_Data\CodeTorch\Web";
-        readonly Log4NetLogger log;
+        readonly CodeTorch.Abstractions.ILogManager log;
         public FileConfigurationStoreTests()
         {
+
             log4net.Config.XmlConfigurator.Configure();
-            var logger = LogManager.GetLogger(nameof(FileConfigurationStore));
-            log = new Log4NetLogger(logger);
+
+            log = new CodeTorch.Logger.Log4Net.Log4NetLogManager();
+            
             
         }
 

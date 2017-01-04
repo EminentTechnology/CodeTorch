@@ -1,0 +1,543 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Screen xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>DataCommandColumns.aspx</Name>
+  <PageTemplate>
+    <Mode>Static</Mode>
+    <Name>DefaultWithMenu</Name>
+  </PageTemplate>
+  <Type>Screen</Type>
+  <Folder>CodeTorch</Folder>
+  <RequireAuthentication>false</RequireAuthentication>
+  <SupportsTransactions>true</SupportsTransactions>
+  <ValidateRequest>true</ValidateRequest>
+  <Menu>
+    <Name>CodeTorchDataCommandMenu</Name>
+    <DisplayMenu>true</DisplayMenu>
+  </Menu>
+  <Title>
+    <UseCommand>true</UseCommand>
+    <CommandFormatString>Data Command - {Name}</CommandFormatString>
+    <CommandName>DataCommand_GetByName</CommandName>
+  </Title>
+  <SubTitle>
+    <Name>Columns</Name>
+    <UseCommand>false</UseCommand>
+  </SubTitle>
+  <ScreenPermission>
+    <CheckPermission>false</CheckPermission>
+  </ScreenPermission>
+  <Sections>
+    <Section xsi:type="AlertSection">
+      <Name>Alert</Name>
+      <Type>Alert</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Top</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <IncludeValidationSummary>true</IncludeValidationSummary>
+    </Section>
+    <Section xsi:type="EditableGridSection">
+      <Name>Columns</Name>
+      <IntroText>Select columns from the following list:</IntroText>
+      <Type>EditableGrid</Type>
+      <Mode>All</Mode>
+      <ContainerMode>Panel</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Left</ContentPane>
+      <SelectDataCommand>DataCommand_GetColumns</SelectDataCommand>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <ActionLink>
+        <Text>Add Column</Text>
+        <ShowLink>true</ShowLink>
+        <Permission>
+          <CheckPermission>false</CheckPermission>
+        </Permission>
+      </ActionLink>
+      <LoadDataOnPageLoad>true</LoadDataOnPageLoad>
+      <Grid>
+        <Name>Columns</Name>
+        <HelpText />
+        <DataKeyNames>Name</DataKeyNames>
+        <DataKeyParameterNames>@Name</DataKeyParameterNames>
+        <SelectDataCommand>DataCommand_GetColumns</SelectDataCommand>
+        <DeleteDataCommand>DataCommand_DeleteColumn</DeleteDataCommand>
+        <AllowDelete>true</AllowDelete>
+        <AllowPaging>true</AllowPaging>
+        <PageSize>20</PageSize>
+        <AllowSorting>true</AllowSorting>
+        <SortOrder>Ascending</SortOrder>
+        <Columns>
+          <EditGridColumn>
+            <HeaderStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </HeaderStyle>
+            <ItemStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </ItemStyle>
+            <FooterStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </FooterStyle>
+            <HeaderText />
+            <ColumnType>EditGridColumn</ColumnType>
+            <SortExpression>Name</SortExpression>
+            <VisiblePermission>
+              <CheckPermission>false</CheckPermission>
+            </VisiblePermission>
+            <ExportPermission>
+              <CheckPermission>false</CheckPermission>
+            </ExportPermission>
+            <LinkPermission>
+              <CheckPermission>false</CheckPermission>
+            </LinkPermission>
+            <IncludeInExport>true</IncludeInExport>
+            <DataTextField>Name</DataTextField>
+            <Text>Edit</Text>
+            <ButtonType>Link</ButtonType>
+          </EditGridColumn>
+          <BoundGridColumn>
+            <HeaderStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </HeaderStyle>
+            <ItemStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </ItemStyle>
+            <FooterStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </FooterStyle>
+            <HeaderText>Name</HeaderText>
+            <ColumnType>BoundGridColumn</ColumnType>
+            <SortExpression>Name</SortExpression>
+            <VisiblePermission>
+              <CheckPermission>false</CheckPermission>
+            </VisiblePermission>
+            <ExportPermission>
+              <CheckPermission>false</CheckPermission>
+            </ExportPermission>
+            <LinkPermission>
+              <CheckPermission>false</CheckPermission>
+            </LinkPermission>
+            <IncludeInExport>true</IncludeInExport>
+            <DataField>Name</DataField>
+          </BoundGridColumn>
+          <BoundGridColumn>
+            <HeaderStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </HeaderStyle>
+            <ItemStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </ItemStyle>
+            <FooterStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </FooterStyle>
+            <HeaderText>Type</HeaderText>
+            <ColumnType>BoundGridColumn</ColumnType>
+            <SortExpression>Type</SortExpression>
+            <VisiblePermission>
+              <CheckPermission>false</CheckPermission>
+            </VisiblePermission>
+            <ExportPermission>
+              <CheckPermission>false</CheckPermission>
+            </ExportPermission>
+            <LinkPermission>
+              <CheckPermission>false</CheckPermission>
+            </LinkPermission>
+            <IncludeInExport>true</IncludeInExport>
+            <DataField>Type</DataField>
+          </BoundGridColumn>
+          <DeleteGridColumn>
+            <HeaderStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </HeaderStyle>
+            <ItemStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </ItemStyle>
+            <FooterStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </FooterStyle>
+            <HeaderText />
+            <ColumnType>DeleteGridColumn</ColumnType>
+            <SortExpression>Name</SortExpression>
+            <VisiblePermission>
+              <CheckPermission>false</CheckPermission>
+            </VisiblePermission>
+            <ExportPermission>
+              <CheckPermission>false</CheckPermission>
+            </ExportPermission>
+            <LinkPermission>
+              <CheckPermission>false</CheckPermission>
+            </LinkPermission>
+            <IncludeInExport>true</IncludeInExport>
+            <Text>Delete</Text>
+            <ConfirmText>WARNING: You are about to delete this item\r\nPress OK to DELETE this item\r\nPress CANCEL to LEAVE this item alone</ConfirmText>
+            <ButtonType>Link</ButtonType>
+          </DeleteGridColumn>
+        </Columns>
+        <GroupByExpressions />
+        <GroupLoadMode>Server</GroupLoadMode>
+        <GroupsDefaultExpanded>true</GroupsDefaultExpanded>
+        <GroupingEnabled>false</GroupingEnabled>
+        <ShowGroupPanel>false</ShowGroupPanel>
+        <AllowGroupExpandCollapse>false</AllowGroupExpandCollapse>
+        <ShowRefreshButton>true</ShowRefreshButton>
+        <ShowExportToCsvButton>true</ShowExportToCsvButton>
+        <ShowExportToExcelButton>false</ShowExportToExcelButton>
+        <ShowExportToPdfButton>false</ShowExportToPdfButton>
+        <ShowExportToWordButton>false</ShowExportToWordButton>
+        <ExportIgnorePaging>true</ExportIgnorePaging>
+        <ExportOpenInNewWindow>true</ExportOpenInNewWindow>
+        <ExportHideStructureColumns>true</ExportHideStructureColumns>
+        <AllowScroll>false</AllowScroll>
+        <UseStaticHeaders>false</UseStaticHeaders>
+        <FrozenColumnsCount>0</FrozenColumnsCount>
+        <SaveScrollPosition>true</SaveScrollPosition>
+        <CsvEncloseDataWithQuotes>false</CsvEncloseDataWithQuotes>
+        <CsvColumnDelimiter>Comma</CsvColumnDelimiter>
+        <CsvRowDelimiter>NewLine</CsvRowDelimiter>
+        <AllowRowsDragDrop>true</AllowRowsDragDrop>
+        <AllowRowSelect>true</AllowRowSelect>
+        <EnableDragToSelectRows>false</EnableDragToSelectRows>
+      </Grid>
+      <InsertCommand>DataCommand_AddColumn</InsertCommand>
+      <UpdateCommand>DataCommand_UpdateColumn</UpdateCommand>
+      <Sections>
+        <Section xsi:type="EditSection">
+          <Name>Add Column</Name>
+          <Type>Edit</Type>
+          <Mode>Insert</Mode>
+          <ContainerMode>Panel</ContainerMode>
+          <Visible>true</Visible>
+          <ContainerElement>fieldset</ContainerElement>
+          <ContainerCssClass>form-horizontal</ContainerCssClass>
+          <ContentPane>Left</ContentPane>
+          <Permission>
+            <CheckPermission>false</CheckPermission>
+          </Permission>
+          <Widgets>
+            <Widget xsi:type="TextBoxControl">
+              <Name>Name</Name>
+              <ControlContainerElement>div</ControlContainerElement>
+              <ControlContainerCssClass>col-md-10</ControlContainerCssClass>
+              <Label>Name</Label>
+              <LabelCssClass>col-md-2</LabelCssClass>
+              <LabelWrapsControl>false</LabelWrapsControl>
+              <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+              <ControlGroupElement>div</ControlGroupElement>
+              <ControlGroupCssClass>form-group</ControlGroupCssClass>
+              <HelpTextElement>span</HelpTextElement>
+              <HelpTextCssClass>help-block</HelpTextCssClass>
+              <Type>TextBox</Type>
+              <IsRequired>true</IsRequired>
+              <Visible>true</Visible>
+              <DataField>Name</DataField>
+              <Validators />
+              <VisiblePermission>
+                <CheckPermission>false</CheckPermission>
+              </VisiblePermission>
+              <EditPermission>
+                <CheckPermission>false</CheckPermission>
+              </EditPermission>
+            </Widget>
+            <Widget xsi:type="TextBoxControl">
+              <Name>Type</Name>
+              <ControlContainerElement>div</ControlContainerElement>
+              <ControlContainerCssClass>col-md-10</ControlContainerCssClass>
+              <Label>Type</Label>
+              <LabelCssClass>col-md-2</LabelCssClass>
+              <LabelWrapsControl>false</LabelWrapsControl>
+              <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+              <ControlGroupElement>div</ControlGroupElement>
+              <ControlGroupCssClass>form-group</ControlGroupCssClass>
+              <HelpTextElement>span</HelpTextElement>
+              <HelpTextCssClass>help-block</HelpTextCssClass>
+              <Type>TextBox</Type>
+              <IsRequired>true</IsRequired>
+              <Visible>true</Visible>
+              <DataField>Type</DataField>
+              <Validators />
+              <VisiblePermission>
+                <CheckPermission>false</CheckPermission>
+              </VisiblePermission>
+              <EditPermission>
+                <CheckPermission>false</CheckPermission>
+              </EditPermission>
+            </Widget>
+          </Widgets>
+          <AfterPopulateSection>
+            <Commands />
+          </AfterPopulateSection>
+        </Section>
+        <Section xsi:type="EditSection">
+          <Name>Edit Column</Name>
+          <Type>Edit</Type>
+          <Mode>Edit</Mode>
+          <ContainerMode>Panel</ContainerMode>
+          <Visible>true</Visible>
+          <ContainerElement>fieldset</ContainerElement>
+          <ContainerCssClass>form-horizontal</ContainerCssClass>
+          <ContentPane>Left</ContentPane>
+          <Permission>
+            <CheckPermission>false</CheckPermission>
+          </Permission>
+          <Widgets>
+            <Widget xsi:type="LabelControl">
+              <Name>Name</Name>
+              <ControlContainerElement>div</ControlContainerElement>
+              <ControlContainerCssClass>col-md-10</ControlContainerCssClass>
+              <Label>Name</Label>
+              <LabelCssClass>col-md-2</LabelCssClass>
+              <LabelWrapsControl>false</LabelWrapsControl>
+              <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+              <ControlGroupElement>div</ControlGroupElement>
+              <ControlGroupCssClass>form-group</ControlGroupCssClass>
+              <HelpTextElement>span</HelpTextElement>
+              <HelpTextCssClass>help-block</HelpTextCssClass>
+              <Type>Label</Type>
+              <IsRequired>false</IsRequired>
+              <Visible>true</Visible>
+              <DataField>Name</DataField>
+              <Validators />
+              <VisiblePermission>
+                <CheckPermission>false</CheckPermission>
+              </VisiblePermission>
+              <EditPermission>
+                <CheckPermission>false</CheckPermission>
+              </EditPermission>
+            </Widget>
+            <Widget xsi:type="TextBoxControl">
+              <Name>Type</Name>
+              <ControlContainerElement>div</ControlContainerElement>
+              <ControlContainerCssClass>col-md-10</ControlContainerCssClass>
+              <Label>Type</Label>
+              <LabelCssClass>col-md-2</LabelCssClass>
+              <LabelWrapsControl>false</LabelWrapsControl>
+              <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+              <ControlGroupElement>div</ControlGroupElement>
+              <ControlGroupCssClass>form-group</ControlGroupCssClass>
+              <HelpTextElement>span</HelpTextElement>
+              <HelpTextCssClass>help-block</HelpTextCssClass>
+              <Type>TextBox</Type>
+              <IsRequired>true</IsRequired>
+              <Visible>true</Visible>
+              <DataField>Type</DataField>
+              <Validators />
+              <VisiblePermission>
+                <CheckPermission>false</CheckPermission>
+              </VisiblePermission>
+              <EditPermission>
+                <CheckPermission>false</CheckPermission>
+              </EditPermission>
+            </Widget>
+          </Widgets>
+          <AfterPopulateSection>
+            <Commands />
+          </AfterPopulateSection>
+        </Section>
+        <Section xsi:type="ButtonListSection">
+          <Name>Buttons</Name>
+          <CssClass>text-center</CssClass>
+          <Type>ButtonList</Type>
+          <Mode>All</Mode>
+          <ContainerMode>Plain</ContainerMode>
+          <Visible>true</Visible>
+          <ContentPane>Bottom</ContentPane>
+          <Permission>
+            <CheckPermission>false</CheckPermission>
+          </Permission>
+          <Widgets />
+          <AfterPopulateSection>
+            <Commands />
+          </AfterPopulateSection>
+          <Buttons>
+            <Button>
+              <Name>Save</Name>
+              <LabelWrapsControl>false</LabelWrapsControl>
+              <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+              <Type>Button</Type>
+              <IsRequired>false</IsRequired>
+              <Visible>true</Visible>
+              <CssClass>btn btn-primary</CssClass>
+              <Validators />
+              <VisiblePermission>
+                <CheckPermission>false</CheckPermission>
+              </VisiblePermission>
+              <EditPermission>
+                <CheckPermission>false</CheckPermission>
+              </EditPermission>
+              <Text>Save</Text>
+              <CommandName>PerformInsert</CommandName>
+              <CausesValidation>true</CausesValidation>
+              <OnClick>
+                <Commands />
+              </OnClick>
+            </Button>
+            <Button>
+              <Name>Cancel</Name>
+              <LabelWrapsControl>false</LabelWrapsControl>
+              <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+              <Type>Button</Type>
+              <IsRequired>false</IsRequired>
+              <Visible>true</Visible>
+              <CssClass>btn btn-default</CssClass>
+              <Validators />
+              <VisiblePermission>
+                <CheckPermission>false</CheckPermission>
+              </VisiblePermission>
+              <EditPermission>
+                <CheckPermission>false</CheckPermission>
+              </EditPermission>
+              <Text>Cancel</Text>
+              <CommandName>Cancel</CommandName>
+              <CausesValidation>false</CausesValidation>
+              <OnClick>
+                <Commands />
+              </OnClick>
+            </Button>
+          </Buttons>
+        </Section>
+      </Sections>
+      <SectionZoneLayout>SingleColumn</SectionZoneLayout>
+    </Section>
+  </Sections>
+  <SectionZoneLayout>SingleColumn</SectionZoneLayout>
+  <Settings />
+  <Scripts />
+  <DataCommands>
+    <DataCommand>
+      <Name>DataCommand_GetByName</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@name</Name>
+          <InputType>QueryString</InputType>
+          <InputKey>Command</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+    <DataCommand>
+      <Name>DataCommand_GetColumns</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@Command</Name>
+          <InputType>QueryString</InputType>
+          <InputKey>Command</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+    <DataCommand>
+      <Name>DataCommand_AddColumn</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@Command</Name>
+          <InputType>QueryString</InputType>
+          <InputKey>Command</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@Name</Name>
+          <InputType>Control</InputType>
+          <InputKey>Name</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@Type</Name>
+          <InputType>Control</InputType>
+          <InputKey>Type</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+    <DataCommand>
+      <Name>DataCommand_UpdateColumn</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@Command</Name>
+          <InputType>QueryString</InputType>
+          <InputKey>Command</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@Name</Name>
+          <InputType>Control</InputType>
+          <InputKey>Name</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@Type</Name>
+          <InputType>Control</InputType>
+          <InputKey>Type</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+    <DataCommand>
+      <Name>DataCommand_DeleteColumn</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@Command</Name>
+          <InputType>QueryString</InputType>
+          <InputKey>Command</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@Name</Name>
+          <InputType>Special</InputType>
+          <InputKey>Null</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+  </DataCommands>
+  <OnPageLoad>
+    <Commands />
+  </OnPageLoad>
+  <OnPageInit>
+    <Commands>
+      <RenderPageSectionsCommand>
+        <Name>RenderPageSections</Name>
+        <Type>RenderPageSectionsCommand</Type>
+        <EntityInputType>QueryString</EntityInputType>
+        <Mode>Simple</Mode>
+      </RenderPageSectionsCommand>
+    </Commands>
+  </OnPageInit>
+</Screen>

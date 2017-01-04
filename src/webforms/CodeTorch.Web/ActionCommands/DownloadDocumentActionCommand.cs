@@ -1,4 +1,5 @@
-﻿using CodeTorch.Core;
+﻿using CodeTorch.Abstractions;
+using CodeTorch.Core;
 using CodeTorch.Core.Commands;
 using CodeTorch.Core.Services;
 using CodeTorch.Web.Data;
@@ -31,9 +32,9 @@ namespace CodeTorch.Web.ActionCommands
 
         public void ExecuteCommand()
         {
-            
 
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+            ILog log = Resolver.Resolve<ILogManager>().GetLogger(this.GetType());
 
             try
             {
@@ -57,7 +58,7 @@ namespace CodeTorch.Web.ActionCommands
 
         private void DownloadDocument()
         {
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            ILog log = Resolver.Resolve<ILogManager>().GetLogger(this.GetType());
 
             try
             {
@@ -154,14 +155,11 @@ namespace CodeTorch.Web.ActionCommands
 
         private void DownloadDocumentFromUrl(string url)
         {
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            ILog log = Resolver.Resolve<ILogManager>().GetLogger(this.GetType());
 
             try
             {
                 Page.Response.Clear();
-                
-
-                
             }
             catch (Exception ex)
             {

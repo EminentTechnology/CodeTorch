@@ -8,6 +8,8 @@ using System.Xml;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 
+using log4net;
+
 namespace Eminent.AppBuilder.BuildTasks
 {
     public abstract class DataLayerBase
@@ -127,7 +129,8 @@ namespace Eminent.AppBuilder.BuildTasks
             //declare variables
             DataSet ret = null;
 
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
             LogSQL(cmd, log);
 
 
@@ -181,7 +184,7 @@ namespace Eminent.AppBuilder.BuildTasks
             return ret;
         }
 
-        private static void LogSQL(DbCommand cmd, log4net.ILog log)
+        private static void LogSQL(DbCommand cmd, ILog log)
         {
             if (log.IsDebugEnabled)
             {
@@ -204,7 +207,7 @@ namespace Eminent.AppBuilder.BuildTasks
             //declare variable
             int retVal = 0;
 
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
             LogSQL(cmd, log);
 
 

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ScreenType>
+  <Name>SMSAction</Name>
+  <Description><![CDATA[SMS Action Page Type]]></Description>
+  <TemplateFile><![CDATA[~/templates/pages/SMSActionPage.aspx]]></TemplateFile>
+</ScreenType>

@@ -1,0 +1,55 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="CodeTorch.Web.MasterPages.BaseMasterPage" %>
+<%@ Import Namespace="CodeTorch.Web.Templates" %>
+<!DOCTYPE html>
+<html>
+<head id="Head1" runat="server">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link type="text/css" href="../../assets/standard/css/bootstrap.min.css?v=3.0.3" rel="stylesheet" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link type="text/css" href="../../assets/custom/css/font-awesome.css" rel="stylesheet" />
+    <link type="text/css" href="../../assets/standard/css/fancybox/jquery.fancybox.css?v=2.1.50" rel="stylesheet" />
+    <link type="text/css" href="../../assets/standard/css/fancybox/jquery.fancybox-buttons.css?v=1.0.50" rel="stylesheet" />
+    <link type="text/css" href="../../assets/standard/css/meanmenu/meanmenu.min.css?v=2.0.6" rel="stylesheet" />
+    <link type="text/css" href="../../assets/standard/css/kickstart/kickstart-menus.css?v=1.0" rel="stylesheet" />
+    <link type="text/css" href="../../assets/custom/css/style.css" rel="stylesheet" /> 
+</head>
+<form id="form2" runat="server">
+<body <asp:Literal ID="Javascript" runat="server"></asp:Literal>>
+
+
+    <div id="popuppage" style="padding-top:30px;">
+        <div id="content">
+            <div id="PickerContainer">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+                </div>
+            </div>
+    </div>
+
+     <rad:RadScriptManager runat="server" ID="radScriptManager" EnableCdn="true" EnableScriptCombine="false">
+     <Scripts>
+        <asp:ScriptReference  Path="~/assets/standard/scripts/bootstrap.min.js" /> 
+        <asp:ScriptReference  Path="~/assets/standard/scripts/fancybox/jquery.fancybox.pack.js" /> 
+         <asp:ScriptReference Path="~/assets/standard/scripts/meanmenu/jquery.meanmenu.js" /> 
+         <asp:ScriptReference Path="~/assets/custom/scripts/common.js" /> 
+     </Scripts>
+      </rad:RadScriptManager>
+      <rad:RadStyleSheetManager runat="server" ID="radStyleSheetManager" EnableStyleSheetCombine="false" />
+    </form>
+
+
+
+</body>
+</form>
+
+ 
+</html>

@@ -65,6 +65,10 @@ namespace CodeTorch.Core
             set { _ValidateRequest = value; }
         }
 
+        [Category("Security")]
+        [Browsable(false)]
+        
+
         ScreenMenu _Menu = new ScreenMenu();
         [Category("Common")]
         public virtual ScreenMenu Menu

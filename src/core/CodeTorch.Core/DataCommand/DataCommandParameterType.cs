@@ -17,6 +17,7 @@ namespace CodeTorch.Core
         DateTime,
         Decimal,
         Double,
+        Enum,
         Guid,
         Int16,
         Int32,

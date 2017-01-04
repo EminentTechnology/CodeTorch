@@ -1,4 +1,5 @@
-﻿using CodeTorch.Core;
+﻿using CodeTorch.Abstractions;
+using CodeTorch.Core;
 using CodeTorch.Core.Commands;
 using CodeTorch.Core.Messages;
 using System;
@@ -20,9 +21,9 @@ namespace CodeTorch.Web.ActionCommands
 
         public void ExecuteCommand()
         {
-            
 
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+            ILog log = Resolver.Resolve<ILogManager>().GetLogger(this.GetType());
 
             try
             {

@@ -37,6 +37,9 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\IDependencyContainer.cs" />
+    <Compile Include="Services\ILogManager.cs" />
+    <Compile Include="Services\IResolver.cs" />
     <Compile Include="Services\IConfigurationManager.cs" />
     <Compile Include="Services\IConfigurationStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

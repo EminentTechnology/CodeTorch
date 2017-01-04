@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Screen xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>DataCommandRefreshSchema.aspx</Name>
+  <PageTemplate>
+    <Mode>Static</Mode>
+    <Name>Default</Name>
+  </PageTemplate>
+  <Type>Screen</Type>
+  <Folder>CodeTorch</Folder>
+  <RequireAuthentication>false</RequireAuthentication>
+  <SupportsTransactions>true</SupportsTransactions>
+  <ValidateRequest>true</ValidateRequest>
+  <Menu>
+    <DisplayMenu>false</DisplayMenu>
+  </Menu>
+  <Title>
+    <UseCommand>false</UseCommand>
+  </Title>
+  <SubTitle>
+    <UseCommand>false</UseCommand>
+  </SubTitle>
+  <ScreenPermission>
+    <CheckPermission>false</CheckPermission>
+  </ScreenPermission>
+  <Sections>
+    <Section xsi:type="AlertSection">
+      <Name>Alert</Name>
+      <Type>Alert</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Top</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <IncludeValidationSummary>true</IncludeValidationSummary>
+    </Section>
+  </Sections>
+  <Settings />
+  <Scripts />
+  <DataCommands>
+    <DataCommand>
+      <Name>DataCommand_RefreshSchema</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@Command</Name>
+          <InputType>QueryString</InputType>
+          <InputKey>Command</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+  </DataCommands>
+  <OnPageLoad>
+    <Commands>
+      <RedirectCommand>
+        <Name>Redirect</Name>
+        <Type>RedirectCommand</Type>
+        <DataCommand>DataCommand_RefreshSchema</DataCommand>
+        <RedirectUrl />
+        <RedirectMode>Referrer</RedirectMode>
+      </RedirectCommand>
+    </Commands>
+  </OnPageLoad>
+  <OnPageInit>
+    <Commands>
+      <RenderPageSectionsCommand>
+        <Name>RenderPageSections</Name>
+        <Type>RenderPageSectionsCommand</Type>
+        <EntityInputType>QueryString</EntityInputType>
+        <Mode>Simple</Mode>
+      </RenderPageSectionsCommand>
+    </Commands>
+  </OnPageInit>
+</Screen>

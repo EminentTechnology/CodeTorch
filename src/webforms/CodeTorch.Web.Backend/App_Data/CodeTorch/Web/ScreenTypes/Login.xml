@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ScreenType>
+  <Name>Login</Name>
+  <Description><![CDATA[Page Type for login]]></Description>
+  <TemplateFile><![CDATA[~/templates/pages/Login.aspx]]></TemplateFile>
+</ScreenType>

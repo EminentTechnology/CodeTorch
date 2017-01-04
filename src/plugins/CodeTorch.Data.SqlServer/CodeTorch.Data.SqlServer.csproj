@@ -30,10 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
       <Private>True</Private>
@@ -77,6 +73,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\core\CodeTorch.Abstractions\CodeTorch.Abstractions.csproj">
+      <Project>{d4c1a8a6-0150-49d9-9ec6-e1561366fe47}</Project>
+      <Name>CodeTorch.Abstractions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\core\CodeTorch.Core\CodeTorch.Core.csproj">
       <Project>{ffa210b6-b65e-4cb3-9a43-e546f132e78a}</Project>
       <Name>CodeTorch.Core</Name>

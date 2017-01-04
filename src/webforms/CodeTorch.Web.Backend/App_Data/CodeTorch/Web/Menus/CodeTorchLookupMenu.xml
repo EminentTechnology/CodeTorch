@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Menu xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>CodeTorchLookupMenu</Name>
+  <RequiresAuthentication>false</RequiresAuthentication>
+  <Items>
+    <Item>
+      <Name>Items</Name>
+      <Location>~/App/CodeTorch/LookupOverview.aspx</Location>
+      <Context>LookupType</Context>
+      <Items />
+      <UseCommand>false</UseCommand>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+    </Item>
+    <Item>
+      <Name>Update Provider</Name>
+      <Location>~/App/CodeTorch/LookupProviderUpdate.aspx</Location>
+      <Context>LookupType</Context>
+      <Items />
+      <UseCommand>false</UseCommand>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+    </Item>
+    <Item>
+      <Name>Import From Provider</Name>
+      <Location>~/App/CodeTorch/LookupConfigUpdate.aspx</Location>
+      <Context>LookupType</Context>
+      <Items />
+      <UseCommand>false</UseCommand>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+    </Item>
+  </Items>
+</Menu>

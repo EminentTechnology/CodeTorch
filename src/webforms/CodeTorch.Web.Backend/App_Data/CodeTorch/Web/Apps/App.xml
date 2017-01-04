@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<App xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>
+    <Property>UserID</Property>
+    <Property>FirstName</Property>
+    <Property>LastName</Property>
+    <Property>EmailAddress</Property>
+  </Profile>
+  <SchemaVersion>6</SchemaVersion>
+  <Name>DFSP</Name>
+  <CopyrightCompanyName>Eminent Technology</CopyrightCompanyName>
+  <DefaultScreen>~/App/CodeTorch/LookupSearch.aspx</DefaultScreen>
+  <LoginScreen>~/app/Security/Login.aspx</LoginScreen>
+  <DefaultPageTemplate>Default</DefaultPageTemplate>
+  <DefaultConnection>Default</DefaultConnection>
+  <DefaultMenu>MainMenu</DefaultMenu>
+  <DefaultErrorMessageFormatString>&lt;strong&gt;The following error(s) occurred&lt;/strong&gt;:&lt;ul&gt;{0}&lt;/ul&gt;</DefaultErrorMessageFormatString>
+  <DefaultZoneLayout>Default</DefaultZoneLayout>
+  <AdminRole>Administrator</AdminRole>
+  <DevelopmentBaseUrl>http://localhost/DFSPWeb/</DevelopmentBaseUrl>
+  <EnableLocalization>false</EnableLocalization>
+  <DateMode>UniversalDate</DateMode>
+  <EnableLicensingForWeb>false</EnableLicensingForWeb>
+  <RestServiceResponseMode>Simple</RestServiceResponseMode>
+  <SaveSequenceDataCommand>Sequence_Save</SaveSequenceDataCommand>
+  <EnableLicensingForWeb>true</EnableLicensingForWeb>
+  <LookupProviderAssembly>CodeTorch.Lookups</LookupProviderAssembly>
+  <LookupProviderClass>CodeTorch.Lookups.DataCommandLookupProvider</LookupProviderClass>
+  <AuthorizationProviderAssembly>CodeTorch.Security</AuthorizationProviderAssembly>
+  <AuthorizationProviderClass>CodeTorch.Security.Authorization.DataCommandUserNameAuthorizationProvider</AuthorizationProviderClass>
+  <UserIdentityProviderAssembly>CodeTorch.Security</UserIdentityProviderAssembly>
+  <UserIdentityProviderClass>CodeTorch.Security.Identity.FormsUserIdentityProvider</UserIdentityProviderClass>
+  <ResourceProviderAssembly>CodeTorch.Resources.Web</ResourceProviderAssembly>
+  <ResourceProviderClass>CodeTorch.Resources.Web.DataCommandResourceProvider</ResourceProviderClass>
+  <FormsAuthenticationMode>
+    <Type>Forms</Type>
+  </FormsAuthenticationMode>
+   
+</App>

@@ -212,7 +212,7 @@ namespace CodeTorch.Designer.Forms
 
         private int GetDataConnectionCountByName()
         {
-            var retVal = from item in Configuration.GetInstance().DataConnections
+            var retVal = from item in Core.Configuration.GetInstance().DataConnections
                          where item.Name.ToLower() == ItemName.Text.ToLower()
                          select item;
             return retVal.Count<DataConnection>();
@@ -220,7 +220,7 @@ namespace CodeTorch.Designer.Forms
 
         private int GetDataConnectionTypeCountByName()
         {
-            var retVal = from item in Configuration.GetInstance().DataConnectionTypes
+            var retVal = from item in Core.Configuration.GetInstance().DataConnectionTypes
                          where item.Name.ToLower() == ItemName.Text.ToLower()
                          select item;
             return retVal.Count<DataConnectionType>();
@@ -228,7 +228,7 @@ namespace CodeTorch.Designer.Forms
 
         private int GetDocumentRepositoryCountByName()
         {
-            var retVal = from item in Configuration.GetInstance().DocumentRepositories
+            var retVal = from item in Core.Configuration.GetInstance().DocumentRepositories
                          where item.Name.ToLower() == ItemName.Text.ToLower()
                          select item;
             return retVal.Count<DocumentRepository>();
@@ -237,7 +237,7 @@ namespace CodeTorch.Designer.Forms
         //
         private int GetDocumentRepositoryTypeCountByName()
         {
-            var retVal = from item in Configuration.GetInstance().DocumentRepositoryTypes
+            var retVal = from item in Core.Configuration.GetInstance().DocumentRepositoryTypes
                          where item.Name.ToLower() == ItemName.Text.ToLower()
                          select item;
             return retVal.Count<DocumentRepositoryType>();
@@ -245,7 +245,7 @@ namespace CodeTorch.Designer.Forms
 
         private int GetEmailConnectionCountByName()
         {
-            var retVal = from item in Configuration.GetInstance().EmailConnections
+            var retVal = from item in Core.Configuration.GetInstance().EmailConnections
                          where item.Name.ToLower() == ItemName.Text.ToLower()
                          select item;
             return retVal.Count<EmailConnection>();
@@ -253,7 +253,7 @@ namespace CodeTorch.Designer.Forms
 
         private int GetEmailConnectionTypeCountByName()
         {
-            var retVal = from item in Configuration.GetInstance().EmailConnectionTypes
+            var retVal = from item in Core.Configuration.GetInstance().EmailConnectionTypes
                          where item.Name.ToLower() == ItemName.Text.ToLower()
                          select item;
             return retVal.Count<EmailConnectionType>();
@@ -266,7 +266,7 @@ namespace CodeTorch.Designer.Forms
 
             item.Name = ItemName.Text;
 
-            Configuration.GetInstance().DataConnections.Add(item);
+            Core.Configuration.GetInstance().DataConnections.Add(item);
             DataConnection.Save(item);
 
         }
@@ -277,7 +277,7 @@ namespace CodeTorch.Designer.Forms
 
             item.Name = ItemName.Text;
 
-            Configuration.GetInstance().DataConnectionTypes.Add(item);
+            Core.Configuration.GetInstance().DataConnectionTypes.Add(item);
             DataConnectionType.Save(item);
 
         }
@@ -288,7 +288,7 @@ namespace CodeTorch.Designer.Forms
 
             item.Name = ItemName.Text;
 
-            Configuration.GetInstance().EmailConnections.Add(item);
+            Core.Configuration.GetInstance().EmailConnections.Add(item);
             EmailConnection.Save(item);
 
         }
@@ -299,7 +299,7 @@ namespace CodeTorch.Designer.Forms
 
             item.Name = ItemName.Text;
 
-            Configuration.GetInstance().EmailConnectionTypes.Add(item);
+            Core.Configuration.GetInstance().EmailConnectionTypes.Add(item);
             EmailConnectionType.Save(item);
 
         }
@@ -310,7 +310,7 @@ namespace CodeTorch.Designer.Forms
 
             item.Name = ItemName.Text;
 
-            Configuration.GetInstance().DocumentRepositories.Add(item);
+            Core.Configuration.GetInstance().DocumentRepositories.Add(item);
             DocumentRepository.Save(item);
 
         }
@@ -321,7 +321,7 @@ namespace CodeTorch.Designer.Forms
 
             item.Name = ItemName.Text;
 
-            Configuration.GetInstance().DocumentRepositoryTypes.Add(item);
+            Core.Configuration.GetInstance().DocumentRepositoryTypes.Add(item);
             DocumentRepositoryType.Save(item);
 
         }
@@ -330,7 +330,7 @@ namespace CodeTorch.Designer.Forms
 
         private int GetLookupCountByName()
         {
-            var retVal = from item in Configuration.GetInstance().Lookups
+            var retVal = from item in Core.Configuration.GetInstance().Lookups
                          where item.Name.ToLower() == ItemName.Text.ToLower()
                          select item;
             return retVal.Count<Lookup>();
@@ -342,14 +342,14 @@ namespace CodeTorch.Designer.Forms
 
             item.Name = ItemName.Text;
 
-            Configuration.GetInstance().Lookups.Add(item);
+            Core.Configuration.GetInstance().Lookups.Add(item);
             Lookup.Save(item);
 
         }
 
         private int GetPickerCountByName()
         {
-            var retVal = from item in Configuration.GetInstance().Pickers
+            var retVal = from item in Core.Configuration.GetInstance().Pickers
                          where item.Name.ToLower() == ItemName.Text.ToLower()
                          select item;
             return retVal.Count<Picker>();
@@ -357,7 +357,7 @@ namespace CodeTorch.Designer.Forms
 
         private int GetRestServiceCountByName()
         {
-            var retVal = from item in Configuration.GetInstance().RestServices
+            var retVal = from item in Core.Configuration.GetInstance().RestServices
                          where item.Name.ToLower() == ItemName.Text.ToLower()
                          select item;
             return retVal.Count<RestService>();
@@ -369,7 +369,7 @@ namespace CodeTorch.Designer.Forms
 
             item.Name = ItemName.Text;
 
-            Configuration.GetInstance().Pickers.Add(item);
+            Core.Configuration.GetInstance().Pickers.Add(item);
             Picker.Save(item);
 
         }
@@ -380,14 +380,14 @@ namespace CodeTorch.Designer.Forms
 
             item.Name = ItemName.Text;
 
-            Configuration.GetInstance().RestServices.Add(item);
+            Core.Configuration.GetInstance().RestServices.Add(item);
             RestService.Save(item);
 
         }
 
         private int GetScreenTypeCountByName()
         {
-            var retVal = from item in Configuration.GetInstance().ScreenTypes
+            var retVal = from item in Core.Configuration.GetInstance().ScreenTypes
                          where item.Name.ToLower() == ItemName.Text.ToLower()
                          select item;
             return retVal.Count<ScreenType>();
@@ -399,14 +399,14 @@ namespace CodeTorch.Designer.Forms
 
             item.Name = ItemName.Text;
 
-            Configuration.GetInstance().ScreenTypes.Add(item);
+            Core.Configuration.GetInstance().ScreenTypes.Add(item);
             ScreenType.Save(item);
 
         }
 
         private int GetSectionTypeCountByName()
         {
-            var retVal = from item in Configuration.GetInstance().SectionTypes
+            var retVal = from item in Core.Configuration.GetInstance().SectionTypes
                          where item.Name.ToLower() == ItemName.Text.ToLower()
                          select item;
             return retVal.Count<SectionType>();
@@ -414,7 +414,7 @@ namespace CodeTorch.Designer.Forms
 
         private int GetSectionZoneLayoutCountByName()
         {
-            var retVal = from item in Configuration.GetInstance().SectionZoneLayouts
+            var retVal = from item in Core.Configuration.GetInstance().SectionZoneLayouts
                          where item.Name.ToLower() == ItemName.Text.ToLower()
                          select item;
             return retVal.Count<SectionZoneLayout>();
@@ -427,7 +427,7 @@ namespace CodeTorch.Designer.Forms
 
             item.Name = ItemName.Text;
 
-            Configuration.GetInstance().SectionTypes.Add(item);
+            Core.Configuration.GetInstance().SectionTypes.Add(item);
             SectionType.Save(item);
 
         }
@@ -438,14 +438,14 @@ namespace CodeTorch.Designer.Forms
 
             item.Name = ItemName.Text;
 
-            Configuration.GetInstance().SectionZoneLayouts.Add(item);
+            Core.Configuration.GetInstance().SectionZoneLayouts.Add(item);
             SectionZoneLayout.Save(item);
 
         }
 
         private int GetSequenceCountByName()
         {
-            var retVal = from item in Configuration.GetInstance().Sequences
+            var retVal = from item in Core.Configuration.GetInstance().Sequences
                          where item.Name.ToLower() == ItemName.Text.ToLower()
                          select item;
             return retVal.Count<Sequence>();
@@ -457,7 +457,7 @@ namespace CodeTorch.Designer.Forms
 
             item.Name = ItemName.Text;
 
-            Configuration.GetInstance().Sequences.Add(item);
+            Core.Configuration.GetInstance().Sequences.Add(item);
             Sequence.Save(item);
 
         }
@@ -468,14 +468,14 @@ namespace CodeTorch.Designer.Forms
 
             item.Name = ItemName.Text;
 
-            Configuration.GetInstance().PageTemplates.Add(item);
+            Core.Configuration.GetInstance().PageTemplates.Add(item);
             PageTemplate.Save(item);
 
         }
 
         private int GetWorkflowCountByName()
         {
-            var retVal = from item in Configuration.GetInstance().Workflows
+            var retVal = from item in Core.Configuration.GetInstance().Workflows
                          where item.Name.ToLower() == ItemName.Text.ToLower()
                          select item;
             return retVal.Count<Workflow>();
@@ -483,7 +483,7 @@ namespace CodeTorch.Designer.Forms
 
         private int GetWorkflowTypeCountByName()
         {
-            var retVal = from item in Configuration.GetInstance().WorkflowTypes
+            var retVal = from item in Core.Configuration.GetInstance().WorkflowTypes
                          where item.Name.ToLower() == ItemName.Text.ToLower()
                          select item;
             return retVal.Count<WorkflowType>();
@@ -497,7 +497,7 @@ namespace CodeTorch.Designer.Forms
             item.Name = ItemName.Text;
             item.EntityName =  ItemName.Text;
 
-            Configuration.GetInstance().Workflows.Add(item);
+            Core.Configuration.GetInstance().Workflows.Add(item);
             Workflow.Save(item);
 
         }
@@ -510,7 +510,7 @@ namespace CodeTorch.Designer.Forms
             item.Name = ItemName.Text;
 
 
-            Configuration.GetInstance().WorkflowTypes.Add(item);
+            Core.Configuration.GetInstance().WorkflowTypes.Add(item);
             WorkflowType.Save(item);
 
         }
@@ -521,7 +521,7 @@ namespace CodeTorch.Designer.Forms
 
             item.Name = ItemName.Text;
 
-            Configuration.GetInstance().Templates.Add(item);
+            Core.Configuration.GetInstance().Templates.Add(item);
             Template.Save(item);
 
         }

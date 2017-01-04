@@ -91,8 +91,12 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    <Reference Include="Autofac, Version=4.2.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Autofac.4.2.1\lib\net45\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.6.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\log4net.2.0.6\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -124,8 +128,8 @@
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.Compatibility" />
-    <Reference Include="RestSharp, Version=105.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\RestSharp.105.1.0\lib\net45\RestSharp.dll</HintPath>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\RestSharp.105.2.3\lib\net45\RestSharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -464,6 +468,10 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\core\CodeTorch.Abstractions\CodeTorch.Abstractions.csproj">
+      <Project>{d4c1a8a6-0150-49d9-9ec6-e1561366fe47}</Project>
+      <Name>CodeTorch.Abstractions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\core\CodeTorch.Core\CodeTorch.Core.csproj">
       <Project>{ffa210b6-b65e-4cb3-9a43-e546f132e78a}</Project>
       <Name>CodeTorch.Core</Name>
@@ -471,6 +479,10 @@
     <ProjectReference Include="..\..\core\Eminent.CodeGenerator\Eminent.CodeGenerator.csproj">
       <Project>{acabe9a8-825e-46a4-8a52-ec44da8357f7}</Project>
       <Name>Eminent.CodeGenerator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\plugins\CodeTorch.Configuration.FileStore\CodeTorch.Configuration.FileStore.csproj">
+      <Project>{5fb880ce-5223-4c50-ac5a-885011c5728e}</Project>
+      <Name>CodeTorch.Configuration.FileStore</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\plugins\CodeTorch.Data.Object\CodeTorch.Data.Object.csproj">
       <Project>{b0d533f4-f147-4493-8545-a7cd0bb990d8}</Project>
@@ -487,6 +499,18 @@
     <ProjectReference Include="..\..\plugins\CodeTorch.Email\CodeTorch.Email.csproj">
       <Project>{0ea15c58-9f7a-4fda-9ad5-38f3c8c42a00}</Project>
       <Name>CodeTorch.Email</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\plugins\CodeTorch.Ioc.Autofac\CodeTorch.Ioc.Autofac.csproj">
+      <Project>{49f7fc58-9563-4fd0-a5c8-de6f63543a8d}</Project>
+      <Name>CodeTorch.Ioc.Autofac</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\plugins\CodeTorch.Ioc.Simple\CodeTorch.Ioc.Simple.csproj">
+      <Project>{6ccc826e-640b-457a-baff-66909c62474f}</Project>
+      <Name>CodeTorch.Ioc.Simple</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\plugins\CodeTorch.Logger.Log4Net\CodeTorch.Logger.Log4Net.csproj">
+      <Project>{04db4227-3a47-4beb-9816-fb6011582c72}</Project>
+      <Name>CodeTorch.Logger.Log4Net</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\plugins\CodeTorch.Lookups\CodeTorch.Lookups.csproj">
       <Project>{6d1a61e4-7b66-4806-83eb-a60fb464ca0d}</Project>

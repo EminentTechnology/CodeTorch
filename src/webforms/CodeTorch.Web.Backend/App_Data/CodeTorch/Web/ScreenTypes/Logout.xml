@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ScreenType>
+  <Name>Logout</Name>
+  <Description><![CDATA[Page type for Logout]]></Description>
+  <TemplateFile><![CDATA[~/templates/pages/Logout.aspx]]></TemplateFile>
+</ScreenType>

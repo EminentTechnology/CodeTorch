@@ -39,7 +39,10 @@ namespace CodeTorch.Web.HttpHandlers
                 {
 
                     case "app":
-                        retVal = GetAppPagesHandler(requestContext, virtualPath);
+                        retVal = GetAppPagesHandler(requestContext, virtualPath, false);
+                        break;
+                    case "codetorch":
+                        retVal = GetAppPagesHandler(requestContext, virtualPath, false);
                         break;
                     case "services":
                         retVal = GetRestServiceHandler(requestContext, virtualPath, url, urlSegments);
@@ -57,7 +60,7 @@ namespace CodeTorch.Web.HttpHandlers
             return retVal;
         }
 
-        private  IHttpHandler GetAppPagesHandler(RequestContext requestContext, string virtualPath)
+        private  IHttpHandler GetAppPagesHandler(RequestContext requestContext, string virtualPath, bool IsBackend)
         {
             string pageName = requestContext.RouteData.GetRequiredString("page");
             string[] urlSegments = requestContext.HttpContext.Request.Url.Segments;
@@ -75,6 +78,7 @@ namespace CodeTorch.Web.HttpHandlers
                 }
 
                 virtualPath = screenType.TemplateFile;
+
             }
             else
             {

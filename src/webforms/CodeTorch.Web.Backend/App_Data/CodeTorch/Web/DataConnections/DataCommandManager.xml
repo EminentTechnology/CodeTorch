@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataConnection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>DataCommandManager</Name>
+  <DataConnectionType>Object</DataConnectionType>
+  <Settings>
+    <Setting>
+      <Name>classname</Name>
+      <Value>CodeTorch.Backend.DataCommandManager</Value>
+    </Setting>
+    <Setting>
+      <Name>assembly</Name>
+      <Value>CodeTorch.Backend</Value>
+    </Setting>
+    <Setting>
+      <Name>useResolver</Name>
+      <Value>True</Value>
+    </Setting>
+  </Settings>
+</DataConnection>

@@ -14,6 +14,7 @@ using CodeTorch.Core;
 using CodeTorch.Web.Data;
 using CodeTorch.Web.Templates;
 using CodeTorch.Web.UserControls;
+using System.Reflection;
 
 namespace CodeTorch.Web
 {
@@ -671,7 +672,7 @@ namespace CodeTorch.Web
             DataCommandService dataCommandDB = DataCommandService.GetInstance();
             PageDB pageDB = new PageDB();
 
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            Abstractions.ILog log = Resolver.Resolve<Abstractions.ILogManager>().GetLogger(nameof(GridFunctions));
 
             if (page.IsValid)
             {
@@ -702,7 +703,7 @@ namespace CodeTorch.Web
             DataCommandService dataCommandDB = DataCommandService.GetInstance();
             PageDB pageDB = new PageDB();
 
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            Abstractions.ILog log = Resolver.Resolve<Abstractions.ILogManager>().GetLogger(nameof(GridFunctions));
 
             if (page.IsValid)
             {
@@ -1054,7 +1055,7 @@ namespace CodeTorch.Web
 
         public static void FillGrid(BasePage page, RadGrid Grid, CodeTorch.Core.Grid GridConfig)
         {
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            Abstractions.ILog log = Resolver.Resolve<Abstractions.ILogManager>().GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
             try
             {
                 DataCommandService dataCommandDB = DataCommandService.GetInstance();

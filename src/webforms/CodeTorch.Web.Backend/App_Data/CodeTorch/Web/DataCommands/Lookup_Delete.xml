@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataCommand xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Lookup_Delete</Name>
+  <DataConnection>LookupManager</DataConnection>
+  <Type>Object</Type>
+  <Text>Delete</Text>
+  <ReturnType>Integer</ReturnType>
+  <Parameters>
+    <Parameter>
+      <Name>Name</Name>
+      <Type>String</Type>
+      <Size>0</Size>
+      <Direction>In</Direction>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+  
+  </Parameters>
+  <Columns />
+</DataCommand>

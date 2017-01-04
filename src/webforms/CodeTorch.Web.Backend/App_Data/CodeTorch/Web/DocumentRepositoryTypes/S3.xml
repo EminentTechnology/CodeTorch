@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DocumentRepositoryType xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>S3</Name>
+  <Assembly>CodeTorch.Documents</Assembly>
+  <Class>CodeTorch.Documents.S3DataTableDocumentProvider</Class>
+  <Settings>
+    <Setting>AccessKeyIdSource</Setting>
+    <Setting>AccessKeyId</Setting>
+    <Setting>SecretKeySource</Setting>
+    <Setting>SecretKey</Setting>
+    <Setting>RegionSource</Setting>
+    <Setting>Region</Setting>
+    <Setting>BucketSource</Setting>
+    <Setting>Bucket</Setting>
+  </Settings>
+</DocumentRepositoryType>

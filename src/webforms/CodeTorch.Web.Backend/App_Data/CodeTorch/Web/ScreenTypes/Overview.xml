@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<ScreenType>
+  <Name>Overview</Name>
+  <Description><![CDATA[Overview Page Type]]></Description>
+  <TemplateFile><![CDATA[~/templates/pages/Overview.aspx]]></TemplateFile>
+  <Actions>
+    <Action>AfterPopulateScreen</Action>
+  </Actions>
+  <Routines>
+    <Routine>SetScreenObjects</Routine>
+  </Routines>
+</ScreenType>

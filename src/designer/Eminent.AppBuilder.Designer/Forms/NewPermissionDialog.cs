@@ -71,7 +71,7 @@ namespace CodeTorch.Designer.Forms
         {
 
 
-            var retVal = from permission in Configuration.GetInstance().Permissions
+            var retVal = from permission in Core.Configuration.GetInstance().Permissions
                          where permission.Name.ToLower() == ctrl.Text.ToLower()
                          select permission;
 
@@ -116,7 +116,7 @@ namespace CodeTorch.Designer.Forms
                     permission.Category = Category.Text;
                     permission.Description = Description.Text;
 
-                    Configuration.GetInstance().Permissions.Add(permission);
+                    Core.Configuration.GetInstance().Permissions.Add(permission);
                     Permission.Save(permission);
 
                     this.DialogResult = DialogResult.OK;

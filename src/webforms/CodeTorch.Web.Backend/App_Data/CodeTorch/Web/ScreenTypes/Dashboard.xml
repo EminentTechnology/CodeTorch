@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ScreenType>
+  <Name>Dashboard</Name>
+  <Description><![CDATA[Dashboard]]></Description>
+  <TemplateFile><![CDATA[~/templates/pages/Dashboard.aspx]]></TemplateFile>
+</ScreenType>

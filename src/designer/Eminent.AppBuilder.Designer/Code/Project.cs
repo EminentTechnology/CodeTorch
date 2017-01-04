@@ -80,9 +80,9 @@ namespace CodeTorch.Designer.Code
             }
             else
             {
-                if (!String.IsNullOrEmpty(Configuration.GetInstance().App.DefaultConnection))
+                if (!String.IsNullOrEmpty(Core.Configuration.GetInstance().App.DefaultConnection))
                 {
-                    retVal = this.Connections.Where(x => x.Name == Configuration.GetInstance().App.DefaultConnection).SingleOrDefault<DataConnection>();
+                    retVal = this.Connections.Where(x => x.Name == Core.Configuration.GetInstance().App.DefaultConnection).SingleOrDefault<DataConnection>();
                 }
             }
 
@@ -93,9 +93,9 @@ namespace CodeTorch.Designer.Code
         {
             DataConnection retVal = null;
 
-            if (!String.IsNullOrEmpty(Configuration.GetInstance().App.DefaultConnection))
+            if (!String.IsNullOrEmpty(Core.Configuration.GetInstance().App.DefaultConnection))
                 {
-                    retVal = this.Connections.Where(x => x.Name == Configuration.GetInstance().App.DefaultConnection).SingleOrDefault<DataConnection>();
+                    retVal = this.Connections.Where(x => x.Name == Core.Configuration.GetInstance().App.DefaultConnection).SingleOrDefault<DataConnection>();
                 }
 
             return retVal;

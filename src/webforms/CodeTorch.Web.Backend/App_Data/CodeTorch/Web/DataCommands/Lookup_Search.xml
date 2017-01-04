@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataCommand xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Lookup_Search</Name>
+  <DataConnection>LookupManager</DataConnection>
+  <Type>Object</Type>
+  <Text>Search</Text>
+  <ReturnType>DataTable</ReturnType>
+  <Parameters>
+    <Parameter>
+      <Name>Name</Name>
+      <Type>String</Type>
+      <Direction>In</Direction>
+    </Parameter>
+  </Parameters>
+  <Columns>
+    <Column>
+      <Name>Name</Name>
+      <Type>String</Type>
+    </Column>
+   
+  </Columns>
+</DataCommand>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataCommand xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>DataCommand_SearchIntegerReturningCommands</Name>
+  <DataConnection>DataCommandManager</DataConnection>
+  <Type>Object</Type>
+  <Text>SearchIntegerReturningCommands</Text>
+  <ReturnType>DataTable</ReturnType>
+  <Parameters>
+    <Parameter>
+      <Name>@name</Name>
+      <Type>String</Type>
+      <Direction>In</Direction>
+    </Parameter>
+  </Parameters>
+  <Columns>
+    <Column>
+      <Name>Name</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>DataConnection</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>Type</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>ReturnType</Name>
+      <Type>String</Type>
+    </Column>
+  </Columns>
+</DataCommand>

@@ -12,7 +12,7 @@ using System.Web.Routing;
 using System.Reflection;
 using System.Drawing;
 using System.Drawing.Imaging;
-using log4net;
+
 using CodeTorch.Core;
 using System.Web.Security;
 using System.Configuration;
@@ -500,6 +500,8 @@ namespace CodeTorch.Web
             appbuilderScreenRoute.Defaults = new RouteValueDictionary{{"page", "default.aspx"}};
             routes.Add(appbuilderScreenRoute);
 
+           
+
             var restServicesStatic = from svc in CodeTorch.Core.Configuration.GetInstance().RestServices
                     where 
                     (
@@ -604,9 +606,10 @@ namespace CodeTorch.Web
         public static void LogException(Exception ex, bool rethrow)
         {
 
-           
-                ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-                log.Error(ex);
+
+            ILog log = Resolver.Resolve<ILogManager>().GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
+            log.Error(ex);
 
                 if (rethrow)
                 {
