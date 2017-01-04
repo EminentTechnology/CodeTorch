@@ -1,0 +1,31 @@
+2017-01-03 07:52:32,940 [6] INFO  CodeTorch.Web.ActionCommands.InsertUpdateSaveActionCommand [(null)] - 
+
+In Insert Mode
+2017-01-03 07:52:32,957 [6] DEBUG CodeTorch.Web.ActionCommands.InsertUpdateSaveActionCommand [(null)] - InsertCommand:DataCommand_Add
+2017-01-03 07:52:32,966 [6] DEBUG CodeTorch.Configuration.FileStore.FileConfigurationStore [(null)] - Error during deserialization of DataCommand - Picker_Add.xml
+System.IO.FileNotFoundException: Could not find file 'D:\Sandbox\CodeTorch\src\webforms\CodeTorch.Web.Backend\App_Data\CodeTorch\Web\DataCommands\Picker_Add.xml'.
+File name: 'D:\Sandbox\CodeTorch\src\webforms\CodeTorch.Web.Backend\App_Data\CodeTorch\Web\DataCommands\Picker_Add.xml'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize)
+   at System.Xml.XmlDownloadManager.GetStream(Uri uri, ICredentials credentials, IWebProxy proxy, RequestCachePolicy cachePolicy)
+   at System.Xml.XmlUrlResolver.GetEntity(Uri absoluteUri, String role, Type ofObjectToReturn)
+   at System.Xml.XmlTextReaderImpl.FinishInitUriString()
+   at System.Xml.XmlReaderSettings.CreateReader(String inputUri, XmlParserContext inputContext)
+   at System.Xml.Linq.XDocument.Load(String uri, LoadOptions options)
+   at CodeTorch.Configuration.FileStore.FileConfigurationStore.<GetItem>d__9`1.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Configuration.FileStore\FileConfigurationStore.cs:line 141
+2017-01-03 07:52:32,989 [6] DEBUG CodeTorch.Web.ActionCommands.InsertUpdateSaveActionCommand [(null)] - Output Parameter:Picker_Add
+2017-01-03 07:52:32,989 [6] DEBUG CodeTorch.Web.ActionCommands.InsertUpdateSaveActionCommand [(null)] - RedirectAfterInsert:True
+2017-01-03 07:52:32,991 [6] DEBUG CodeTorch.Web.ActionCommands.InsertUpdateSaveActionCommand [(null)] - RedirectUrl:~/App/CodeTorch/DataCommandOverview.aspx?Command=Picker_Add
+2017-01-03 07:53:36,545 [12] INFO  GridFunctions [(null)] - 
+
+In Insert Mode
+2017-01-03 07:53:36,545 [12] DEBUG GridFunctions [(null)] - InsertCommand:DataCommand_AddParameter
+2017-01-03 07:53:54,360 [6] INFO  GridFunctions [(null)] - 
+
+In Insert Mode
+2017-01-03 07:53:54,360 [6] DEBUG GridFunctions [(null)] - InsertCommand:DataCommand_AddParameter
+2017-01-03 07:54:28,670 [12] INFO  GridFunctions [(null)] - 
+
+In Insert Mode
+2017-01-03 07:54:28,670 [12] DEBUG GridFunctions [(null)] - InsertCommand:DataCommand_AddParameter

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ScreenType>
+  <Name>Comments</Name>
+  <Description><![CDATA[Comments]]></Description>
+  <TemplateFile><![CDATA[~/templates/pages/Comment.aspx]]></TemplateFile>
+</ScreenType>

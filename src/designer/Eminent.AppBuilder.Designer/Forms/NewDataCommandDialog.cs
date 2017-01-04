@@ -43,7 +43,7 @@ namespace CodeTorch.Designer.Forms
         private void PopulateDataConnection()
         {
             DataConnectionList.DataSource = null;
-            DataConnectionList.DataSource = Configuration.GetInstance().DataConnections;
+            DataConnectionList.DataSource = Core.Configuration.GetInstance().DataConnections;
             DataConnectionList.DisplayMember = "Name";
             DataConnectionList.ValueMember = "Name";
             DataConnectionList.Text = "";
@@ -106,7 +106,7 @@ namespace CodeTorch.Designer.Forms
                     
                     DataCommand.Save(cmd);
 
-                    Configuration.GetInstance().DataCommands.Add(cmd);
+                    Core.Configuration.GetInstance().DataCommands.Add(cmd);
                                
               
                     this.DialogResult = DialogResult.OK;
@@ -150,7 +150,7 @@ namespace CodeTorch.Designer.Forms
 
         private void ValidateExistingDataCommand(Control ctrl, string Caption, ref bool IsErrorPresent, StringBuilder errors)
         {
-            var retVal = from cmd in Configuration.GetInstance().DataCommands
+            var retVal = from cmd in Core.Configuration.GetInstance().DataCommands
                          where cmd.Name.ToLower() == ctrl.Text.ToLower()
                          select cmd;
 

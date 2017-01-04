@@ -110,7 +110,11 @@ namespace CodeTorch.Core
             
             //load the special app object
             var app = await Store.GetItem<App>("App");
-            config.App = app;
+            if(app != null)
+            {
+                config.App = app;
+            }
+            
 
 
             //load all the other objects
@@ -196,7 +200,8 @@ namespace CodeTorch.Core
 
         public static void ReloadConfigurationItems(string ConfigurationFolder, string ConfigurationItemType)
         {
-            throw new NotImplementedException();
+            IConfigurationObject2 config = ConfigurationObjectFactory.CreateConfigurationObject(ConfigurationItemType);
+            config.ClearAll();
         }
 
        
@@ -250,31 +255,10 @@ namespace CodeTorch.Core
             }
         }
 
-        public static void LoadFromConfigurationFolder(string configurationPath)
+        public static async Task LoadFromConfigurationFolder(IConfigurationStore store)
         {
-
-            System.Xml.Serialization.XmlSerializer x = null;
-
-            if (extraTypes == null)
-            {
-                x = new System.Xml.Serialization.XmlSerializer(item.GetType());
-            }
-            else
-            {
-                x = new System.Xml.Serialization.XmlSerializer(item.GetType(), extraTypes); 
-            }
-            
-            XmlWriterSettings settings = new XmlWriterSettings();
-            settings.Indent = true;
-            settings.CloseOutput = true;
-            settings.NewLineHandling = NewLineHandling.Entitize;
-
-            using (XmlWriter writer = XmlWriter.Create(filePath, settings))
-            {
-                x.Serialize(writer, item);
-                writer.Close();
-            }
-            throw new NotImplementedException();
+            CodeTorch.Core.ConfigurationLoader.Store = store;
+            await LoadConfiguration();
         }
     }
 

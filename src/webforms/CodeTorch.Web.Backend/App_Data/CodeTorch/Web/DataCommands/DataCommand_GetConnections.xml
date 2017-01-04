@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataCommand xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>DataCommand_GetConnections</Name>
+  <DataConnection>DataCommandManager</DataConnection>
+  <Type>Object</Type>
+  <Text>GetConnections</Text>
+  <ReturnType>DataTable</ReturnType>
+  <Parameters />
+  <Columns>
+    <Column>
+      <Name>Name</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>DataConnectionType</Name>
+      <Type>String</Type>
+    </Column>
+  </Columns>
+</DataCommand>

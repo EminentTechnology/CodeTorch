@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ScreenType>
+  <Name>Search</Name>
+  <Description><![CDATA[Search Page Type ]]></Description>
+  <TemplateFile><![CDATA[~/templates/pages/Search.aspx]]></TemplateFile>
+</ScreenType>

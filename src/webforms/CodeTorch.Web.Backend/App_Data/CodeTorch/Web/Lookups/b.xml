@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Lookup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>b</Name>
+  <Items>
+    <Item>
+      <Value>a</Value>
+      <Description>b</Description>
+      <Sort>c</Sort>
+    </Item>
+  </Items>
+</Lookup>

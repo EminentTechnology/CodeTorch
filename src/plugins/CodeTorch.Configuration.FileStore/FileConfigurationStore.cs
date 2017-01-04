@@ -1,6 +1,6 @@
 ﻿using CodeTorch.Abstractions;
-using CodeTorch.Abstractions.Services;
 using CodeTorch.Core;
+using CodeTorch.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,11 +16,27 @@ namespace CodeTorch.Configuration.FileStore
     public class FileConfigurationStore : IConfigurationStore
     {
         private readonly ILog Log;
-        public string Path { get; set; }
 
-        public FileConfigurationStore(ILog log)
+        //public string Path { get; set; }
+        string _Path = null;
+        public string Path
         {
-            Log = log;
+            get
+            {
+                return _Path;
+            }
+            set
+            {
+                _Path = value;
+                //TODO: Really need to remove this dependency
+                //Also need to figure out a way to remove it from ConfigurationObjects in Core
+                CodeTorch.Core.Configuration.GetInstance().ConfigurationPath = _Path;
+            }
+        }
+
+        public FileConfigurationStore(ILogManager log)
+        {
+            Log = log.GetLogger(this.GetType());
             //set default codetorch path
             try
             {
@@ -31,34 +47,86 @@ namespace CodeTorch.Configuration.FileStore
             { }
         }
 
-        public Task<T> Add<T>(string key, T item)
+        public async Task<T> Add<T>(string key, T item)
         {
             if (String.IsNullOrEmpty(Path))
                 throw new ArgumentNullException(nameof(Path));
 
             key = ValidateKey(key);
 
-            throw new NotImplementedException();
+            //ensure folder exsists
+            var folder = GetPath<T>(null);
+            var t = typeof(T);
+
+            if (!Directory.Exists(folder))
+            {
+                Directory.CreateDirectory(folder);
+            }
+
+            //TODO - need a generic way of getting the manager
+            var manager = ConfigurationObjectFactory.CreateConfigurationObject(t.Name) as IConfigurationObject2;
+
+            System.Xml.Serialization.XmlSerializer x = null;
+            Type[] extraTypes = null;
+            //TODO: neeed way to set this for special types - eg screen
+
+            if (extraTypes == null)
+            {
+                x = new System.Xml.Serialization.XmlSerializer(item.GetType());
+            }
+            else
+            {
+                x = new System.Xml.Serialization.XmlSerializer(item.GetType(), extraTypes);
+            }
+
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.Indent = true;
+            settings.CloseOutput = true;
+
+            var filePath = GetPath<T>(key);
+            using (XmlWriter writer = XmlWriter.Create(filePath, settings))
+            {
+                x.Serialize(writer, item);
+                writer.Close();
+            }
+
+
+            return await Task.FromResult(item);
         }
 
-        public Task<T> Delete<T>(string key, T item)
+        public async Task Delete<T>(string key)
         {
             if (String.IsNullOrEmpty(Path))
                 throw new ArgumentNullException(nameof(Path));
 
             key = ValidateKey(key);
 
-            throw new NotImplementedException();
+            
+            var item = await GetItem<T>(key);
+
+            var t = item.GetType();
+
+            //TODO - need a generic way of getting the manager
+            var manager = ConfigurationObjectFactory.CreateConfigurationObject(t.Name) as IConfigurationObject2;
+            manager.Delete(item);
+
+            await Task.FromResult(true);
         }
 
-        public Task<bool> Exists<T>(string key)
+        public async Task<bool> Exists<T>(string key)
         {
             if (String.IsNullOrEmpty(Path))
                 throw new ArgumentNullException(nameof(Path));
 
-            key = ValidateKey(key);
+            T item = default(T);
 
-            throw new NotImplementedException();
+            if (!String.IsNullOrEmpty(key))
+            {
+                key = ValidateKey(key);
+                item = await GetItem<T>(key);
+            }
+           
+            return (item != null);
         }
 
         public async Task<T> GetItem<T>(string key)
@@ -68,22 +136,25 @@ namespace CodeTorch.Configuration.FileStore
             if (String.IsNullOrEmpty(Path))
                 throw new ArgumentNullException(nameof(Path));
 
-            key = ValidateKey(key);
-            var file = GetPath<T>(key);
-
-            var t = typeof(T);
-
-            try
+            if (!String.IsNullOrEmpty(key))
             {
-                //TODO - need a generic way of getting the manager
-                var manager = ConfigurationObjectFactory.CreateConfigurationObject(t.Name) as IConfigurationManager<T>;
-                XDocument doc = XDocument.Load(file);
-                item = manager.Load(doc, file);
+                key = ValidateKey(key);
+                var file = GetPath<T>(key);
 
-            }
-            catch (Exception ex)
-            {
-                Log.Debug(String.Format("Error during deserialization of {0} - {1}", t.Name, key), ex);
+                var t = typeof(T);
+
+                try
+                {
+                    //TODO - need a generic way of getting the manager
+                    var manager = ConfigurationObjectFactory.CreateConfigurationObject(t.Name) as IConfigurationManager<T>;
+                    XDocument doc = XDocument.Load(file);
+                    item = manager.Load(doc, file);
+
+                }
+                catch (Exception ex)
+                {
+                    Log.Debug(String.Format("Error during deserialization of {0} - {1}", t.Name, key), ex);
+                }
             }
 
             return await Task.FromResult(item);
@@ -154,24 +225,43 @@ namespace CodeTorch.Configuration.FileStore
             return retVal;
         }
 
-        public Task<T> Save<T>(string key, T item)
+        public async Task<T> Save<T>(string key, T item)
         {
             if (String.IsNullOrEmpty(Path))
                 throw new ArgumentNullException(nameof(Path));
 
-            key = ValidateKey(key);
+            var exists = await Exists<T>(key);
 
-            throw new NotImplementedException();
+            if (exists)
+            {
+                return await Add<T>(key, item);
+            }
+            else
+            {
+                return await Update<T>(key, item);
+            }
         }
 
-        public Task<T> Update<T>(string key, T item)
+        public async Task<T> Update<T>(string key, T item)
         {
             if (String.IsNullOrEmpty(Path))
                 throw new ArgumentNullException(nameof(Path));
 
             key = ValidateKey(key);
+            var t = typeof(T);
+            //ensure folder exsists
+            var folder = GetPath<T>(null);
 
-            throw new NotImplementedException();
+            if (!Directory.Exists(folder))
+            {
+                Directory.CreateDirectory(folder);
+            }
+
+            //TODO - need a generic way of getting the manager
+            var manager = ConfigurationObjectFactory.CreateConfigurationObject(t.Name) as IConfigurationObject2;
+            manager.Save(item);
+
+            return await Task.FromResult(item);
         }
 
 
@@ -203,6 +293,8 @@ namespace CodeTorch.Configuration.FileStore
 
 
         }
+
+        
 
         private string ValidateKey(string key)
         {

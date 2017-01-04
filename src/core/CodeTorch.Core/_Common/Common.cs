@@ -1,9 +1,7 @@
 ﻿using System;
 
 using System.Linq;
-
-using log4net;
-
+using System.Reflection;
 using System.Text.RegularExpressions;
 
 namespace CodeTorch.Core
@@ -20,7 +18,7 @@ namespace CodeTorch.Core
         {
 
 
-            ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            Abstractions.ILog log = Resolver.Resolve<Abstractions.ILogManager>().GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
             log.Error(ex);
 
             if (rethrow)
@@ -34,7 +32,7 @@ namespace CodeTorch.Core
 
         public static void LogInfo(string Message)
         {
-            ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            Abstractions.ILog log = Resolver.Resolve<Abstractions.ILogManager>().GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
             log.Info(Message);
 
         }
@@ -42,7 +40,7 @@ namespace CodeTorch.Core
         public static void LogDebug(string Message)
         {
 
-            ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            Abstractions.ILog log = Resolver.Resolve<Abstractions.ILogManager>().GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
             log.Debug(Message);
 
         }
@@ -50,7 +48,7 @@ namespace CodeTorch.Core
         public static void LogWarn(string Message)
         {
 
-            ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            Abstractions.ILog log = Resolver.Resolve<Abstractions.ILogManager>().GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
             log.Warn(Message);
 
         }

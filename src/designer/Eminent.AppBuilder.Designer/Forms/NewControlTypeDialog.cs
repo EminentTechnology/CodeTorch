@@ -44,7 +44,7 @@ namespace CodeTorch.Designer.Forms
         private void ValidateExistingControl(Control ctrl, string Caption, ref bool IsErrorPresent, StringBuilder errors)
         {
 
-            var retVal = from controlType in Configuration.GetInstance().ControlTypes
+            var retVal = from controlType in Core.Configuration.GetInstance().ControlTypes
                          where controlType.Name.ToLower() == ControlName.Text.ToLower()
                          select controlType;
 
@@ -87,7 +87,7 @@ namespace CodeTorch.Designer.Forms
                     controlType.Name = ControlName.Text;
                     //controlType.Path = ControlFilePath.Text;
 
-                    Configuration.GetInstance().ControlTypes.Add(controlType);
+                    Core.Configuration.GetInstance().ControlTypes.Add(controlType);
                     ControlType.Save(controlType);
                     this.DialogResult = DialogResult.OK;
                 }

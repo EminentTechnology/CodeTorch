@@ -114,6 +114,7 @@
     <Compile Include="ControlTypes\RadioButtonListControl.cs" />
     <Compile Include="Grid\ClientSelectGridColumn.cs" />
     <Compile Include="Grid\GridCommandItemDisplay.cs" />
+    <Compile Include="Resolver.cs" />
     <Compile Include="Sections\CustomSection.cs" />
     <Compile Include="_Common\ConfigurationObjectFactory.cs" />
     <Compile Include="ConfigurationObjects\ControlTypeConfigurationObject.cs" />
@@ -365,7 +366,6 @@
   <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

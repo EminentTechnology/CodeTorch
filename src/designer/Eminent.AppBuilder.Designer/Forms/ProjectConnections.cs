@@ -54,7 +54,7 @@ namespace CodeTorch.Designer.Forms
             if (this.Project != null)
             {
                 List<DataConnection> remove = new List<DataConnection>();
-                List<DataConnection> availableConnections = Configuration.GetInstance().DataConnections;
+                List<DataConnection> availableConnections = Core.Configuration.GetInstance().DataConnections;
 
                 //see if there are connections in project file that no longer exist in project
                 foreach (DataConnection connection in this.Project.Connections)

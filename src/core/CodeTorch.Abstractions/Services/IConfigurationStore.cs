@@ -13,7 +13,7 @@ namespace CodeTorch.Abstractions
         Task<bool> Exists<T>(string key);
         Task<T> Add<T>(string key, T item);
         Task<T> Update<T>(string key, T item);
-        Task<T> Delete<T>(string key, T item);
+        Task Delete<T>(string key);
         Task<T> Save<T>(string key, T item);
     }
 }

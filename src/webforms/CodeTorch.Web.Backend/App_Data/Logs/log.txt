@@ -1,0 +1,296 @@
+2017-01-03 20:03:36,548 [38] INFO  GridFunctions [(null)] - 
+
+In Insert Mode
+2017-01-03 20:03:36,565 [38] DEBUG GridFunctions [(null)] - InsertCommand:Picker_Add
+2017-01-03 20:03:36,574 [38] ERROR CodeTorch.Core.Common [(null)] - System.Exception: Picker b already exists
+   at CodeTorch.Backend.PickerManager.<Add>d__5.MoveNext() in D:\Sandbox\CodeTorch\src\core\CodeTorch.Backend\PickerManager.cs:line 79
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at CallSite.Target(Closure , CallSite , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 509
+2017-01-03 20:03:36,581 [38] ERROR CodeTorch.Core.Common [(null)] - System.Exception: Picker b already exists
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 530
+2017-01-03 20:03:36,581 [38] ERROR CodeTorch.Core.Common [(null)] - System.AggregateException: One or more errors occurred. ---> System.Exception: Picker b already exists
+   at CodeTorch.Core.Common.LogException(Exception ex, Boolean rethrow) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 31
+   at CodeTorch.Core.Common.LogException(Exception ex) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 13
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 551
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.ExecuteCommand(DataConnection connection, DataCommand dataCommand, List`1 parameters, String commandText) in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 28
+   at CodeTorch.Core.Services.DataCommandService.ExecuteCommand(DbTransaction tran, DataConnection connection, DataCommand dataCommand, List`1 parameters, String commandText) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\Services\DataCommandService.cs:line 292
+---> (Inner Exception #0) System.Exception: Picker b already exists
+   at CodeTorch.Core.Common.LogException(Exception ex, Boolean rethrow) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 31
+   at CodeTorch.Core.Common.LogException(Exception ex) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 13
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 551<---
+
+2017-01-03 20:03:41,725 [30] INFO  GridFunctions [(null)] - 
+
+In Insert Mode
+2017-01-03 20:03:41,725 [30] DEBUG GridFunctions [(null)] - InsertCommand:Picker_Add
+2017-01-03 20:03:41,727 [30] DEBUG CodeTorch.Configuration.FileStore.FileConfigurationStore [(null)] - Error during deserialization of Picker - c.xml
+System.IO.FileNotFoundException: Could not find file 'D:\Sandbox\CodeTorch\src\webforms\CodeTorch.Web.Backend\App_Data\CodeTorch\Web\Pickers\c.xml'.
+File name: 'D:\Sandbox\CodeTorch\src\webforms\CodeTorch.Web.Backend\App_Data\CodeTorch\Web\Pickers\c.xml'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize)
+   at System.Xml.XmlDownloadManager.GetStream(Uri uri, ICredentials credentials, IWebProxy proxy, RequestCachePolicy cachePolicy)
+   at System.Xml.XmlUrlResolver.GetEntity(Uri absoluteUri, String role, Type ofObjectToReturn)
+   at System.Xml.XmlTextReaderImpl.FinishInitUriString()
+   at System.Xml.XmlReaderSettings.CreateReader(String inputUri, XmlParserContext inputContext)
+   at System.Xml.Linq.XDocument.Load(String uri, LoadOptions options)
+   at CodeTorch.Configuration.FileStore.FileConfigurationStore.<GetItem>d__9`1.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Configuration.FileStore\FileConfigurationStore.cs:line 147
+2017-01-03 20:04:16,299 [30] ERROR CodeTorch.Core.Common [(null)] - System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at CodeTorch.Core.ConfigurationObjectFactory.CreateConfigurationObject(String entityName) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\ConfigurationObjectFactory.cs:line 77
+   at CodeTorch.Configuration.FileStore.FileConfigurationStore.<Delete>d__7`1.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Configuration.FileStore\FileConfigurationStore.cs:line 107
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at CodeTorch.Backend.PickerManager.<Delete>d__4.MoveNext() in D:\Sandbox\CodeTorch\src\core\CodeTorch.Backend\PickerManager.cs:line 53
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at CallSite.Target(Closure , CallSite , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecuteVoid1[T0](CallSite site, T0 arg0)
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 505
+2017-01-03 20:04:16,300 [30] ERROR CodeTorch.Core.Common [(null)] - System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 530
+2017-01-03 20:04:16,301 [30] ERROR CodeTorch.Core.Common [(null)] - System.AggregateException: One or more errors occurred. ---> System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at CodeTorch.Core.Common.LogException(Exception ex, Boolean rethrow) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 31
+   at CodeTorch.Core.Common.LogException(Exception ex) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 13
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 551
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.ExecuteCommand(DataConnection connection, DataCommand dataCommand, List`1 parameters, String commandText) in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 28
+   at CodeTorch.Core.Services.DataCommandService.ExecuteCommand(DbTransaction tran, DataConnection connection, DataCommand dataCommand, List`1 parameters, String commandText) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\Services\DataCommandService.cs:line 292
+---> (Inner Exception #0) System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at CodeTorch.Core.Common.LogException(Exception ex, Boolean rethrow) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 31
+   at CodeTorch.Core.Common.LogException(Exception ex) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 13
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 551<---
+
+2017-01-03 20:04:16,301 [30] ERROR CodeTorch.Web.Common [(null)] - System.AggregateException: One or more errors occurred. ---> System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at CodeTorch.Core.Common.LogException(Exception ex, Boolean rethrow) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 31
+   at CodeTorch.Core.Common.LogException(Exception ex) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 13
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 551
+   --- End of inner exception stack trace ---
+   at CodeTorch.Core.Common.LogException(Exception ex, Boolean rethrow) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 31
+   at CodeTorch.Core.Common.LogException(Exception ex) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 13
+   at CodeTorch.Core.Services.DataCommandService.ExecuteCommand(DbTransaction tran, DataConnection connection, DataCommand dataCommand, List`1 parameters, String commandText) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\Services\DataCommandService.cs:line 303
+   at CodeTorch.Core.Services.DataCommandService.ExecuteCommand(DbTransaction tran, DataCommand dataCommand, List`1 parameters, String commandText) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\Services\DataCommandService.cs:line 260
+   at CodeTorch.Core.Services.DataCommandService.ExecuteDataCommand(DbTransaction tran, String dataCommandName, List`1 parameters) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\Services\DataCommandService.cs:line 330
+   at CodeTorch.Core.Services.DataCommandService.ExecuteDataCommand(String DataCommandName, List`1 parameters) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\Services\DataCommandService.cs:line 320
+   at CodeTorch.Web.GridFunctions.HandleDeleteCommand(BasePage page, RadGrid Grid, Grid GridConfig, Object source, GridCommandEventArgs e) in D:\Sandbox\CodeTorch\src\webforms\CodeTorch.Web\Code\GridFunctions.cs:line 991
+---> (Inner Exception #0) System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at CodeTorch.Core.Common.LogException(Exception ex, Boolean rethrow) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 31
+   at CodeTorch.Core.Common.LogException(Exception ex) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 13
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 551<---
+
+2017-01-03 20:06:12,753 [26] ERROR CodeTorch.Core.Common [(null)] - System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at CodeTorch.Core.ConfigurationObjectFactory.CreateConfigurationObject(String entityName) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\ConfigurationObjectFactory.cs:line 77
+   at CodeTorch.Configuration.FileStore.FileConfigurationStore.<Delete>d__7`1.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Configuration.FileStore\FileConfigurationStore.cs:line 107
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at CodeTorch.Backend.PickerManager.<Delete>d__4.MoveNext() in D:\Sandbox\CodeTorch\src\core\CodeTorch.Backend\PickerManager.cs:line 53
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at CallSite.Target(Closure , CallSite , Object )
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 505
+2017-01-03 20:06:12,824 [26] ERROR CodeTorch.Core.Common [(null)] - System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 530
+2017-01-03 20:06:12,968 [26] ERROR CodeTorch.Core.Common [(null)] - System.AggregateException: One or more errors occurred. ---> System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at CodeTorch.Core.Common.LogException(Exception ex, Boolean rethrow) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 31
+   at CodeTorch.Core.Common.LogException(Exception ex) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 13
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 551
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.ExecuteCommand(DataConnection connection, DataCommand dataCommand, List`1 parameters, String commandText) in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 28
+   at CodeTorch.Core.Services.DataCommandService.ExecuteCommand(DbTransaction tran, DataConnection connection, DataCommand dataCommand, List`1 parameters, String commandText) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\Services\DataCommandService.cs:line 292
+---> (Inner Exception #0) System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at CodeTorch.Core.Common.LogException(Exception ex, Boolean rethrow) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 31
+   at CodeTorch.Core.Common.LogException(Exception ex) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 13
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 551<---
+
+2017-01-03 20:06:13,033 [26] ERROR CodeTorch.Web.Common [(null)] - System.AggregateException: One or more errors occurred. ---> System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at CodeTorch.Core.Common.LogException(Exception ex, Boolean rethrow) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 31
+   at CodeTorch.Core.Common.LogException(Exception ex) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 13
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 551
+   --- End of inner exception stack trace ---
+   at CodeTorch.Core.Common.LogException(Exception ex, Boolean rethrow) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 31
+   at CodeTorch.Core.Common.LogException(Exception ex) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 13
+   at CodeTorch.Core.Services.DataCommandService.ExecuteCommand(DbTransaction tran, DataConnection connection, DataCommand dataCommand, List`1 parameters, String commandText) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\Services\DataCommandService.cs:line 303
+   at CodeTorch.Core.Services.DataCommandService.ExecuteCommand(DbTransaction tran, DataCommand dataCommand, List`1 parameters, String commandText) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\Services\DataCommandService.cs:line 260
+   at CodeTorch.Core.Services.DataCommandService.ExecuteDataCommand(DbTransaction tran, String dataCommandName, List`1 parameters) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\Services\DataCommandService.cs:line 330
+   at CodeTorch.Core.Services.DataCommandService.ExecuteDataCommand(String DataCommandName, List`1 parameters) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\Services\DataCommandService.cs:line 320
+   at CodeTorch.Web.GridFunctions.HandleDeleteCommand(BasePage page, RadGrid Grid, Grid GridConfig, Object source, GridCommandEventArgs e) in D:\Sandbox\CodeTorch\src\webforms\CodeTorch.Web\Code\GridFunctions.cs:line 991
+---> (Inner Exception #0) System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at CodeTorch.Core.Common.LogException(Exception ex, Boolean rethrow) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 31
+   at CodeTorch.Core.Common.LogException(Exception ex) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 13
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 551<---
+
+2017-01-03 20:06:55,169 [30] ERROR CodeTorch.Core.Common [(null)] - System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at CodeTorch.Core.ConfigurationObjectFactory.CreateConfigurationObject(String entityName) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\ConfigurationObjectFactory.cs:line 77
+   at CodeTorch.Configuration.FileStore.FileConfigurationStore.<Delete>d__7`1.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Configuration.FileStore\FileConfigurationStore.cs:line 107
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at CodeTorch.Backend.PickerManager.<Delete>d__4.MoveNext() in D:\Sandbox\CodeTorch\src\core\CodeTorch.Backend\PickerManager.cs:line 53
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at CallSite.Target(Closure , CallSite , Object )
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 505
+2017-01-03 20:06:55,251 [30] ERROR CodeTorch.Core.Common [(null)] - System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 530
+2017-01-03 20:06:55,391 [30] ERROR CodeTorch.Core.Common [(null)] - System.AggregateException: One or more errors occurred. ---> System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at CodeTorch.Core.Common.LogException(Exception ex, Boolean rethrow) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 31
+   at CodeTorch.Core.Common.LogException(Exception ex) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 13
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 551
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.ExecuteCommand(DataConnection connection, DataCommand dataCommand, List`1 parameters, String commandText) in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 28
+   at CodeTorch.Core.Services.DataCommandService.ExecuteCommand(DbTransaction tran, DataConnection connection, DataCommand dataCommand, List`1 parameters, String commandText) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\Services\DataCommandService.cs:line 292
+---> (Inner Exception #0) System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at CodeTorch.Core.Common.LogException(Exception ex, Boolean rethrow) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 31
+   at CodeTorch.Core.Common.LogException(Exception ex) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 13
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 551<---
+
+2017-01-03 20:06:55,472 [30] ERROR CodeTorch.Web.Common [(null)] - System.AggregateException: One or more errors occurred. ---> System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at CodeTorch.Core.Common.LogException(Exception ex, Boolean rethrow) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 31
+   at CodeTorch.Core.Common.LogException(Exception ex) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 13
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 551
+   --- End of inner exception stack trace ---
+   at CodeTorch.Core.Common.LogException(Exception ex, Boolean rethrow) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 31
+   at CodeTorch.Core.Common.LogException(Exception ex) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 13
+   at CodeTorch.Core.Services.DataCommandService.ExecuteCommand(DbTransaction tran, DataConnection connection, DataCommand dataCommand, List`1 parameters, String commandText) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\Services\DataCommandService.cs:line 303
+   at CodeTorch.Core.Services.DataCommandService.ExecuteCommand(DbTransaction tran, DataCommand dataCommand, List`1 parameters, String commandText) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\Services\DataCommandService.cs:line 260
+   at CodeTorch.Core.Services.DataCommandService.ExecuteDataCommand(DbTransaction tran, String dataCommandName, List`1 parameters) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\Services\DataCommandService.cs:line 330
+   at CodeTorch.Core.Services.DataCommandService.ExecuteDataCommand(String DataCommandName, List`1 parameters) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\Services\DataCommandService.cs:line 320
+   at CodeTorch.Web.GridFunctions.HandleDeleteCommand(BasePage page, RadGrid Grid, Grid GridConfig, Object source, GridCommandEventArgs e) in D:\Sandbox\CodeTorch\src\webforms\CodeTorch.Web\Code\GridFunctions.cs:line 991
+---> (Inner Exception #0) System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at CodeTorch.Core.Common.LogException(Exception ex, Boolean rethrow) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 31
+   at CodeTorch.Core.Common.LogException(Exception ex) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 13
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 551<---
+
+2017-01-03 20:07:32,993 [23] ERROR CodeTorch.Core.Common [(null)] - System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at CodeTorch.Core.ConfigurationObjectFactory.CreateConfigurationObject(String entityName) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\ConfigurationObjectFactory.cs:line 77
+   at CodeTorch.Configuration.FileStore.FileConfigurationStore.<Delete>d__7`1.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Configuration.FileStore\FileConfigurationStore.cs:line 107
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at CodeTorch.Backend.PickerManager.<Delete>d__4.MoveNext() in D:\Sandbox\CodeTorch\src\core\CodeTorch.Backend\PickerManager.cs:line 53
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at CallSite.Target(Closure , CallSite , Object )
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 505
+2017-01-03 20:07:32,994 [23] ERROR CodeTorch.Core.Common [(null)] - System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 530
+2017-01-03 20:07:32,994 [23] ERROR CodeTorch.Core.Common [(null)] - System.AggregateException: One or more errors occurred. ---> System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at CodeTorch.Core.Common.LogException(Exception ex, Boolean rethrow) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 31
+   at CodeTorch.Core.Common.LogException(Exception ex) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 13
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 551
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.ExecuteCommand(DataConnection connection, DataCommand dataCommand, List`1 parameters, String commandText) in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 28
+   at CodeTorch.Core.Services.DataCommandService.ExecuteCommand(DbTransaction tran, DataConnection connection, DataCommand dataCommand, List`1 parameters, String commandText) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\Services\DataCommandService.cs:line 292
+---> (Inner Exception #0) System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at CodeTorch.Core.Common.LogException(Exception ex, Boolean rethrow) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 31
+   at CodeTorch.Core.Common.LogException(Exception ex) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 13
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 551<---
+
+2017-01-03 20:07:32,994 [23] ERROR CodeTorch.Web.Common [(null)] - System.AggregateException: One or more errors occurred. ---> System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at CodeTorch.Core.Common.LogException(Exception ex, Boolean rethrow) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 31
+   at CodeTorch.Core.Common.LogException(Exception ex) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 13
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 551
+   --- End of inner exception stack trace ---
+   at CodeTorch.Core.Common.LogException(Exception ex, Boolean rethrow) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 31
+   at CodeTorch.Core.Common.LogException(Exception ex) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 13
+   at CodeTorch.Core.Services.DataCommandService.ExecuteCommand(DbTransaction tran, DataConnection connection, DataCommand dataCommand, List`1 parameters, String commandText) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\Services\DataCommandService.cs:line 303
+   at CodeTorch.Core.Services.DataCommandService.ExecuteCommand(DbTransaction tran, DataCommand dataCommand, List`1 parameters, String commandText) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\Services\DataCommandService.cs:line 260
+   at CodeTorch.Core.Services.DataCommandService.ExecuteDataCommand(DbTransaction tran, String dataCommandName, List`1 parameters) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\Services\DataCommandService.cs:line 330
+   at CodeTorch.Core.Services.DataCommandService.ExecuteDataCommand(String DataCommandName, List`1 parameters) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\Services\DataCommandService.cs:line 320
+   at CodeTorch.Web.GridFunctions.HandleDeleteCommand(BasePage page, RadGrid Grid, Grid GridConfig, Object source, GridCommandEventArgs e) in D:\Sandbox\CodeTorch\src\webforms\CodeTorch.Web\Code\GridFunctions.cs:line 991
+---> (Inner Exception #0) System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at CodeTorch.Core.Common.LogException(Exception ex, Boolean rethrow) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 31
+   at CodeTorch.Core.Common.LogException(Exception ex) in D:\Sandbox\CodeTorch\src\core\CodeTorch.Core\_Common\Common.cs:line 13
+   at CodeTorch.Data.Object.ObjectDataCommandProvider.<Exec>d__8.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Data.Object\ObjectDataCommandProvider.cs:line 551<---
+
+2017-01-03 20:09:42,723 [10] INFO  GridFunctions [(null)] - 
+
+In Insert Mode
+2017-01-03 20:09:42,741 [10] DEBUG GridFunctions [(null)] - InsertCommand:Picker_Add
+2017-01-03 20:09:42,747 [10] DEBUG CodeTorch.Configuration.FileStore.FileConfigurationStore [(null)] - Error during deserialization of Picker - d.xml
+System.IO.FileNotFoundException: Could not find file 'D:\Sandbox\CodeTorch\src\webforms\CodeTorch.Web.Backend\App_Data\CodeTorch\Web\Pickers\d.xml'.
+File name: 'D:\Sandbox\CodeTorch\src\webforms\CodeTorch.Web.Backend\App_Data\CodeTorch\Web\Pickers\d.xml'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize)
+   at System.Xml.XmlDownloadManager.GetStream(Uri uri, ICredentials credentials, IWebProxy proxy, RequestCachePolicy cachePolicy)
+   at System.Xml.XmlUrlResolver.GetEntity(Uri absoluteUri, String role, Type ofObjectToReturn)
+   at System.Xml.XmlTextReaderImpl.FinishInitUriString()
+   at System.Xml.XmlReaderSettings.CreateReader(String inputUri, XmlParserContext inputContext)
+   at System.Xml.Linq.XDocument.Load(String uri, LoadOptions options)
+   at CodeTorch.Configuration.FileStore.FileConfigurationStore.<GetItem>d__9`1.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Configuration.FileStore\FileConfigurationStore.cs:line 150
+2017-01-03 20:09:56,721 [23] INFO  GridFunctions [(null)] - 
+
+In Insert Mode
+2017-01-03 20:09:56,722 [23] DEBUG GridFunctions [(null)] - InsertCommand:Picker_Add
+2017-01-03 20:09:56,723 [23] DEBUG CodeTorch.Configuration.FileStore.FileConfigurationStore [(null)] - Error during deserialization of Picker - e.xml
+System.IO.FileNotFoundException: Could not find file 'D:\Sandbox\CodeTorch\src\webforms\CodeTorch.Web.Backend\App_Data\CodeTorch\Web\Pickers\e.xml'.
+File name: 'D:\Sandbox\CodeTorch\src\webforms\CodeTorch.Web.Backend\App_Data\CodeTorch\Web\Pickers\e.xml'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize)
+   at System.Xml.XmlDownloadManager.GetStream(Uri uri, ICredentials credentials, IWebProxy proxy, RequestCachePolicy cachePolicy)
+   at System.Xml.XmlUrlResolver.GetEntity(Uri absoluteUri, String role, Type ofObjectToReturn)
+   at System.Xml.XmlTextReaderImpl.FinishInitUriString()
+   at System.Xml.XmlReaderSettings.CreateReader(String inputUri, XmlParserContext inputContext)
+   at System.Xml.Linq.XDocument.Load(String uri, LoadOptions options)
+   at CodeTorch.Configuration.FileStore.FileConfigurationStore.<GetItem>d__9`1.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Configuration.FileStore\FileConfigurationStore.cs:line 150
+2017-01-03 20:11:39,036 [14] INFO  GridFunctions [(null)] - 
+
+In Insert Mode
+2017-01-03 20:11:39,036 [14] DEBUG GridFunctions [(null)] - InsertCommand:Lookup_AddLookupItem
+2017-01-03 20:13:18,969 [13] INFO  GridFunctions [(null)] - 
+
+In Insert Mode
+2017-01-03 20:13:18,970 [13] DEBUG GridFunctions [(null)] - InsertCommand:Picker_Add
+2017-01-03 20:13:18,971 [13] DEBUG CodeTorch.Configuration.FileStore.FileConfigurationStore [(null)] - Error during deserialization of Picker - g.xml
+System.IO.FileNotFoundException: Could not find file 'D:\Sandbox\CodeTorch\src\webforms\CodeTorch.Web.Backend\App_Data\CodeTorch\Web\Pickers\g.xml'.
+File name: 'D:\Sandbox\CodeTorch\src\webforms\CodeTorch.Web.Backend\App_Data\CodeTorch\Web\Pickers\g.xml'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize)
+   at System.Xml.XmlDownloadManager.GetStream(Uri uri, ICredentials credentials, IWebProxy proxy, RequestCachePolicy cachePolicy)
+   at System.Xml.XmlUrlResolver.GetEntity(Uri absoluteUri, String role, Type ofObjectToReturn)
+   at System.Xml.XmlTextReaderImpl.FinishInitUriString()
+   at System.Xml.XmlReaderSettings.CreateReader(String inputUri, XmlParserContext inputContext)
+   at System.Xml.Linq.XDocument.Load(String uri, LoadOptions options)
+   at CodeTorch.Configuration.FileStore.FileConfigurationStore.<GetItem>d__9`1.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Configuration.FileStore\FileConfigurationStore.cs:line 150
+2017-01-03 20:15:03,823 [54] INFO  GridFunctions [(null)] - 
+
+In Insert Mode
+2017-01-03 20:15:03,841 [54] DEBUG GridFunctions [(null)] - InsertCommand:Picker_Add
+2017-01-03 20:15:03,848 [54] DEBUG CodeTorch.Configuration.FileStore.FileConfigurationStore [(null)] - Error during deserialization of Picker - z.xml
+System.IO.FileNotFoundException: Could not find file 'D:\Sandbox\CodeTorch\src\webforms\CodeTorch.Web.Backend\App_Data\CodeTorch\Web\Pickers\z.xml'.
+File name: 'D:\Sandbox\CodeTorch\src\webforms\CodeTorch.Web.Backend\App_Data\CodeTorch\Web\Pickers\z.xml'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize)
+   at System.Xml.XmlDownloadManager.GetStream(Uri uri, ICredentials credentials, IWebProxy proxy, RequestCachePolicy cachePolicy)
+   at System.Xml.XmlUrlResolver.GetEntity(Uri absoluteUri, String role, Type ofObjectToReturn)
+   at System.Xml.XmlTextReaderImpl.FinishInitUriString()
+   at System.Xml.XmlReaderSettings.CreateReader(String inputUri, XmlParserContext inputContext)
+   at System.Xml.Linq.XDocument.Load(String uri, LoadOptions options)
+   at CodeTorch.Configuration.FileStore.FileConfigurationStore.<GetItem>d__9`1.MoveNext() in D:\Sandbox\CodeTorch\src\plugins\CodeTorch.Configuration.FileStore\FileConfigurationStore.cs:line 150

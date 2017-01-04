@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using CodeTorch.Core;
+using CodeTorch.Abstractions;
 
 namespace CodeTorch.Data.SqlServer
 {
@@ -198,7 +199,8 @@ namespace CodeTorch.Data.SqlServer
             //declare variables
             DataSet ret = null;
 
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            var logManager = Resolver.Resolve<ILogManager>();
+            ILog log = logManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
             LogSQL(cmd, log);
 
 
@@ -252,7 +254,7 @@ namespace CodeTorch.Data.SqlServer
             return ret;
         }
 
-        private static void LogSQL(DbCommand cmd, log4net.ILog log)
+        private static void LogSQL(DbCommand cmd, ILog log)
         {
             if (log.IsDebugEnabled)
             {
@@ -275,7 +277,8 @@ namespace CodeTorch.Data.SqlServer
             //declare variable
             int retVal = 0;
 
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            var logManager = Resolver.Resolve<ILogManager>();
+            ILog log = logManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
             LogSQL(cmd, log);
 
 
@@ -320,7 +323,8 @@ namespace CodeTorch.Data.SqlServer
             XmlDocument ret = new XmlDocument();
             SqlDatabase sqlDb = (SqlDatabase)db;
 
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            var logManager = Resolver.Resolve<ILogManager>();
+            ILog log = logManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
             LogSQL(cmd, log);
 
             

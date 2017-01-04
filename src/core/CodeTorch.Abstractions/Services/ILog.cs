@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CodeTorch.Abstractions.Services
+namespace CodeTorch.Abstractions
 {
     public interface ILog
     {

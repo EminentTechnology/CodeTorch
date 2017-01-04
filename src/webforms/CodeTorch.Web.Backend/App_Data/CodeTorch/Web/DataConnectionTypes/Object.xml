@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataConnectionType xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Object</Name>
+  <Assembly>CodeTorch.Data.Object</Assembly>
+  <Class>CodeTorch.Data.Object.ObjectDataCommandProvider</Class>
+  <CommandTypes>
+    <CommandType>
+      <CommandType>Object</CommandType>
+    </CommandType>
+  </CommandTypes>
+  <Settings>
+    <Setting>assembly</Setting>
+    <Setting>classname</Setting>
+    <Setting>useResolver</Setting>
+  </Settings>
+</DataConnectionType>

@@ -1,4 +1,5 @@
-﻿using CodeTorch.Core;
+﻿using CodeTorch.Abstractions;
+using CodeTorch.Core;
 using CodeTorch.Core.Commands;
 using CodeTorch.Core.Services;
 using CodeTorch.Web.Data;
@@ -63,7 +64,7 @@ namespace CodeTorch.Web.ActionCommands
             bool SuccessIndicator = false;
             string retVal = null;
 
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            ILog log = Resolver.Resolve<ILogManager>().GetLogger(this.GetType());
 
 
             if (Page.IsValid)
@@ -208,7 +209,7 @@ namespace CodeTorch.Web.ActionCommands
 
         private void RefreshSections()
         {
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            ILog log = Resolver.Resolve<ILogManager>().GetLogger(this.GetType());
 
             try
             {

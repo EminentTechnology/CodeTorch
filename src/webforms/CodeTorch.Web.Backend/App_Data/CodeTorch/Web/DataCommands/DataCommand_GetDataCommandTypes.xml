@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataCommand xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>DataCommand_GetDataCommandTypes</Name>
+  <DataConnection>DataCommandManager</DataConnection>
+  <Type>Object</Type>
+  <Text>GetDataCommandTypes</Text>
+  <ReturnType>DataTable</ReturnType>
+  <Parameters>
+    <Parameter>
+      <Name>@connectionName</Name>
+      <Type>String</Type>
+      <Direction>In</Direction>
+    </Parameter>
+  </Parameters>
+  <Columns>
+    <Column>
+      <Name>Value</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>Description</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>Sort</Name>
+      <Type>String</Type>
+    </Column>
+  </Columns>
+</DataCommand>

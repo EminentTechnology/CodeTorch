@@ -48,7 +48,7 @@ namespace CodeTorch.Designer.Forms
         private void ValidateExistingPage(Control ctrl, string Caption, ref bool IsErrorPresent, StringBuilder errors)
         {
 
-            var retVal = from screen in Configuration.GetInstance().Screens
+            var retVal = from screen in Core.Configuration.GetInstance().Screens
                          where 
                             (
                                 (screen.Name.ToLower() == PageName.Text.ToLower()) &&
@@ -121,7 +121,7 @@ namespace CodeTorch.Designer.Forms
                     
                     
 
-                    Configuration.GetInstance().Screens.Add(screen);
+                    Core.Configuration.GetInstance().Screens.Add(screen);
 
                     CodeTorch.Core.Screen.Save(screen);
 
@@ -142,7 +142,7 @@ namespace CodeTorch.Designer.Forms
 
             this.PageTypeList.DisplayMember = "Name";
             this.PageTypeList.ValueMember = "Name";
-            this.PageTypeList.DataSource = Configuration.GetInstance().ScreenTypes;
+            this.PageTypeList.DataSource = Core.Configuration.GetInstance().ScreenTypes;
         }
 
        

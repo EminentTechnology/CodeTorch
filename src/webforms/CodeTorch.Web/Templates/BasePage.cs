@@ -143,7 +143,7 @@ namespace CodeTorch.Web.Templates
 
         void BasePage_Init(object sender, EventArgs e)
         {
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            Abstractions.ILog log = Resolver.Resolve<Abstractions.ILogManager>().GetLogger(this.GetType());
 
             try
             {
@@ -326,7 +326,7 @@ namespace CodeTorch.Web.Templates
 
         void BasePage_Load(object sender, EventArgs e)
         {
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            Abstractions.ILog log = Resolver.Resolve<Abstractions.ILogManager>().GetLogger(this.GetType());
 
             //Response.Cache.SetCacheability(HttpCacheability.NoCache);
             try
@@ -483,7 +483,8 @@ namespace CodeTorch.Web.Templates
         private string GetDynamicPageTemplate(ScreenPageTemplate pageTemplate)
         {
             string retVal = null;
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            Abstractions.ILog log = Resolver.Resolve<Abstractions.ILogManager>().GetLogger(this.GetType());
+
             try
             {
                 DataCommandService dataCommandDB = DataCommandService.GetInstance();
@@ -571,7 +572,7 @@ namespace CodeTorch.Web.Templates
 
 
             //if (rootFolder.ToLower() == "app")
-            if (this.Request.Url.AbsolutePath.ToLower().Contains("/app/"))
+            if(this.Request.Url.AbsolutePath.ToLower().Contains("/app/") || this.Request.Url.AbsolutePath.ToLower().Contains("/codetorch/"))
             {
                 string pageName = this.RouteData.GetRequiredString("page");
                 string folder = this.RouteData.GetRequiredString("folder");
@@ -1482,7 +1483,7 @@ namespace CodeTorch.Web.Templates
         {
             DisplayAlertMessage message = new DisplayAlertMessage();
 
-            string errorMessageFormat = "<strong>The following error(s) occurred</strong>:<ul><li>{0}</li></ul>";
+            string errorMessageFormat = "<strong>The following error(s) occurred</strong>:<ul>{0}</ul>";
 
             if (app != null)
             {
@@ -1504,13 +1505,29 @@ namespace CodeTorch.Web.Templates
 
             message.IsDismissable = false;
             message.AlertType = DisplayAlertMessage.ALERT_DANGER;
-            message.Text = errorMessage;
+
+            StringBuilder errorMessages = new StringBuilder();
+
+            if (ex is AggregateException)
+            {
+                
+                var errors = ex as AggregateException;
+                foreach (var error in errors.InnerExceptions)
+                {
+                    errorMessages.AppendFormat("<li>{0}</li>", error.Message);
+                }
+            }
+            else
+            {
+                errorMessages.AppendFormat("<li>{0}</li>", ex.Message);
+            }
+            message.Text = String.Format(errorMessageFormat, errorMessages.ToString());
             this.MessageBus.Publish(message);
         }
 
         public void PopulateSections()
         {
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            Abstractions.ILog log = Resolver.Resolve<Abstractions.ILogManager>().GetLogger(this.GetType());
 
             try
             {

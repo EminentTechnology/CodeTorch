@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Lookup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>DEFAULT_STATUS</Name>
+  <Items>
+    <Item>
+      <Value>1</Value>
+      <Description>Active</Description>
+      <Sort>Active</Sort>
+    </Item>
+    <Item>
+      <Value>0</Value>
+      <Description>Inactive</Description>
+      <Sort>Inactive</Sort>
+    </Item>
+    <Item>
+      <Value>3</Value>
+      <Description>3</Description>
+      <Sort>3</Sort>
+    </Item>
+    <Item>
+      <Value>4</Value>
+      <Description>4</Description>
+      <Sort>4</Sort>
+    </Item>
+  </Items>
+</Lookup>

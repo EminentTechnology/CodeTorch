@@ -1,4 +1,5 @@
-﻿using CodeTorch.Core;
+﻿using CodeTorch.Abstractions;
+using CodeTorch.Core;
 using CodeTorch.Core.Commands;
 using CodeTorch.Core.Services;
 using CodeTorch.Web.Data;
@@ -31,7 +32,8 @@ namespace CodeTorch.Web.ActionCommands
         {
 
             bool success = true;
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+            ILog log = Resolver.Resolve<ILogManager>().GetLogger(this.GetType());
 
             try
             {
@@ -90,7 +92,7 @@ namespace CodeTorch.Web.ActionCommands
         private void DefaultForm()
         {
 
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            ILog log = Resolver.Resolve<ILogManager>().GetLogger(this.GetType());
 
             try
             {
@@ -121,7 +123,7 @@ namespace CodeTorch.Web.ActionCommands
 
         private void PopulateForm()
         {
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            ILog log = Resolver.Resolve<ILogManager>().GetLogger(this.GetType());
 
             try
             {

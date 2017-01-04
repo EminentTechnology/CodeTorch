@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ScreenType>
+  <Name>Content</Name>
+  <Description><![CDATA[Content Page Type]]></Description>
+  <TemplateFile><![CDATA[~/templates/pages/Content.aspx]]></TemplateFile>
+</ScreenType>

@@ -1,0 +1,61 @@
+﻿@import url('ddsmoothmenu-v.css');
+.ddsmoothmenu {
+	WIDTH: 100%; FONT-FAMILY: "Trebuchet MS", Arial, sans-serif; BACKGROUND: #fff; FONT-WEIGHT: bold;
+}
+.ddsmoothmenu UL {
+	Z-INDEX: 100; PADDING-BOTTOM: 0px; LIST-STYLE-TYPE: none; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+.ddsmoothmenu UL LI {
+	POSITION: relative; DISPLAY: inline; FLOAT: left
+}
+.ddsmoothmenu UL LI A {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 20px; PADDING-RIGHT: 20px; DISPLAY: block; BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: #333333; TEXT-DECORATION: none; PADDING-TOP: 0px
+}
+* HTML .ddsmoothmenu UL LI A {
+	DISPLAY: inline-block
+}
+.ddsmoothmenu UL LI.center A:link {
+	BACKGROUND: white; COLOR: white
+}
+.ddsmoothmenu UL LI.center A:visited {
+	BACKGROUND: white; COLOR: white
+}
+.ddsmoothmenu UL LI A.selected {
+	BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: #333333
+}
+.ddsmoothmenu UL LI A:hover {
+	BACKGROUND: none transparent scroll repeat 0% 0%; COLOR: white
+}
+.ddsmoothmenu UL LI UL {
+	POSITION: absolute; DISPLAY: none; VISIBILITY: hidden; LEFT: 0px
+}
+.ddsmoothmenu UL LI UL LI {
+	DISPLAY: list-item; FLOAT: none
+}
+.ddsmoothmenu UL LI UL LI UL {
+	TOP: 0px
+}
+.ddsmoothmenu UL LI UL LI A {
+	BACKGROUND-IMAGE: none; BORDER-BOTTOM: #fff 0px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: #fbfbfb; MARGIN: 0px; PADDING-LEFT: 5px; WIDTH: 160px; PADDING-RIGHT: 5px; FONT: 11px Arial; BORDER-TOP-WIDTH: 0px; PADDING-TOP: 5px
+}
+.ddsmoothmenu UL LI UL LI A:link {
+	BACKGROUND-IMAGE: none; BORDER-BOTTOM: #fff 0px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: #fbfbfb; MARGIN: 0px; PADDING-LEFT: 5px; WIDTH: 160px; PADDING-RIGHT: 5px; FONT: 11px Arial; BORDER-TOP-WIDTH: 0px; PADDING-TOP: 5px
+}
+.ddsmoothmenu UL LI UL LI A:hover {
+	BACKGROUND-IMAGE: none; BORDER-BOTTOM: #fff 0px solid; TEXT-ALIGN: left; PADDING-BOTTOM: 5px; BACKGROUND-COLOR: #fbfbfb; MARGIN: 0px; PADDING-LEFT: 5px; WIDTH: 160px; PADDING-RIGHT: 5px; FONT: 11px Arial; BORDER-TOP-WIDTH: 0px; PADDING-TOP: 5px
+}
+* HTML .ddsmoothmenu {
+	HEIGHT: 1%
+}
+.downarrowclass {
+	POSITION: absolute; PADDING-BOTTOM: 0px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; TOP: 10px; PADDING-TOP: 0px
+}
+.rightarrowclass {
+	POSITION: absolute; TOP: 6px; RIGHT: 5px
+}
+.ddshadow {
+	POSITION: absolute; WIDTH: 0px; BACKGROUND: silver; HEIGHT: 0px; TOP: 0px; LEFT: 0px;z-index:90;
+}
+.toplevelshadow {
+	opacity: 0.8
+}

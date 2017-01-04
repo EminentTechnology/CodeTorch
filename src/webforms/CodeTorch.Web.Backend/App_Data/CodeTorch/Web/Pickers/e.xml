@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Picker xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>e</Name>
+  <Url>e</Url>
+  <DisplayField>Name</DisplayField>
+  <ValueField>Name</ValueField>
+  <DataCommand>DataCommand_GetByName</DataCommand>
+  <DataCommandParameter>@name</DataCommandParameter>
+  <Height>512</Height>
+  <Width>512</Width>
+</Picker>

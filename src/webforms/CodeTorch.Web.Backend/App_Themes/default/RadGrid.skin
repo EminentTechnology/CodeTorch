@@ -1,0 +1,10 @@
+﻿<telerik:RadGrid runat="server"  
+    AutoGenerateColumns="False"  
+    CssClass="table-responsive" 
+    ItemStyle-CssClass="ResultsRow1" 
+    AlternatingItemStyle-CssClass="ResultsRow2" Width="100%">
+        <MasterTableView CssClass="table"  AllowNaturalSort="true" >
+        </MasterTableView>
+        <PagerStyle Mode="NumericPages" Position="TopAndBottom"  />
+</telerik:RadGrid>
+   

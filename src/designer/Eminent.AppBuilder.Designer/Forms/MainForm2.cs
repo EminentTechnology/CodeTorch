@@ -1,7 +1,11 @@
-﻿using CodeTorch.Core;
+﻿using CodeTorch.Abstractions;
+
+using CodeTorch.Core;
 using CodeTorch.Core.Interfaces;
 using CodeTorch.Core.Services;
 using CodeTorch.Designer.Code;
+using CodeTorch.Logger.Log4Net;
+using log4net;
 using System;
 using System.CodeDom.Compiler;
 using System.Collections;
@@ -28,11 +32,22 @@ namespace CodeTorch.Designer.Forms
         Project Project = new Project();
         string ProjectFile { get; set; }
         string ConfigurationPath { get; set; }
+        CodeTorch.Configuration.FileStore.FileConfigurationStore store;
 
         public MainForm2()
         {
             
             InitializeComponent();
+
+            IDependencyContainer container = new Ioc.Autofac.AutofacContainer(new Autofac.ContainerBuilder().Build());
+
+            container.Register<CodeTorch.Abstractions.ILogManager, CodeTorch.Logger.Log4Net.Log4NetLogManager>();
+            container.Register<CodeTorch.Abstractions.IConfigurationStore, CodeTorch.Configuration.FileStore.FileConfigurationStore>();
+
+            //get the configuration store
+            store = (CodeTorch.Configuration.FileStore.FileConfigurationStore) container.GetResolver().Resolve<CodeTorch.Abstractions.IConfigurationStore>();
+
+            Resolver.SetResolver(container.GetResolver());
         }
 
         private void MainForm2_Load(object sender, EventArgs e)
@@ -60,7 +75,7 @@ namespace CodeTorch.Designer.Forms
             }
         }
 
-        private void LoadProjectSelectionScreen(bool ExitOnCancel)
+        private async void LoadProjectSelectionScreen(bool ExitOnCancel)
         {
             LoginDialog login = new LoginDialog();
             login.Text = string.Format("CodeTorch Designer - v {0}", GetDisplayVersion());
@@ -72,7 +87,8 @@ namespace CodeTorch.Designer.Forms
 
 
 
-                ConfigurationPath = Configuration.GetInstance().ConfigurationPath;
+                ConfigurationPath = CodeTorch.Core.Configuration.GetInstance().ConfigurationPath;
+                store.Path = ConfigurationPath;
 
                 Project = login.Project;
                 ProjectFile = login.ProjectFile;
@@ -86,17 +102,22 @@ namespace CodeTorch.Designer.Forms
                         Directory.CreateDirectory(ConfigurationPath);
                     }
 
-                    if(!File.Exists(String.Format("{0}\\App\\App.xml", ConfigurationPath)))
+                    if(!File.Exists(String.Format("{0}\\Apps\\App.xml", ConfigurationPath)))
                     {
+                        //TODO - should only create if not in backend project
                         //Create Configuration Project
-                        CreateDefaultConfigurationProject();
+                        //CreateDefaultConfigurationProject();
                     }
 
                     this.Text = string.Format("CodeTorch Designer - v {0} - {1}", GetDisplayVersion(), Project.Name);
-                    PerformSchemaVersionChecks();
 
-                   ConfigurationLoader.LoadFromConfigurationFolder(ConfigurationPath);
+                    //TODO: for now disabling so I can use designer to update backend projects
+                    //PerformSchemaVersionChecks();
 
+                    await ConfigurationLoader.LoadFromConfigurationFolder(store);
+
+                    
+                    
                     
                     LoadStartPage();
                     LoadSolutionExplorer();
@@ -503,37 +524,37 @@ namespace CodeTorch.Designer.Forms
             solutionTree.Nodes.Clear();
             cmdNew.Items.Clear();
 
-            SetupSolutionExplorerRootNodes("Screens", "Screen", "Screen", "Screens", Configuration.GetInstance().Screens);
-            SetupSolutionExplorerRootNodes("Data Commands", "Data Command", "DataCommand", "DataCommands", Configuration.GetInstance().DataCommands);
+            SetupSolutionExplorerRootNodes("Screens", "Screen", "Screen", "Screens", Core.Configuration.GetInstance().Screens);
+            SetupSolutionExplorerRootNodes("Data Commands", "Data Command", "DataCommand", "DataCommands", Core.Configuration.GetInstance().DataCommands);
 
-            SetupSolutionExplorerRootNodes("Lookups", "Lookup", "Lookup", "Lookups", Configuration.GetInstance().Lookups);
-            SetupSolutionExplorerRootNodes("Menus", "Menu", "Menu", "Menus", Configuration.GetInstance().Menus);
-            SetupSolutionExplorerRootNodes("Permissions", "Permission", "Permission", "Permissions", Configuration.GetInstance().Permissions);
-            SetupSolutionExplorerRootNodes("Pickers", "Picker", "Picker", "Pickers", Configuration.GetInstance().Pickers);
-            SetupSolutionExplorerRootNodes("Sequences", "Sequence", "Sequence", "Sequences", Configuration.GetInstance().Sequences);
-            SetupSolutionExplorerRootNodes("Templates", "Template", "Template", "Templates", Configuration.GetInstance().Templates);
-            SetupSolutionExplorerRootNodes("Page Templates", "Page Template", "PageTemplate", "PageTemplates", Configuration.GetInstance().PageTemplates);
-            SetupSolutionExplorerRootNodes("Workflows", "Workflow", "Workflow", "Workflows", Configuration.GetInstance().Workflows);
-            SetupSolutionExplorerRootNodes("Section Zone Layouts", "Section Zone Layout", "SectionZoneLayout", "SectionZoneLayouts", Configuration.GetInstance().SectionZoneLayouts);
-            SetupSolutionExplorerRootNodes("Rest Services", "Rest Service", "RestService", "RestServices", Configuration.GetInstance().RestServices);
+            SetupSolutionExplorerRootNodes("Lookups", "Lookup", "Lookup", "Lookups", Core.Configuration.GetInstance().Lookups);
+            SetupSolutionExplorerRootNodes("Menus", "Menu", "Menu", "Menus", Core.Configuration.GetInstance().Menus);
+            SetupSolutionExplorerRootNodes("Permissions", "Permission", "Permission", "Permissions", Core.Configuration.GetInstance().Permissions);
+            SetupSolutionExplorerRootNodes("Pickers", "Picker", "Picker", "Pickers", Core.Configuration.GetInstance().Pickers);
+            SetupSolutionExplorerRootNodes("Sequences", "Sequence", "Sequence", "Sequences", Core.Configuration.GetInstance().Sequences);
+            SetupSolutionExplorerRootNodes("Templates", "Template", "Template", "Templates", Core.Configuration.GetInstance().Templates);
+            SetupSolutionExplorerRootNodes("Page Templates", "Page Template", "PageTemplate", "PageTemplates", Core.Configuration.GetInstance().PageTemplates);
+            SetupSolutionExplorerRootNodes("Workflows", "Workflow", "Workflow", "Workflows", Core.Configuration.GetInstance().Workflows);
+            SetupSolutionExplorerRootNodes("Section Zone Layouts", "Section Zone Layout", "SectionZoneLayout", "SectionZoneLayouts", Core.Configuration.GetInstance().SectionZoneLayouts);
+            SetupSolutionExplorerRootNodes("Rest Services", "Rest Service", "RestService", "RestServices", Core.Configuration.GetInstance().RestServices);
 
             
             //items below typically when changed required code changes
 
-            //SetupSolutionExplorerRootNodes("Control Types", "Control Type", "ControlType", "ControlTypes", Configuration.GetInstance().ControlTypes);
-            SetupSolutionExplorerRootNodes("Data Connection Types", "Data Connection Type", "DataConnectionType", "DataConnectionTypes", Configuration.GetInstance().DataConnectionTypes);
-            SetupSolutionExplorerRootNodes("Data Connections", "Data Connection", "DataConnection", "DataConnections", Configuration.GetInstance().DataConnections);
-            SetupSolutionExplorerRootNodes("Document Repository Types", "Document Repository Type", "DocumentRepositoryType", "DocumentRepositoryTypes", Configuration.GetInstance().DocumentRepositoryTypes);
-            SetupSolutionExplorerRootNodes("Document Repositories", "Document Repository", "DocumentRepository", "DocumentRepositories", Configuration.GetInstance().DocumentRepositories);
-            SetupSolutionExplorerRootNodes("Workflow Types", "Workflow Type", "WorkflowType", "WorkflowTypes", Configuration.GetInstance().WorkflowTypes);
-            SetupSolutionExplorerRootNodes("Email Connections", "Email Connection", "EmailConnection", "EmailConnections", Configuration.GetInstance().EmailConnections);
-            SetupSolutionExplorerRootNodes("Email Connection Types", "Email Connection Type", "EmailConnectionType", "EmailConnectionTypes", Configuration.GetInstance().EmailConnectionTypes);
-            //SetupSolutionExplorerRootNodes("Dashboard Types", "Dashboard Type", "DashboardComponentType", "DashboardComponentTypes", Configuration.GetInstance().DashboardComponentTypes);
-            //SetupSolutionExplorerRootNodes("Screen Types", "Screen Type", "ScreenType", "ScreenTypes", Configuration.GetInstance().ScreenTypes);
-            //SetupSolutionExplorerRootNodes("Section Types", "Section Type", "SectionType", "SectionTypes", Configuration.GetInstance().SectionTypes);
+            //SetupSolutionExplorerRootNodes("Control Types", "Control Type", "ControlType", "ControlTypes", Core.Configuration.GetInstance().ControlTypes);
+            SetupSolutionExplorerRootNodes("Data Connection Types", "Data Connection Type", "DataConnectionType", "DataConnectionTypes", Core.Configuration.GetInstance().DataConnectionTypes);
+            SetupSolutionExplorerRootNodes("Data Connections", "Data Connection", "DataConnection", "DataConnections", Core.Configuration.GetInstance().DataConnections);
+            SetupSolutionExplorerRootNodes("Document Repository Types", "Document Repository Type", "DocumentRepositoryType", "DocumentRepositoryTypes", Core.Configuration.GetInstance().DocumentRepositoryTypes);
+            SetupSolutionExplorerRootNodes("Document Repositories", "Document Repository", "DocumentRepository", "DocumentRepositories", Core.Configuration.GetInstance().DocumentRepositories);
+            SetupSolutionExplorerRootNodes("Workflow Types", "Workflow Type", "WorkflowType", "WorkflowTypes", Core.Configuration.GetInstance().WorkflowTypes);
+            SetupSolutionExplorerRootNodes("Email Connections", "Email Connection", "EmailConnection", "EmailConnections", Core.Configuration.GetInstance().EmailConnections);
+            SetupSolutionExplorerRootNodes("Email Connection Types", "Email Connection Type", "EmailConnectionType", "EmailConnectionTypes", Core.Configuration.GetInstance().EmailConnectionTypes);
+            //SetupSolutionExplorerRootNodes("Dashboard Types", "Dashboard Type", "DashboardComponentType", "DashboardComponentTypes", Core.Configuration.GetInstance().DashboardComponentTypes);
+            //SetupSolutionExplorerRootNodes("Screen Types", "Screen Type", "ScreenType", "ScreenTypes", Core.Configuration.GetInstance().ScreenTypes);
+            //SetupSolutionExplorerRootNodes("Section Types", "Section Type", "SectionType", "SectionTypes", Core.Configuration.GetInstance().SectionTypes);
 
 
-            //SetupSolutionExplorerRootNodes("App", "App", "App", "App", Configuration.GetInstance().ControlTypes);
+            //SetupSolutionExplorerRootNodes("App", "App", "App", "App", Core.Configuration.GetInstance().ControlTypes);
         }
 
         private void SetupSolutionExplorerRootNodes(string PluralTitle, string SingleTitle, string EntityType, string ConfigFolderPath, IEnumerable list)
@@ -1176,7 +1197,7 @@ namespace CodeTorch.Designer.Forms
         }
 
      
-        void deleteItem_Click(object sender, EventArgs e)
+        async void deleteItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -1193,10 +1214,11 @@ namespace CodeTorch.Designer.Forms
                     IConfigurationObject2 config = ConfigurationObjectFactory.CreateConfigurationObject(node.EntityType);
                     config.Delete(node.Object);
 
-                    
-                    
-                    ConfigurationLoader.ReloadConfigurationItems(node.ConfigFolderPath, node.EntityType);
-                    
+
+
+                    RefreshAll();
+
+
                     LoadSolutionExplorer();
 
                     
@@ -1227,7 +1249,31 @@ namespace CodeTorch.Designer.Forms
 
         public void RefreshAll()
         {
-            ConfigurationLoader.LoadFromConfigurationFolder(ConfigurationPath);
+            Core.Configuration.GetInstance().App = null;
+            Core.Configuration.GetInstance().ControlTypes.Clear();
+            Core.Configuration.GetInstance().DataCommands.Clear();
+            Core.Configuration.GetInstance().DataConnections.Clear();
+            Core.Configuration.GetInstance().DataConnectionTypes.Clear();
+            Core.Configuration.GetInstance().DocumentRepositories.Clear();
+            Core.Configuration.GetInstance().DocumentRepositoryTypes.Clear();
+            Core.Configuration.GetInstance().EmailConnections.Clear();
+            Core.Configuration.GetInstance().EmailConnectionTypes.Clear();
+            Core.Configuration.GetInstance().Lookups.Clear();
+            Core.Configuration.GetInstance().Menus.Clear();
+            Core.Configuration.GetInstance().PageTemplates.Clear();
+            Core.Configuration.GetInstance().Permissions.Clear();
+            Core.Configuration.GetInstance().Pickers.Clear();
+            Core.Configuration.GetInstance().RestServices.Clear();
+            Core.Configuration.GetInstance().Screens.Clear();
+            Core.Configuration.GetInstance().ScreenTypes.Clear();
+            Core.Configuration.GetInstance().SectionTypes.Clear();
+            Core.Configuration.GetInstance().SectionZoneLayouts.Clear();
+            Core.Configuration.GetInstance().Sequences.Clear();
+            Core.Configuration.GetInstance().Templates.Clear();
+            Core.Configuration.GetInstance().Workflows.Clear();
+            Core.Configuration.GetInstance().WorkflowTypes.Clear();
+
+            ConfigurationLoader.LoadFromConfigurationFolder(store);
             LoadSolutionExplorer();
         }
         void MenuItem_Screen_BrowseToScreen_Click(object sender, EventArgs e)
@@ -1239,7 +1285,7 @@ namespace CodeTorch.Designer.Forms
                 SolutionTreeNode node = (SolutionTreeNode)tree.SelectedNode;
 
                 
-                string baseUrl = Configuration.GetInstance().App.DevelopmentBaseUrl;
+                string baseUrl = Core.Configuration.GetInstance().App.DevelopmentBaseUrl;
 
                 if (String.IsNullOrEmpty(baseUrl))
                 {
@@ -1360,7 +1406,7 @@ namespace CodeTorch.Designer.Forms
                 int i = 0;
                 DataConnection connection = Project.GetDefaultDataConnection();
                 lookup.Connection = connection;
-                foreach (Lookup item in Configuration.GetInstance().Lookups)
+                foreach (Lookup item in Core.Configuration.GetInstance().Lookups)
                 {
                     i++;
                     lookup.Save( item);
@@ -1391,8 +1437,8 @@ namespace CodeTorch.Designer.Forms
 
                 auth.SavePermission(connection, item);
 
-                if (!String.IsNullOrEmpty(Configuration.GetInstance().App.AdminRole))
-                    auth.AddAllPermissionsToRole(connection, Configuration.GetInstance().App.AdminRole);
+                if (!String.IsNullOrEmpty(Core.Configuration.GetInstance().App.AdminRole))
+                    auth.AddAllPermissionsToRole(connection, Core.Configuration.GetInstance().App.AdminRole);
 
                 MessageBox.Show(String.Format("Permission {0} was saved successfully to the database", item.Name));
             }
@@ -1415,14 +1461,14 @@ namespace CodeTorch.Designer.Forms
                  DataConnection connection = Project.GetDefaultDataConnection();
 
                 int i = 0;
-                foreach (Permission item in Configuration.GetInstance().Permissions)
+                foreach (Permission item in Core.Configuration.GetInstance().Permissions)
                 {
                     i++;
                     auth.SavePermission(connection,item);
                 }
 
-                if (!String.IsNullOrEmpty(Configuration.GetInstance().App.AdminRole))
-                    auth.AddAllPermissionsToRole(connection, Configuration.GetInstance().App.AdminRole);
+                if (!String.IsNullOrEmpty(Core.Configuration.GetInstance().App.AdminRole))
+                    auth.AddAllPermissionsToRole(connection, Core.Configuration.GetInstance().App.AdminRole);
 
                 MessageBox.Show(String.Format("{0} permission(s) were saved successfully to the database", i));
 
@@ -1470,7 +1516,7 @@ namespace CodeTorch.Designer.Forms
                 SequenceService sequence = new SequenceService();
                 
                 int i = 0;
-                foreach (Sequence item in Configuration.GetInstance().Sequences)
+                foreach (Sequence item in Core.Configuration.GetInstance().Sequences)
                 {
                     i++;
                     sequence.Save(item);

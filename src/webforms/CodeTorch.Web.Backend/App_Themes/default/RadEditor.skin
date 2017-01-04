@@ -1,0 +1,20 @@
+﻿<telerik:RadEditor runat="server" Height="300px">
+    <Tools>
+        <telerik:EditorToolGroup >
+            <telerik:EditorTool Name="Bold" />
+            <telerik:EditorTool Name="Italic" />
+            <telerik:EditorTool Name="Underline" />
+            <telerik:EditorTool Name="StrikeThrough" />
+            <telerik:EditorTool Name="JustifyLeft" />
+            <telerik:EditorTool Name="JustifyCenter" />
+            <telerik:EditorTool Name="JustifyRight" />
+            <telerik:EditorTool Name="JustifyFull" />
+            <telerik:EditorTool Name="JustifyNone" />
+            <telerik:EditorTool Name="Indent" />
+            <telerik:EditorTool Name="Outdent" />
+            <telerik:EditorTool Name="InsertOrderedList" />
+            <telerik:EditorTool Name="InsertUnorderedList" />
+        </telerik:EditorToolGroup>
+    </Tools> 
+</telerik:RadEditor>
+   

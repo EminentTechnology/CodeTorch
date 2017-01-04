@@ -1,0 +1,181 @@
+body {
+    background:#c50425;
+}
+/***************************
+BEGIN: header/logo
+****************************/
+.header
+{
+    background-color:#fff;
+    height:122px;
+    width:100%;
+    z-index:10;
+    padding:0px 0px 0px 45px;
+}
+
+.header  h1
+{
+    padding:10px 0px 0px 0px;
+    line-height:50px;
+    height:66px;
+    float:left;
+    display:inline;
+    color:#FFFFFF;
+}
+
+.header  h1  
+{
+    background:url(http://siteb.s3.amazonaws.com/assets/storefront/Storefront_logo.png) top left no-repeat;
+    width:193px;
+    height:66px;
+}
+/***************************
+BEGIN: navigation
+****************************/
+
+ #navigation
+{
+    clear:both;
+    background-color:#fff;
+    /*width:100%;*/
+    height:26px;
+}
+
+#navigation .RadMenu a
+{
+    font-family: 'Lucida Grande', verdana, arial, helvetica, sans-serif;
+    font-weight:bold;
+
+}
+#navigation a:hover {
+background-color: #c50425;
+}
+.RadMenu_Metro ul.rmRootGroup {
+    padding: 1px;
+    background-color: #e23c59;
+}
+/***************************
+BEGIN: page titles
+****************************/
+#pagetitles
+{
+    padding-left:30px;    
+    text-align:left;
+    color:#fff;
+}
+#pagetitles h1
+{
+    margin:10px;
+    font-size: 34px;
+    font-weight: 400;    
+    font-family: "adelle",'Lucida Grande', verdana, arial, helvetica, sans-serif;
+    
+}
+
+#pagetitles h2
+{
+    margin:10px;
+    font-size: 16px;
+    font-weight: normal;    
+}
+/***************************
+BEGIN: page content
+****************************/
+#content
+{
+    padding: 20px 20px;
+    background-color:#ffffff;
+    margin:10px 0 30px 0;
+    min-height:400px;
+    border-radius: 3px;
+}
+
+
+/***************************
+BEGIN: page menu
+****************************/
+.page-menu ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+#pagemenu ul li {
+margin: 0px;
+padding: 0px;
+}
+.page-menu ul li a {
+
+display: block;
+padding: 5px 0px 2px 4px;
+width:100%;
+text-decoration:none;
+white-space: nowrap;
+
+}
+
+.page-menu ul li.selected {
+color: #000000;
+background-color: #eeeeee;
+}
+
+.page-menu ul li a:hover, #vertmenu ul li a:focus {
+color: #000000;
+background-color: #eeeeee;
+}
+/***************************
+BEGIN: boostrap overrides
+****************************/
+
+.panel-default {
+  border-color: #e23c59;
+}
+
+.panel-default > .panel-heading {
+  color: #ffffff;
+  background-color: #e23c59;
+  border-color: #e23c59;
+}
+
+.panel-default > .panel-heading + .panel-collapse .panel-body {
+  border-top-color: #e23c59;
+}
+
+.panel-default > .panel-footer + .panel-collapse .panel-body {
+    border-bottom-color: #e23c59;
+}
+
+.panel-menu {
+  border-color: #dddddd;
+  margin-top:10px;
+}
+
+.panel-menu > .panel-heading {
+  color: #333333;
+  background-color: #f5f5f5;
+  border-color: #dddddd;
+}
+
+.panel-menu > .panel-heading + .panel-collapse .panel-body {
+  border-top-color: #dddddd;
+}
+
+.panel-menu > .panel-footer + .panel-collapse .panel-body {
+  border-bottom-color: #dddddd;
+}
+
+.navbar {
+  position: relative;
+  min-height: 0px;
+  margin-bottom: 0px;
+  border: 0px solid transparent;
+}
+
+.navbar-toggle 
+{
+    margin-top: -45px;
+}
+/***************************
+END: boostrap overrides
+****************************/
+

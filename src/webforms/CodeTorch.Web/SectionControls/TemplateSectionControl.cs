@@ -50,7 +50,7 @@ namespace CodeTorch.Web.SectionControls
         {
             base.PopulateControl();
 
-            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            Abstractions.ILog log = Resolver.Resolve<Abstractions.ILogManager>().GetLogger(this.GetType());
 
 
             try
