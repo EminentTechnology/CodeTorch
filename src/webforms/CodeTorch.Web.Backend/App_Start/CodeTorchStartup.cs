@@ -32,6 +32,7 @@ namespace CodeTorch.Web.Backend.App_Start
             container.Register<CodeTorch.Backend.DataCommandManager, CodeTorch.Backend.DataCommandManager>();
             container.Register<CodeTorch.Backend.LookupManager, CodeTorch.Backend.LookupManager>();
             container.Register<CodeTorch.Backend.PickerManager, CodeTorch.Backend.PickerManager>();
+            container.Register<CodeTorch.Backend.PermissionManager, CodeTorch.Backend.PermissionManager>();
 
             Resolver.SetResolver(container.GetResolver());
 

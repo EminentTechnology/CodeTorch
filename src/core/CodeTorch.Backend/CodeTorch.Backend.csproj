@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataCommandManager.cs" />
+    <Compile Include="PermissionManager.cs" />
+    <Compile Include="ScreenManager.cs" />
     <Compile Include="PickerManager.cs" />
     <Compile Include="LookupManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
