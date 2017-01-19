@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataCommand xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Permission_Search</Name>
+  <DataConnection>PermissionManager</DataConnection>
+  <Type>Object</Type>
+  <Text>Search</Text>
+  <ReturnType>DataTable</ReturnType>
+  <Parameters>
+    <Parameter>
+      <Name>Category</Name>
+      <Type>String</Type>
+      <Direction>In</Direction>
+    </Parameter>
+    <Parameter>
+      <Name>Name</Name>
+      <Type>String</Type>
+      <Direction>In</Direction>
+    </Parameter>
+  </Parameters>
+  <Columns>
+    <Column>
+      <Name>Name</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>Category</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>Description</Name>
+      <Type>String</Type>
+    </Column>
+    
+  </Columns>
+</DataCommand>

@@ -140,6 +140,7 @@
     <Content Include="App_Data\CodeTorch\Web\ControlTypes\TreeView.xml" />
     <Content Include="App_Data\CodeTorch\Web\ControlTypes\Workflow.xml" />
     <Content Include="App_Data\CodeTorch\Web\ControlTypes\WorkflowStatusPicker.xml" />
+    <Content Include="App_Data\CodeTorch\Web\DataConnections\PermissionManager.xml" />
     <Content Include="App_Data\CodeTorch\Web\DataConnections\PickerManager.xml" />
     <Content Include="App_Data\CodeTorch\Web\DataConnections\LookupManager.xml" />
     <Content Include="App_Data\CodeTorch\Web\DataConnections\DataCommandManager.xml" />
