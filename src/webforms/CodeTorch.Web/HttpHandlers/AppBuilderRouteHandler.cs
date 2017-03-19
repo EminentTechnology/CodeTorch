@@ -91,11 +91,11 @@ namespace CodeTorch.Web.HttpHandlers
         {
             
             RestService service = null;
-            
 
+            string folder = requestContext.RouteData.GetRequiredString("folder"); 
             string restServiceName = requestContext.RouteData.DataTokens["rest-service-name"].ToString();
 
-            service = RestService.GetByName(restServiceName);
+            service = RestService.GetByFolderAndName(folder, restServiceName);
 
             RestServiceHandler retVal =  new RestServiceHandler();
             retVal.Me = service;

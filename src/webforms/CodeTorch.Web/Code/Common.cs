@@ -526,42 +526,49 @@ namespace CodeTorch.Web
         {
             foreach (RestService s in restServices)
             {
-                Route r;
-                string routeUrl = null;
-                string routeName = null;
-
-                //json
-                routeName = String.Format("service_{0}_json", s.Name);
-                routeUrl = String.Format("Services/{0}.json", s.Resource);
-                r = new Route(routeUrl, routeHandler);
-                if (r.DataTokens == null)
-                    r.DataTokens = new RouteValueDictionary();
-                r.DataTokens["rest-service-name"] = s.Name;
-                routes.Add(routeName, r);
-
-                //xml
-                routeName = String.Format("service_{0}_xml", s.Name);
-                routeUrl = String.Format("Services/{0}.xml", s.Resource);
-                r = new Route(routeUrl, routeHandler);
-                if (r.DataTokens == null)
-                    r.DataTokens = new RouteValueDictionary();
-                r.DataTokens["rest-service-name"] = s.Name;
-                routes.Add(routeName, r);
-
-                //default - json
-                routeName = String.Format("service_{0}_default", s.Name);
-                routeUrl = String.Format("Services/{0}", s.Resource);
-                r = new Route(routeUrl, routeHandler);
-                if (r.DataTokens == null)
-                    r.DataTokens = new RouteValueDictionary();
-                r.DataTokens["rest-service-name"] = s.Name;
-                routes.Add(routeName, r);
-
-
+                BuildRoute(routes, routeHandler, s);
             }
         }
 
-       
+        private static void BuildRoute(RouteCollection routes, AppBuilderRouteHandler<Page> routeHandler, RestService s)
+        {
+            Route r;
+            string routeUrl = null;
+            string routeName = null;
+
+            
+
+            if (s.SupportJSON)
+            {
+                routeName = String.Format("{0}_{1}_json", s.Folder, s.Name);
+                routeUrl = String.Format("{{folder}}/{1}.json", s.Folder, s.Resource);
+                r = new Route(routeUrl, routeHandler);
+                if (r.DataTokens == null)
+                    r.DataTokens = new RouteValueDictionary();
+                r.DataTokens["rest-service-name"] = s.Name;
+                routes.Add(routeName, r);
+            }
+
+            if (s.SupportXML)
+            {
+                routeName = String.Format("{0}_{1}_xml", s.Folder, s.Name);
+                routeUrl = String.Format("{{folder}}/{1}.xml", s.Folder, s.Resource);
+                r = new Route(routeUrl, routeHandler);
+                if (r.DataTokens == null)
+                    r.DataTokens = new RouteValueDictionary();
+                r.DataTokens["rest-service-name"] = s.Name;
+                routes.Add(routeName, r);
+            }
+
+            routeName = String.Format("{0}_{1}_default", s.Folder, s.Name);
+            routeUrl = String.Format("{{folder}}/{1}", s.Folder, s.Resource);
+            r = new Route(routeUrl, routeHandler);
+            if (r.DataTokens == null)
+                r.DataTokens = new RouteValueDictionary();
+            r.DataTokens["rest-service-name"] = s.Name;
+            routes.Add(routeName, r);
+        }
+
 
         public static string CoalesceStr(string Setting, object Value)
         {
@@ -809,6 +816,9 @@ namespace CodeTorch.Web
                 case ScreenInputType.Form:
                     retVal = page.Request.Form[parameter.InputKey];
                     break;
+                case ScreenInputType.Header:
+                    retVal = page.Request.Headers[parameter.InputKey];
+                    break;
                 case ScreenInputType.QueryString:
                     retVal = page.Request.QueryString[parameter.InputKey];
                     break;
@@ -827,9 +837,7 @@ namespace CodeTorch.Web
                             retVal = DBNull.Value;
                             break;
                         case "username":
-
                             retVal = UserIdentityService.GetInstance().IdentityProvider.GetUserName();
-
                             break;
                         case "hostheader":
                             retVal = HttpContext.Current.Request.ServerVariables["HTTP_HOST"];

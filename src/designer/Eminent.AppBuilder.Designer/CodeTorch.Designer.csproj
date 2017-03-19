@@ -245,6 +245,12 @@
     <Compile Include="Forms\LoginDialog.Designer.cs">
       <DependentUpon>LoginDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\NewRestServiceDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewRestServiceDialog.Designer.cs">
+      <DependentUpon>NewRestServiceDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\NewItemDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -304,6 +310,7 @@
     <Compile Include="SchemaUpgrades\6\ControlTypeTransformer.cs" />
     <Compile Include="SchemaUpgrades\6\ScreenTransformer.cs" />
     <Compile Include="SchemaUpgrades\6\SectionTypeTransformer.cs" />
+    <Compile Include="SchemaUpgrades\7\RestServiceTransformer.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="UserControls\SectionDesigner.cs">
       <SubType>UserControl</SubType>
@@ -347,6 +354,9 @@
     <EmbeddedResource Include="Forms\LoginDialog.resx">
       <DependentUpon>LoginDialog.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewRestServiceDialog.resx">
+      <DependentUpon>NewRestServiceDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NewItemDialog.resx">
       <DependentUpon>NewItemDialog.cs</DependentUpon>

@@ -23,6 +23,12 @@ namespace CodeTorch.Core
 
         public string Resource { get; set; }
 
+        [Browsable(false)]
+        public string Folder { get; set; } = "Services";
+
+        public bool SupportJSON { get; set; } = true;
+        public bool SupportXML { get; set; }
+
         List<BaseRestServiceMethod> methods = new List<BaseRestServiceMethod>();
 
         [XmlArray("Methods")]
@@ -70,92 +76,73 @@ namespace CodeTorch.Core
 
         public static void Save(RestService item)
         {
-            string configPath = ConfigurationLoader.GetFileConfigurationPath();
 
-            if (!Directory.Exists(String.Format("{0}RestServices", configPath)))
+
+            string ConfigPath = ConfigurationLoader.GetFileConfigurationPath();
+
+            if (!Directory.Exists(String.Format("{0}RestServices\\{1}", ConfigPath, item.Folder)))
             {
-                Directory.CreateDirectory(String.Format("{0}RestServices", configPath));
+                Directory.CreateDirectory(String.Format("{0}RestServices\\{1}", ConfigPath, item.Folder));
             }
 
-            string filePath = String.Format("{0}RestServices\\{1}.xml", configPath, item.Name);
+            string filePath = String.Format("{0}RestServices\\{1}\\{2}.xml", ConfigPath, item.Folder, item.Name);
+
+            ConfigurationLoader.SerializeObjectToFile(item, filePath);
             ConfigurationLoader.SerializeObjectToFile(item, filePath);
 
         }
 
-        public static int GetItemCount(string Name)
+
+
+        public static RestService GetByFolderAndName(string FolderName, string ScreenName)
         {
-            int retVal = 0;
-
-            if (String.IsNullOrEmpty(Name))
-            {
-                retVal = Configuration.GetInstance().RestServices.Count;
-            }
-            else
-            {
-                retVal = Configuration.GetInstance().RestServices
-                                .Where(i =>
-                                    (
-                                        (i.Name.ToLower() == Name.ToLower())
-                                    )
-                                ).Count();
-            }
-
-            return retVal;
-        }
-
-        public static RestService GetByName(string Name)
-        {
-            RestService item = Configuration.GetInstance().RestServices
-                            .Where(i =>
+            RestService service = Configuration.GetInstance().RestServices
+                            .Where(s =>
                                 (
-                                    (i.Name.ToLower() == Name.ToLower())
+                                    (s.Folder.ToLower() == FolderName.ToLower()) &&
+                                    (s.Name.ToLower() == ScreenName.ToLower())
                                 )
                             )
                             .SingleOrDefault();
 
-            return item;
+            return service;
         }
 
-        //public static RestService GetByResourceCollectionUrl(string Entity)
-        //{
-        //    RestService item = Configuration.GetInstance().RestServices
-        //                    .Where(i =>
-        //                        (
-        //                            (i.Resource.ToLower() == Entity.ToLower())
-        //                        )
-        //                    )
-        //                    .SingleOrDefault();
+        public static List<RestService> GetByFolder(string FolderName)
+        {
+            var retVal = from item in Configuration.GetInstance().RestServices
+                         where item.Folder.ToLower() == FolderName.ToLower()
+                         select item;
+            return retVal.ToList<RestService>();
+        }
 
-        //    return item;
-        //}
+        public static List<string> GetDistinctFolders()
+        {
+            var retVal = (
+                            from item in Configuration.GetInstance().RestServices
+                            select item.Folder
+                         )
+                         .Distinct()
+                         ;
 
-        //public static RestService GetByResourceEntityUrl(string Entity)
-        //{
-        //    RestService item = Configuration.GetInstance().RestServices
-        //                    .Where(i =>
-        //                        (
-        //                            (i.Resource.ToLower().StartsWith(Entity.ToLower())) &&
-        //                            (i.Resource.Split('/').Length == 2)
-        //                        )
-        //                    )
-        //                    .SingleOrDefault();
+            return retVal.ToList<string>();
+        }
 
-        //    return item;
-        //}
+        internal static int GetItemCount(string Folder, string Name)
+        {
+            int retVal = 0;
 
-        //public static RestService GetByResourceEntitySubCollectionUrl(string Entity, string Collection)
-        //{
-        //    RestService item = Configuration.GetInstance().RestServices
-        //                    .Where(i =>
-        //                        (
-        //                            (i.Resource.ToLower().StartsWith(Entity.ToLower())) &&
-        //                            (i.Resource.Split('/').Length == 3) &&
-        //                            (i.Resource.ToLower().EndsWith(Collection.ToLower())) 
-        //                        )
-        //                    )
-        //                    .SingleOrDefault();
 
-        //    return item;
-        //}
+            retVal = Configuration.GetInstance().RestServices
+                            .Where(i =>
+                                (
+                                    (((!String.IsNullOrEmpty(Name)) && (i.Name.ToLower() == Name.ToLower())) || (String.IsNullOrEmpty(Name))) &&
+                                    (((!String.IsNullOrEmpty(Folder)) && (i.Folder.ToLower() == Folder.ToLower())) || (String.IsNullOrEmpty(Folder)))
+                                )
+                            ).Count();
+
+
+            return retVal;
+        }
     }
 }
