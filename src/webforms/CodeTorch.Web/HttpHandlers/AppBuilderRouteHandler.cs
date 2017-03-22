@@ -41,7 +41,7 @@ namespace CodeTorch.Web.HttpHandlers
                     case "app":
                         retVal = GetAppPagesHandler(requestContext, virtualPath);
                         break;
-                    case "services":
+                    case "{folder}":
                         retVal = GetRestServiceHandler(requestContext, virtualPath, url, urlSegments);
                         break;
                     default:
