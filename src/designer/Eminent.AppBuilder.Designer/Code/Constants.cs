@@ -54,7 +54,7 @@ namespace CodeTorch.Designer
         public const string ENTITY_TYPE_SECTION_ZONE_LAYOUT_FOLDER = "SectionZoneLayouts";
         public const string ENTITY_TYPE_REST_SERVICE_FOLDER = "RestServices";
 
-        public const int SCHEMA_VERSION = 6;
+        public const int SCHEMA_VERSION = 7;
 
 
     }

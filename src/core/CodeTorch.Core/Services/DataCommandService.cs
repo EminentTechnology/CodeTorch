@@ -371,6 +371,18 @@ namespace CodeTorch.Core.Services
                             {
                                 method.Invoke(instance, argParameter);
                             }
+                            catch (CodeTorchException cex)
+                            {
+                                string errorFormat = "Error in PreProcessor - {0}";
+
+                                if (cex.MoreInfo == null)
+                                {
+                                    cex.MoreInfo = String.Format(errorFormat, dataCommand.PreProcessingClass); ;
+                                }
+
+                                Common.LogException(cex, false);
+                                throw cex;
+                            }
                             catch (Exception e)
                             {
                                 string errorFormat = "Error in PreProcessor - {0}";
@@ -379,8 +391,21 @@ namespace CodeTorch.Core.Services
                                 if (e.InnerException != null)
                                 {
                                     Common.LogException(e, false);
-                                    preProcessorException = new CodeTorchException(e.InnerException.Message, e.InnerException);
-                                    preProcessorException.MoreInfo = String.Format(errorFormat, dataCommand.PreProcessingClass);
+
+                                    if(e.InnerException is CodeTorchException)
+                                    {
+                                        preProcessorException = e.InnerException as CodeTorchException;
+                                        if (preProcessorException.MoreInfo == null)
+                                        {
+                                            preProcessorException.MoreInfo = String.Format(errorFormat, dataCommand.PreProcessingClass);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        preProcessorException = new CodeTorchException(e.InnerException.Message, e.InnerException);
+                                        preProcessorException.MoreInfo = String.Format(errorFormat, dataCommand.PreProcessingClass);
+                                    }
+                                    
                                     throw preProcessorException;
                                 }
                                 else
@@ -399,15 +424,7 @@ namespace CodeTorch.Core.Services
                 catch (Exception ex)
                 {
                     Common.LogException(ex);
-                    //if (ex.InnerException != null)
-                    //{
-                    //    Common.LogException(ex, false);
-                    //    throw ex.InnerException;
-                    //}
-                    //else
-                    //{
-                    //    Common.LogException(ex);
-                    //}
+
                 }
             }
             return args;
@@ -442,22 +459,64 @@ namespace CodeTorch.Core.Services
                             object[] argParameter = new object[1];
                             argParameter[0] = args;
 
-                            method.Invoke(instance, argParameter);
+                            
+                            try
+                            {
+                                method.Invoke(instance, argParameter);
+                            }
+                            catch (CodeTorchException cex)
+                            {
+                                string errorFormat = "Error in PostProcessor - {0}";
+
+                                if (cex.MoreInfo == null)
+                                {
+                                    cex.MoreInfo = String.Format(errorFormat, dataCommand.PreProcessingClass); ;
+                                }
+
+                                Common.LogException(cex, false);
+                                throw cex;
+                            }
+                            catch (Exception e)
+                            {
+                                string errorFormat = "Error in PostProcessor - {0}";
+
+                                CodeTorchException postProcessorException;
+                                if (e.InnerException != null)
+                                {
+                                    Common.LogException(e, false);
+
+                                    if (e.InnerException is CodeTorchException)
+                                    {
+                                        postProcessorException = e.InnerException as CodeTorchException;
+                                        if (postProcessorException.MoreInfo == null)
+                                        {
+                                            postProcessorException.MoreInfo = String.Format(errorFormat, dataCommand.PostProcessingClass);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        postProcessorException = new CodeTorchException(e.InnerException.Message, e.InnerException);
+                                        postProcessorException.MoreInfo = String.Format(errorFormat, dataCommand.PostProcessingClass);
+                                    }
+                                    
+                                    throw postProcessorException;
+                                }
+                                else
+                                {
+                                    Common.LogException(e, false);
+                                    postProcessorException = new CodeTorchException(e.Message, e.InnerException);
+                                    postProcessorException.MoreInfo = String.Format(errorFormat, dataCommand.PreProcessingClass);
+                                    throw postProcessorException;
+                                }
+
+                            }
                         }
 
                     }
                 }
                 catch (Exception ex)
                 {
-                    if (ex.InnerException != null)
-                    {
-                        Common.LogException(ex, false);
-                        throw ex.InnerException;
-                    }
-                    else
-                    {
-                        Common.LogException(ex);
-                    }
+                    Common.LogException(ex);
                 }
             }
             return args;

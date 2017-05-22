@@ -9,17 +9,18 @@ namespace CodeTorch.Core
     public enum ScreenInputType
     {
         AppSetting,
+        Constant,
         Control,
         ControlText,
         Cookie,
         File,
         Form,
-        Constant,
+        Header,
         QueryString,
+        ServerVariables,
         Session,
         Special,
-        User,
-        DashboardSetting,
-        ServerVariables
+        User
+        
     }
 }
