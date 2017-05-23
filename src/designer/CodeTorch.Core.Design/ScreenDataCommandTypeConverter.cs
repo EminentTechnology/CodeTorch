@@ -33,7 +33,7 @@ namespace CodeTorch.Core.Design
                 list = new StandardValuesCollection(items);
             }
 
-            
+
 
             if (context.Instance is Section)
             {
@@ -54,7 +54,7 @@ namespace CodeTorch.Core.Design
                         list = new StandardValuesCollection(items);
                     }
 
-                    
+
                 }
                 else
                 {
@@ -69,13 +69,13 @@ namespace CodeTorch.Core.Design
                     list = new StandardValuesCollection(items);
                 }
 
-                
+
             }
 
             if (context.Instance is Grid)
             {
                 Grid grid = (Grid)context.Instance;
-                
+
 
                 if (grid.Parent == null)
                 {
@@ -103,22 +103,22 @@ namespace CodeTorch.Core.Design
                         list = new StandardValuesCollection(items);
                     }
 
-                    
+
                 }
 
-                
+
             }
 
             if (context.Instance is DropDownListControl)
             {
                 DropDownListControl control = (DropDownListControl)context.Instance;
 
-                
+
                 if (control.Parent is Section)
                 {
                     Section section = (Section)control.Parent;
 
-                    
+
                     if (section.Parent != null)
                     {
                         if (section.Parent is Screen)
@@ -134,7 +134,7 @@ namespace CodeTorch.Core.Design
                             list = new StandardValuesCollection(items);
                         }
 
-                       
+
 
                     }
                     else
@@ -150,17 +150,17 @@ namespace CodeTorch.Core.Design
                         list = new StandardValuesCollection(items);
                     }
 
-                    
+
 
                 }
 
 
 
-               
 
-               
 
-                
+
+
+
             }
 
             if (context.Instance is ListBoxControl)
@@ -172,7 +172,7 @@ namespace CodeTorch.Core.Design
                 {
                     Section section = (Section)control.Parent;
 
-                    
+
                     if (section.Parent != null)
                     {
                         if (section.Parent is Screen)
@@ -188,7 +188,7 @@ namespace CodeTorch.Core.Design
                             list = new StandardValuesCollection(items);
                         }
 
-                       
+
 
                     }
                     else
@@ -204,14 +204,14 @@ namespace CodeTorch.Core.Design
                         list = new StandardValuesCollection(items);
                     }
 
-                    
+
 
                 }
 
 
 
 
-                
+
 
 
 
@@ -227,7 +227,7 @@ namespace CodeTorch.Core.Design
                 {
                     Section section = (Section)control.Parent;
 
-                    
+
                     if (section.Parent != null)
                     {
                         if (section.Parent is Screen)
@@ -243,7 +243,7 @@ namespace CodeTorch.Core.Design
                             list = new StandardValuesCollection(items);
                         }
 
-                        
+
 
                     }
                     else
@@ -259,14 +259,14 @@ namespace CodeTorch.Core.Design
                         list = new StandardValuesCollection(items);
                     }
 
-                    
+
 
                 }
 
 
 
 
-               
+
 
 
 
@@ -281,7 +281,7 @@ namespace CodeTorch.Core.Design
                 {
                     Section section = (Section)workflowStatus.Parent;
 
-                    
+
                     if (section.Parent != null)
                     {
                         if (section.Parent is Screen)
@@ -297,7 +297,7 @@ namespace CodeTorch.Core.Design
                             list = new StandardValuesCollection(items);
                         }
 
-                        
+
 
                     }
                     else
@@ -314,14 +314,57 @@ namespace CodeTorch.Core.Design
                     }
 
 
-                    
+
 
                 }
 
 
+                if (context.Instance is RadioButtonListControl)
+                {
+                    RadioButtonListControl control = (RadioButtonListControl)context.Instance;
 
-              
 
+                    if (control.Parent is Section)
+                    {
+                        Section section = (Section)control.Parent;
+
+
+                        if (section.Parent != null)
+                        {
+                            if (section.Parent is Screen)
+                            {
+                                Screen parentScreen = (Screen)section.Parent;
+                                var retVal = from item in parentScreen.DataCommands
+                                             select item.Name;
+
+                                var tempList = retVal.ToList<String>();
+                                tempList.Insert(0, String.Empty);
+
+                                string[] items = tempList.ToArray<string>();
+                                list = new StandardValuesCollection(items);
+                            }
+
+
+
+                        }
+                        else
+                        {
+                            //handle bug during initial creation where we donot have a parent
+                            var retVal = from item in Configuration.GetInstance().DataCommands
+                                         select item.Name;
+
+                            var tempList = retVal.ToList<String>();
+                            tempList.Insert(0, String.Empty);
+
+                            string[] items = tempList.ToArray<string>();
+                            list = new StandardValuesCollection(items);
+                        }
+
+
+
+                    }
+
+                }
 
 
 
