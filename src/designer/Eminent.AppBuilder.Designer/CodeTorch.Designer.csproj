@@ -570,6 +570,7 @@
     <None Include="Resources\SaveAll.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="SchemaUpgrades\8\ControlTypes\RadioButtonList.xml" />
     <EmbeddedResource Include="SchemaUpgrades\5\DataCommands\Lookup_Save.xml" />
     <EmbeddedResource Include="SchemaUpgrades\5\DataCommands\Lookup_Deactivate.xml" />
     <EmbeddedResource Include="SchemaUpgrades\5\DataCommands\Role_AddAllPermissions.xml" />
