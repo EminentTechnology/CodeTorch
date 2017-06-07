@@ -25,8 +25,13 @@ namespace CodeTorch.Security.Identity
 
         public string GetUserName()
         {
-            string retVal = HttpContext.Current.User.Identity.Name;
-            
+            string retVal ;
+
+            if (string.IsNullOrEmpty(HttpContext.Current.User.Identity.Name))
+                retVal = "";
+            else
+                retVal = HttpContext.Current.User.Identity.Name;
+
             if (UserNameFormat == WindowsAuthenticationUserNameFormat.UserNameOnly)
             {
                 int separator = retVal.ToString().LastIndexOf("\\");

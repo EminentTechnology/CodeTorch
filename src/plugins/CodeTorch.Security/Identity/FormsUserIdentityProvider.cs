@@ -17,7 +17,10 @@ namespace CodeTorch.Security.Identity
 
         public string GetUserName()
         {
-            return HttpContext.Current.User.Identity.Name;
+            if (string.IsNullOrEmpty(HttpContext.Current.User.Identity.Name))
+                return "";
+            else
+                return HttpContext.Current.User.Identity.Name;
         }
     }
 }
