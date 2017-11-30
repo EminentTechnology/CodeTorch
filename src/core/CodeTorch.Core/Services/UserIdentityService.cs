@@ -12,6 +12,8 @@ namespace CodeTorch.Core.Services
     {
         static readonly UserIdentityService instance = new UserIdentityService();
 
+      
+        
         public static UserIdentityService GetInstance()
         {
             return instance;
@@ -34,6 +36,10 @@ namespace CodeTorch.Core.Services
                 return identityProvider;
             }
 
+            set
+            {
+                identityProvider = value;
+            }
         }
 
         private  IUserIdentityProvider GetProvider()
