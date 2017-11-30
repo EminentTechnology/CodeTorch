@@ -504,13 +504,15 @@ namespace CodeTorch.Web.HttpHandlers
                         
                         if (HttpContext.Current.Request.Files.Count == 1)
                         {
+                            //for refit support
                             file = HttpContext.Current.Request.Files[0] as HttpPostedFile;
                         }
                         else
                         {
                             file = HttpContext.Current.Request.Files[parameter.InputKey] as HttpPostedFile;
                         }
-                        
+                        file = HttpContext.Current.Request.Files[parameter.InputKey] as HttpPostedFile;
+
                         if (file != null)
                         {
                             if (file.ContentLength > 0)
