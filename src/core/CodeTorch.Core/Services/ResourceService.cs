@@ -32,7 +32,10 @@ namespace CodeTorch.Core.Services
                 }
                 return resourceProvider;
             }
-
+            set
+            {
+                resourceProvider = value;
+            }
         }
 
         private IResourceProvider GetProvider()

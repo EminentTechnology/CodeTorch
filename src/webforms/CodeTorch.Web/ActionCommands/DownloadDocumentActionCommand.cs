@@ -78,7 +78,12 @@ namespace CodeTorch.Web.ActionCommands
 
                         Page.Response.Clear();
                         Page.Response.ContentType = dt.Rows[0]["ContentType"].ToString();
-                        Page.Response.AddHeader("Content-Disposition", "attachment;filename=" + dt.Rows[0]["DocumentName"].ToString());
+
+                        //Force file download with content disposition
+                        if (Me.ForceDownloadWithContentDisposition)
+                        {
+                            Page.Response.AddHeader("Content-Disposition", "attachment;filename=" + dt.Rows[0]["DocumentName"].ToString());
+                        }
                        
                         if (String.IsNullOrEmpty(DocumentUrl))
                         {

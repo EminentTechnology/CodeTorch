@@ -30,11 +30,22 @@ namespace CodeTorch.Core.Commands
         
 
         public string RetrieveCommand { get; set; }
-        
 
 
 
-        
+
+        bool _ForceDownloadWithContentDisposition = true;
+        public bool ForceDownloadWithContentDisposition
+        {
+            get
+            {
+                return _ForceDownloadWithContentDisposition;
+            }
+            set
+            {
+                _ForceDownloadWithContentDisposition = value;
+            }
+        }
 
     }
 }

@@ -33,6 +33,10 @@ namespace CodeTorch.Core.Services
                 return authorizationProvider;
             }
 
+            set
+            {
+                authorizationProvider = value;
+            }
         }
 
         private IAuthorizationProvider GetProvider()
