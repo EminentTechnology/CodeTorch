@@ -44,6 +44,9 @@ namespace CodeTorch.Core.Commands
         public string RedirectUrl { get; set; }
 
         [Category("Redirect")]
+        public string OnErrorRedirectUrl { get; set; }
+
+        [Category("Redirect")]
         [TypeConverter("CodeTorch.Core.Design.DataCommandColumnTypeConverter,CodeTorch.Core.Design")]
         public string RedirectUrlField { get; set; }
 

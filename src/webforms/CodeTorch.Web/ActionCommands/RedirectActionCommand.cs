@@ -45,6 +45,13 @@ namespace CodeTorch.Web.ActionCommands
                 Page.DisplayErrorAlert(ex);
 
                 log.Error(ex);
+                
+                if ((Me != null) && (!String.IsNullOrWhiteSpace(Me.OnErrorRedirectUrl)))
+                {
+                    Page.Response.Clear();
+                    Page.Response.Redirect(Me.OnErrorRedirectUrl, false);
+                    HttpContext.Current.ApplicationInstance.CompleteRequest();
+                }
             }
             
         }
