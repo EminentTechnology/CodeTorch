@@ -388,6 +388,13 @@ namespace CodeTorch.Core
 
         public static Screen GetByFolderAndName(string FolderName, string ScreenName)
         {
+            //if file does not end in .aspx add .aspx
+            //this is to allow using Microsoft.AspNet.FriendlyUrls nuget package
+            if (!ScreenName.ToLower().EndsWith(".aspx"))
+            {
+                ScreenName += ".aspx"; 
+            }
+
             Screen screen = Configuration.GetInstance().Screens
                             .Where(s => 
                                 (
