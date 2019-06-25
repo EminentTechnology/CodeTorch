@@ -303,7 +303,9 @@ namespace CodeTorch.Web
 
                 //Grid.MasterTableView.EnableColumnsViewState = false;
 
-                Grid.MasterTableView.CommandItemDisplay = GridCommandItemDisplay.Top;
+                
+                Grid.MasterTableView.CommandItemDisplay = (Telerik.Web.UI.GridCommandItemDisplay)Enum.Parse(typeof(Telerik.Web.UI.GridCommandItemDisplay), GridConfig.CommandItemDisplay.ToString());
+                Grid.MasterTableView.ShowHeader = GridConfig.ShowHeader;
 
                 SetupCsvExportSettings(Grid, GridConfig);
                 Grid.MasterTableView.CommandItemSettings.ShowRefreshButton = GridConfig.ShowRefreshButton;
@@ -368,6 +370,7 @@ namespace CodeTorch.Web
 
         }
 
+
         private static void SetupGridScrolling(RadGrid Grid, CodeTorch.Core.Grid GridConfig)
         {
             //scrolling
@@ -403,10 +406,11 @@ namespace CodeTorch.Web
                     Grid.Skin = GridConfig.Skin;
                 }
 
-                Grid.MasterTableView.CommandItemDisplay = GridCommandItemDisplay.Top;
+                Grid.MasterTableView.CommandItemDisplay = (Telerik.Web.UI.GridCommandItemDisplay)Enum.Parse(typeof(Telerik.Web.UI.GridCommandItemDisplay), GridConfig.CommandItemDisplay.ToString());
                 Grid.MasterTableView.CommandItemSettings.AddNewRecordText = AddLink.Text;
+                Grid.MasterTableView.ShowHeader = GridConfig.ShowHeader;
 
-                
+
                 Grid.MasterTableView.CommandItemSettings.ShowRefreshButton = GridConfig.ShowRefreshButton;
                 SetupCsvExportSettings(Grid, GridConfig);
                 Grid.MasterTableView.CommandItemSettings.ShowExportToExcelButton = GridConfig.ShowExportToExcelButton;
