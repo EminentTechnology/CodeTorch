@@ -75,15 +75,13 @@ namespace CodeTorch.Web.ActionCommands
                         retVal = ExecuteDataCommand(retVal);
                     }
 
-                    if (retVal == null)
-                    {
-                        retVal = Me.RedirectUrl;
-                    }
+                    retVal = Me.RedirectUrl;
+
                     break;
                 case RedirectCommand.RedirectModeEnum.DataCommand:
                     retVal = ExecuteDataCommand(retVal);
 
-                    if (retVal == null)
+                    if (String.IsNullOrEmpty(retVal))
                     {
                         retVal = Me.RedirectUrl;
                     }
@@ -100,8 +98,6 @@ namespace CodeTorch.Web.ActionCommands
                     }
                     break;
             }
-
-
 
             return retVal;
 
