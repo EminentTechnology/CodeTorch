@@ -811,7 +811,7 @@ namespace CodeTorch.Web
 
                     break;
                 case ScreenInputType.Cookie:
-                    retVal = page.Request.Cookies[parameter.InputKey].Value;
+                    retVal = page.Request.Cookies[parameter.InputKey]?.Value;
                     break;
                 case ScreenInputType.Form:
                     retVal = page.Request.Form[parameter.InputKey];
