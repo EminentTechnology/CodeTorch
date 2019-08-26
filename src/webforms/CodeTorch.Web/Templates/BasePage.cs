@@ -1354,8 +1354,9 @@ namespace CodeTorch.Web.Templates
             this.MessageBus.Publish(message);
         }
 
-        public virtual void DisplayErrorAlert(string Message)
+        public virtual void DisplayErrorAlert(string Message, bool htmlEncodeMessage = false)
         {
+            //todo - implement htmlEncodeMessage
             DisplayAlertMessage message = new DisplayAlertMessage();
 
             message.IsDismissable = true;
@@ -1364,7 +1365,7 @@ namespace CodeTorch.Web.Templates
             this.MessageBus.Publish(message);
         }
 
-        public virtual void DisplayErrorAlert(Exception ex)
+        public virtual void DisplayErrorAlert(Exception ex, bool htmlEncodeMessage = false)
         {
             DisplayAlertMessage message = new DisplayAlertMessage();
 
@@ -1377,10 +1378,20 @@ namespace CodeTorch.Web.Templates
                     errorMessageFormat = app.DefaultErrorMessageFormatString;
                 }
             }
+
+            string errorMessage = null;
+
+            if(htmlEncodeMessage)
+                errorMessage = String.Format(errorMessageFormat, System.Net.WebUtility.HtmlEncode(ex.Message));
+            else
+                errorMessage = String.Format(errorMessageFormat, System.Net.WebUtility.HtmlEncode(ex.Message));
+
+            errorMessage = errorMessage.Replace("\r\n", "<br/>");
             
+
             message.IsDismissable = false;
             message.AlertType = DisplayAlertMessage.ALERT_DANGER;
-            message.Text = String.Format(errorMessageFormat, ex.Message);
+            message.Text = errorMessage;
             this.MessageBus.Publish(message);
         }
 
