@@ -29,9 +29,9 @@ namespace CodeTorch.Web.ActionCommands
         
 
 
-        public void ExecuteCommand()
+        public bool ExecuteCommand()
         {
-            
+            bool success = true;
 
             log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -47,11 +47,14 @@ namespace CodeTorch.Web.ActionCommands
             }
             catch (Exception ex)
             {
+                success = false;
                 Page.DisplayErrorAlert(ex);
 
                 log.Error(ex);
             }
-            
+
+            return success;
+
         }
 
         protected virtual void RenderReport()

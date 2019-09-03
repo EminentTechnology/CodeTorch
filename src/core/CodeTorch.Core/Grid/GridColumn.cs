@@ -144,6 +144,8 @@ namespace CodeTorch.Core
                 case GridColumnType.BinaryImageGridColumn:
                     //AddResourceKey(retVal, Screen, Column, Prefix, "DataAlternateTextFormatString", ((BinaryImageGridColumn)Column).DataAlternateTextFormatString);
                     break;
+                case GridColumnType.ClientSelectGridColumn:
+                    break;
 
             }
 
@@ -244,6 +246,8 @@ namespace CodeTorch.Core
                 case GridColumnType.PickerLinkButtonGridColumn:
                     ConvertFromPickerLinkButtonGridColumn((PickerLinkButtonGridColumn)current, newColumn);
                     break;
+                case GridColumnType.ClientSelectGridColumn:
+                    break;
             }
         }
 
@@ -275,6 +279,8 @@ namespace CodeTorch.Core
                 case GridColumnType.PickerLinkButtonGridColumn:
                     ((PickerLinkButtonGridColumn)newColumn).DataField = current.DataField;
                     ((PickerLinkButtonGridColumn)newColumn).DataTextField = current.DataField;
+                    break;
+                case GridColumnType.ClientSelectGridColumn:
                     break;
             }
         }
@@ -328,6 +334,8 @@ namespace CodeTorch.Core
                     break;
                 case GridColumnType.PickerLinkButtonGridColumn:
                     break;
+                case GridColumnType.ClientSelectGridColumn:
+                    break;
             }
         }
 
@@ -349,6 +357,8 @@ namespace CodeTorch.Core
                 case GridColumnType.PickerHyperLinkGridColumn:
                     break;
                 case GridColumnType.PickerLinkButtonGridColumn:
+                    break;
+                case GridColumnType.ClientSelectGridColumn:
                     break;
             }
         }
@@ -377,6 +387,8 @@ namespace CodeTorch.Core
                     ((PickerLinkButtonGridColumn)newColumn).DataField = current.DataTextField;
                     ((PickerLinkButtonGridColumn)newColumn).DataTextField = current.DataTextField;
                     
+                    break;
+                case GridColumnType.ClientSelectGridColumn:
                     break;
             }
         }
@@ -425,7 +437,9 @@ namespace CodeTorch.Core
                     break;
                 case GridColumnType.PickerHyperLinkGridColumn:
                     break;
-                
+                case GridColumnType.ClientSelectGridColumn:
+                    break;
+
             }
         }
        

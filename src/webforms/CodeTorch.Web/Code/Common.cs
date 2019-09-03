@@ -845,6 +845,49 @@ namespace CodeTorch.Web
                         case "applicationpath":
                             retVal = HttpContext.Current.Request.ApplicationPath;
                             break;
+                        case "grid.selecteditems":
+
+                            if (!String.IsNullOrEmpty(parameter.Default))
+                            {
+                                var tokens = parameter.Default.Split('.');
+                                if (tokens.Length == 3)
+                                {
+                                    string sectionId = tokens[0];
+                                    string columnUniqueName = tokens[1];
+                                    string DataKeyName = tokens[2];
+
+                                    var sectionControl = FindSection(page, null, sectionId);
+                                    if (sectionControl != null)
+                                    {
+                                        if (sectionControl is GridSectionControl)
+                                        {
+                                            var gridSectionControl = sectionControl as GridSectionControl;
+                                            retVal = gridSectionControl.GetSelectedDataKeyValues(columnUniqueName, DataKeyName);
+                                        }
+
+                                        if (sectionControl is EditableGridSectionControl)
+                                        {
+                                            var editableGridSectionControl = sectionControl as EditableGridSectionControl;
+                                            retVal = editableGridSectionControl.GetSelectedDataKeyValues(columnUniqueName, DataKeyName);
+                                        }
+
+                                    }
+                                }
+                                else
+                                {
+                                    //this is an incorrectly configured parameter - throw error to help developer
+                                    throw new ApplicationException($"{parameter.Name} parameter is not configured correctly for special.grid.selecteditems input. It requires a default value in the following format 'gridsectionid.uniquecolumnname.datakey'.");
+                                }
+                            }
+                            else
+                            {
+                                //this is an incorrectly configured parameter - throw error to help developer
+                                throw new ApplicationException($"{parameter.Name} parameter is not configured correctly for special.grid.selecteditems input. It requires a default value in the following format 'gridsectionid.uniquecolumnname.datakey'.");
+                            }
+
+                            
+
+                            break;
                         case "absoluteapplicationpath":
                             retVal = String.Format("{0}://{1}{2}",
                                 HttpContext.Current.Request.Url.Scheme,

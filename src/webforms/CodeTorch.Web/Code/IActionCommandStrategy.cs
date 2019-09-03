@@ -15,6 +15,6 @@ namespace CodeTorch.Web
        // DbTransaction Transaction { get; set; }
         ActionCommand Command { get; set; }
 
-        void ExecuteCommand();
+        bool ExecuteCommand();
     }
 }

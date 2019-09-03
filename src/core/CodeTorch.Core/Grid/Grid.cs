@@ -77,6 +77,7 @@ namespace CodeTorch.Core
         [XmlArrayItem(ElementName = "HyperLinkGridColumn", Type = typeof(HyperLinkGridColumn))]
         [XmlArrayItem(ElementName = "PickerLinkButtonGridColumn", Type = typeof(PickerLinkButtonGridColumn))]
         [XmlArrayItem(ElementName = "BinaryImageGridColumn", Type = typeof(BinaryImageGridColumn))]
+        [XmlArrayItem(ElementName = "ClientSelectGridColumn", Type = typeof(ClientSelectGridColumn))]
         //[XmlArrayItem(ElementName = "PickerHyperLinkGridColumn", Type = typeof(PickerHyperLinkGridColumn))]
 
         [Editor("CodeTorch.Core.Design.GridColumnCollectionEditor,CodeTorch.Core.Design", typeof(UITypeEditor))]  
@@ -124,6 +125,9 @@ namespace CodeTorch.Core
             get { return _GroupsDefaultExpanded; }
             set { _GroupsDefaultExpanded = value; }
         }
+
+
+        public bool AllowMultiRowSelection { get; set; }
 
         public bool GroupingEnabled { get; set; }
         public bool ShowGroupPanel { get; set; }

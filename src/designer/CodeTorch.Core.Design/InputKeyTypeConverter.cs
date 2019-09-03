@@ -57,6 +57,7 @@ namespace CodeTorch.Core.Design
             listItems.Add("ControlValue");
             listItems.Add("ControlText");
             listItems.Add("DBNull");
+            listItems.Add("Grid.SelectedItems");
             listItems.Add("HostHeader");
             listItems.Add("NewID");
             listItems.Add("Null");

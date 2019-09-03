@@ -14,6 +14,7 @@ namespace CodeTorch.Core
         HyperLinkGridColumn,
         PickerLinkButtonGridColumn,
         PickerHyperLinkGridColumn,
-        BinaryImageGridColumn
+        BinaryImageGridColumn,
+        ClientSelectGridColumn
     }
 }

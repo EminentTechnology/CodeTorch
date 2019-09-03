@@ -46,7 +46,16 @@ namespace CodeTorch.Web
                 s.Command = command;
                 // s.Transaction = tran;
 
-                s.ExecuteCommand();
+                bool success = s.ExecuteCommand();
+
+                if (!success && !command.ContinueOnError)
+                {
+                    //don't continue if we have an error - depending on setting set in config
+
+                    
+
+                    break;
+                }
 
 
 

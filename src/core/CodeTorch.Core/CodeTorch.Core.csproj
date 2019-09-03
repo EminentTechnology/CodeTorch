@@ -112,6 +112,7 @@
     <Compile Include="Commands\InsertUpdateSaveCommand.cs" />
     <Compile Include="ConfigurationObjects\AppConfigurationObject.cs" />
     <Compile Include="ControlTypes\RadioButtonListControl.cs" />
+    <Compile Include="Grid\ClientSelectGridColumn.cs" />
     <Compile Include="Grid\GridCommandItemDisplay.cs" />
     <Compile Include="Sections\CustomSection.cs" />
     <Compile Include="_Common\ConfigurationObjectFactory.cs" />
