@@ -224,22 +224,72 @@ namespace CodeTorch.Web.Templates
                     ScriptManager Smgr = ScriptManager.GetCurrent(Page);
                     if (Smgr == null) throw new Exception("ScriptManager not found.");
 
+                    int scriptIndex = 0;
                     foreach (Script s in this.Screen.Scripts)
                     {
-                        ScriptReference SRef = new ScriptReference();
+                        scriptIndex++;
 
-                        if (String.IsNullOrEmpty(s.Assembly))
+                        if (s.RenderAtTopOfPage || !String.IsNullOrEmpty(s.Assembly))
                         {
-                            SRef.Path = s.Path;
+                            ScriptReference SRef = new ScriptReference();
+
+                            if (String.IsNullOrEmpty(s.Assembly))
+                            {
+                                SRef.Path = s.Path;
+
+                            }
+                            else
+                            {
+                                SRef.Name = s.Name;
+                                SRef.Assembly = s.Assembly;
+                            }
+
+                            Smgr.Scripts.Add(SRef);
                         }
                         else
                         {
-                            SRef.Name = s.Name;
-                            SRef.Assembly = s.Assembly;
-                        }
+                            string scriptName = String.IsNullOrEmpty(s.Name) ? $"script{scriptIndex}" : s.Name;
+                            string scriptContent = null;
+                            string scriptUrl = null;
+                            bool addScriptTags = String.IsNullOrEmpty(s.Contents) ? false : true;
 
-                        Smgr.Scripts.Add(SRef);
+                            if (String.IsNullOrEmpty(s.Contents))
+                            {
+                                if (!String.IsNullOrEmpty(s.Path))
+                                {
+                                    scriptContent = $"<script src='{Page.ResolveClientUrl(s.Path)}' language='text/javascript'></script>";
+                                }
+                                else
+                                {
+                                    scriptContent = $"document.write('script {0} is not configured correctly - check codetorch configuration');";
+                                }
+
+                            }
+                            else 
+                            {
+                                scriptContent = s.Contents;
+                            }
+
+
+                            if (s.IsOnSubmitScript)
+                            {
+                                //specific script to target on submit for a page
+                                if (!Page.ClientScript.IsOnSubmitStatementRegistered(scriptName))
+                                    Page.ClientScript.RegisterOnSubmitStatement(typeof(string), scriptName, scriptContent);
+                            }
+                            else
+                            {
+                                //render at bottom of page
+                                if (String.IsNullOrEmpty(s.Assembly))
+                                {
+                                    if (!Page.ClientScript.IsStartupScriptRegistered(scriptName))
+                                        Page.ClientScript.RegisterStartupScript(typeof(string), scriptName, scriptContent, addScriptTags);
+                                }
+                            }
+                        }
                     }
+
+           
 
                 }
 

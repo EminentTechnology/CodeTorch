@@ -53,8 +53,12 @@ namespace CodeTorch.Core.Commands
         [Category("Redirect")]
         public RedirectModeEnum RedirectMode { get; set; }
 
-
         
+        [Category("Redirect")]
+        public string Context { get; set; }
+
+
+
 
     }
 }

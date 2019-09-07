@@ -49,8 +49,9 @@ namespace CodeTorch.Web.ActionCommands
                 
                 if ((Me != null) && (!String.IsNullOrWhiteSpace(Me.OnErrorRedirectUrl)))
                 {
+                    string url = Common.CreateUrlWithQueryStringContext(Me.OnErrorRedirectUrl, Me.Context);
                     Page.Response.Clear();
-                    Page.Response.Redirect(Me.OnErrorRedirectUrl, false);
+                    Page.Response.Redirect(url, false);
                     HttpContext.Current.ApplicationInstance.CompleteRequest();
                 }
             }
@@ -99,6 +100,9 @@ namespace CodeTorch.Web.ActionCommands
                     }
                     break;
             }
+
+
+            retVal = Common.CreateUrlWithQueryStringContext(retVal, Me.Context);
 
             return retVal;
 

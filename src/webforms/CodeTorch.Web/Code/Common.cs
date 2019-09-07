@@ -709,37 +709,34 @@ namespace CodeTorch.Web
         {
             string sep = "";
 
-            if (context != null)
+            if (!String.IsNullOrEmpty(url) && !String.IsNullOrEmpty(context))
             {
-                if (context != String.Empty)
+                string[] keys = context.Split(',');
+
+                if (keys.Length > 0)
                 {
-                    string[] keys = context.Split(',');
-
-                    if (keys.Length > 0)
+                    if (url.IndexOf('?') == -1)
                     {
-                        if (url.IndexOf('?') == -1)
-                        {
-                            url += "?";
-                            
-                        }
-                        else
-                        {
-                            sep = "&";
-                        }
-                        
+                        url += "?";
 
-                        for (int i = 0; i < keys.Length; i++)
+                    }
+                    else
+                    {
+                        sep = "&";
+                    }
+
+
+                    for (int i = 0; i < keys.Length; i++)
+                    {
+                        string key = keys[i];
+                        string val = HttpContext.Current.Request.QueryString[key];
+
+                        if (val != null)
                         {
-                            string key = keys[i];
-                            string val = HttpContext.Current.Request.QueryString[key];
-
-                            if (val != null)
-                            {
-                                url += String.Format("{0}{1}={2}", sep, key, val);
-                            }
-
-                            sep = "&";
+                            url += String.Format("{0}{1}={2}", sep, key, val);
                         }
+
+                        sep = "&";
                     }
                 }
             }
