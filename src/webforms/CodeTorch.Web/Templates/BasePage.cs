@@ -676,14 +676,25 @@ namespace CodeTorch.Web.Templates
                 if (!String.IsNullOrEmpty(d.Style))
                     div.Attributes.Add("style", d.Style);
 
+                if (!String.IsNullOrEmpty(d.StartMarkup))
+                {
+                    div.Controls.Add(new LiteralControl(d.StartMarkup));
+                }
+
                 if (!String.IsNullOrEmpty(d.Name))
                 {
                     IterateSectionsToRender(sections, Mode, ResourceKeyPrefix, d, div);
                 }
 
+
                 if (d.Dividers.Count > 0)
                 {
                     GenerateSectionDivs(holder, div, sections, Mode, ResourceKeyPrefix, d.Dividers);
+                }
+
+                if (!String.IsNullOrEmpty(d.EndMarkup))
+                {
+                    div.Controls.Add(new LiteralControl(d.EndMarkup));
                 }
 
                 if (parent == null)

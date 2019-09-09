@@ -310,9 +310,21 @@ namespace CodeTorch.Web.Controls
 
             link.Text = String.Format(linkFormat, linkText);
 
+
             if (!String.IsNullOrEmpty(item.LinkCssClass))
             {
                 link.CssClass = item.LinkCssClass;
+                if (isSelected)
+                {
+                    link.CssClass += " active";
+                }
+            }
+            else
+            {
+                if (isSelected)
+                {
+                    link.CssClass = "active";
+                }
             }
 
             menuItem.Controls.Add(link);

@@ -13,6 +13,8 @@ namespace CodeTorch.Core
         public string Name { get; set; }
         public string CssClass { get; set; }
         public string Style { get; set; }
+        public string StartMarkup { get; set; }
+        public string EndMarkup { get; set; }
 
         List<SectionDivider> _dividers = new List<SectionDivider>();
 
