@@ -509,6 +509,11 @@ namespace CodeTorch.Web.Templates
             return PageTemplateToLoad;
         }
 
+        protected virtual string GetSectionZoneLayout()
+        {
+            return Screen.SectionZoneLayout;
+        }
+
         private void LoadMasterPageContentPlaceHolder(PageTemplateItem item)
         {
 

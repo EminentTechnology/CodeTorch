@@ -1,6 +1,10 @@
 ﻿using CodeTorch.Core;
 using CodeTorch.Core.Commands;
+using CodeTorch.Core.Services;
+using CodeTorch.Web.Data;
 using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web.UI.WebControls;
 
@@ -32,6 +36,21 @@ namespace CodeTorch.Web.ActionCommands
                     Me = (RenderPageSectionsCommand)Command;
                 }
 
+                //identify section template to load
+                string SectionZoneLayoutToLoad = Page.Screen.SectionZoneLayout;
+                if (Page.Screen.SectionZoneLayoutMode == SectionZoneLayoutMode.Static)
+                {
+                    SectionZoneLayoutToLoad = Page.Screen.SectionZoneLayout;
+                }
+                else
+                {
+                    SectionZoneLayoutToLoad = GetDynamicSectionZoneLayout();
+                }
+
+                
+
+
+
                 switch (Me.Mode)
                 { 
                     case RenderPageSectionsCommand.SectionRenderMode.InsertEdit:
@@ -40,15 +59,15 @@ namespace CodeTorch.Web.ActionCommands
                         switch (this.PageMode)
                         {
                             case FormViewMode.Insert:
-                                Page.RenderPageSections(Page.Screen.SectionZoneLayout, Page.Screen, Page.Screen.Sections, false, SectionMode.Insert, "Screen.Sections");
+                                Page.RenderPageSections(SectionZoneLayoutToLoad, Page.Screen, Page.Screen.Sections, false, SectionMode.Insert, "Screen.Sections");
                                 break;
                             default:
-                                Page.RenderPageSections(Page.Screen.SectionZoneLayout, Page.Screen, Page.Screen.Sections, false, SectionMode.Edit, "Screen.Sections");
+                                Page.RenderPageSections(SectionZoneLayoutToLoad, Page.Screen, Page.Screen.Sections, false, SectionMode.Edit, "Screen.Sections");
                                 break;
                         }
                         break;
                     default:
-                        Page.RenderPageSections(Page.Screen.SectionZoneLayout, Page.Screen, Page.Screen.Sections, false);
+                        Page.RenderPageSections(SectionZoneLayoutToLoad, Page.Screen, Page.Screen.Sections, false);
                         break;
 
                 }
@@ -70,8 +89,36 @@ namespace CodeTorch.Web.ActionCommands
 
         }
 
+        private string GetDynamicSectionZoneLayout()
+        {
+            string retVal = null;
+            log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            try
+            {
+                DataCommandService dataCommandDB = DataCommandService.GetInstance();
+                PageDB pageDB = new PageDB();
 
-        
+                List<ScreenDataCommandParameter> parameters = pageDB.GetPopulatedCommandParameters(Page.Screen.SectionZoneLayoutDataCommand, Page);
 
+                DataTable dt = dataCommandDB.GetDataForDataCommand(Page.Screen.SectionZoneLayoutDataCommand, parameters);
+                if (dt.Rows.Count > 0)
+                {
+                    if (dt.Columns.Contains(Page.Screen.SectionZoneLayoutDataField))
+                    {
+                        retVal = dt.Rows[0][Page.Screen.SectionZoneLayoutDataField].ToString();
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                Page.DisplayErrorAlert(ex);
+
+                log.Error(ex);
+            }
+
+            return retVal;
+        }
     }
 }
