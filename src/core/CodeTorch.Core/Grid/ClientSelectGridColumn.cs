@@ -12,7 +12,15 @@ namespace CodeTorch.Core
     [Serializable]
     public class ClientSelectGridColumn : GridColumn
     {
-        
+
+        [TypeConverter("CodeTorch.Core.Design.DataCommandColumnTypeConverter,CodeTorch.Core.Design")]
+        [Category("Data")]
+        public string EnabledDataField { get; set; }
+
+        [TypeConverter("CodeTorch.Core.Design.DataCommandColumnTypeConverter,CodeTorch.Core.Design")]
+        [Category("Data")]
+        public string TooltipDataField { get; set; }
+
 
         public override GridColumnType ColumnType
         {
@@ -25,5 +33,7 @@ namespace CodeTorch.Core
                 base.ColumnType = value;
             }
         }
+
+
     }
 }

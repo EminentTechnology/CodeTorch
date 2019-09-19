@@ -847,11 +847,13 @@ namespace CodeTorch.Web
 
         public static void HandleItemDataBound(BasePage page, RadGrid Grid, CodeTorch.Core.Grid GridConfig,  object sender, GridItemEventArgs e)
         {
+            HandleClientSelectColumnOnDataBound(Grid, GridConfig, e);
             HandleBinaryImageColumnsOnDataBound(Grid, GridConfig, e);
         }
 
         public static void HandleEditableGridItemDataBound(BasePage page, RadGrid Grid, CodeTorch.Core.Grid GridConfig,  bool UseDefaultCommand, string DefaultCommandName, object sender, GridItemEventArgs e)
         {
+            HandleClientSelectColumnOnDataBound(Grid, GridConfig, e);
             HandleBinaryImageColumnsOnDataBound(Grid, GridConfig, e);
 
 
@@ -860,6 +862,75 @@ namespace CodeTorch.Web
            
         }
 
+        private static void HandleClientSelectColumnOnDataBound(RadGrid Grid, CodeTorch.Core.Grid GridConfig, GridItemEventArgs e)
+        {
+            if (e.Item is GridDataItem)
+            {
+                GridDataItem dataItem = (GridDataItem)e.Item;
+
+                int gridColumnIndex = 0;
+                foreach (CodeTorch.Core.GridColumn column in GridConfig.Columns)
+                {
+                    if (column is ClientSelectGridColumn)
+                    {
+                        TableCell cell = null;
+                        CheckBox checkbox = null;
+                        ClientSelectGridColumn c = ((ClientSelectGridColumn)column);
+
+                        if (!String.IsNullOrEmpty(column.UniqueName))
+                        {
+                            cell = dataItem[column.UniqueName];
+                            checkbox = (CheckBox)cell.Controls[0];
+                        }
+                        else
+                        {
+                            cell = dataItem[Grid.Columns[gridColumnIndex]];
+                            checkbox = (CheckBox)cell.Controls[0];
+                        }
+
+                        if (checkbox != null)
+                        {
+                            if (!String.IsNullOrEmpty(c.EnabledDataField))
+                            {
+                                object value = ((DataRowView)e.Item.DataItem)[c.EnabledDataField];
+
+                                var retVal = Convert.ToBoolean(value);
+                                if (retVal)
+                                {
+                                    dataItem.SelectableMode = GridItemSelectableMode.ServerAndClientSide;
+                                    checkbox.Enabled = true;
+                                }
+                                else
+                                {
+                                    dataItem.SelectableMode = GridItemSelectableMode.None;
+                                    checkbox.Enabled = false;
+                                }
+
+                                checkbox.ToolTip = "You can't do this";
+
+                                
+                            }
+
+                            if (!String.IsNullOrEmpty(c.TooltipDataField))
+                            {
+                                object value = ((DataRowView)e.Item.DataItem)[c.TooltipDataField];
+
+                                if (value != null)
+                                {
+                                    string tooltip = value.ToString();
+                                    checkbox.ToolTip = tooltip;
+
+                                }
+                                
+                            }
+                        }
+                    }
+
+                    gridColumnIndex++;
+                }
+
+            }
+        }
         private static void HandleBinaryImageColumnsOnDataBound(RadGrid Grid, CodeTorch.Core.Grid GridConfig, GridItemEventArgs e)
         {
             if (e.Item is GridDataItem)
@@ -999,7 +1070,7 @@ namespace CodeTorch.Web
             {
 
 
-                if (GridConfig.DeleteDataCommand != String.Empty)
+                if (!String.IsNullOrEmpty(GridConfig.DeleteDataCommand))
                 {
                     if (String.IsNullOrEmpty(GridConfig.DataKeyNames) || String.IsNullOrEmpty(GridConfig.DataKeyParameterNames))
                     {
