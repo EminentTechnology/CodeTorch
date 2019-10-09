@@ -394,7 +394,8 @@ namespace CodeTorch.Web.Controls
                                 p.Value = Common.HostHeader;
                             }
 
-                            parameters.Add(p);
+                            if(!String.IsNullOrEmpty(p.Name))
+                                parameters.Add(p);
                         }
 
 
@@ -437,6 +438,7 @@ namespace CodeTorch.Web.Controls
             bool containsCheckPermission = dt.Columns.Contains("CheckPermission");
             bool containsPermissionName = dt.Columns.Contains("PermissionName");
             bool containsCssClass = dt.Columns.Contains("CssClass");
+            bool containsLinkCssClass = dt.Columns.Contains("LinkCssClass");
             bool containsTarget = dt.Columns.Contains("Target");
             bool containsCode = dt.Columns.Contains("Code");
 
@@ -477,6 +479,11 @@ namespace CodeTorch.Web.Controls
                 if (containsCssClass)
                 {
                     newItem.CssClass = row["CssClass"].ToString();
+                }
+
+                if (containsLinkCssClass)
+                {
+                    newItem.LinkCssClass = row["LinkCssClass"].ToString();
                 }
 
                 if (containsTarget)
