@@ -68,8 +68,6 @@ namespace CodeTorch.Web
             //col.ConfirmText
             //col.DataTextField
             //col.DataTextFormatString
-
-            
                 
             
             FormatStyle(col, Column);
@@ -890,6 +888,16 @@ namespace CodeTorch.Web
 
                         if (checkbox != null)
                         {
+                            //select or unselect checkbox
+                            if (!String.IsNullOrEmpty(c.SelectedDataField))
+                            {
+                                object value = ((DataRowView)e.Item.DataItem)[c.SelectedDataField];
+
+                                dataItem.Selected = Convert.ToBoolean(value);
+                            }
+
+
+                            //enable or disable checkbox
                             if (!String.IsNullOrEmpty(c.EnabledDataField))
                             {
                                 object value = ((DataRowView)e.Item.DataItem)[c.EnabledDataField];
@@ -905,12 +913,10 @@ namespace CodeTorch.Web
                                     dataItem.SelectableMode = GridItemSelectableMode.None;
                                     checkbox.Enabled = false;
                                 }
-
-                                checkbox.ToolTip = "You can't do this";
-
                                 
                             }
 
+                            //set checkbox tooltip
                             if (!String.IsNullOrEmpty(c.TooltipDataField))
                             {
                                 object value = ((DataRowView)e.Item.DataItem)[c.TooltipDataField];

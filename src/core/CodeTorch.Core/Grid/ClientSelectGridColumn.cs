@@ -21,6 +21,10 @@ namespace CodeTorch.Core
         [Category("Data")]
         public string TooltipDataField { get; set; }
 
+        [TypeConverter("CodeTorch.Core.Design.DataCommandColumnTypeConverter,CodeTorch.Core.Design")]
+        [Category("Data")]
+        public string SelectedDataField { get; set; }
+
 
         public override GridColumnType ColumnType
         {
