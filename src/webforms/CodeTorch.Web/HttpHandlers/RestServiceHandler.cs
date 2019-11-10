@@ -606,6 +606,22 @@ namespace CodeTorch.Web.HttpHandlers
                         case "hostheader":
                             retVal = HttpContext.Current.Request.ServerVariables["HTTP_HOST"];
                             break;
+                        case "ipaddress":
+                            string ipAddress = HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+                            if (!string.IsNullOrEmpty(ipAddress))
+                            {
+                                string[] addresses = ipAddress.Split(',');
+                                if (addresses.Length != 0)
+                                {
+                                    ipAddress = addresses[0];
+                                }
+                            }
+                            else
+                            {
+                                ipAddress = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+                            }
+                            retVal = ipAddress;
+                            break;
                         case "applicationpath":
                             retVal = HttpContext.Current.Request.ApplicationPath;
                             break;

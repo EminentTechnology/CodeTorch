@@ -59,6 +59,7 @@ namespace CodeTorch.Core.Design
             listItems.Add("DBNull");
             listItems.Add("Grid.SelectedItems");
             listItems.Add("HostHeader");
+            listItems.Add("IPAddress");
             listItems.Add("NewID");
             listItems.Add("Null");
             listItems.Add("RelatedControlValue");
