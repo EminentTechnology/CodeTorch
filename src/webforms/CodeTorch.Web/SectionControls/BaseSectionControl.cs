@@ -425,55 +425,73 @@ namespace CodeTorch.Web.SectionControls
                     ctrl.Section = Section;
                     ctrl.Screen = Screen;
 
-                    //now that all controls have been defined we now need to render table html based on rendering mode
+                    //now that all controls have been defined we now need to render  html based on rendering mode
                     if (group != null)
                     {
-                        if (control.LabelWrapsControl)
+                        if (control.RenderLabel)
                         {
-                            AssignControl(group, labelContainer, label);
-                            AssignControl(label, controlContainer, renderControl, help);
-                        }
-                        else
-                        {
-                            label.AssociatedControlID = renderControl.ClientID;
-
-                            if (control.LabelRendersBeforeControl)
+                            if (control.LabelWrapsControl)
                             {
                                 AssignControl(group, labelContainer, label);
-                                AssignControl(group, controlContainer, renderControl, help);
+                                AssignControl(label, controlContainer, renderControl, help);
                             }
                             else
                             {
-                                AssignControl(group, controlContainer, renderControl, help);
-                                AssignControl(group, labelContainer, label);
+                                label.AssociatedControlID = renderControl.ClientID;
+
+                                if (control.LabelRendersBeforeControl)
+                                {
+                                    AssignControl(group, labelContainer, label);
+                                    AssignControl(group, controlContainer, renderControl, help);
+                                }
+                                else
+                                {
+                                    AssignControl(group, controlContainer, renderControl, help);
+                                    AssignControl(group, labelContainer, label);
+                                }
                             }
                         }
+                        else
+                        {
+                            AssignControl(group, controlContainer, renderControl, help);
+                        }
+
+                        
 
                     }
                     else
                     {
                         Control g = groupContainer;// (parent != null) ? (Control)parent : (Control)this.ContentPlaceHolder;
 
-                        if (control.LabelWrapsControl)
+                        if (control.RenderLabel)
                         {
-                            AssignControl(g, labelContainer, label);
-                            AssignControl(label, controlContainer, renderControl,help);
-                        }
-                        else
-                        {
-                            label.AssociatedControlID = renderControl.ClientID;
-
-                            if (control.LabelRendersBeforeControl)
+                            if (control.LabelWrapsControl)
                             {
                                 AssignControl(g, labelContainer, label);
-                                AssignControl(g, controlContainer, renderControl,help);
+                                AssignControl(label, controlContainer, renderControl, help);
                             }
                             else
                             {
-                                AssignControl(g, controlContainer, renderControl,help);
-                                AssignControl(g, labelContainer, label);                            
-                            }  
+                                label.AssociatedControlID = renderControl.ClientID;
+
+                                if (control.LabelRendersBeforeControl)
+                                {
+                                    AssignControl(g, labelContainer, label);
+                                    AssignControl(g, controlContainer, renderControl, help);
+                                }
+                                else
+                                {
+                                    AssignControl(g, controlContainer, renderControl, help);
+                                    AssignControl(g, labelContainer, label);
+                                }
+                            }
                         }
+                        else
+                        {
+                            AssignControl(g, controlContainer, renderControl, help);
+                        }
+
+                        
                     }
 
 
