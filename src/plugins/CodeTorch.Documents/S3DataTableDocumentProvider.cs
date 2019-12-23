@@ -10,6 +10,7 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace CodeTorch.Documents
@@ -108,6 +109,16 @@ namespace CodeTorch.Documents
             string secretAccessKey = GetPassword(storageProviderPasswordSource, storageProviderPasswordKey);
             string region = GetRegion(storageProviderRegionSource, storageProviderRegionKey);
 
+            if (String.IsNullOrWhiteSpace(accessKeyID))
+                throw new Exception("AWS access key ID for S3 has not been configured");
+
+            if (String.IsNullOrWhiteSpace(secretAccessKey))
+                throw new Exception("AWS access key for S3 has not been configured");
+
+            if (String.IsNullOrWhiteSpace(region))
+                throw new Exception("AWS region for S3 has not been configured");
+
+
             TransferUtility fileTransferUtility = new TransferUtility(accessKeyID, secretAccessKey, RegionEndpoint.GetBySystemName(region));
 
             TransferUtilityUploadRequest request = new TransferUtilityUploadRequest();
@@ -120,14 +131,21 @@ namespace CodeTorch.Documents
 
             doc.ID = Guid.NewGuid().ToString();
 
+            string key = null;
             if (String.IsNullOrEmpty(storageProviderFolder))
             {
-                request.Key = String.Format("{0}{1}", doc.ID, fileExtension);
+                key = String.Format("{0}{1}", doc.ID, fileExtension);
             }
             else
             {
-                request.Key = String.Format("{0}/{1}{2}", storageProviderFolder, doc.ID, fileExtension);
+                key = String.Format("{0}/{1}{2}", storageProviderFolder, doc.ID, fileExtension);
             }
+
+            //substitute folder path with entity id if desired
+            var regex = new Regex("{EntityId}", RegexOptions.IgnoreCase);
+            key = regex.Replace(key, doc.EntityID);
+            
+            request.Key = key;
 
             request.AutoCloseStream = false;
             request.ContentType = doc.ContentType;
