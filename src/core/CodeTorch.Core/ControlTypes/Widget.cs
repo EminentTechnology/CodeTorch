@@ -8,13 +8,7 @@ using System.Drawing.Design;
 
 namespace CodeTorch.Core
 {
-    public enum LabelRenderingMode
-    {
-
-        Left = 0,
-        Top = 1,
-        None = 2
-    }
+   
 
     [Serializable]
     public class Widget

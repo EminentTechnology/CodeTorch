@@ -1,16 +1,9 @@
 ﻿When adding a new control type for configuration we need to edit the following:
-BaseControl class xml include attributes
-BaseControl.GetNewControl
-ControlCollectionEditor.CreateNewItemTypes
-BaseSection.Controls
-
-Then add a new FieldTemplate in web project:
-Typically add a ctrl 
-Implement overrides such as InitControl and LoadControl
-
-Then in client web project- add 
-ascx in templates/controls folder
-
-Then add in client config project  - add
-control type to config
-
+1. Add a control abstraction class that defines the control's properties - 
+   in CodeTorch.Core -> ControlTypes folder -> typically ends in Control - see LabelControl example
+2. Add a control implementation class that inherits from BaseFieldTemplate
+   in CodeTorch.Web -> FieldTemplates folder -> typically no suffix
+3. Add a schema upgrade in Designer to add new Control Types - see schema 8 upgrade example
+4. Implement/Test your control
+   a. Typically add a ctrl 
+   b. Implement overrides such as InitControl and LoadControl

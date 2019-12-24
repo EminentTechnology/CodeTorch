@@ -953,159 +953,123 @@ namespace CodeTorch.Web.Templates
         public void PopulateFormByDataTable(Control container, List<Widget> controls, DataTable data, bool RefreshControls)
         {
 
-            if (data.Rows.Count >= 1)
+            DataRow row = null;
+
+            if (data.Rows.Count > 0)
+                row = data.Rows[0];
+
+            if (row != null)
             {
-                DataRow row = data.Rows[0];
-
-                foreach (Widget control in controls)
-                {
-                    string DataField = null;
-                    //determine if we are in edit mode - check label ends with _ReadOnly_Label
-                    DataField = control.DataField;
-                    
-
-                    if (!String.IsNullOrEmpty(DataField))
-                    {
-                        if (data.Columns.Contains(DataField))
-                        {
-                            if (!String.IsNullOrEmpty(control.Name))
-                            {
-                                CodeTorch.Web.FieldTemplates.BaseFieldTemplate c = this.FindFieldRecursive(container, control.Name);
-
-                                if (c != null)
-                                {
-                                    try
-                                    {
-                                        if (RefreshControls)
-                                        {
-                                            c.Refresh();
-                                        }
-                                        c.ValueObject = row[control.DataField];
-                                        c.Value = row[control.DataField].ToString();
-                                        c.RecordObject = row;
-                                    }
-                                    catch { }
-                                }
-                                else
-                                { 
-                                    //likely a read only control - lets try seach again
-                                    c = this.FindFieldRecursive(container, (control.Name + "_ReadOnly_Label"));
-
-                                    if (c != null)
-                                    {
-                                        try
-                                        {
-                                            if (RefreshControls)
-                                            {
-                                                c.Refresh();
-                                            }
-                                            c.ValueObject = row[control.ReadOnlyDataField];
-                                            c.Value = row[control.ReadOnlyDataField].ToString();
-                                            c.RecordObject = row;
-                                        }
-                                        catch { }
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                throw new ApplicationException("Control is missing ControlName - " + control.DataField);
-                            }
-                        }
-                    }
-
-                }
-
+                PopulateFormByDataRow(container, controls, row, RefreshControls);
             }
-        }
-        #endregion
 
-        #region PopulateFormByDataRowView
-        public void PopulateFormByDataRowView(List<Widget> controls, DataRowView data)
-        {
-
-            PopulateFormByDataRowView(null, controls, data, false);
-        }
-
-        public void PopulateFormByDataRowView(List<Widget> controls, DataRowView data, bool RefreshControls)
-        {
-
-            PopulateFormByDataRowView(null, controls, data, RefreshControls);
         }
 
         public void PopulateFormByDataRowView(Control container, List<Widget> controls, DataRowView data, bool RefreshControls)
         {
+            DataRow row = data.Row;
+            PopulateFormByDataRow(container, controls, row, RefreshControls);
+        }
+
+        public void PopulateFormByDataRow(Control container, List<Widget> controls, DataRow row, bool RefreshControls)
+        {
+            int index = 0;
+            
+
+            
 
             foreach (Widget control in controls)
             {
-                if (!String.IsNullOrEmpty(control.DataField))
+                index++;
+                if (!String.IsNullOrEmpty(control.Name))
                 {
+                    CodeTorch.Web.FieldTemplates.BaseFieldTemplate c = this.FindFieldRecursive(container, control.Name);
 
-                    if (data.Row.Table.Columns.Contains(control.DataField))
+                    if (c != null)
                     {
-                        if (!String.IsNullOrEmpty(control.Name))
+                        try
                         {
-                            CodeTorch.Web.FieldTemplates.BaseFieldTemplate c = this.FindFieldRecursive(container, control.Name);
-
-                            if (c != null)
+                            if (RefreshControls)
                             {
-                                try
-                                {
-                                    if (RefreshControls)
-                                    {
-                                        c.Refresh();
-                                    }
-                                    c.ValueObject = data[control.DataField];
-                                    c.Value = data[control.DataField].ToString();
-                                    c.RecordObject = data.Row;
-                                }
-                                catch { }
+                                c.Refresh();
                             }
+
+
+                            if (!String.IsNullOrEmpty(control.DataField))
+                            {
+                                if (row.Table.Columns.Contains(control.DataField))
+                                {
+                                    c.ValueObject = row[control.DataField];
+                                    c.Value = row[control.DataField].ToString();
+                                }
+                            }
+
+                            c.RecordObject = row;
                         }
-                        else
+                        catch { }
+                    }
+                    else
+                    {
+                        //likely a read only control - lets try seach again
+                        c = this.FindFieldRecursive(container, (control.Name + "_ReadOnly_Label"));
+
+                        if (c != null)
                         {
-                            throw new ApplicationException("Control is missing ControlName - " + control.DataField);
+                            try
+                            {
+                                if (RefreshControls)
+                                {
+                                    c.Refresh();
+                                }
+
+                                if (!String.IsNullOrEmpty(control.ReadOnlyDataField))
+                                {
+                                    if (row.Table.Columns.Contains(control.ReadOnlyDataField))
+                                    {
+                                        c.ValueObject = row[control.ReadOnlyDataField];
+                                        c.Value = row[control.ReadOnlyDataField].ToString();
+                                    }
+                                }
+
+                                c.RecordObject = row;
+                            }
+                            catch { }
                         }
                     }
+                }
+                else
+                {
+                    throw new ApplicationException($"Control {index} is missing ControlName - {control.GetType().FullName}");
                 }
 
             }
         }
-
-        
-
         #endregion
+
+ 
 
         public void RefeshForm(Control container, List<Widget> controls)
         {
-
+            int index = 0;
             foreach (Widget control in controls)
             {
-                if (!String.IsNullOrEmpty(control.DataField))
+                index++;
+                if (!String.IsNullOrEmpty(control.Name))
                 {
+                    CodeTorch.Web.FieldTemplates.BaseFieldTemplate c = this.FindFieldRecursive(container, control.Name);
 
-                  
-                        if (!String.IsNullOrEmpty(control.Name))
+                    if (c != null)
+                    {
+                        try
                         {
-                            CodeTorch.Web.FieldTemplates.BaseFieldTemplate c = this.FindFieldRecursive(container, control.Name);
-
-                            if (c != null)
-                            {
-                                try
-                                {
-                                    
-                                   c.Refresh();
-                                   
-                                    
-                                }
-                                catch { }
-                            }
+                            c.Refresh();
                         }
-                        else
-                        {
-                            throw new ApplicationException("Control is missing ControlName - " + control.DataField);
-                        }
-                    
+                        catch { }
+                    }
+                }
+                else
+                {
+                    throw new ApplicationException($"Control {index} is missing ControlName - {control.GetType().FullName}");
                 }
 
             }

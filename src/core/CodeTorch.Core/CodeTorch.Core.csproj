@@ -111,6 +111,7 @@
     <Compile Include="Commands\NavigateToUrlCommand.cs" />
     <Compile Include="Commands\InsertUpdateSaveCommand.cs" />
     <Compile Include="ConfigurationObjects\AppConfigurationObject.cs" />
+    <Compile Include="ControlTypes\ContentControl.cs" />
     <Compile Include="ControlTypes\RadioButtonListControl.cs" />
     <Compile Include="Grid\ClientSelectGridColumn.cs" />
     <Compile Include="Grid\GridCommandItemDisplay.cs" />

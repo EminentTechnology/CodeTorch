@@ -189,6 +189,7 @@
     <Compile Include="FieldTemplates\Editor.cs" />
     <Compile Include="FieldTemplates\FileUpload.cs" />
     <Compile Include="FieldTemplates\HyperLink.cs" />
+    <Compile Include="FieldTemplates\Content.cs" />
     <Compile Include="FieldTemplates\Label.cs" />
     <Compile Include="FieldTemplates\ListBox.cs" />
     <Compile Include="FieldTemplates\ListBox_Lookup.cs" />
