@@ -257,7 +257,7 @@ namespace CodeTorch.Web.Templates
                             {
                                 if (!String.IsNullOrEmpty(s.Path))
                                 {
-                                    scriptContent = $"<script src='{Page.ResolveClientUrl(s.Path)}' language='text/javascript'></script>";
+                                    scriptContent = $"<script src='{Page.ResolveClientUrl(s.Path)}'></script>";
                                 }
                                 else
                                 {
