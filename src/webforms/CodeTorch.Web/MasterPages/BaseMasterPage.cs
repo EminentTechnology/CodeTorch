@@ -14,17 +14,22 @@ namespace CodeTorch.Web.MasterPages
         protected Label currentAppVersion;
         protected Label copyrightCompanyName;
 
-        protected void Page_Load(object sender, EventArgs e)
+
+        protected override void OnLoad(EventArgs e)
         {
-            if (currentYear != null) 
+            base.OnLoad(e);
+
+            if (currentYear != null)
                 this.currentYear.Text = DateTime.Now.Year.ToString();
 
-            if (currentAppVersion != null) 
+            if (currentAppVersion != null)
                 this.currentAppVersion.Text = GetCurrentVersion();
 
-            if (copyrightCompanyName != null) 
+            if (copyrightCompanyName != null)
                 this.copyrightCompanyName.Text = CodeTorch.Core.Configuration.GetInstance().App.CopyrightCompanyName;
+
         }
+      
 
         protected string GetCurrentVersion()
         {
@@ -32,6 +37,8 @@ namespace CodeTorch.Web.MasterPages
             Version appVersion = currentAssembly.GetName().Version;
             return string.Format("{0}.{1}.{2}", appVersion.Major.ToString(), appVersion.Minor.ToString(), appVersion.Build.ToString());
         }
+
+       
 
     }
 }
