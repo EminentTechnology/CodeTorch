@@ -20,7 +20,10 @@ namespace CodeTorch.Web.Templates
 {
     public class BasePage : Page
     {
+        
         string _SubTitle = "";
+        string _FormattedTitle = "";
+        string _FormattedSubTitle = "";
         bool _RequiresAuthentication = true;
 
 
@@ -74,6 +77,18 @@ namespace CodeTorch.Web.Templates
         }
 
 
+        public string FormattedTitle
+        {
+            get
+            {
+                return _FormattedTitle;
+            }
+            set
+            {
+                _FormattedTitle = value;
+            }
+        }
+
         public string SubTitle
         {
             get
@@ -85,7 +100,19 @@ namespace CodeTorch.Web.Templates
                 _SubTitle = value;
             }
         }
-       
+
+        public string FormattedSubTitle
+        {
+            get
+            {
+                return _FormattedSubTitle;
+            }
+            set
+            {
+                _FormattedSubTitle = value;
+            }
+        }
+
 
         public bool RequiresAuthentication
         {
@@ -1075,69 +1102,7 @@ namespace CodeTorch.Web.Templates
             }
         }
 
-        protected string BuildTitle(DataRow data, string TitleFormatString)
-        {
-            StringBuilder tokens = new StringBuilder();
-
-            //tokenize format string
-            string sep = "";
-            string[] token = TitleFormatString.Split(' ');
-
-            for (int i = 0; i < token.Length; i++)
-            {
-
-                if (token[i].StartsWith("{"))
-                {
-                    string ColumnName = token[i].Substring(1, (token[i].Length - 2));
-                    if (data.Table.Columns.Contains(ColumnName))
-                    {
-                        token[i] = data[ColumnName].ToString();
-                    }
-
-                }
-
-                tokens.Append(sep);
-                tokens.Append(token[i]);
-
-                sep = " ";
-            }
-
-            return tokens.ToString();
-        }
-
-        public virtual void SetPageTitle()
-        {
-            if (this.UseTitleCommand())
-            {
-                try
-                {
-                    if (String.IsNullOrEmpty(this.Screen.Title.CommandName))
-                    {
-                        throw new ApplicationException("Title.CommandName is missing");
-                    }
-
-                    List<ScreenDataCommandParameter> parameters = pageDB.GetPopulatedCommandParameters(this.Screen.Title.CommandName, this);
-                    DataTable data = dataCommandDB.GetDataForDataCommand(this.Screen.Title.CommandName, parameters);
-
-                    if (data.Rows.Count > 0)
-                    {
-                        this.Title = BuildTitle(data.Rows[0], GetTitleFormatString());
-                    }
-                }
-                catch (Exception ex)
-                {
-                    this.Title = String.Format("Error while setting page title - {0}", ex.Message);
-                }
-
-            }
-            else
-            {
-                if (Screen != null)
-                {
-                    this.Title = GetGlobalResourceString("Screen.Title.Name", Screen.Title.Name); 
-                }
-            }
-        }
+        
 
         public string GetLocalResourceString(string ResourceKey, string DefaultValue)
         {
@@ -1199,31 +1164,72 @@ namespace CodeTorch.Web.Templates
             return retVal;
         }
 
-        
-
-        public virtual void SetPageSubTitle()
+        protected string BuildTitle(DataRow data, string TitleFormatString)
         {
-            if (this.UseSubTitleCommand())
+            StringBuilder tokens = new StringBuilder();
+
+            //tokenize format string
+            string sep = "";
+            string[] token = TitleFormatString.Split(' ');
+
+            for (int i = 0; i < token.Length; i++)
+            {
+
+                if (token[i].StartsWith("{"))
+                {
+                    string ColumnName = token[i].Substring(1, (token[i].Length - 2));
+                    if (data.Table.Columns.Contains(ColumnName))
+                    {
+                        token[i] = data[ColumnName].ToString();
+                    }
+
+                }
+
+                tokens.Append(sep);
+                tokens.Append(token[i]);
+
+                sep = " ";
+            }
+
+            return tokens.ToString();
+        }
+
+        private Tuple<string,string> SetPageTitle(string titleType, ScreenTitle title, string formatString, string cleanFormatString)
+        {
+            string retTitle = null;
+            string retFormattedTitle = null;
+
+            if (title.UseCommand)
             {
                 try
                 {
-
-                    if (String.IsNullOrEmpty(this.Screen.SubTitle.CommandName))
+                    if (String.IsNullOrEmpty(title.CommandName))
                     {
-                        throw new ApplicationException("SubTitle.CommandName is missing");
+                        throw new ApplicationException($"{titleType}.CommandName is missing");
                     }
 
-                    List<ScreenDataCommandParameter> parameters = pageDB.GetPopulatedCommandParameters(this.Screen.SubTitle.CommandName, this);
-                    DataTable data = dataCommandDB.GetDataForDataCommand(this.Screen.SubTitle.CommandName, parameters);
+                    List<ScreenDataCommandParameter> parameters = pageDB.GetPopulatedCommandParameters(title.CommandName, this);
+                    DataTable data = dataCommandDB.GetDataForDataCommand(title.CommandName, parameters);
 
                     if (data.Rows.Count > 0)
                     {
-                        this.SubTitle = BuildTitle(data.Rows[0], GetSubTitleFormatString());
+                        retTitle = BuildTitle(data.Rows[0], formatString);
+
+                        if (String.IsNullOrEmpty(cleanFormatString))
+                        {
+                            retFormattedTitle = retTitle;
+                        }
+                        else
+                        {
+                            retFormattedTitle = BuildTitle(data.Rows[0], cleanFormatString);
+                        }
+                        
                     }
                 }
                 catch (Exception ex)
                 {
-                    this.Title = String.Format("Error while setting page sub title - {0}", ex.Message);
+                    retTitle = String.Format($"Error while setting page {titleType} - {0}", ex.Message);
+                    retFormattedTitle = retTitle;
                 }
 
             }
@@ -1231,10 +1237,39 @@ namespace CodeTorch.Web.Templates
             {
                 if (Screen != null)
                 {
-                    this.SubTitle = Screen.SubTitle.Name;
-                    this.SubTitle = GetGlobalResourceString("Screen.SubTitle.Name", Screen.SubTitle.Name); 
+                    retTitle = GetGlobalResourceString($"Screen.{titleType}.Name", title.Name);
+
+                    if (String.IsNullOrEmpty(title.FormattedName))
+                    {
+                        retFormattedTitle = retTitle;
+                    }
+                    else
+                    {
+                        retFormattedTitle = GetGlobalResourceString($"Screen.{titleType}.FormattedName", title.FormattedName);
+                    }
+
                 }
             }
+
+            Tuple<string, string> retVal = new Tuple<string, string>(retTitle, retFormattedTitle);
+            return retVal;
+        }
+
+        public virtual void SetPageTitle()
+        {
+            var retVal = SetPageTitle("Title", Screen.Title, GetTitleFormatString(), GetFormattedTitleFormatString());
+
+            this.Title = retVal.Item1;
+            this.FormattedTitle = retVal.Item2;
+        }
+
+        public virtual void SetPageSubTitle()
+        {
+            var retVal = SetPageTitle("SubTitle", Screen.SubTitle, GetSubTitleFormatString(), GetFormattedSubTitleFormatString());
+
+            this.SubTitle = retVal.Item1;
+            this.FormattedSubTitle = retVal.Item2;
+
         }
 
         public virtual string GetTitleFormatString()
@@ -1252,6 +1287,28 @@ namespace CodeTorch.Web.Templates
             return retVal;
         }
 
+        public virtual string GetFormattedTitleFormatString()
+        {
+            string retVal = String.Empty;
+
+            if (String.IsNullOrEmpty(this.Screen.Title.FormattedCommandFormatString))
+            {
+                if (String.IsNullOrEmpty(this.Screen.Title.CommandFormatString))
+                {
+                    retVal = this.Screen.Title.Name;
+                }
+                else
+                {
+                    retVal = this.Screen.Title.CommandFormatString;
+                }
+            }
+            else
+            {
+                retVal = this.Screen.Title.FormattedCommandFormatString;
+            }
+            return retVal;
+        }
+
         public virtual string GetSubTitleFormatString()
         {
             string retVal = String.Empty;
@@ -1263,6 +1320,28 @@ namespace CodeTorch.Web.Templates
             else
             {
                 retVal = this.Screen.SubTitle.CommandFormatString;
+            }
+            return retVal;
+        }
+
+        public virtual string GetFormattedSubTitleFormatString()
+        {
+            string retVal = String.Empty;
+
+            if (String.IsNullOrEmpty(this.Screen.SubTitle.FormattedCommandFormatString))
+            {
+                if (String.IsNullOrEmpty(this.Screen.SubTitle.CommandFormatString))
+                {
+                    retVal = this.Screen.SubTitle.Name;
+                }
+                else
+                {
+                    retVal = this.Screen.SubTitle.CommandFormatString;
+                }
+            }
+            else
+            {
+                retVal = this.Screen.SubTitle.FormattedCommandFormatString;
             }
             return retVal;
         }
