@@ -18,3 +18,4 @@ artifacts/
 _ReSharper.*
 !lib/**
 /.vs
+/src/webforms/CodeTorch.Web.Backend/App_Data/Logs

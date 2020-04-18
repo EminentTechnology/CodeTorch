@@ -1,7 +1,0 @@
-2020-04-16 18:17:06,503 [24] ERROR CodeTorch.Backend.DataCommandManager [(null)] - Error Updating Lookup Provider
-System.ApplicationException: Data Command could not be found in configuration - Lookup_Deactivate
-   at CodeTorch.Core.Services.DataCommandService.ExecuteDataCommand(DbTransaction tran, String dataCommandName, List`1 parameters) in C:\Sandbox\CodeTorch\src\core\CodeTorch.Core\Services\DataCommandService.cs:line 337
-   at CodeTorch.Core.Services.DataCommandService.ExecuteDataCommand(String DataCommandName, List`1 parameters) in C:\Sandbox\CodeTorch\src\core\CodeTorch.Core\Services\DataCommandService.cs:line 320
-   at CodeTorch.Lookups.DataCommandLookupProvider.ExecuteDataCommand(String dataCommand, List`1 parameters) in C:\Sandbox\CodeTorch\src\plugins\CodeTorch.Lookups\DataCommandLookupProvider.cs:line 230
-   at CodeTorch.Lookups.DataCommandLookupProvider.Save(Lookup lookup) in C:\Sandbox\CodeTorch\src\plugins\CodeTorch.Lookups\DataCommandLookupProvider.cs:line 177
-   at CodeTorch.Backend.LookupManager.<UpdateProvider>d__11.MoveNext() in C:\Sandbox\CodeTorch\src\core\CodeTorch.Backend\LookupManager.cs:line 222
