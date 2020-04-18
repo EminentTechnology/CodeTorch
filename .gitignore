@@ -19,3 +19,4 @@ _ReSharper.*
 !lib/**
 /.vs
 Logs
+/src/webforms/CodeTorch.Web.Backend/App_Data/Logs
