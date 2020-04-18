@@ -9,15 +9,15 @@ using System.Web;
 namespace CodeTorch.Security.Identity
 {
     public enum WindowsAuthenticationUserNameFormat
-    { 
+    {
         UserNameOnly = 0,
         FullUserName
     }
 
-    public class WindowsUserIdentityProvider: IUserIdentityProvider
+    public class WindowsUserIdentityProvider : IUserIdentityProvider
     {
         WindowsAuthenticationUserNameFormat UserNameFormat = WindowsAuthenticationUserNameFormat.UserNameOnly;
-        
+
         public void Initialize(string config)
         {
             //determine username format     
@@ -25,8 +25,13 @@ namespace CodeTorch.Security.Identity
 
         public string GetUserName()
         {
-            string retVal = HttpContext.Current.User.Identity.Name;
-            
+            string retVal = null;
+
+            if (HttpContext.Current != null)
+            {
+                retVal = HttpContext.Current.User.Identity.Name;
+            }
+
             if (UserNameFormat == WindowsAuthenticationUserNameFormat.UserNameOnly)
             {
                 int separator = retVal.ToString().LastIndexOf("\\");

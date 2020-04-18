@@ -27,9 +27,9 @@ namespace CodeTorch.Web.ActionCommands
         
 
 
-        public void ExecuteCommand()
+        public bool ExecuteCommand()
         {
-
+            bool success = true;
             DataCommandService dataCommandDB = DataCommandService.GetInstance();
             PageDB pageDB = new PageDB();
 
@@ -58,11 +58,14 @@ namespace CodeTorch.Web.ActionCommands
             }
             catch (Exception ex)
             {
+                success = false;
                 Page.DisplayErrorAlert(ex);
 
                 log.Error(ex);
             }
-            
+
+            return success;
+
         }
 
 

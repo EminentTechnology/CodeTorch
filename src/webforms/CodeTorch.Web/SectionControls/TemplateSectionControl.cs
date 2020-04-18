@@ -62,8 +62,8 @@ namespace CodeTorch.Web.SectionControls
             }
             catch (Exception ex)
             {
-
-                page.DisplayErrorAlert(ex);
+                //html encode template error message because template can contain html
+                page.DisplayErrorAlert(ex, true);
                 log.Error(ex);
             }
 

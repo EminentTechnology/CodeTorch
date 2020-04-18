@@ -8,24 +8,18 @@ using System.Drawing.Design;
 
 namespace CodeTorch.Core
 {
-    public enum LabelRenderingMode
-    {
-
-        Left = 0,
-        Top = 1,
-        None = 2
-    }
+   
 
     [Serializable]
     public class Widget
     {
-        private bool _Visible = true;
-        private bool _LabelRendersBeforeControl = true;
-
         [Category("Common")]
         public string Name { get; set; }
 
-        
+        [Category("Common")]
+        public bool RenderLabel { get; set; } = true;
+
+
         [Category("Style")]
         public string ControlCssClass { get; set; }
 
@@ -45,17 +39,7 @@ namespace CodeTorch.Core
         public bool LabelWrapsControl { get; set; }
 
         [Category("Style")]
-        public bool LabelRendersBeforeControl
-        {
-            get
-            {
-                return _LabelRendersBeforeControl;
-            }
-            set
-            {
-                _LabelRendersBeforeControl = value;
-            }
-        }
+        public bool LabelRendersBeforeControl { get; set; } = true;
 
 
         [Category("Style")]
@@ -89,17 +73,7 @@ namespace CodeTorch.Core
         public bool IsRequired { get; set; }
 
         [Category("Common")]
-        public bool Visible 
-        { 
-            get
-            {
-                return _Visible;
-            }
-            set
-            {
-                _Visible = value;
-            }
-        }
+        public bool Visible { get; set; } = true;
 
         [Category("Data")]
         [TypeConverter("CodeTorch.Core.Design.DataCommandColumnTypeConverter,CodeTorch.Core.Design")]

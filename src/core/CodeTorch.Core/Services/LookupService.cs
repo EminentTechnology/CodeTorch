@@ -32,7 +32,10 @@ namespace CodeTorch.Core.Services
                 }
                 return lookupProvider;
             }
-
+            set
+            {
+                lookupProvider = value;
+            }
         }
 
         private ILookupProvider GetProvider()

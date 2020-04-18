@@ -42,6 +42,7 @@ namespace CodeTorch.Configuration.FileStore
             {
                 string dataPath = AppDomain.CurrentDomain.GetData("DataDirectory").ToString();
                 Path = System.IO.Path.Combine(dataPath, "CodeTorch\\Web\\");
+                Path = @"C:\Sandbox\relief-backend\src\RxTemps.Web.Worker.Config\";
             }
             catch
             { }
@@ -280,6 +281,12 @@ namespace CodeTorch.Configuration.FileStore
                 {
                     typeName += "s";
                 }
+            }
+
+            //TODO - temp for debug
+            if (t.Name.ToLower() == "app")
+            {
+                typeName = t.Name;
             }
             
             if (String.IsNullOrEmpty(key))

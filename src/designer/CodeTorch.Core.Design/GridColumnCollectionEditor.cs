@@ -28,8 +28,9 @@ namespace CodeTorch.Core.Design
                 typeof(HyperLinkGridColumn),
                 typeof(PickerHyperLinkGridColumn),
                 typeof(PickerLinkButtonGridColumn),
-                typeof(BinaryImageGridColumn)
-            
+                typeof(BinaryImageGridColumn),
+                typeof(ClientSelectGridColumn),
+
             };
         }
 

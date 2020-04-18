@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CodeTorch.Web</RootNamespace>
     <AssemblyName>CodeTorch.Web</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -185,12 +185,14 @@
     <Compile Include="FieldTemplates\Editor.cs" />
     <Compile Include="FieldTemplates\FileUpload.cs" />
     <Compile Include="FieldTemplates\HyperLink.cs" />
+    <Compile Include="FieldTemplates\Content.cs" />
     <Compile Include="FieldTemplates\Label.cs" />
     <Compile Include="FieldTemplates\ListBox.cs" />
     <Compile Include="FieldTemplates\ListBox_Lookup.cs" />
     <Compile Include="FieldTemplates\MultiComboDropDownListBox.cs" />
     <Compile Include="FieldTemplates\NumericTextBox.cs" />
     <Compile Include="FieldTemplates\Picker.cs" />
+    <Compile Include="FieldTemplates\RadioButtonList.cs" />
     <Compile Include="FieldTemplates\SocialShare.cs" />
     <Compile Include="FieldTemplates\TextArea.cs" />
     <Compile Include="FieldTemplates\TextBox.cs" />
@@ -310,4 +312,8 @@
       <UserProperties Notes="&lt;Notes Project=&quot;3f8c0b87-f3d4-4b3d-b327-1376f9164b3c&quot; xmlns=&quot;clr-namespace:StickyNotes.Model;assembly=StickyNotes&quot;&gt;&lt;Notes.StickyNotes&gt;&lt;Note FilePath=&quot;&quot; Content=&quot;&quot; Date=&quot;2009-08-10T10:51:35.0811973+01:00&quot; /&gt;&lt;Note FilePath=&quot;C:\sandbox\eminent-appbuilder\Source\Eminent.AppBuilder.Web\Templates\BasePage.cs&quot; Content=&quot;&quot; Date=&quot;2009-08-10T10:52:58.3931973+01:00&quot; /&gt;&lt;/Notes.StickyNotes&gt;&lt;/Notes&gt;" />
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>

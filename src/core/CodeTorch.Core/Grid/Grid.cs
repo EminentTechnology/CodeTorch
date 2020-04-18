@@ -16,7 +16,9 @@ namespace CodeTorch.Core
         bool _AllowSorting = true;
         bool _AllowPaging = true;
         bool _AllowDelete = false;
+        bool _ShowHeader = true;
         string _HelpText = "";
+        GridCommandItemDisplay _GridCommandItemDisplay = GridCommandItemDisplay.Top;
 
         [Category("Appearance")]
         [Description("CSS Class attached to this control")]
@@ -31,6 +33,14 @@ namespace CodeTorch.Core
         public string Name { get; set; }
 
         public string HelpText { get { return _HelpText; } set { _HelpText = value; } }
+
+        [Category("Appearance")]
+        public bool ShowHeader { get { return _ShowHeader; } set { _ShowHeader = value; } }
+
+        [Category("Appearance")]
+        public GridCommandItemDisplay CommandItemDisplay { get { return _GridCommandItemDisplay; } set { _GridCommandItemDisplay = value; } }
+        
+
 
         public string DataKeyNames { get; set; }
         public string DataKeyParameterNames { get; set; }
@@ -67,6 +77,7 @@ namespace CodeTorch.Core
         [XmlArrayItem(ElementName = "HyperLinkGridColumn", Type = typeof(HyperLinkGridColumn))]
         [XmlArrayItem(ElementName = "PickerLinkButtonGridColumn", Type = typeof(PickerLinkButtonGridColumn))]
         [XmlArrayItem(ElementName = "BinaryImageGridColumn", Type = typeof(BinaryImageGridColumn))]
+        [XmlArrayItem(ElementName = "ClientSelectGridColumn", Type = typeof(ClientSelectGridColumn))]
         //[XmlArrayItem(ElementName = "PickerHyperLinkGridColumn", Type = typeof(PickerHyperLinkGridColumn))]
 
         [Editor("CodeTorch.Core.Design.GridColumnCollectionEditor,CodeTorch.Core.Design", typeof(UITypeEditor))]  
@@ -114,6 +125,9 @@ namespace CodeTorch.Core
             get { return _GroupsDefaultExpanded; }
             set { _GroupsDefaultExpanded = value; }
         }
+
+
+        public bool AllowMultiRowSelection { get; set; }
 
         public bool GroupingEnabled { get; set; }
         public bool ShowGroupPanel { get; set; }

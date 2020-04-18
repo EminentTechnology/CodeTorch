@@ -431,6 +431,12 @@ namespace CodeTorch.Designer.Forms
                     transformers.Add(new CodeTorch.Designer.SchemaUpgrades._6.ControlTypeTransformer());
                     transformers.Add(new CodeTorch.Designer.SchemaUpgrades._6.ScreenTransformer());
                     break;
+                case 7:
+
+                    CodeTorch.Designer.SchemaUpgrades._7.RestServiceTransformer v7Transformer = new CodeTorch.Designer.SchemaUpgrades._7.RestServiceTransformer();
+                    v7Transformer.GenerateServicesFolder(ConfigurationPath);
+                    transformers.Add(v7Transformer);
+                    break;
 
             }
 
@@ -566,7 +572,9 @@ namespace CodeTorch.Designer.Forms
                 case Constants.ENTITY_TYPE_SCREEN:
                     SetupSolutionExplorerScreenNodes(node, PluralTitle, SingleTitle, EntityType, ConfigFolderPath, list);
                     break;
-                
+                case Constants.ENTITY_TYPE_REST_SERVICE:
+                    SetupSolutionExplorerRestServiceNodes(node, PluralTitle, SingleTitle, EntityType, ConfigFolderPath, list);
+                    break;
                 default:
                     PopulateNodes(node, PluralTitle, SingleTitle, EntityType, ConfigFolderPath, list);
                     break;
@@ -728,7 +736,7 @@ namespace CodeTorch.Designer.Forms
                     pickerDialog.ItemDisplayName = "Picker";
                     return pickerDialog.ShowDialog();
                 case "restservice":
-                    NewItemDialog restServiceDialog = new NewItemDialog();
+                    NewRestServiceDialog restServiceDialog = new NewRestServiceDialog();
                     restServiceDialog.ItemType = EntityType;
                     restServiceDialog.ItemDisplayName = "RestService";
                     return restServiceDialog.ShowDialog();
@@ -818,20 +826,20 @@ namespace CodeTorch.Designer.Forms
             
         }
 
-        private void SetupSolutionExplorerDataCommandNodes(RadTreeNode rootNode, string PluralTitle, string SingleTitle, string EntityType, string ConfigFolderPath, IEnumerable list)
+        private void SetupSolutionExplorerRestServiceNodes(RadTreeNode rootNode, string PluralTitle, string SingleTitle, string EntityType, string ConfigFolderPath, IEnumerable list)
         {
 
-            List<string> folders = CodeTorch.Core.Screen.GetDistinctFolders();
+            List<string> folders = CodeTorch.Core.RestService.GetDistinctFolders();
 
             foreach (string folder in folders)
             {
                 RadTreeNode f = new RadTreeNode(folder);
-                f.ImageKey = "folder";
+                f.ImageKey = "vsfolder_closed";
 
                 f.Tag = "FOLDER";
 
-                IEnumerable pages = CodeTorch.Core.Screen.GetByFolder(folder);
-                PopulateNodes(f,  PluralTitle,  SingleTitle,EntityType,ConfigFolderPath, pages);
+                IEnumerable services = CodeTorch.Core.RestService.GetByFolder(folder);
+                PopulateNodes(f,  PluralTitle,  SingleTitle,EntityType,ConfigFolderPath, services);
 
                 rootNode.Nodes.Add(f);
             }

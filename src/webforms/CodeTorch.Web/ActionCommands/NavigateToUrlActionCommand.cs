@@ -18,9 +18,9 @@ namespace CodeTorch.Web.ActionCommands
         
 
 
-        public void ExecuteCommand()
+        public bool ExecuteCommand()
         {
-
+            bool success = true;
 
             Abstractions.ILog log = Resolver.Resolve<Abstractions.ILogManager>().GetLogger(this.GetType());
 
@@ -45,11 +45,13 @@ namespace CodeTorch.Web.ActionCommands
             }
             catch (Exception ex)
             {
+                success = false;
                 Page.DisplayErrorAlert(ex);
 
                 log.Error(ex);
             }
-            
+
+            return success;
         }
 
 

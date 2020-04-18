@@ -407,98 +407,9 @@ namespace CodeTorch.Web.HttpHandlers
             }
         }
 
-        private List<ScreenDataCommandParameter> CollectParameters()
-        {
-            List<ScreenDataCommandParameter> retVal = new List<ScreenDataCommandParameter>();
-            ScreenDataCommandParameter p = null;
+      
 
-            switch (HttpContext.Current.Request.HttpMethod)
-            {
-                case "GET":
-                    foreach (string s in HttpContext.Current.Request.QueryString)
-                    { 
-                        p = new ScreenDataCommandParameter();
-                        p.Name = "@" + s;
-                        p.InputType = ScreenInputType.QueryString;
-                        p.InputKey = "@" + s;
-                        p.Value = HttpContext.Current.Request.QueryString[s];
-
-                        retVal.Add(p);
-                    }
-                    break;
-                case "POST":
-                    foreach (string s in HttpContext.Current.Request.Form)
-                    {
-                        p = new ScreenDataCommandParameter();
-                        p.Name = "@" + s;
-                        p.InputType = ScreenInputType.Form;
-                        p.InputKey = "@" + s;
-                        p.Value = HttpContext.Current.Request.Form[s];
-
-                        retVal.Add(p);
-                    }
-                    break;
-                case "DELETE":
-                    break;
-                case "PUT":
-                    break;
-                default:
-                    break;
-            }
-
-            if (!String.IsNullOrEmpty(EntityIDParameterName))
-            { 
-                //check to see if parameter was force set above - it cannot override resource url string.
-                p = retVal.Where(i => i.Name.ToLower() == ("@" + EntityIDParameterName.ToLower())).SingleOrDefault();
-                if (p != null)
-                {
-                    p.Value = EntityID;
-                }
-                else
-                {
-                    p = new ScreenDataCommandParameter();
-                    p.Name = "@" + EntityIDParameterName;
-                    p.InputType = ScreenInputType.QueryString;
-                    p.InputKey = "@" + EntityIDParameterName;
-                    p.Value = EntityID;
-                    retVal.Add(p);
-                }
-            }
-
-            return retVal;
-        }
-
-        string BuildTitle(DataRow data)
-        {
-            string url = ((System.Web.Routing.Route)(RouteData.Route)).Url;
-
-            StringBuilder tokens = new StringBuilder();
-
-            //tokenize format string
-            string sep = "";
-            string[] token = url.Split('/');
-
-            for (int i = 0; i < token.Length; i++)
-            {
-
-                if (token[i].StartsWith("{"))
-                {
-                    string ColumnName = token[i].Substring(1, (token[i].Length - 2));
-                    if (data.Table.Columns.Contains(ColumnName))
-                    {
-                        token[i] = data[ColumnName].ToString();
-                    }
-
-                }
-
-                tokens.Append(sep);
-                tokens.Append(token[i]);
-
-                sep = " ";
-            }
-
-            return tokens.ToString();
-        }
+      
 
         public List<ScreenDataCommandParameter> GetPopulatedCommandParameters(string DataCommandName,  List<ScreenDataCommand> datacommands, object NewID)
         {
@@ -593,13 +504,15 @@ namespace CodeTorch.Web.HttpHandlers
                         
                         if (HttpContext.Current.Request.Files.Count == 1)
                         {
+                            //for refit support
                             file = HttpContext.Current.Request.Files[0] as HttpPostedFile;
                         }
                         else
                         {
                             file = HttpContext.Current.Request.Files[parameter.InputKey] as HttpPostedFile;
                         }
-                        
+                        file = HttpContext.Current.Request.Files[parameter.InputKey] as HttpPostedFile;
+
                         if (file != null)
                         {
                             if (file.ContentLength > 0)
@@ -662,6 +575,9 @@ namespace CodeTorch.Web.HttpHandlers
                 case ScreenInputType.Form:
                     retVal = HttpContext.Current.Request.Form[parameter.InputKey];
                     break;
+                case ScreenInputType.Header:
+                    retVal = HttpContext.Current.Request.Headers[parameter.InputKey];
+                    break;
                 case ScreenInputType.QueryString:
                     retVal = HttpContext.Current.Request.QueryString[parameter.InputKey];
                     break;
@@ -689,6 +605,22 @@ namespace CodeTorch.Web.HttpHandlers
                             break;
                         case "hostheader":
                             retVal = HttpContext.Current.Request.ServerVariables["HTTP_HOST"];
+                            break;
+                        case "ipaddress":
+                            string ipAddress = HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+                            if (!string.IsNullOrEmpty(ipAddress))
+                            {
+                                string[] addresses = ipAddress.Split(',');
+                                if (addresses.Length != 0)
+                                {
+                                    ipAddress = addresses[0];
+                                }
+                            }
+                            else
+                            {
+                                ipAddress = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+                            }
+                            retVal = ipAddress;
                             break;
                         case "applicationpath":
                             retVal = HttpContext.Current.Request.ApplicationPath;

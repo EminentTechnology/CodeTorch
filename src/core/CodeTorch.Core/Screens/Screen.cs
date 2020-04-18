@@ -13,6 +13,12 @@ using CodeTorch.Core.Attributes;
 
 namespace CodeTorch.Core
 {
+    public enum SectionZoneLayoutMode
+    {
+        Static,
+        Dynamic
+    }
+
     public class Screen
     {
         bool _ValidateRequest = true;
@@ -149,6 +155,17 @@ namespace CodeTorch.Core
         [Category("Sections")]
         [TypeConverter("CodeTorch.Core.Design.SectionZoneLayoutTypeConverter,CodeTorch.Core.Design")]
         public string SectionZoneLayout { get; set; }
+
+        [Category("Sections")]
+        public SectionZoneLayoutMode SectionZoneLayoutMode { get; set; } = SectionZoneLayoutMode.Static;
+
+        [Category("Sections")]
+        [TypeConverter("CodeTorch.Core.Design.DataCommandTypeConverter,CodeTorch.Core.Design")]
+        public string SectionZoneLayoutDataCommand { get; set; }
+
+        [Category("Sections")]
+        [TypeConverter("CodeTorch.Core.Design.DataCommandColumnTypeConverter,CodeTorch.Core.Design")]
+        public string SectionZoneLayoutDataField { get; set; }
 
         List<Setting> _settings = new List<Setting>();
 
@@ -394,6 +411,13 @@ namespace CodeTorch.Core
 
         public static Screen GetByFolderAndName(string FolderName, string ScreenName)
         {
+            //if file does not end in .aspx add .aspx
+            //this is to allow using Microsoft.AspNet.FriendlyUrls nuget package
+            if (!ScreenName.ToLower().EndsWith(".aspx"))
+            {
+                ScreenName += ".aspx"; 
+            }
+
             Screen screen = Configuration.GetInstance().Screens
                             .Where(s => 
                                 (

@@ -48,14 +48,17 @@ namespace CodeTorch.Core.Design
 
             if (layout != null)
             {
+
+                
+                /*
                 var retVal = from item in layout.Dividers
                              where String.IsNullOrEmpty(item.Name) == false
                              select item.Name;
 
                 var tempList = retVal.ToList<String>();
                 tempList.Insert(0, String.Empty);
-
-                string[] items = tempList.ToArray<string>();
+                */
+                string[] items = layout.GetDividerNames().ToArray<string>();  // tempList.ToArray<string>();
                 list = new StandardValuesCollection(items);
 
             }

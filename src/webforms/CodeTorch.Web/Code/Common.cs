@@ -530,42 +530,49 @@ namespace CodeTorch.Web
         {
             foreach (RestService s in restServices)
             {
-                Route r;
-                string routeUrl = null;
-                string routeName = null;
-
-                //json
-                routeName = String.Format("service_{0}_json", s.Name);
-                routeUrl = String.Format("Services/{0}.json", s.Resource);
-                r = new Route(routeUrl, routeHandler);
-                if (r.DataTokens == null)
-                    r.DataTokens = new RouteValueDictionary();
-                r.DataTokens["rest-service-name"] = s.Name;
-                routes.Add(routeName, r);
-
-                //xml
-                routeName = String.Format("service_{0}_xml", s.Name);
-                routeUrl = String.Format("Services/{0}.xml", s.Resource);
-                r = new Route(routeUrl, routeHandler);
-                if (r.DataTokens == null)
-                    r.DataTokens = new RouteValueDictionary();
-                r.DataTokens["rest-service-name"] = s.Name;
-                routes.Add(routeName, r);
-
-                //default - json
-                routeName = String.Format("service_{0}_default", s.Name);
-                routeUrl = String.Format("Services/{0}", s.Resource);
-                r = new Route(routeUrl, routeHandler);
-                if (r.DataTokens == null)
-                    r.DataTokens = new RouteValueDictionary();
-                r.DataTokens["rest-service-name"] = s.Name;
-                routes.Add(routeName, r);
-
-
+                BuildRoute(routes, routeHandler, s);
             }
         }
 
-       
+        private static void BuildRoute(RouteCollection routes, AppBuilderRouteHandler<Page> routeHandler, RestService s)
+        {
+            Route r;
+            string routeUrl = null;
+            string routeName = null;
+
+            
+
+            if (s.SupportJSON)
+            {
+                routeName = String.Format("{0}_{1}_json", s.Folder, s.Name);
+                routeUrl = String.Format("{{folder}}/{1}.json", s.Folder, s.Resource);
+                r = new Route(routeUrl, routeHandler);
+                if (r.DataTokens == null)
+                    r.DataTokens = new RouteValueDictionary();
+                r.DataTokens["rest-service-name"] = s.Name;
+                routes.Add(routeName, r);
+            }
+
+            if (s.SupportXML)
+            {
+                routeName = String.Format("{0}_{1}_xml", s.Folder, s.Name);
+                routeUrl = String.Format("{{folder}}/{1}.xml", s.Folder, s.Resource);
+                r = new Route(routeUrl, routeHandler);
+                if (r.DataTokens == null)
+                    r.DataTokens = new RouteValueDictionary();
+                r.DataTokens["rest-service-name"] = s.Name;
+                routes.Add(routeName, r);
+            }
+
+            routeName = String.Format("{0}_{1}_default", s.Folder, s.Name);
+            routeUrl = String.Format("{{folder}}/{1}", s.Folder, s.Resource);
+            r = new Route(routeUrl, routeHandler);
+            if (r.DataTokens == null)
+                r.DataTokens = new RouteValueDictionary();
+            r.DataTokens["rest-service-name"] = s.Name;
+            routes.Add(routeName, r);
+        }
+
 
         public static string CoalesceStr(string Setting, object Value)
         {
@@ -707,37 +714,34 @@ namespace CodeTorch.Web
         {
             string sep = "";
 
-            if (context != null)
+            if (!String.IsNullOrEmpty(url) && !String.IsNullOrEmpty(context))
             {
-                if (context != String.Empty)
+                string[] keys = context.Split(',');
+
+                if (keys.Length > 0)
                 {
-                    string[] keys = context.Split(',');
-
-                    if (keys.Length > 0)
+                    if (url.IndexOf('?') == -1)
                     {
-                        if (url.IndexOf('?') == -1)
-                        {
-                            url += "?";
-                            
-                        }
-                        else
-                        {
-                            sep = "&";
-                        }
-                        
+                        url += "?";
 
-                        for (int i = 0; i < keys.Length; i++)
+                    }
+                    else
+                    {
+                        sep = "&";
+                    }
+
+
+                    for (int i = 0; i < keys.Length; i++)
+                    {
+                        string key = keys[i];
+                        string val = HttpContext.Current.Request.QueryString[key];
+
+                        if (val != null)
                         {
-                            string key = keys[i];
-                            string val = HttpContext.Current.Request.QueryString[key];
-
-                            if (val != null)
-                            {
-                                url += String.Format("{0}{1}={2}", sep, key, val);
-                            }
-
-                            sep = "&";
+                            url += String.Format("{0}{1}={2}", sep, key, val);
                         }
+
+                        sep = "&";
                     }
                 }
             }
@@ -809,10 +813,13 @@ namespace CodeTorch.Web
 
                     break;
                 case ScreenInputType.Cookie:
-                    retVal = page.Request.Cookies[parameter.InputKey].Value;
+                    retVal = page.Request.Cookies[parameter.InputKey]?.Value;
                     break;
                 case ScreenInputType.Form:
                     retVal = page.Request.Form[parameter.InputKey];
+                    break;
+                case ScreenInputType.Header:
+                    retVal = page.Request.Headers[parameter.InputKey];
                     break;
                 case ScreenInputType.QueryString:
                     retVal = page.Request.QueryString[parameter.InputKey];
@@ -832,15 +839,72 @@ namespace CodeTorch.Web
                             retVal = DBNull.Value;
                             break;
                         case "username":
-
                             retVal = UserIdentityService.GetInstance().IdentityProvider.GetUserName();
-
                             break;
                         case "hostheader":
                             retVal = HttpContext.Current.Request.ServerVariables["HTTP_HOST"];
                             break;
+                        case "ipaddress":
+                            string ipAddress = HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+                            if (!string.IsNullOrEmpty(ipAddress))
+                            {
+                                string[] addresses = ipAddress.Split(',');
+                                if (addresses.Length != 0)
+                                {
+                                    ipAddress = addresses[0];
+                                }
+                            }
+                            else
+                            {
+                                ipAddress = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+                            }
+                            retVal = ipAddress;
+                            break;
                         case "applicationpath":
                             retVal = HttpContext.Current.Request.ApplicationPath;
+                            break;
+                        case "grid.selecteditems":
+
+                            if (!String.IsNullOrEmpty(parameter.Default))
+                            {
+                                var tokens = parameter.Default.Split('.');
+                                if (tokens.Length == 3)
+                                {
+                                    string sectionId = tokens[0];
+                                    string columnUniqueName = tokens[1];
+                                    string DataKeyName = tokens[2];
+
+                                    var sectionControl = FindSection(page, null, sectionId);
+                                    if (sectionControl != null)
+                                    {
+                                        if (sectionControl is GridSectionControl)
+                                        {
+                                            var gridSectionControl = sectionControl as GridSectionControl;
+                                            retVal = gridSectionControl.GetSelectedDataKeyValues(columnUniqueName, DataKeyName);
+                                        }
+
+                                        if (sectionControl is EditableGridSectionControl)
+                                        {
+                                            var editableGridSectionControl = sectionControl as EditableGridSectionControl;
+                                            retVal = editableGridSectionControl.GetSelectedDataKeyValues(columnUniqueName, DataKeyName);
+                                        }
+
+                                    }
+                                }
+                                else
+                                {
+                                    //this is an incorrectly configured parameter - throw error to help developer
+                                    throw new ApplicationException($"{parameter.Name} parameter is not configured correctly for special.grid.selecteditems input. It requires a default value in the following format 'gridsectionid.uniquecolumnname.datakey'.");
+                                }
+                            }
+                            else
+                            {
+                                //this is an incorrectly configured parameter - throw error to help developer
+                                throw new ApplicationException($"{parameter.Name} parameter is not configured correctly for special.grid.selecteditems input. It requires a default value in the following format 'gridsectionid.uniquecolumnname.datakey'.");
+                            }
+
+                            
+
                             break;
                         case "absoluteapplicationpath":
                             retVal = String.Format("{0}://{1}{2}",

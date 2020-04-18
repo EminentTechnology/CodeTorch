@@ -18,8 +18,14 @@ namespace CodeTorch.Core
         [Category("Appearance")]
         public string CssClass { get; set; }
 
+        [Category("Appearance")]
+        public string LinkCssClass { get; set; }
+
         [Category("Common")]
         public string Name { get; set; }
+
+        [Category("Common")]
+        public string NameFormatString { get; set; } = "{0}";
 
         [Category("Common")]
         public string Code { get; set; }

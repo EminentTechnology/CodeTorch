@@ -36,10 +36,9 @@ namespace CodeTorch.Web.ActionCommands
         int MaxWidth = 0;
 
 
-        public void ExecuteCommand()
+        public bool ExecuteCommand()
         {
-
-
+            bool success = true;
             Abstractions.ILog log = Resolver.Resolve<Abstractions.ILogManager>().GetLogger(this.GetType());
 
             try
@@ -61,11 +60,14 @@ namespace CodeTorch.Web.ActionCommands
             }
             catch (Exception ex)
             {
+                success = false;
                 Page.DisplayErrorAlert(ex);
 
                 log.Error(ex);
             }
-            
+
+            return success;
+
         }
 
         private void DownloadResizedDocument()

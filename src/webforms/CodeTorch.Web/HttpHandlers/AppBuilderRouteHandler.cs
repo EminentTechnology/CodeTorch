@@ -44,7 +44,7 @@ namespace CodeTorch.Web.HttpHandlers
                     case "codetorch":
                         retVal = GetAppPagesHandler(requestContext, virtualPath, false);
                         break;
-                    case "services":
+                    case "{folder}":
                         retVal = GetRestServiceHandler(requestContext, virtualPath, url, urlSegments);
                         break;
                     default:
@@ -95,11 +95,11 @@ namespace CodeTorch.Web.HttpHandlers
         {
             
             RestService service = null;
-            
 
+            string folder = requestContext.RouteData.GetRequiredString("folder"); 
             string restServiceName = requestContext.RouteData.DataTokens["rest-service-name"].ToString();
 
-            service = RestService.GetByName(restServiceName);
+            service = RestService.GetByFolderAndName(folder, restServiceName);
 
             RestServiceHandler retVal =  new RestServiceHandler();
             retVal.Me = service;

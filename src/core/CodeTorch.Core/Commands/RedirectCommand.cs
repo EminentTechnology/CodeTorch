@@ -44,14 +44,21 @@ namespace CodeTorch.Core.Commands
         public string RedirectUrl { get; set; }
 
         [Category("Redirect")]
+        public string OnErrorRedirectUrl { get; set; }
+
+        [Category("Redirect")]
         [TypeConverter("CodeTorch.Core.Design.DataCommandColumnTypeConverter,CodeTorch.Core.Design")]
         public string RedirectUrlField { get; set; }
 
         [Category("Redirect")]
         public RedirectModeEnum RedirectMode { get; set; }
 
-
         
+        [Category("Redirect")]
+        public string Context { get; set; }
+
+
+
 
     }
 }

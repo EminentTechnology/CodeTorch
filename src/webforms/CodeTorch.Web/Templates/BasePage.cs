@@ -20,7 +20,10 @@ namespace CodeTorch.Web.Templates
 {
     public class BasePage : Page
     {
+        
         string _SubTitle = "";
+        string _FormattedTitle = "";
+        string _FormattedSubTitle = "";
         bool _RequiresAuthentication = true;
 
 
@@ -74,6 +77,18 @@ namespace CodeTorch.Web.Templates
         }
 
 
+        public string FormattedTitle
+        {
+            get
+            {
+                return _FormattedTitle;
+            }
+            set
+            {
+                _FormattedTitle = value;
+            }
+        }
+
         public string SubTitle
         {
             get
@@ -85,7 +100,19 @@ namespace CodeTorch.Web.Templates
                 _SubTitle = value;
             }
         }
-       
+
+        public string FormattedSubTitle
+        {
+            get
+            {
+                return _FormattedSubTitle;
+            }
+            set
+            {
+                _FormattedSubTitle = value;
+            }
+        }
+
 
         public bool RequiresAuthentication
         {
@@ -224,22 +251,72 @@ namespace CodeTorch.Web.Templates
                     ScriptManager Smgr = ScriptManager.GetCurrent(Page);
                     if (Smgr == null) throw new Exception("ScriptManager not found.");
 
+                    int scriptIndex = 0;
                     foreach (Script s in this.Screen.Scripts)
                     {
-                        ScriptReference SRef = new ScriptReference();
+                        scriptIndex++;
 
-                        if (String.IsNullOrEmpty(s.Assembly))
+                        if (s.RenderAtTopOfPage || !String.IsNullOrEmpty(s.Assembly))
                         {
-                            SRef.Path = s.Path;
+                            ScriptReference SRef = new ScriptReference();
+
+                            if (String.IsNullOrEmpty(s.Assembly))
+                            {
+                                SRef.Path = s.Path;
+
+                            }
+                            else
+                            {
+                                SRef.Name = s.Name;
+                                SRef.Assembly = s.Assembly;
+                            }
+
+                            Smgr.Scripts.Add(SRef);
                         }
                         else
                         {
-                            SRef.Name = s.Name;
-                            SRef.Assembly = s.Assembly;
-                        }
+                            string scriptName = String.IsNullOrEmpty(s.Name) ? $"script{scriptIndex}" : s.Name;
+                            string scriptContent = null;
+                            string scriptUrl = null;
+                            bool addScriptTags = String.IsNullOrEmpty(s.Contents) ? false : true;
 
-                        Smgr.Scripts.Add(SRef);
+                            if (String.IsNullOrEmpty(s.Contents))
+                            {
+                                if (!String.IsNullOrEmpty(s.Path))
+                                {
+                                    scriptContent = $"<script src='{Page.ResolveClientUrl(s.Path)}'></script>";
+                                }
+                                else
+                                {
+                                    scriptContent = $"document.write('script {0} is not configured correctly - check codetorch configuration');";
+                                }
+
+                            }
+                            else 
+                            {
+                                scriptContent = s.Contents;
+                            }
+
+
+                            if (s.IsOnSubmitScript)
+                            {
+                                //specific script to target on submit for a page
+                                if (!Page.ClientScript.IsOnSubmitStatementRegistered(scriptName))
+                                    Page.ClientScript.RegisterOnSubmitStatement(typeof(string), scriptName, scriptContent);
+                            }
+                            else
+                            {
+                                //render at bottom of page
+                                if (String.IsNullOrEmpty(s.Assembly))
+                                {
+                                    if (!Page.ClientScript.IsStartupScriptRegistered(scriptName))
+                                        Page.ClientScript.RegisterStartupScript(typeof(string), scriptName, scriptContent, addScriptTags);
+                                }
+                            }
+                        }
                     }
+
+           
 
                 }
 
@@ -460,6 +537,11 @@ namespace CodeTorch.Web.Templates
             return PageTemplateToLoad;
         }
 
+        protected virtual string GetSectionZoneLayout()
+        {
+            return Screen.SectionZoneLayout;
+        }
+
         private void LoadMasterPageContentPlaceHolder(PageTemplateItem item)
         {
 
@@ -627,14 +709,25 @@ namespace CodeTorch.Web.Templates
                 if (!String.IsNullOrEmpty(d.Style))
                     div.Attributes.Add("style", d.Style);
 
+                if (!String.IsNullOrEmpty(d.StartMarkup))
+                {
+                    div.Controls.Add(new LiteralControl(d.StartMarkup));
+                }
+
                 if (!String.IsNullOrEmpty(d.Name))
                 {
                     IterateSectionsToRender(sections, Mode, ResourceKeyPrefix, d, div);
                 }
 
+
                 if (d.Dividers.Count > 0)
                 {
                     GenerateSectionDivs(holder, div, sections, Mode, ResourceKeyPrefix, d.Dividers);
+                }
+
+                if (!String.IsNullOrEmpty(d.EndMarkup))
+                {
+                    div.Controls.Add(new LiteralControl(d.EndMarkup));
                 }
 
                 if (parent == null)
@@ -888,227 +981,129 @@ namespace CodeTorch.Web.Templates
         public void PopulateFormByDataTable(Control container, List<Widget> controls, DataTable data, bool RefreshControls)
         {
 
-            if (data.Rows.Count >= 1)
+            DataRow row = null;
+
+            if (data.Rows.Count > 0)
+                row = data.Rows[0];
+
+            if (row != null)
             {
-                DataRow row = data.Rows[0];
+                PopulateFormByDataRow(container, controls, row, RefreshControls);
+            }
 
-                foreach (Widget control in controls)
+        }
+
+        public void PopulateFormByDataRowView(Control container, List<Widget> controls, DataRowView data, bool RefreshControls)
+        {
+            DataRow row = data.Row;
+            PopulateFormByDataRow(container, controls, row, RefreshControls);
+        }
+
+        public void PopulateFormByDataRow(Control container, List<Widget> controls, DataRow row, bool RefreshControls)
+        {
+            int index = 0;
+            
+
+            
+
+            foreach (Widget control in controls)
+            {
+                index++;
+                if (!String.IsNullOrEmpty(control.Name))
                 {
-                    string DataField = null;
-                    //determine if we are in edit mode - check label ends with _ReadOnly_Label
-                    DataField = control.DataField;
-                    
+                    CodeTorch.Web.FieldTemplates.BaseFieldTemplate c = this.FindFieldRecursive(container, control.Name);
 
-                    if (!String.IsNullOrEmpty(DataField))
+                    if (c != null)
                     {
-                        if (data.Columns.Contains(DataField))
+                        try
                         {
-                            if (!String.IsNullOrEmpty(control.Name))
+                            if (RefreshControls)
                             {
-                                CodeTorch.Web.FieldTemplates.BaseFieldTemplate c = this.FindFieldRecursive(container, control.Name);
+                                c.Refresh();
+                            }
 
-                                if (c != null)
+
+                            if (!String.IsNullOrEmpty(control.DataField))
+                            {
+                                if (row.Table.Columns.Contains(control.DataField))
                                 {
-                                    try
-                                    {
-                                        if (RefreshControls)
-                                        {
-                                            c.Refresh();
-                                        }
-                                        c.ValueObject = row[control.DataField];
-                                        c.Value = row[control.DataField].ToString();
-                                        c.RecordObject = row;
-                                    }
-                                    catch { }
+                                    c.ValueObject = row[control.DataField];
+                                    c.Value = row[control.DataField].ToString();
                                 }
-                                else
-                                { 
-                                    //likely a read only control - lets try seach again
-                                    c = this.FindFieldRecursive(container, (control.Name + "_ReadOnly_Label"));
+                            }
 
-                                    if (c != null)
+                            c.RecordObject = row;
+                        }
+                        catch { }
+                    }
+                    else
+                    {
+                        //likely a read only control - lets try seach again
+                        c = this.FindFieldRecursive(container, (control.Name + "_ReadOnly_Label"));
+
+                        if (c != null)
+                        {
+                            try
+                            {
+                                if (RefreshControls)
+                                {
+                                    c.Refresh();
+                                }
+
+                                if (!String.IsNullOrEmpty(control.ReadOnlyDataField))
+                                {
+                                    if (row.Table.Columns.Contains(control.ReadOnlyDataField))
                                     {
-                                        try
-                                        {
-                                            if (RefreshControls)
-                                            {
-                                                c.Refresh();
-                                            }
-                                            c.ValueObject = row[control.ReadOnlyDataField];
-                                            c.Value = row[control.ReadOnlyDataField].ToString();
-                                            c.RecordObject = row;
-                                        }
-                                        catch { }
+                                        c.ValueObject = row[control.ReadOnlyDataField];
+                                        c.Value = row[control.ReadOnlyDataField].ToString();
                                     }
                                 }
+
+                                c.RecordObject = row;
                             }
-                            else
-                            {
-                                throw new ApplicationException("Control is missing ControlName - " + control.DataField);
-                            }
+                            catch { }
                         }
                     }
-
+                }
+                else
+                {
+                    throw new ApplicationException($"Control {index} is missing ControlName - {control.GetType().FullName}");
                 }
 
             }
         }
         #endregion
 
-        #region PopulateFormByDataRowView
-        public void PopulateFormByDataRowView(List<Widget> controls, DataRowView data)
+ 
+
+        public void RefeshForm(Control container, List<Widget> controls)
         {
-
-            PopulateFormByDataRowView(null, controls, data, false);
-        }
-
-        public void PopulateFormByDataRowView(List<Widget> controls, DataRowView data, bool RefreshControls)
-        {
-
-            PopulateFormByDataRowView(null, controls, data, RefreshControls);
-        }
-
-        public void PopulateFormByDataRowView(Control container, List<Widget> controls, DataRowView data, bool RefreshControls)
-        {
-
+            int index = 0;
             foreach (Widget control in controls)
             {
-                if (!String.IsNullOrEmpty(control.DataField))
+                index++;
+                if (!String.IsNullOrEmpty(control.Name))
                 {
+                    CodeTorch.Web.FieldTemplates.BaseFieldTemplate c = this.FindFieldRecursive(container, control.Name);
 
-                    if (data.Row.Table.Columns.Contains(control.DataField))
+                    if (c != null)
                     {
-                        if (!String.IsNullOrEmpty(control.Name))
+                        try
                         {
-                            CodeTorch.Web.FieldTemplates.BaseFieldTemplate c = this.FindFieldRecursive(container, control.Name);
-
-                            if (c != null)
-                            {
-                                try
-                                {
-                                    if (RefreshControls)
-                                    {
-                                        c.Refresh();
-                                    }
-                                    c.ValueObject = data[control.DataField];
-                                    c.Value = data[control.DataField].ToString();
-                                    c.RecordObject = data.Row;
-                                }
-                                catch { }
-                            }
+                            c.Refresh();
                         }
-                        else
-                        {
-                            throw new ApplicationException("Control is missing ControlName - " + control.DataField);
-                        }
+                        catch { }
                     }
+                }
+                else
+                {
+                    throw new ApplicationException($"Control {index} is missing ControlName - {control.GetType().FullName}");
                 }
 
             }
         }
 
         
-
-        #endregion
-
-        public void RefeshForm(Control container, List<Widget> controls)
-        {
-
-            foreach (Widget control in controls)
-            {
-                if (!String.IsNullOrEmpty(control.DataField))
-                {
-
-                  
-                        if (!String.IsNullOrEmpty(control.Name))
-                        {
-                            CodeTorch.Web.FieldTemplates.BaseFieldTemplate c = this.FindFieldRecursive(container, control.Name);
-
-                            if (c != null)
-                            {
-                                try
-                                {
-                                    
-                                   c.Refresh();
-                                   
-                                    
-                                }
-                                catch { }
-                            }
-                        }
-                        else
-                        {
-                            throw new ApplicationException("Control is missing ControlName - " + control.DataField);
-                        }
-                    
-                }
-
-            }
-        }
-
-        protected string BuildTitle(DataRow data, string TitleFormatString)
-        {
-            StringBuilder tokens = new StringBuilder();
-
-            //tokenize format string
-            string sep = "";
-            string[] token = TitleFormatString.Split(' ');
-
-            for (int i = 0; i < token.Length; i++)
-            {
-
-                if (token[i].StartsWith("{"))
-                {
-                    string ColumnName = token[i].Substring(1, (token[i].Length - 2));
-                    if (data.Table.Columns.Contains(ColumnName))
-                    {
-                        token[i] = data[ColumnName].ToString();
-                    }
-
-                }
-
-                tokens.Append(sep);
-                tokens.Append(token[i]);
-
-                sep = " ";
-            }
-
-            return tokens.ToString();
-        }
-
-        public virtual void SetPageTitle()
-        {
-            if (this.UseTitleCommand())
-            {
-                try
-                {
-                    if (String.IsNullOrEmpty(this.Screen.Title.CommandName))
-                    {
-                        throw new ApplicationException("Title.CommandName is missing");
-                    }
-
-                    List<ScreenDataCommandParameter> parameters = pageDB.GetPopulatedCommandParameters(this.Screen.Title.CommandName, this);
-                    DataTable data = dataCommandDB.GetDataForDataCommand(this.Screen.Title.CommandName, parameters);
-
-                    if (data.Rows.Count > 0)
-                    {
-                        this.Title = BuildTitle(data.Rows[0], GetTitleFormatString());
-                    }
-                }
-                catch (Exception ex)
-                {
-                    this.Title = String.Format("Error while setting page title - {0}", ex.Message);
-                }
-
-            }
-            else
-            {
-                if (Screen != null)
-                {
-                    this.Title = GetGlobalResourceString("Screen.Title.Name", Screen.Title.Name); 
-                }
-            }
-        }
 
         public string GetLocalResourceString(string ResourceKey, string DefaultValue)
         {
@@ -1170,31 +1165,72 @@ namespace CodeTorch.Web.Templates
             return retVal;
         }
 
-        
-
-        public virtual void SetPageSubTitle()
+        protected string BuildTitle(DataRow data, string TitleFormatString)
         {
-            if (this.UseSubTitleCommand())
+            StringBuilder tokens = new StringBuilder();
+
+            //tokenize format string
+            string sep = "";
+            string[] token = TitleFormatString.Split(' ');
+
+            for (int i = 0; i < token.Length; i++)
+            {
+
+                if (token[i].StartsWith("{"))
+                {
+                    string ColumnName = token[i].Substring(1, (token[i].Length - 2));
+                    if (data.Table.Columns.Contains(ColumnName))
+                    {
+                        token[i] = data[ColumnName].ToString();
+                    }
+
+                }
+
+                tokens.Append(sep);
+                tokens.Append(token[i]);
+
+                sep = " ";
+            }
+
+            return tokens.ToString();
+        }
+
+        private Tuple<string,string> SetPageTitle(string titleType, ScreenTitle title, string formatString, string cleanFormatString)
+        {
+            string retTitle = null;
+            string retFormattedTitle = null;
+
+            if (title.UseCommand)
             {
                 try
                 {
-
-                    if (String.IsNullOrEmpty(this.Screen.SubTitle.CommandName))
+                    if (String.IsNullOrEmpty(title.CommandName))
                     {
-                        throw new ApplicationException("SubTitle.CommandName is missing");
+                        throw new ApplicationException($"{titleType}.CommandName is missing");
                     }
 
-                    List<ScreenDataCommandParameter> parameters = pageDB.GetPopulatedCommandParameters(this.Screen.SubTitle.CommandName, this);
-                    DataTable data = dataCommandDB.GetDataForDataCommand(this.Screen.SubTitle.CommandName, parameters);
+                    List<ScreenDataCommandParameter> parameters = pageDB.GetPopulatedCommandParameters(title.CommandName, this);
+                    DataTable data = dataCommandDB.GetDataForDataCommand(title.CommandName, parameters);
 
                     if (data.Rows.Count > 0)
                     {
-                        this.SubTitle = BuildTitle(data.Rows[0], GetSubTitleFormatString());
+                        retTitle = BuildTitle(data.Rows[0], formatString);
+
+                        if (String.IsNullOrEmpty(cleanFormatString))
+                        {
+                            retFormattedTitle = retTitle;
+                        }
+                        else
+                        {
+                            retFormattedTitle = BuildTitle(data.Rows[0], cleanFormatString);
+                        }
+                        
                     }
                 }
                 catch (Exception ex)
                 {
-                    this.Title = String.Format("Error while setting page sub title - {0}", ex.Message);
+                    retTitle = String.Format($"Error while setting page {titleType} - {0}", ex.Message);
+                    retFormattedTitle = retTitle;
                 }
 
             }
@@ -1202,10 +1238,39 @@ namespace CodeTorch.Web.Templates
             {
                 if (Screen != null)
                 {
-                    this.SubTitle = Screen.SubTitle.Name;
-                    this.SubTitle = GetGlobalResourceString("Screen.SubTitle.Name", Screen.SubTitle.Name); 
+                    retTitle = GetGlobalResourceString($"Screen.{titleType}.Name", title.Name);
+
+                    if (String.IsNullOrEmpty(title.FormattedName))
+                    {
+                        retFormattedTitle = retTitle;
+                    }
+                    else
+                    {
+                        retFormattedTitle = GetGlobalResourceString($"Screen.{titleType}.FormattedName", title.FormattedName);
+                    }
+
                 }
             }
+
+            Tuple<string, string> retVal = new Tuple<string, string>(retTitle, retFormattedTitle);
+            return retVal;
+        }
+
+        public virtual void SetPageTitle()
+        {
+            var retVal = SetPageTitle("Title", Screen.Title, GetTitleFormatString(), GetFormattedTitleFormatString());
+
+            this.Title = retVal.Item1;
+            this.FormattedTitle = retVal.Item2;
+        }
+
+        public virtual void SetPageSubTitle()
+        {
+            var retVal = SetPageTitle("SubTitle", Screen.SubTitle, GetSubTitleFormatString(), GetFormattedSubTitleFormatString());
+
+            this.SubTitle = retVal.Item1;
+            this.FormattedSubTitle = retVal.Item2;
+
         }
 
         public virtual string GetTitleFormatString()
@@ -1223,6 +1288,28 @@ namespace CodeTorch.Web.Templates
             return retVal;
         }
 
+        public virtual string GetFormattedTitleFormatString()
+        {
+            string retVal = String.Empty;
+
+            if (String.IsNullOrEmpty(this.Screen.Title.FormattedCommandFormatString))
+            {
+                if (String.IsNullOrEmpty(this.Screen.Title.CommandFormatString))
+                {
+                    retVal = this.Screen.Title.Name;
+                }
+                else
+                {
+                    retVal = this.Screen.Title.CommandFormatString;
+                }
+            }
+            else
+            {
+                retVal = this.Screen.Title.FormattedCommandFormatString;
+            }
+            return retVal;
+        }
+
         public virtual string GetSubTitleFormatString()
         {
             string retVal = String.Empty;
@@ -1234,6 +1321,28 @@ namespace CodeTorch.Web.Templates
             else
             {
                 retVal = this.Screen.SubTitle.CommandFormatString;
+            }
+            return retVal;
+        }
+
+        public virtual string GetFormattedSubTitleFormatString()
+        {
+            string retVal = String.Empty;
+
+            if (String.IsNullOrEmpty(this.Screen.SubTitle.FormattedCommandFormatString))
+            {
+                if (String.IsNullOrEmpty(this.Screen.SubTitle.CommandFormatString))
+                {
+                    retVal = this.Screen.SubTitle.Name;
+                }
+                else
+                {
+                    retVal = this.Screen.SubTitle.CommandFormatString;
+                }
+            }
+            else
+            {
+                retVal = this.Screen.SubTitle.FormattedCommandFormatString;
             }
             return retVal;
         }
@@ -1355,8 +1464,9 @@ namespace CodeTorch.Web.Templates
             this.MessageBus.Publish(message);
         }
 
-        public virtual void DisplayErrorAlert(string Message)
+        public virtual void DisplayErrorAlert(string Message, bool htmlEncodeMessage = false)
         {
+            //todo - implement htmlEncodeMessage
             DisplayAlertMessage message = new DisplayAlertMessage();
 
             message.IsDismissable = true;
@@ -1365,7 +1475,7 @@ namespace CodeTorch.Web.Templates
             this.MessageBus.Publish(message);
         }
 
-        public virtual void DisplayErrorAlert(Exception ex)
+        public virtual void DisplayErrorAlert(Exception ex, bool htmlEncodeMessage = false)
         {
             DisplayAlertMessage message = new DisplayAlertMessage();
 
@@ -1378,7 +1488,17 @@ namespace CodeTorch.Web.Templates
                     errorMessageFormat = app.DefaultErrorMessageFormatString;
                 }
             }
+
+            string errorMessage = null;
+
+            if(htmlEncodeMessage)
+                errorMessage = String.Format(errorMessageFormat, System.Net.WebUtility.HtmlEncode(ex.Message));
+            else
+                errorMessage = String.Format(errorMessageFormat, System.Net.WebUtility.HtmlEncode(ex.Message));
+
+            errorMessage = errorMessage.Replace("\r\n", "<br/>");
             
+
             message.IsDismissable = false;
             message.AlertType = DisplayAlertMessage.ALERT_DANGER;
 

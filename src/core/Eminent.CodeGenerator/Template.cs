@@ -267,14 +267,18 @@ namespace Eminent.CodeGenerator
                         // *** Write out the final block of non-code text
                         if (code.Substring(lnLast, code.Length - lnLast).Replace("\"", "\"\"").Trim() != String.Empty)
                         {
-                            CodeSnippet.Append("\tresponseSB.Append(\"" + code.Substring(lnLast, code.Length - lnLast).Replace("\"", "\"\"").Replace("\r\n", CRLF) + "\" )" + STMTTERM + "\r\n");
+                            //orig code - does not seem to handle html with apostrophes well (") tryinh @ for verbatim string literal 
+                            //CodeSnippet.Append("\tresponseSB.Append(\"" + code.Substring(lnLast, code.Length - lnLast).Replace("\"", "\"\"").Replace("\r\n", CRLF) + "\" )" + STMTTERM + "\r\n");
+                            CodeSnippet.Append("\tresponseSB.Append(@\"" + code.Substring(lnLast, code.Length - lnLast).Replace("\"", "\"\"") + "\" )" + STMTTERM + "\r\n");
                         }
                     }
                 }
             }
             else
             {
-                CodeSnippet.Append("\tresponseSB.Append(\"" + code.Replace("\"", "\"\"").Replace("\r\n", CRLF) + "\" )" + STMTTERM + "\r\n");
+                //orig code - does not seem to handle html with apostrophes well (") tryinh @ for verbatim string literal 
+                //CodeSnippet.Append("\tresponseSB.Append(\"" + code.Replace("\"", "\"\"").Replace("\r\n", CRLF) + "\" )" + STMTTERM + "\r\n");
+                CodeSnippet.Append("\tresponseSB.Append(@\"" + code.Replace("\"", "\"\"") + "\" )" + STMTTERM + "\r\n");
             }
 
 			CodeSnippet.Append("\treturn responseSB.ToString()");

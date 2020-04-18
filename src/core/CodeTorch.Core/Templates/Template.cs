@@ -196,6 +196,9 @@ namespace CodeTorch.Core
                     sb.AppendFormat("\r\n({0},{1}): {2} {3}: {4}", error.Line, error.Column, ((error.IsWarning) ? "warning" : "error"), error.ErrorNumber, error.ErrorText);
                 }
 
+                sb.AppendFormat("\r\n\r\nCode generating error:\r\n\r\n{0}", t.CodeSnippet.ToString());
+                
+
                 throw new ApplicationException(sb.ToString());
             }
 

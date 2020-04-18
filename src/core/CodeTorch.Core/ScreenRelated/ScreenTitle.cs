@@ -11,8 +11,10 @@ namespace CodeTorch.Core
     public class ScreenTitle
     {
         public string Name { get; set; }
+        public string FormattedName { get; set; }
         public bool UseCommand { get; set; }
         public string CommandFormatString { get; set; }
+        public string FormattedCommandFormatString { get; set; }
 
         [TypeConverter("CodeTorch.Core.Design.DataCommandTypeConverter,CodeTorch.Core.Design")]
         public string CommandName { get; set; }

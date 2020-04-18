@@ -13,7 +13,8 @@ namespace CodeTorch.Core
         public string Name { get; set; }
         public virtual string Type { get; set; }
 
-        
+        public bool ContinueOnError { get; set; }
+        //public bool RaiseExceptionOnError { get; set; } = true;
 
         public virtual void Execute()
         { 

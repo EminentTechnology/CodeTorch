@@ -45,8 +45,35 @@ namespace CodeTorch.Web
                 case GridColumnType.BinaryImageGridColumn:
                     BuildBinaryImageGridColumn(page, Grid, GridObject, (BinaryImageGridColumn)Column, ResourceKeyPrefix);
                     break;
+                case GridColumnType.ClientSelectGridColumn:
+                    BuildClientSelectGridColumn(page, Grid, GridObject, (ClientSelectGridColumn)Column, ResourceKeyPrefix);
+                    break;
 
             }
+        }
+
+        public static void BuildClientSelectGridColumn(BasePage page, RadGrid Grid, Grid GridObject, ClientSelectGridColumn Column, string ResourceKeyPrefix)
+        {
+
+            GridClientSelectColumn col = new GridClientSelectColumn();
+
+            string HeaderText = Common.CoalesceStr(col.HeaderText, Column.HeaderText);
+            
+            col.HeaderText = GetGlobalResourceString(page, Column, ResourceKeyPrefix, "HeaderText", HeaderText);
+            col.SortExpression = Common.CoalesceStr(col.SortExpression, Column.SortExpression);
+            col.UniqueName = Common.CoalesceStr(col.UniqueName, Column.UniqueName);
+
+            //col.ButtonCssClass
+            //col.ButtonType
+            //col.CommandName
+            //col.ConfirmText
+            //col.DataTextField
+            //col.DataTextFormatString
+                
+            
+            FormatStyle(col, Column);
+
+            Grid.MasterTableView.Columns.Add(col);
         }
 
         public static void BuildBinaryImageGridColumn(BasePage page, RadGrid Grid, Grid GridObject, BinaryImageGridColumn Column, string ResourceKeyPrefix)
@@ -287,6 +314,8 @@ namespace CodeTorch.Web
         {
             if (GridConfig != null)
             {
+                Grid.AllowMultiRowSelection = GridConfig.AllowMultiRowSelection;
+
                 if (!String.IsNullOrEmpty(GridConfig.CssClass))
                 {
                     Grid.CssClass = GridConfig.CssClass;
@@ -304,7 +333,9 @@ namespace CodeTorch.Web
 
                 //Grid.MasterTableView.EnableColumnsViewState = false;
 
-                Grid.MasterTableView.CommandItemDisplay = GridCommandItemDisplay.Top;
+                
+                Grid.MasterTableView.CommandItemDisplay = (Telerik.Web.UI.GridCommandItemDisplay)Enum.Parse(typeof(Telerik.Web.UI.GridCommandItemDisplay), GridConfig.CommandItemDisplay.ToString());
+                Grid.MasterTableView.ShowHeader = GridConfig.ShowHeader;
 
                 SetupCsvExportSettings(Grid, GridConfig);
                 Grid.MasterTableView.CommandItemSettings.ShowRefreshButton = GridConfig.ShowRefreshButton;
@@ -369,6 +400,7 @@ namespace CodeTorch.Web
 
         }
 
+
         private static void SetupGridScrolling(RadGrid Grid, CodeTorch.Core.Grid GridConfig)
         {
             //scrolling
@@ -389,6 +421,8 @@ namespace CodeTorch.Web
         {
             if (GridConfig != null)
             {
+                Grid.AllowMultiRowSelection = GridConfig.AllowMultiRowSelection;
+
                 if (!String.IsNullOrEmpty(GridConfig.CssClass))
                 {
                     Grid.CssClass = GridConfig.CssClass;
@@ -404,10 +438,11 @@ namespace CodeTorch.Web
                     Grid.Skin = GridConfig.Skin;
                 }
 
-                Grid.MasterTableView.CommandItemDisplay = GridCommandItemDisplay.Top;
+                Grid.MasterTableView.CommandItemDisplay = (Telerik.Web.UI.GridCommandItemDisplay)Enum.Parse(typeof(Telerik.Web.UI.GridCommandItemDisplay), GridConfig.CommandItemDisplay.ToString());
                 Grid.MasterTableView.CommandItemSettings.AddNewRecordText = AddLink.Text;
+                Grid.MasterTableView.ShowHeader = GridConfig.ShowHeader;
 
-                
+
                 Grid.MasterTableView.CommandItemSettings.ShowRefreshButton = GridConfig.ShowRefreshButton;
                 SetupCsvExportSettings(Grid, GridConfig);
                 Grid.MasterTableView.CommandItemSettings.ShowExportToExcelButton = GridConfig.ShowExportToExcelButton;
@@ -811,11 +846,13 @@ namespace CodeTorch.Web
 
         public static void HandleItemDataBound(BasePage page, RadGrid Grid, CodeTorch.Core.Grid GridConfig,  object sender, GridItemEventArgs e)
         {
+            HandleClientSelectColumnOnDataBound(Grid, GridConfig, e);
             HandleBinaryImageColumnsOnDataBound(Grid, GridConfig, e);
         }
 
         public static void HandleEditableGridItemDataBound(BasePage page, RadGrid Grid, CodeTorch.Core.Grid GridConfig,  bool UseDefaultCommand, string DefaultCommandName, object sender, GridItemEventArgs e)
         {
+            HandleClientSelectColumnOnDataBound(Grid, GridConfig, e);
             HandleBinaryImageColumnsOnDataBound(Grid, GridConfig, e);
 
 
@@ -824,6 +861,83 @@ namespace CodeTorch.Web
            
         }
 
+        private static void HandleClientSelectColumnOnDataBound(RadGrid Grid, CodeTorch.Core.Grid GridConfig, GridItemEventArgs e)
+        {
+            if (e.Item is GridDataItem)
+            {
+                GridDataItem dataItem = (GridDataItem)e.Item;
+
+                int gridColumnIndex = 0;
+                foreach (CodeTorch.Core.GridColumn column in GridConfig.Columns)
+                {
+                    if (column is ClientSelectGridColumn)
+                    {
+                        TableCell cell = null;
+                        CheckBox checkbox = null;
+                        ClientSelectGridColumn c = ((ClientSelectGridColumn)column);
+
+                        if (!String.IsNullOrEmpty(column.UniqueName))
+                        {
+                            cell = dataItem[column.UniqueName];
+                            checkbox = (CheckBox)cell.Controls[0];
+                        }
+                        else
+                        {
+                            cell = dataItem[Grid.Columns[gridColumnIndex]];
+                            checkbox = (CheckBox)cell.Controls[0];
+                        }
+
+                        if (checkbox != null)
+                        {
+                            //select or unselect checkbox
+                            if (!String.IsNullOrEmpty(c.SelectedDataField))
+                            {
+                                object value = ((DataRowView)e.Item.DataItem)[c.SelectedDataField];
+
+                                dataItem.Selected = Convert.ToBoolean(value);
+                            }
+
+
+                            //enable or disable checkbox
+                            if (!String.IsNullOrEmpty(c.EnabledDataField))
+                            {
+                                object value = ((DataRowView)e.Item.DataItem)[c.EnabledDataField];
+
+                                var retVal = Convert.ToBoolean(value);
+                                if (retVal)
+                                {
+                                    dataItem.SelectableMode = GridItemSelectableMode.ServerAndClientSide;
+                                    checkbox.Enabled = true;
+                                }
+                                else
+                                {
+                                    dataItem.SelectableMode = GridItemSelectableMode.None;
+                                    checkbox.Enabled = false;
+                                }
+                                
+                            }
+
+                            //set checkbox tooltip
+                            if (!String.IsNullOrEmpty(c.TooltipDataField))
+                            {
+                                object value = ((DataRowView)e.Item.DataItem)[c.TooltipDataField];
+
+                                if (value != null)
+                                {
+                                    string tooltip = value.ToString();
+                                    checkbox.ToolTip = tooltip;
+
+                                }
+                                
+                            }
+                        }
+                    }
+
+                    gridColumnIndex++;
+                }
+
+            }
+        }
         private static void HandleBinaryImageColumnsOnDataBound(RadGrid Grid, CodeTorch.Core.Grid GridConfig, GridItemEventArgs e)
         {
             if (e.Item is GridDataItem)
@@ -963,7 +1077,7 @@ namespace CodeTorch.Web
             {
 
 
-                if (GridConfig.DeleteDataCommand != String.Empty)
+                if (!String.IsNullOrEmpty(GridConfig.DeleteDataCommand))
                 {
                     if (String.IsNullOrEmpty(GridConfig.DataKeyNames) || String.IsNullOrEmpty(GridConfig.DataKeyParameterNames))
                     {
@@ -1182,6 +1296,34 @@ namespace CodeTorch.Web
 
             return retVal;
         }
-        
+
+        public static string GetSelectedDataKeyValues(BasePage page, RadGrid Grid, string columnUniqueName, string dataKeyColumnName)
+        {
+
+            List<string> items = new List<string>();
+
+            foreach (GridItem gridItem in Grid.MasterTableView.Items)
+            {
+                GridDataItem dataitem = (GridDataItem)gridItem;
+                TableCell cell = dataitem[columnUniqueName];
+                if (cell != null)
+                {
+                    CheckBox checkBox = (CheckBox)cell.Controls[0];
+                    if (checkBox != null)
+                    {
+                        if (checkBox.Checked)
+                        {
+                            string value = dataitem.GetDataKeyValue(dataKeyColumnName).ToString();
+                            items.Add(value);
+                        }
+                    }
+                }
+            }
+
+            return string.Join(",", items);
+
+        }
+
+
     }
 }

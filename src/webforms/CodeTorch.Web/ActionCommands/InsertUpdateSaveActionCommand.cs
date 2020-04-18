@@ -36,8 +36,10 @@ namespace CodeTorch.Web.ActionCommands
             Cancel
         }
 
-        public void ExecuteCommand()
+        public bool ExecuteCommand()
         {
+            bool success = true;
+
             if (Command != null)
             {
                 Me = (InsertUpdateSaveCommand)Command;
@@ -45,7 +47,9 @@ namespace CodeTorch.Web.ActionCommands
 
             PageMode = Page.DetermineMode(Me.EntityID, Me.EntityInputType);
             EntityIDValue = Page.GetEntityIDValue(Page.Screen, Me.EntityID, Me.EntityInputType);
-            SaveEditForm();
+            success = SaveEditForm();
+
+            return success;
         }
 
        

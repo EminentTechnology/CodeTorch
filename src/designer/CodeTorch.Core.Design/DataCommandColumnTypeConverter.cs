@@ -21,6 +21,29 @@ namespace CodeTorch.Core.Design
             //the actual list of standard items to return
             StandardValuesCollection list = null;
 
+            if (context.Instance is Screen)
+            {
+                
+                Screen screen = (Screen)context.Instance;
+
+                if (context.PropertyDescriptor.Name == "SectionZoneLayoutDataField")
+                {
+
+                    var retVal = from item in Configuration.GetInstance().DataCommands
+                                 from column in item.Columns
+                                 where item.Name == screen.SectionZoneLayoutDataCommand
+                                 select column.Name;
+
+                    var tempList = retVal.ToList<String>();
+                    tempList.Insert(0, String.Empty);
+
+                    string[] items = tempList.ToArray<string>();
+
+                    list = new StandardValuesCollection(items);
+                }
+
+            }
+
             if (context.Instance is Picker)
             {
                 Picker picker = (Picker)context.Instance;

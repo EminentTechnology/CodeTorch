@@ -19,10 +19,9 @@ namespace CodeTorch.Web.ActionCommands
         
 
 
-        public void ExecuteCommand()
+        public bool ExecuteCommand()
         {
-
-
+            bool success = true;
             ILog log = Resolver.Resolve<ILogManager>().GetLogger(this.GetType());
 
             try
@@ -35,11 +34,14 @@ namespace CodeTorch.Web.ActionCommands
             }
             catch (Exception ex)
             {
+                success = false;
                 Page.DisplayErrorAlert(ex);
 
                 log.Error(ex);
             }
-            
+
+            return success;
+
         }
 
 

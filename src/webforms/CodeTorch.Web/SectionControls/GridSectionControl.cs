@@ -9,19 +9,20 @@ using CodeTorch.Web.Templates;
 using Telerik.Web.UI;
 using CodeTorch.Core;
 using CodeTorch.Core.Messages;
+using System.Web.UI.HtmlControls;
 
 namespace CodeTorch.Web.SectionControls
 {
     public class GridSectionControl: BaseSectionControl
     {
-       
 
- 
+        HtmlGenericControl groupContainer;
+
         protected HyperLink ActionLink;
         protected Image ActionLinkImage;
         protected Label ActionLinkLabel;
         protected RadGrid Grid;
-
+        
         protected System.Web.UI.WebControls.HyperLink SectionEditLink;
       
 
@@ -61,8 +62,28 @@ namespace CodeTorch.Web.SectionControls
             ActionLink.Controls.Add(ActionLinkImage);
             ActionLink.Controls.Add(ActionLinkLabel);
 
-            this.ContentPlaceHolder.Controls.Add(ActionLink);
-            this.ContentPlaceHolder.Controls.Add(Grid);
+            
+
+            string ContainerElement = Me.ContainerElement;
+            string ContainerCssClass = Me.ContainerCssClass;
+
+            if (!String.IsNullOrEmpty(ContainerElement))
+            {
+                groupContainer = new HtmlGenericControl(ContainerElement);
+
+                if (!String.IsNullOrEmpty(ContainerCssClass))
+                    groupContainer.Attributes.Add("class", ContainerCssClass);
+
+                groupContainer.Controls.Add(ActionLink);
+                groupContainer.Controls.Add(Grid);
+
+                this.ContentPlaceHolder.Controls.Add(groupContainer);
+            }
+            else
+            {
+                this.ContentPlaceHolder.Controls.Add(ActionLink);
+                this.ContentPlaceHolder.Controls.Add(Grid);
+            }
 
             BuildGrid();
             CheckActionLinkPermission(Me.ActionLink);
@@ -297,9 +318,9 @@ namespace CodeTorch.Web.SectionControls
             return parameters;
         }
 
-      
-
-        
-        
+        internal object GetSelectedDataKeyValues(string columnUniqueName, string dataKeyName)
+        {
+            return GridFunctions.GetSelectedDataKeyValues(this.page, this.Grid, columnUniqueName, dataKeyName);
+        }
     }
 }

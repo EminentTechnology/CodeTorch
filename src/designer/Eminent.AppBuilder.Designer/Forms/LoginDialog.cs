@@ -243,6 +243,7 @@ namespace CodeTorch.Designer.Forms
 
 
             ClearProjectDetails();
+            this.Project = new Project();
 
             ProjectFolder.Text = String.Format("{0}\\{1}", Environment.GetFolderPath( Environment.SpecialFolder.MyDocuments), "CodeTorch");
             Open.Enabled = true;

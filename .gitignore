@@ -17,3 +17,4 @@ artifacts/
 *.apk
 _ReSharper.*
 !lib/**
+/.vs

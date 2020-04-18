@@ -22,10 +22,9 @@ namespace CodeTorch.Web.ActionCommands
         
 
 
-        public void ExecuteCommand()
+        public bool ExecuteCommand()
         {
-
-
+            bool success = true;
             Abstractions.ILog log = Resolver.Resolve<Abstractions.ILogManager>().GetLogger(this.GetType());
 
             try
@@ -42,11 +41,20 @@ namespace CodeTorch.Web.ActionCommands
             }
             catch (Exception ex)
             {
+                success = false;
                 Page.DisplayErrorAlert(ex);
 
                 log.Error(ex);
+                
+                if ((Me != null) && (!String.IsNullOrWhiteSpace(Me.OnErrorRedirectUrl)))
+                {
+                    string url = Common.CreateUrlWithQueryStringContext(Me.OnErrorRedirectUrl, Me.Context);
+                    Page.Response.Clear();
+                    Page.Response.Redirect(url, false);
+                    HttpContext.Current.ApplicationInstance.CompleteRequest();
+                }
             }
-            
+            return success;
         }
 
         private string ProcessRedirect()
@@ -68,15 +76,13 @@ namespace CodeTorch.Web.ActionCommands
                         retVal = ExecuteDataCommand(retVal);
                     }
 
-                    if (retVal == null)
-                    {
-                        retVal = Me.RedirectUrl;
-                    }
+                    retVal = Me.RedirectUrl;
+
                     break;
                 case RedirectCommand.RedirectModeEnum.DataCommand:
                     retVal = ExecuteDataCommand(retVal);
 
-                    if (retVal == null)
+                    if (String.IsNullOrEmpty(retVal))
                     {
                         retVal = Me.RedirectUrl;
                     }
@@ -95,6 +101,7 @@ namespace CodeTorch.Web.ActionCommands
             }
 
 
+            retVal = Common.CreateUrlWithQueryStringContext(retVal, Me.Context);
 
             return retVal;
 

@@ -296,9 +296,9 @@ namespace CodeTorch.Web.SectionControls
             return parameters;
         }
 
-
-
-
-
+        internal string GetSelectedDataKeyValues(string columnUniqueName, string dataKeyName)
+        {
+            return GridFunctions.GetSelectedDataKeyValues(this.page, this.Grid, columnUniqueName, dataKeyName);
+        }
     }
 }

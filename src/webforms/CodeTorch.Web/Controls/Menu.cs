@@ -302,7 +302,30 @@ namespace CodeTorch.Web.Controls
                 }
             }
 
-            link.Text = MenuFunctions.GetMenuItemText(app, this.Page, ResourceSet, resourceKeyPrefix, item.Code, item.Name);
+            string linkText = MenuFunctions.GetMenuItemText(app, this.Page, ResourceSet, resourceKeyPrefix, item.Code, item.Name);
+            string linkFormat = item.NameFormatString;
+
+            if (String.IsNullOrEmpty(linkFormat))
+                linkFormat = "{0}";
+
+            link.Text = String.Format(linkFormat, linkText);
+
+
+            if (!String.IsNullOrEmpty(item.LinkCssClass))
+            {
+                link.CssClass = item.LinkCssClass;
+                if (isSelected)
+                {
+                    link.CssClass += " active";
+                }
+            }
+            else
+            {
+                if (isSelected)
+                {
+                    link.CssClass = "active";
+                }
+            }
 
             menuItem.Controls.Add(link);
             return menuItem;
@@ -371,7 +394,8 @@ namespace CodeTorch.Web.Controls
                                 p.Value = Common.HostHeader;
                             }
 
-                            parameters.Add(p);
+                            if(!String.IsNullOrEmpty(p.Name))
+                                parameters.Add(p);
                         }
 
 
@@ -414,6 +438,7 @@ namespace CodeTorch.Web.Controls
             bool containsCheckPermission = dt.Columns.Contains("CheckPermission");
             bool containsPermissionName = dt.Columns.Contains("PermissionName");
             bool containsCssClass = dt.Columns.Contains("CssClass");
+            bool containsLinkCssClass = dt.Columns.Contains("LinkCssClass");
             bool containsTarget = dt.Columns.Contains("Target");
             bool containsCode = dt.Columns.Contains("Code");
 
@@ -454,6 +479,11 @@ namespace CodeTorch.Web.Controls
                 if (containsCssClass)
                 {
                     newItem.CssClass = row["CssClass"].ToString();
+                }
+
+                if (containsLinkCssClass)
+                {
+                    newItem.LinkCssClass = row["LinkCssClass"].ToString();
                 }
 
                 if (containsTarget)

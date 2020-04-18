@@ -30,10 +30,9 @@ namespace CodeTorch.Web.ActionCommands
         string DocumentID = null;
 
 
-        public void ExecuteCommand()
+        public bool ExecuteCommand()
         {
-
-
+            bool success = true;
             ILog log = Resolver.Resolve<ILogManager>().GetLogger(this.GetType());
 
             try
@@ -49,11 +48,15 @@ namespace CodeTorch.Web.ActionCommands
             }
             catch (Exception ex)
             {
+                success = false;
+
                 Page.DisplayErrorAlert(ex);
 
                 log.Error(ex);
             }
-            
+
+            return success;
+
         }
 
         private void DownloadDocument()
@@ -79,7 +82,12 @@ namespace CodeTorch.Web.ActionCommands
 
                         Page.Response.Clear();
                         Page.Response.ContentType = dt.Rows[0]["ContentType"].ToString();
-                        Page.Response.AddHeader("Content-Disposition", "attachment;filename=" + dt.Rows[0]["DocumentName"].ToString());
+
+                        //Force file download with content disposition
+                        if (Me.ForceDownloadWithContentDisposition)
+                        {
+                            Page.Response.AddHeader("Content-Disposition", "attachment;filename=" + dt.Rows[0]["DocumentName"].ToString());
+                        }
                        
                         if (String.IsNullOrEmpty(DocumentUrl))
                         {

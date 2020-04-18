@@ -14,8 +14,8 @@ namespace CodeTorch.Core.ConfigurationObjects
 
         public void Delete(object configurationItem)
         {
-            File.Delete(String.Format("{0}{1}\\{2}.xml", ConfigurationLoader.GetFileConfigurationPath(), ConfigurationFolder, ((RestService)configurationItem).Name));
-            Configuration.GetInstance().RestServices.Remove(((RestService)configurationItem));
+            File.Delete(String.Format("{0}{1}\\{2}\\{3}.xml", ConfigurationLoader.GetFileConfigurationPath(), ConfigurationFolder, ((RestService)configurationItem).Folder, ((RestService)configurationItem).Name));
+            Configuration.GetInstance().Screens.Remove(((Screen)configurationItem));
         }
 
         public void Load(XDocument doc, string folder)
@@ -25,7 +25,7 @@ namespace CodeTorch.Core.ConfigurationObjects
 
         public int GetCounts(string folder, string name)
         {
-            return RestService.GetItemCount(name);
+            return RestService.GetItemCount(folder,name);
         }
 
         public void ClearAll()
@@ -42,13 +42,20 @@ namespace CodeTorch.Core.ConfigurationObjects
         {
             List<object> retVal = new List<object>();
 
-            if (String.IsNullOrEmpty(name))
+            if ((String.IsNullOrEmpty(folder)) && (String.IsNullOrEmpty(name)))
             {
                 retVal = new List<object>(Configuration.GetInstance().RestServices.Cast<object>());
             }
             else
             {
-                retVal.Add(RestService.GetByName(name));
+                if ((!String.IsNullOrEmpty(folder)) && (String.IsNullOrEmpty(name)))
+                {
+                    retVal = new List<object>(RestService.GetByFolder(folder).Cast<object>());
+                }
+                else
+                {
+                    retVal.Add(RestService.GetByFolderAndName(folder, name));
+                }
             }
 
             return retVal;
