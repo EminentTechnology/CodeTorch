@@ -8,9 +8,9 @@ namespace CodeTorch.Core
     [Serializable]
     public class CompareValidator: BaseValidator
     {
-        public System.Web.UI.WebControls.ValidationDataType Type { get; set; }
+        public ValidationDataType Type { get; set; }
 
-        public System.Web.UI.WebControls.ValidationCompareOperator Operator { get; set; }
+        public ValidationCompareOperator Operator { get; set; }
 
         public string ControlToCompare { get; set; }
         

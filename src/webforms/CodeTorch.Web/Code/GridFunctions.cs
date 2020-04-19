@@ -103,7 +103,7 @@ namespace CodeTorch.Web
                 col.ImageWidth = new Unit(Column.ImageWidth);
             }
 
-            col.ImageAlign = Column.ImageAlign;
+            col.ImageAlign = (System.Web.UI.WebControls.ImageAlign)Enum.Parse(typeof(System.Web.UI.WebControls.ImageAlign), Column.ImageAlign.ToString()); 
             col.ResizeMode = (Telerik.Web.UI.BinaryImageResizeMode)Enum.Parse(typeof(Telerik.Web.UI.BinaryImageResizeMode), Column.ResizeMode.ToString());
            
 
@@ -216,13 +216,13 @@ namespace CodeTorch.Web
 
             switch (Column.ButtonType)
             { 
-                case System.Web.UI.WebControls.ButtonType.Link:
+                case CodeTorch.Core.ButtonType.Link:
                     col.ButtonType = GridButtonColumnType.LinkButton;
                     break;
-                case System.Web.UI.WebControls.ButtonType.Button:
+                case CodeTorch.Core.ButtonType.Button:
                     col.ButtonType = GridButtonColumnType.PushButton;
                     break;
-                case System.Web.UI.WebControls.ButtonType.Image:
+                case CodeTorch.Core.ButtonType.Image:
                     col.ButtonType = GridButtonColumnType.ImageButton;
                     col.ImageUrl = Common.CoalesceStr(col.ImageUrl, Column.ImageUrl);
                     break;

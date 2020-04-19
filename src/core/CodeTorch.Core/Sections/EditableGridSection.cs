@@ -45,7 +45,9 @@ namespace CodeTorch.Core
         [Category("Sections")]
         [Description("List of page sections")]
         [XmlArray("Sections")]
+#if NETFRAMEWORK
         [Editor("CodeTorch.Core.Design.SectionCollectionEditor,CodeTorch.Core.Design", typeof(UITypeEditor))]
+#endif
         public List<Section> Sections
         {
             get

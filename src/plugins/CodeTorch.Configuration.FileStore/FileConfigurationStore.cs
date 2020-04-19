@@ -1,6 +1,7 @@
 ﻿using CodeTorch.Abstractions;
 using CodeTorch.Core;
 using CodeTorch.Core.Interfaces;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,7 +16,7 @@ namespace CodeTorch.Configuration.FileStore
 {
     public class FileConfigurationStore : IConfigurationStore
     {
-        private readonly ILog Log;
+        private readonly ILogger Log;
 
         //public string Path { get; set; }
         string _Path = null;
@@ -34,14 +35,15 @@ namespace CodeTorch.Configuration.FileStore
             }
         }
 
-        public FileConfigurationStore(ILogManager log)
+        public FileConfigurationStore(ILogger<FileConfigurationStore> logger)
         {
-            Log = log.GetLogger(this.GetType());
+
+            Log = logger;
             //set default codetorch path
             try
             {
-                string dataPath = AppDomain.CurrentDomain.GetData("DataDirectory").ToString();
-                Path = System.IO.Path.Combine(dataPath, "CodeTorch\\Web\\");
+                //string dataPath = AppDomain.CurrentDomain.GetData("DataDirectory").ToString();
+                //Path = System.IO.Path.Combine(dataPath, "CodeTorch\\Web\\");
                 Path = @"C:\Sandbox\relief-backend\src\RxTemps.Web.Worker.Config\";
             }
             catch
@@ -154,7 +156,7 @@ namespace CodeTorch.Configuration.FileStore
                 }
                 catch (Exception ex)
                 {
-                    Log.Debug(String.Format("Error during deserialization of {0} - {1}", t.Name, key), ex);
+                    Log.LogDebug(String.Format("Error during deserialization of {0} - {1}", t.Name, key), ex);
                 }
             }
 
@@ -216,7 +218,8 @@ namespace CodeTorch.Configuration.FileStore
                     }
                     catch(Exception ex)
                     {
-                        Log.Debug(String.Format("Error during deserialization of {0} - {1}", t.Name, file), ex);
+                        
+                        Log.LogDebug(String.Format("Error during deserialization of {0} - {1}", t.Name, file), ex);
                     }
                     
                 }

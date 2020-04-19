@@ -37,7 +37,9 @@ namespace  CodeTorch.Core
         [XmlArrayItem(ElementName = "SetControlPropertyCommand", Type = typeof(SetControlPropertyCommand))]
         [XmlArrayItem(ElementName = "SetScreenObjectsDataCommand", Type = typeof(SetScreenObjectsDataCommand))]
         [XmlArrayItem(ElementName = "ValidateUserCommand", Type = typeof(ValidateUserCommand))]
+#if NETFRAMEWORK
         [Editor("CodeTorch.Core.Design.ActionCommandCollectionEditor,CodeTorch.Core.Design", typeof(UITypeEditor))]
+#endif
         public List<ActionCommand> Commands
         {
             get

@@ -79,8 +79,9 @@ namespace CodeTorch.Core
         [XmlArrayItem(ElementName = "BinaryImageGridColumn", Type = typeof(BinaryImageGridColumn))]
         [XmlArrayItem(ElementName = "ClientSelectGridColumn", Type = typeof(ClientSelectGridColumn))]
         //[XmlArrayItem(ElementName = "PickerHyperLinkGridColumn", Type = typeof(PickerHyperLinkGridColumn))]
-
+#if NETFRAMEWORK
         [Editor("CodeTorch.Core.Design.GridColumnCollectionEditor,CodeTorch.Core.Design", typeof(UITypeEditor))]  
+#endif
         [Description("List of grid columns")]
         public List<GridColumn> Columns
         {
@@ -100,7 +101,9 @@ namespace CodeTorch.Core
 
         [XmlArray("GroupByExpressions")]
         [XmlArrayItem(ElementName = "Expression", Type = typeof(GridGroupByExpression))]
+#if NETFRAMEWORK
         [Editor("CodeTorch.Core.Design.GridGroupByExpressionCollectionEditor,CodeTorch.Core.Design", typeof(UITypeEditor))]  
+#endif
         [Description("List of group by expressions")]
         public List<GridGroupByExpression> GroupByExpressions
         {

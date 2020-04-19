@@ -29,7 +29,9 @@ namespace CodeTorch.Core
 
         [XmlArray("Actions")]
         [XmlArrayItem("Action")]
+#if NETFRAMEWORK
         [Editor(@"System.Windows.Forms.Design.StringCollectionEditor, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a",typeof(System.Drawing.Design.UITypeEditor))] 
+#endif
         public StringCollection Actions
         {
             get
@@ -45,7 +47,9 @@ namespace CodeTorch.Core
 
         [XmlArray("Routines")]
         [XmlArrayItem("Routine")]
+#if NETFRAMEWORK
         [Editor(@"System.Windows.Forms.Design.StringCollectionEditor, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
+#endif
         public StringCollection Routines
         {
             get

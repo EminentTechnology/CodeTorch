@@ -42,7 +42,7 @@ namespace CodeTorch.Web.ActionCommands
                 if (ValidateUser())
                 {
                     HttpCookie ck = null;
-                    ck = FormsAuthenticationMode.CreateFormAuthenticationCookie(LoginName, DateTime.Now.AddMinutes(Me.LogoutTimeout), false, FormsAuthentication.FormsCookieName, FormsAuthentication.FormsCookiePath, profile);
+                    ck = AuthenticationHelper.CreateFormAuthenticationCookie(LoginName, DateTime.Now.AddMinutes(Me.LogoutTimeout), false, FormsAuthentication.FormsCookieName, FormsAuthentication.FormsCookiePath, profile);
 
                     Page.Response.Cookies.Add(ck);
 

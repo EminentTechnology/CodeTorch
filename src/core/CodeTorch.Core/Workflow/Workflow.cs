@@ -38,7 +38,9 @@ namespace CodeTorch.Core
 
         [XmlArray("Steps")]
         [XmlArrayItem("Step")]
+#if NETFRAMEWORK
         [Editor("CodeTorch.Core.Design.WorkflowStepCollectionEditor,CodeTorch.Core.Design", typeof(UITypeEditor))]  
+#endif
         public List<WorkflowStep> Steps
         {
             get { return _Steps; }

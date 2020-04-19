@@ -5,6 +5,7 @@ using CodeTorch.Core;
 using System.Threading.Tasks;
 using log4net;
 using CodeTorch.Logger.Log4Net;
+using Microsoft.Extensions.Logging.Abstractions;
 
 namespace CodeTorch.Tests
 {
@@ -14,15 +15,16 @@ namespace CodeTorch.Tests
     public class FileConfigurationStoreTests
     {
         const string TestPath = @"D:\Sandbox\dfsp\src\DFSP.Web\App_Data\CodeTorch\Web";
-        readonly CodeTorch.Abstractions.ILogManager log;
+        readonly Microsoft.Extensions.Logging.ILogger<FileConfigurationStore> log;
         public FileConfigurationStoreTests()
         {
 
             log4net.Config.XmlConfigurator.Configure();
 
-            log = new CodeTorch.Logger.Log4Net.Log4NetLogManager();
-            
-            
+            log = new NullLogger<FileConfigurationStore>();
+
+
+
         }
 
         [TestMethod]

@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using CodeTorch.Samples.Web.Data;
+using Microsoft.Extensions.Logging;
 
 namespace CodeTorch.Samples.Web
 {
@@ -28,7 +28,14 @@ namespace CodeTorch.Samples.Web
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
+
+            services.AddLogging(builder=>
+                builder.AddConsole()
+            );
+
+            //dependencies
+            services.AddSingleton<CodeTorch.Abstractions.IConfigurationStore, CodeTorch.Configuration.FileStore.FileConfigurationStore>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,5 +63,6 @@ namespace CodeTorch.Samples.Web
                 endpoints.MapFallbackToPage("/_Host");
             });
         }
+
     }
 }

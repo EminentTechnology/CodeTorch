@@ -78,7 +78,6 @@
     <Reference Include="System.Management" />
     <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -107,12 +106,16 @@
     <Compile Include="Commands\NavigateToUrlCommand.cs" />
     <Compile Include="Commands\InsertUpdateSaveCommand.cs" />
     <Compile Include="ConfigurationObjects\AppConfigurationObject.cs" />
+    <Compile Include="Grid\ButtonType.cs" />
+    <Compile Include="Grid\ImageAlign.cs" />
     <Compile Include="Resolver.cs" />
     <Compile Include="ControlTypes\ContentControl.cs" />
     <Compile Include="ControlTypes\RadioButtonListControl.cs" />
     <Compile Include="Grid\ClientSelectGridColumn.cs" />
     <Compile Include="Grid\GridCommandItemDisplay.cs" />
     <Compile Include="Sections\CustomSection.cs" />
+    <Compile Include="Validators\ValidationCompareOperator.cs" />
+    <Compile Include="Validators\ValidationDataType.cs" />
     <Compile Include="_Common\ConfigurationObjectFactory.cs" />
     <Compile Include="ConfigurationObjects\ControlTypeConfigurationObject.cs" />
     <Compile Include="ConfigurationObjects\SectionTypeConfigurationObject.cs" />

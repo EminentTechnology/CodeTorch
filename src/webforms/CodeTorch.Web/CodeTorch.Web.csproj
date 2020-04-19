@@ -164,6 +164,7 @@
     <Compile Include="ActionCommands\NavigateToUrlActionCommand.cs" />
     <Compile Include="ActionCommands\InsertUpdateSaveActionCommand.cs" />
     <Compile Include="Code\ActionRunner.cs" />
+    <Compile Include="Code\AuthenticationHelper.cs" />
     <Compile Include="Code\Common.cs" />
     <Compile Include="Code\CustomDataCommandValidator.cs" />
     <Compile Include="Code\IActionCommandStrategy.cs" />

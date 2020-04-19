@@ -18,7 +18,9 @@ namespace CodeTorch.Core
         [XmlArray("GroupByFields")]
         [XmlArrayItem(ElementName = "SelectField", Type = typeof(GridGroupBySelectField))]
         [XmlArrayItem(ElementName = "GroupField", Type = typeof(GridGroupByGroupField))]
+#if NETFRAMEWORK
         [Editor("CodeTorch.Core.Design.GridGroupByFieldCollectionEditor,CodeTorch.Core.Design", typeof(UITypeEditor))]  
+#endif
         [Description("List of grid group by fields")]
         public List<GridGroupByField> Fields
         {

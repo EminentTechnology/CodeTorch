@@ -4,4 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\blazor\CodeTorch.Blazor\CodeTorch.Blazor.csproj" />
+    <ProjectReference Include="..\..\src\core\CodeTorch.Abstractions\CodeTorch.Abstractions.csproj" />
+    <ProjectReference Include="..\..\src\plugins\CodeTorch.Configuration.FileStore\CodeTorch.Configuration.FileStore.csproj" />
+  </ItemGroup>
+
 </Project>

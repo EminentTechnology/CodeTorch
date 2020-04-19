@@ -138,7 +138,9 @@ namespace CodeTorch.Core
         [Category("Sections")]
         [Description("List of page sections")]
         [XmlArray("Sections")]
+#if NETFRAMEWORK
         [Editor("CodeTorch.Core.Design.SectionCollectionEditor,CodeTorch.Core.Design", typeof(UITypeEditor))]
+#endif
         public virtual List<Section> Sections
         {
             get
@@ -207,7 +209,9 @@ namespace CodeTorch.Core
         [XmlArrayItem("DataCommand")]
         [Description("List of page specific datacommands and their page input settings")]
         [Category("Data")]
+#if NETFRAMEWORK
         [Editor("CodeTorch.Core.Design.ScreenDataCommandCollectionEditor,CodeTorch.Core.Design", typeof(UITypeEditor))]
+#endif
         public virtual List<ScreenDataCommand> DataCommands
         {
             get
@@ -418,7 +422,8 @@ namespace CodeTorch.Core
                 ScreenName += ".aspx"; 
             }
 
-            Screen screen = Configuration.GetInstance().Screens
+            var screens = Configuration.GetInstance().Screens;
+            Screen screen = screens
                             .Where(s => 
                                 (
                                     (s.Folder.ToLower()==FolderName.ToLower()) &&

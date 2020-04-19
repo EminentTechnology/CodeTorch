@@ -37,7 +37,9 @@ namespace CodeTorch.Core
         [XmlArrayItem(ElementName = "Post", Type = typeof(PostRestServiceMethod))]
         [XmlArrayItem(ElementName = "Put", Type = typeof(PutRestServiceMethod))]
         [XmlArrayItem(ElementName = "Delete", Type = typeof(DeleteRestServiceMethod))]
+#if NETFRAMEWORK
         [Editor("CodeTorch.Core.Design.RestServiceMethodCollectionEditor,CodeTorch.Core.Design", typeof(UITypeEditor))]
+#endif
         public virtual List<BaseRestServiceMethod> Methods
         {
             get
