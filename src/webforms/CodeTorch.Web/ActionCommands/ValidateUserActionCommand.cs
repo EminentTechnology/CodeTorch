@@ -47,6 +47,9 @@ namespace CodeTorch.Web.ActionCommands
                     //assumes page is valid prior to attempting login - relies on validation provided by client
                     RememberMe = Me.RememberMeDefault; //set to defalu value - maube overriden in ValidateUser()
 
+                    HttpCookie ck = null;
+                    ck = AuthenticationHelper.CreateFormAuthenticationCookie(LoginName, DateTime.Now.AddMinutes(Me.LogoutTimeout), false, FormsAuthentication.FormsCookieName, FormsAuthentication.FormsCookiePath, profile);
+
                     if (ValidateUser())
                     {
                         HttpCookie ck = null;

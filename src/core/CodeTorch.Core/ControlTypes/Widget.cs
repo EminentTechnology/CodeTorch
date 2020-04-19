@@ -56,7 +56,9 @@ namespace CodeTorch.Core
 
 
         [Category("Common")]
+#if NETFRAMEWORK
         [Editor(typeof(System.ComponentModel.Design.MultilineStringEditor), typeof(UITypeEditor))]
+#endif
         public string HelpText { get; set; }
 
         [Category("Style")]
@@ -76,7 +78,9 @@ namespace CodeTorch.Core
         public bool Visible { get; set; } = true;
 
         [Category("Data")]
+#if NETFRAMEWORK
         [TypeConverter("CodeTorch.Core.Design.DataCommandColumnTypeConverter,CodeTorch.Core.Design")]
+#endif
         public string DataField { get; set; }
 
 
@@ -106,7 +110,9 @@ namespace CodeTorch.Core
         [XmlArrayItem(ElementName = "RegularExpressionValidator", Type = typeof(RegularExpressionValidator))]
         [Category("Validators")]
         [Description("List of control validators")]
+#if NETFRAMEWORK
         [Editor("CodeTorch.Core.Design.ValidatorCollectionEditor,CodeTorch.Core.Design", typeof(UITypeEditor))]
+#endif
         public virtual List<BaseValidator> Validators
         {
             get

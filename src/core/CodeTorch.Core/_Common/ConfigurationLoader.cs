@@ -26,6 +26,7 @@ namespace CodeTorch.Core
 
         public static IConfigurationStore Store { get; set; }
 
+        /*
         public static App GetAppObject()
         {
             App retVal = null;
@@ -99,7 +100,7 @@ namespace CodeTorch.Core
 
             return retVal;
         }
-
+        */
 
         public async static Task LoadConfiguration()
         {

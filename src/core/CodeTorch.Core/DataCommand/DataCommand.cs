@@ -54,7 +54,9 @@ namespace CodeTorch.Core
         [Category("General")]
         [DisplayName("Text")]
         [Description("The text of the command - typically sql statement or db stored procedure name")]
+#if NETFRAMEWORK
         [Editor(typeof(System.ComponentModel.Design.MultilineStringEditor), typeof(UITypeEditor))]
+#endif
         public string Text
         {
             get

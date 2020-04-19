@@ -617,9 +617,9 @@ namespace CodeTorch.Web.SectionControls
                     compareActual.ControlToValidate = control.Name;
 
                     //validator specific
-                    compareActual.Type = compareConfig.Type;
+                    compareActual.Type = (System.Web.UI.WebControls.ValidationDataType)Enum.Parse(typeof(System.Web.UI.WebControls.ValidationDataType), compareConfig.Type.ToString()); 
                     compareActual.ControlToCompare = compareConfig.ControlToCompare;
-                    compareActual.Operator = compareConfig.Operator;
+                    compareActual.Operator = (System.Web.UI.WebControls.ValidationCompareOperator)Enum.Parse(typeof(System.Web.UI.WebControls.ValidationCompareOperator), compareConfig.Operator.ToString());
                     compareActual.ValueToCompare = compareConfig.ValueToCompare;
 
                     retVal = (System.Web.UI.WebControls.BaseValidator)compareActual;
@@ -676,7 +676,7 @@ namespace CodeTorch.Web.SectionControls
                     rangeActual.ControlToValidate = control.Name;
 
                     //validator specific
-                    rangeActual.Type = rangeConfig.Type;
+                    rangeActual.Type = (System.Web.UI.WebControls.ValidationDataType)Enum.Parse(typeof(System.Web.UI.WebControls.ValidationDataType), rangeConfig.Type.ToString());
                     rangeActual.MinimumValue = rangeConfig.MinimumValue;
                     rangeActual.MaximumValue = rangeConfig.MaximumValue;
 

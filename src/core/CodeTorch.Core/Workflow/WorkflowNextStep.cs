@@ -24,7 +24,9 @@ namespace CodeTorch.Core
         [XmlArrayItem(ElementName = "RoleSecurityGroup", Type = typeof(RoleSecurityGroup))]
         [XmlArrayItem(ElementName = "UserSecurityGroup", Type = typeof(UserSecurityGroup))]
         [XmlArrayItem(ElementName = "DynamicSecurityGroup", Type = typeof(WorkflowDynamicSecurityGroup))]
+#if NETFRAMEWORK
         [Editor("CodeTorch.Core.Design.SecurityGroupCollectionEditor,CodeTorch.Core.Design", typeof(UITypeEditor))]
+#endif
         public List<BaseSecurityGroup> SecurityGroups
         {
             get { return _SecurityGroups; }

@@ -27,7 +27,9 @@ namespace CodeTorch.Core
 
         [XmlArray("CommandTypes")]
         [XmlArrayItem("CommandType")]
+#if NETFRAMEWORK
         [Editor(@"System.Windows.Forms.Design.StringCollectionEditor, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
+#endif
         public StringCollection CommandTypes
         {
             get
@@ -43,7 +45,9 @@ namespace CodeTorch.Core
 
         [XmlArray("Settings")]
         [XmlArrayItem("Setting")]
+#if NETFRAMEWORK
         [Editor(@"System.Windows.Forms.Design.StringCollectionEditor, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
+#endif
         public StringCollection Settings
         {
             get

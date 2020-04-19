@@ -89,7 +89,9 @@ namespace CodeTorch.Core
         [XmlArray("Widgets")]
         [Category("Widgets")]
         [Description("List of section widgets")]
+#if NETFRAMEWORK
         [Editor("CodeTorch.Core.Design.ControlCollectionEditor,CodeTorch.Core.Design", typeof(UITypeEditor))]  
+#endif
         public virtual List<Widget> Widgets
         {
             get

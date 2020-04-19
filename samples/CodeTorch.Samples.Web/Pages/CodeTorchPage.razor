@@ -1,0 +1,14 @@
+﻿@inherits CodeTorchPageBase
+<p>@config.App.Name</p>
+<p>url: @url</p>
+<p>folder: @folder</p>
+<p>pagename: @pagename</p>
+
+@if (Screen == null)
+{
+    <p>page not found... </p>
+}
+else
+{
+    <p>@url was found and has {@Screen.Sections.Count}</p>
+}

@@ -36,7 +36,9 @@ namespace CodeTorch.Core
         [XmlArrayItem(ElementName = "DataCommandWorkflowAction", Type = typeof(DataCommandWorkflowAction))]
         [XmlArrayItem(ElementName = "EmailWorkflowAction", Type = typeof(EmailWorkflowAction))]
         [XmlArrayItem(ElementName = "SMSWorkflowAction", Type = typeof(SMSWorkflowAction))]
+#if NETFRAMEWORK
         [Editor("CodeTorch.Core.Design.WorkflowActionCollectionEditor,CodeTorch.Core.Design", typeof(UITypeEditor))]
+#endif
         public virtual List<BaseWorkflowAction> Actions
         {
             get
@@ -53,7 +55,9 @@ namespace CodeTorch.Core
         [Category("Possible Steps")]
         [XmlArray("PossibleNextSteps")]
         [XmlArrayItem("Step")]
+#if NETFRAMEWORK
         [Editor("CodeTorch.Core.Design.WorkflowNextStepCollectionEditor,CodeTorch.Core.Design", typeof(UITypeEditor))]  
+#endif
         public List<WorkflowNextStep> PossibleNextSteps
         {
             get

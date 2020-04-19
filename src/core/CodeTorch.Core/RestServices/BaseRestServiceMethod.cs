@@ -23,7 +23,9 @@ namespace CodeTorch.Core
         [XmlArrayItem("DataCommand")]
         [Description("List of page specific datacommands and their input settings")]
         [Category("Data")]
+#if NETFRAMEWORK
         [Editor("CodeTorch.Core.Design.ScreenDataCommandCollectionEditor,CodeTorch.Core.Design", typeof(UITypeEditor))]
+#endif
         public virtual List<ScreenDataCommand> DataCommands
         {
             get

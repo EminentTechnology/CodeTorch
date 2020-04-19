@@ -24,10 +24,12 @@ namespace CodeTorch.Core
         }
 
         [CustomEditor("MarkupEditor")]
+#if NETFRAMEWORK
         [Editor("CodeTorch.Core.Design.ContentEditor,CodeTorch.Core.Design", typeof(UITypeEditor))]
+#endif
         public string Content { get; set; }
 
-        #region Hidden Overrides
+#region Hidden Overrides
         [XmlArray("Widgets")]
         [Category("Widgets")]
         [Description("List of section widgets")]
@@ -43,6 +45,6 @@ namespace CodeTorch.Core
                 base.Widgets = value;
             }
         }
-        #endregion
+#endregion
     }
 }
