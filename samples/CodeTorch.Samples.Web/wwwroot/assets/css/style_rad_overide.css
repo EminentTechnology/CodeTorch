@@ -1,0 +1,71 @@
+.RadGrid_MetroTouch .rgRow a:hover, 
+.RadGrid_MetroTouch .rgAltRow  a:hover, 
+.RadGrid_MetroTouch tr.rgEditRow  a:hover, 
+.RadGrid_MetroTouch .rgFooter  a:hover, 
+.RadGrid_MetroTouch .rgEditForm  a:hover{
+    color: #2a6496 !important;
+}
+.RadGrid_MetroTouch .rgRow a:link, 
+.RadGrid_MetroTouch .rgAltRow  a:link, 
+.RadGrid_MetroTouch tr.rgEditRow  a:link, 
+.RadGrid_MetroTouch .rgFooter  a:link, 
+.RadGrid_MetroTouch .rgEditForm  a:link{
+    color: #428bca !important;
+}
+.RadGrid_MetroTouch, 
+.RadGrid_MetroTouch 
+.rgMasterTable, 
+.RadGrid_MetroTouch 
+.rgDetailTable, 
+.RadGrid_MetroTouch 
+.rgGroupPanel table, 
+.RadGrid_MetroTouch 
+.rgCommandRow table, 
+.RadGrid_MetroTouch 
+.rgEditForm table, 
+.RadGrid_MetroTouch 
+.rgPager table {
+font-size: 13px !important;
+}
+
+.RadGrid_Bootstrap a.btn-primary {
+    color: #fff;
+}
+
+
+ul.rlbList {
+    border-style: none !important;
+    border-width: 0 !important;
+}
+
+div.rlbGroup  {
+    border-style: none !important;
+    border-width: 0 !important;
+}
+
+/*
+
+.StripeElement {
+    box-sizing: border-box;
+    height: 40px;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: pink;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+    box-shadow: 0 1px 3px 0 green;
+}
+
+.StripeElement--invalid {
+    border-color: purple;
+}
+
+.StripeElement--webkit-autofill {
+    background-color: red !important;
+}*/
+

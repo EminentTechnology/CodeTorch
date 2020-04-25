@@ -1,14 +1,35 @@
 ﻿@inherits CodeTorchPageBase
-<p>@config.App.Name</p>
-<p>url: @url</p>
-<p>folder: @folder</p>
-<p>pagename: @pagename</p>
-
-@if (Screen == null)
-{
-    <p>page not found... </p>
-}
-else
-{
-    <p>@url was found and has {@Screen.Sections.Count}</p>
-}
+@using CodeTorch.Blazor.Controls
+@using CodeTorch.Blazor.Sections
+@using CodeTorch.Samples.Web.Layouts.Content
+@using CodeTorch.Samples.Web.Layouts.PageTemplates
+<LoginPageTemplate Title="RxTemps">
+    <Body>
+        <LoginLayout>
+            <Left>
+                <Alert></Alert>
+                <Edit>
+                    <Textbox Name="EmailAddress" Label="Email Address" IsRequired="true"></Textbox>
+                    <Password Name="Password" Label="Password" IsRequired="true"></Password>
+                </Edit>
+                <Buttons>
+                    <Template>
+                        <div class="section text-center" style="background-color:red">
+                            @context
+                        </div>
+                    </Template>
+                    <ChildContent>
+                        <ButtonControl>Login</ButtonControl>
+                    </ChildContent>
+                </Buttons>
+            </Left>
+            <Bottom>
+                <Content>
+                    <div class="text-center text-muted">Don't have a Pharmacist/Technician account yet? <a href="../Signup/Default">Sign Up</a></div>
+                    <div class="text-center text-muted">Forgot your password? <a href="ForgotPasswordRequest">Reset Password</a></div>
+                    <div class="text-center text-muted">Are you a Pharmacy looking to hire Pharmacists/Technicians? <a href="RedirectToEmployerLogin">Login Here</a></div>
+                </Content>
+            </Bottom>
+        </LoginLayout>
+    </Body>
+</LoginPageTemplate>

@@ -1,0 +1,31 @@
+﻿<div id="MainContent_LoginSection_EmailAddress_FormGroup" class="form-group">
+    <label for="MainContent_LoginSection_EmailAddress" 
+           class="col-md-12 form-label required required-label">@Label:
+    </label>
+    <div id="MainContent_LoginSection_EmailAddress_ControlContainer" class="col-md-12">
+        <input 
+               type="text" 
+               class="form-control">
+        <span 
+              data-val-controltovalidate="MainContent_LoginSection_EmailAddress" 
+              data-val-errormessage="Email Address is required." 
+              data-val-display="None" 
+              id="MainContent_LoginSection_RequiredFieldValidatorEmailAddress" 
+              data-val="true" 
+              data-val-evaluationfunction="RequiredFieldValidatorEvaluateIsValid" 
+              data-val-initialvalue="" style="display:none;"></span>
+        
+    </div>
+</div>
+
+@code {
+
+    [Parameter]
+    public string Name { get; set; }
+
+    [Parameter]
+    public string Label { get; set; }
+
+    [Parameter]
+    public bool IsRequired { get; set; }
+}

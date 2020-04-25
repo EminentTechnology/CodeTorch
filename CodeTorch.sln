@@ -41,7 +41,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTorch.Resources.Web", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTorch.Data.Object", "src\plugins\CodeTorch.Data.Object\CodeTorch.Data.Object.csproj", "{B0D533F4-F147-4493-8545-A7CD0BB990D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTorch.Abstractions", "src\core\CodeTorch.Abstractions\CodeTorch.Abstractions.csproj", "{D4C1A8A6-0150-49D9-9EC6-E1561366FE47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeTorch.Abstractions", "src\core\CodeTorch.Abstractions\CodeTorch.Abstractions.csproj", "{D4C1A8A6-0150-49D9-9EC6-E1561366FE47}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTorch.Configuration.FileStore", "src\plugins\CodeTorch.Configuration.FileStore\CodeTorch.Configuration.FileStore.csproj", "{5FB880CE-5223-4C50-AC5A-885011C5728E}"
 EndProject
@@ -57,7 +57,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTorch.Ioc.Simple", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTorch.Ioc.Autofac", "src\plugins\CodeTorch.Ioc.Autofac\CodeTorch.Ioc.Autofac.csproj", "{49F7FC58-9563-4FD0-A5C8-DE6F63543A8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTorch.Blazor", "src\blazor\CodeTorch.Blazor\CodeTorch.Blazor.csproj", "{39E83AB8-255F-4D84-93EF-A111E61B8340}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "06 - Tests", "06 - Tests", "{F2898AE0-EEBB-4CD7-8627-FCBBF49EBBC7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "07 - Samples", "07 - Samples", "{91130D74-A77E-4F33-8680-81710177E289}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeTorch.Samples.Web", "samples\CodeTorch.Samples.Web\CodeTorch.Samples.Web.csproj", "{7A82F5C0-B067-4950-B37C-E19AD8A75570}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeTorch.Blazor", "src\blazor\CodeTorch.Blazor\CodeTorch.Blazor.csproj", "{39E83AB8-255F-4D84-93EF-A111E61B8340}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -656,8 +662,8 @@ Global
 		{39E83AB8-255F-4D84-93EF-A111E61B8340} = {9C1F6770-F7D0-4507-8EC6-A93DA8A6AB35}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C95EC4E4-E898-4978-8ADA-177BEB906BDE}
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Security.Cryptography.5.0.505.0\lib\NET35
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45
-		SolutionGuid = {FD5C3898-2CA2-490C-A91A-49EA081A2543}
 	EndGlobalSection
 EndGlobal

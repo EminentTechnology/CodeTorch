@@ -1,0 +1,11 @@
+﻿@inherits ButtonsBase
+@if (Template == null)
+{
+    <div class="section text-center">
+        @ChildContent
+    </div>
+}
+else
+{
+    @Template(ChildContent)
+}
