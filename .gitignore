@@ -18,3 +18,4 @@ artifacts/
 _ReSharper.*
 !lib/**
 /.vs
+Logs

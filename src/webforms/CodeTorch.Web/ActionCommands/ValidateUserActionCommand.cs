@@ -39,24 +39,30 @@ namespace CodeTorch.Web.ActionCommands
                     Me = (ValidateUserCommand)Command;
                 }
 
-                if (ValidateUser())
+                if (Page.IsValid)
                 {
-                    HttpCookie ck = null;
-                    ck = FormsAuthenticationMode.CreateFormAuthenticationCookie(LoginName, DateTime.Now.AddMinutes(Me.LogoutTimeout), false, FormsAuthentication.FormsCookieName, FormsAuthentication.FormsCookiePath, profile);
+                    //assumes page is valid prior to attempting login - relies on validation provided by client
 
-                    Page.Response.Cookies.Add(ck);
+                    if (ValidateUser())
+                    {
+                        HttpCookie ck = null;
+                        ck = FormsAuthenticationMode.CreateFormAuthenticationCookie(LoginName, DateTime.Now.AddMinutes(Me.LogoutTimeout), false, FormsAuthentication.FormsCookieName, FormsAuthentication.FormsCookiePath, profile);
 
-                    string strRedirect;
-                    strRedirect = Page.Request["ReturnUrl"];
-                    if (strRedirect == null)
-                        strRedirect = FormsAuthentication.DefaultUrl;
-                    Page.Response.Redirect(strRedirect, false);
-                    HttpContext.Current.ApplicationInstance.CompleteRequest();
+                        Page.Response.Cookies.Add(ck);
+
+                        string strRedirect;
+                        strRedirect = Page.Request["ReturnUrl"];
+                        if (strRedirect == null)
+                            strRedirect = FormsAuthentication.DefaultUrl;
+                        Page.Response.Redirect(strRedirect, false);
+                        HttpContext.Current.ApplicationInstance.CompleteRequest();
+                    }
+                    else
+                    {
+                        Page.DisplayErrorAlert("You have entered an invalid username/password combination. Please try again.");
+                    }
                 }
-                else
-                {
-                    Page.DisplayErrorAlert("You have entered an invalid username/password combination. Please try again.");
-                }
+                
 
             }
             catch (Exception ex)
