@@ -118,8 +118,10 @@ namespace Eminent.CodeGenerator
 			
 			if (String.IsNullOrEmpty(code))
 				return;
-			
-						
+
+			//hack - don't like but sometimes receiving newline in weird formats
+			//https://stackoverflow.com/questions/14059212/why-i-get-r-r-n-as-newline-instead-of-r-n-as-newline-char-in-windows
+			code = code.Replace("\r\r\n", "\r\n");
 
 			int lnLast = 0;
 			int lnAt2 = 0;
