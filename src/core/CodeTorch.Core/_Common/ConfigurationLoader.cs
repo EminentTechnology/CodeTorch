@@ -381,6 +381,7 @@ namespace CodeTorch.Core
             XmlWriterSettings settings = new XmlWriterSettings();
             settings.Indent = true;
             settings.CloseOutput = true;
+            settings.NewLineHandling = NewLineHandling.Entitize;
 
             using (XmlWriter writer = XmlWriter.Create(filePath, settings))
             {

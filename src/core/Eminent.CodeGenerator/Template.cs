@@ -12,9 +12,7 @@ namespace Eminent.CodeGenerator
 	{
 		public Template()
 		{
-			//
-			// TODO: Add constructor logic here
-			//
+
 		}
 
 		
