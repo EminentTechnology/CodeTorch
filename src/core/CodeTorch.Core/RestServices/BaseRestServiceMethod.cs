@@ -45,8 +45,11 @@ namespace CodeTorch.Core
         [TypeConverter("CodeTorch.Core.Design.DataCommandTypeConverter,CodeTorch.Core.Design")]
         public string RequestDataCommand { get; set; }
 
-
         
+        [Description("Field to return verbatim as content of web service call - any format")]
+        [TypeConverter("CodeTorch.Core.Design.DataCommandColumnTypeConverter,CodeTorch.Core.Design")]
+        public string RawDataField { get; set; }
+
         [Category("Partial Response")]
         public bool EnablePartialResponse
         {
@@ -68,8 +71,8 @@ namespace CodeTorch.Core
         [Category("Pagination")]
         public bool EnablePaging { get; set; }
 
-
         
+
         [Category("Pagination")]
         public bool EnableDefaultLimit { get; set; }
         

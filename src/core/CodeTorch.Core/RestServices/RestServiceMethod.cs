@@ -18,7 +18,8 @@ namespace CodeTorch.Core
         None,
         DataTable,
         DataRow,
-        Xml
+        Xml,
+        Raw
     }
 
     

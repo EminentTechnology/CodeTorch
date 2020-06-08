@@ -63,6 +63,7 @@ namespace CodeTorch.Core.Design
             listItems.Add("NewID");
             listItems.Add("Null");
             listItems.Add("RelatedControlValue");
+            listItems.Add("RequestBody");
             listItems.Add("UrlSegment");
             listItems.Add("UserName");
             return listItems;

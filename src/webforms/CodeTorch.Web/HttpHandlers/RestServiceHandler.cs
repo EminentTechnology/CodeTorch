@@ -44,6 +44,8 @@ namespace CodeTorch.Web.HttpHandlers
             get { return true; }
         }
 
+        private string _RequestBody = null;
+
         public void ProcessRequest(HttpContext context)
         {
             App app = CodeTorch.Core.Configuration.GetInstance().App;
@@ -178,6 +180,7 @@ namespace CodeTorch.Web.HttpHandlers
                 if (
                     ((dt != null) && (returnType == RestServiceMethodReturnTypeEnum.DataTable)) ||
                     ((dt != null) && (returnType == RestServiceMethodReturnTypeEnum.DataRow)) ||
+                    ((dt != null) && (returnType == RestServiceMethodReturnTypeEnum.Raw)) ||
                     ((doc != null) && (returnType == RestServiceMethodReturnTypeEnum.Xml))
                    )
                 {
@@ -202,6 +205,9 @@ namespace CodeTorch.Web.HttpHandlers
                                     break;
                                 case RestServiceMethodReturnTypeEnum.Xml:
                                     BuildJsonXmlObjectResponse(app, method, builder, doc);
+                                    break;
+                                case RestServiceMethodReturnTypeEnum.Raw:
+                                    BuildRawResponse(app, method, dt, builder);
                                     break;
 
                             }
@@ -232,8 +238,10 @@ namespace CodeTorch.Web.HttpHandlers
                                     BuildXmlItemResponse(app,context, method, command, dt, xml, columns);
                                     break;
                                 case RestServiceMethodReturnTypeEnum.Xml:
+                                case RestServiceMethodReturnTypeEnum.Raw:
                                     BuildXmlObjectResponse(app, method, doc, xml);
                                     break;
+                                
                             }
                         }
                     }
@@ -457,40 +465,8 @@ namespace CodeTorch.Web.HttpHandlers
                     break;
                 
                 case ScreenInputType.Control:
-                    throw new NotSupportedException();
-
-                    //if (container == null)
-                    //{
-                    //    f = page.FindFieldRecursive(parameter.InputKey);
-                    //}
-                    //else
-                    //{
-                    //    f = page.FindFieldRecursive(container, parameter.InputKey);
-                    //}
-
-                    //if (f != null)
-                    //{
-                    //    retVal = f.Value;
-                    //}
-
-                    break;
                 case ScreenInputType.ControlText:
-
-                    //if (container == null)
-                    //{
-                    //    f = page.FindFieldRecursive(parameter.InputKey);
-                    //}
-                    //else
-                    //{
-                    //    f = page.FindFieldRecursive(container, parameter.InputKey);
-                    //}
-
-                    //if (f != null)
-                    //{
-                    //    retVal = f.DisplayText;
-                    //}
                     throw new NotSupportedException();
-
                     break;
                 case ScreenInputType.Cookie:
                     retVal = HttpContext.Current.Request.Cookies[parameter.InputKey].Value;
@@ -638,6 +614,21 @@ namespace CodeTorch.Web.HttpHandlers
                                 HttpContext.Current.Request.ServerVariables["HTTP_HOST"],
                                 ((HttpContext.Current.Request.ApplicationPath == "/") ? String.Empty : HttpContext.Current.Request.ApplicationPath));
 
+                            break;
+                        case "requestbody":
+                            try
+                            {
+                                if (String.IsNullOrEmpty(_RequestBody))
+                                {
+                                    using (var reader = new StreamReader(HttpContext.Current.Request.InputStream))
+                                    {
+                                        _RequestBody = reader.ReadToEnd();
+                                    }
+                                }
+
+                                retVal = _RequestBody;
+                            }
+                            catch { }
                             break;
 
                     }
@@ -825,7 +816,28 @@ namespace CodeTorch.Web.HttpHandlers
             }
         }
 
-        
+
+        private void BuildRawResponse(App app, BaseRestServiceMethod method, DataTable dt , StringBuilder builder)
+        {
+            
+            if (!String.IsNullOrEmpty(method.RawDataField))
+            {
+                if (dt.Rows.Count>0)
+                {
+                    if (dt.Columns.Contains(method.RawDataField))
+                    {
+                        DataRow row = dt.Rows[0];
+                        builder.Append(row[method.RawDataField]);
+                    }
+
+                }
+
+            }
+            else
+            {
+                throw new Exception($"Rest Service - {Me.Name} - RawDataField is empty");
+            }
+        }
 
         private void BuildJsonXmlObjectResponse(App app, BaseRestServiceMethod method, StringBuilder builder, XmlDocument doc)
         {
