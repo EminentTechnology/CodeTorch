@@ -1,5 +1,4 @@
-﻿@inherits CodeTorchPageBase
-@using CodeTorch.Blazor.Controls
+﻿@page "/test"
 @using CodeTorch.Blazor.Sections
 @using CodeTorch.Samples.Web.Layouts.Content
 @using CodeTorch.Samples.Web.Layouts.PageTemplates
@@ -13,11 +12,6 @@
                     <Password Name="Password" Label="Password" IsRequired="true"></Password>
                 </Edit>
                 <Buttons>
-                    <Template>
-                        <div class="section text-center" style="background-color:red">
-                            @context
-                        </div>
-                    </Template>
                     <ChildContent>
                         <ButtonControl>Login</ButtonControl>
                     </ChildContent>

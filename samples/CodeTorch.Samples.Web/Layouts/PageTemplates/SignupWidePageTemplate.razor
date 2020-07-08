@@ -1,0 +1,35 @@
+﻿@inherits LayoutComponentBase
+
+<div class="page-loader">
+    <div class="bg-primary"></div>
+</div>
+<!-- Content -->
+<div class="authentication-wrapper authentication-2 px-4">
+    <div class="ui-bg-overlay bg-dark opacity-25"></div>
+
+    <div class="authentication-inner py-5" style="max-width: 680px;">
+
+        <div class="card">
+
+            @Body
+
+        </div>
+
+    </div>
+</div>
+
+
+<!-- / Content -->
+
+
+@code {
+
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public string SubTitle { get; set; }
+
+
+}
+
