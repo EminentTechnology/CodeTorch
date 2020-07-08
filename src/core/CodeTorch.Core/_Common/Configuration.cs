@@ -41,7 +41,7 @@ namespace CodeTorch.Core
         public List<SectionType> SectionTypes = new List<SectionType>();
         public List<Sequence> Sequences = new List<Sequence>();
         public List<Workflow> Workflows = new List<Workflow>();
-        public List<Template> Templates = new List<Template>();
+        //public List<Template> Templates = new List<Template>();
         public List<PageTemplate> PageTemplates = new List<PageTemplate>();
         public List<SectionZoneLayout> SectionZoneLayouts = new List<SectionZoneLayout>();
 
@@ -58,10 +58,11 @@ namespace CodeTorch.Core
 
         public string ConfigurationPath { get; set; }
 
-        public CompilerResults GenerateConfigurationAssembly( string rootNamespace, List<string> outputLocations)
-        {
-            return Compiler.GenerateConfigurationAssembly(ConfigurationPath, rootNamespace, outputLocations);
-        }
+        //TODO - removed from standard version but may need to be replaced
+        //public CompilerResults GenerateConfigurationAssembly( string rootNamespace, List<string> outputLocations)
+        //{
+        //    return Compiler.GenerateConfigurationAssembly(ConfigurationPath, rootNamespace, outputLocations);
+        //}
 
         
 

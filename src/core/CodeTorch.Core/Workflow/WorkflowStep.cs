@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 using System.Xml.Serialization;
-using System.Drawing.Design;
+
 
 namespace CodeTorch.Core
 {
@@ -34,8 +34,8 @@ namespace CodeTorch.Core
         [Category("Workflow Actions")]
         [XmlArray("Actions")]
         [XmlArrayItem(ElementName = "DataCommandWorkflowAction", Type = typeof(DataCommandWorkflowAction))]
-        [XmlArrayItem(ElementName = "EmailWorkflowAction", Type = typeof(EmailWorkflowAction))]
-        [XmlArrayItem(ElementName = "SMSWorkflowAction", Type = typeof(SMSWorkflowAction))]
+        //[XmlArrayItem(ElementName = "EmailWorkflowAction", Type = typeof(EmailWorkflowAction))]
+       // [XmlArrayItem(ElementName = "SMSWorkflowAction", Type = typeof(SMSWorkflowAction))]
 #if NETFRAMEWORK
         [Editor("CodeTorch.Core.Design.WorkflowActionCollectionEditor,CodeTorch.Core.Design", typeof(UITypeEditor))]
 #endif

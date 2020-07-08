@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 using System.ComponentModel;
-using System.Windows.Forms;
 using System.ComponentModel.Design;
-using System.Windows.Forms.Design;
+
 
 namespace CodeTorch.Core
 {
