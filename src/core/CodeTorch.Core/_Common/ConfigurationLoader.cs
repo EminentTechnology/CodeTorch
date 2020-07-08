@@ -11,8 +11,7 @@ using System.Xml;
 using System.Web;
 
 using System.Reflection;
-using System.Deployment.Application;
-using System.Windows.Forms;
+
 using CodeTorch.Core.Interfaces;
 using CodeTorch.Core.ConfigurationObjects;
 using CodeTorch.Abstractions;

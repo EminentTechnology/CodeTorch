@@ -8,7 +8,7 @@ using System.IO;
 using System.Xml;
 using System.Xml.Linq;
 
-using System.Drawing.Design;
+
 using CodeTorch.Core.Attributes;
 
 namespace CodeTorch.Core

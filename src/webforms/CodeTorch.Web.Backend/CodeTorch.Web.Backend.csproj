@@ -245,10 +245,6 @@
       <Project>{d4c1a8a6-0150-49d9-9ec6-e1561366fe47}</Project>
       <Name>CodeTorch.Abstractions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\core\CodeTorch.Backend\CodeTorch.Backend.csproj">
-      <Project>{70e6df49-ea9d-4f16-8875-a4834cd644f3}</Project>
-      <Name>CodeTorch.Backend</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\core\CodeTorch.Core\CodeTorch.Core.csproj">
       <Project>{ffa210b6-b65e-4cb3-9a43-e546f132e78a}</Project>
       <Name>CodeTorch.Core</Name>

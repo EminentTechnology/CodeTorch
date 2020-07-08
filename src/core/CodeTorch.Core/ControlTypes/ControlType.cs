@@ -9,7 +9,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Drawing.Design;
+
 
 namespace CodeTorch.Core
 {

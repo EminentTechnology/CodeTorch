@@ -67,7 +67,7 @@ namespace CodeTorch.Core
             {ENTITY_TYPE_SECTION_TYPE, () => { return new SectionTypeConfigurationObject(); }},
             {ENTITY_TYPE_SECTION_ZONE_LAYOUT, () => { return new SectionZoneLayoutConfigurationObject(); }},
             {ENTITY_TYPE_SEQUENCE, () => { return new SequenceConfigurationObject(); }},
-            {ENTITY_TYPE_TEMPLATE, () => { return new TemplateConfigurationObject(); }},
+           // {ENTITY_TYPE_TEMPLATE, () => { return new TemplateConfigurationObject(); }},
             {ENTITY_TYPE_WORKFLOW, () => { return new WorkflowConfigurationObject(); }},
             {ENTITY_TYPE_WORKFLOW_TYPE, () => { return new WorkflowTypeConfigurationObject(); }}
         };

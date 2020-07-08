@@ -7,7 +7,7 @@ using System.Xml;
 using System.IO;
 using System.Data;
 using System.ComponentModel;
-using System.Drawing.Design;
+
 using CodeTorch.Core.Services;
 
 namespace CodeTorch.Core

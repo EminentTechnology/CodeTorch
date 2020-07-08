@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 using System.Xml.Serialization;
-using System.Drawing.Design;
+
 
 namespace CodeTorch.Core
 {
