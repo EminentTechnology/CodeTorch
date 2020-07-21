@@ -42,7 +42,9 @@ namespace CodeTorch.Core
             get { return _ContainerMode; }
             set { _ContainerMode = value; }
         }
-        
+
+        [Category("Common")]
+        public virtual string ContainerTemplatePath { get; set; }
 
         [Category("Common")]
         public bool Visible

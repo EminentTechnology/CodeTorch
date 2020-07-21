@@ -179,6 +179,9 @@
     <Compile Include="Code\RestServiceException.cs" />
     <Compile Include="Configuration\Config.cs" />
     <Compile Include="Configuration\ControlType.cs" />
+    <Compile Include="UserControls\SectionPanelTemplate.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Data\PageDB.cs" />
     <Compile Include="FieldTemplates\CheckBox.cs" />
     <Compile Include="FieldTemplates\Button.cs" />
@@ -298,6 +301,11 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Templates\sections\SectionPanelTemplate.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

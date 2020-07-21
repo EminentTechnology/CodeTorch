@@ -15,6 +15,8 @@ using CodeTorch.Web.FieldTemplates;
 using System.Web.Security;
 using Telerik.Web.UI;
 using CodeTorch.Core;
+using CodeTorch.Web.Controls;
+using CodeTorch.Web.Templates;
 
 namespace CodeTorch.Web.SectionControls
 {
@@ -71,51 +73,27 @@ namespace CodeTorch.Web.SectionControls
                     break;
                 case SectionContainer.Panel:
                     //renders panel in boostrap format
-                    
-                    
-                    
-                    HtmlGenericControl panel_div = new HtmlGenericControl("div");
-                    string panel_div_class = String.Format("section panel", Section.ID);
+                    if(this.Page == null)
+                        this.Page =  HttpContext.Current.Handler as BasePage;
 
-                    if (!String.IsNullOrEmpty(Section.CssClass))
+                    var sectionTemplatePath = String.IsNullOrEmpty(Section.ContainerTemplatePath) ? "~/templates/sections/sectionpaneltemplate.ascx" : Section.ContainerTemplatePath;
+                    var panel = this.Page.LoadControl(sectionTemplatePath) as SectionPanelTemplate;
+                    if (panel != null)
                     {
-                        if (!Section.CssClass.ToLower().Contains("panel-"))
-                        {
-                            panel_div_class += " panel-default";
-                        }
+                        panel.IntroText = GetGlobalResourceString("IntroText", Section.IntroText);
+                        panel.HeadingTitle = GetGlobalResourceString("Name", Section.Name);
+                        panel.SectionCssClass = GetGlobalResourceString("Name", Section.CssClass);
 
-                        panel_div_class += " " + Section.CssClass;
+                        panel.AddBody(this.ContentPlaceHolder);
+                        panel.Update();
                     }
                     else
                     {
-                        panel_div_class += " panel-default";
+                        throw new Exception($"Template {sectionTemplatePath} probably does not inherit from SectionPanelTemplate");
                     }
 
-                    panel_div.Attributes.Add("class", panel_div_class);
-                    
-                    HtmlGenericControl heading_div = new HtmlGenericControl("div");
-                    string heading_div_class = "panel-heading";
-                    heading_div.Attributes.Add("class", heading_div_class);
-                    panel_div.Controls.Add(heading_div);
 
-                    HtmlGenericControl heading_title = new HtmlGenericControl("h3");
-                    string heading_title_class = "panel-title";
-                    heading_title.Attributes.Add("class", heading_title_class);
-                    heading_title.Controls.Add(new LiteralControl(GetGlobalResourceString("Name", Section.Name)));
-                    heading_div.Controls.Add(heading_title);
-
-                    HtmlGenericControl body_div = new HtmlGenericControl("div");
-                    string body_div_class = "panel-body";
-                    body_div.Attributes.Add("class", body_div_class);
-                    if (intro != null)
-                    {
-                        body_div.Controls.Add(intro);
-                    }
-                    body_div.Controls.Add(ContentPlaceHolder);
-
-                    panel_div.Controls.Add(body_div);
-
-                    SectionPlaceHolder.Controls.Add(panel_div);
+                    SectionPlaceHolder.Controls.Add(panel);
                     
                     break;
                 default:
