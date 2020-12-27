@@ -117,7 +117,7 @@ namespace CodeTorch.Web.FieldTemplates
 
                 if (!String.IsNullOrEmpty(Me.CssClass))
                 {
-                    ctrl.CssClass = Me.CssClass;
+                    ctrl.InputAttributes["class"] = Me.CssClass;
                 }
 
                 if (!String.IsNullOrEmpty(Me.SkinID))

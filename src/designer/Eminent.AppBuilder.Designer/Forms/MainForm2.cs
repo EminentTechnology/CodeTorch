@@ -237,7 +237,6 @@ namespace CodeTorch.Designer.Forms
                 }
             }
 
-
             for (int i = app.SchemaVersion + 1; i <= Constants.SCHEMA_VERSION; i++)
             {
                 UpgradeToSchemaVersion(app, i);
