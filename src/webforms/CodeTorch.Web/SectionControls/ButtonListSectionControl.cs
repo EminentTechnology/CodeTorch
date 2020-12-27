@@ -187,7 +187,7 @@ namespace CodeTorch.Web.SectionControls
 
                 string buttonID = ((System.Web.UI.WebControls.Button)sender).ID;
 
-                CodeTorch.Core.ButtonControl button = Me.Buttons.Where(x => x.Name.ToLower() == buttonID.ToLower()).SingleOrDefault();
+                CodeTorch.Core.ButtonControl button = Me.Buttons.Where(x => x.Name?.ToLower() == buttonID?.ToLower()).SingleOrDefault();
 
                 if (button != null)
                 {
@@ -206,6 +206,10 @@ namespace CodeTorch.Web.SectionControls
                     }
 
 
+                }
+                else
+                {
+                    throw new Exception($"Could not find button '{buttonID}' in {Me.Name} Section - unable to invoke click actions. Please check button names are set in configuration.");
                 }
             }
             catch (Exception ex)
