@@ -623,6 +623,8 @@ namespace CodeTorch.Designer.SchemaUpgrades._3
 
             layout = "SingleColumn";
             filePath = String.Format("{0}/SectionZoneLayouts/{1}.xml", configPath, layout);
+            //make sure this path exists
+            Directory.CreateDirectory(Path.GetDirectoryName(filePath));
             doc = new XDocument(
                 new XElement("SectionZoneLayout",
                         new XElement("Name", layout),
