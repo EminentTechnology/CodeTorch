@@ -138,7 +138,13 @@ namespace CodeTorch.Documents
             }
             else
             {
-                key = String.Format("{0}/{1}{2}", storageProviderFolder, doc.ID, fileExtension);
+                if (!storageProviderFolder.EndsWith("/"))
+                {
+                    //add separator if folder does not end with separator
+                    storageProviderFolder += "/";
+                }
+
+                key = String.Format("{0}{1}{2}", storageProviderFolder, doc.ID, fileExtension);
             }
 
             //substitute folder path with entity id if desired
