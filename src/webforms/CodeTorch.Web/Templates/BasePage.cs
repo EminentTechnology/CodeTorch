@@ -20,7 +20,7 @@ namespace CodeTorch.Web.Templates
 {
     public class BasePage : Page
     {
-        
+
         string _SubTitle = "";
         string _FormattedTitle = "";
         string _FormattedSubTitle = "";
@@ -29,7 +29,7 @@ namespace CodeTorch.Web.Templates
 
         //used in edit and overview
         protected PlaceHolder SectionLayout;
-       
+
 
         private const string MODE = "MODE";
         private const string PAGEMODE_INSERT = "insert";
@@ -44,7 +44,7 @@ namespace CodeTorch.Web.Templates
         public Screen Screen { get; set; }
         PageTemplate PageTemplate { get; set; }
 
-        
+
         App app;
 
 
@@ -53,7 +53,7 @@ namespace CodeTorch.Web.Templates
         public MessageBus MessageBus
         {
             get { return _MessageBus; }
-            
+
         }
 
         public FormViewMode PageMode
@@ -139,7 +139,7 @@ namespace CodeTorch.Web.Templates
             LoadMasterPage();
         }
 
-        
+
 
         void BasePage_Init(object sender, EventArgs e)
         {
@@ -170,10 +170,10 @@ namespace CodeTorch.Web.Templates
             {
                 string cultureCode = Common.CultureCode;
 
-                if(!String.IsNullOrEmpty(cultureCode))
+                if (!String.IsNullOrEmpty(cultureCode))
                     SetUserLocale(cultureCode, null, true);
-                
-             
+
+
             }
 
         }
@@ -208,7 +208,7 @@ namespace CodeTorch.Web.Templates
                         System.Threading.Thread.CurrentThread.CurrentUICulture = Culture;
                 }
                 catch
-                { ;}
+                {; }
             }
         }
 
@@ -292,7 +292,7 @@ namespace CodeTorch.Web.Templates
                                 }
 
                             }
-                            else 
+                            else
                             {
                                 scriptContent = s.Contents;
                             }
@@ -316,7 +316,7 @@ namespace CodeTorch.Web.Templates
                         }
                     }
 
-           
+
 
                 }
 
@@ -367,7 +367,7 @@ namespace CodeTorch.Web.Templates
                         }
 
 
-                        
+
                     }
                 }
 
@@ -376,7 +376,7 @@ namespace CodeTorch.Web.Templates
                 {
                     PopulateSections();
 
-                    
+
 
 
                 }
@@ -413,7 +413,7 @@ namespace CodeTorch.Web.Templates
                 }
             }
 
-            
+
 
 
             SetPageTitle();
@@ -450,9 +450,9 @@ namespace CodeTorch.Web.Templates
                 PageTemplateToLoad = GetPageTemplate();
             }
 
-            
 
-            if(String.IsNullOrEmpty(PageTemplateToLoad))
+
+            if (String.IsNullOrEmpty(PageTemplateToLoad))
             {
                 //no page specific template so check to see if there is an application defined default template
                 if (!String.IsNullOrEmpty(CodeTorch.Core.Configuration.GetInstance().App.DefaultPageTemplate))
@@ -566,12 +566,12 @@ namespace CodeTorch.Web.Templates
             ////    rootFolder = urlSegments[urlSegments.Length - 2].Replace("/", "");
             ////}
 
-            
-            
+
+
 
 
             //if (rootFolder.ToLower() == "app")
-            if(this.Request.Url.AbsolutePath.ToLower().Contains("/app/"))
+            if (this.Request.Url.AbsolutePath.ToLower().Contains("/app/"))
             {
                 string pageName = this.RouteData.GetRequiredString("page");
                 string folder = this.RouteData.GetRequiredString("folder");
@@ -605,7 +605,7 @@ namespace CodeTorch.Web.Templates
             return Common.FindFieldRecursive(this, Container, id);
         }
 
-       
+
 
         public BaseSectionControl FindSection(string id)
         {
@@ -641,9 +641,9 @@ namespace CodeTorch.Web.Templates
         public string GetSetting(string SettingName)
         {
             string retVal = String.Empty;
-            
-                return retVal;
-    
+
+            return retVal;
+
         }
 
         public string GetSectionSetting(string SettingName)
@@ -667,7 +667,7 @@ namespace CodeTorch.Web.Templates
         {
 
             SectionZoneLayout layout = null;
-            
+
 
 
             layout = GetZoneLayout(screenLayout, layout);
@@ -684,7 +684,7 @@ namespace CodeTorch.Web.Templates
 
             GenerateSectionDivs(holder, null, sections, Mode, ResourceKeyPrefix, dividers);
 
-        
+
 
 
         }
@@ -737,19 +737,22 @@ namespace CodeTorch.Web.Templates
                 {
                     parent.Controls.Add(div);
                 }
-                
+
             }
         }
 
         private void IterateSectionsToRender(List<Section> sections, SectionMode Mode, string ResourceKeyPrefix, SectionDivider d, HtmlGenericControl div)
         {
-
             foreach (Section section in sections)
             {
-                if (section.ContentPane.ToLower() == d.Name.ToLower())
+                try
                 {
-                    try
+                    if (String.IsNullOrEmpty(section.ContentPane))
+                        throw new Exception($"Section {section.Name} has not been assigned a ContentPane in configuration and will not be rendered. Please correct configuration.");
+
+                    if (section.ContentPane.ToLower() == d.Name.ToLower())
                     {
+
                         bool render = true;
 
                         if (section is EditSection)
@@ -780,22 +783,23 @@ namespace CodeTorch.Web.Templates
                             string sectionResourcePrefixName = (ResourceKeyPrefix);
                             RenderSection(div, Screen, section, sectionResourcePrefixName);
                         }
-
-
                     }
-                    catch (Exception ex)
-                    {
-                        string ErrorMessageFormat = "<span style='color:red'>ERROR - {0} - {1} - {2}</span>";
-                        string ErrorMessages = String.Format(ErrorMessageFormat, ex.Message, section.Name, "BasePage.RenderPageSections");
 
 
-                        div.Controls.Add(new LiteralControl(ErrorMessages));
-                    }
                 }
+                catch (Exception ex)
+                {
+                    string ErrorMessageFormat = "<span style='color:red'>ERROR - {0} - {1} - {2}</span>";
+                    string ErrorMessages = String.Format(ErrorMessageFormat, ex.Message, section.Name, "BasePage.RenderPageSections");
+
+
+                    div.Controls.Add(new LiteralControl(ErrorMessages));
+                }
+
             }
         }
 
-       
+
         private static SectionZoneLayout GetZoneLayout(string screenLayout, SectionZoneLayout layout)
         {
             if (String.IsNullOrEmpty(screenLayout))
@@ -831,7 +835,7 @@ namespace CodeTorch.Web.Templates
                     RenderSection = Common.HasPermission(section.Permission.Name);
                 }
 
-                
+
                 BaseSectionControl sectionControl = GetSectionControl(screen, section, ResourceKeyPrefix);
 
                 if (!sectionControl.Visible)
@@ -853,7 +857,7 @@ namespace CodeTorch.Web.Templates
                         sectionControl.ID = section.ID;
                     }
 
-                    
+
 
                     sectionControl.Visible = RenderSection;
 
@@ -867,7 +871,7 @@ namespace CodeTorch.Web.Templates
 
                 }
 
-               
+
             }
             catch (Exception ex)
             {
@@ -875,8 +879,8 @@ namespace CodeTorch.Web.Templates
                 string ErrorMessages = String.Format(ErrorMessageFormat, section.Name, section.Type, ex.Message);
 
                 div.Controls.Add(new LiteralControl(ErrorMessages));
-               
-                
+
+
             }
         }
 
@@ -893,7 +897,7 @@ namespace CodeTorch.Web.Templates
                 {
                     sectionControl = (BaseSectionControl)Activator.CreateInstance(sectionType.Assembly, sectionType.Class).Unwrap();
                 }
-                
+
 
                 if (sectionControl != null)
                 {
@@ -1001,9 +1005,9 @@ namespace CodeTorch.Web.Templates
         public void PopulateFormByDataRow(Control container, List<Widget> controls, DataRow row, bool RefreshControls)
         {
             int index = 0;
-            
 
-            
+
+
 
             foreach (Widget control in controls)
             {
@@ -1073,7 +1077,7 @@ namespace CodeTorch.Web.Templates
         }
         #endregion
 
- 
+
 
         public void RefeshForm(Control container, List<Widget> controls)
         {
@@ -1102,7 +1106,7 @@ namespace CodeTorch.Web.Templates
             }
         }
 
-        
+
 
         public string GetLocalResourceString(string ResourceKey, string DefaultValue)
         {
@@ -1148,7 +1152,7 @@ namespace CodeTorch.Web.Templates
                 }
                 catch { }
             }
-            
+
 
             return retVal;
         }
@@ -1194,7 +1198,7 @@ namespace CodeTorch.Web.Templates
             return tokens.ToString();
         }
 
-        private Tuple<string,string> SetPageTitle(string titleType, ScreenTitle title, string formatString, string cleanFormatString)
+        private Tuple<string, string> SetPageTitle(string titleType, ScreenTitle title, string formatString, string cleanFormatString)
         {
             string retTitle = null;
             string retFormattedTitle = null;
@@ -1223,7 +1227,7 @@ namespace CodeTorch.Web.Templates
                         {
                             retFormattedTitle = BuildTitle(data.Rows[0], cleanFormatString);
                         }
-                        
+
                     }
                 }
                 catch (Exception ex)
@@ -1353,7 +1357,7 @@ namespace CodeTorch.Web.Templates
 
             try
             {
-                if(this.Screen != null)
+                if (this.Screen != null)
                     retVal = this.Screen.Title.UseCommand;
             }
             catch { }
@@ -1389,7 +1393,7 @@ namespace CodeTorch.Web.Templates
 
             if (EntityIDValue != null)
                 retVal = EntityIDValue.ToString();
-            
+
 
             //switch (EntityInputType)
             //{
@@ -1490,13 +1494,13 @@ namespace CodeTorch.Web.Templates
 
             string errorMessage = null;
 
-            if(htmlEncodeMessage)
+            if (htmlEncodeMessage)
                 errorMessage = String.Format(errorMessageFormat, System.Net.WebUtility.HtmlEncode(ex.Message));
             else
                 errorMessage = String.Format(errorMessageFormat, System.Net.WebUtility.HtmlEncode(ex.Message));
 
             errorMessage = errorMessage.Replace("\r\n", "<br/>");
-            
+
 
             message.IsDismissable = false;
             message.AlertType = DisplayAlertMessage.ALERT_DANGER;
