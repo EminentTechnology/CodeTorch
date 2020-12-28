@@ -32,6 +32,7 @@ namespace CodeTorch.Core.Commands
         string _PasswordAlgorithm = "HashProvider";
         PasswordMode _PasswordMode = PasswordMode.Hash;
         ScreenInputType _PasswordEntityInputType = ScreenInputType.Control;
+        ScreenInputType _RememberMeEntityID = ScreenInputType.Control;
 
         [Category("Entity")]
         public string PasswordEntityID { get; set; }
@@ -43,6 +44,16 @@ namespace CodeTorch.Core.Commands
         {
             get { return _PasswordEntityInputType; }
             set { _PasswordEntityInputType = value; }
+        }
+
+        [Category("Entity")]
+        public string RememberMeEntityID { get; set; }
+
+        [Category("Entity")]
+        public ScreenInputType RememberMeEntityInputType
+        {
+            get { return _RememberMeEntityID; }
+            set { _RememberMeEntityID = value; }
         }
 
         [Category("Data")]
@@ -65,7 +76,8 @@ namespace CodeTorch.Core.Commands
             set { _PasswordAlgorithm = value; }
         }
 
-
+        [Category("Security")]
+        public bool RememberMeDefault { get; set; }
 
         [Category("Security")]
         public PasswordMode PasswordMode

@@ -41,11 +41,16 @@ namespace CodeTorch.Core
             FormsAuthenticationTicket tkt;
             string cookiestr;
 
-            tkt = new FormsAuthenticationTicket(1, UserName, DateTime.Now,
+            tkt = new FormsAuthenticationTicket(2, UserName, DateTime.Now,
                     TicketExpirationDate, RememberMe, profileData);
             cookiestr = FormsAuthentication.Encrypt(tkt);
             retVal = new HttpCookie(FormsAuthenticationCookieName, cookiestr);
             retVal.Path = FormsAuthenticationCookiePath;
+
+            if (RememberMe)
+            {
+                retVal.Expires = TicketExpirationDate;
+            }
 
             return retVal;
         }

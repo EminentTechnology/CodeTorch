@@ -25,6 +25,7 @@ namespace CodeTorch.Web.ActionCommands
         DataRow profile;
 
         string LoginName = String.Empty;
+        bool RememberMe = false;
 
         public bool ExecuteCommand()
         {
@@ -37,16 +38,18 @@ namespace CodeTorch.Web.ActionCommands
                 if (Command != null)
                 {
                     Me = (ValidateUserCommand)Command;
+                   
                 }
 
                 if (Page.IsValid)
                 {
                     //assumes page is valid prior to attempting login - relies on validation provided by client
+                    RememberMe = Me.RememberMeDefault; //set to defalu value - maube overriden in ValidateUser()
 
                     if (ValidateUser())
                     {
                         HttpCookie ck = null;
-                        ck = FormsAuthenticationMode.CreateFormAuthenticationCookie(LoginName, DateTime.Now.AddMinutes(Me.LogoutTimeout), false, FormsAuthentication.FormsCookieName, FormsAuthentication.FormsCookiePath, profile);
+                        ck = FormsAuthenticationMode.CreateFormAuthenticationCookie(LoginName, DateTime.Now.AddMinutes(Me.LogoutTimeout), RememberMe, FormsAuthentication.FormsCookieName, FormsAuthentication.FormsCookiePath, profile);
 
                         Page.Response.Cookies.Add(ck);
 
@@ -85,6 +88,7 @@ namespace CodeTorch.Web.ActionCommands
             PageDB pageDB = new PageDB();
             DataTable data = null;
             string password = String.Empty;
+            
 
             List<ScreenDataCommandParameter> parameters = pageDB.GetPopulatedCommandParameters(Me.ProfileCommand, Page);
 
@@ -99,6 +103,17 @@ namespace CodeTorch.Web.ActionCommands
                 
             }
             password = Page.GetEntityIDValue(Page.Screen, Me.PasswordEntityID, Me.PasswordEntityInputType);
+
+            if (!String.IsNullOrEmpty(Me.RememberMeEntityID))
+            {
+                var rememberMeValue = Page.GetEntityIDValue(Page.Screen, Me.RememberMeEntityID, Me.RememberMeEntityInputType);
+                bool tempRememberMe;
+                if (!String.IsNullOrEmpty(rememberMeValue) && (bool.TryParse(rememberMeValue, out tempRememberMe)))
+                {
+                    RememberMe = tempRememberMe;
+                }
+            }
+            
 
             data = dataCommandDB.GetDataForDataCommand(Me.ProfileCommand, parameters);
 
