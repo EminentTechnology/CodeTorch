@@ -50,6 +50,7 @@ namespace CodeTorch.Web.FieldTemplates
                 ctrl.Calendar.RangeMinDate = Me.MinDate;
                 ctrl.Calendar.RangeMaxDate = Me.MaxDate;
 
+
                 RadCalendarDay today = new RadCalendarDay();
                 today.Repeatable = Telerik.Web.UI.Calendar.RecurringEvents.Today;
                 today.ItemStyle.CssClass = "rcToday";
@@ -61,7 +62,6 @@ namespace CodeTorch.Web.FieldTemplates
                     ctrl.Width = new Unit(Me.Width);
                 }
 
-                //ctrl.CssClass = "form-control";
                 if (!String.IsNullOrEmpty(Me.CssClass))
                 {
                     ctrl.CssClass += " " + Me.CssClass;
@@ -129,7 +129,7 @@ namespace CodeTorch.Web.FieldTemplates
                 catch
                 { }
 
-                ctrl.SelectedDate = Convert.ToDateTime(d);
+                ctrl.SelectedDate = d;
             }
         }
 
@@ -143,7 +143,7 @@ namespace CodeTorch.Web.FieldTemplates
 
                 if (d.HasValue)
                 {
-                    if (d.Value.ToShortDateString() == "1/1/0001")
+                    if (d.Value.CompareTo(DateTime.MinValue) == 0)
                     {
                         retVal = null;
                     }
