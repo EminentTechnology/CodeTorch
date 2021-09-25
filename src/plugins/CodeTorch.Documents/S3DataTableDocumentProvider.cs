@@ -1,26 +1,20 @@
-﻿using Amazon;
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
+using System.Text.RegularExpressions;
+using Amazon;
 using Amazon.S3;
 using Amazon.S3.Transfer;
 using CodeTorch.Core;
 using CodeTorch.Core.Interfaces;
 using CodeTorch.Core.Services;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace CodeTorch.Documents
 {
     public class S3DataTableDocumentProvider: IDocumentProvider
     {
         const FileStorageMode StorageMode = FileStorageMode.AmazonS3;
-
-        
-
         StorageProviderCredentialSource storageProviderUserNameSource = StorageProviderCredentialSource.AppSetting;
         StorageProviderCredentialSource storageProviderPasswordSource = StorageProviderCredentialSource.AppSetting;
         StorageProviderCredentialSource storageProviderRegionSource = StorageProviderCredentialSource.AppSetting;
@@ -66,10 +60,7 @@ namespace CodeTorch.Documents
 
         public string Upload(Document doc)
         {
-            
-
             UploadDocument(doc);
-
             return doc.ID;
         }
 
@@ -78,11 +69,8 @@ namespace CodeTorch.Documents
             )
         {
 
-
             string modifiedBy = null;
-            
             string fileExtension = Path.GetExtension(doc.FileName);
-
             string storageProviderFolder = null;
             byte[] fileContents = null;
 
@@ -157,8 +145,6 @@ namespace CodeTorch.Documents
             request.ContentType = doc.ContentType;
             request.InputStream = doc.Stream;
             request.InputStream.Position = 0;
-
-
 
             fileTransferUtility.Upload(request);
 

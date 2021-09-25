@@ -1,7 +1,4 @@
-﻿using Amazon;
-using Amazon.S3;
-using Amazon.S3.Transfer;
-using CodeTorch.Core;
+﻿using CodeTorch.Core;
 using CodeTorch.Core.Interfaces;
 using CodeTorch.Core.Services;
 using System;
@@ -20,15 +17,6 @@ namespace CodeTorch.Documents
 
         public void Initialize(List<CodeTorch.Core.Setting> settings)
         {
-            //foreach (Setting setting in settings)
-            //{
-            //    switch (setting.Name.ToLower())
-            //    { 
-            //        case "accesskeyidsource":
-            //              break;
-                    
-            //    }
-            //}
         }
 
         public string Upload(Document doc)
@@ -47,10 +35,7 @@ namespace CodeTorch.Documents
 
             doc.ID = Guid.NewGuid().ToString();
             string modifiedBy = null;
-            
             string fileExtension = Path.GetExtension(doc.FileName);
-
-            string storageProviderFolder = null;
             byte[] fileContents = null;
 
             modifiedBy = UserIdentityService.GetInstance().IdentityProvider.GetUserName();
@@ -69,23 +54,16 @@ namespace CodeTorch.Documents
                 }
             }
 
-
             fileContents = new byte[doc.Size];
             using (Stream str = doc.Stream)
             {
                 str.Read(fileContents, 0, doc.Size);
-                // more code
             }
-
-            
 
             DocumentFunctions utility = new DocumentFunctions();
             utility.InsertDocument(
                 doc.ID, "DB", doc.EntityID, doc.EntityType, doc.FileName, doc.DocumentType, doc.ContentType,
                 doc.Size, 1, doc.Url, fileContents, false, modifiedBy);
         }
-
-
-        
     }
 }
