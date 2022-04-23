@@ -6,18 +6,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace CodeTorch.Web.Pages
 {
-    public class SectionViewModel
-    {
-        public SectionViewModel(CodeTorchPageModel pageModel, Section section)
-        {
-            PageModel = pageModel;
-            Section = section;
-        }
-
-        public CodeTorchPageModel PageModel { get; private set; }
-        public Section Section { get; private set; }
-    }
-    public class CodeTorchPageModel : PageModel
+    public class CodeTorchPageModel : PageModel, IPageModel
     {
         readonly IConfigurationStore config;
         public CodeTorchPageModel(IConfigurationStore configStore)

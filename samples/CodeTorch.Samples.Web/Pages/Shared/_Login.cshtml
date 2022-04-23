@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model CodeTorch.Web.Pages.CodeTorchPageModel
+<!DOCTYPE html>
 <html lang="en" class="default-style">
 <head>
     <title></title>
@@ -84,7 +85,7 @@
                         </div>
                         <!-- / Logo -->
 
-                        <h4 class="text-center text-lighter font-weight-normal mt-5 mb-0">@ViewData["Title"]</h4>
+                        <h4 class="text-center text-lighter font-weight-normal mt-5 mb-0">@ViewData["Title"]@Model.Screen.Title</h4>
 
                         <!-- Content -->
                         <form method="post">
