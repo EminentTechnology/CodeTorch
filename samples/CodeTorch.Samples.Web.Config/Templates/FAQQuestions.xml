@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Template xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>FAQQuestions</Name>
+  <Content>&lt;h4 class="media align-items-center my-4"&gt;
+  &lt;div class="&lt;%=category["IconCSS"]%&gt; ui-w-60 text-center text-large"&gt;&lt;/div&gt;
+  &lt;div class="media-body ml-1"&gt;
+	&lt;%=category["Name"]%&gt;
+	&lt;div class="text-muted text-tiny font-weight-light"&gt;&lt;%=category["Description"]%&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/h4&gt;
+
+&lt;%
+foreach(DataRow question in questions)
+{
+%&gt;
+&lt;div class="bg-white ui-bordered mb-2"&gt;
+  &lt;a href="#faq-&lt;%=question["Id"]%&gt;" class="d-flex justify-content-between text-dark py-3 px-4" data-toggle="collapse"&gt;
+	&lt;%=question["Name"]%&gt;
+	&lt;span class="collapse-icon"&gt;&lt;/span&gt;
+  &lt;/a&gt;
+  &lt;div id="faq-&lt;%=question["Id"]%&gt;" class="collapse text-muted"&gt;
+	&lt;div class="px-4 pb-3"&gt;&lt;%=question["Content"]%&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;%
+}
+%&gt; 
+</Content>
+  <DataItems>
+    <DataItem>
+      <Name>category</Name>
+      <Type>DataRow</Type>
+    </DataItem>
+    <DataItem>
+      <Name>questions</Name>
+      <Type>DataRowList</Type>
+    </DataItem>
+  </DataItems>
+</Template>

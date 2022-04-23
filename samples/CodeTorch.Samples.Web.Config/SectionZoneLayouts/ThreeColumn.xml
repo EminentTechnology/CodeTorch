@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SectionZoneLayout>
+  <Name>ThreeColumn</Name>
+  <Dividers>
+    <Divider>
+      <CssClass>row</CssClass>
+      <Dividers>
+        <Divider>
+          <Name>Top</Name>
+          <CssClass>col-md-12</CssClass>
+        </Divider>
+      </Dividers>
+    </Divider>
+    <Divider>
+      <CssClass>row</CssClass>
+      <Dividers>
+        <Divider>
+          <Name>Left</Name>
+          <CssClass>col-md-4</CssClass>
+        </Divider>
+        <Divider>
+          <Name>Center</Name>
+          <CssClass>col-md-4</CssClass>
+        </Divider>
+        <Divider>
+          <Name>Right</Name>
+          <CssClass>col-md-4</CssClass>
+        </Divider>
+      </Dividers>
+    </Divider>
+    <Divider>
+      <CssClass>row</CssClass>
+      <Dividers>
+        <Divider>
+          <Name>Bottom</Name>
+          <CssClass>col-md-12</CssClass>
+        </Divider>
+      </Dividers>
+    </Divider>
+  </Dividers>
+</SectionZoneLayout>

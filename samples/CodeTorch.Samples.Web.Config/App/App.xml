@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<App xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SchemaVersion>8</SchemaVersion>
+  <Profile>
+    <Property>ProfileId</Property>
+    <Property>FirstName</Property>
+    <Property>LastName</Property>
+    <Property>EmailAddress</Property>
+    <Property>PostalCode</Property>
+    <Property>ChatUserId</Property>
+    <Property>JobSiteId</Property>
+  </Profile>
+  <Name>Sample</Name>
+  <DefaultScreen>~/App/Home/Default</DefaultScreen>
+  <LoginScreen>~/App/Security/Login</LoginScreen>
+  <DefaultPageTemplate>Default</DefaultPageTemplate>
+  <DefaultMenu>MainMenu</DefaultMenu>
+  <DefaultZoneLayout>Default</DefaultZoneLayout>
+  <AdminRole>Administrator</AdminRole>
+  <EnableLocalization>false</EnableLocalization>
+  <DateMode>UniversalDate</DateMode>
+  <RestServiceResponseMode>Simple</RestServiceResponseMode>
+  <EnableLicensingForWeb>false</EnableLicensingForWeb>
+  <DevelopmentBaseUrl>http://localhost/RxTempsWebWorker</DevelopmentBaseUrl>
+  <LookupProviderAssembly>CodeTorch.Lookups</LookupProviderAssembly>
+  <LookupProviderClass>CodeTorch.Lookups.DataCommandLookupProvider</LookupProviderClass>
+  <UserIdentityProviderAssembly>CodeTorch.Security</UserIdentityProviderAssembly>
+  <UserIdentityProviderClass>CodeTorch.Security.Identity.FormsUserIdentityProvider</UserIdentityProviderClass>
+  <DefaultConnection>Default</DefaultConnection>
+  <FormsAuthenticationMode>
+    <Type>Forms</Type>
+  </FormsAuthenticationMode>
+</App>

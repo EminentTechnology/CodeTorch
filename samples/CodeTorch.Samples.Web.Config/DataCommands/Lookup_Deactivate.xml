@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataCommand xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Lookup_Deactivate</Name>
+  <DataConnection>Default</DataConnection>
+  <Type>Text</Type>
+  <Text>
+    UPDATE LOOKUP SET STATUS=0 WHERE LookupType = @LookupType
+  </Text>
+  <ReturnType>Integer</ReturnType>
+  <Parameters>
+    <Parameter>
+      <Name>@LookupType
+  </Name>
+      <Type>String</Type>
+      <Size>200</Size>
+      <Direction>In</Direction>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+  </Parameters>
+  <Columns />
+</DataCommand>

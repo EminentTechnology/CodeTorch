@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataCommand xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Lookup_GetActiveItemsWithCulture</Name>
+  <DataConnection>Default</DataConnection>
+  <Type>Text</Type>
+  <Text>
+    SELECT 
+    l.LookupType, l.LookupValue, COALESCE(r.ResourceValue, l.LookupDescription)  LookupDescription, l.LookupSort, l.Status, l.CreatedOn, l.CreatedBy, l.ModifiedOn, l.ModifiedBy 
+    FROM Lookup l 
+    LEFT OUTER JOIN Resource R 
+      on (('Lookup.' + l.LookupType) = r.ResourceSet) AND 
+         (l.LookupValue=r.ResourceKey) AND 
+         R.CultureCode = @CultureCode  
+    WHERE  
+      ((Status=1) OR (LookupValue=@LookupValue)) AND  
+      l.LookupType = @LookupType AND 
+      (
+        (l.LookupDescription LIKE '%'+@LookupDescription+'%') OR 
+        (@LookupDescription IS NULL)
+      ) 
+    Order By l.LookupSort
+  </Text>
+  <ReturnType>DataTable</ReturnType>
+  <Parameters>
+    <Parameter>
+      <Name>@CultureCode</Name>
+      <Type>String</Type>
+      <Size>200</Size>
+      <Direction>In</Direction>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@LookupValue</Name>
+      <Type>String</Type>
+      <Size>200</Size>
+      <Direction>In</Direction>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@LookupType</Name>
+      <Type>String</Type>
+      <Size>200</Size>
+      <Direction>In</Direction>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@LookupDescription</Name>
+      <Type>String</Type>
+      <Size>200</Size>
+      <Direction>In</Direction>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+  </Parameters>
+  <Columns>
+    <Column>
+      <Name>LookupType</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>LookupValue</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>LookupDescription</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>LookupSort</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>Status</Name>
+      <Type>Int32</Type>
+    </Column>
+    <Column>
+      <Name>CreatedOn</Name>
+      <Type>DateTime</Type>
+    </Column>
+    <Column>
+      <Name>CreatedBy</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>ModifiedOn</Name>
+      <Type>DateTime</Type>
+    </Column>
+    <Column>
+      <Name>ModifiedBy</Name>
+      <Type>String</Type>
+    </Column>
+  </Columns>
+</DataCommand>

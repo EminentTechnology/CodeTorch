@@ -1,32 +1,3 @@
-.RadGrid_MetroTouch .rgRow a:hover, 
-.RadGrid_MetroTouch .rgAltRow  a:hover, 
-.RadGrid_MetroTouch tr.rgEditRow  a:hover, 
-.RadGrid_MetroTouch .rgFooter  a:hover, 
-.RadGrid_MetroTouch .rgEditForm  a:hover{
-    color: #2a6496 !important;
-}
-.RadGrid_MetroTouch .rgRow a:link, 
-.RadGrid_MetroTouch .rgAltRow  a:link, 
-.RadGrid_MetroTouch tr.rgEditRow  a:link, 
-.RadGrid_MetroTouch .rgFooter  a:link, 
-.RadGrid_MetroTouch .rgEditForm  a:link{
-    color: #428bca !important;
-}
-.RadGrid_MetroTouch, 
-.RadGrid_MetroTouch 
-.rgMasterTable, 
-.RadGrid_MetroTouch 
-.rgDetailTable, 
-.RadGrid_MetroTouch 
-.rgGroupPanel table, 
-.RadGrid_MetroTouch 
-.rgCommandRow table, 
-.RadGrid_MetroTouch 
-.rgEditForm table, 
-.RadGrid_MetroTouch 
-.rgPager table {
-font-size: 13px !important;
-}
 
 .RadGrid_Bootstrap a.btn-primary {
     color: #fff;
@@ -68,4 +39,69 @@ div.rlbGroup  {
 .StripeElement--webkit-autofill {
     background-color: red !important;
 }*/
+
+
+.rgPager thead, .rgPager caption, .rgCommandTable thead {
+    display: none;
+}
+
+.CustomPager tbody td {
+    border-style:none !important
+}
+
+.CustomPager tbody tr {
+    background-color:#ffffff !important;
+}
+
+.CustomPager a {
+padding: 10px;
+text-align: center;
+    
+width: 24px;
+   
+border: 1px solid #ccc;
+box-sizing: content-box;
+background-color: #fff;
+color: #333;
+
+float: left;
+    
+margin: 0;
+padding: 5px;
+text-decoration: none;
+}
+
+.CustomPager a.rgCurrentPage {
+    background-color: #428bca;
+    border: 1px solid #357ebd;
+    color: #fff;
+}
+
+.CustomPager a:first-of-type {
+    border-radius: 4px 0 0 4px;
+}
+
+.CustomPager a:last-of-type {
+    border-radius: 0 4px 4px 0;
+}
+
+
+
+.CustomPager div:first-of-type {
+    float: left;
+    padding: 0 10px;
+    line-height: 22px;
+    white-space: nowrap;
+    padding: 0;
+    line-height: normal;
+}
+
+.CustomPager div:last-of-type {
+    float: right;
+    margin-top: 5px;
+}
+
+
+
+
 

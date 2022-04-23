@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataCommand xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Worker_GetInvoiceTitle</Name>
+  <DataConnection>Default</DataConnection>
+  <Type>StoredProcedure</Type>
+  <Text>Worker_GetInvoiceTitle</Text>
+  <ReturnType>DataTable</ReturnType>
+  <Parameters>
+    <Parameter>
+      <Name>@ProfileId</Name>
+      <Type>Int32</Type>
+      <Size>4</Size>
+      <Direction>In</Direction>
+      <TypeName>int</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@InvoiceId</Name>
+      <Type>Int32</Type>
+      <Size>4</Size>
+      <Direction>In</Direction>
+      <TypeName>int</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+  </Parameters>
+  <Columns>
+    <Column>
+      <Name>Id</Name>
+      <Type>Int32</Type>
+    </Column>
+    <Column>
+      <Name>PageTitle</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>SubTitle</Name>
+      <Type>Int32</Type>
+    </Column>
+  </Columns>
+</DataCommand>

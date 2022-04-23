@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DocumentRepository xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>S3</Name>
+  <DocumentRepositoryType>S3</DocumentRepositoryType>
+  <Settings>
+    <Setting>
+      <Name>AccessKeyIdSource</Name>
+      <Value>AppSetting</Value>
+    </Setting>
+    <Setting>
+      <Name>AccessKeyID</Name>
+      <Value>AWSAccessKeyID</Value>
+    </Setting>
+    <Setting>
+      <Name>SecretKeySource</Name>
+      <Value>AppSetting</Value>
+    </Setting>
+    <Setting>
+      <Name>SecretKey</Name>
+      <Value>AWSAccessKey</Value>
+    </Setting>
+    <Setting>
+      <Name>RegionSource</Name>
+      <Value>AppSetting</Value>
+    </Setting>
+    <Setting>
+      <Name>Region</Name>
+      <Value>AWSRegion</Value>
+    </Setting>
+    <Setting>
+      <Name>BucketSource</Name>
+      <Value>AppSetting</Value>
+    </Setting>
+    <Setting>
+      <Name>Bucket</Name>
+      <Value>AWSBucket</Value>
+    </Setting>
+  </Settings>
+</DocumentRepository>

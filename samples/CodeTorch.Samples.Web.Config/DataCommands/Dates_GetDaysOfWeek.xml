@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataCommand xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Dates_GetDaysOfWeek</Name>
+  <DataConnection>Default</DataConnection>
+  <Type>StoredProcedure</Type>
+  <Text>Dates_GetDaysOfWeek</Text>
+  <ReturnType>DataTable</ReturnType>
+  <Parameters />
+  <Columns>
+    <Column>
+      <Name>WeekDayId</Name>
+      <Type>Int32</Type>
+    </Column>
+    <Column>
+      <Name>WeekDayName</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>Default</Name>
+      <Type>Int32</Type>
+    </Column>
+  </Columns>
+</DataCommand>

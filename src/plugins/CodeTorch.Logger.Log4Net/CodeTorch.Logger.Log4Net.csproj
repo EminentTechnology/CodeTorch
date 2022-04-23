@@ -50,12 +50,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\core\CodeTorch.Abstractions\CodeTorch.Abstractions.csproj">
-      <Project>{d4c1a8a6-0150-49d9-9ec6-e1561366fe47}</Project>
-      <Name>CodeTorch.Abstractions</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,0 +1,36 @@
+﻿@page "/app/widgets/buttons"
+@using CodeTorch.Blazor.Sections
+@using CodeTorch.Blazor.Controls
+@using CodeTorch.Samples.Web.Layouts.Content
+@using CodeTorch.Samples.Web.Layouts.PageTemplates
+
+<GeneralPageTemplate Title="Buttons">
+    <Body>
+        <Content>
+            <h1 class="bd-title" id="content">Buttons</h1>
+            <p class="bd-lead">Use Bootstrap’s custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.</p>
+            <h2 id="examples"><span class="bd-content-title">Examples<a class="anchorjs-link " aria-label="Anchor" data-anchorjs-icon="#" href="#examples" style="padding-left: 0.375em;"></a></span></h2>
+
+            <p>Bootstrap includes several predefined button styles, each serving its own semantic purpose, with a few extras thrown in for more control.</p>
+
+            <div class="bd-example">
+
+                <button type="button" class="btn btn-primary">Primary</button>
+                <button type="button" class="btn btn-secondary">Secondary</button>
+                <button type="button" class="btn btn-success">Success</button>
+                <button type="button" class="btn btn-danger">Danger</button>
+                <button type="button" class="btn btn-warning">Warning</button>
+                <button type="button" class="btn btn-info">Info</button>
+                <button type="button" class="btn btn-light">Light</button>
+                <button type="button" class="btn btn-dark">Dark</button>
+
+                <button type="button" class="btn btn-link">Link</button>
+            </div>
+            <Buttons>
+                <ChildContent>
+                    <ButtonControl>hi</ButtonControl>
+                </ChildContent>
+            </Buttons>
+        </Content>
+    </Body>
+</GeneralPageTemplate>

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataCommand xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>User_GetByUserName</Name>
+  <Type>Text</Type>
+  <Text>SELECT UserID, UserName, Password, FirstName, LastName, Status FROM Users WHERE UserName=@UserName and Status=1</Text>
+  <ReturnType>DataTable</ReturnType>
+  <Parameters>
+    <Parameter>
+      <Name>@UserName</Name>
+      <Type>String</Type>
+      <Size>200</Size>
+      <Direction>In</Direction>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+  </Parameters>
+  <Columns>
+    <Column>
+      <Name>UserID</Name>
+      <Type>Int32</Type>
+    </Column>
+    <Column>
+      <Name>UserName</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>Password</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>FirstName</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>LastName</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>Status</Name>
+      <Type>Int32</Type>
+    </Column>
+  </Columns>
+</DataCommand>

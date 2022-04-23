@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Screen xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Default.aspx</Name>
+  <PageTemplate>
+    <Mode>Static</Mode>
+    <Name>Signup</Name>
+  </PageTemplate>
+  <Type>Screen</Type>
+  <Folder>Signup</Folder>
+  <RequireAuthentication>false</RequireAuthentication>
+  <SupportsTransactions>true</SupportsTransactions>
+  <ValidateRequest>true</ValidateRequest>
+  <Menu>
+    <DisplayMenu>false</DisplayMenu>
+  </Menu>
+  <Title>
+    <Name>Create an Account</Name>
+    <UseCommand>false</UseCommand>
+  </Title>
+  <SubTitle>
+    <UseCommand>false</UseCommand>
+  </SubTitle>
+  <ScreenPermission>
+    <CheckPermission>false</CheckPermission>
+  </ScreenPermission>
+  <Sections>
+    <Section xsi:type="ContentSection">
+      <Name>Title</Name>
+      <Type>Content</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Content</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <Content>&lt;!-- Logo --&gt;
+          &lt;div class="d-flex justify-content-center align-items-center pb-2 mb-4"&gt;
+            &lt;div class="ui-w-60"&gt;
+              &lt;div class="w-100 position-relative" style="padding-bottom: 54%"&gt;
+                &lt;svg class="w-100 h-100 position-absolute" viewBox="0 0 148 80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;&lt;defs&gt;&lt;linearGradient id="a" x1="46.49" x2="62.46" y1="53.39" y2="48.2" gradientUnits="userSpaceOnUse"&gt;&lt;stop stop-opacity=".25" offset="0"&gt;&lt;/stop&gt;&lt;stop stop-opacity=".1" offset=".3"&gt;&lt;/stop&gt;&lt;stop stop-opacity="0" offset=".9"&gt;&lt;/stop&gt;&lt;/linearGradient&gt;&lt;linearGradient id="e" x1="76.9" x2="92.64" y1="26.38" y2="31.49" xlink:href="#a"&gt;&lt;/linearGradient&gt;&lt;linearGradient id="d" x1="107.12" x2="122.74" y1="53.41" y2="48.33" xlink:href="#a"&gt;&lt;/linearGradient&gt;&lt;/defs&gt;&lt;path class="fill-primary" transform="translate(-.1)" d="M121.36,0,104.42,45.08,88.71,3.28A5.09,5.09,0,0,0,83.93,0H64.27A5.09,5.09,0,0,0,59.5,3.28L43.79,45.08,26.85,0H.1L29.43,76.74A5.09,5.09,0,0,0,34.19,80H53.39a5.09,5.09,0,0,0,4.77-3.26L74.1,35l16,41.74A5.09,5.09,0,0,0,94.82,80h18.95a5.09,5.09,0,0,0,4.76-3.24L148.1,0Z"&gt;&lt;/path&gt;&lt;path transform="translate(-.1)" d="M52.19,22.73l-8.4,22.35L56.51,78.94a5,5,0,0,0,1.64-2.19l7.34-19.2Z" fill="url(#a)"&gt;&lt;/path&gt;&lt;path transform="translate(-.1)" d="M95.73,22l-7-18.69a5,5,0,0,0-1.64-2.21L74.1,35l8.33,21.79Z" fill="url(#e)"&gt;&lt;/path&gt;&lt;path transform="translate(-.1)" d="M112.73,23l-8.31,22.12,12.66,33.7a5,5,0,0,0,1.45-2l7.3-18.93Z" fill="url(#d)"&gt;&lt;/path&gt;&lt;/svg&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;!-- / Logo --&gt;
+
+          &lt;h5 class="text-center text-muted font-weight-normal mb-4"&gt;Create an Employer Account&lt;/h5&gt;</Content>
+    </Section>
+    <Section xsi:type="AlertSection">
+      <Name>Alert</Name>
+      <Type>Alert</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Content</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <IncludeValidationSummary>true</IncludeValidationSummary>
+    </Section>
+    <Section xsi:type="EditSection">
+      <Name>Details</Name>
+      <Type>Edit</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContainerElement>fieldset</ContainerElement>
+      <ContainerCssClass>form-horizontal</ContainerCssClass>
+      <ContentPane>Content</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets>
+        <Widget xsi:type="TextBoxControl">
+          <Name>FirstName</Name>
+          <RenderLabel>true</RenderLabel>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass />
+          <Label>First Name</Label>
+          <LabelCssClass>form-label</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>form-group</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>TextBox</Type>
+          <IsRequired>true</IsRequired>
+          <Visible>true</Visible>
+          <DataField>FirstName</DataField>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+        </Widget>
+        <Widget xsi:type="TextBoxControl">
+          <Name>LastName</Name>
+          <RenderLabel>true</RenderLabel>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass />
+          <Label>Last Name</Label>
+          <LabelCssClass>form-label</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>form-group</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>TextBox</Type>
+          <IsRequired>true</IsRequired>
+          <Visible>true</Visible>
+          <DataField>LastName</DataField>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+        </Widget>
+        <Widget xsi:type="TextBoxControl">
+          <Name>EmailAddress</Name>
+          <RenderLabel>true</RenderLabel>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass />
+          <Label>Email Address</Label>
+          <LabelCssClass>form-label</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>form-group</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>TextBox</Type>
+          <IsRequired>true</IsRequired>
+          <Visible>true</Visible>
+          <DataField>EmailAddress</DataField>
+          <Validators>
+            <RegularExpressionValidator>
+              <Name>EmailAddressRegularExpressionValidator</Name>
+              <ErrorMessage>Please enter a valid email address</ErrorMessage>
+              <ValidationExpression>^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$</ValidationExpression>
+            </RegularExpressionValidator>
+          </Validators>
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+        </Widget>
+        <Widget xsi:type="TextBoxControl">
+          <Name>PostalCode</Name>
+          <RenderLabel>true</RenderLabel>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass />
+          <Label>Your Zip Code</Label>
+          <LabelCssClass>form-label</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>form-group</ControlGroupCssClass>
+          <HelpText>We use your zip code to show jobs near you.</HelpText>
+          <HelpTextElement>small</HelpTextElement>
+          <HelpTextCssClass>help-block form-text text-muted</HelpTextCssClass>
+          <Type>TextBox</Type>
+          <IsRequired>true</IsRequired>
+          <Visible>true</Visible>
+          <DataField>PostalCode</DataField>
+          <Validators>
+            <RegularExpressionValidator>
+              <Name>PostalCodeRegularExpressionValidator</Name>
+              <ErrorMessage>Please enter 5 digit zip code only.</ErrorMessage>
+              <ValidationExpression>\d{5}</ValidationExpression>
+            </RegularExpressionValidator>
+          </Validators>
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+        </Widget>
+        <Widget xsi:type="CheckBoxControl">
+          <Name>EligibleToWork</Name>
+          <RenderLabel>false</RenderLabel>
+          <ControlCssClass>form-check-label</ControlCssClass>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass />
+          <Label>EligibleToWork</Label>
+          <LabelCssClass>form-label</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>form-group</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>CheckBox</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+          <CheckedValue>True</CheckedValue>
+          <UncheckedValue>False</UncheckedValue>
+          <Text>I am eligible to work in the United States</Text>
+        </Widget>
+      </Widgets>
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+    </Section>
+    <Section xsi:type="ButtonListSection">
+      <Name>Buttons</Name>
+      <CssClass>text-center</CssClass>
+      <Type>ButtonList</Type>
+      <Mode>All</Mode>
+      <ContainerMode>Plain</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Content</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <Buttons>
+        <Button>
+          <Name>Save</Name>
+          <RenderLabel>true</RenderLabel>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <Type>Button</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <CssClass>btn btn-primary btn-block mt-4</CssClass>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+          <Text>Sign Up</Text>
+          <CausesValidation>true</CausesValidation>
+          <OnClick>
+            <Commands>
+              <InsertUpdateSaveCommand>
+                <Name>SaveCommand</Name>
+                <Type>InsertUpdateSaveCommand</Type>
+                <ContinueOnError>false</ContinueOnError>
+                <EntityID>ProfileId</EntityID>
+                <EntityInputType>Form</EntityInputType>
+                <InsertCommand>Worker_PreSignupCheck</InsertCommand>
+                <AfterInsertConfirmationMessage>Record was added successfully</AfterInsertConfirmationMessage>
+                <AfterUpdateConfirmationMessage>Record was updated successfully</AfterUpdateConfirmationMessage>
+                <RedirectAfterInsert>true</RedirectAfterInsert>
+                <RedirectAfterUpdate>false</RedirectAfterUpdate>
+                <AfterInsertRedirectUrl>~/App/Signup/Next.aspx?Step=1</AfterInsertRedirectUrl>
+              </InsertUpdateSaveCommand>
+            </Commands>
+          </OnClick>
+        </Button>
+      </Buttons>
+    </Section>
+    <Section xsi:type="ContentSection">
+      <Name>Terms</Name>
+      <Type>Content</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Content</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <Content>&lt;div class="text-light small mt-4"&gt;
+              By clicking "Sign Up", you agree to our
+              &lt;a href="../Content/Terms" target="terms"&gt;terms of service and privacy policy&lt;/a&gt;. We’ll occasionally send you account related emails.
+            &lt;/div&gt;</Content>
+    </Section>
+    <Section xsi:type="ContentSection">
+      <Name>Sign In</Name>
+      <Type>Content</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Footer</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <Content>&lt;div class="text-center text-muted"&gt;
+            Already have an account?
+            &lt;a href="../security/login"&gt;Sign In&lt;/a&gt;
+          &lt;/div&gt;</Content>
+    </Section>
+  </Sections>
+  <SectionZoneLayout>Card</SectionZoneLayout>
+  <SectionZoneLayoutMode>Static</SectionZoneLayoutMode>
+  <Settings />
+  <Scripts />
+  <DataCommands>
+    <DataCommand>
+      <Name>Worker_PreSignupCheck</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@NextStep</Name>
+          <InputType>Special</InputType>
+          <InputKey>Null</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@HostHeader</Name>
+          <InputType>Special</InputType>
+          <InputKey>HostHeader</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@FirstName</Name>
+          <InputType>Control</InputType>
+          <InputKey>FirstName</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@LastName</Name>
+          <InputType>Control</InputType>
+          <InputKey>LastName</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@EmailAddress</Name>
+          <InputType>Control</InputType>
+          <InputKey>EmailAddress</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@PostalCode</Name>
+          <InputType>Control</InputType>
+          <InputKey>PostalCode</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@EligibleToWork</Name>
+          <InputType>Control</InputType>
+          <InputKey>EligibleToWork</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+  </DataCommands>
+  <OnPageLoad>
+    <Commands>
+      <DefaultOrPopulateScreenCommand>
+        <Name>DefaultOrPopulateScreen</Name>
+        <Type>DefaultOrPopulateScreenCommand</Type>
+        <ContinueOnError>false</ContinueOnError>
+        <EntityID>ProfileId</EntityID>
+        <EntityInputType>Form</EntityInputType>
+        <ExecuteOnPostBack>false</ExecuteOnPostBack>
+      </DefaultOrPopulateScreenCommand>
+    </Commands>
+  </OnPageLoad>
+  <OnPageInit>
+    <Commands>
+      <RenderPageSectionsCommand>
+        <Name>RenderPageSections</Name>
+        <Type>RenderPageSectionsCommand</Type>
+        <ContinueOnError>false</ContinueOnError>
+        <EntityID>ProfileId</EntityID>
+        <EntityInputType>Form</EntityInputType>
+        <Mode>InsertEdit</Mode>
+      </RenderPageSectionsCommand>
+    </Commands>
+  </OnPageInit>
+</Screen>

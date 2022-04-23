@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ScreenType>
+  <Name>ReportExport</Name>
+  <Description><![CDATA[Exports pages directly to pdf or excel]]></Description>
+  <TemplateFile><![CDATA[~/templates/pages/RDLCDirectPage.aspx]]></TemplateFile>
+</ScreenType>

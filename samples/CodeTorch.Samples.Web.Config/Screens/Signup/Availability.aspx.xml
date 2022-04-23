@@ -1,0 +1,370 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Screen xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Availability.aspx</Name>
+  <PageTemplate>
+    <Mode>Static</Mode>
+    <Name>SignupWide</Name>
+  </PageTemplate>
+  <Type>Screen</Type>
+  <Folder>Signup</Folder>
+  <RequireAuthentication>true</RequireAuthentication>
+  <SupportsTransactions>true</SupportsTransactions>
+  <ValidateRequest>true</ValidateRequest>
+  <Menu>
+    <DisplayMenu>false</DisplayMenu>
+  </Menu>
+  <Title>
+    <Name>Signup - Availability</Name>
+    <UseCommand>false</UseCommand>
+  </Title>
+  <SubTitle>
+    <UseCommand>false</UseCommand>
+  </SubTitle>
+  <ScreenPermission>
+    <CheckPermission>false</CheckPermission>
+  </ScreenPermission>
+  <Sections>
+    <Section xsi:type="ContentSection">
+      <Name>Title</Name>
+      <Type>Content</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Content</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <Content>
+        &lt;!-- Logo --&gt;
+        &lt;div class="d-flex justify-content-center align-items-center pb-2 mb-4"&gt;
+        &lt;div class="ui-w-60"&gt;
+        &lt;div class="w-100 position-relative" style="padding-bottom: 54%"&gt;
+        &lt;svg class="w-100 h-100 position-absolute" viewBox="0 0 148 80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;&lt;defs&gt;&lt;linearGradient id="a" x1="46.49" x2="62.46" y1="53.39" y2="48.2" gradientUnits="userSpaceOnUse"&gt;&lt;stop stop-opacity=".25" offset="0"&gt;&lt;/stop&gt;&lt;stop stop-opacity=".1" offset=".3"&gt;&lt;/stop&gt;&lt;stop stop-opacity="0" offset=".9"&gt;&lt;/stop&gt;&lt;/linearGradient&gt;&lt;linearGradient id="e" x1="76.9" x2="92.64" y1="26.38" y2="31.49" xlink:href="#a"&gt;&lt;/linearGradient&gt;&lt;linearGradient id="d" x1="107.12" x2="122.74" y1="53.41" y2="48.33" xlink:href="#a"&gt;&lt;/linearGradient&gt;&lt;/defs&gt;&lt;path class="fill-primary" transform="translate(-.1)" d="M121.36,0,104.42,45.08,88.71,3.28A5.09,5.09,0,0,0,83.93,0H64.27A5.09,5.09,0,0,0,59.5,3.28L43.79,45.08,26.85,0H.1L29.43,76.74A5.09,5.09,0,0,0,34.19,80H53.39a5.09,5.09,0,0,0,4.77-3.26L74.1,35l16,41.74A5.09,5.09,0,0,0,94.82,80h18.95a5.09,5.09,0,0,0,4.76-3.24L148.1,0Z"&gt;&lt;/path&gt;&lt;path transform="translate(-.1)" d="M52.19,22.73l-8.4,22.35L56.51,78.94a5,5,0,0,0,1.64-2.19l7.34-19.2Z" fill="url(#a)"&gt;&lt;/path&gt;&lt;path transform="translate(-.1)" d="M95.73,22l-7-18.69a5,5,0,0,0-1.64-2.21L74.1,35l8.33,21.79Z" fill="url(#e)"&gt;&lt;/path&gt;&lt;path transform="translate(-.1)" d="M112.73,23l-8.31,22.12,12.66,33.7a5,5,0,0,0,1.45-2l7.3-18.93Z" fill="url(#d)"&gt;&lt;/path&gt;&lt;/svg&gt;
+        &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- / Logo --&gt;
+
+        &lt;h5 class="text-center text-muted font-weight-normal mb-4"&gt;Enter your availability and travel preferences&lt;/h5&gt;
+      </Content>
+    </Section>
+    <Section xsi:type="AlertSection">
+      <Name>Alert</Name>
+      <Type>Alert</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Content</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <IncludeValidationSummary>true</IncludeValidationSummary>
+    </Section>
+    <Section xsi:type="EditSection">
+      <Name>Details</Name>
+      <Type>Edit</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContainerElement>fieldset</ContainerElement>
+      <ContainerCssClass>form-horizontal</ContainerCssClass>
+      <ContentPane>Content</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets>
+        <Widget xsi:type="TextBoxControl">
+          <Name>PostalCode</Name>
+          <RenderLabel>true</RenderLabel>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass />
+          <Label>Your zip code</Label>
+          <LabelCssClass>form-label</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>form-group</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>TextBox</Type>
+          <IsRequired>true</IsRequired>
+          <Visible>true</Visible>
+          <DataField>PostalCode</DataField>
+          <Width>100%</Width>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+        </Widget>
+        <Widget xsi:type="LookupDropDownListControl">
+          <Name>Distance</Name>
+          <RenderLabel>true</RenderLabel>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass />
+          <Label>How far are you willing to travel from your zipcode?</Label>
+          <LabelCssClass>form-label</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>form-group</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>LookupDropDownList</Type>
+          <IsRequired>true</IsRequired>
+          <Visible>true</Visible>
+          <DataField>Distance</DataField>
+          <Width>100%</Width>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+          <AutoPostBack>false</AutoPostBack>
+          <IncludeAdditionalListItem>true</IncludeAdditionalListItem>
+          <CausesValidation>false</CausesValidation>
+          <AdditionalListItemText>-- Select Distance --</AdditionalListItemText>
+          <ShowToggleImage>true</ShowToggleImage>
+          <LookupType>TRAVEL_DISTANCE</LookupType>
+          <EnableLoadOnDemand>false</EnableLoadOnDemand>
+          <EnableItemCaching>false</EnableItemCaching>
+          <EnableVirtualScrolling>false</EnableVirtualScrolling>
+          <MarkFirstMatch>false</MarkFirstMatch>
+          <IsCaseSensitive>false</IsCaseSensitive>
+          <FilterMode>None</FilterMode>
+          <RenderingMode>Full</RenderingMode>
+          <SelectedIndexChanged>
+            <Commands />
+          </SelectedIndexChanged>
+        </Widget>
+        <Widget xsi:type="ContentControl">
+          <Name>AvailableDays</Name>
+          <RenderLabel>true</RenderLabel>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass />
+          <Label>What days are you available for work?</Label>
+          <LabelCssClass>form-label</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>form-group</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>Content</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <DataField>Sunday</DataField>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+          <Content>&lt;div&gt;
+	&lt;label class="form-check form-check-inline"&gt;
+		&lt;input class="form-check-input" type="checkbox" name="Sunday" value="1" {SundayChecked}&gt;
+		&lt;span class="form-check-label"&gt;Sun&lt;/span&gt;
+	&lt;/label&gt;
+	&lt;label class="form-check form-check-inline"&gt;
+		&lt;input class="form-check-input" type="checkbox" name="Monday"  value="1" {MondayChecked}&gt;
+		&lt;span class="form-check-label"&gt;Mon&lt;/span&gt;
+	&lt;/label&gt;
+	&lt;label class="form-check form-check-inline"&gt;
+		&lt;input class="form-check-input" type="checkbox" name="Tuesday"  value="1" {TuesdayChecked}&gt;
+		&lt;span class="form-check-label"&gt;Tue&lt;/span&gt;
+	&lt;/label&gt;
+	&lt;label class="form-check form-check-inline"&gt;
+		&lt;input class="form-check-input" type="checkbox" name="Wednesday"  value="1" {WednesdayChecked}&gt;
+		&lt;span class="form-check-label"&gt;Wed&lt;/span&gt;
+	&lt;/label&gt;
+	&lt;label class="form-check form-check-inline"&gt;
+		&lt;input class="form-check-input" type="checkbox" name="Thursday"  value="1" {ThursdayChecked}&gt;
+		&lt;span class="form-check-label"&gt;Thu&lt;/span&gt;
+	&lt;/label&gt;
+	&lt;label class="form-check form-check-inline"&gt;
+		&lt;input class="form-check-input" type="checkbox" name="Friday"  value="1" {FridayChecked}&gt;
+		&lt;span class="form-check-label"&gt;Fri&lt;/span&gt;
+	&lt;/label&gt;
+	&lt;label class="form-check form-check-inline"&gt;
+		&lt;input class="form-check-input" type="checkbox" name="Saturday"  value="1" {SaturdayChecked}&gt;
+		&lt;span class="form-check-label"&gt;Sat&lt;/span&gt;
+	&lt;/label&gt;
+&lt;/div&gt;</Content>
+        </Widget>
+      </Widgets>
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+    </Section>
+    <Section xsi:type="ButtonListSection">
+      <Name>Buttons</Name>
+      <CssClass>text-center</CssClass>
+      <Type>ButtonList</Type>
+      <Mode>All</Mode>
+      <ContainerMode>Plain</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Content</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <Buttons>
+        <Button>
+          <Name>Save</Name>
+          <RenderLabel>true</RenderLabel>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <Type>Button</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <CssClass>btn btn-primary btn-block mt-4</CssClass>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+          <Text>Next</Text>
+          <CausesValidation>true</CausesValidation>
+          <OnClick>
+            <Commands>
+              <InsertUpdateSaveCommand>
+                <Name>SaveCommand</Name>
+                <Type>InsertUpdateSaveCommand</Type>
+                <ContinueOnError>false</ContinueOnError>
+                <EntityID>WorkerId</EntityID>
+                <EntityInputType>User</EntityInputType>
+                <InsertCommand>Worker_SaveLocationAndSchedulePreferences</InsertCommand>
+                <UpdateCommand>Worker_SaveLocationAndSchedulePreferences</UpdateCommand>
+                <AfterInsertConfirmationMessage>Record was added successfully</AfterInsertConfirmationMessage>
+                <AfterUpdateConfirmationMessage>Record was updated successfully</AfterUpdateConfirmationMessage>
+                <RedirectAfterInsert>true</RedirectAfterInsert>
+                <RedirectAfterUpdate>true</RedirectAfterUpdate>
+                <AfterUpdateRedirectUrl>~/App/Signup/Next?Step=Complete</AfterUpdateRedirectUrl>
+                <AfterInsertRedirectUrl>~/App/Signup/Next?Step=Complete</AfterInsertRedirectUrl>
+              </InsertUpdateSaveCommand>
+            </Commands>
+          </OnClick>
+        </Button>
+      </Buttons>
+    </Section>
+  </Sections>
+  <SectionZoneLayout>Card</SectionZoneLayout>
+  <SectionZoneLayoutMode>Static</SectionZoneLayoutMode>
+  <Settings />
+  <Scripts />
+  <DataCommands>
+    <DataCommand>
+      <Name>Worker_GetLocationAndSchedulePreferences</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@ProfileId</Name>
+          <InputType>User</InputType>
+          <InputKey>ProfileId</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+    <DataCommand>
+      <Name>Worker_SaveLocationAndSchedulePreferences</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@ProfileId</Name>
+          <InputType>User</InputType>
+          <InputKey>ProfileId</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@PostalCode</Name>
+          <InputType>Control</InputType>
+          <InputKey>PostalCode</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@Distance</Name>
+          <InputType>Control</InputType>
+          <InputKey>Distance</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@Sunday</Name>
+          <InputType>Form</InputType>
+          <InputKey>Sunday</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@Monday</Name>
+          <InputType>Form</InputType>
+          <InputKey>Monday</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@Tuesday</Name>
+          <InputType>Form</InputType>
+          <InputKey>Tuesday</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@Wednesday</Name>
+          <InputType>Form</InputType>
+          <InputKey>Wednesday</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@Thursday</Name>
+          <InputType>Form</InputType>
+          <InputKey>Thursday</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@Friday</Name>
+          <InputType>Form</InputType>
+          <InputKey>Friday</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@Saturday</Name>
+          <InputType>Form</InputType>
+          <InputKey>Saturday</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@ModifiedBy</Name>
+          <InputType>User</InputType>
+          <InputKey>EmailAddress</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+  </DataCommands>
+  <OnPageLoad>
+    <Commands>
+      <DefaultOrPopulateScreenCommand>
+        <Name>DefaultOrPopulateScreen</Name>
+        <Type>DefaultOrPopulateScreenCommand</Type>
+        <ContinueOnError>false</ContinueOnError>
+        <EntityID>ProfileId</EntityID>
+        <EntityInputType>User</EntityInputType>
+        <RetrieveCommand>Worker_GetLocationAndSchedulePreferences</RetrieveCommand>
+        <ExecuteOnPostBack>false</ExecuteOnPostBack>
+      </DefaultOrPopulateScreenCommand>
+    </Commands>
+  </OnPageLoad>
+  <OnPageInit>
+    <Commands>
+      <RenderPageSectionsCommand>
+        <Name>RenderPageSections</Name>
+        <Type>RenderPageSectionsCommand</Type>
+        <ContinueOnError>false</ContinueOnError>
+        <EntityID>WorkerId</EntityID>
+        <EntityInputType>User</EntityInputType>
+        <Mode>InsertEdit</Mode>
+      </RenderPageSectionsCommand>
+    </Commands>
+  </OnPageInit>
+</Screen>

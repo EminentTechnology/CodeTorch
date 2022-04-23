@@ -250,18 +250,9 @@
     <Compile Include="SectionControls\TemplateSectionControl.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\core\CodeTorch.Abstractions\CodeTorch.Abstractions.csproj">
-      <Project>{D4C1A8A6-0150-49D9-9EC6-E1561366FE47}</Project>
-      <Name>CodeTorch.Abstractions</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\core\CodeTorch.Core\CodeTorch.Core.csproj">
       <Project>{ffa210b6-b65e-4cb3-9a43-e546f132e78a}</Project>
       <Name>CodeTorch.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\core\Eminent.CodeGenerator\Eminent.CodeGenerator.csproj">
-      <Project>{ACABE9A8-825E-46A4-8A52-EC44DA8357F7}</Project>
-      <Name>Eminent.CodeGenerator</Name>
-      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

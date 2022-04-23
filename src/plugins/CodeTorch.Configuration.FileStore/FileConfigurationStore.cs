@@ -5,12 +5,9 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
-using System.Xml.Serialization;
 
 namespace CodeTorch.Configuration.FileStore
 {
@@ -19,8 +16,8 @@ namespace CodeTorch.Configuration.FileStore
         private readonly ILogger Log;
 
         //public string Path { get; set; }
-        string _Path = null;
-        public string Path
+        string? _Path = null;
+        public string? Path
         {
             get
             {
@@ -44,6 +41,7 @@ namespace CodeTorch.Configuration.FileStore
             {
                 //string dataPath = AppDomain.CurrentDomain.GetData("DataDirectory").ToString();
                 //Path = System.IO.Path.Combine(dataPath, "CodeTorch\\Web\\");
+                Path = CodeTorch.Core.Configuration.GetInstance().ConfigurationPath;
             }
             catch
             { }
@@ -268,20 +266,24 @@ namespace CodeTorch.Configuration.FileStore
         }
 
 
-        private string GetPath<T>(string key = null)
+        private string GetPath<T>(string? key = null)
         {
             var t = typeof(T);
             string typeName = t.Name;
 
-            if (t.Name.ToLower().EndsWith("y"))
+            if (typeName != "App")
             {
-                typeName = t.Name.Substring(0, t.Name.Length - 1) + "ies";
-            }
-            else
-            {
-                if (!t.Name.ToLower().EndsWith("s"))
+
+                if (t.Name.ToLower().EndsWith("y"))
                 {
-                    typeName += "s";
+                    typeName = t.Name.Substring(0, t.Name.Length - 1) + "ies";
+                }
+                else
+                {
+                    if (!t.Name.ToLower().EndsWith("s"))
+                    {
+                        typeName += "s";
+                    }
                 }
             }
             

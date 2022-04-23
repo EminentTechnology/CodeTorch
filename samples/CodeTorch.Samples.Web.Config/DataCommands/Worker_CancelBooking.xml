@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataCommand xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Worker_CancelBooking</Name>
+  <DataConnection>Default</DataConnection>
+  <Type>StoredProcedure</Type>
+  <Text>Worker_CancelBooking</Text>
+  <ReturnType>Integer</ReturnType>
+  <Parameters>
+    <Parameter>
+      <Name>@ProfileId</Name>
+      <Type>Int32</Type>
+      <Size>4</Size>
+      <Direction>In</Direction>
+      <TypeName>int</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@BookingId</Name>
+      <Type>Int32</Type>
+      <Size>4</Size>
+      <Direction>In</Direction>
+      <TypeName>int</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@Mode</Name>
+      <Type>Int32</Type>
+      <Size>4</Size>
+      <Direction>In</Direction>
+      <TypeName>int</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@Reason</Name>
+      <Type>String</Type>
+      <Size>-1</Size>
+      <Direction>In</Direction>
+      <TypeName>nvarchar</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@ModifiedBy</Name>
+      <Type>String</Type>
+      <Size>400</Size>
+      <Direction>In</Direction>
+      <TypeName>nvarchar</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+  </Parameters>
+  <Columns />
+</DataCommand>

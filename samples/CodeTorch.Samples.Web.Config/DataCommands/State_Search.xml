@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataCommand xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>State_Search</Name>
+  <DataConnection>Default</DataConnection>
+  <Type>StoredProcedure</Type>
+  <Text>State_Search</Text>
+  <ReturnType>DataTable</ReturnType>
+  <Parameters>
+    <Parameter>
+      <Name>@PostalCode</Name>
+      <Type>String</Type>
+      <Size>5</Size>
+      <Direction>In</Direction>
+      <TypeName>char</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@CountryId</Name>
+      <Type>String</Type>
+      <Size>2</Size>
+      <Direction>In</Direction>
+      <TypeName>char</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+  </Parameters>
+  <Columns>
+    <Column>
+      <Name>StateId</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>Name</Name>
+      <Type>String</Type>
+    </Column>
+  </Columns>
+</DataCommand>

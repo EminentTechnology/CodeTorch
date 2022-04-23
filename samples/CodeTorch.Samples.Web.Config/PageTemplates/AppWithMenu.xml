@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PageTemplate xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>AppWithMenu</Name>
+  <Path>~/MasterPages/App.master</Path>
+  <Items>
+    <Item>
+      <Name>Navigation</Name>
+      <Assembly>CodeTorch.Web</Assembly>
+      <Class>CodeTorch.Web.Controls.Menu</Class>
+      <Property>MenuType</Property>
+      <Value>Primary</Value>
+    </Item>
+    <Item>
+      <Name>PageMenu</Name>
+      <Assembly>CodeTorch.Web</Assembly>
+      <Class>CodeTorch.Web.Controls.Menu</Class>
+      <Property>MenuType</Property>
+      <Value>Secondary</Value>
+    </Item>
+  </Items>
+</PageTemplate>

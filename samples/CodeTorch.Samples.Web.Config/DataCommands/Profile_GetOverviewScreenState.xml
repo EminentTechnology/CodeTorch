@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataCommand xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Profile_GetOverviewScreenState</Name>
+  <DataConnection>Default</DataConnection>
+  <Type>StoredProcedure</Type>
+  <Text>Profile_GetOverviewScreenState</Text>
+  <ReturnType>DataTable</ReturnType>
+  <Parameters>
+    <Parameter>
+      <Name>@ProfileId</Name>
+      <Type>Int32</Type>
+      <Size>4</Size>
+      <Direction>In</Direction>
+      <TypeName>int</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+  </Parameters>
+  <Columns>
+    <Column>
+      <Name>ObjectType</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>Name</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>MemberType</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>Member</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>Value</Name>
+      <Type>String</Type>
+    </Column>
+  </Columns>
+</DataCommand>

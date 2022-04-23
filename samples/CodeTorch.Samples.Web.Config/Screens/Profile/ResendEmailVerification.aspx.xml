@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Screen xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>ResendEmailVerification.aspx</Name>
+  <PageTemplate>
+    <Mode>Static</Mode>
+    <Name>App</Name>
+  </PageTemplate>
+  <Type>Screen</Type>
+  <Folder>Profile</Folder>
+  <RequireAuthentication>true</RequireAuthentication>
+  <SupportsTransactions>true</SupportsTransactions>
+  <ValidateRequest>true</ValidateRequest>
+  <Menu>
+    <DisplayMenu>false</DisplayMenu>
+  </Menu>
+  <Title>
+    <UseCommand>false</UseCommand>
+  </Title>
+  <SubTitle>
+    <UseCommand>false</UseCommand>
+  </SubTitle>
+  <ScreenPermission>
+    <CheckPermission>false</CheckPermission>
+  </ScreenPermission>
+  <Sections />
+  <SectionZoneLayoutMode>Static</SectionZoneLayoutMode>
+  <Settings />
+  <Scripts />
+  <DataCommands>
+    <DataCommand>
+      <Name>Profile_ResendEmailVerificationCode</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@ProfileId</Name>
+          <InputType>User</InputType>
+          <InputKey>ProfileId</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@EmailAddress</Name>
+          <InputType>Special</InputType>
+          <InputKey>Null</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@Persona</Name>
+          <InputType>Constant</InputType>
+          <InputKey>1</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+  </DataCommands>
+  <OnPageLoad>
+    <Commands>
+      <RedirectCommand>
+        <Name>Redirect</Name>
+        <Type>RedirectCommand</Type>
+        <ContinueOnError>false</ContinueOnError>
+        <DataCommand>Profile_ResendEmailVerificationCode</DataCommand>
+        <RedirectUrl>~/App/Profile/Overview?m=EV</RedirectUrl>
+        <OnErrorRedirectUrl>~/App/Profile/Overview?m=EVE</OnErrorRedirectUrl>
+        <RedirectMode>Constant</RedirectMode>
+      </RedirectCommand>
+    </Commands>
+  </OnPageLoad>
+  <OnPageInit>
+    <Commands />
+  </OnPageInit>
+</Screen>

@@ -1,0 +1,642 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Screen xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Search.aspx</Name>
+  <PageTemplate>
+    <Mode>Static</Mode>
+    <Name>App</Name>
+  </PageTemplate>
+  <Type>Screen</Type>
+  <Folder>Shifts</Folder>
+  <RequireAuthentication>true</RequireAuthentication>
+  <SupportsTransactions>true</SupportsTransactions>
+  <ValidateRequest>true</ValidateRequest>
+  <Menu>
+    <DisplayMenu>false</DisplayMenu>
+  </Menu>
+  <Title>
+    <Name>My Shifts</Name>
+    <UseCommand>false</UseCommand>
+  </Title>
+  <SubTitle>
+    <UseCommand>false</UseCommand>
+  </SubTitle>
+  <ScreenPermission>
+    <CheckPermission>false</CheckPermission>
+  </ScreenPermission>
+  <Sections>
+    <Section xsi:type="AlertSection">
+      <Name>Alert</Name>
+      <Type>Alert</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Top</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <IncludeValidationSummary>false</IncludeValidationSummary>
+    </Section>
+    <Section xsi:type="CriteriaSection">
+      <Name>Criteria</Name>
+      <IntroText />
+      <CssClass>ui-bordered px-4 pt-4 mb-4</CssClass>
+      <Type>Criteria</Type>
+      <Mode>All</Mode>
+      <ContainerMode>Plain</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Left</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets>
+        <Widget xsi:type="LookupDropDownListControl">
+          <Name>Status</Name>
+          <RenderLabel>true</RenderLabel>
+          <ControlCssClass>form-group</ControlCssClass>
+          <Label>Status</Label>
+          <LabelCssClass>form-label</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>LookupDropDownList</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <DataField>Status</DataField>
+          <Width>100%</Width>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+          <AutoPostBack>false</AutoPostBack>
+          <IncludeAdditionalListItem>false</IncludeAdditionalListItem>
+          <CausesValidation>false</CausesValidation>
+          <ShowToggleImage>true</ShowToggleImage>
+          <LookupType>BOOKING_SHIFT_STATUS</LookupType>
+          <EnableLoadOnDemand>false</EnableLoadOnDemand>
+          <EnableItemCaching>false</EnableItemCaching>
+          <EnableVirtualScrolling>false</EnableVirtualScrolling>
+          <MarkFirstMatch>false</MarkFirstMatch>
+          <IsCaseSensitive>false</IsCaseSensitive>
+          <FilterMode>None</FilterMode>
+          <RenderingMode>Full</RenderingMode>
+          <SelectedIndexChanged>
+            <Commands />
+          </SelectedIndexChanged>
+        </Widget>
+        <Widget xsi:type="ButtonControl">
+          <Name>ButtonSearch</Name>
+          <RenderLabel>true</RenderLabel>
+          <LabelCssClass>form-label d-none d-md-block</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>mb-0 mt-4</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>Button</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <Width>90%</Width>
+          <CssClass>btn btn-secondary btn-block criteria-button</CssClass>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+          <Text>Filter</Text>
+          <CausesValidation>false</CausesValidation>
+          <OnClick>
+            <Commands>
+              <InvokeSearchMessageCommand>
+                <Name>CriteriaClick</Name>
+                <Type>InvokeSearchMessageCommand</Type>
+                <ContinueOnError>false</ContinueOnError>
+              </InvokeSearchMessageCommand>
+            </Commands>
+          </OnClick>
+        </Widget>
+      </Widgets>
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <ControlsPerRow>4</ControlsPerRow>
+      <ActionButtonText>Search</ActionButtonText>
+      <RowElement>div</RowElement>
+      <RowCssClass>form-row</RowCssClass>
+      <ColumnElement>div</ColumnElement>
+      <ColumnCssClass>col-md mb-4</ColumnCssClass>
+      <HelpText>Locate any ENTITY in the system by entering data into the fields below:</HelpText>
+      <ContainerWidth>90%</ContainerWidth>
+    </Section>
+    <Section xsi:type="GridSection">
+      <ID />
+      <Name>Shifts</Name>
+      <IntroText />
+      <CssClass>card</CssClass>
+      <Type>Grid</Type>
+      <Mode>All</Mode>
+      <ContainerMode>Plain</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Left</ContentPane>
+      <SelectDataCommand>Worker_SearchShifts</SelectDataCommand>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <ActionLink>
+        <ShowLink>false</ShowLink>
+        <Permission>
+          <CheckPermission>false</CheckPermission>
+        </Permission>
+      </ActionLink>
+      <LoadDataOnPageLoad>true</LoadDataOnPageLoad>
+      <Grid>
+        <Name>Shifts</Name>
+        <HelpText />
+        <ShowHeader>true</ShowHeader>
+        <CommandItemDisplay>None</CommandItemDisplay>
+        <SelectDataCommand>Worker_SearchShifts</SelectDataCommand>
+        <AllowDelete>false</AllowDelete>
+        <AllowPaging>true</AllowPaging>
+        <PageSize>15</PageSize>
+        <AllowSorting>true</AllowSorting>
+        <SortOrder>Ascending</SortOrder>
+        <Columns>
+          <HyperLinkGridColumn>
+            <HeaderStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </HeaderStyle>
+            <ItemStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </ItemStyle>
+            <FooterStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </FooterStyle>
+            <HeaderText>Job Id</HeaderText>
+            <ColumnType>HyperLinkGridColumn</ColumnType>
+            <SortExpression>ShiftId</SortExpression>
+            <VisiblePermission>
+              <CheckPermission>false</CheckPermission>
+            </VisiblePermission>
+            <ExportPermission>
+              <CheckPermission>false</CheckPermission>
+            </ExportPermission>
+            <LinkPermission>
+              <CheckPermission>false</CheckPermission>
+            </LinkPermission>
+            <IncludeInExport>true</IncludeInExport>
+            <DataNavigateUrlFields>JobGuid</DataNavigateUrlFields>
+            <DataNavigateUrlFormatString>~/App/Jobs/Overview?JobGuid={0}</DataNavigateUrlFormatString>
+            <DataTextField>JobId</DataTextField>
+          </HyperLinkGridColumn>
+          <BoundGridColumn>
+            <HeaderStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </HeaderStyle>
+            <ItemStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </ItemStyle>
+            <FooterStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </FooterStyle>
+            <HeaderText>Location</HeaderText>
+            <ColumnType>BoundGridColumn</ColumnType>
+            <SortExpression>CompanyName</SortExpression>
+            <VisiblePermission>
+              <CheckPermission>false</CheckPermission>
+            </VisiblePermission>
+            <ExportPermission>
+              <CheckPermission>false</CheckPermission>
+            </ExportPermission>
+            <LinkPermission>
+              <CheckPermission>false</CheckPermission>
+            </LinkPermission>
+            <IncludeInExport>true</IncludeInExport>
+            <DataField>CompanyName</DataField>
+          </BoundGridColumn>
+          <BoundGridColumn>
+            <HeaderStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </HeaderStyle>
+            <ItemStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </ItemStyle>
+            <FooterStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </FooterStyle>
+            <HeaderText>Date</HeaderText>
+            <ColumnType>BoundGridColumn</ColumnType>
+            <SortExpression>StartDate</SortExpression>
+            <VisiblePermission>
+              <CheckPermission>false</CheckPermission>
+            </VisiblePermission>
+            <ExportPermission>
+              <CheckPermission>false</CheckPermission>
+            </ExportPermission>
+            <LinkPermission>
+              <CheckPermission>false</CheckPermission>
+            </LinkPermission>
+            <IncludeInExport>true</IncludeInExport>
+            <DataField>StartDate</DataField>
+            <DataFormatString>{0: MMM dd yyyy (ddd)}</DataFormatString>
+          </BoundGridColumn>
+          <BoundGridColumn>
+            <HeaderStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </HeaderStyle>
+            <ItemStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </ItemStyle>
+            <FooterStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </FooterStyle>
+            <HeaderText>Start Time</HeaderText>
+            <ColumnType>BoundGridColumn</ColumnType>
+            <SortExpression>StartDate</SortExpression>
+            <VisiblePermission>
+              <CheckPermission>false</CheckPermission>
+            </VisiblePermission>
+            <ExportPermission>
+              <CheckPermission>false</CheckPermission>
+            </ExportPermission>
+            <LinkPermission>
+              <CheckPermission>false</CheckPermission>
+            </LinkPermission>
+            <IncludeInExport>true</IncludeInExport>
+            <DataField>StartDate</DataField>
+            <DataFormatString>{0:t}</DataFormatString>
+          </BoundGridColumn>
+          <BoundGridColumn>
+            <HeaderStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </HeaderStyle>
+            <ItemStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </ItemStyle>
+            <FooterStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </FooterStyle>
+            <HeaderText>End Time</HeaderText>
+            <ColumnType>BoundGridColumn</ColumnType>
+            <SortExpression>EndDate</SortExpression>
+            <VisiblePermission>
+              <CheckPermission>false</CheckPermission>
+            </VisiblePermission>
+            <ExportPermission>
+              <CheckPermission>false</CheckPermission>
+            </ExportPermission>
+            <LinkPermission>
+              <CheckPermission>false</CheckPermission>
+            </LinkPermission>
+            <IncludeInExport>true</IncludeInExport>
+            <DataField>EndDate</DataField>
+            <DataFormatString>{0:t}</DataFormatString>
+          </BoundGridColumn>
+          <BoundGridColumn>
+            <HeaderStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </HeaderStyle>
+            <ItemStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </ItemStyle>
+            <FooterStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </FooterStyle>
+            <HeaderText>Working Hours</HeaderText>
+            <ColumnType>BoundGridColumn</ColumnType>
+            <SortExpression>BillableHours</SortExpression>
+            <VisiblePermission>
+              <CheckPermission>false</CheckPermission>
+            </VisiblePermission>
+            <ExportPermission>
+              <CheckPermission>false</CheckPermission>
+            </ExportPermission>
+            <LinkPermission>
+              <CheckPermission>false</CheckPermission>
+            </LinkPermission>
+            <IncludeInExport>true</IncludeInExport>
+            <DataField>BillableHours</DataField>
+            <DataFormatString>{0:N2}</DataFormatString>
+          </BoundGridColumn>
+          <BoundGridColumn>
+            <HeaderStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </HeaderStyle>
+            <ItemStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </ItemStyle>
+            <FooterStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </FooterStyle>
+            <HeaderText>Hourly Rate</HeaderText>
+            <ColumnType>BoundGridColumn</ColumnType>
+            <SortExpression>StaffRate</SortExpression>
+            <VisiblePermission>
+              <CheckPermission>false</CheckPermission>
+            </VisiblePermission>
+            <ExportPermission>
+              <CheckPermission>false</CheckPermission>
+            </ExportPermission>
+            <LinkPermission>
+              <CheckPermission>false</CheckPermission>
+            </LinkPermission>
+            <IncludeInExport>true</IncludeInExport>
+            <DataField>StaffRate</DataField>
+            <DataFormatString>{0:C}</DataFormatString>
+          </BoundGridColumn>
+          <BoundGridColumn>
+            <HeaderStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </HeaderStyle>
+            <ItemStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </ItemStyle>
+            <FooterStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </FooterStyle>
+            <HeaderText>Shift Total</HeaderText>
+            <ColumnType>BoundGridColumn</ColumnType>
+            <SortExpression>ShiftTotal</SortExpression>
+            <VisiblePermission>
+              <CheckPermission>false</CheckPermission>
+            </VisiblePermission>
+            <ExportPermission>
+              <CheckPermission>false</CheckPermission>
+            </ExportPermission>
+            <LinkPermission>
+              <CheckPermission>false</CheckPermission>
+            </LinkPermission>
+            <IncludeInExport>true</IncludeInExport>
+            <DataField>ShiftTotal</DataField>
+            <DataFormatString>{0:C}</DataFormatString>
+          </BoundGridColumn>
+          <BoundGridColumn>
+            <HeaderStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </HeaderStyle>
+            <ItemStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </ItemStyle>
+            <FooterStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </FooterStyle>
+            <HeaderText>Assigned To</HeaderText>
+            <ColumnType>BoundGridColumn</ColumnType>
+            <SortExpression>AssignedName</SortExpression>
+            <VisiblePermission>
+              <CheckPermission>false</CheckPermission>
+            </VisiblePermission>
+            <ExportPermission>
+              <CheckPermission>false</CheckPermission>
+            </ExportPermission>
+            <LinkPermission>
+              <CheckPermission>false</CheckPermission>
+            </LinkPermission>
+            <IncludeInExport>true</IncludeInExport>
+            <DataField>AssignedName</DataField>
+          </BoundGridColumn>
+          <BoundGridColumn>
+            <HeaderStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </HeaderStyle>
+            <ItemStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </ItemStyle>
+            <FooterStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </FooterStyle>
+            <HeaderText>Status</HeaderText>
+            <ColumnType>BoundGridColumn</ColumnType>
+            <SortExpression>JobStatusHtml</SortExpression>
+            <VisiblePermission>
+              <CheckPermission>false</CheckPermission>
+            </VisiblePermission>
+            <ExportPermission>
+              <CheckPermission>false</CheckPermission>
+            </ExportPermission>
+            <LinkPermission>
+              <CheckPermission>false</CheckPermission>
+            </LinkPermission>
+            <IncludeInExport>true</IncludeInExport>
+            <DataField>BookingShiftStatusHtml</DataField>
+          </BoundGridColumn>
+          <HyperLinkGridColumn>
+            <HeaderStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </HeaderStyle>
+            <ItemStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </ItemStyle>
+            <FooterStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </FooterStyle>
+            <HeaderText />
+            <ColumnType>HyperLinkGridColumn</ColumnType>
+            <SortExpression>ShiftId</SortExpression>
+            <VisiblePermission>
+              <CheckPermission>false</CheckPermission>
+            </VisiblePermission>
+            <ExportPermission>
+              <CheckPermission>false</CheckPermission>
+            </ExportPermission>
+            <LinkPermission>
+              <CheckPermission>false</CheckPermission>
+            </LinkPermission>
+            <IncludeInExport>true</IncludeInExport>
+            <DataNavigateUrlFields>ShiftId</DataNavigateUrlFields>
+            <DataNavigateUrlFormatString>~/App/Shifts/Edit?ShiftId={0}</DataNavigateUrlFormatString>
+            <DataTextField>ShiftId</DataTextField>
+            <DataTextFormatString>&lt;button type="button" class="btn btn-default btn-xs icon-btn md-btn-flat article-tooltip" title="Edit"&gt;&lt;i class="ion ion-md-create"&gt;&lt;/i&gt;&lt;/button&gt;</DataTextFormatString>
+            <Text>&lt;button type="button" class="btn btn-default btn-xs icon-btn md-btn-flat article-tooltip" title="Edit"&gt;&lt;i class="ion ion-md-create"&gt;&lt;/i&gt;&lt;/button&gt;</Text>
+          </HyperLinkGridColumn>
+        </Columns>
+        <GroupByExpressions />
+        <GroupLoadMode>Server</GroupLoadMode>
+        <GroupsDefaultExpanded>true</GroupsDefaultExpanded>
+        <AllowMultiRowSelection>false</AllowMultiRowSelection>
+        <GroupingEnabled>false</GroupingEnabled>
+        <ShowGroupPanel>false</ShowGroupPanel>
+        <AllowGroupExpandCollapse>false</AllowGroupExpandCollapse>
+        <ShowRefreshButton>true</ShowRefreshButton>
+        <ShowExportToCsvButton>true</ShowExportToCsvButton>
+        <ShowExportToExcelButton>false</ShowExportToExcelButton>
+        <ShowExportToPdfButton>false</ShowExportToPdfButton>
+        <ShowExportToWordButton>false</ShowExportToWordButton>
+        <ExportIgnorePaging>true</ExportIgnorePaging>
+        <ExportOpenInNewWindow>true</ExportOpenInNewWindow>
+        <ExportHideStructureColumns>true</ExportHideStructureColumns>
+        <AllowScroll>false</AllowScroll>
+        <UseStaticHeaders>false</UseStaticHeaders>
+        <FrozenColumnsCount>0</FrozenColumnsCount>
+        <SaveScrollPosition>true</SaveScrollPosition>
+        <CsvEncloseDataWithQuotes>false</CsvEncloseDataWithQuotes>
+        <CsvColumnDelimiter>Comma</CsvColumnDelimiter>
+        <CsvRowDelimiter>NewLine</CsvRowDelimiter>
+        <AllowRowsDragDrop>false</AllowRowsDragDrop>
+        <AllowRowSelect>false</AllowRowSelect>
+        <EnableDragToSelectRows>false</EnableDragToSelectRows>
+      </Grid>
+    </Section>
+  </Sections>
+  <SectionZoneLayout>SingleColumn</SectionZoneLayout>
+  <SectionZoneLayoutMode>Static</SectionZoneLayoutMode>
+  <Settings />
+  <Scripts />
+  <DataCommands>
+    <DataCommand>
+      <Name>Worker_SearchShifts</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@ProfileId</Name>
+          <InputType>User</InputType>
+          <InputKey>ProfileId</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@LocationId</Name>
+          <InputType>Special</InputType>
+          <InputKey>Null</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@Status</Name>
+          <InputType>Control</InputType>
+          <InputKey>Status</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+  </DataCommands>
+  <OnPageLoad>
+    <Commands>
+      <DefaultOrPopulateScreenCommand>
+        <Name>DefaultOrPopulateScreen</Name>
+        <Type>DefaultOrPopulateScreenCommand</Type>
+        <ContinueOnError>false</ContinueOnError>
+        <EntityInputType>QueryString</EntityInputType>
+        <ExecuteOnPostBack>false</ExecuteOnPostBack>
+      </DefaultOrPopulateScreenCommand>
+    </Commands>
+  </OnPageLoad>
+  <OnPageInit>
+    <Commands>
+      <RenderPageSectionsCommand>
+        <Name>RenderPageSections</Name>
+        <Type>RenderPageSectionsCommand</Type>
+        <ContinueOnError>false</ContinueOnError>
+        <EntityInputType>QueryString</EntityInputType>
+        <Mode>Simple</Mode>
+      </RenderPageSectionsCommand>
+    </Commands>
+  </OnPageInit>
+</Screen>

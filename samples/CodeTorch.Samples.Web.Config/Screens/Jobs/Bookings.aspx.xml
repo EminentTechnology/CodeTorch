@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Screen xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Bookings.aspx</Name>
+  <PageTemplate>
+    <Mode>Static</Mode>
+    <Name>AppWithMenu</Name>
+  </PageTemplate>
+  <Type>Screen</Type>
+  <Folder>Jobs</Folder>
+  <RequireAuthentication>true</RequireAuthentication>
+  <SupportsTransactions>true</SupportsTransactions>
+  <ValidateRequest>true</ValidateRequest>
+  <Menu>
+    <Name>JobMenu</Name>
+    <DisplayMenu>true</DisplayMenu>
+  </Menu>
+  <Title>
+    <Name>{PageTitle}</Name>
+    <UseCommand>true</UseCommand>
+    <CommandName>Worker_GetJobTitle</CommandName>
+  </Title>
+  <SubTitle>
+    <UseCommand>false</UseCommand>
+  </SubTitle>
+  <ScreenPermission>
+    <CheckPermission>false</CheckPermission>
+  </ScreenPermission>
+  <Sections>
+    <Section xsi:type="AlertSection">
+      <Name>Alert</Name>
+      <Type>Alert</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Top</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <IncludeValidationSummary>false</IncludeValidationSummary>
+    </Section>
+    <Section xsi:type="GridSection">
+      <Name>Bookings</Name>
+      <IntroText />
+      <Type>Grid</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Content</ContentPane>
+      <SelectDataCommand>Worker_GetJobBookings</SelectDataCommand>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <ActionLink>
+        <ShowLink>false</ShowLink>
+        <Permission>
+          <CheckPermission>false</CheckPermission>
+        </Permission>
+      </ActionLink>
+      <LoadDataOnPageLoad>true</LoadDataOnPageLoad>
+      <Grid>
+        <Name>Bookings</Name>
+        <HelpText />
+        <ShowHeader>true</ShowHeader>
+        <CommandItemDisplay>None</CommandItemDisplay>
+        <SelectDataCommand>Worker_GetJobBookings</SelectDataCommand>
+        <AllowDelete>false</AllowDelete>
+        <AllowPaging>true</AllowPaging>
+        <PageSize>20</PageSize>
+        <AllowSorting>true</AllowSorting>
+        <SortOrder>Ascending</SortOrder>
+        <Columns>
+          <HyperLinkGridColumn>
+            <HeaderStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </HeaderStyle>
+            <ItemStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </ItemStyle>
+            <FooterStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </FooterStyle>
+            <HeaderText>Booking No</HeaderText>
+            <ColumnType>HyperLinkGridColumn</ColumnType>
+            <SortExpression>BookingId</SortExpression>
+            <VisiblePermission>
+              <CheckPermission>false</CheckPermission>
+            </VisiblePermission>
+            <ExportPermission>
+              <CheckPermission>false</CheckPermission>
+            </ExportPermission>
+            <LinkPermission>
+              <CheckPermission>false</CheckPermission>
+            </LinkPermission>
+            <IncludeInExport>true</IncludeInExport>
+            <DataNavigateUrlFields>BookingId</DataNavigateUrlFields>
+            <DataNavigateUrlFormatString>~/App/Bookings/Overview?BookingId={0}</DataNavigateUrlFormatString>
+            <Context>JobId</Context>
+            <DataTextField>BookingId</DataTextField>
+          </HyperLinkGridColumn>
+          
+          <BoundGridColumn>
+            <HeaderStyle>
+              <CssClass />
+              <HorizonalAlign>Right</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </HeaderStyle>
+            <ItemStyle>
+              <CssClass />
+              <HorizonalAlign>Right</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </ItemStyle>
+            <FooterStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </FooterStyle>
+            <HeaderText>Hourly Rate</HeaderText>
+            <ColumnType>BoundGridColumn</ColumnType>
+            <SortExpression>StaffRate</SortExpression>
+            <VisiblePermission>
+              <CheckPermission>false</CheckPermission>
+            </VisiblePermission>
+            <ExportPermission>
+              <CheckPermission>false</CheckPermission>
+            </ExportPermission>
+            <LinkPermission>
+              <CheckPermission>false</CheckPermission>
+            </LinkPermission>
+            <IncludeInExport>true</IncludeInExport>
+            <DataField>StaffRate</DataField>
+            <DataFormatString>{0:C}</DataFormatString>
+          </BoundGridColumn>
+          
+          <BoundGridColumn>
+            <HeaderStyle>
+              <CssClass />
+              <HorizonalAlign>Right</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </HeaderStyle>
+            <ItemStyle>
+              <CssClass />
+              <HorizonalAlign>Right</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </ItemStyle>
+            <FooterStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </FooterStyle>
+            <HeaderText>No of Shifts</HeaderText>
+            <ColumnType>BoundGridColumn</ColumnType>
+            <SortExpression>ShiftCount</SortExpression>
+            <VisiblePermission>
+              <CheckPermission>false</CheckPermission>
+            </VisiblePermission>
+            <ExportPermission>
+              <CheckPermission>false</CheckPermission>
+            </ExportPermission>
+            <LinkPermission>
+              <CheckPermission>false</CheckPermission>
+            </LinkPermission>
+            <IncludeInExport>true</IncludeInExport>
+            <DataField>ShiftCount</DataField>
+          </BoundGridColumn>
+          <BoundGridColumn>
+            <HeaderStyle>
+              <CssClass />
+              <HorizonalAlign>Right</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </HeaderStyle>
+            <ItemStyle>
+              <CssClass />
+              <HorizonalAlign>Right</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </ItemStyle>
+            <FooterStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </FooterStyle>
+            <HeaderText>Billable Hours</HeaderText>
+            <ColumnType>BoundGridColumn</ColumnType>
+            <SortExpression>BillableHours</SortExpression>
+            <VisiblePermission>
+              <CheckPermission>false</CheckPermission>
+            </VisiblePermission>
+            <ExportPermission>
+              <CheckPermission>false</CheckPermission>
+            </ExportPermission>
+            <LinkPermission>
+              <CheckPermission>false</CheckPermission>
+            </LinkPermission>
+            <IncludeInExport>true</IncludeInExport>
+            <DataField>BillableHours</DataField>
+            <DataFormatString>{0:N2}</DataFormatString>
+          </BoundGridColumn>
+          <BoundGridColumn>
+            <HeaderStyle>
+              <CssClass />
+              <HorizonalAlign>Right</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </HeaderStyle>
+            <ItemStyle>
+              <CssClass />
+              <HorizonalAlign>Right</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </ItemStyle>
+            <FooterStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </FooterStyle>
+            <HeaderText>Estimate</HeaderText>
+            <ColumnType>BoundGridColumn</ColumnType>
+            <SortExpression>BookingEstimate</SortExpression>
+            <VisiblePermission>
+              <CheckPermission>false</CheckPermission>
+            </VisiblePermission>
+            <ExportPermission>
+              <CheckPermission>false</CheckPermission>
+            </ExportPermission>
+            <LinkPermission>
+              <CheckPermission>false</CheckPermission>
+            </LinkPermission>
+            <IncludeInExport>true</IncludeInExport>
+            <DataField>BookingEstimate</DataField>
+            <DataFormatString>{0:C}</DataFormatString>
+          </BoundGridColumn>
+          <BoundGridColumn>
+            <HeaderStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </HeaderStyle>
+            <ItemStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </ItemStyle>
+            <FooterStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </FooterStyle>
+            <HeaderText>Status</HeaderText>
+            <ColumnType>BoundGridColumn</ColumnType>
+            <SortExpression>StatusName</SortExpression>
+            <VisiblePermission>
+              <CheckPermission>false</CheckPermission>
+            </VisiblePermission>
+            <ExportPermission>
+              <CheckPermission>false</CheckPermission>
+            </ExportPermission>
+            <LinkPermission>
+              <CheckPermission>false</CheckPermission>
+            </LinkPermission>
+            <IncludeInExport>true</IncludeInExport>
+            <DataField>StatusHtml</DataField>
+          </BoundGridColumn>
+        </Columns>
+        <GroupByExpressions />
+        <GroupLoadMode>Server</GroupLoadMode>
+        <GroupsDefaultExpanded>true</GroupsDefaultExpanded>
+        <AllowMultiRowSelection>false</AllowMultiRowSelection>
+        <GroupingEnabled>false</GroupingEnabled>
+        <ShowGroupPanel>false</ShowGroupPanel>
+        <AllowGroupExpandCollapse>false</AllowGroupExpandCollapse>
+        <ShowRefreshButton>true</ShowRefreshButton>
+        <ShowExportToCsvButton>true</ShowExportToCsvButton>
+        <ShowExportToExcelButton>false</ShowExportToExcelButton>
+        <ShowExportToPdfButton>false</ShowExportToPdfButton>
+        <ShowExportToWordButton>false</ShowExportToWordButton>
+        <ExportIgnorePaging>true</ExportIgnorePaging>
+        <ExportOpenInNewWindow>true</ExportOpenInNewWindow>
+        <ExportHideStructureColumns>true</ExportHideStructureColumns>
+        <AllowScroll>false</AllowScroll>
+        <UseStaticHeaders>false</UseStaticHeaders>
+        <FrozenColumnsCount>0</FrozenColumnsCount>
+        <SaveScrollPosition>true</SaveScrollPosition>
+        <CsvEncloseDataWithQuotes>false</CsvEncloseDataWithQuotes>
+        <CsvColumnDelimiter>Comma</CsvColumnDelimiter>
+        <CsvRowDelimiter>NewLine</CsvRowDelimiter>
+        <AllowRowsDragDrop>false</AllowRowsDragDrop>
+        <AllowRowSelect>false</AllowRowSelect>
+        <EnableDragToSelectRows>false</EnableDragToSelectRows>
+      </Grid>
+    </Section>
+  </Sections>
+  <SectionZoneLayout>SingleColumnNoActions</SectionZoneLayout>
+  <SectionZoneLayoutMode>Static</SectionZoneLayoutMode>
+  <Settings />
+  <Scripts />
+  <DataCommands>
+    <DataCommand>
+      <Name>Worker_GetJobBookings</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@ProfileId</Name>
+          <InputType>User</InputType>
+          <InputKey>ProfileId</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@JobGuid</Name>
+          <InputType>QueryString</InputType>
+          <InputKey>JobGuid</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+    <DataCommand>
+      <Name>Worker_GetJobTitle</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@ProfileId</Name>
+          <InputType>User</InputType>
+          <InputKey>ProfileId</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@JobGuid</Name>
+          <InputType>QueryString</InputType>
+          <InputKey>JobGuid</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+  </DataCommands>
+  <OnPageLoad>
+    <Commands />
+  </OnPageLoad>
+  <OnPageInit>
+    <Commands>
+      <ExecuteDataCommand>
+        <Name>RequireJobId</Name>
+        <Type>ExecuteDataCommand</Type>
+        <ContinueOnError>false</ContinueOnError>
+        <DataCommand>Job_RequireJobId</DataCommand>
+      </ExecuteDataCommand>
+      <RenderPageSectionsCommand>
+        <Name>RenderPageSections</Name>
+        <Type>RenderPageSectionsCommand</Type>
+        <ContinueOnError>false</ContinueOnError>
+        <EntityInputType>QueryString</EntityInputType>
+        <Mode>Simple</Mode>
+      </RenderPageSectionsCommand>
+    </Commands>
+  </OnPageInit>
+</Screen>

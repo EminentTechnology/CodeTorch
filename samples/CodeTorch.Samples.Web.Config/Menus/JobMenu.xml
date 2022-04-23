@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Menu xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>JobMenu</Name>
+  <CssClass>nav nav-tabs tabs-alt nav-responsive-xl</CssClass>
+  <RequiresAuthentication>true</RequiresAuthentication>
+  <Items>
+    <Item>
+      <Name>Dynamic</Name>
+      <NameFormatString>{0}</NameFormatString>
+      <Context>JobGuid</Context>
+      <Items />
+      <UseCommand>true</UseCommand>
+      <CommandName>Worker_GetJobMenuItems</CommandName>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+    </Item>
+  </Items>
+</Menu>

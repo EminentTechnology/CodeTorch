@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataCommand xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Job_RequireValidDraftJob</Name>
+  <DataConnection>Default</DataConnection>
+  <Type>Text</Type>
+  <Text>select 'x' as data</Text>
+  <ReturnType>DataTable</ReturnType>
+  <Parameters />
+  <Columns>
+    <Column>
+      <Name>data</Name>
+      <Type>String</Type>
+    </Column>
+  </Columns>
+  <PreProcessingAssembly>RxTemps.Web.Employer</PreProcessingAssembly>
+  <PreProcessingClass>RxTemps.Web.Employer.DataCommandHooks.Job_RequireValidDraftJob_PreProcessor</PreProcessingClass>
+</DataCommand>

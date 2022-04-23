@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<ScreenType>
+  <Name>Redirect</Name>
+  <Description><![CDATA[Redirect Page Type]]></Description>
+  <TemplateFile><![CDATA[~/templates/pages/RedirectPage.aspx]]></TemplateFile>
+</ScreenType>

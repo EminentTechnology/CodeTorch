@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Screen xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>ResendActivationEmail.aspx</Name>
+  <PageTemplate>
+    <Mode>Static</Mode>
+    <Name>Signup</Name>
+  </PageTemplate>
+  <Type>Screen</Type>
+  <Folder>Security</Folder>
+  <RequireAuthentication>true</RequireAuthentication>
+  <SupportsTransactions>true</SupportsTransactions>
+  <ValidateRequest>true</ValidateRequest>
+  <Menu>
+    <DisplayMenu>false</DisplayMenu>
+  </Menu>
+  <Title>
+    <Name>Resend Email Code</Name>
+    <UseCommand>false</UseCommand>
+  </Title>
+  <SubTitle>
+    <UseCommand>false</UseCommand>
+  </SubTitle>
+  <ScreenPermission>
+    <CheckPermission>false</CheckPermission>
+  </ScreenPermission>
+  <Sections>
+    <Section xsi:type="AlertSection">
+      <Name>Alert</Name>
+      <Type>Alert</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Top</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <IncludeValidationSummary>false</IncludeValidationSummary>
+    </Section>
+    <Section xsi:type="ContentSection">
+      <ID>ContentSection</ID>
+      <Name>Content</Name>
+      <Type>Content</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Content</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <Content>
+        &lt;div class="display-1 lnr lnr-checkmark-circle text-center text-success mb-4"&gt;&lt;/div&gt;
+
+        &lt;p class="text-center text-big mb-4"&gt;We have sent an email to your account. Please click on the &lt;b&gt;Activate Account&lt;/b&gt; link in the email to confirm your email address.&lt;/p&gt;
+      </Content>
+    </Section>
+  </Sections>
+  <SectionZoneLayout>Card</SectionZoneLayout>
+  <SectionZoneLayoutMode>Static</SectionZoneLayoutMode>
+  <Settings />
+  <Scripts />
+  <DataCommands>
+    <DataCommand>
+      <Name>Profile_ResendEmailVerificationCode</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@EmailAddress</Name>
+          <InputType>User</InputType>
+          <InputKey>EmailAddress</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@Persona</Name>
+          <InputType>Constant</InputType>
+          <InputKey>2</InputKey>
+          <Default>2</Default>
+        </Parameter>
+        <Parameter>
+          <Name>@ProfileId</Name>
+          <InputType>Special</InputType>
+          <InputKey>Null</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+  </DataCommands>
+  <OnPageLoad>
+    <Commands>
+      <ExecuteDataCommand>
+        <Name>Resend Verification Email</Name>
+        <Type>ExecuteDataCommand</Type>
+        <ContinueOnError>false</ContinueOnError>
+        <DataCommand>Profile_ResendEmailVerificationCode</DataCommand>
+      </ExecuteDataCommand>
+    </Commands>
+  </OnPageLoad>
+  <OnPageInit>
+    <Commands>
+      <RenderPageSectionsCommand>
+        <Name>RenderPageSections</Name>
+        <Type>RenderPageSectionsCommand</Type>
+        <ContinueOnError>false</ContinueOnError>
+        <EntityInputType>QueryString</EntityInputType>
+        <Mode>Simple</Mode>
+      </RenderPageSectionsCommand>
+    </Commands>
+  </OnPageInit>
+</Screen>

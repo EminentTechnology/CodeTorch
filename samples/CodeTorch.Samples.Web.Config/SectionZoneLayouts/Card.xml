@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SectionZoneLayout>
+  <Name>Card</Name>
+  <Dividers>
+    <Divider>
+      <Name>Top</Name>
+    </Divider>
+    <Divider>
+      <Name>Content</Name>
+      <CssClass>p-4 px-sm-5 pt-sm-5</CssClass>
+    </Divider>
+    <Divider>
+      <Name>Bottom</Name>
+    </Divider>
+
+  </Dividers>
+</SectionZoneLayout>

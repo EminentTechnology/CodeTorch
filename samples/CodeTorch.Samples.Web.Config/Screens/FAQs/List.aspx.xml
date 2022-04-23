@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Screen xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>List.aspx</Name>
+  <PageTemplate>
+    <Mode>Static</Mode>
+    <Name>App</Name>
+  </PageTemplate>
+  <Type>Screen</Type>
+  <Folder>FAQs</Folder>
+  <RequireAuthentication>true</RequireAuthentication>
+  <SupportsTransactions>true</SupportsTransactions>
+  <ValidateRequest>true</ValidateRequest>
+  <Menu>
+    <DisplayMenu>false</DisplayMenu>
+  </Menu>
+  <Title>
+    <Name>Frequently Asked Questions</Name>
+    <UseCommand>false</UseCommand>
+  </Title>
+  <SubTitle>
+    <UseCommand>false</UseCommand>
+  </SubTitle>
+  <ScreenPermission>
+    <CheckPermission>false</CheckPermission>
+  </ScreenPermission>
+  <Sections>
+    <Section xsi:type="AlertSection">
+      <Name>Alert</Name>
+      <Type>Alert</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Top</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <IncludeValidationSummary>false</IncludeValidationSummary>
+    </Section>
+    <Section xsi:type="TemplateSection">
+      <Name>CategoriesMenu</Name>
+      <Type>Template</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Left</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <ContentSelectionMode>Static</ContentSelectionMode>
+      <TemplateSelectionMode>Static</TemplateSelectionMode>
+      <ContentTemplate>FAQCategoriesMenu</ContentTemplate>
+      <DataItems>
+        <ContentDataItem>
+          <DataItem>faqs</DataItem>
+          <DataCommand>FAQCategory_List</DataCommand>
+        </ContentDataItem>
+      </DataItems>
+    </Section>
+    <Section xsi:type="TemplateSection">
+      <Name>Questions</Name>
+      <Type>Template</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Right</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <ContentSelectionMode>Static</ContentSelectionMode>
+      <TemplateSelectionMode>Static</TemplateSelectionMode>
+      <ContentTemplate>FAQQuestions</ContentTemplate>
+      <DataItems>
+        <ContentDataItem>
+          <DataItem>category</DataItem>
+          <DataCommand>FAQCategory_GetById</DataCommand>
+        </ContentDataItem>
+        <ContentDataItem>
+          <DataItem>questions</DataItem>
+          <DataCommand>FAQ_List</DataCommand>
+        </ContentDataItem>
+      </DataItems>
+    </Section>
+  </Sections>
+  <SectionZoneLayout>TwoColumnSlim</SectionZoneLayout>
+  <SectionZoneLayoutMode>Static</SectionZoneLayoutMode>
+  <Settings />
+  <Scripts />
+  <DataCommands>
+    <DataCommand>
+      <Name>FAQCategory_List</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@Category</Name>
+          <InputType>QueryString</InputType>
+          <InputKey>CategoryId</InputKey>
+          <Default>Common</Default>
+        </Parameter>
+        <Parameter>
+          <Name>@Site</Name>
+          <InputType>Constant</InputType>
+          <InputKey>Worker</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@Status</Name>
+          <InputType>Constant</InputType>
+          <InputKey>1</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+    <DataCommand>
+      <Name>FAQCategory_GetById</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@Category</Name>
+          <InputType>QueryString</InputType>
+          <InputKey>CategoryId</InputKey>
+          <Default>Common</Default>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+    <DataCommand>
+      <Name>FAQ_List</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@Category</Name>
+          <InputType>QueryString</InputType>
+          <InputKey>CategoryId</InputKey>
+          <Default>Common</Default>
+        </Parameter>
+        <Parameter>
+          <Name>@Site</Name>
+          <InputType>Constant</InputType>
+          <InputKey>Worker</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@Status</Name>
+          <InputType>Control</InputType>
+          <InputKey>Status</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+  </DataCommands>
+  <OnPageLoad>
+    <Commands />
+  </OnPageLoad>
+  <OnPageInit>
+    <Commands>
+      <RenderPageSectionsCommand>
+        <Name>RenderPageSections</Name>
+        <Type>RenderPageSectionsCommand</Type>
+        <ContinueOnError>false</ContinueOnError>
+        <EntityInputType>QueryString</EntityInputType>
+        <Mode>Simple</Mode>
+      </RenderPageSectionsCommand>
+    </Commands>
+  </OnPageInit>
+</Screen>

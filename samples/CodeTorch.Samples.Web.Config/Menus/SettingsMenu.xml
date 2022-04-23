@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Menu xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>SettingsMenu</Name>
+  <CssClass>nav nav-tabs tabs-alt nav-responsive-xl</CssClass>
+  <RequiresAuthentication>true</RequiresAuthentication>
+  <Items>
+    <Item>
+      <CssClass>nav-item</CssClass>
+      <LinkCssClass>nav-link</LinkCssClass>
+      <Name>Account Details</Name>
+      <NameFormatString>{0}</NameFormatString>
+      <Location>~/App/Account/Overview</Location>
+      <Target />
+      <Items />
+      <UseCommand>false</UseCommand>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+    </Item>
+    <Item>
+      <CssClass>nav-item</CssClass>
+      <LinkCssClass>nav-link</LinkCssClass>
+      <Name>Locations</Name>
+      <NameFormatString>{0}</NameFormatString>
+      <Location>~/App/Locations/List</Location>
+      <Items />
+      <UseCommand>false</UseCommand>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+    </Item>
+    <Item>
+      <CssClass>nav-item</CssClass>
+      <LinkCssClass>nav-link</LinkCssClass>
+      <Name>Payment Details</Name>
+      <NameFormatString>{0}</NameFormatString>
+      <Location>~/App/PaymentMethods/List</Location>
+      <Items />
+      <UseCommand>false</UseCommand>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+    </Item>
+    <Item>
+      <CssClass>nav-item</CssClass>
+      <LinkCssClass>nav-link</LinkCssClass>
+      <Name>Users</Name>
+      <NameFormatString>{0}</NameFormatString>
+      <Location>~/App/Users/List</Location>
+      <Items />
+      <UseCommand>false</UseCommand>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+    </Item>
+  </Items>
+</Menu>

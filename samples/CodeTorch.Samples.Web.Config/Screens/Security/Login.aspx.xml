@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Screen xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Login.aspx</Name>
+  <PageTemplate>
+    <Mode>Static</Mode>
+    <Name>Login</Name>
+  </PageTemplate>
+  <Type>Screen</Type>
+  <Folder>Security</Folder>
+  <RequireAuthentication>false</RequireAuthentication>
+  <SupportsTransactions>true</SupportsTransactions>
+  <ValidateRequest>true</ValidateRequest>
+  <Menu>
+    <DisplayMenu>false</DisplayMenu>
+  </Menu>
+  <Title>
+    <Name>Login to Your Pharmacist/Technician Account</Name>
+    <UseCommand>false</UseCommand>
+  </Title>
+  <SubTitle>
+    <UseCommand>false</UseCommand>
+  </SubTitle>
+  <ScreenPermission>
+    <CheckPermission>false</CheckPermission>
+  </ScreenPermission>
+  <Sections>
+    <Section xsi:type="AlertSection">
+      <Name>Alert</Name>
+      <Type>Alert</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Left</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <IncludeValidationSummary>true</IncludeValidationSummary>
+    </Section>
+    <Section xsi:type="EditSection">
+      <ID>LoginSection</ID>
+      <Name />
+      <CssClass> my-5</CssClass>
+      <Type>Edit</Type>
+      <Mode>All</Mode>
+      <ContainerMode>Plain</ContainerMode>
+      <Visible>true</Visible>
+      <ContainerElement>fieldset</ContainerElement>
+      <ContainerCssClass>form-horizontal</ContainerCssClass>
+      <ContentPane>Left</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets>
+        <Widget xsi:type="TextBoxControl">
+          <Name>EmailAddress</Name>
+          <RenderLabel>true</RenderLabel>
+          <ControlCssClass />
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass>col-md-12</ControlContainerCssClass>
+          <Label>Email Address</Label>
+          <LabelCssClass>col-md-12 form-label</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>form-group</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>TextBox</Type>
+          <IsRequired>true</IsRequired>
+          <Visible>true</Visible>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+        </Widget>
+        <Widget xsi:type="PasswordControl">
+          <Name>Password</Name>
+          <RenderLabel>true</RenderLabel>
+          <ControlCssClass />
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass>col-md-12</ControlContainerCssClass>
+          <Label>Password</Label>
+          <LabelCssClass>col-md-12 form-label</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>form-group</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>Password</Type>
+          <IsRequired>true</IsRequired>
+          <Visible>true</Visible>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+          <PasswordAlgorithm>SaltHashProvider</PasswordAlgorithm>
+          <PasswordMode>PlainText</PasswordMode>
+        </Widget>
+      </Widgets>
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+    </Section>
+    <Section xsi:type="ButtonListSection">
+      <Name>Buttons</Name>
+      <CssClass>text-center</CssClass>
+      <Type>ButtonList</Type>
+      <Mode>All</Mode>
+      <ContainerMode>Plain</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Left</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <Buttons>
+        <Button>
+          <Name>Login</Name>
+          <RenderLabel>true</RenderLabel>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <Type>Button</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <CssClass>btn btn-lg btn-primary btn-block</CssClass>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+          <Text>Login</Text>
+          <CausesValidation>true</CausesValidation>
+          <OnClick>
+            <Commands>
+              <ValidateUserCommand>
+                <Name>LoginCommand</Name>
+                <Type>ValidateUserCommand</Type>
+                <ContinueOnError>false</ContinueOnError>
+                <PasswordEntityID>Password</PasswordEntityID>
+                <PasswordEntityInputType>Control</PasswordEntityInputType>
+                <ProfileCommand>WorkerProfile_GetByEmailAddress</ProfileCommand>
+                <PasswordField>Password</PasswordField>
+                <UserNameParameter>@EmailAddress</UserNameParameter>
+                <PasswordAlgorithm>SaltHashProvider</PasswordAlgorithm>
+                <PasswordMode>Hash</PasswordMode>
+                <LogoutTimeout>30</LogoutTimeout>
+              </ValidateUserCommand>
+            </Commands>
+          </OnClick>
+        </Button>
+      </Buttons>
+    </Section>
+    <Section xsi:type="ContentSection">
+      <Name>extra</Name>
+      <Type>Content</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Bottom</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <Content> &lt;div class="text-center text-muted"&gt;
+              Don't have a Pharmacist/Technician account yet?
+              &lt;a href="../Signup/Default.aspx"&gt;Sign Up&lt;/a&gt;
+            &lt;/div&gt;
+
+            &lt;div class="text-center text-muted"&gt;
+              Forgot your password?
+              &lt;a href="ForgotPasswordRequest.aspx"&gt;Reset Password &lt;/a&gt;
+            &lt;/div&gt;
+
+            &lt;div class="text-center text-muted"&gt;
+              Are you a Pharmacy looking to hire Pharmacists/Technicians
+              &lt;a href="RedirectToEmployerLogin.aspx"&gt;Login Here&lt;/a&gt;
+            &lt;/div&gt;</Content>
+    </Section>
+  </Sections>
+  <SectionZoneLayout>Login</SectionZoneLayout>
+  <SectionZoneLayoutMode>Static</SectionZoneLayoutMode>
+  <Settings />
+  <Scripts />
+  <DataCommands>
+    <DataCommand>
+      <Name>WorkerProfile_GetByEmailAddress</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@HostHeader</Name>
+          <InputType>Special</InputType>
+          <InputKey>HostHeader</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@EmailAddress</Name>
+          <InputType>Control</InputType>
+          <InputKey>EmailAddress</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+  </DataCommands>
+  <OnPageLoad>
+    <Commands />
+  </OnPageLoad>
+  <OnPageInit>
+    <Commands>
+      <RenderPageSectionsCommand>
+        <Name>RenderPageSections</Name>
+        <Type>RenderPageSectionsCommand</Type>
+        <ContinueOnError>false</ContinueOnError>
+        <EntityInputType>QueryString</EntityInputType>
+        <Mode>Simple</Mode>
+      </RenderPageSectionsCommand>
+    </Commands>
+  </OnPageInit>
+</Screen>

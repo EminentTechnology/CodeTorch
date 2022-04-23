@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SectionZoneLayout>
+  <Name>SingleColumnActions</Name>
+  <Dividers>
+    <Divider>
+      <Name>Top</Name>
+    </Divider>
+
+    <Divider>
+      <CssClass>row</CssClass>
+      <Dividers>
+        <Divider>
+          <CssClass>col</CssClass>
+          <Dividers>
+            <Divider>
+              <CssClass>card mb-4</CssClass>
+              <Dividers>
+                <Divider>
+                  <Name>Content</Name>
+                  <CssClass>card-body</CssClass>
+                </Divider>
+
+
+                
+              </Dividers>
+            </Divider>
+            <Divider>
+              <CssClass>col</CssClass>
+              <Name>Bottom</Name>
+
+            </Divider>
+
+          </Dividers>
+        </Divider>
+        <Divider>
+          <CssClass>col-xl-4 d-print-none</CssClass>
+          <Dividers>
+            <Divider>
+              <CssClass>card mb-4</CssClass>
+              <Dividers>
+                <Divider>
+                  <CssClass>card-header</CssClass>
+                  <StartMarkup>Actions</StartMarkup>
+                </Divider>
+                <Divider>
+                  <Name>Side</Name>
+                  <CssClass>card-body</CssClass>
+                </Divider>
+              </Dividers>
+            </Divider>
+          </Dividers>
+        </Divider>
+      </Dividers>
+    </Divider>
+
+  </Dividers>
+</SectionZoneLayout>

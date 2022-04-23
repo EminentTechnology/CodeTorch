@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Screen xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Create.aspx</Name>
+  <PageTemplate>
+    <Mode>Static</Mode>
+    <Name>App</Name>
+  </PageTemplate>
+  <Type>Screen</Type>
+  <Folder>Tickets</Folder>
+  <RequireAuthentication>true</RequireAuthentication>
+  <SupportsTransactions>true</SupportsTransactions>
+  <ValidateRequest>true</ValidateRequest>
+  <Menu>
+    <DisplayMenu>false</DisplayMenu>
+  </Menu>
+  <Title>
+    <Name>Tickets</Name>
+    <UseCommand>false</UseCommand>
+  </Title>
+  <SubTitle>
+    <Name>Create New Ticket</Name>
+    <UseCommand>false</UseCommand>
+  </SubTitle>
+  <ScreenPermission>
+    <CheckPermission>false</CheckPermission>
+  </ScreenPermission>
+  <Sections>
+    <Section xsi:type="AlertSection">
+      <Name>Alert</Name>
+      <Type>Alert</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Top</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <IncludeValidationSummary>true</IncludeValidationSummary>
+    </Section>
+    <Section xsi:type="ContentSection">
+      <Name>TitleArea</Name>
+      <Type>Content</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Top</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <Content>&lt;h4 class="font-weight-bold py-3 mb-4"&gt;How can we help?&lt;/h4&gt;</Content>
+    </Section>
+    <Section xsi:type="EditSection">
+      <Name>Details</Name>
+      <Type>Edit</Type>
+      <Mode>All</Mode>
+      <ContainerMode>Plain</ContainerMode>
+      <Visible>true</Visible>
+      <ContainerElement>fieldset</ContainerElement>
+      <ContainerCssClass>form-horizontal</ContainerCssClass>
+      <ContentPane>Content</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets>
+        <Widget xsi:type="TextAreaControl">
+          <Name>Subject</Name>
+          <RenderLabel>false</RenderLabel>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass>col</ControlContainerCssClass>
+          <Label>Question</Label>
+          <LabelCssClass>col-sm-2 text-sm-right</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>form-group row</ControlGroupCssClass>
+          <HelpText>Enter a brief question and we will respond to it as soon as we can.</HelpText>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>TextArea</Type>
+          <IsRequired>true</IsRequired>
+          <Visible>true</Visible>
+          <DataField>Subject</DataField>
+          <Width>100%</Width>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+          <Rows>5</Rows>
+          <Columns>20</Columns>
+        </Widget>
+      </Widgets>
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+    </Section>
+    <Section xsi:type="ButtonListSection">
+      <Name>Buttons</Name>
+      <CssClass>text-center</CssClass>
+      <Type>ButtonList</Type>
+      <Mode>All</Mode>
+      <ContainerMode>Plain</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Bottom</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <Buttons>
+        <Button>
+          <Name>Save</Name>
+          <RenderLabel>true</RenderLabel>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <Type>Button</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <CssClass>btn btn-primary</CssClass>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+          <Text>Submit Ticket</Text>
+          <CausesValidation>true</CausesValidation>
+          <OnClick>
+            <Commands>
+              <InsertUpdateSaveCommand>
+                <Name>SaveCommand</Name>
+                <Type>InsertUpdateSaveCommand</Type>
+                <ContinueOnError>false</ContinueOnError>
+                <EntityID>TicketId</EntityID>
+                <EntityInputType>QueryString</EntityInputType>
+                <InsertCommand>Ticket_Insert</InsertCommand>
+                <AfterInsertConfirmationMessage>Record was added successfully</AfterInsertConfirmationMessage>
+                <AfterUpdateConfirmationMessage>Record was updated successfully</AfterUpdateConfirmationMessage>
+                <RedirectAfterInsert>true</RedirectAfterInsert>
+                <RedirectAfterUpdate>false</RedirectAfterUpdate>
+                <AfterInsertRedirectUrl>~/App/Tickets/Chat?TicketId={0}</AfterInsertRedirectUrl>
+              </InsertUpdateSaveCommand>
+            </Commands>
+          </OnClick>
+        </Button>
+        <Button>
+          <Name>Cancel</Name>
+          <RenderLabel>true</RenderLabel>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <Type>Button</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <CssClass>btn btn-default</CssClass>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+          <Text>Cancel</Text>
+          <CausesValidation>false</CausesValidation>
+          <OnClick>
+            <Commands>
+              <NavigateToUrlCommand>
+                <Name>NavigateOnCancel</Name>
+                <Type>NavigateToUrlCommand</Type>
+                <ContinueOnError>false</ContinueOnError>
+                <NavigateUrl>~/App/Tickets/Search</NavigateUrl>
+                <EntityID>TicketId</EntityID>
+              </NavigateToUrlCommand>
+            </Commands>
+          </OnClick>
+        </Button>
+      </Buttons>
+    </Section>
+  </Sections>
+  <SectionZoneLayout>SingleColumnNoActions</SectionZoneLayout>
+  <SectionZoneLayoutMode>Static</SectionZoneLayoutMode>
+  <Settings />
+  <Scripts />
+  <DataCommands>
+    <DataCommand>
+      <Name>Ticket_Insert</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@TicketId</Name>
+          <InputType>Special</InputType>
+          <InputKey>Null</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@CategoryId</Name>
+          <InputType>Special</InputType>
+          <InputKey>Null</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@Subject</Name>
+          <InputType>Control</InputType>
+          <InputKey>Subject</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@ProfileId</Name>
+          <InputType>User</InputType>
+          <InputKey>ProfileId</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@EmployerId</Name>
+          <InputType>Special</InputType>
+          <InputKey>Null</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@UserId</Name>
+          <InputType>Special</InputType>
+          <InputKey>Null</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@CreatedBy</Name>
+          <InputType>User</InputType>
+          <InputKey>EmailAddress</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+  </DataCommands>
+  <OnPageLoad>
+    <Commands>
+      <DefaultOrPopulateScreenCommand>
+        <Name>DefaultOrPopulateScreen</Name>
+        <Type>DefaultOrPopulateScreenCommand</Type>
+        <ContinueOnError>false</ContinueOnError>
+        <EntityID>TicketId</EntityID>
+        <EntityInputType>QueryString</EntityInputType>
+        <ExecuteOnPostBack>false</ExecuteOnPostBack>
+      </DefaultOrPopulateScreenCommand>
+    </Commands>
+  </OnPageLoad>
+  <OnPageInit>
+    <Commands>
+      <RenderPageSectionsCommand>
+        <Name>RenderPageSections</Name>
+        <Type>RenderPageSectionsCommand</Type>
+        <ContinueOnError>false</ContinueOnError>
+        <EntityID>TicketId</EntityID>
+        <EntityInputType>QueryString</EntityInputType>
+        <Mode>InsertEdit</Mode>
+      </RenderPageSectionsCommand>
+    </Commands>
+  </OnPageInit>
+</Screen>

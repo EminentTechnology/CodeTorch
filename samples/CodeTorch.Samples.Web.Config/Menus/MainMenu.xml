@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Menu xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>MainMenu</Name>
+  <CssClass>sidenav-inner py-1</CssClass>
+  <RequiresAuthentication>true</RequiresAuthentication>
+  <Items>
+    <Item>
+      <CssClass>sidenav-item</CssClass>
+      <LinkCssClass>sidenav-link</LinkCssClass>
+      <Name>Home</Name>
+      <NameFormatString>&lt;i class="sidenav-icon ion ion-md-home"&gt;&lt;/i&gt;&lt;div&gt;{0}&lt;/div&gt;</NameFormatString>
+      <Code>menu-home</Code>
+      <Location>~/App/Home/Default</Location>
+      <Items />
+      <UseCommand>false</UseCommand>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+    </Item>
+    <Item>
+      <CssClass>sidenav-item</CssClass>
+      <LinkCssClass>sidenav-link</LinkCssClass>
+      <Name>Search Jobs</Name>
+      <NameFormatString>&lt;i class="sidenav-icon ion ion-md-search"&gt;&lt;/i&gt;&lt;div&gt;{0}&lt;/div&gt;</NameFormatString>
+      <Code>menu-home</Code>
+      <Location>~/App/Jobs/Search</Location>
+      <Items />
+      <UseCommand>false</UseCommand>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+    </Item>
+    <Item>
+      <CssClass>sidenav-item</CssClass>
+      <LinkCssClass>sidenav-link</LinkCssClass>
+      <Name>My Jobs</Name>
+      <NameFormatString>&lt;i class="sidenav-icon ion ion-md-briefcase"&gt;&lt;/i&gt;&lt;div&gt;{0}&lt;/div&gt;</NameFormatString>
+      <Code>menu-home</Code>
+      <Location>~/App/Jobs/MyJobs</Location>
+      <Items />
+      <UseCommand>false</UseCommand>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+    </Item>
+    <Item>
+      <CssClass>sidenav-item</CssClass>
+      <LinkCssClass>sidenav-link</LinkCssClass>
+      <Name>Shifts</Name>
+      <NameFormatString>&lt;i class="sidenav-icon ion ion-md-clock"&gt;&lt;/i&gt;&lt;div&gt;{0}&lt;/div&gt;</NameFormatString>
+      <Code>menu-home</Code>
+      <Location>~/App/Shifts/Search</Location>
+      <Items />
+      <UseCommand>false</UseCommand>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+    </Item>
+    <Item>
+      <CssClass>sidenav-item</CssClass>
+      <LinkCssClass>sidenav-link</LinkCssClass>
+      <Name>Contacts</Name>
+      <NameFormatString>&lt;i class="sidenav-icon ion ion-md-people"&gt;&lt;/i&gt;&lt;div&gt;{0}&lt;/div&gt;</NameFormatString>
+      <Code>menu-home</Code>
+      <Location>~/App/Contacts/List</Location>
+      <Items />
+      <UseCommand>false</UseCommand>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+    </Item>
+    <Item>
+      <CssClass>sidenav-item</CssClass>
+      <LinkCssClass>sidenav-link</LinkCssClass>
+      <Name>Invoices</Name>
+      <NameFormatString>&lt;i class="sidenav-icon ion ion-logo-usd"&gt;&lt;/i&gt;&lt;div&gt;{0}&lt;/div&gt;</NameFormatString>
+      <Code>menu-home</Code>
+      <Location>~/App/Invoices/Search</Location>
+      <Items />
+      <UseCommand>false</UseCommand>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+    </Item>
+    <Item>
+      <CssClass>sidenav-item</CssClass>
+      <LinkCssClass>sidenav-link</LinkCssClass>
+      <Name>FAQs</Name>
+      <NameFormatString>&lt;i class="sidenav-icon ion ion-md-help"&gt;&lt;/i&gt;&lt;div&gt;{0}&lt;/div&gt;</NameFormatString>
+      <Code>menu-home</Code>
+      <Location>~/App/FAQs/List</Location>
+      <Items />
+      <UseCommand>false</UseCommand>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+    </Item>
+    <Item>
+      <CssClass>sidenav-item</CssClass>
+      <LinkCssClass>sidenav-link</LinkCssClass>
+      <Name>Contact Support</Name>
+      <NameFormatString>&lt;i class="sidenav-icon ion ion-md-headset"&gt;&lt;/i&gt;&lt;div&gt;{0}&lt;/div&gt;</NameFormatString>
+      <Code>menu-home</Code>
+      <Location>~/App/Tickets/Search</Location>
+      <Items />
+      <UseCommand>false</UseCommand>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+    </Item>
+  </Items>
+</Menu>

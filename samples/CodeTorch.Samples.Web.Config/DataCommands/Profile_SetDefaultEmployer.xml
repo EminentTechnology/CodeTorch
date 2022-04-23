@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataCommand xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Profile_SetDefaultEmployer</Name>
+  <DataConnection>Default</DataConnection>
+  <Type>StoredProcedure</Type>
+  <Text>Profile_SetDefaultEmployer</Text>
+  <ReturnType>Integer</ReturnType>
+  <Parameters>
+    <Parameter>
+      <Name>@ProfileId</Name>
+      <Type>Int32</Type>
+      <Size>4</Size>
+      <Direction>In</Direction>
+      <TypeName>int</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@EmployerId</Name>
+      <Type>Int32</Type>
+      <Size>4</Size>
+      <Direction>In</Direction>
+      <TypeName>int</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@ModifiedBy</Name>
+      <Type>String</Type>
+      <Size>400</Size>
+      <Direction>In</Direction>
+      <TypeName>nvarchar</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+  </Parameters>
+  <Columns />
+  <PostProcessingAssembly>RxTemps.Web.Employer</PostProcessingAssembly>
+  <PostProcessingClass>RxTemps.Web.Employer.DataCommandHooks.Profile_SetDefaultEmployer_PostProcessor</PostProcessingClass>
+</DataCommand>

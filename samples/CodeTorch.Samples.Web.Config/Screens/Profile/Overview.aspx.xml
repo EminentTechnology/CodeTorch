@@ -1,0 +1,361 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Screen xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Overview.aspx</Name>
+  <PageTemplate>
+    <Mode>Static</Mode>
+    <Name>App</Name>
+  </PageTemplate>
+  <Type>Screen</Type>
+  <Folder>Profile</Folder>
+  <RequireAuthentication>true</RequireAuthentication>
+  <SupportsTransactions>true</SupportsTransactions>
+  <ValidateRequest>true</ValidateRequest>
+  <Menu>
+    <DisplayMenu>false</DisplayMenu>
+  </Menu>
+  <Title>
+    <Name>My Profile</Name>
+    <UseCommand>false</UseCommand>
+  </Title>
+  <SubTitle>
+    <UseCommand>false</UseCommand>
+  </SubTitle>
+  <ScreenPermission>
+    <CheckPermission>false</CheckPermission>
+  </ScreenPermission>
+  <Sections>
+    <Section xsi:type="AlertSection">
+      <Name>Alert</Name>
+      <Type>Alert</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Top</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <IncludeValidationSummary>true</IncludeValidationSummary>
+    </Section>
+    <Section xsi:type="DetailsSection">
+      <Name>Details</Name>
+      <Type>Details</Type>
+      <Mode>All</Mode>
+      <ContainerMode>Plain</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Content</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets>
+        <Widget xsi:type="ContentControl">
+          <Name>Photo</Name>
+          <RenderLabel>false</RenderLabel>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass>col media align-items-center</ControlContainerCssClass>
+          <Label>Photo</Label>
+          <LabelCssClass>col-md-3 text-muted</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>row mb-2</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>Content</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <DataField />
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+          <Content>&lt;img src="//{PhotoUrl}" alt="" class="d-block ui-w-80 mb-4"&gt;
+&lt;div class="media-body ml-4"&gt;
+                                &lt;a href="UploadPhoto" class="btn btn-outline-primary"&gt;
+                                    Upload new photo
+                            
+                                &lt;/a&gt;
+                            
+
+                                &lt;div class="text-light small mt-1"&gt;Allowed JPG or PNG. Max size of 1MB&lt;/div&gt;
+                            &lt;/div&gt;
+</Content>
+        </Widget>
+        <Widget xsi:type="LabelControl">
+          <Name>DisplayName</Name>
+          <RenderLabel>true</RenderLabel>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass>col</ControlContainerCssClass>
+          <Label>Name</Label>
+          <LabelCssClass>col-md-2 text-muted</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>row mb-2</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>Label</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <DataField>DisplayName</DataField>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+        </Widget>
+        <Widget xsi:type="LabelControl">
+          <Name>EmailAddress</Name>
+          <RenderLabel>true</RenderLabel>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass>col</ControlContainerCssClass>
+          <Label>Email Address</Label>
+          <LabelCssClass>col-md-2 text-muted</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>row mb-2</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>Label</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <DataField>EmailAddress</DataField>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+        </Widget>
+        <Widget xsi:type="ContentControl">
+          <Name>EmailNotVerified</Name>
+          <RenderLabel>false</RenderLabel>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass>col</ControlContainerCssClass>
+          <Label>Email Not Verified</Label>
+          <LabelCssClass>col-md-3 text-muted</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>row mb-2</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>Content</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+          <Content>{EmailVerificationHtml}</Content>
+        </Widget>
+        <Widget xsi:type="LabelControl">
+          <Name>WorkPhone</Name>
+          <RenderLabel>true</RenderLabel>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass>col</ControlContainerCssClass>
+          <Label>Work Phone</Label>
+          <LabelCssClass>col-md-2 text-muted</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>row mb-2</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>Label</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <DataField>WorkPhone</DataField>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+        </Widget>
+        <Widget xsi:type="LabelControl">
+          <Name>MobilePhone</Name>
+          <RenderLabel>true</RenderLabel>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass>col</ControlContainerCssClass>
+          <Label>Mobile Phone</Label>
+          <LabelCssClass>col-md-2 text-muted</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>row mb-2</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>Label</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <DataField>MobilePhone</DataField>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+        </Widget>
+        <Widget xsi:type="ContentControl">
+          <Name>MobileNotVerified</Name>
+          <RenderLabel>false</RenderLabel>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass>col</ControlContainerCssClass>
+          <Label>Mobile Not Verified</Label>
+          <LabelCssClass>col-md-2 text-muted</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>row mb-2</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>Content</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+          <Content>{MobilePhoneVerificationHtml}</Content>
+        </Widget>
+        <Widget xsi:type="LabelControl">
+          <Name>ReceiveSMS</Name>
+          <RenderLabel>true</RenderLabel>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass>col</ControlContainerCssClass>
+          <Label>Receive SMS</Label>
+          <LabelCssClass>col-md-2 text-muted</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>row mb-2</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>Label</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <DataField>ReceiveSMSDisplay</DataField>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+        </Widget>
+      </Widgets>
+      <AfterPopulateSection>
+        <Commands>
+          <SetScreenObjectsDataCommand>
+            <Name>Profile_GetOverviewScreenState</Name>
+            <Type>SetScreenObjectsDataCommand</Type>
+            <ContinueOnError>false</ContinueOnError>
+            <DataCommand>Profile_GetOverviewScreenState</DataCommand>
+          </SetScreenObjectsDataCommand>
+        </Commands>
+      </AfterPopulateSection>
+    </Section>
+    <Section xsi:type="ContentSection">
+      <Name>Actions</Name>
+      <Type>Content</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Side</ContentPane>
+      <SelectDataCommand>Profile_GetActions</SelectDataCommand>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <Content>{ActionsHtml}</Content>
+    </Section>
+  </Sections>
+  <SectionZoneLayout>SingleColumnActions</SectionZoneLayout>
+  <SectionZoneLayoutMode>Static</SectionZoneLayoutMode>
+  <Settings />
+  <Scripts />
+  <DataCommands>
+    <DataCommand>
+      <Name>Profile_GetById</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@ProfileId</Name>
+          <InputType>User</InputType>
+          <InputKey>ProfileId</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+    <DataCommand>
+      <Name>Profile_GetActions</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@ProfileId</Name>
+          <InputType>User</InputType>
+          <InputKey>ProfileId</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+    <DataCommand>
+      <Name>Profile_GetOverviewScreenState</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@ProfileId</Name>
+          <InputType>User</InputType>
+          <InputKey>ProfileId</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+  </DataCommands>
+  <OnPageLoad>
+    <Commands>
+      <DefaultOrPopulateScreenCommand>
+        <Name>DefaultOrPopulateScreen</Name>
+        <Type>DefaultOrPopulateScreenCommand</Type>
+        <ContinueOnError>false</ContinueOnError>
+        <EntityID>ProfileId</EntityID>
+        <EntityInputType>User</EntityInputType>
+        <RetrieveCommand>Profile_GetById</RetrieveCommand>
+        <ExecuteOnPostBack>false</ExecuteOnPostBack>
+      </DefaultOrPopulateScreenCommand>
+      <ExecuteDataCommand>
+        <Name>DisplayConfirmationMessages</Name>
+        <Type>ExecuteDataCommand</Type>
+        <ContinueOnError>false</ContinueOnError>
+        <DataCommand>Worker_ProfileOverview_Messages</DataCommand>
+      </ExecuteDataCommand>
+    </Commands>
+  </OnPageLoad>
+  <OnPageInit>
+    <Commands>
+      <RenderPageSectionsCommand>
+        <Name>RenderPageSections</Name>
+        <Type>RenderPageSectionsCommand</Type>
+        <ContinueOnError>false</ContinueOnError>
+        <EntityInputType>QueryString</EntityInputType>
+        <Mode>Simple</Mode>
+      </RenderPageSectionsCommand>
+    </Commands>
+  </OnPageInit>
+</Screen>

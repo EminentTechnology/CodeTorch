@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Template xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>FAQCategoriesMenu</Name>
+  <Content>&lt;div&gt;
+&lt;%
+foreach(DataRow faq in faqs)
+{
+%&gt;
+  &lt;a href="List?CategoryId=&lt;%=faq["CategoryId"]%&gt;" class="media align-items-center &lt;%=faq["BackgroundCSS"]%&gt; text-dark py-3 px-4"&gt;
+	&lt;div class="&lt;%=faq["IconCSS"]%&gt; ui-w-30 text-center text-xlarge"&gt;&lt;/div&gt;
+	&lt;div class="media-body ml-3"&gt;
+	  &lt;%=faq["Name"]%&gt;
+	  &lt;div class="text-muted small"&gt;&lt;%=faq["Description"]%&gt;&lt;/div&gt;
+	&lt;/div&gt;
+  &lt;/a&gt;
+&lt;%
+}
+%&gt;  
+&lt;/div&gt;
+
+&lt;div class="text-center mt-4 mb-5"&gt;
+  &lt;a class="btn btn-outline-primary btn-lg" href="../Tickets/Search" role="button"&gt;Contact Support&lt;/a&gt;
+&lt;/div&gt;
+
+</Content>
+  <DataItems>
+    <DataItem>
+      <Name>faqs</Name>
+      <Type>DataRowList</Type>
+    </DataItem>
+  </DataItems>
+</Template>

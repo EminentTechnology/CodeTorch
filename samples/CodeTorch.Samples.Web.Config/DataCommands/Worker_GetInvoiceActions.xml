@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataCommand xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Worker_GetInvoiceActions</Name>
+  <DataConnection>Default</DataConnection>
+  <Type>StoredProcedure</Type>
+  <Text>Worker_GetInvoiceActions</Text>
+  <ReturnType>DataTable</ReturnType>
+  <Parameters>
+    <Parameter>
+      <Name>@ProfileId</Name>
+      <Type>Int32</Type>
+      <Size>4</Size>
+      <Direction>In</Direction>
+      <TypeName>int</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@InvoiceId</Name>
+      <Type>Int32</Type>
+      <Size>4</Size>
+      <Direction>In</Direction>
+      <TypeName>int</TypeName>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+  </Parameters>
+  <Columns>
+    <Column>
+      <Name>ActionsHtml</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>SectionZoneLayout</Name>
+      <Type>String</Type>
+    </Column>
+  </Columns>
+</DataCommand>

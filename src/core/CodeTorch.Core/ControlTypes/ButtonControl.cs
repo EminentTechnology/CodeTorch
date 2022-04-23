@@ -29,6 +29,7 @@ namespace CodeTorch.Core
         [Category("Data")]
         public string DataTextFormatString { get; set; }
 
+        public string Action { get; set; }
         public string Text { get; set; }
     
         public string CommandName { get; set; }

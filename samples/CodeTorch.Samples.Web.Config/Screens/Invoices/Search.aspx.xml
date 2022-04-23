@@ -1,0 +1,443 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Screen xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Search.aspx</Name>
+  <PageTemplate>
+    <Mode>Static</Mode>
+    <Name>App</Name>
+  </PageTemplate>
+  <Type>Screen</Type>
+  <Folder>Invoices</Folder>
+  <RequireAuthentication>true</RequireAuthentication>
+  <SupportsTransactions>true</SupportsTransactions>
+  <ValidateRequest>true</ValidateRequest>
+  <Menu>
+    <DisplayMenu>false</DisplayMenu>
+  </Menu>
+  <Title>
+    <Name>Invoices</Name>
+    <UseCommand>false</UseCommand>
+  </Title>
+  <SubTitle>
+    <UseCommand>false</UseCommand>
+  </SubTitle>
+  <ScreenPermission>
+    <CheckPermission>false</CheckPermission>
+  </ScreenPermission>
+  <Sections>
+    <Section xsi:type="AlertSection">
+      <Name>Alert</Name>
+      <Type>Alert</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Top</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <IncludeValidationSummary>false</IncludeValidationSummary>
+    </Section>
+    <Section xsi:type="CriteriaSection">
+      <Name>Criteria</Name>
+      <IntroText />
+      <CssClass>ui-bordered px-4 pt-4 mb-4</CssClass>
+      <Type>Criteria</Type>
+      <Mode>All</Mode>
+      <ContainerMode>Plain</ContainerMode>
+      <Visible>true</Visible>
+      <ContainerCssClass />
+      <ContentPane>Left</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets>
+        <Widget xsi:type="NumericTextBoxControl">
+          <Name>InvoiceId</Name>
+          <RenderLabel>true</RenderLabel>
+          <ControlCssClass>form-group</ControlCssClass>
+          <Label>Invoice No</Label>
+          <LabelCssClass>form-label</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>NumericTextBox</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <DataField>InvoiceId</DataField>
+          <Width>100%</Width>
+          <SkinID />
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+          <MinValue>0</MinValue>
+          <MaxValue>1.7976931348623157E+308</MaxValue>
+          <DecimalDigits>0</DecimalDigits>
+          <DecimalSeparator>.</DecimalSeparator>
+          <GroupSeparator>,</GroupSeparator>
+          <GroupSizes>3</GroupSizes>
+        </Widget>
+        <Widget xsi:type="LookupDropDownListControl">
+          <Name>DateSearchMode</Name>
+          <RenderLabel>true</RenderLabel>
+          <ControlCssClass>form-group</ControlCssClass>
+          <Label>Dates</Label>
+          <LabelCssClass>form-label</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>LookupDropDownList</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <DataField>DateSearchMode</DataField>
+          <Width>100%</Width>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+          <AutoPostBack>false</AutoPostBack>
+          <IncludeAdditionalListItem>true</IncludeAdditionalListItem>
+          <CausesValidation>false</CausesValidation>
+          <AdditionalListItemText>All Dates</AdditionalListItemText>
+          <ShowToggleImage>true</ShowToggleImage>
+          <LookupType>DATE_SEARCH_MODE</LookupType>
+          <EnableLoadOnDemand>false</EnableLoadOnDemand>
+          <EnableItemCaching>false</EnableItemCaching>
+          <EnableVirtualScrolling>false</EnableVirtualScrolling>
+          <MarkFirstMatch>false</MarkFirstMatch>
+          <IsCaseSensitive>false</IsCaseSensitive>
+          <FilterMode>None</FilterMode>
+          <RenderingMode>Full</RenderingMode>
+          <SelectedIndexChanged>
+            <Commands />
+          </SelectedIndexChanged>
+        </Widget>
+        <Widget xsi:type="LookupDropDownListControl">
+          <Name>PaymentStatus</Name>
+          <RenderLabel>true</RenderLabel>
+          <ControlCssClass>form-group</ControlCssClass>
+          <Label>Payment Status</Label>
+          <LabelCssClass>form-label</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>LookupDropDownList</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <DataField>PaymentStatus</DataField>
+          <Width>100%</Width>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+          <AutoPostBack>false</AutoPostBack>
+          <IncludeAdditionalListItem>true</IncludeAdditionalListItem>
+          <CausesValidation>false</CausesValidation>
+          <AdditionalListItemText>All Payment Statuses</AdditionalListItemText>
+          <ShowToggleImage>true</ShowToggleImage>
+          <LookupType>INVOICE_PAYMENT_STATUS</LookupType>
+          <EnableLoadOnDemand>false</EnableLoadOnDemand>
+          <EnableItemCaching>false</EnableItemCaching>
+          <EnableVirtualScrolling>false</EnableVirtualScrolling>
+          <MarkFirstMatch>false</MarkFirstMatch>
+          <IsCaseSensitive>false</IsCaseSensitive>
+          <FilterMode>None</FilterMode>
+          <RenderingMode>Full</RenderingMode>
+          <SelectedIndexChanged>
+            <Commands />
+          </SelectedIndexChanged>
+        </Widget>
+        <Widget xsi:type="ButtonControl">
+          <Name>ButtonSearch</Name>
+          <RenderLabel>true</RenderLabel>
+          <LabelCssClass>form-label d-none d-md-block</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>mb-0 mt-4</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>Button</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <Width>100%</Width>
+          <CssClass>btn btn-secondary btn-block criteria-button</CssClass>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+          <Text>Filter</Text>
+          <CausesValidation>false</CausesValidation>
+          <OnClick>
+            <Commands>
+              <InvokeSearchMessageCommand>
+                <Name>CriteriaClick</Name>
+                <Type>InvokeSearchMessageCommand</Type>
+                <ContinueOnError>false</ContinueOnError>
+              </InvokeSearchMessageCommand>
+            </Commands>
+          </OnClick>
+        </Widget>
+      </Widgets>
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <ControlsPerRow>4</ControlsPerRow>
+      <ActionButtonText>Search</ActionButtonText>
+      <RowElement>div</RowElement>
+      <RowCssClass>form-row</RowCssClass>
+      <ColumnElement>div</ColumnElement>
+      <ColumnCssClass>col-md mb-4</ColumnCssClass>
+      <HelpText>Locate any ENTITY in the system by entering data into the fields below:</HelpText>
+      <ContainerWidth>90%</ContainerWidth>
+    </Section>
+    <Section xsi:type="GridSection">
+      <Name>Invoices</Name>
+      <IntroText />
+      <CssClass>card</CssClass>
+      <Type>Grid</Type>
+      <Mode>All</Mode>
+      <ContainerMode>Plain</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Left</ContentPane>
+      <SelectDataCommand>Worker_SearchInvoices</SelectDataCommand>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <ActionLink>
+        <ShowLink>false</ShowLink>
+        <Permission>
+          <CheckPermission>false</CheckPermission>
+        </Permission>
+      </ActionLink>
+      <LoadDataOnPageLoad>true</LoadDataOnPageLoad>
+      <Grid>
+        <Name>Invoices</Name>
+        <HelpText />
+        <ShowHeader>true</ShowHeader>
+        <CommandItemDisplay>None</CommandItemDisplay>
+        <SelectDataCommand>Worker_SearchInvoices</SelectDataCommand>
+        <AllowDelete>false</AllowDelete>
+        <AllowPaging>true</AllowPaging>
+        <PageSize>20</PageSize>
+        <AllowSorting>true</AllowSorting>
+        <SortOrder>Ascending</SortOrder>
+        <Columns>
+          <HyperLinkGridColumn>
+            <HeaderStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </HeaderStyle>
+            <ItemStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </ItemStyle>
+            <FooterStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </FooterStyle>
+            <HeaderText>Invoice Id</HeaderText>
+            <ColumnType>HyperLinkGridColumn</ColumnType>
+            <SortExpression>InvoiceId</SortExpression>
+            <VisiblePermission>
+              <CheckPermission>false</CheckPermission>
+            </VisiblePermission>
+            <ExportPermission>
+              <CheckPermission>false</CheckPermission>
+            </ExportPermission>
+            <LinkPermission>
+              <CheckPermission>false</CheckPermission>
+            </LinkPermission>
+            <IncludeInExport>true</IncludeInExport>
+            <DataNavigateUrlFields>InvoiceId</DataNavigateUrlFields>
+            <DataNavigateUrlFormatString>~/App/Invoices/Overview?InvoiceId={0}</DataNavigateUrlFormatString>
+            <DataTextField>InvoiceId</DataTextField>
+          </HyperLinkGridColumn>
+          <BoundGridColumn>
+            <HeaderStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </HeaderStyle>
+            <ItemStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </ItemStyle>
+            <FooterStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </FooterStyle>
+            <HeaderText>Invoice Date</HeaderText>
+            <ColumnType>BoundGridColumn</ColumnType>
+            <SortExpression>InvoiceDate</SortExpression>
+            <VisiblePermission>
+              <CheckPermission>false</CheckPermission>
+            </VisiblePermission>
+            <ExportPermission>
+              <CheckPermission>false</CheckPermission>
+            </ExportPermission>
+            <LinkPermission>
+              <CheckPermission>false</CheckPermission>
+            </LinkPermission>
+            <IncludeInExport>true</IncludeInExport>
+            <DataField>InvoiceDate</DataField>
+            <DataFormatString>{0:MMM dd yyyy (ddd)}</DataFormatString>
+          </BoundGridColumn>
+          <BoundGridColumn>
+            <HeaderStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </HeaderStyle>
+            <ItemStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </ItemStyle>
+            <FooterStyle>
+              <CssClass />
+              <HorizonalAlign>NotSet</HorizonalAlign>
+              <VerticalAlign>NotSet</VerticalAlign>
+              <Wrap>true</Wrap>
+            </FooterStyle>
+            <HeaderText>Payment Status</HeaderText>
+            <ColumnType>BoundGridColumn</ColumnType>
+            <SortExpression>PaymentStatusHtml</SortExpression>
+            <VisiblePermission>
+              <CheckPermission>false</CheckPermission>
+            </VisiblePermission>
+            <ExportPermission>
+              <CheckPermission>false</CheckPermission>
+            </ExportPermission>
+            <LinkPermission>
+              <CheckPermission>false</CheckPermission>
+            </LinkPermission>
+            <IncludeInExport>true</IncludeInExport>
+            <DataField>PaymentStatusHtml</DataField>
+          </BoundGridColumn>
+        </Columns>
+        <GroupByExpressions />
+        <GroupLoadMode>Server</GroupLoadMode>
+        <GroupsDefaultExpanded>true</GroupsDefaultExpanded>
+        <AllowMultiRowSelection>false</AllowMultiRowSelection>
+        <GroupingEnabled>false</GroupingEnabled>
+        <ShowGroupPanel>false</ShowGroupPanel>
+        <AllowGroupExpandCollapse>false</AllowGroupExpandCollapse>
+        <ShowRefreshButton>false</ShowRefreshButton>
+        <ShowExportToCsvButton>false</ShowExportToCsvButton>
+        <ShowExportToExcelButton>false</ShowExportToExcelButton>
+        <ShowExportToPdfButton>false</ShowExportToPdfButton>
+        <ShowExportToWordButton>false</ShowExportToWordButton>
+        <ExportIgnorePaging>true</ExportIgnorePaging>
+        <ExportOpenInNewWindow>true</ExportOpenInNewWindow>
+        <ExportHideStructureColumns>true</ExportHideStructureColumns>
+        <AllowScroll>false</AllowScroll>
+        <UseStaticHeaders>false</UseStaticHeaders>
+        <FrozenColumnsCount>0</FrozenColumnsCount>
+        <SaveScrollPosition>true</SaveScrollPosition>
+        <CsvEncloseDataWithQuotes>false</CsvEncloseDataWithQuotes>
+        <CsvColumnDelimiter>Comma</CsvColumnDelimiter>
+        <CsvRowDelimiter>NewLine</CsvRowDelimiter>
+        <AllowRowsDragDrop>false</AllowRowsDragDrop>
+        <AllowRowSelect>false</AllowRowSelect>
+        <EnableDragToSelectRows>false</EnableDragToSelectRows>
+      </Grid>
+    </Section>
+  </Sections>
+  <SectionZoneLayout>SingleColumn</SectionZoneLayout>
+  <SectionZoneLayoutMode>Static</SectionZoneLayoutMode>
+  <Settings />
+  <Scripts />
+  <DataCommands>
+    <DataCommand>
+      <Name>Worker_SearchInvoices</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@ProfileId</Name>
+          <InputType>User</InputType>
+          <InputKey>ProfileId</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@InvoiceId</Name>
+          <InputType>Control</InputType>
+          <InputKey>InvoiceId</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@DateSearchMode</Name>
+          <InputType>Control</InputType>
+          <InputKey>DateSearchMode</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@PaymentStatus</Name>
+          <InputType>Control</InputType>
+          <InputKey>PaymentStatus</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@Status</Name>
+          <InputType>Special</InputType>
+          <InputKey>Null</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+  </DataCommands>
+  <OnPageLoad>
+    <Commands>
+      <DefaultOrPopulateScreenCommand>
+        <Name>DefaultOrPopulateScreen</Name>
+        <Type>DefaultOrPopulateScreenCommand</Type>
+        <ContinueOnError>false</ContinueOnError>
+        <EntityInputType>QueryString</EntityInputType>
+        <ExecuteOnPostBack>false</ExecuteOnPostBack>
+      </DefaultOrPopulateScreenCommand>
+    </Commands>
+  </OnPageLoad>
+  <OnPageInit>
+    <Commands>
+      <RenderPageSectionsCommand>
+        <Name>RenderPageSections</Name>
+        <Type>RenderPageSectionsCommand</Type>
+        <ContinueOnError>false</ContinueOnError>
+        <EntityInputType>QueryString</EntityInputType>
+        <Mode>Simple</Mode>
+      </RenderPageSectionsCommand>
+    </Commands>
+  </OnPageInit>
+</Screen>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SectionZoneLayout>
+  <Name>CardWithFooter</Name>
+  <Dividers>
+    <Divider>
+      <Name>Top</Name>
+    </Divider>
+    <Divider>
+      <CssClass>card mb-4</CssClass>
+      <Dividers>
+        <Divider>
+          <Name>Content</Name>
+          <CssClass>card-body</CssClass>
+        </Divider>
+        <Divider>
+          <Name>Footer</Name>
+          <CssClass>card-footer</CssClass>
+        </Divider>
+      </Dividers>
+    </Divider>
+    <Divider>
+      <Name>Bottom</Name>
+    </Divider>
+  </Dividers>
+  
+</SectionZoneLayout>

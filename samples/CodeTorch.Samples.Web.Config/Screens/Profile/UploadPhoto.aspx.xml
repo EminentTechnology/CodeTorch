@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Screen xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>UploadPhoto.aspx</Name>
+  <PageTemplate>
+    <Mode>Static</Mode>
+    <Name>App</Name>
+  </PageTemplate>
+  <Type>Screen</Type>
+  <Folder>Profile</Folder>
+  <RequireAuthentication>true</RequireAuthentication>
+  <SupportsTransactions>true</SupportsTransactions>
+  <ValidateRequest>true</ValidateRequest>
+  <Menu>
+    <DisplayMenu>false</DisplayMenu>
+  </Menu>
+  <Title>
+    <Name>My Profile</Name>
+    <UseCommand>false</UseCommand>
+  </Title>
+  <SubTitle>
+    <UseCommand>false</UseCommand>
+  </SubTitle>
+  <ScreenPermission>
+    <CheckPermission>false</CheckPermission>
+  </ScreenPermission>
+  <Sections>
+    <Section xsi:type="AlertSection">
+      <Name>Alert</Name>
+      <Type>Alert</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Top</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <IncludeValidationSummary>true</IncludeValidationSummary>
+    </Section>
+    <Section xsi:type="ContentSection">
+      <Name>TitleArea</Name>
+      <Type>Content</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Top</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <Content>&lt;h4 class="font-weight-bold py-3 mb-4"&gt;Upload Photo &lt;/h4&gt;</Content>
+    </Section>
+    <Section xsi:type="EditSection">
+      <Name>Details</Name>
+      <Type>Edit</Type>
+      <Mode>All</Mode>
+      <ContainerMode>Plain</ContainerMode>
+      <Visible>true</Visible>
+      <ContainerElement>fieldset</ContainerElement>
+      <ContainerCssClass>form-horizontal</ContainerCssClass>
+      <ContentPane>Content</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets>
+        <Widget xsi:type="FileUploadControl">
+          <Name>PhotoId</Name>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass>col-sm-10</ControlContainerCssClass>
+          <Label>Photo </Label>
+          <LabelCssClass>col-form-label col-sm-2 text-sm-right</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>form-group row</ControlGroupCssClass>
+          <HelpText>We accept photos up to 1MB large. Formats accepted are .jpg, .jpeg and .png</HelpText>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>FileUpload</Type>
+          <IsRequired>true</IsRequired>
+          <Visible>true</Visible>
+          <DataField>PhotoId</DataField>
+          <Width>100%</Width>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+          <EntityInputType>User</EntityInputType>
+          <DocumentRepository>S3</DocumentRepository>
+          <Document>
+            <EntityID>Id</EntityID>
+            <EntityType>Profile</EntityType>
+            <DocumentType>ProfilePhoto</DocumentType>
+            <Settings>
+              <Setting>
+                <Name>folder</Name>
+                <Value>profile/photos/{entityid}</Value>
+              </Setting>
+            </Settings>
+          </Document>
+          <AutoAddFileInputs>true</AutoAddFileInputs>
+          <DisableChunkUpload>false</DisableChunkUpload>
+          <DisablePlugins>false</DisablePlugins>
+          <EnableInlineProgress>true</EnableInlineProgress>
+          <FileFilters>
+            <FileFilter>
+              <Description>Images(jpeg;jpg;png)</Description>
+              <Extensions>jpeg,jpg,png</Extensions>
+            </FileFilter>
+          </FileFilters>
+          <HideFileInput>false</HideFileInput>
+          <InitialFileInputsCount>1</InitialFileInputsCount>
+          <InputSize>23</InputSize>
+          <MaxFileInputsCount>1</MaxFileInputsCount>
+          <MaxFileSize>1024000</MaxFileSize>
+          <MultipleFileSelection>Disabled</MultipleFileSelection>
+          <TemporaryFileExpirationMinutes>240</TemporaryFileExpirationMinutes>
+        </Widget>
+      </Widgets>
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+    </Section>
+    <Section xsi:type="ButtonListSection">
+      <Name>Buttons</Name>
+      <CssClass>text-center</CssClass>
+      <Type>ButtonList</Type>
+      <Mode>All</Mode>
+      <ContainerMode>Plain</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Bottom</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <Buttons>
+        <Button>
+          <Name>Save</Name>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <Type>Button</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <CssClass>btn btn-primary</CssClass>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+          <Text>Upload Photo</Text>
+          <CausesValidation>true</CausesValidation>
+          <OnClick>
+            <Commands>
+              <InsertUpdateSaveCommand>
+                <Name>SaveCommand</Name>
+                <Type>InsertUpdateSaveCommand</Type>
+                <ContinueOnError>false</ContinueOnError>
+                <EntityID>ProfileId</EntityID>
+                <EntityInputType>User</EntityInputType>
+                <UpdateCommand>Profile_UpdatePhoto</UpdateCommand>
+                <AfterInsertConfirmationMessage>Record was added successfully</AfterInsertConfirmationMessage>
+                <AfterUpdateConfirmationMessage>Record was updated successfully</AfterUpdateConfirmationMessage>
+                <RedirectAfterInsert>true</RedirectAfterInsert>
+                <RedirectAfterUpdate>true</RedirectAfterUpdate>
+                <AfterUpdateRedirectUrl>~/App/Profile/Overview</AfterUpdateRedirectUrl>
+              </InsertUpdateSaveCommand>
+            </Commands>
+          </OnClick>
+        </Button>
+        <Button>
+          <Name>Cancel</Name>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <Type>Button</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <CssClass>btn btn-default</CssClass>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+          <Text>Cancel</Text>
+          <CausesValidation>false</CausesValidation>
+          <OnClick>
+            <Commands>
+              <NavigateToUrlCommand>
+                <Name>NavigateOnCancel</Name>
+                <Type>NavigateToUrlCommand</Type>
+                <ContinueOnError>false</ContinueOnError>
+                <NavigateUrl>~/App/Profile/Overview</NavigateUrl>
+                <EntityID>ProfileId</EntityID>
+              </NavigateToUrlCommand>
+            </Commands>
+          </OnClick>
+        </Button>
+      </Buttons>
+    </Section>
+  </Sections>
+  <SectionZoneLayout>SingleColumnNoActions</SectionZoneLayout>
+  <SectionZoneLayoutMode>Static</SectionZoneLayoutMode>
+  <Settings />
+  <Scripts />
+  <DataCommands>
+    <DataCommand>
+      <Name>Profile_GetById</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@ProfileId</Name>
+          <InputType>User</InputType>
+          <InputKey>ProfileId</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+    <DataCommand>
+      <Name>Profile_UpdatePhoto</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@ProfileId</Name>
+          <InputType>User</InputType>
+          <InputKey>ProfileId</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@PhotoId</Name>
+          <InputType>Control</InputType>
+          <InputKey>PhotoId</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@ModifiedBy</Name>
+          <InputType>User</InputType>
+          <InputKey>EmailAddress</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+  </DataCommands>
+  <OnPageLoad>
+    <Commands>
+      <DefaultOrPopulateScreenCommand>
+        <Name>DefaultOrPopulateScreen</Name>
+        <Type>DefaultOrPopulateScreenCommand</Type>
+        <ContinueOnError>false</ContinueOnError>
+        <EntityID>ProfileId</EntityID>
+        <EntityInputType>User</EntityInputType>
+        <RetrieveCommand>Profile_GetById</RetrieveCommand>
+        <ExecuteOnPostBack>false</ExecuteOnPostBack>
+      </DefaultOrPopulateScreenCommand>
+    </Commands>
+  </OnPageLoad>
+  <OnPageInit>
+    <Commands>
+      <RenderPageSectionsCommand>
+        <Name>RenderPageSections</Name>
+        <Type>RenderPageSectionsCommand</Type>
+        <ContinueOnError>false</ContinueOnError>
+        <EntityID>ProfileId</EntityID>
+        <EntityInputType>User</EntityInputType>
+        <Mode>InsertEdit</Mode>
+      </RenderPageSectionsCommand>
+    </Commands>
+  </OnPageInit>
+</Screen>

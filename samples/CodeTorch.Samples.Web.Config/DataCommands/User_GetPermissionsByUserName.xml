@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataCommand xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>User_GetPermissionsByUserName</Name>
+  <Type>Text</Type>
+  <Text>
+    SELECT 
+      r.RoleID, r.RoleName, p.PermissionName, rp.HasPermission 
+    FROM	
+      Users u 
+      JOIN UserRole ur 
+        on u.UserID=ur.UserID 
+      JOIN Role r 
+        on ur.RoleID = r.RoleID 
+      JOIN RolePermission rp 
+        on rp.RoleID = r.RoleID 
+      JOIN Permission p 
+        on p.PermissionName = rp.PermissionName 
+    WHERE 
+      u.UserName = @UserName and 
+      p.PermissionName = @PermissionName
+  </Text>
+  <ReturnType>DataTable</ReturnType>
+  <Parameters>
+    <Parameter>
+      <Name>@UserName</Name>
+      <Type>String</Type>
+      <Size>200</Size>
+      <Direction>In</Direction>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+    <Parameter>
+      <Name>@PermissionName</Name>
+      <Type>String</Type>
+      <Size>200</Size>
+      <Direction>In</Direction>
+      <IsUserDefinedType>false</IsUserDefinedType>
+      <IsTableType>false</IsTableType>
+    </Parameter>
+  </Parameters>
+  <Columns>
+    <Column>
+      <Name>RoleID</Name>
+      <Type>Int32</Type>
+    </Column>
+    <Column>
+      <Name>RoleName</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>PermissionName</Name>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <Name>HasPermission</Name>
+      <Type>Boolean</Type>
+    </Column>
+  </Columns>
+</DataCommand>

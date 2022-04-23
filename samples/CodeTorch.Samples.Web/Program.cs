@@ -1,57 +1,39 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using CodeTorch.Abstractions;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using CodeTorch.Configuration.FileStore;
 
-namespace CodeTorch.Samples.Web
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddRazorPages(options => {
+    options.Conventions.AddPageRoute("/_codetorchpage", "{*url}");
+});
+
+builder.Services.AddSingleton<IConfigurationStore, FileConfigurationStore>();
+
+
+var app = builder.Build();
+
+CodeTorch.Core.Configuration.GetInstance().ConfigurationPath = @"C:\Sandbox\CodeTorch2\samples\CodeTorch.Samples.Web.Config";
+var store = app.Services.GetService<IConfigurationStore>();
+CodeTorch.Core.ConfigurationLoader.Store = store;
+
+await CodeTorch.Core.ConfigurationLoader.LoadConfiguration();
+
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
 {
-    public class Program
-    {
-        public static async Task Main(string[] args)
-        {
-            var host = CreateHostBuilder(args).Build();
-
-            // Create a new scope
-            using (var scope = host.Services.CreateScope())
-            {
-                // Get the DbContext instance
-                var store = scope.ServiceProvider.GetRequiredService<IConfigurationStore>();
-
-                //Do the migration asynchronously
-                CodeTorch.Core.ConfigurationLoader.Store = store;
-                await CodeTorch.Core.ConfigurationLoader.LoadConfiguration();
-            }
-
-            host.Run();
-        }
-
-        public static IHostBuilder CreateHostBuilder(string[] args)
-        {
-            var builder = 
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
-
-            builder.ConfigureLogging((context, b) =>
-            {
-                b.AddFilter("Microsoft", LogLevel.Warning);
-                b.AddFilter("System", LogLevel.Warning);
-                b.SetMinimumLevel(LogLevel.Debug);
-                b.AddConsole();
-            });
-
-            return builder;
-
-        }
-    }
+    app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
 }
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthorization();
+
+app.MapRazorPages();
+
+app.Run();

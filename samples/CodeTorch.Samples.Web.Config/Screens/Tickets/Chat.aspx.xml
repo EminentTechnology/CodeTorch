@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Screen xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Chat.aspx</Name>
+  <PageTemplate>
+    <Mode>Static</Mode>
+    <Name>App</Name>
+  </PageTemplate>
+  <Type>Screen</Type>
+  <Folder>Tickets</Folder>
+  <RequireAuthentication>true</RequireAuthentication>
+  <SupportsTransactions>true</SupportsTransactions>
+  <ValidateRequest>true</ValidateRequest>
+  <Menu>
+    <DisplayMenu>false</DisplayMenu>
+  </Menu>
+  <Title>
+    <Name />
+    <UseCommand>true</UseCommand>
+    <CommandFormatString>{PageTitle}</CommandFormatString>
+    <FormattedCommandFormatString>{FormattedPageTitle}</FormattedCommandFormatString>
+    <CommandName>Profile_GetTicketTitle</CommandName>
+  </Title>
+  <SubTitle>
+    <Name />
+    <UseCommand>true</UseCommand>
+    <CommandFormatString>{SubTitle}</CommandFormatString>
+    <CommandName>Profile_GetTicketTitle</CommandName>
+  </SubTitle>
+  <ScreenPermission>
+    <CheckPermission>false</CheckPermission>
+  </ScreenPermission>
+  <Sections>
+    <Section xsi:type="AlertSection">
+      <Name>Alert</Name>
+      <Type>Alert</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Top</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <IncludeValidationSummary>false</IncludeValidationSummary>
+    </Section>
+    <Section xsi:type="CustomSection">
+      <Name>Chat</Name>
+      <Type>Custom</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Content</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <UserControlPath>~/UserControls/TicketChat.ascx</UserControlPath>
+    </Section>
+  </Sections>
+  <SectionZoneLayout>SingleColumnChat</SectionZoneLayout>
+  <SectionZoneLayoutMode>Static</SectionZoneLayoutMode>
+  <Settings />
+  <Scripts>
+    <Script>
+      <RenderAtTopOfPage>true</RenderAtTopOfPage>
+      <IsOnSubmitScript>false</IsOnSubmitScript>
+      <Path>https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js</Path>
+    </Script>
+  </Scripts>
+  <DataCommands>
+    <DataCommand>
+      <Name>Profile_GetTicketTitle</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@ProfileId</Name>
+          <InputType>User</InputType>
+          <InputKey>ProfileId</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@TicketId</Name>
+          <InputType>QueryString</InputType>
+          <InputKey>TicketId</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+  </DataCommands>
+  <OnPageLoad>
+    <Commands />
+  </OnPageLoad>
+  <OnPageInit>
+    <Commands>
+      <RenderPageSectionsCommand>
+        <Name>RenderPageSections</Name>
+        <Type>RenderPageSectionsCommand</Type>
+        <ContinueOnError>false</ContinueOnError>
+        <EntityInputType>QueryString</EntityInputType>
+        <Mode>Simple</Mode>
+      </RenderPageSectionsCommand>
+    </Commands>
+  </OnPageInit>
+</Screen>

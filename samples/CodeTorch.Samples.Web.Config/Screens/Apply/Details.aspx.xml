@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Screen xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Details.aspx</Name>
+  <PageTemplate>
+    <Mode>Static</Mode>
+    <Name>App</Name>
+  </PageTemplate>
+  <Type>Screen</Type>
+  <Folder>Apply</Folder>
+  <RequireAuthentication>true</RequireAuthentication>
+  <SupportsTransactions>true</SupportsTransactions>
+  <ValidateRequest>true</ValidateRequest>
+  <Menu>
+    <DisplayMenu>false</DisplayMenu>
+  </Menu>
+  <Title>
+    <UseCommand>true</UseCommand>
+    <CommandFormatString>{PageTitle}</CommandFormatString>
+    <CommandName>Worker_GetJobTitle</CommandName>
+  </Title>
+  <SubTitle>
+    <UseCommand>false</UseCommand>
+  </SubTitle>
+  <ScreenPermission>
+    <CheckPermission>false</CheckPermission>
+  </ScreenPermission>
+  <Sections>
+    <Section xsi:type="AlertSection">
+      <Name>Alert</Name>
+      <Type>Alert</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Top</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <IncludeValidationSummary>true</IncludeValidationSummary>
+    </Section>
+    <Section xsi:type="ContentSection">
+      <Name>TitleArea</Name>
+      <Type>Content</Type>
+      <Mode>All</Mode>
+      <ContainerMode>None</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Top</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <Content>&lt;h4 class="font-weight-bold py-3 mb-4"&gt;Type an introductory note
+            &lt;/h4&gt;
+&lt;div class="alert alert-dark-warning alert-dismissible fade show"&gt;
+                    &lt;button type="button" class="close" data-dismiss="alert"&gt;×&lt;/button&gt;
+                    Do not provide your last name and/or contact information (email, phone, etc). This information will be shared as soon as you are awarded the shift.
+                  &lt;/div&gt;</Content>
+    </Section>
+    <Section xsi:type="EditSection">
+      <Name>Details</Name>
+      <Type>Edit</Type>
+      <Mode>All</Mode>
+      <ContainerMode>Plain</ContainerMode>
+      <Visible>true</Visible>
+      <ContainerElement>fieldset</ContainerElement>
+      <ContainerCssClass>form-horizontal</ContainerCssClass>
+      <ContentPane>Content</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets>
+        <Widget xsi:type="TextAreaControl">
+          <Name>IntroText</Name>
+          <RenderLabel>false</RenderLabel>
+          <ControlContainerElement>div</ControlContainerElement>
+          <ControlContainerCssClass>col</ControlContainerCssClass>
+          <Label>Introduction</Label>
+          <LabelCssClass>col-form-label col-sm-2 text-sm-right</LabelCssClass>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <ControlGroupElement>div</ControlGroupElement>
+          <ControlGroupCssClass>form-group row</ControlGroupCssClass>
+          <HelpTextElement>span</HelpTextElement>
+          <HelpTextCssClass>help-block</HelpTextCssClass>
+          <Type>TextArea</Type>
+          <IsRequired>true</IsRequired>
+          <Visible>true</Visible>
+          <DataField>IntroText</DataField>
+          <Width>100%</Width>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+          <Rows>10</Rows>
+          <Columns>20</Columns>
+        </Widget>
+      </Widgets>
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+    </Section>
+    <Section xsi:type="ButtonListSection">
+      <Name>Buttons</Name>
+      <CssClass>text-center</CssClass>
+      <Type>ButtonList</Type>
+      <Mode>All</Mode>
+      <ContainerMode>Plain</ContainerMode>
+      <Visible>true</Visible>
+      <ContentPane>Bottom</ContentPane>
+      <Permission>
+        <CheckPermission>false</CheckPermission>
+      </Permission>
+      <Widgets />
+      <AfterPopulateSection>
+        <Commands />
+      </AfterPopulateSection>
+      <Buttons>
+        <Button>
+          <Name>Save</Name>
+          <RenderLabel>true</RenderLabel>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <Type>Button</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <CssClass>btn btn-primary</CssClass>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+          <Text>Next</Text>
+          <CausesValidation>true</CausesValidation>
+          <OnClick>
+            <Commands>
+              <InsertUpdateSaveCommand>
+                <Name>SaveCommand</Name>
+                <Type>InsertUpdateSaveCommand</Type>
+                <ContinueOnError>false</ContinueOnError>
+                <EntityID>JobGuid</EntityID>
+                <EntityInputType>QueryString</EntityInputType>
+                <UpdateCommand>Worker_UpdateJobApplication</UpdateCommand>
+                <AfterInsertConfirmationMessage>Record was added successfully</AfterInsertConfirmationMessage>
+                <AfterUpdateConfirmationMessage>Record was updated successfully</AfterUpdateConfirmationMessage>
+                <RedirectAfterInsert>true</RedirectAfterInsert>
+                <RedirectAfterUpdate>true</RedirectAfterUpdate>
+                <AfterUpdateRedirectUrl>~/App/Apply/Review</AfterUpdateRedirectUrl>
+                <AfterUpdateRedirectUrlContext>JobGuid</AfterUpdateRedirectUrlContext>
+              </InsertUpdateSaveCommand>
+            </Commands>
+          </OnClick>
+        </Button>
+        <Button>
+          <Name>Cancel</Name>
+          <RenderLabel>true</RenderLabel>
+          <LabelWrapsControl>false</LabelWrapsControl>
+          <LabelRendersBeforeControl>true</LabelRendersBeforeControl>
+          <Type>Button</Type>
+          <IsRequired>false</IsRequired>
+          <Visible>true</Visible>
+          <CssClass>btn btn-default</CssClass>
+          <Validators />
+          <VisiblePermission>
+            <CheckPermission>false</CheckPermission>
+          </VisiblePermission>
+          <EditPermission>
+            <CheckPermission>false</CheckPermission>
+          </EditPermission>
+          <Text>Back</Text>
+          <CausesValidation>false</CausesValidation>
+          <OnClick>
+            <Commands>
+              <NavigateToUrlCommand>
+                <Name>NavigateOnCancel</Name>
+                <Type>NavigateToUrlCommand</Type>
+                <ContinueOnError>false</ContinueOnError>
+                <NavigateUrl>~/App/Apply/Shifts</NavigateUrl>
+                <Context>JobGuid</Context>
+                <EntityID>JobGuid</EntityID>
+              </NavigateToUrlCommand>
+            </Commands>
+          </OnClick>
+        </Button>
+      </Buttons>
+    </Section>
+  </Sections>
+  <SectionZoneLayout>SingleColumnNoActions</SectionZoneLayout>
+  <SectionZoneLayoutMode>Static</SectionZoneLayoutMode>
+  <Settings />
+  <Scripts />
+  <DataCommands>
+    <DataCommand>
+      <Name>Worker_GetJobTitle</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@ProfileId</Name>
+          <InputType>User</InputType>
+          <InputKey>ProfileId</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@JobGuid</Name>
+          <InputType>QueryString</InputType>
+          <InputKey>JobGuid</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+    <DataCommand>
+      <Name>Worker_GetJobByGuid</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@ProfileId</Name>
+          <InputType>User</InputType>
+          <InputKey>ProfileId</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@JobGuid</Name>
+          <InputType>QueryString</InputType>
+          <InputKey>JobGuid</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+    <DataCommand>
+      <Name>Worker_UpdateJobApplication</Name>
+      <Parameters>
+        <Parameter>
+          <Name>@ModifiedBy</Name>
+          <InputType>User</InputType>
+          <InputKey>EmailAddress</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@ProfileId</Name>
+          <InputType>User</InputType>
+          <InputKey>ProfileId</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@JobGuid</Name>
+          <InputType>QueryString</InputType>
+          <InputKey>JobGuid</InputKey>
+        </Parameter>
+        <Parameter>
+          <Name>@IntroText</Name>
+          <InputType>Control</InputType>
+          <InputKey>IntroText</InputKey>
+        </Parameter>
+      </Parameters>
+    </DataCommand>
+  </DataCommands>
+  <OnPageLoad>
+    <Commands>
+      <DefaultOrPopulateScreenCommand>
+        <Name>DefaultOrPopulateScreen</Name>
+        <Type>DefaultOrPopulateScreenCommand</Type>
+        <ContinueOnError>false</ContinueOnError>
+        <EntityID>JobGuid</EntityID>
+        <EntityInputType>QueryString</EntityInputType>
+        <RetrieveCommand>Worker_GetJobByGuid</RetrieveCommand>
+        <ExecuteOnPostBack>false</ExecuteOnPostBack>
+      </DefaultOrPopulateScreenCommand>
+    </Commands>
+  </OnPageLoad>
+  <OnPageInit>
+    <Commands>
+      <RenderPageSectionsCommand>
+        <Name>RenderPageSections</Name>
+        <Type>RenderPageSectionsCommand</Type>
+        <ContinueOnError>false</ContinueOnError>
+        <EntityID>JobGuid</EntityID>
+        <EntityInputType>QueryString</EntityInputType>
+        <Mode>InsertEdit</Mode>
+      </RenderPageSectionsCommand>
+    </Commands>
+  </OnPageInit>
+</Screen>

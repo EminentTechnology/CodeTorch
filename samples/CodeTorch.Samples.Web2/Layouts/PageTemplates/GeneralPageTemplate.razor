@@ -1,0 +1,27 @@
+﻿@inherits LayoutComponentBase
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3 p-4 bg-dark">
+                <a href="#" class="text-light">Buttons</a>
+            </div>
+            <div class="col-9 p-4">
+                @Body
+            </div>
+            
+        </div>
+    </div>
+    
+
+
+@code {
+
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public string SubTitle { get; set; }
+
+
+}
+

@@ -1,0 +1,28 @@
+﻿@page
+@model CodeTorch.Web.Pages.CodeTorchPageModel
+@{
+    if (String.IsNullOrWhiteSpace(Model.Layout))
+    {
+        Layout = Model.Layout;    
+    }
+    
+}
+we are on codetorch page
+
+<br/>
+App details below<br/>
+@Model.AppState.Name
+
+<p>
+    this is the requested page name
+</p>
+
+
+<p>
+    redirect if we don't know the page
+</p>
+
+
+<p>
+    list all actions to run on init
+</p>

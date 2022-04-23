@@ -479,17 +479,9 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\core\CodeTorch.Abstractions\CodeTorch.Abstractions.csproj">
-      <Project>{d4c1a8a6-0150-49d9-9ec6-e1561366fe47}</Project>
-      <Name>CodeTorch.Abstractions</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\core\CodeTorch.Core\CodeTorch.Core.csproj">
       <Project>{ffa210b6-b65e-4cb3-9a43-e546f132e78a}</Project>
       <Name>CodeTorch.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\core\Eminent.CodeGenerator\Eminent.CodeGenerator.csproj">
-      <Project>{acabe9a8-825e-46a4-8a52-ec44da8357f7}</Project>
-      <Name>Eminent.CodeGenerator</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\plugins\CodeTorch.Configuration.FileStore\CodeTorch.Configuration.FileStore.csproj">
       <Project>{5fb880ce-5223-4c50-ac5a-885011c5728e}</Project>
