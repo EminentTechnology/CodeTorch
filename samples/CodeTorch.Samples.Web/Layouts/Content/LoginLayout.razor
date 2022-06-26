@@ -1,0 +1,20 @@
+﻿<div class="row">
+    <div class="col-md-12">@Top</div>
+</div>
+<div class="row my-5">
+    <div class="col-md-12">@Left</div>
+</div>
+<div class="row">
+    <div class="col-md-12">@Bottom</div>
+</div>
+@code {
+
+    [Parameter]
+    public RenderFragment Top { get; set; }
+
+    [Parameter]
+    public RenderFragment Left { get; set; }
+
+    [Parameter]
+    public RenderFragment Bottom { get; set; }
+}

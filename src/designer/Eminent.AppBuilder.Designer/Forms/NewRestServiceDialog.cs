@@ -109,7 +109,8 @@ namespace CodeTorch.Designer.Forms
 
         private int GetRestServiceCountByName()
         {
-            var retVal = from item in Configuration.GetInstance().RestServices
+            
+            var retVal = from item in Core.Configuration.GetInstance().RestServices
                          where 
                             (item.Name.ToLower() == ItemName.Text.ToLower()) &&
                             (item.Folder.ToLower() == Folder.Text.ToLower()) 
@@ -126,7 +127,7 @@ namespace CodeTorch.Designer.Forms
             item.Name = ItemName.Text;
             item.Folder = Folder.Text;
 
-            Configuration.GetInstance().RestServices.Add(item);
+            Core.Configuration.GetInstance().RestServices.Add(item);
             RestService.Save(item);
 
         }

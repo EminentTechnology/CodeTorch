@@ -1,0 +1,29 @@
+﻿@page "/test"
+@using CodeTorch.Blazor.Sections
+@using CodeTorch.Samples.Web.Layouts.Content
+@using CodeTorch.Samples.Web.Layouts.PageTemplates
+<LoginPageTemplate Title="RxTemps">
+    <Body>
+        <LoginLayout>
+            <Left>
+                <Alert></Alert>
+                <Edit>
+                    <Textbox Name="EmailAddress" Label="Email Address" IsRequired="true"></Textbox>
+                    <Password Name="Password" Label="Password" IsRequired="true"></Password>
+                </Edit>
+                <Buttons>
+                    <ChildContent>
+                        <ButtonControl>Login</ButtonControl>
+                    </ChildContent>
+                </Buttons>
+            </Left>
+            <Bottom>
+                <Content>
+                    <div class="text-center text-muted">Don't have a Pharmacist/Technician account yet? <a href="../Signup/Default">Sign Up</a></div>
+                    <div class="text-center text-muted">Forgot your password? <a href="ForgotPasswordRequest">Reset Password</a></div>
+                    <div class="text-center text-muted">Are you a Pharmacy looking to hire Pharmacists/Technicians? <a href="RedirectToEmployerLogin">Login Here</a></div>
+                </Content>
+            </Bottom>
+        </LoginLayout>
+    </Body>
+</LoginPageTemplate>

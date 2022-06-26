@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CodeTorch.Designer</RootNamespace>
     <AssemblyName>CodeTorch.Designer</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <ManifestCertificateThumbprint>DA7BE36628A2ADA72117994D2C771761DACC723E</ManifestCertificateThumbprint>
@@ -479,9 +479,17 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\core\CodeTorch.Abstractions\CodeTorch.Abstractions.csproj">
+      <Project>{d4c1a8a6-0150-49d9-9ec6-e1561366fe47}</Project>
+      <Name>CodeTorch.Abstractions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\core\CodeTorch.Core\CodeTorch.Core.csproj">
       <Project>{ffa210b6-b65e-4cb3-9a43-e546f132e78a}</Project>
       <Name>CodeTorch.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\plugins\CodeTorch.Configuration.FileStore\CodeTorch.Configuration.FileStore.csproj">
+      <Project>{5fb880ce-5223-4c50-ac5a-885011c5728e}</Project>
+      <Name>CodeTorch.Configuration.FileStore</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\plugins\CodeTorch.Configuration.FileStore\CodeTorch.Configuration.FileStore.csproj">
       <Project>{5fb880ce-5223-4c50-ac5a-885011c5728e}</Project>
