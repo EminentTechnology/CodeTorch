@@ -135,7 +135,7 @@ namespace CodeTorch.Designer.Forms
                     {
                         var client = new RestClient("https://www.googleapis.com");
 
-                        var request = new RestRequest("language/translate/v2", Method.GET);
+                        var request = new RestRequest("language/translate/v2", Method.Get);
                         request.AddParameter("key", GoogleAPIKey.Text);
                         request.AddParameter("source", DefaultCultureCode.Text.Substring(0, 2));
                         request.AddParameter("target", CultureCode.Text.Substring(0, 2));
