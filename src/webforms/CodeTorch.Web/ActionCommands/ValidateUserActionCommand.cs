@@ -133,9 +133,6 @@ namespace CodeTorch.Web.ActionCommands
                             {
                                 IsAuthenticated = true;
                             }
-
-                            
-
                             break;
                         case PasswordMode.Encrypted:
                             string decryptedPassword = Cryptographer.DecryptSymmetric(Me.PasswordAlgorithm, dbPassword);

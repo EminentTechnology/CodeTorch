@@ -41,7 +41,7 @@ namespace CodeTorch.Core
             } 
         }
 
-        
+        public bool SupportExtensionlessScreens { get; set; }
         public string Name { get; set; }
         public string CopyrightCompanyName { get; set; }
         public string DefaultScreen { get; set; }
