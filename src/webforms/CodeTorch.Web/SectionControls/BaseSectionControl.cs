@@ -217,15 +217,70 @@ namespace CodeTorch.Web.SectionControls
                 SetTitle(SectionID, Value);
             }
 
+            if ((MemberType.ToLower() == "property") && (Property.ToLower() == "cssclass"))
+            {
+                SetTitleCSS(SectionID, Value);
+            }
 
+            if ((MemberType.ToLower() == "property") && (Property.ToLower() == "introtext"))
+            {
+                SetIntroText(SectionID, Value);
+            }
+
+
+        }
+
+        public virtual void SetTitleCSS(string SectionID, string Value)
+        {
+            //only applies for sections with containertype of Panel
+            var panel = GetSectionPanelTemplate();
+            if (panel != null)
+            {
+                panel.SectionCssClass = Value;
+                panel.Update();
+            }
         }
 
         public virtual void SetTitle(string SectionID, string Value)
         {
-            
-
+            //only applies for sections with containertype of Panel
+            var panel = GetSectionPanelTemplate();
+            if (panel != null)
+            {
+                panel.HeadingTitle = Value;
+                panel.Update();
+            }
         }
 
+        public virtual void SetIntroText(string SectionID, string Value)
+        {
+            //only applies for sections with containertype of Panel
+            var panel = GetSectionPanelTemplate();
+            if (panel != null)
+            {
+                panel.IntroText = Value;
+                panel.Update();
+            }
+        }
+
+        private SectionPanelTemplate GetSectionPanelTemplate()
+        {
+            SectionPanelTemplate panel = null;
+
+            if (SectionPlaceHolder != null)
+            {
+                foreach (var control in SectionPlaceHolder.Controls)
+                {
+                    if (control is SectionPanelTemplate)
+                    {
+                        panel = control as SectionPanelTemplate;
+                        return panel;
+                    }
+                }
+            }
+
+            return panel;
+        }
 
         public void AddControl(Screen Screen, Section Section, Control parent, Widget control)
         {
