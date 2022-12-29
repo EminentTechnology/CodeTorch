@@ -18,13 +18,9 @@ namespace CodeTorch.Web.ActionCommands
     {
         public Templates.BasePage Page { get; set; }
 
-  
-
         public ActionCommand Command { get; set; }
 
         ExecuteDataCommand Me = null;
-        
-
 
         public bool ExecuteCommand()
         {
@@ -49,10 +45,27 @@ namespace CodeTorch.Web.ActionCommands
 
                 List<ScreenDataCommandParameter> parameters = null;
                 parameters = pageDB.GetPopulatedCommandParameters(Me.DataCommand, Page);
-                dataCommandDB.ExecuteDataCommand(Me.DataCommand, parameters);
 
-                
-
+                DataCommand command = DataCommand.GetDataCommand(Me.DataCommand);
+                if (command != null)
+                {
+                    switch (command.ReturnType)
+                    {
+                        case DataCommandReturnType.DataTable:
+                            dataCommandDB.GetDataForDataCommand(Me.DataCommand, parameters);
+                            break;
+                        case DataCommandReturnType.Integer:
+                            dataCommandDB.ExecuteDataCommand(Me.DataCommand, parameters);
+                            break;
+                        case DataCommandReturnType.Xml:
+                            dataCommandDB.GetXmlDataForDataCommand(Me.DataCommand, parameters);
+                            break;
+                    }
+                }
+                else
+                {
+                    throw new ApplicationException(String.Format("Data Command could not be found in configuration - {0}", Me.DataCommand));
+                }
             }
             catch (Exception ex)
             {
@@ -65,9 +78,5 @@ namespace CodeTorch.Web.ActionCommands
             return success;
 
         }
-
-
-
-        
     }
 }
