@@ -487,7 +487,7 @@ namespace CodeTorch.Web.HttpHandlers
                         {
                             file = HttpContext.Current.Request.Files[parameter.InputKey] as HttpPostedFile;
                         }
-                        file = HttpContext.Current.Request.Files[parameter.InputKey] as HttpPostedFile;
+                        
 
                         if (file != null)
                         {
