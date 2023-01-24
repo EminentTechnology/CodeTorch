@@ -13,14 +13,8 @@ namespace CodeTorch.Web.ActionCommands
     public class RedirectActionCommand : IActionCommandStrategy
     {
         public Templates.BasePage Page { get; set; }
-
-  
-
         public ActionCommand Command { get; set; }
-
         RedirectCommand Me = null;
-        
-
 
         public bool ExecuteCommand()
         {
@@ -60,12 +54,7 @@ namespace CodeTorch.Web.ActionCommands
 
         private string ProcessRedirect()
         {
-
             string retVal = null;
-
-            
-
-            
 
             switch (Me.RedirectMode)
             {
@@ -101,11 +90,9 @@ namespace CodeTorch.Web.ActionCommands
                     break;
             }
 
-
             retVal = Common.CreateUrlWithQueryStringContext(retVal, Me.Context);
 
             return retVal;
-
         }
 
         private string ExecuteDataCommand(string retVal)

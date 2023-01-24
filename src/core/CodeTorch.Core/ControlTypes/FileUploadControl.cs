@@ -18,7 +18,8 @@ namespace CodeTorch.Core
     public enum FileStorageMode
     { 
         Database = 0,
-        AmazonS3
+        AmazonS3,
+        AzureBlobStorage
     }
 
     [Serializable]
