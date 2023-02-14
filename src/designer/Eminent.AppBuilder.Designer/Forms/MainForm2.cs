@@ -97,8 +97,6 @@ namespace CodeTorch.Designer.Forms
 
                     ConfigurationLoader.LoadFromConfigurationFolder(ConfigurationPath);
 
-                    
-                    LoadStartPage();
                     LoadSolutionExplorer();
                     LoadDataCommandProviders();
 
@@ -458,43 +456,6 @@ namespace CodeTorch.Designer.Forms
                         throw new ApplicationException(String.Format("Version {1} Code Transformation Error in file {0}", configFile, SchemaVersion), ex);
                     }
                 }
-            }
-        }
-
-        private void LoadStartPage()
-        {
-            DockWindow d = null;
-
-            try
-            {
-                foreach (DockWindow window in dock.DocumentManager.DocumentArray)
-                {
-                    if (window.Text.ToLower() == "start")
-                    {
-                        d = window; 
-                    }
-                }
-            }
-            catch { }
-
-            if (d == null)
-            {
-
-                string url = String.Format("http://portal.codetorch.com/docs/guides/getting-started/what-is-codetorch");
-
-                WebBrowser web = new WebBrowser();
-                web.Dock = DockStyle.Fill;
-                web.ScriptErrorsSuppressed = true;
-                web.Navigate(url);
-               
-
-
-                DocumentWindow doc = new DocumentWindow();
-                doc.Text = "Start";
-
-                doc.Controls.Add(web);
-
-                this.dock.AddDocument(doc);
             }
         }
 

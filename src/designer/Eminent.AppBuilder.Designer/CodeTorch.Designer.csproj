@@ -180,29 +180,29 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Telerik.WinControls, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+    <Reference Include="Telerik.WinControls, Version=2023.1.117.48, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Telerik\UI for WinForms\Bin40\Telerik.WinControls.dll</HintPath>
+      <HintPath>..\..\..\lib\Telerik\UI for WinForms\Bin48\Telerik.WinControls.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.WinControls.RadDock, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+    <Reference Include="Telerik.WinControls.RadDock, Version=2023.1.117.48, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Telerik\UI for WinForms\Bin40\Telerik.WinControls.RadDock.dll</HintPath>
+      <HintPath>..\..\..\lib\Telerik\UI for WinForms\Bin48\Telerik.WinControls.RadDock.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.WinControls.RichTextEditor, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+    <Reference Include="Telerik.WinControls.RichTextEditor, Version=2023.1.117.48, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Telerik\UI for WinForms\Bin40\Telerik.WinControls.RichTextEditor.dll</HintPath>
+      <HintPath>..\..\..\lib\Telerik\UI for WinForms\Bin48\Telerik.WinControls.RichTextEditor.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.WinControls.Themes.VisualStudio2012Dark, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+    <Reference Include="Telerik.WinControls.Themes.Material, Version=2023.1.117.48, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Telerik\UI for WinForms\Bin40\Telerik.WinControls.Themes.VisualStudio2012Dark.dll</HintPath>
+      <HintPath>..\..\..\lib\Telerik\UI for WinForms\Bin48\Telerik.WinControls.Themes.Material.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.WinControls.UI, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+    <Reference Include="Telerik.WinControls.UI, Version=2023.1.117.48, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Telerik\UI for WinForms\Bin40\Telerik.WinControls.UI.dll</HintPath>
+      <HintPath>..\..\..\lib\Telerik\UI for WinForms\Bin48\Telerik.WinControls.UI.dll</HintPath>
     </Reference>
-    <Reference Include="TelerikCommon, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+    <Reference Include="TelerikCommon, Version=2023.1.117.48, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Telerik\UI for WinForms\Bin40\TelerikCommon.dll</HintPath>
+      <HintPath>..\..\..\lib\Telerik\UI for WinForms\Bin48\TelerikCommon.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -798,7 +798,17 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="Telerik.WinControls.Themes.VisualStudio2012Dark">
+    <PublishFile Include="Telerik.WinControls.Themes.VisualStudio2022">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Telerik.WinControls.Themes.Material">
       <Visible>False</Visible>
       <Group>
       </Group>
