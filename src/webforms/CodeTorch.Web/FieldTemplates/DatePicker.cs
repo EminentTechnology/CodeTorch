@@ -42,6 +42,7 @@ namespace CodeTorch.Web.FieldTemplates
 
             try
             {
+                ctrl.EnableTyping = Me.EnableTyping;
                 ctrl.MinDate = Me.MinDate;
                 ctrl.DateInput.DateFormat = Me.DateFormat;
                 ctrl.DateInput.DisplayDateFormat = Me.DisplayDateFormat;

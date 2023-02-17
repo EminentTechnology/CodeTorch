@@ -58,5 +58,8 @@ namespace CodeTorch.Core
 
         [Category("Appearance")]
         public string Skin { get; set; }
+
+        [Category("Behavior")]
+        public bool EnableTyping { get; set; }
     }
 }
