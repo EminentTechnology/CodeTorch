@@ -327,6 +327,11 @@ namespace CodeTorch.Web.Controls
                 }
             }
 
+            if (!String.IsNullOrEmpty(item.Target))
+            { 
+                link.Target = item.Target;
+            }
+
             menuItem.Controls.Add(link);
             return menuItem;
         }
