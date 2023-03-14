@@ -598,6 +598,7 @@
     <None Include="Resources\SaveAll.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="SchemaUpgrades\10\SectionTypes\Menu.xml" />
     <EmbeddedResource Include="SchemaUpgrades\9\ControlTypes\Content.xml" />
     <EmbeddedResource Include="SchemaUpgrades\8\ControlTypes\RadioButtonList.xml" />
     <EmbeddedResource Include="SchemaUpgrades\5\DataCommands\Lookup_Save.xml" />
@@ -758,6 +759,16 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
+    <PublishFile Include="Telerik.WinControls.Themes.Material">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
     <PublishFile Include="Telerik.WinControls.Themes.Office2007Silver">
       <Visible>False</Visible>
       <Group>
@@ -799,16 +810,6 @@
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Telerik.WinControls.Themes.VisualStudio2022">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="Telerik.WinControls.Themes.Material">
       <Visible>False</Visible>
       <Group>
       </Group>

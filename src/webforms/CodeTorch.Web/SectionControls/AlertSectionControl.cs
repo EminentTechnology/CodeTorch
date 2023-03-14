@@ -55,19 +55,11 @@ namespace CodeTorch.Web.SectionControls
                 this.ContentPlaceHolder.Controls.Add(summary);
 
             }
-            
-
-            
-
-
         }
 
         public override void PopulateControl()
         {
             base.PopulateControl();
-
-            
-
         }
 
         private void RenderAlert(DisplayAlertMessage message)
@@ -76,12 +68,9 @@ namespace CodeTorch.Web.SectionControls
 
             try
             {
-                //AlertHolder.Widgets.Clear();
 
                 string alertClass = "alert";
                 string alertTypeClass = null; 
-
-                
 
                 switch (message.AlertType)
                 { 
@@ -138,11 +127,5 @@ namespace CodeTorch.Web.SectionControls
                 throw ex;
             }
         }
-        
-
-
-
-
-
     }
 }

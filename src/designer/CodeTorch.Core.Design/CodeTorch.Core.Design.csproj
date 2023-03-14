@@ -77,6 +77,7 @@
     <Compile Include="GridColumnCollectionEditor.cs" />
     <Compile Include="GridGroupByExpressionCollectionEditor.cs" />
     <Compile Include="GridGroupByFieldCollectionEditor.cs" />
+    <Compile Include="MenuTypeTypeConverter.cs" />
     <Compile Include="InputKeyTypeConverter.cs" />
     <Compile Include="LookupTypeConverter.cs" />
     <Compile Include="MenuTypeConverter.cs" />

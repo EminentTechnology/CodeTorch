@@ -32,6 +32,7 @@ namespace CodeTorch.Web.Controls
 
         public string MenuName {get;set;}
         public string MenuType { get; set; }
+        
 
         protected override void OnInit(EventArgs e)
         {
@@ -41,8 +42,7 @@ namespace CodeTorch.Web.Controls
             app = CodeTorch.Core.Configuration.GetInstance().App;
 
             CodeTorch.Core.Menu menuobject = null;
-
-            string menuToSelect = null;
+            string selectedMenu = null;
 
             if (!String.IsNullOrEmpty(this.MenuType))
             {
@@ -51,28 +51,26 @@ namespace CodeTorch.Web.Controls
                     case "secondary":
                         if (this.Page is BasePage)
                         {
-                            menuToSelect = ((BasePage)this.Page).Screen.Menu.Name;
+                            selectedMenu = String.IsNullOrEmpty(MenuName) ? ((BasePage)this.Page).Screen.Menu.Name : MenuName;
                         }
                         break;
                     default:
                         //handles primary - currently for root menu
-                        menuToSelect = String.IsNullOrEmpty(MenuName) ? app.DefaultMenu : MenuName;
+                        selectedMenu = String.IsNullOrEmpty(MenuName) ? app.DefaultMenu : MenuName;
                         break;
                 }
 
                
             }
 
-            if (!String.IsNullOrEmpty(menuToSelect))
+            if (!String.IsNullOrEmpty(selectedMenu))
             {
-                menuobject = CodeTorch.Core.Menu.GetMenu(menuToSelect);
+                menuobject = CodeTorch.Core.Menu.GetMenu(selectedMenu);
             }
 
             if (menuobject != null)
             {
                 bool renderMenu = false;
-
-
 
                 if (
                         ((menuobject.RequiresAuthentication) && (this.Page.User.Identity.IsAuthenticated)) ||

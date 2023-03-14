@@ -114,6 +114,7 @@
     <Compile Include="ControlTypes\RadioButtonListControl.cs" />
     <Compile Include="Grid\ClientSelectGridColumn.cs" />
     <Compile Include="Grid\GridCommandItemDisplay.cs" />
+    <Compile Include="Sections\MenuSection.cs" />
     <Compile Include="Sections\CustomSection.cs" />
     <Compile Include="_Common\ConfigurationObjectFactory.cs" />
     <Compile Include="ConfigurationObjects\ControlTypeConfigurationObject.cs" />

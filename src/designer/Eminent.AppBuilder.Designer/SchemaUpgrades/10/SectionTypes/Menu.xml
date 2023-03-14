@@ -1,0 +1,8 @@
+﻿<?xml version="1.0"?>
+<SectionType>
+  <Name>Menu</Name>
+  <Assembly>CodeTorch.Web</Assembly>
+  <Class>CodeTorch.Web.SectionControls.MenuSectionControl</Class>
+  <AbstractionAssembly>CodeTorch.Core</AbstractionAssembly>
+  <AbstractionClass>CodeTorch.Core.MenuSection</AbstractionClass>
+</SectionType>
