@@ -50,6 +50,9 @@ namespace CodeTorch.Core
         [TypeConverter("CodeTorch.Core.Design.DataCommandColumnTypeConverter,CodeTorch.Core.Design")]
         public string RawDataField { get; set; }
 
+        [Description("CSV of fields that contain raw JSON data and should be returned natively as part of the json message instead of escaping as strings")]
+        public string RawJsonFields { get; set; }
+
         [Category("Partial Response")]
         public bool EnablePartialResponse
         {

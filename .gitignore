@@ -19,3 +19,4 @@ _ReSharper.*
 !lib/**
 /.vs
 Logs
+/*.log

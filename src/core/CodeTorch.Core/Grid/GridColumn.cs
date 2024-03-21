@@ -20,8 +20,6 @@ namespace CodeTorch.Core
     [Serializable]
     public class GridColumn
     {
-
-
         GridColumnItemStyle _HeaderStyle = new GridColumnItemStyle();
         GridColumnItemStyle _ItemStyle = new GridColumnItemStyle();
         GridColumnItemStyle _FooterStyle = new GridColumnItemStyle();

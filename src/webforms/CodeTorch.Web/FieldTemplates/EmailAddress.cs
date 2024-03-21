@@ -72,9 +72,6 @@ namespace CodeTorch.Web.FieldTemplates
                 ctrlRegularExpressionValidator.ErrorMessage = GetGlobalResourceString("EmailAddress.Validation.ErrorMessage", ctrlRegularExpressionValidator.ErrorMessage = "Please enter a valid email address");
                 ctrlRegularExpressionValidator.ValidationExpression = @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
                 ctrlRegularExpressionValidator.EnableClientScript = false;
-
-
-
             }
             catch (Exception ex)
             {

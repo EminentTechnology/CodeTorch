@@ -1,19 +1,14 @@
-﻿using System;
-using System.Data;
-using System.Data.Common;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿using CodeTorch.Core;
 using CodeTorch.Core.Services;
-using CodeTorch.Web.Data;
-using System.Web.Security;
-using Telerik.Web.UI;
-using CodeTorch.Core;
 using CodeTorch.Web.Templates;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Web.UI;
 using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using Telerik.Web.UI;
 
 namespace CodeTorch.Web.Controls
 {

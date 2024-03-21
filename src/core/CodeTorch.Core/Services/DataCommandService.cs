@@ -175,8 +175,6 @@ namespace CodeTorch.Core.Services
         
         #endregion
 
-
-
         #region get xml data
 
         public XmlDocument GetXmlData(DbTransaction tran, DataCommand dataCommand, List<ScreenDataCommandParameter> parameters, string commandText)

@@ -103,7 +103,7 @@ namespace CodeTorch.Web.SectionControls
             {
                 if (ActionLink.ShowLink)
                 {
-                    this.ActionLink.NavigateUrl = ActionLink.Url;
+                    this.ActionLink.NavigateUrl = Common.CreateUrlWithQueryStringContext(ActionLink.Url, ActionLink.Context);
                     this.ActionLinkLabel.Text = ActionLink.Text;
 
                     if (ActionLink.Permission.CheckPermission)
@@ -129,7 +129,6 @@ namespace CodeTorch.Web.SectionControls
                 {
                     this.ActionLink.Visible = false;
                 }
-
             }
             else
             {

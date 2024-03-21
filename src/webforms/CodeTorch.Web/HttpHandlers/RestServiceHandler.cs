@@ -63,7 +63,7 @@ namespace CodeTorch.Web.HttpHandlers
                 }
 
 
-                DataCommand command = null;
+                DataCommand requestCommand = null;
                 RestServiceMethodReturnTypeEnum returnType = RestServiceMethodReturnTypeEnum.None;
                 
 
@@ -94,9 +94,9 @@ namespace CodeTorch.Web.HttpHandlers
                         throw new ApplicationException(String.Format("Request Data Command has not been configured for this service - {0}", Me.Name));
                     }
 
-                    command = DataCommand.GetDataCommand(method.RequestDataCommand);
+                    requestCommand = DataCommand.GetDataCommand(method.RequestDataCommand);
 
-                    if (command == null)
+                    if (requestCommand == null)
                     {
                         throw new ApplicationException(String.Format("Request Data Command - {0} - could not be found in configuration", method.RequestDataCommand));
                     }
@@ -104,39 +104,35 @@ namespace CodeTorch.Web.HttpHandlers
                     List<ScreenDataCommandParameter> parameters = GetPopulatedCommandParameters(method.RequestDataCommand, method.DataCommands, null);
                     returnType = method.ReturnType;
                     //execute request datacommand and return data if applicable
-                    switch (command.ReturnType)
+                    switch (requestCommand.ReturnType)
                     {
                         case DataCommandReturnType.Integer:
                             object newID = dataCommandDB.ExecuteDataCommand(method.RequestDataCommand, parameters);
 
                             if (method is PostRestServiceMethod)
                             {
-                                DataCommand postCommand = null;
-
-                                
+                                DataCommand postResponseCommand = null;
 
                                 PostRestServiceMethod postMethod = (PostRestServiceMethod)method;
                                 returnType = postMethod.ReturnType;
                                 if (!String.IsNullOrEmpty(postMethod.ResponseDataCommand))
                                 {
-                                    postCommand = DataCommand.GetDataCommand(postMethod.ResponseDataCommand);
+                                    postResponseCommand = DataCommand.GetDataCommand(postMethod.ResponseDataCommand);
 
-                                    if (postCommand == null)
+                                    if (postResponseCommand == null)
                                     {
                                         throw new ApplicationException(String.Format("Response Data Command - {0} - could not be found in configuration", postMethod.ResponseDataCommand));
                                     }
 
                                     parameters = GetPopulatedCommandParameters(postMethod.ResponseDataCommand, method.DataCommands, newID);
 
-
                                     switch (returnType)
                                     {
-                                        case RestServiceMethodReturnTypeEnum.DataRow:
-                                        case RestServiceMethodReturnTypeEnum.DataTable:
-                                            dt = dataCommandDB.GetDataForDataCommand(postMethod.ResponseDataCommand, parameters);
-                                            break;
                                         case RestServiceMethodReturnTypeEnum.Xml:
                                             doc = dataCommandDB.GetXmlDataForDataCommand(postMethod.ResponseDataCommand, parameters);
+                                            break;
+                                        default:
+                                            dt = dataCommandDB.GetDataForDataCommand(postMethod.ResponseDataCommand, parameters);
                                             break;
                                     }
 
@@ -146,13 +142,30 @@ namespace CodeTorch.Web.HttpHandlers
 
                             if (method is PutRestServiceMethod)
                             {
+                                DataCommand putResponseCommand = null;
+
                                 PutRestServiceMethod putMethod = (PutRestServiceMethod)method;
                                 returnType = putMethod.ReturnType;
                                 if (!String.IsNullOrEmpty(putMethod.ResponseDataCommand))
                                 {
+                                    putResponseCommand = DataCommand.GetDataCommand(putMethod.ResponseDataCommand);
+
+                                    if (putResponseCommand == null)
+                                    {
+                                        throw new ApplicationException(String.Format("Response Data Command - {0} - could not be found in configuration", putMethod.ResponseDataCommand));
+                                    }
+
                                     parameters = GetPopulatedCommandParameters(putMethod.ResponseDataCommand, method.DataCommands, newID);
 
-                                    dt = dataCommandDB.GetDataForDataCommand(putMethod.ResponseDataCommand, parameters);
+                                    switch (returnType)
+                                    {
+                                        case RestServiceMethodReturnTypeEnum.Xml:
+                                            doc = dataCommandDB.GetXmlDataForDataCommand(putMethod.ResponseDataCommand, parameters);
+                                            break;
+                                        default:
+                                            dt = dataCommandDB.GetDataForDataCommand(putMethod.ResponseDataCommand, parameters);
+                                            break;
+                                    } 
                                 }
                             }
                             
@@ -190,18 +203,15 @@ namespace CodeTorch.Web.HttpHandlers
                         {
                             DataColumnCollection columns = null; 
 
-
-
-
                             switch (returnType)
                             {
                                 case RestServiceMethodReturnTypeEnum.DataTable:
                                     columns = dt.Columns;
-                                    BuildJsonArrayResponse(app, context, method, command, dt, json, columns);
+                                    BuildJsonArrayResponse(app, context, method, requestCommand, dt, json, columns);
                                     break;
                                 case RestServiceMethodReturnTypeEnum.DataRow:
                                     columns = dt.Columns;
-                                    BuildJsonObjectResponse(app, context, method, command, dt, json, columns);
+                                    BuildJsonObjectResponse(app, context, method, requestCommand, dt, json, columns);
                                     break;
                                 case RestServiceMethodReturnTypeEnum.Xml:
                                     BuildJsonXmlObjectResponse(app, method, builder, doc);
@@ -211,10 +221,6 @@ namespace CodeTorch.Web.HttpHandlers
                                     break;
 
                             }
-
-
-
-
                         }
                     }
                     else
@@ -224,18 +230,15 @@ namespace CodeTorch.Web.HttpHandlers
                         {
                             DataColumnCollection columns = null;
 
-
-
-
                             switch (method.ReturnType)
                             {
                                 case RestServiceMethodReturnTypeEnum.DataTable:
                                     columns = dt.Columns;
-                                    BuildXmlListResponse(app, context,method, command, dt, xml, columns);
+                                    BuildXmlListResponse(app, context,method, requestCommand, dt, xml, columns);
                                     break;
                                 case RestServiceMethodReturnTypeEnum.DataRow:
                                     columns = dt.Columns;
-                                    BuildXmlItemResponse(app,context, method, command, dt, xml, columns);
+                                    BuildXmlItemResponse(app,context, method, requestCommand, dt, xml, columns);
                                     break;
                                 case RestServiceMethodReturnTypeEnum.Xml:
                                 case RestServiceMethodReturnTypeEnum.Raw:
@@ -350,31 +353,46 @@ namespace CodeTorch.Web.HttpHandlers
             }
         }
 
-        private static void WriteJsonValue(DataCommand command, JsonWriter json, DataRow row, DataColumn col)
+        private static void WriteJsonValue(DataCommand command, JsonWriter json, DataRow row, DataColumn col, List<string> rawJsonColumns)
         {
-            DataCommandColumn commandCol = command.Columns.Where(c => c.Name.ToLower() == col.ColumnName.ToLower()).SingleOrDefault();
+            // Get the raw value from the DataRow.
+            object rawValue = row[col.ColumnName];
+
+            // Handle DBNull values immediately.
+            if (rawValue is DBNull)
+            {
+                json.WriteNull();
+                return; // Exit the method early.
+            }
+
+            // Determine if the column contains raw JSON in a case-insensitive manner.
+            bool isRawJsonColumn = rawJsonColumns.Any(c => string.Equals(c, col.ColumnName, StringComparison.OrdinalIgnoreCase));
+
+            // Handle raw JSON columns directly.
+            if (isRawJsonColumn)
+            {
+                json.WriteRawValue(rawValue.ToString());
+                return; // Exit the method early.
+            }
+
+            // Proceed with the rest of the processing for non-raw JSON columns.
+            DataCommandColumn commandCol = command.Columns
+                .FirstOrDefault(c => c.Name.Equals(col.ColumnName, StringComparison.OrdinalIgnoreCase));
 
             if (commandCol != null)
             {
-                object rawValue = row[col.ColumnName];
-                //commandCol.Type
-                if (rawValue is DBNull)
-                {
-                    json.WriteNull();
-                }
-                else
-                {
-                    Type t = Type.GetType("System." + commandCol.Type);
-                    object v = Convert.ChangeType(rawValue, t);
-                    json.WriteValue(v);
-                }
-                
+                // Convert the value to the specified type and write it.
+                Type t = Type.GetType("System." + commandCol.Type);
+                object convertedValue = Convert.ChangeType(rawValue, t);
+                json.WriteValue(convertedValue);
             }
             else
             {
-                json.WriteValue(row[col].ToString());
+                // If no specific type conversion is needed, write the value as a string.
+                json.WriteValue(rawValue.ToString());
             }
         }
+
 
         private static void WriteXmlValue(DataCommand command, XmlWriter xml, DataRow row, DataColumn col)
         {
@@ -390,8 +408,6 @@ namespace CodeTorch.Web.HttpHandlers
                 }
                 else
                 {
-                    
-
                     Type t = Type.GetType("System." + commandCol.Type);
                     object v = Convert.ChangeType(rawValue, t);
 
@@ -404,8 +420,6 @@ namespace CodeTorch.Web.HttpHandlers
                             xml.WriteValue(v);
                             break;
                     }
-
-                   
                 }
 
             }
@@ -414,10 +428,6 @@ namespace CodeTorch.Web.HttpHandlers
                 xml.WriteValue(row[col].ToString());
             }
         }
-
-      
-
-      
 
         public List<ScreenDataCommandParameter> GetPopulatedCommandParameters(string DataCommandName,  List<ScreenDataCommand> datacommands, object NewID)
         {
@@ -444,12 +454,7 @@ namespace CodeTorch.Web.HttpHandlers
 
                 }
             }
-
-
-
-
             return parameters;
-
         }
 
         private object GetParameterInputValue( IScreenParameter parameter, object newID)
@@ -467,17 +472,15 @@ namespace CodeTorch.Web.HttpHandlers
                 case ScreenInputType.Control:
                 case ScreenInputType.ControlText:
                     throw new NotSupportedException();
-                    break;
                 case ScreenInputType.Cookie:
                     retVal = HttpContext.Current.Request.Cookies[parameter.InputKey].Value;
                     break;
                 case ScreenInputType.File:
-                    //currently onlu supports storage to database
+                    //currently only supports storage to database
                     if (HttpContext.Current.Request.ContentType.ToLower().Contains("multipart"))
                     {
                         HttpPostedFile file = null;
 
-                        
                         if (HttpContext.Current.Request.Files.Count == 1)
                         {
                             //for refit support
@@ -488,7 +491,6 @@ namespace CodeTorch.Web.HttpHandlers
                             file = HttpContext.Current.Request.Files[parameter.InputKey] as HttpPostedFile;
                         }
                         
-
                         if (file != null)
                         {
                             if (file.ContentLength > 0)
@@ -543,10 +545,7 @@ namespace CodeTorch.Web.HttpHandlers
                                 
                             }
                         }
-                        
-                        
                     }
-                    
                     break;
                 case ScreenInputType.Form:
                     retVal = HttpContext.Current.Request.Form[parameter.InputKey];
@@ -816,26 +815,32 @@ namespace CodeTorch.Web.HttpHandlers
             }
         }
 
-
-        private void BuildRawResponse(App app, BaseRestServiceMethod method, DataTable dt , StringBuilder builder)
+        private void BuildRawResponse(App app, BaseRestServiceMethod method, DataTable dt, StringBuilder builder)
         {
-            
-            if (!String.IsNullOrEmpty(method.RawDataField))
+            if (dt.Rows.Count == 0) return; // Early exit if there are no rows.
+
+            // Handle case when RawDataField is specified.
+            if (!String.IsNullOrWhiteSpace(method.RawDataField))
             {
-                if (dt.Rows.Count>0)
+                if (dt.Columns.Contains(method.RawDataField))
                 {
-                    if (dt.Columns.Contains(method.RawDataField))
-                    {
-                        DataRow row = dt.Rows[0];
-                        builder.Append(row[method.RawDataField]);
-                    }
-
+                    builder.Append(dt.Rows[0][method.RawDataField]);
                 }
-
+                else
+                {
+                    throw new Exception($"Rest Service - {app.Name} - RawDataField - {method.RawDataField} - does not exist in the data source");
+                }
             }
-            else
+            else // Handle case when RawDataField is not specified.
             {
-                throw new Exception($"Rest Service - {Me.Name} - RawDataField is empty");
+                if (dt.Columns.Count == 1)
+                {
+                    builder.Append(dt.Rows[0][0]);
+                }
+                else if (dt.Columns.Count > 1)
+                {
+                    throw new Exception($"Rest Service - {app.Name} - RawDataField is empty and more than one column is returned");
+                }
             }
         }
 
@@ -877,10 +882,16 @@ namespace CodeTorch.Web.HttpHandlers
 
                 List<DataColumn> columns = GetColumnsForResponse(context, method, commandColumns);
 
+                List<string> rawJsonColumns = new List<string>();
+                if (!String.IsNullOrWhiteSpace(method.RawJsonFields))
+                {
+                    rawJsonColumns = method.RawJsonFields.Split(new char[','], StringSplitOptions.RemoveEmptyEntries).ToList();
+                }
+
                 foreach (DataColumn col in columns)
                 {
                     json.WritePropertyName(col.ColumnName);
-                    WriteJsonValue(command, json, record, col);
+                    WriteJsonValue(command, json, record, col, rawJsonColumns);
                 }
 
                 json.WriteEndObject();
@@ -933,10 +944,16 @@ namespace CodeTorch.Web.HttpHandlers
 
                 List<DataColumn> columns = GetColumnsForResponse(context, method, commandColumns);
 
+                List<string> rawJsonColumns = new List<string>();
+                if (!String.IsNullOrWhiteSpace(method.RawJsonFields))
+                {
+                    rawJsonColumns = method.RawJsonFields.Split(new char[','], StringSplitOptions.RemoveEmptyEntries).ToList();
+                }
+
                 foreach (DataColumn col in columns)
                 {
                     json.WritePropertyName(col.ColumnName);
-                    WriteJsonValue(command, json, row, col);
+                    WriteJsonValue(command, json, row, col, rawJsonColumns);
                 }
 
                 json.WriteEndObject();

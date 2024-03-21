@@ -124,7 +124,7 @@ namespace CodeTorch.Documents
 
             DocumentFunctions utility = new DocumentFunctions();
             utility.InsertDocument(
-                doc.ID, "AmazonS3", doc.EntityID, doc.EntityType, doc.FileName, doc.DocumentType, doc.ContentType,
+                doc.ID, "AzureBlob", doc.EntityID, doc.EntityType, doc.FileName, doc.DocumentType, doc.ContentType,
                 doc.Size, 1, doc.Url, fileContents, false, modifiedBy);
         }
 

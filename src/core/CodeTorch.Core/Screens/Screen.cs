@@ -1,15 +1,13 @@
-﻿using System;
+﻿using CodeTorch.Core.Attributes;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml.Serialization;
 using System.ComponentModel;
+using System.Drawing.Design;
 using System.IO;
+using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
-
-using System.Drawing.Design;
-using CodeTorch.Core.Attributes;
+using System.Xml.Serialization;
 
 namespace CodeTorch.Core
 {
