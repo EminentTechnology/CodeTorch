@@ -172,5 +172,35 @@ namespace CodeTorch.Core
         {
             return 1;
         }
+
+        public string GetDefaultValue(string key)
+        {
+            string retVal = null;
+
+            if(this.Defaults != null)
+            {
+                AppDefaultItem item = this.Defaults.FirstOrDefault(i => i.Key.Equals(key, StringComparison.InvariantCultureIgnoreCase));
+                if(item != null)
+                {
+                    retVal = item.Value;
+                }
+            }
+
+            return retVal;
+        }
+
+        [XmlArray("Defaults")]
+        [XmlArrayItem("Item")]
+        public List<AppDefaultItem> Defaults { get; set; } = new List<AppDefaultItem>();
+    }
+
+    [Serializable]
+    public class  AppDefaultItem
+    {
+        [XmlAttribute("Key")]
+        public string Key { get; set; }
+
+        [XmlText]
+        public string Value { get; set; }
     }
 }

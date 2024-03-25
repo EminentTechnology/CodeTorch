@@ -1,25 +1,25 @@
-﻿using System;
-using System.Web;
-using System.Web.UI;
-using System.Data;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using CodeTorch.Core;
+using CodeTorch.Core.Services;
 using CodeTorch.Web.Data;
-using CodeTorch.Web.Templates;
 using CodeTorch.Web.HttpHandlers;
-using System.Web.Routing;
-using System.Reflection;
+using CodeTorch.Web.Providers.EmbeddedResourceVirtualPathProvider;
+using CodeTorch.Web.SectionControls;
+using CodeTorch.Web.Templates;
+using log4net;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
-using log4net;
-using CodeTorch.Core;
-using System.Web.Security;
-using System.Configuration;
-using CodeTorch.Web.SectionControls;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Web;
 using System.Web.Hosting;
-using CodeTorch.Web.Providers.EmbeddedResourceVirtualPathProvider;
-using CodeTorch.Core.Services;
+using System.Web.Routing;
+using System.Web.Security;
+using System.Web.UI;
 
 namespace CodeTorch.Web
 {
@@ -524,10 +524,31 @@ namespace CodeTorch.Web
 
         private static void AddRestRoutes(RouteCollection routes, AppBuilderRouteHandler<Page> routeHandler, IEnumerable<RestService> restServices)
         {
-            foreach (RestService s in restServices)
+            // Sort restServices by specificity (descending order)
+            var sortedServices = restServices.OrderByDescending(s => GetRouteSpecificity(s.Resource)).ToList();
+
+            foreach (RestService s in sortedServices)
             {
                 BuildRoute(routes, routeHandler, s);
             }
+        }
+
+        private static int GetRouteSpecificity(string route)
+        {
+            // A simple method to estimate route specificity
+            // Counts the segments in the route, ignoring parameterized parts
+            int specificity = 0;
+            var segments = route.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (var segment in segments)
+            {
+                if (!segment.StartsWith("{") && !segment.EndsWith("}"))
+                {
+                    specificity++;
+                }
+            }
+
+            return specificity;
         }
 
         private static void BuildRoute(RouteCollection routes, AppBuilderRouteHandler<Page> routeHandler, RestService s)
@@ -535,8 +556,6 @@ namespace CodeTorch.Web
             Route r;
             string routeUrl = null;
             string routeName = null;
-
-            
 
             if (s.SupportJSON)
             {

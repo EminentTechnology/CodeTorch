@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace CodeTorch.Designer
+﻿namespace CodeTorch.Designer
 {
     public class Constants
     {
@@ -56,6 +51,9 @@ namespace CodeTorch.Designer
 
         public const int SCHEMA_VERSION = 10;
 
-
+        public const string DEFAULT_DATACOMMAND_PRE_PROCESSING_ASSEMBLY = "DataCommand.PreProcessingAssembly";
+        public const string DEFAULT_DATACOMMAND_PRE_PROCESSING_CLASS= "DataCommand.PreProcessingClass";
+        public const string DEFAULT_DATACOMMAND_POST_PROCESSING_ASSEMBLY = "DataCommand.PostProcessingAssembly";
+        public const string DEFAULT_DATACOMMAND_POST_PROCESSING_CLASS = "DataCommand.PostProcessingClass";
     }
 }

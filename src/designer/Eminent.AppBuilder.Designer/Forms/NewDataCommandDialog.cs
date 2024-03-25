@@ -1,27 +1,24 @@
-﻿using System;
+﻿using CodeTorch.Core;
+using CodeTorch.Core.Interfaces;
+using CodeTorch.Core.Services;
+using CodeTorch.Designer.Code;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using CodeTorch.Core.Services;
-using CodeTorch.Core;
-using CodeTorch.Core.Interfaces;
-using CodeTorch.Designer.Code;
 
 namespace CodeTorch.Designer.Forms
 {
     public partial class NewDataCommandDialog : Form
     {
         public Project Project = new Project();
-        
         public DataCommandService dataCommandDB;
-      
-
         public string DataCommandID = Guid.Empty.ToString();
 
         public NewDataCommandDialog()
         {
             InitializeComponent();
-
             dataCommandDB = DataCommandService.GetInstance();
         }
 
@@ -29,10 +26,7 @@ namespace CodeTorch.Designer.Forms
         {
             try
             {
-                //dataCommandDB.ConnectionInfo = Connection;
-
                 PopulateDataConnection();
-
             }
             catch (Exception ex)
             {
@@ -59,7 +53,6 @@ namespace CodeTorch.Designer.Forms
                 connection = ((DataConnection)DataConnectionList.SelectedItem).Name;
             }
             
-
             if(!String.IsNullOrEmpty(connection))
             {
                 DataConnection c = DataConnection.GetByName(connection);
@@ -89,9 +82,15 @@ namespace CodeTorch.Designer.Forms
         {
             try
             {
+                var app = Configuration.GetInstance().App;
+                if (app == null)
+                {
+                    MessageBox.Show("App configuration is required to create a new data command", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 if (ValidateSaveRequest())
                 {
-
                     DataCommand cmd = new DataCommand();
 
                     cmd.Name = CommandName.Text;
@@ -100,6 +99,11 @@ namespace CodeTorch.Designer.Forms
                     cmd.Text = CommandText.Text;
                     cmd.ReturnType = (DataCommandReturnType)Enum.Parse(typeof(DataCommandReturnType), CommandReturnTypeList.Text.ToString());
 
+                    cmd.PreProcessingAssembly = app.GetDefaultValue(Constants.DEFAULT_DATACOMMAND_PRE_PROCESSING_ASSEMBLY);
+                    cmd.PreProcessingClass = app.GetDefaultValue(Constants.DEFAULT_DATACOMMAND_PRE_PROCESSING_CLASS);
+                    cmd.PostProcessingAssembly = app.GetDefaultValue(Constants.DEFAULT_DATACOMMAND_POST_PROCESSING_ASSEMBLY);
+                    cmd.PostProcessingAssembly = app.GetDefaultValue(Constants.DEFAULT_DATACOMMAND_POST_PROCESSING_CLASS);
+
                     DataConnection connection = Project.GetDataConnection(cmd);
                     IDataCommandProvider DataSource = DataCommandService.GetInstance().GetProvider(connection);
                     DataSource.RefreshSchema(connection, cmd);
@@ -107,8 +111,6 @@ namespace CodeTorch.Designer.Forms
                     DataCommand.Save(cmd);
 
                     Configuration.GetInstance().DataCommands.Add(cmd);
-                               
-              
                     this.DialogResult = DialogResult.OK;
                 }
             }
