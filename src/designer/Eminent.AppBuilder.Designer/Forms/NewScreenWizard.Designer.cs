@@ -30,22 +30,22 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewScreenWizard));
-            Telerik.WinControls.UI.RadListDataItem radListDataItem17 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem18 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem19 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem20 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem21 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem22 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem23 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem24 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem25 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem26 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem27 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem28 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem29 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem30 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem31 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem32 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem1 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem2 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem3 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem4 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem5 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem6 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem7 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem8 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem9 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem10 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem11 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem12 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem13 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem14 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem15 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem16 = new Telerik.WinControls.UI.RadListDataItem();
             this.wizard = new Telerik.WinControls.UI.RadWizard();
             this.wizardCompletionPage1 = new Telerik.WinControls.UI.WizardCompletionPage();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -473,7 +473,6 @@
             this.wizard.Pages.Add(this.wizardCompletionPage1);
             this.wizard.Size = new System.Drawing.Size(801, 579);
             this.wizard.TabIndex = 0;
-            this.wizard.Text = "wizard";
             this.wizard.WelcomePage = this.wizardWelcomePage1;
             this.wizard.Next += new Telerik.WinControls.UI.WizardCancelEventHandler(this.wizard_Next);
             this.wizard.Previous += new Telerik.WinControls.UI.WizardCancelEventHandler(this.wizard_Previous);
@@ -489,7 +488,6 @@
             this.wizardCompletionPage1.Header = "Page header";
             this.wizardCompletionPage1.Name = "wizardCompletionPage1";
             this.wizardCompletionPage1.Title = "Page title";
-            this.wizardCompletionPage1.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // panel3
             // 
@@ -638,54 +636,38 @@
             // ScreenTypeList
             // 
             this.ScreenTypeList.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
-            radListDataItem17.Text = "Blank";
-            radListDataItem17.TextWrap = true;
-            radListDataItem18.Text = "Comments";
-            radListDataItem18.TextWrap = true;
-            radListDataItem19.Text = "Content";
-            radListDataItem19.TextWrap = true;
-            radListDataItem20.Text = "Criteria List Edit";
-            radListDataItem20.TextWrap = true;
-            radListDataItem21.Text = "Documents";
-            radListDataItem21.TextWrap = true;
-            radListDataItem22.Text = "Edit";
-            radListDataItem22.TextWrap = true;
-            radListDataItem23.Text = "List";
-            radListDataItem23.TextWrap = true;
-            radListDataItem24.Text = "List Edit";
-            radListDataItem24.TextWrap = true;
-            radListDataItem25.Text = "Login";
-            radListDataItem25.TextWrap = true;
-            radListDataItem26.Text = "Logout";
-            radListDataItem26.TextWrap = true;
-            radListDataItem27.Text = "Overview";
-            radListDataItem27.TextWrap = true;
-            radListDataItem28.Text = "Picker";
-            radListDataItem28.TextWrap = true;
-            radListDataItem29.Text = "Redirect";
-            radListDataItem29.TextWrap = true;
-            radListDataItem30.Text = "Report Export";
-            radListDataItem30.TextWrap = true;
-            radListDataItem31.Text = "Report Viewer";
-            radListDataItem31.TextWrap = true;
-            radListDataItem32.Text = "Search";
-            radListDataItem32.TextWrap = true;
-            this.ScreenTypeList.Items.Add(radListDataItem17);
-            this.ScreenTypeList.Items.Add(radListDataItem18);
-            this.ScreenTypeList.Items.Add(radListDataItem19);
-            this.ScreenTypeList.Items.Add(radListDataItem20);
-            this.ScreenTypeList.Items.Add(radListDataItem21);
-            this.ScreenTypeList.Items.Add(radListDataItem22);
-            this.ScreenTypeList.Items.Add(radListDataItem23);
-            this.ScreenTypeList.Items.Add(radListDataItem24);
-            this.ScreenTypeList.Items.Add(radListDataItem25);
-            this.ScreenTypeList.Items.Add(radListDataItem26);
-            this.ScreenTypeList.Items.Add(radListDataItem27);
-            this.ScreenTypeList.Items.Add(radListDataItem28);
-            this.ScreenTypeList.Items.Add(radListDataItem29);
-            this.ScreenTypeList.Items.Add(radListDataItem30);
-            this.ScreenTypeList.Items.Add(radListDataItem31);
-            this.ScreenTypeList.Items.Add(radListDataItem32);
+            radListDataItem1.Text = "Blank";
+            radListDataItem2.Text = "Comments";
+            radListDataItem3.Text = "Content";
+            radListDataItem4.Text = "Criteria List Edit";
+            radListDataItem5.Text = "Documents";
+            radListDataItem6.Text = "Edit";
+            radListDataItem7.Text = "List";
+            radListDataItem8.Text = "List Edit";
+            radListDataItem9.Text = "Login";
+            radListDataItem10.Text = "Logout";
+            radListDataItem11.Text = "Overview";
+            radListDataItem12.Text = "Picker";
+            radListDataItem13.Text = "Redirect";
+            radListDataItem14.Text = "Report Export";
+            radListDataItem15.Text = "Report Viewer";
+            radListDataItem16.Text = "Search";
+            this.ScreenTypeList.Items.Add(radListDataItem1);
+            this.ScreenTypeList.Items.Add(radListDataItem2);
+            this.ScreenTypeList.Items.Add(radListDataItem3);
+            this.ScreenTypeList.Items.Add(radListDataItem4);
+            this.ScreenTypeList.Items.Add(radListDataItem5);
+            this.ScreenTypeList.Items.Add(radListDataItem6);
+            this.ScreenTypeList.Items.Add(radListDataItem7);
+            this.ScreenTypeList.Items.Add(radListDataItem8);
+            this.ScreenTypeList.Items.Add(radListDataItem9);
+            this.ScreenTypeList.Items.Add(radListDataItem10);
+            this.ScreenTypeList.Items.Add(radListDataItem11);
+            this.ScreenTypeList.Items.Add(radListDataItem12);
+            this.ScreenTypeList.Items.Add(radListDataItem13);
+            this.ScreenTypeList.Items.Add(radListDataItem14);
+            this.ScreenTypeList.Items.Add(radListDataItem15);
+            this.ScreenTypeList.Items.Add(radListDataItem16);
             this.ScreenTypeList.Location = new System.Drawing.Point(127, 65);
             this.ScreenTypeList.Name = "ScreenTypeList";
             this.ScreenTypeList.Size = new System.Drawing.Size(256, 20);
@@ -701,22 +683,22 @@
             // 
             // CheckPermission
             // 
+            this.CheckPermission.CheckState = System.Windows.Forms.CheckState.Checked;
             this.CheckPermission.Location = new System.Drawing.Point(127, 337);
             this.CheckPermission.Name = "CheckPermission";
             this.CheckPermission.Size = new System.Drawing.Size(108, 18);
             this.CheckPermission.TabIndex = 16;
             this.CheckPermission.Text = "Check Permission";
-            this.CheckPermission.ToggleState = Telerik.WinControls.Enumerations.ToggleState.On;
             this.CheckPermission.ToggleStateChanged += new Telerik.WinControls.UI.StateChangedEventHandler(this.CheckPermission_ToggleStateChanged);
             // 
             // RequireAuthentication
             // 
+            this.RequireAuthentication.CheckState = System.Windows.Forms.CheckState.Checked;
             this.RequireAuthentication.Location = new System.Drawing.Point(127, 311);
             this.RequireAuthentication.Name = "RequireAuthentication";
             this.RequireAuthentication.Size = new System.Drawing.Size(135, 18);
             this.RequireAuthentication.TabIndex = 14;
             this.RequireAuthentication.Text = "Require Authentication";
-            this.RequireAuthentication.ToggleState = Telerik.WinControls.Enumerations.ToggleState.On;
             this.RequireAuthentication.ToggleStateChanged += new Telerik.WinControls.UI.StateChangedEventHandler(this.RequireAuthentication_ToggleStateChanged);
             // 
             // radLabel7
@@ -821,7 +803,7 @@
             this.SubtitleCommandList.Enabled = false;
             this.SubtitleCommandList.Location = new System.Drawing.Point(133, 240);
             this.SubtitleCommandList.Name = "SubtitleCommandList";
-            this.SubtitleCommandList.Size = new System.Drawing.Size(357, 22);
+            this.SubtitleCommandList.Size = new System.Drawing.Size(357, 20);
             this.SubtitleCommandList.TabIndex = 43;
             // 
             // SubtitleUseCommand
@@ -854,7 +836,7 @@
             this.TitleCommandList.Enabled = false;
             this.TitleCommandList.Location = new System.Drawing.Point(133, 137);
             this.TitleCommandList.Name = "TitleCommandList";
-            this.TitleCommandList.Size = new System.Drawing.Size(357, 22);
+            this.TitleCommandList.Size = new System.Drawing.Size(357, 20);
             this.TitleCommandList.TabIndex = 38;
             // 
             // TitleUseCommand
@@ -1024,12 +1006,12 @@
             // 
             // ActionLinksCheckPermission
             // 
+            this.ActionLinksCheckPermission.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ActionLinksCheckPermission.Location = new System.Drawing.Point(125, 137);
             this.ActionLinksCheckPermission.Name = "ActionLinksCheckPermission";
             this.ActionLinksCheckPermission.Size = new System.Drawing.Size(108, 18);
             this.ActionLinksCheckPermission.TabIndex = 37;
             this.ActionLinksCheckPermission.Text = "Check Permission";
-            this.ActionLinksCheckPermission.ToggleState = Telerik.WinControls.Enumerations.ToggleState.On;
             this.ActionLinksCheckPermission.ToggleStateChanged += new Telerik.WinControls.UI.StateChangedEventHandler(this.ActionLinksCheckPermission_ToggleStateChanged);
             // 
             // radLabel22
@@ -1117,7 +1099,7 @@
             // 
             this.radLabel26.Location = new System.Drawing.Point(25, 74);
             this.radLabel26.Name = "radLabel26";
-            this.radLabel26.Size = new System.Drawing.Size(95, 18);
+            this.radLabel26.Size = new System.Drawing.Size(94, 18);
             this.radLabel26.TabIndex = 76;
             this.radLabel26.Text = " Widgets per row:";
             // 
@@ -1157,7 +1139,6 @@
             this.CriteriaControlPropertyGrid.Size = new System.Drawing.Size(318, 353);
             this.CriteriaControlPropertyGrid.SortOrder = System.Windows.Forms.SortOrder.Ascending;
             this.CriteriaControlPropertyGrid.TabIndex = 53;
-            this.CriteriaControlPropertyGrid.Text = "radPropertyGrid1";
             this.CriteriaControlPropertyGrid.ToolbarVisible = true;
             // 
             // radLabel28
@@ -1177,7 +1158,6 @@
             this.CriteriaControlList.Name = "CriteriaControlList";
             this.CriteriaControlList.Size = new System.Drawing.Size(330, 297);
             this.CriteriaControlList.TabIndex = 0;
-            this.CriteriaControlList.Text = "radListView1";
             this.CriteriaControlList.SelectedIndexChanged += new System.EventHandler(this.CriteriaControlList_SelectedIndexChanged);
             this.CriteriaControlList.Click += new System.EventHandler(this.CriteriaControlList_Click);
             // 
@@ -1268,12 +1248,12 @@
             // 
             // GridLoadDataOnPageLoad
             // 
+            this.GridLoadDataOnPageLoad.CheckState = System.Windows.Forms.CheckState.Checked;
             this.GridLoadDataOnPageLoad.Location = new System.Drawing.Point(133, 73);
             this.GridLoadDataOnPageLoad.Name = "GridLoadDataOnPageLoad";
             this.GridLoadDataOnPageLoad.Size = new System.Drawing.Size(139, 18);
             this.GridLoadDataOnPageLoad.TabIndex = 73;
             this.GridLoadDataOnPageLoad.Text = "Load data on page load";
-            this.GridLoadDataOnPageLoad.ToggleState = Telerik.WinControls.Enumerations.ToggleState.On;
             // 
             // radLabel27
             // 
@@ -1315,7 +1295,6 @@
             this.GridColumnPropertyGrid.Size = new System.Drawing.Size(200, 321);
             this.GridColumnPropertyGrid.SortOrder = System.Windows.Forms.SortOrder.Ascending;
             this.GridColumnPropertyGrid.TabIndex = 67;
-            this.GridColumnPropertyGrid.Text = "radPropertyGrid2";
             this.GridColumnPropertyGrid.ToolbarVisible = true;
             this.GridColumnPropertyGrid.Visible = false;
             // 
@@ -1351,7 +1330,6 @@
             this.GridColumns.Name = "GridColumns";
             this.GridColumns.Size = new System.Drawing.Size(200, 297);
             this.GridColumns.TabIndex = 61;
-            this.GridColumns.Text = "radListView2";
             this.GridColumns.SelectedIndexChanged += new System.EventHandler(this.GridColumns_SelectedIndexChanged);
             this.GridColumns.Click += new System.EventHandler(this.GridColumns_Click);
             // 
@@ -2043,7 +2021,7 @@
             // 
             this.radLabel55.Location = new System.Drawing.Point(310, 86);
             this.radLabel55.Name = "radLabel55";
-            this.radLabel55.Size = new System.Drawing.Size(99, 18);
+            this.radLabel55.Size = new System.Drawing.Size(98, 18);
             this.radLabel55.TabIndex = 79;
             this.radLabel55.Text = "Assigned Widgets:";
             // 
@@ -2056,7 +2034,6 @@
             this.AssignedSectionControlsList.Name = "AssignedSectionControlsList";
             this.AssignedSectionControlsList.Size = new System.Drawing.Size(201, 317);
             this.AssignedSectionControlsList.TabIndex = 78;
-            this.AssignedSectionControlsList.Text = "radListView4";
             this.AssignedSectionControlsList.SelectedIndexChanged += new System.EventHandler(this.AssignedSectionControlsList_SelectedIndexChanged);
             this.AssignedSectionControlsList.Click += new System.EventHandler(this.AssignedSectionControlsList_Click);
             // 
@@ -2092,7 +2069,6 @@
             this.SectionControlPropertyGrid.Size = new System.Drawing.Size(182, 347);
             this.SectionControlPropertyGrid.SortOrder = System.Windows.Forms.SortOrder.Ascending;
             this.SectionControlPropertyGrid.TabIndex = 59;
-            this.SectionControlPropertyGrid.Text = "radPropertyGrid3";
             this.SectionControlPropertyGrid.ToolbarVisible = true;
             this.SectionControlPropertyGrid.Visible = false;
             // 
@@ -2181,12 +2157,12 @@
             // 
             // DisplaySignupLink
             // 
+            this.DisplaySignupLink.CheckState = System.Windows.Forms.CheckState.Checked;
             this.DisplaySignupLink.Location = new System.Drawing.Point(34, 215);
             this.DisplaySignupLink.Name = "DisplaySignupLink";
             this.DisplaySignupLink.Size = new System.Drawing.Size(199, 18);
             this.DisplaySignupLink.TabIndex = 50;
             this.DisplaySignupLink.Text = "Can users signup for new accounts?";
-            this.DisplaySignupLink.ToggleState = Telerik.WinControls.Enumerations.ToggleState.On;
             // 
             // radLabel56
             // 
@@ -2212,12 +2188,12 @@
             // 
             // DisplayForgotPasswordLink
             // 
+            this.DisplayForgotPasswordLink.CheckState = System.Windows.Forms.CheckState.Checked;
             this.DisplayForgotPasswordLink.Location = new System.Drawing.Point(34, 89);
             this.DisplayForgotPasswordLink.Name = "DisplayForgotPasswordLink";
             this.DisplayForgotPasswordLink.Size = new System.Drawing.Size(224, 18);
             this.DisplayForgotPasswordLink.TabIndex = 46;
             this.DisplayForgotPasswordLink.Text = "Can users retrieve/reset their passwords?";
-            this.DisplayForgotPasswordLink.ToggleState = Telerik.WinControls.Enumerations.ToggleState.On;
             // 
             // radLabel52
             // 
@@ -2275,13 +2251,12 @@
             // 
             // RedirectToSpecificUrl
             // 
+            this.RedirectToSpecificUrl.CheckState = System.Windows.Forms.CheckState.Checked;
             this.RedirectToSpecificUrl.Location = new System.Drawing.Point(30, 88);
             this.RedirectToSpecificUrl.Name = "RedirectToSpecificUrl";
             this.RedirectToSpecificUrl.Size = new System.Drawing.Size(140, 18);
             this.RedirectToSpecificUrl.TabIndex = 72;
-            this.RedirectToSpecificUrl.TabStop = true;
             this.RedirectToSpecificUrl.Text = "Redirect to a specific url";
-            this.RedirectToSpecificUrl.ToggleState = Telerik.WinControls.Enumerations.ToggleState.On;
             // 
             // radLabel62
             // 
@@ -2305,7 +2280,6 @@
             this.wizardWelcomePage1.Header = "Select the type of page you would like to create";
             this.wizardWelcomePage1.Name = "wizardWelcomePage1";
             this.wizardWelcomePage1.Title = "New Screen Wizard";
-            this.wizardWelcomePage1.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // wizardPage1
             // 
@@ -2314,7 +2288,6 @@
             this.wizardPage1.HeaderVisibility = Telerik.WinControls.ElementVisibility.Visible;
             this.wizardPage1.Name = "wizardPage1";
             this.wizardPage1.Title = "Page titles";
-            this.wizardPage1.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // wizardPage7
             // 
@@ -2322,7 +2295,6 @@
             this.wizardPage7.Header = "Page header";
             this.wizardPage7.Name = "wizardPage7";
             this.wizardPage7.Title = "Primary page entity";
-            this.wizardPage7.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // wizardPage2
             // 
@@ -2330,7 +2302,6 @@
             this.wizardPage2.Header = "Page header";
             this.wizardPage2.Name = "wizardPage2";
             this.wizardPage2.Title = "Data Commands";
-            this.wizardPage2.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // wizardPage3
             // 
@@ -2338,7 +2309,6 @@
             this.wizardPage3.Header = "Page header";
             this.wizardPage3.Name = "wizardPage3";
             this.wizardPage3.Title = "Action Links";
-            this.wizardPage3.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // wizardPage4
             // 
@@ -2346,7 +2316,6 @@
             this.wizardPage4.Header = "Page header";
             this.wizardPage4.Name = "wizardPage4";
             this.wizardPage4.Title = "Criteria";
-            this.wizardPage4.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // wizardPage5
             // 
@@ -2354,7 +2323,6 @@
             this.wizardPage5.Header = "Page header";
             this.wizardPage5.Name = "wizardPage5";
             this.wizardPage5.Title = "Grid";
-            this.wizardPage5.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // wizardPage8
             // 
@@ -2362,7 +2330,6 @@
             this.wizardPage8.Header = "Page header";
             this.wizardPage8.Name = "wizardPage8";
             this.wizardPage8.Title = "Section Creation";
-            this.wizardPage8.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // wizardPage9
             // 
@@ -2370,7 +2337,6 @@
             this.wizardPage9.Header = "Page header";
             this.wizardPage9.Name = "wizardPage9";
             this.wizardPage9.Title = "Section Assignment";
-            this.wizardPage9.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // wizardPage10
             // 
@@ -2378,7 +2344,6 @@
             this.wizardPage10.Header = "Page header";
             this.wizardPage10.Name = "wizardPage10";
             this.wizardPage10.Title = "Login Options";
-            this.wizardPage10.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // wizardPage14
             // 
@@ -2386,7 +2351,6 @@
             this.wizardPage14.Header = "Page header";
             this.wizardPage14.Name = "wizardPage14";
             this.wizardPage14.Title = "Redirect Options";
-            this.wizardPage14.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // radContextMenu
             // 
@@ -2395,11 +2359,8 @@
             // 
             // radMenuItemRefresh
             // 
-            this.radMenuItemRefresh.AccessibleDescription = "Refresh Configuration Objects";
-            this.radMenuItemRefresh.AccessibleName = "Refresh Configuration Objects";
             this.radMenuItemRefresh.Name = "radMenuItemRefresh";
             this.radMenuItemRefresh.Text = "Refresh Configuration Objects";
-            this.radMenuItemRefresh.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             this.radMenuItemRefresh.Click += new System.EventHandler(this.radMenuItemRefresh_Click);
             // 
             // NewScreenWizard
@@ -2409,10 +2370,6 @@
             this.ClientSize = new System.Drawing.Size(801, 579);
             this.Controls.Add(this.wizard);
             this.Name = "NewScreenWizard";
-            // 
-            // 
-            // 
-            this.RootElement.ApplyShapeToControl = true;
             this.Text = "NewScreenWizard";
             this.ThemeName = "ControlDefault";
             ((System.ComponentModel.ISupportInitialize)(this.wizard)).EndInit();

@@ -43,13 +43,17 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Telerik.WinControls, Version=2023.1.117.48, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Telerik\UI for WinForms\Bin48\Telerik.WinControls.dll</HintPath>
+    <Reference Include="Telerik.WinControls, Version=2024.1.312.48, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\..\..\lib\RCWF\2024.1.312.48\Telerik.WinControls.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.WinControls.UI, Version=2023.1.117.48, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Telerik\UI for WinForms\Bin48\Telerik.WinControls.UI.dll</HintPath>
+    <Reference Include="Telerik.WinControls.UI, Version=2024.1.312.48, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\..\..\lib\RCWF\2024.1.312.48\Telerik.WinControls.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TelerikCommon, Version=2024.1.312.48, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>..\..\..\lib\RCWF\2024.1.312.48\TelerikCommon.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>

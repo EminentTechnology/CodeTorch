@@ -120,21 +120,59 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Telerik.Web.Design, Version=2015.1.401.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+    <Reference Include="Telerik.Web.Design, Version=2024.1.131.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Telerik\UI for ASP.NET AJAX\Bin45\Telerik.Web.Design.dll</HintPath>
+      <HintPath>..\..\..\lib\RCAJAX\2024.1.131.45\Telerik.Web.Design.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Web.Device.Detection, Version=2015.1.225.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+    <Reference Include="Telerik.Web.Device.Detection, Version=2024.1.131.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Telerik\UI for ASP.NET AJAX\Bin45\Telerik.Web.Device.Detection.dll</HintPath>
+      <HintPath>..\..\..\lib\RCAJAX\2024.1.131.45\Telerik.Web.Device.Detection.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Web.UI, Version=2015.1.225.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Telerik\UI for ASP.NET AJAX\Bin45\Telerik.Web.UI.dll</HintPath>
+    <Reference Include="Telerik.Web.Spreadsheet">
+      <HintPath>..\..\..\lib\RCAJAX\2024.1.131.45\AdditionalLibraries\Bin45\Telerik.Web.Spreadsheet.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.Web.UI.Skins, Version=2015.1.225.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+    <Reference Include="Telerik.Web.UI, Version=2024.1.131.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Telerik\UI for ASP.NET AJAX\Bin45\Telerik.Web.UI.Skins.dll</HintPath>
+      <HintPath>..\..\..\lib\RCAJAX\2024.1.131.45\Telerik.Web.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Web.UI.Skins, Version=2024.1.131.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\RCAJAX\2024.1.131.45\Telerik.Web.UI.Skins.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Core, Version=2024.1.124.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\RCAJAX\2024.1.131.45\AdditionalLibraries\Bin45\Telerik.Windows.Documents.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.DrawingML, Version=2024.1.124.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\RCAJAX\2024.1.131.45\AdditionalLibraries\Bin45\Telerik.Windows.Documents.DrawingML.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Flow, Version=2024.1.124.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\RCAJAX\2024.1.131.45\AdditionalLibraries\Bin45\Telerik.Windows.Documents.Flow.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet, Version=2024.1.124.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\RCAJAX\2024.1.131.45\AdditionalLibraries\Bin45\Telerik.Windows.Documents.Spreadsheet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml, Version=2024.1.124.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\RCAJAX\2024.1.131.45\AdditionalLibraries\Bin45\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Zip, Version=2024.1.124.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\RCAJAX\2024.1.131.45\AdditionalLibraries\Bin45\Telerik.Windows.Zip.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
