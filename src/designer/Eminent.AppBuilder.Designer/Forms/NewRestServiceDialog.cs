@@ -117,8 +117,6 @@ namespace CodeTorch.Designer.Forms
             return retVal.Count<RestService>();
         }
 
-       
-
         private void SaveRestService()
         {
             RestService item = new RestService();
@@ -130,12 +128,5 @@ namespace CodeTorch.Designer.Forms
             RestService.Save(item);
 
         }
-
-       
-        
-
-        
-
-
     }
 }

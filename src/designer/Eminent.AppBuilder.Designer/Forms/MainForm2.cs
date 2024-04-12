@@ -1,7 +1,9 @@
-﻿using CodeTorch.Core;
+﻿using CodeTorch.AI.Services;
+using CodeTorch.Core;
 using CodeTorch.Core.Interfaces;
 using CodeTorch.Core.Services;
 using CodeTorch.Designer.Code;
+using CodeTorch.Designer.Wizards.RestServiceWizard;
 using System;
 using System.CodeDom.Compiler;
 using System.Collections;
@@ -23,15 +25,12 @@ namespace CodeTorch.Designer.Forms
 {
     public partial class MainForm2 : Form
     {
-       
-
         Project Project = new Project();
         string ProjectFile { get; set; }
         string ConfigurationPath { get; set; }
 
         public MainForm2()
         {
-            
             InitializeComponent();
         }
 
@@ -43,20 +42,16 @@ namespace CodeTorch.Designer.Forms
                 this.Text = string.Format("CodeTorch Designer - v {0}", GetDisplayVersion());
                 this.Visible = false;
 
-                
-
                 LoadProjectSelectionScreen(true);
 
                 this.Visible = true;
                 //add shortcuts
                 this.cmdSave.Shortcuts.Add(new Telerik.WinControls.RadShortcut(Keys.Control, Keys.S));
                 this.cmdSaveAll.Shortcuts.Add(new Telerik.WinControls.RadShortcut(Keys.Control, Keys.Shift, Keys.S));
-
             }
             catch (Exception ex)
             {
                 ErrorManager.HandleError(ex);
-
             }
         }
 
@@ -526,6 +521,16 @@ namespace CodeTorch.Designer.Forms
             //RadItem
             cmdNew.Items.Add(item);
 
+            if(EntityType == Constants.ENTITY_TYPE_REST_SERVICE)
+            {
+                item = new RadMenuItem();
+                item.Tag = EntityType + "Wizard";
+                item.Text = String.Format("New {0} Wizard", SingleTitle);
+                item.Click += newItem_Click;
+                //RadItem
+                cmdNew.Items.Add(item);
+            }
+
 
             this.solutionTree.Nodes.Add(node);
         }
@@ -679,6 +684,26 @@ namespace CodeTorch.Designer.Forms
                     restServiceDialog.ItemType = EntityType;
                     restServiceDialog.ItemDisplayName = "RestService";
                     return restServiceDialog.ShowDialog();
+                case "restservicewizard":
+                    RestServiceWizardForm rsw = new RestServiceWizardForm();
+                    rsw.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+                    rsw.TopLevel = false;
+                    rsw.Dock = DockStyle.Fill;
+
+                    DocumentWindow rswWizardWindow = new DocumentWindow();
+                    rswWizardWindow.Text = "Rest Service Wizard";
+                    rswWizardWindow.CloseAction = DockWindowCloseAction.CloseAndDispose;
+                    rswWizardWindow.Controls.Add(rsw);
+                    this.dock.AddDocument(rswWizardWindow);
+
+                    rsw.DockWindow = rswWizardWindow;
+                    rsw.Solution = this.solutionTree;
+                    rsw.MainForm = this;
+                    rsw.Show();
+
+                    this.dock.ActiveWindow = rswWizardWindow;
+                    //not used here
+                    return System.Windows.Forms.DialogResult.Cancel;
                 case "screen":
                     //NewScreenDialog2 sdlg = new NewScreenDialog2();
                     //return sdlg.ShowDialog();
@@ -1041,7 +1066,6 @@ namespace CodeTorch.Designer.Forms
         private RadContextMenu GetItemContextMenu(string EntityType)
         {
             RadContextMenu retval = null;
-            
 
             switch (EntityType)
             {
@@ -1052,11 +1076,9 @@ namespace CodeTorch.Designer.Forms
                     lookupSingleDatabase.Click += new EventHandler(MenuItem_Lookup_UpdateSingleLookupToDataBase_Click);
                     retval.Items.Add(lookupSingleDatabase);
 
-
                     RadMenuItem lookupAllDatabase = new RadMenuItem("Update All Lookups to Database");
                     lookupAllDatabase.Click += new EventHandler(MenuItem_Lookup_UpdateAllLookupsToDataBase_Click);
                     retval.Items.Add(lookupAllDatabase);
-
 
                     break;
                 case Constants.ENTITY_TYPE_PERMISSION:
@@ -1066,11 +1088,9 @@ namespace CodeTorch.Designer.Forms
                     permissionSingleDatabase.Click += new EventHandler(MenuItem_Permission_UpdateSinglePermissionToDataBase_Click);
                     retval.Items.Add(permissionSingleDatabase);
 
-
                     RadMenuItem permissionAllDatabase = new RadMenuItem("Update All Permissions to Database");
                     permissionAllDatabase.Click += new EventHandler(MenuItem_Permission_UpdateAllPermissionsToDataBase_Click);
                     retval.Items.Add(permissionAllDatabase);
-
 
                     break;
                 case Constants.ENTITY_TYPE_SEQUENCE:
@@ -1084,18 +1104,17 @@ namespace CodeTorch.Designer.Forms
                     sequenceAllDatabase.Click += new EventHandler(MenuItem_Sequence_UpdateAllSequencesToDataBase_Click);
                     retval.Items.Add(sequenceAllDatabase);
 
-
                     break;
                 case Constants.ENTITY_TYPE_DATA_COMMAND:
                     retval = new RadContextMenu();
 
                     RadMenuItem datacommandRefreshSchema = new RadMenuItem("Refresh Schema From DataBase");
-                    datacommandRefreshSchema.Click += new EventHandler(MenuItem_DataCommand_RefreshSchem_Click);
+                    datacommandRefreshSchema.Click += new EventHandler(MenuItem_DataCommand_RefreshSchema_Click);
                     retval.Items.Add(datacommandRefreshSchema);
 
-
-
-
+                    RadMenuItem datacommandUpdateDescriptions = new RadMenuItem("Update Descriptions");
+                    datacommandUpdateDescriptions.Click += new EventHandler(MenuItem_DataCommand_UpdateDescriptions_Click);
+                    retval.Items.Add(datacommandUpdateDescriptions);
                     break;
 
                 case Constants.ENTITY_TYPE_SCREEN:
@@ -1118,10 +1137,7 @@ namespace CodeTorch.Designer.Forms
                     workflowSingleDatabase.Click += new EventHandler(MenuItem_Workflow_UpdateSingleWorkflowToDataBase_Click);
                     retval.Items.Add(workflowSingleDatabase);
 
-
                     break;
-                
-
             }
 
             if (retval == null)
@@ -1240,7 +1256,7 @@ namespace CodeTorch.Designer.Forms
 
         }
 
-        void MenuItem_DataCommand_RefreshSchem_Click(object sender, EventArgs e)
+        void MenuItem_DataCommand_RefreshSchema_Click(object sender, EventArgs e)
         {
             try
             {
@@ -1261,6 +1277,28 @@ namespace CodeTorch.Designer.Forms
                 ErrorManager.HandleError(ex);
             }
 
+        }
+
+        async void MenuItem_DataCommand_UpdateDescriptions_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                RadTreeView tree = this.solutionTree;
+                SolutionTreeNode node = (SolutionTreeNode)tree.SelectedNode;
+                DataCommand item = (DataCommand)node.Object;
+
+                var AIService = new ProxyAIService();
+
+                item = await AIService.UpdateDataCommandDescription(item, Project.DatabaseProjectFolder);
+
+                DataCommand.Save(item);
+
+                MessageBox.Show(String.Format("Data Command {0} has been updated successfully", item.Name));
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.HandleError(ex);
+            }
         }
 
         void MenuItem_Workflow_UpdateSingleWorkflowToDataBase_Click(object sender, EventArgs e)

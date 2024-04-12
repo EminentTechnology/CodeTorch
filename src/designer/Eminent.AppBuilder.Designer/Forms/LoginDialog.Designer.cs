@@ -57,6 +57,9 @@
             this.RootNamespace = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SelectDatabaseProjectFolder = new System.Windows.Forms.Button();
+            this.DatabaseProjectFolder = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.ProjectGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -171,6 +174,9 @@
             this.ProjectGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProjectGroupBox.Controls.Add(this.SelectDatabaseProjectFolder);
+            this.ProjectGroupBox.Controls.Add(this.DatabaseProjectFolder);
+            this.ProjectGroupBox.Controls.Add(this.label1);
             this.ProjectGroupBox.Controls.Add(this.label11);
             this.ProjectGroupBox.Controls.Add(this.ProjectTypeList);
             this.ProjectGroupBox.Controls.Add(this.ProjectName);
@@ -335,6 +341,37 @@
             this.label8.TabIndex = 12;
             this.label8.Text = "Output Locations:";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 267);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 13);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "SQL Project Folder:";
+            // 
+            // SelectDatabaseProjectFolder
+            // 
+            this.SelectDatabaseProjectFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SelectDatabaseProjectFolder.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SelectDatabaseProjectFolder.Location = new System.Drawing.Point(393, 264);
+            this.SelectDatabaseProjectFolder.Name = "SelectDatabaseProjectFolder";
+            this.SelectDatabaseProjectFolder.Size = new System.Drawing.Size(26, 21);
+            this.SelectDatabaseProjectFolder.TabIndex = 19;
+            this.SelectDatabaseProjectFolder.Text = "..";
+            this.SelectDatabaseProjectFolder.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.SelectDatabaseProjectFolder.UseVisualStyleBackColor = true;
+            this.SelectDatabaseProjectFolder.Click += new System.EventHandler(this.SelectDatabaseProjectFolder_Click);
+            // 
+            // DatabaseProjectFolder
+            // 
+            this.DatabaseProjectFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DatabaseProjectFolder.Location = new System.Drawing.Point(124, 264);
+            this.DatabaseProjectFolder.Name = "DatabaseProjectFolder";
+            this.DatabaseProjectFolder.Size = new System.Drawing.Size(263, 20);
+            this.DatabaseProjectFolder.TabIndex = 18;
+            // 
             // LoginDialog
             // 
             this.AcceptButton = this.Open;
@@ -392,5 +429,8 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox ProjectName;
         private System.Windows.Forms.OpenFileDialog fileDialog;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button SelectDatabaseProjectFolder;
+        private System.Windows.Forms.TextBox DatabaseProjectFolder;
     }
 }

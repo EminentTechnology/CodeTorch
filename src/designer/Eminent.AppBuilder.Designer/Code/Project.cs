@@ -22,7 +22,9 @@ namespace CodeTorch.Designer.Code
         public string RootNamespace { get; set; }
         public ProjectType ProjectType { get; set; }
         public string ConfigurationFolder { get; set; }
-        
+
+        public string DatabaseProjectFolder { get; set; }
+
         List<String> _OutputLocations = new List<string>();
         public List<String> OutputLocations
         {

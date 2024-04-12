@@ -47,10 +47,10 @@ namespace CodeTorch.Designer.Forms
             ValidateRequiredField(this.RootNamespace, "Root Namespace", ref IsErrorPresent, errors);
             ValidateRequiredField(this.ConfigFolder, "Config Folder", ref IsErrorPresent, errors);
             ValidateRequiredField(this.OutputLocation1Folder, "Output Location 1 is required", ref IsErrorPresent, errors);
-            
-            
 
-            
+            ValidateRequiredField(this.DatabaseProjectFolder, "SQL Project Folder", ref IsErrorPresent, errors);
+
+
 
             if (IsErrorPresent)
             {
@@ -134,8 +134,6 @@ namespace CodeTorch.Designer.Forms
                         }
                     }
 
-                    
-
                     RecentProjectList.Items.Remove(selectedItem);
 
                     ProjectGroupBox.Enabled = false;
@@ -144,9 +142,7 @@ namespace CodeTorch.Designer.Forms
                     ClearProjectDetails();
 
                     ProjectMRU.Save(dstMRU);
-                    
                 }
-                
             }
             catch (Exception ex)
             {
@@ -186,8 +182,6 @@ namespace CodeTorch.Designer.Forms
 
         private Project PopulateProjectObjectFromForm()
         {
-            
-
             ProjectType t;
             Enum.TryParse<ProjectType>(ProjectTypeList.SelectedValue.ToString(), out t);
             this.Project.ProjectType = t;
@@ -204,7 +198,8 @@ namespace CodeTorch.Designer.Forms
             if (!String.IsNullOrEmpty(this.OutputLocation2Folder.Text))
                 this.Project.OutputLocations.Add(this.OutputLocation2Folder.Text);
 
-
+            if (!String.IsNullOrEmpty(this.DatabaseProjectFolder.Text))
+                this.Project.DatabaseProjectFolder = this.DatabaseProjectFolder.Text;
 
             return this.Project;
         }
@@ -228,7 +223,7 @@ namespace CodeTorch.Designer.Forms
 
             this.ProjectFolder.Text = FileName.Substring(0, FileName.LastIndexOf("\\"));
 
-          
+            this.DatabaseProjectFolder.Text = this.Project.DatabaseProjectFolder;
 
             ProjectGroupBox.Enabled = true;
 
@@ -258,7 +253,7 @@ namespace CodeTorch.Designer.Forms
             this.ConfigFolder.Text = "";
             this.OutputLocation1Folder.Text = "";
             this.OutputLocation2Folder.Text = "";
-
+            this.DatabaseProjectFolder.Text = "";
            
         }
 
@@ -385,6 +380,16 @@ namespace CodeTorch.Designer.Forms
             catch (Exception ex)
             {
                 ErrorManager.HandleError(ex);
+            }
+        }
+
+        private void SelectDatabaseProjectFolder_Click(object sender, EventArgs e)
+        {
+            folderDialog.Description = "Please Select SQL Server Database Project Folder";
+
+            if (folderDialog.ShowDialog() == DialogResult.OK)
+            {
+                this.DatabaseProjectFolder.Text = folderDialog.SelectedPath;
             }
         }
     }
