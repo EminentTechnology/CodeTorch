@@ -235,7 +235,10 @@
       <HintPath>..\..\..\lib\RCWF\2024.1.312.48\Telerik.WinControls.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Telerik.WinControls.GridView, Version=2024.1.312.48, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.GridView, Version=2024.1.312.48, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\RCWF\2024.1.312.48\Telerik.WinControls.GridView.dll</HintPath>
+    </Reference>
     <Reference Include="Telerik.WinControls.RadDock, Version=2024.1.312.48, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <HintPath>..\..\..\lib\RCWF\2024.1.312.48\Telerik.WinControls.RadDock.dll</HintPath>
       <Private>True</Private>
