@@ -41,8 +41,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTorch.Resources.Web", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTorch.Data.Object", "src\plugins\CodeTorch.Data.Object\CodeTorch.Data.Object.csproj", "{B0D533F4-F147-4493-8545-A7CD0BB990D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "tests\UnitTestProject1\UnitTestProject1.csproj", "{5FF42B43-19F4-4BAF-BDA1-760DB56CC3B0}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - AI", "02 - AI", "{75535CF3-8D1F-40EC-A835-F3B641CC2166}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTorch.AI", "src\ai\CodeTorch.AI\CodeTorch.AI.csproj", "{95DCA51B-C96A-483D-88F6-08D0C485F89D}"
@@ -399,30 +397,6 @@ Global
 		{B0D533F4-F147-4493-8545-A7CD0BB990D8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{B0D533F4-F147-4493-8545-A7CD0BB990D8}.Release|x86.ActiveCfg = Release|Any CPU
 		{B0D533F4-F147-4493-8545-A7CD0BB990D8}.Release|x86.Build.0 = Release|Any CPU
-		{5FF42B43-19F4-4BAF-BDA1-760DB56CC3B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5FF42B43-19F4-4BAF-BDA1-760DB56CC3B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5FF42B43-19F4-4BAF-BDA1-760DB56CC3B0}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{5FF42B43-19F4-4BAF-BDA1-760DB56CC3B0}.Debug|ARM.Build.0 = Debug|Any CPU
-		{5FF42B43-19F4-4BAF-BDA1-760DB56CC3B0}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{5FF42B43-19F4-4BAF-BDA1-760DB56CC3B0}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{5FF42B43-19F4-4BAF-BDA1-760DB56CC3B0}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{5FF42B43-19F4-4BAF-BDA1-760DB56CC3B0}.Debug|x86.Build.0 = Debug|Any CPU
-		{5FF42B43-19F4-4BAF-BDA1-760DB56CC3B0}.Obfuscate|Any CPU.ActiveCfg = Debug|Any CPU
-		{5FF42B43-19F4-4BAF-BDA1-760DB56CC3B0}.Obfuscate|Any CPU.Build.0 = Debug|Any CPU
-		{5FF42B43-19F4-4BAF-BDA1-760DB56CC3B0}.Obfuscate|ARM.ActiveCfg = Debug|Any CPU
-		{5FF42B43-19F4-4BAF-BDA1-760DB56CC3B0}.Obfuscate|ARM.Build.0 = Debug|Any CPU
-		{5FF42B43-19F4-4BAF-BDA1-760DB56CC3B0}.Obfuscate|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{5FF42B43-19F4-4BAF-BDA1-760DB56CC3B0}.Obfuscate|Mixed Platforms.Build.0 = Debug|Any CPU
-		{5FF42B43-19F4-4BAF-BDA1-760DB56CC3B0}.Obfuscate|x86.ActiveCfg = Debug|Any CPU
-		{5FF42B43-19F4-4BAF-BDA1-760DB56CC3B0}.Obfuscate|x86.Build.0 = Debug|Any CPU
-		{5FF42B43-19F4-4BAF-BDA1-760DB56CC3B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5FF42B43-19F4-4BAF-BDA1-760DB56CC3B0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5FF42B43-19F4-4BAF-BDA1-760DB56CC3B0}.Release|ARM.ActiveCfg = Release|Any CPU
-		{5FF42B43-19F4-4BAF-BDA1-760DB56CC3B0}.Release|ARM.Build.0 = Release|Any CPU
-		{5FF42B43-19F4-4BAF-BDA1-760DB56CC3B0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{5FF42B43-19F4-4BAF-BDA1-760DB56CC3B0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{5FF42B43-19F4-4BAF-BDA1-760DB56CC3B0}.Release|x86.ActiveCfg = Release|Any CPU
-		{5FF42B43-19F4-4BAF-BDA1-760DB56CC3B0}.Release|x86.Build.0 = Release|Any CPU
 		{95DCA51B-C96A-483D-88F6-08D0C485F89D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{95DCA51B-C96A-483D-88F6-08D0C485F89D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95DCA51B-C96A-483D-88F6-08D0C485F89D}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -469,8 +443,8 @@ Global
 		{95DCA51B-C96A-483D-88F6-08D0C485F89D} = {75535CF3-8D1F-40EC-A835-F3B641CC2166}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45
-		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Security.Cryptography.5.0.505.0\lib\NET35
 		SolutionGuid = {FD5C3898-2CA2-490C-A91A-49EA081A2543}
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Security.Cryptography.5.0.505.0\lib\NET35
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45
 	EndGlobalSection
 EndGlobal
