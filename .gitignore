@@ -20,3 +20,4 @@ _ReSharper.*
 /.vs
 Logs
 /*.log
+/src/webforms/CodeTorch.Web/.vs

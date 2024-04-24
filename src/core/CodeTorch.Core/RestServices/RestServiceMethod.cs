@@ -1,7 +1,5 @@
 ﻿using System;
-
 using System.Linq;
-
 
 namespace CodeTorch.Core
 {
@@ -21,8 +19,4 @@ namespace CodeTorch.Core
         Xml,
         Raw
     }
-
-    
-
-
 }

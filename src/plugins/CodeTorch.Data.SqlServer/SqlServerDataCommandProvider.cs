@@ -359,7 +359,6 @@ namespace CodeTorch.Data.SqlServer
                     //get parameters
                     DataTable paramDT = GetStoredProcedureParameters(connection, null, command.Text);
 
-
                     command.Parameters.Clear();
                     foreach (DataRow p in paramDT.Rows)
                     {
@@ -427,16 +426,6 @@ namespace CodeTorch.Data.SqlServer
                             }
 
                             string paramitem = string.Empty;
-                            //int paramEndIndex = paramTokens[paramIndex].IndexOf(' ');
-                            //if (paramEndIndex > 0)
-                            //{
-                            //    paramitem = paramTokens[paramIndex].Substring(0, paramEndIndex);
-                            //}
-                            //else
-                            //{
-                            //    paramitem = paramTokens[paramIndex];
-                            //}
-
                             paramitem = paramTokens[paramIndex].Substring(0, paramEndIndex+1);
 
                             if (!paramlist.Contains("@" + paramitem))
@@ -445,8 +434,8 @@ namespace CodeTorch.Data.SqlServer
                             }
                         }
 
-
                         command.Parameters.Clear();
+
                         foreach (string paramItem in paramlist)
                         {
                             CodeTorch.Core.DataCommandParameter param = new CodeTorch.Core.DataCommandParameter();
@@ -456,18 +445,11 @@ namespace CodeTorch.Data.SqlServer
                             param.Type = DataCommandParameterType.String;
                             param.Direction = DataCommandParameterDirection.In;
 
-                            //param - reset dirty flag
-
                             command.Parameters.Add(param);
-
-
-
                         }
                     }
                     break;
             }
-
-
 
             if (command.ReturnType.ToString().ToLower() == "datatable")
             {
@@ -659,7 +641,6 @@ namespace CodeTorch.Data.SqlServer
 
         public DataTable GetStoredProcedureParameters(DataConnection connection, DbTransaction tran, string SPName)
         {
-
             DataTable retVal;
             Database db = CreateDatabase(connection);
             string commandText = @"select 
@@ -697,7 +678,5 @@ namespace CodeTorch.Data.SqlServer
         }
 
         #endregion
-
-        
     }
 }

@@ -1,0 +1,47 @@
+﻿Below is json representation of existing backend rest services:
+{{$existingRestServices}}
+
+You are a helpful software developer assistant and your output is used in a wizard that developers will use in building the rest services.
+
+The current developer has the following request:
+{{$request}}
+
+---
+Using the above provided rest services you will make a recommendation that returns a populated  AnalyzeRequestResponse object.
+
+The DTO for this object is shown below:
+
+public class AnalyzeRequestResponse
+{
+	
+    public bool RecommendNewRestService { get; set; }
+
+    public List<NewRestServiceRecommendation> Recommendations { get; set; } = new List<NewRestServiceRecommendation>();
+
+    public string ExistingRestService { get; set; }
+    public string Reason { get; set; }
+}
+
+public class NewRestServiceRecommendation
+{
+	//unique name of rest service endpoint - no spaces or special characters
+    public string Name { get; set; }
+	//largely for organizational purposes defaults to Services
+    public string Folder { get; set; }
+	//unique relative endpoint url - supports url segments {SampleUrlSegment}
+    public string Resource { get; set; }
+	//Generate short description for this rest service
+    public string Description { get; set; }
+    public bool SupportJSON { get; set; }
+    public bool SupportXML { get; set; }
+}
+
+If you believe there is an existing service that best addresses the request set RecommendNewRestService to false. Specify the name of the rest service in ExistingRestService. Do not make up existing rest service names - they must come from the existing list provided.
+
+If you believe there is no existing service that addresses the request then set RecommendNewRestService to true and recommend at least 4 restservice recommendations.
+
+Where possible try to utilize similar naming conventions and patterns as seen in the existing rest services provided (if any)
+
+Always provide a short reason as to how you made your decision in the reason field.
+
+Your output should only be json and nothing else as your response is being integrated in a tool.

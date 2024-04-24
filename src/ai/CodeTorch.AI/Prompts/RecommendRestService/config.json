@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "type": "completion",
+  "description": "Recommends rest services to the user based on the request and existing rest services and data commands",
+  "execution_settings": {
+    "default": {
+      "max_tokens": 1000,
+      "temperature": 0
+    }
+  },
+  "input_variables": [
+    {
+      "name": "request",
+      "description": "The desired request/goal from the user trying to develop rest services",
+      "required": true
+    },
+    {
+      "name": "existingRestServices",
+      "description": "json representation of all existing data commands and rest services",
+      "required": true
+    }
+  ]
+}

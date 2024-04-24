@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.ComponentModel.Design;
-using CodeTorch.Core;
+using System.Linq;
 
 namespace CodeTorch.Core.Design
 {
@@ -28,8 +26,6 @@ namespace CodeTorch.Core.Design
             types.Add(typeof(PutRestServiceMethod));
             types.Add(typeof(DeleteRestServiceMethod));
 
-           
-
             return types.ToArray<Type>();
         }
 
@@ -38,10 +34,7 @@ namespace CodeTorch.Core.Design
             BaseRestServiceMethod method = (BaseRestServiceMethod)value;
 
             string retVal = String.Empty;
-
             retVal = String.Format("{0} - {1}",method.Action, method.RequestDataCommand);
-
-            
 
             return base.GetDisplayText(retVal);
         }
@@ -66,12 +59,14 @@ namespace CodeTorch.Core.Design
                     ((BaseRestServiceMethod)retVal).Action = RestServiceMethodActionEnum.GET;
                     break;
             }
-            //((BaseSecurityGroup)retVal).Parent = Context.Instance;
-            
 
+            if(Context.Instance != null)
+            {
+                BaseRestServiceMethod method = (BaseRestServiceMethod)retVal;
+                method.ParentService = Context.Instance as RestService;
+            }
+   
             return retVal;
         }
-
-
     }
 }

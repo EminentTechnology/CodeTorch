@@ -20,6 +20,7 @@ namespace CodeTorch.Core
     [Serializable]
     public enum RestServiceResponseMode
     { 
+        Default,
         Simple,
         IncludeMetaAndError
     }

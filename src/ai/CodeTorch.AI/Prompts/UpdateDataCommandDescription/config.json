@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "type": "completion",
+  "description": "Updates data command with descriptions eg parameter descriptions, column descriptions, list of tables used and overall purpose of data command",
+  "execution_settings": {
+    "default": {
+      "max_tokens": 1000,
+      "temperature": 0
+    }
+  },
+  "input_variables": [
+    {
+      "name": "datacommandJson",
+      "description": "json format of datacommand",
+      "required": true
+    },
+    {
+      "name": "sql",
+      "description": "actual sql executed by the data command - for procs this is the content of the proc",
+      "required": true
+    }
+  ]
+}

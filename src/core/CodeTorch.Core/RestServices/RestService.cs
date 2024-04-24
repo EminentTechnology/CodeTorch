@@ -16,6 +16,8 @@ namespace CodeTorch.Core
         [ReadOnly(true)]
         public string Name { get; set; }
 
+        public string Description { get; set; }
+
         public string EntityName { get; set; }
         public string EntityCollectionName { get; set; }
 
@@ -49,8 +51,6 @@ namespace CodeTorch.Core
 
         }
 
-        
-
         public static void Load(XDocument doc)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(RestService));
@@ -62,6 +62,11 @@ namespace CodeTorch.Core
             try
             {
                 item = (RestService)serializer.Deserialize(reader);
+
+                foreach(var method in item.Methods)
+                {
+                    method.ParentService = item;
+                }
             }
             catch (Exception ex)
             {
@@ -74,8 +79,6 @@ namespace CodeTorch.Core
 
         public static void Save(RestService item)
         {
-
-
             string ConfigPath = ConfigurationLoader.GetFileConfigurationPath();
 
             if (!Directory.Exists(String.Format("{0}RestServices\\{1}", ConfigPath, item.Folder)))
@@ -84,13 +87,8 @@ namespace CodeTorch.Core
             }
 
             string filePath = String.Format("{0}RestServices\\{1}\\{2}.xml", ConfigPath, item.Folder, item.Name);
-
             ConfigurationLoader.SerializeObjectToFile(item, filePath);
-            ConfigurationLoader.SerializeObjectToFile(item, filePath);
-
         }
-
-
 
         public static RestService GetByFolderAndName(string FolderName, string ScreenName)
         {

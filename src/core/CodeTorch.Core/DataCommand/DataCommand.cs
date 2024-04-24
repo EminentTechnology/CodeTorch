@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.ComponentModel;
-using System.Xml.Serialization;
 using System.Drawing.Design;
+using System.IO;
+using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
-using System.IO;
+using System.Xml.Serialization;
 
 namespace CodeTorch.Core
 {
@@ -18,9 +18,6 @@ namespace CodeTorch.Core
 
         List<DataCommandParameter> _parameters = new List<DataCommandParameter>();
         List<DataCommandColumn> _columns = new List<DataCommandColumn>();
-
-
-
 
         [Category("General")]
         [Description("The name of this data command")]
@@ -114,6 +111,12 @@ namespace CodeTorch.Core
         [Category("Processing Hooks")]
         public string PostProcessingClass { get; set; }
 
+        [Category("Misc")]
+        public string Description { get; set; }
+
+        [Category("Misc")]
+        public string Tables { get; set; }
+
         public static void Load(XDocument doc)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(DataCommand));
@@ -130,7 +133,6 @@ namespace CodeTorch.Core
 
         public static void Save(DataCommand item)
         {
-
             string ConfigPath = ConfigurationLoader.GetFileConfigurationPath();
             //XmlSerializer x = new XmlSerializer(item.GetType());
 
@@ -141,7 +143,6 @@ namespace CodeTorch.Core
 
             string filePath = String.Format("{0}DataCommands\\{1}.xml", ConfigPath, item.Name);
             ConfigurationLoader.SerializeObjectToFile(item, filePath);
-
         }
 
         public static DataCommand GetDataCommand(string DataCommandName)
@@ -172,8 +173,6 @@ namespace CodeTorch.Core
 
             return command;
         }
-
-
 
         internal static int GetItemCount(string Name)
         {

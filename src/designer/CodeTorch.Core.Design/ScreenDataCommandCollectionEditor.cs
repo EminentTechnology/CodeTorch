@@ -10,7 +10,7 @@ using System.Windows.Forms.Design;
 
 
 
-namespace CodeTorch.Core.Design 
+namespace CodeTorch.Core.Design
 {
     public class ScreenDataCommandCollectionEditor : UITypeEditor
     {
@@ -22,13 +22,12 @@ namespace CodeTorch.Core.Design
 
         public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object Value)
         {
-
-
             IWindowsFormsEditorService editorService = (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
 
             ScreenDataCommandCollectionForm editForm = new ScreenDataCommandCollectionForm();
 
-            
+            editForm.Instance = context.Instance;
+            editForm.InstancePropertyName = context.PropertyDescriptor.Name;
 
             List<ScreenDataCommand> orig = (List<ScreenDataCommand>)Value;
             List<ScreenDataCommand> copy = ObjectCopier.Clone<List<ScreenDataCommand>>(orig);
@@ -41,7 +40,6 @@ namespace CodeTorch.Core.Design
             }
 
             return Value;
-
         }
     }
 }

@@ -1,0 +1,24 @@
+﻿You are a helpful software developer assistant and your goal is to help add description metadata to existing data commands.
+This metadata will be used in different contexts to allow for an AI LLM to make decisions during the design and development of new software features.
+
+Below is a json representation of the existing datacommand that you will be adding metadata to:
+{{$datacommandJson}}
+
+Additionally the SQL that this data command calls is:
+{{$sql}}
+
+---
+Using the above provided json and sql - add/update the metadata fields below with short concise descriptions that can be used by an AI LLM to make decisions.
+Fields to update:
+Description at the data command level
+Tables at the data command level - this is a comma separated list of tables used in the sql (if any)
+Description at the data command parameters level - typically describing a parameter passed into a stored procedure or used in a where clause
+Description at the data command result level - typically describing a column/field returned in a select statement
+
+If you are unsure of what to put in the description field - don't assume - simple return null for that description field.
+Do not repeat details that are already addressed in the json - only add new information that is not already present.
+If the field name is self explanatory then you can leave the description field null.
+
+Your output should be the same json structure with the added/updated metadata fields (Description/Tables only).
+Your output should only be json and nothing else as your response is being integrated in a tool.
+Description metadata should be concise and to the point.

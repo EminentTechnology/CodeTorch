@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.ComponentModel;
 
 namespace CodeTorch.Core
 {
+    [Serializable]
     public class PutRestServiceMethod : BaseRestServiceMethod
     {
         [Category("Data")]

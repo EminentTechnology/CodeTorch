@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Routing;
+﻿using CodeTorch.Core;
+using System;
 using System.Web;
-using System.Data;
-using System.Data.Common;
-using System.Web.UI;
 using System.Web.Compilation;
-using CodeTorch.Core;
+using System.Web.Routing;
 
 namespace CodeTorch.Web.HttpHandlers
 {
@@ -26,10 +20,6 @@ namespace CodeTorch.Web.HttpHandlers
             IHttpHandler retVal = null;
 
             string virtualPath = null;
-
-
-
-
             string url = ((System.Web.Routing.Route)(requestContext.RouteData.Route)).Url;
             string[] urlSegments = url.Split('/');
 
@@ -51,8 +41,6 @@ namespace CodeTorch.Web.HttpHandlers
 
                 }
             }
-
-
 
             return retVal;
         }
@@ -80,7 +68,6 @@ namespace CodeTorch.Web.HttpHandlers
             {
                 virtualPath = "~/Templates/Pages/PageNotFound.aspx";
             }
-            
 
             return (virtualPath != null)
                 ? (IHttpHandler)BuildManager.CreateInstanceFromVirtualPath(virtualPath, typeof(T))
@@ -89,7 +76,6 @@ namespace CodeTorch.Web.HttpHandlers
 
         private  IHttpHandler GetRestServiceHandler(RequestContext requestContext, string virtualPath, string urlPattern, string[] urlSegments)
         {
-            
             RestService service = null;
 
             string folder = requestContext.RouteData.GetRequiredString("folder"); 
@@ -104,7 +90,6 @@ namespace CodeTorch.Web.HttpHandlers
             if (urlPattern.ToLower().EndsWith(".xml"))
             {
                 retVal.Format = "xml";
-
             }
             else
             {
@@ -115,7 +100,5 @@ namespace CodeTorch.Web.HttpHandlers
         }
 
         #endregion
-
-        
     }
 }

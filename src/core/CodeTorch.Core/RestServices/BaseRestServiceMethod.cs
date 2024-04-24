@@ -1,23 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Serialization;
 using System.ComponentModel;
 using System.Drawing.Design;
+using System.Xml.Serialization;
 
 namespace CodeTorch.Core
 {
- 
+
     [Serializable]
     public class BaseRestServiceMethod
     {
         List<ScreenDataCommand> _commands = new List<ScreenDataCommand>();
+
+        RestServiceResponseMode _ResponseMode = RestServiceResponseMode.Default;
         bool _EnablePartialResponse = true;
         string _PartialResponseParameter = "fields";
 
         string _PagingOffsetParameter = "offset";
         string _PagingLimitParameter = "limit";
         int _PagingLimitDefault = 20;
+
+        [XmlIgnore()]
+        [Browsable(false)]
+        public RestService ParentService { get; set; }
 
         [XmlArray("DataCommands")]
         [XmlArrayItem("DataCommand")]
@@ -74,7 +79,6 @@ namespace CodeTorch.Core
         [Category("Pagination")]
         public bool EnablePaging { get; set; }
 
-        
 
         [Category("Pagination")]
         public bool EnableDefaultLimit { get; set; }
@@ -100,9 +104,13 @@ namespace CodeTorch.Core
             set { _PagingLimitDefault = value; }
         }
 
-        
-
         public RestServiceMethodReturnTypeEnum ReturnType { get; set; }
+
+        public RestServiceResponseMode ResponseMode
+        { 
+            get { return _ResponseMode; }
+            set { _ResponseMode = value; }
+        }
 
         public override string ToString()
         {

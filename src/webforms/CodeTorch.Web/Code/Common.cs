@@ -1,6 +1,5 @@
 ﻿using CodeTorch.Core;
 using CodeTorch.Core.Services;
-using CodeTorch.Web.Data;
 using CodeTorch.Web.HttpHandlers;
 using CodeTorch.Web.Providers.EmbeddedResourceVirtualPathProvider;
 using CodeTorch.Web.SectionControls;
@@ -25,8 +24,6 @@ namespace CodeTorch.Web
 {
     public class Common
     {
-        
-
         public static void RedirectToHomePage()
         {
             
@@ -49,9 +46,6 @@ namespace CodeTorch.Web
                 HttpContext.Current.Response.End();
             }
         }
-
-
-        
 
         public static Control FindControlRecursive(Control root, string id)
         {
@@ -88,9 +82,6 @@ namespace CodeTorch.Web
             // *** Stript out the virtual path leaving us just with page
             return FullVirtualPath.ToLower().Replace(StripVirtual, "");
         }
-   
-
-
         
         public static CodeTorch.Web.FieldTemplates.BaseFieldTemplate FindFieldRecursive(BasePage page, Control container, string id)
         {
@@ -106,7 +97,6 @@ namespace CodeTorch.Web
             {
                 controls = container.Controls;
             }
-
 
             foreach (Control c in controls)
             {
@@ -152,7 +142,6 @@ namespace CodeTorch.Web
             {
                 controls = container.Controls;
             }
-
 
             foreach (Control c in controls)
             {
@@ -243,9 +232,7 @@ namespace CodeTorch.Web
             }
             return bmpOut;
         }
-        
 
- 
         public static string UserName
         {
             get
@@ -332,37 +319,6 @@ namespace CodeTorch.Web
             else
             {
                 throw new NotImplementedException();
-                
-
-                //get profile property from session object
-                DataTable dtProfile = null;
-                if (HttpContext.Current != null)
-                {
-                    if (HttpContext.Current.Session[profileSessionKey] != null)
-                    {
-                        dtProfile = (DataTable)HttpContext.Current.Session[profileSessionKey];
-                    }
-                    else
-                    {
-                       
-                        //TODO - needs to be moved to app authenticate
-                        DataCommandService dataCommandDB = DataCommandService.GetInstance();
-                        PageDB pageDB = new PageDB();
-
-                       
-                        List<ScreenDataCommandParameter> parameters = pageDB.GetPopulatedCommandParameters(app.ProfileCommand, null);
-
-                        dtProfile = dataCommandDB.GetDataForDataCommand(app.ProfileCommand, parameters);
-
-                        HttpContext.Current.Session[profileSessionKey] = dtProfile;
-                    }
-
-                    if ((dtProfile != null) && (dtProfile.Rows.Count == 1))
-                    {
-                        retVal = dtProfile.Rows[0][PropertyName].ToString();
-                    }
-                }
-                
             }
             return retVal;
         }
@@ -446,17 +402,12 @@ namespace CodeTorch.Web
 
                     HttpContext.Current.Response.Cookies.Add(c);
                 }
-                
-            
             }
         }
-       
-
 
         public static void RedirectToAccessDenied(string Permission)
         {
             HttpContext.Current.Response.Redirect("~/App/Security/AccessDenied.aspx?p=" + Permission,true);
-            //HttpContext.Current.ApplicationInstance.CompleteRequest();
         }
 
         internal static void RedirectToLoginPage(string PageUrl)
@@ -466,7 +417,6 @@ namespace CodeTorch.Web
                 PageUrl = HttpContext.Current.Server.UrlEncode(PageUrl);
             }
             HttpContext.Current.Response.Redirect(String.Format("{0}?ReturnUrl={1}", CodeTorch.Core.Configuration.GetInstance().App.LoginScreen, PageUrl),true);
-            //HttpContext.Current.ApplicationInstance.CompleteRequest();
         }
 
         internal static void RedirectTo404Page(string PageUrl)
@@ -475,12 +425,10 @@ namespace CodeTorch.Web
             {
                 PageUrl = HttpContext.Current.Server.UrlEncode(PageUrl);
             }
-            HttpContext.Current.Response.Redirect("~/App/Security/PageNotFound.aspx?From=" + PageUrl,true);
-            //HttpContext.Current.ApplicationInstance.CompleteRequest();
-            
+            HttpContext.Current.Response.Redirect("~/App/Security/PageNotFound.aspx?From=" + PageUrl,true);            
         }
 
-        public static void LoadWebConfiguration(RouteCollection routes)
+        public static void LoadWebConfigurationOld(RouteCollection routes)
         {
             //load virtual path provider
             HostingEnvironment.RegisterVirtualPathProvider(new EmbeddedResourceProvider() 
@@ -489,8 +437,6 @@ namespace CodeTorch.Web
             });
 
             CodeTorch.Core.ConfigurationLoader.LoadWebConfiguration();
-
-            
 
             var routeHandler = new AppBuilderRouteHandler<Page>();
 
@@ -516,10 +462,98 @@ namespace CodeTorch.Web
                 orderby svc.Name
                 select svc;
 
+
+            //TODO: refactor this to list all routes in a single collection and then add them to the route collection - also console.write routes so one can see the actual order of routes
             AddRestRoutes(routes, routeHandler, restServicesStatic);
             AddRestRoutes(routes, routeHandler, restServicesDynamic);
+        }
 
+        private static void RegisterRestServices(RouteCollection routes, AppBuilderRouteHandler<Page> routeHandler)
+        {
+            var restServices = CodeTorch.Core.Configuration.GetInstance().RestServices;
 
+            // Sort REST services into static and dynamic categories
+            var staticServices = restServices.Where(s => !s.Resource.Contains("{"))
+                .OrderByDescending(s => GetRouteSpecificity(s.Resource))
+                .ThenBy(s => s.Name);
+
+            var dynamicServices = restServices.Where(s => s.Resource.Contains("{"))
+                .OrderByDescending(s => GetRouteSpecificity(s.Resource))
+                .ThenBy(s => s.Resource)
+                .ThenBy(s => s.Name);
+
+            var services = staticServices.Concat(dynamicServices);
+
+            // Register static followed by dynamic services to ensure proper pattern matching
+            foreach (var service in services)
+            {
+                BuildAndRegisterRoute(routes, routeHandler, service);
+            }
+
+            // Output routes to console for debugging
+            DebugPrintRoutes(routes);
+        }
+
+        private static void BuildAndRegisterRoute(RouteCollection routes, AppBuilderRouteHandler<Page> routeHandler, RestService service)
+        {
+            string baseRouteUrl = $"{{folder}}/{service.Resource}";
+
+            RegisterRouteVariant(routes, routeHandler, service, baseRouteUrl, "json", service.SupportJSON);
+            RegisterRouteVariant(routes, routeHandler, service, baseRouteUrl, "xml", service.SupportXML);
+            RegisterRouteVariant(routes, routeHandler, service, baseRouteUrl, "default", true); // Always support default
+        }
+
+        private static void RegisterRouteVariant(RouteCollection routes, AppBuilderRouteHandler<Page> routeHandler, RestService service, string baseRouteUrl, string format, bool supported)
+        {
+            if (!supported)
+                return;
+
+            string routeUrl = format == "default" ? baseRouteUrl : $"{baseRouteUrl}.{format}";
+            string routeName = $"{service.Folder}_{service.Name}_{format}";
+
+            Route route = new Route(routeUrl, routeHandler)
+            {
+                DataTokens = new RouteValueDictionary { { "rest-service-name", service.Name } }
+            };
+            routes.Add(routeName, route);
+        }
+
+        private static void DebugPrintRoutes(RouteCollection routes)
+        {
+            Console.WriteLine("Registered Routes:");
+            foreach (var route in routes)
+            {
+                Route webRoute = route as Route;
+                if (webRoute != null)
+                {
+                    Console.WriteLine($"Route URL: {webRoute.Url}");
+                }
+            }
+        }
+
+        public static void LoadWebConfiguration(RouteCollection routes)
+        {
+            // Register virtual path provider for embedded resources
+            HostingEnvironment.RegisterVirtualPathProvider(new EmbeddedResourceProvider()
+            {
+                {Assembly.GetExecutingAssembly()}
+            });
+
+            // Load configuration
+            CodeTorch.Core.ConfigurationLoader.LoadWebConfiguration();
+
+            // Initialize the route handler
+            var routeHandler = new AppBuilderRouteHandler<Page>();
+
+            // Define and add a route for the application builder screens
+            Route appBuilderScreenRoute = new Route("App/{folder}/{page}", routeHandler)
+            {
+                Defaults = new RouteValueDictionary { { "page", "default.aspx" } }
+            };
+            routes.Add("AppBuilderScreenRoute", appBuilderScreenRoute);
+
+            // Consolidate route registration for REST services
+            RegisterRestServices(routes, routeHandler);
         }
 
         private static void AddRestRoutes(RouteCollection routes, AppBuilderRouteHandler<Page> routeHandler, IEnumerable<RestService> restServices)
@@ -537,8 +571,9 @@ namespace CodeTorch.Web
         {
             // A simple method to estimate route specificity
             // Counts the segments in the route, ignoring parameterized parts
-            int specificity = 0;
+            
             var segments = route.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            int specificity = segments.Count();
 
             foreach (var segment in segments)
             {
@@ -547,6 +582,8 @@ namespace CodeTorch.Web
                     specificity++;
                 }
             }
+
+            Console.WriteLine($"Route: {route}, Specificity: {specificity}");
 
             return specificity;
         }
@@ -615,84 +652,57 @@ namespace CodeTorch.Web
             return retVal;
         }
 
-       
-       
-       
-
         public static void LogException(Exception ex)
         {
             LogException(ex, true);
         }
 
-
         public static void LogException(Exception ex, bool rethrow)
         {
+            ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            log.Error(ex);
 
-           
-                ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-                log.Error(ex);
-
-                if (rethrow)
-                {
-                    throw ex;
-                }
-           
-
-
+            if (rethrow)
+            {
+                throw ex;
+            }
         }
 
         static public string Replace(string original, string pattern, string replacement, StringComparison comparisonType)
         {
-
             if (original == null)
             {
-
                 return null;
-
             }
 
             if (String.IsNullOrEmpty(pattern))
             {
-
                 return original;
-
             }
 
             int lenPattern = pattern.Length;
-
             int idxPattern = -1;
-
             int idxLast = 0;
 
             StringBuilder result = new StringBuilder();
 
             while (true)
             {
-
                 idxPattern = original.IndexOf(pattern, idxPattern + 1, comparisonType);
 
                 if (idxPattern < 0)
                 {
-
                     result.Append(original, idxLast, original.Length - idxLast);
-
                     break;
-
                 }
 
                 result.Append(original, idxLast, idxPattern - idxLast);
-
                 result.Append(replacement);
 
                 idxLast = idxPattern + lenPattern;
-
             }
-
             return result.ToString();
-
         }
-
-
 
         public static bool HasPermission(string PermissionName)
         {
@@ -701,7 +711,6 @@ namespace CodeTorch.Web
             try
             {
                 AuthorizationService auth = AuthorizationService.GetInstance();
-
                 retVal = auth.AuthorizationProvider.HasPermission(PermissionName);
             }
             catch (Exception ex)
@@ -737,13 +746,11 @@ namespace CodeTorch.Web
                     if (url.IndexOf('?') == -1)
                     {
                         url += "?";
-
                     }
                     else
                     {
                         sep = "&";
                     }
-
 
                     for (int i = 0; i < keys.Length; i++)
                     {
@@ -773,7 +780,6 @@ namespace CodeTorch.Web
                     break;
 
                 originalString = originalString.Substring(0, startIndex) + newValue + originalString.Substring(startIndex + oldValue.Length);
-
                 startIndex += newValue.Length;
             }
 
@@ -792,8 +798,6 @@ namespace CodeTorch.Web
                     retVal = ConfigurationManager.AppSettings[parameter.InputKey];
                     break;
                 case ScreenInputType.Control:
-
-
                     if (container == null)
                     {
                         f = page.FindFieldRecursive(parameter.InputKey);
@@ -824,7 +828,6 @@ namespace CodeTorch.Web
                     {
                         retVal = f.DisplayText;
                     }
-
                     break;
                 case ScreenInputType.Cookie:
                     retVal = page.Request.Cookies[parameter.InputKey]?.Value;
@@ -838,7 +841,6 @@ namespace CodeTorch.Web
                 case ScreenInputType.QueryString:
                     retVal = page.Request.QueryString[parameter.InputKey];
                     break;
-
                 case ScreenInputType.Session:
                     retVal = page.Session[parameter.InputKey];
                     break;
@@ -916,9 +918,6 @@ namespace CodeTorch.Web
                                 //this is an incorrectly configured parameter - throw error to help developer
                                 throw new ApplicationException($"{parameter.Name} parameter is not configured correctly for special.grid.selecteditems input. It requires a default value in the following format 'gridsectionid.uniquecolumnname.datakey'.");
                             }
-
-                            
-
                             break;
                         case "absoluteapplicationpath":
                             retVal = String.Format("{0}://{1}{2}",
@@ -927,16 +926,13 @@ namespace CodeTorch.Web
                                 ((HttpContext.Current.Request.ApplicationPath == "/") ? String.Empty : HttpContext.Current.Request.ApplicationPath));
 
                             break;
-
                     }
                     break;
 
                 case ScreenInputType.User:
                     try
                     {
-
                         retVal = GetProfileProperty(parameter.InputKey);
-                        
                     }
                     catch { }
                     break;
@@ -955,12 +951,7 @@ namespace CodeTorch.Web
                     retVal = parameter.Default;
                 }
             }
-
             return retVal;
         }
-
-        
-
-
     }
 }

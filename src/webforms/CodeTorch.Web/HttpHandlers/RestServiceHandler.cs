@@ -1,19 +1,19 @@
-﻿using System;
+﻿using CodeTorch.Core;
+using CodeTorch.Core.Interfaces;
+using CodeTorch.Core.Services;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Web;
 using System.Web.Routing;
-using CodeTorch.Core;
-using System.Data;
-using System.IO;
-using Newtonsoft.Json;
-using System.Net;
-using System.Xml;
 using System.Web.Security;
-using System.Configuration;
-using CodeTorch.Core.Services;
-using CodeTorch.Core.Interfaces;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace CodeTorch.Web.HttpHandlers
@@ -62,13 +62,10 @@ namespace CodeTorch.Web.HttpHandlers
                     throw new ApplicationException("No service has been configured for this path");
                 }
 
-
                 DataCommand requestCommand = null;
                 RestServiceMethodReturnTypeEnum returnType = RestServiceMethodReturnTypeEnum.None;
-                
-
+  
                 //collect parameters
-
                 DataTable dt = null;
                 XmlDocument doc = null;
                 context.Response.TrySkipIisCustomErrors = true;
@@ -187,8 +184,6 @@ namespace CodeTorch.Web.HttpHandlers
                     throw new NotSupportedException();
                 }
 
-
-
                 //get data if any
                 if (
                     ((dt != null) && (returnType == RestServiceMethodReturnTypeEnum.DataTable)) ||
@@ -301,7 +296,10 @@ namespace CodeTorch.Web.HttpHandlers
         {
             if (Format.ToLower() == "json")
             {
-                if (app.RestServiceResponseMode == RestServiceResponseMode.Simple)
+                if (
+                        (app.RestServiceResponseMode == RestServiceResponseMode.Default) ||
+                        (app.RestServiceResponseMode == RestServiceResponseMode.Simple)
+                   )
                 {
                     context.Response.Write(JsonConvert.SerializeObject(exception));
                 }
@@ -323,7 +321,10 @@ namespace CodeTorch.Web.HttpHandlers
                 settings.Indent = true;
                 settings.CloseOutput = true;
 
-                if (app.RestServiceResponseMode == RestServiceResponseMode.Simple)
+                if (
+                        (app.RestServiceResponseMode == RestServiceResponseMode.Default) ||
+                        (app.RestServiceResponseMode == RestServiceResponseMode.Simple)
+                   )
                 {
                     x = new System.Xml.Serialization.XmlSerializer(exception.GetType());
 
@@ -685,7 +686,9 @@ namespace CodeTorch.Web.HttpHandlers
 
         private void BuildXmlObjectResponse(App app, BaseRestServiceMethod method, XmlDocument doc, XmlWriter xml)
         {
-            if (app.RestServiceResponseMode == RestServiceResponseMode.IncludeMetaAndError)
+            RestServiceResponseMode responseMode = GetResponseMode(app, method);
+
+            if (responseMode == RestServiceResponseMode.IncludeMetaAndError)
             {
                 string xmlStructure = @"<Response><Data/><Meta><Status>Success</Status></Meta></Response>";
 
@@ -703,9 +706,23 @@ namespace CodeTorch.Web.HttpHandlers
             }
         }
 
+        private static RestServiceResponseMode GetResponseMode(App app, BaseRestServiceMethod method)
+        {
+            var responseMode = app.RestServiceResponseMode;
+
+            if (method.ResponseMode != RestServiceResponseMode.Default)
+            {
+                responseMode = method.ResponseMode;
+            }
+
+            return responseMode;
+        }
+
         private void BuildXmlItemResponse(App app, HttpContext context, BaseRestServiceMethod method, DataCommand command, DataTable dt, XmlWriter xml, DataColumnCollection commandColumns)
         {
-            if (app.RestServiceResponseMode == RestServiceResponseMode.IncludeMetaAndError)
+            RestServiceResponseMode responseMode = GetResponseMode(app, method);
+
+            if (responseMode == RestServiceResponseMode.IncludeMetaAndError)
             {
                 xml.WriteStartElement("Response");
                 xml.WriteStartElement("Data");
@@ -732,7 +749,7 @@ namespace CodeTorch.Web.HttpHandlers
 
             }
 
-            if (app.RestServiceResponseMode == RestServiceResponseMode.IncludeMetaAndError)
+            if (responseMode == RestServiceResponseMode.IncludeMetaAndError)
             {
                 xml.WriteEndElement(); //data
 
@@ -754,7 +771,9 @@ namespace CodeTorch.Web.HttpHandlers
 
         private void BuildXmlListResponse(App app, HttpContext context, BaseRestServiceMethod method, DataCommand command, DataTable dt, XmlWriter xml, DataColumnCollection commandColumns)
         {
-            if (app.RestServiceResponseMode == RestServiceResponseMode.IncludeMetaAndError)
+            RestServiceResponseMode responseMode = GetResponseMode(app, method);
+
+            if (responseMode == RestServiceResponseMode.IncludeMetaAndError)
             {
                 xml.WriteStartElement("Response");
                 xml.WriteStartElement("Data");
@@ -762,8 +781,8 @@ namespace CodeTorch.Web.HttpHandlers
 
             xml.WriteStartElement(Me.EntityCollectionName);
 
-            int offset = 0; int limit = 0;
-            List<DataRow> rows = GetRowsForResponse(context, method, dt, ref offset, ref limit);
+            int offset = 0; int limit = 0; int count = 0;
+            List<DataRow> rows = GetRowsForResponse(context, method, dt, ref offset, ref limit, out count);
 
             foreach (DataRow row in rows)
             {
@@ -782,7 +801,7 @@ namespace CodeTorch.Web.HttpHandlers
             }
             xml.WriteEndElement();
 
-            if (app.RestServiceResponseMode == RestServiceResponseMode.IncludeMetaAndError)
+            if (responseMode == RestServiceResponseMode.IncludeMetaAndError)
             {
                 xml.WriteEndElement(); //data
 
@@ -796,16 +815,20 @@ namespace CodeTorch.Web.HttpHandlers
 
                     if (method.EnablePaging)
                     {
+                        xml.WriteStartElement("Offset");
+                        xml.WriteValue(offset);
+                        xml.WriteEndElement();
+
                         xml.WriteStartElement("Limit");
                         xml.WriteValue(limit);
                         xml.WriteEndElement();
 
-                        xml.WriteStartElement("Offset");
-                        xml.WriteValue(offset);
+                        xml.WriteStartElement("Count");
+                        xml.WriteValue(count);
                         xml.WriteEndElement();
                     }
 
-                    xml.WriteStartElement("TotalResults");
+                    xml.WriteStartElement("Total");
                     xml.WriteValue(dt.Rows.Count);
                     xml.WriteEndElement();
                     
@@ -846,7 +869,9 @@ namespace CodeTorch.Web.HttpHandlers
 
         private void BuildJsonXmlObjectResponse(App app, BaseRestServiceMethod method, StringBuilder builder, XmlDocument doc)
         {
-            if (app.RestServiceResponseMode == RestServiceResponseMode.IncludeMetaAndError)
+            RestServiceResponseMode responseMode = GetResponseMode(app, method);
+
+            if (responseMode == RestServiceResponseMode.IncludeMetaAndError)
             {
                 string xmlStructure = @"<Response><Data/><Meta><Status>Success</Status></Meta></Response>";
 
@@ -863,13 +888,13 @@ namespace CodeTorch.Web.HttpHandlers
             {
                 builder.Append(JsonConvert.SerializeXmlNode(doc));
             }
-
-            
         }
 
         private void BuildJsonObjectResponse(App app, HttpContext context, BaseRestServiceMethod method, DataCommand command, DataTable dt, JsonWriter json, DataColumnCollection commandColumns)
         {
-            if (app.RestServiceResponseMode == RestServiceResponseMode.IncludeMetaAndError)
+            RestServiceResponseMode responseMode = GetResponseMode(app, method);
+
+            if (responseMode == RestServiceResponseMode.IncludeMetaAndError)
             {
                 json.WriteStartObject(); //root
                 json.WritePropertyName("Data");
@@ -899,16 +924,14 @@ namespace CodeTorch.Web.HttpHandlers
             else
             { 
                 //no value to write
-                if (app.RestServiceResponseMode == RestServiceResponseMode.IncludeMetaAndError)
+                if (responseMode == RestServiceResponseMode.IncludeMetaAndError)
                 {
                     json.WriteNull(); //end data if no value present
                 }
             }
 
-            if (app.RestServiceResponseMode == RestServiceResponseMode.IncludeMetaAndError)
+            if (responseMode == RestServiceResponseMode.IncludeMetaAndError)
             {
-                
-
                 //now write meta 
                 json.WritePropertyName("Meta");
                 json.WriteStartObject();
@@ -926,7 +949,9 @@ namespace CodeTorch.Web.HttpHandlers
 
         private  void BuildJsonArrayResponse(App app,HttpContext context, BaseRestServiceMethod method, DataCommand command, DataTable dt, JsonWriter json, DataColumnCollection commandColumns)
         {
-            if (app.RestServiceResponseMode == RestServiceResponseMode.IncludeMetaAndError)
+            RestServiceResponseMode responseMode = GetResponseMode(app, method);
+
+            if (responseMode == RestServiceResponseMode.IncludeMetaAndError)
             {
                 json.WriteStartObject(); //root
                 json.WritePropertyName("Data");
@@ -936,7 +961,8 @@ namespace CodeTorch.Web.HttpHandlers
 
             int offset = 0;
             int limit = 0;
-            List<DataRow> rows = GetRowsForResponse(context, method, dt, ref offset, ref limit);
+            int count = 0;  
+            List<DataRow> rows = GetRowsForResponse(context, method, dt, ref offset, ref limit, out count);
 
             foreach (DataRow row in rows)
             {
@@ -960,10 +986,8 @@ namespace CodeTorch.Web.HttpHandlers
             }
             json.WriteEndArray();
 
-            if (app.RestServiceResponseMode == RestServiceResponseMode.IncludeMetaAndError)
+            if (responseMode == RestServiceResponseMode.IncludeMetaAndError)
             {
-                
-
                 //now write meta 
                 json.WritePropertyName("Meta");
                 json.WriteStartObject();
@@ -973,28 +997,29 @@ namespace CodeTorch.Web.HttpHandlers
 
                     if (method.EnablePaging)
                     {
+                        json.WritePropertyName("Offset");
+                        json.WriteValue(offset);
+
                         json.WritePropertyName("Limit");
                         json.WriteValue(limit);
 
-                        json.WritePropertyName("Offset");
-                        json.WriteValue(offset);
-                        
+                        json.WritePropertyName("Count");
+                        json.WriteValue(count);
                     }
 
-                    json.WritePropertyName("TotalResults");
+                    json.WritePropertyName("Total");
                     json.WriteValue(dt.Rows.Count);
 
                 json.WriteEndObject();
-
-                
 
                 json.WriteEndObject(); //end root
             }
         }
 
-        private static List<DataRow> GetRowsForResponse(HttpContext context, BaseRestServiceMethod method, DataTable dt, ref int offset, ref int limit)
+        private static List<DataRow> GetRowsForResponse(HttpContext context, BaseRestServiceMethod method, DataTable dt, ref int offset, ref int limit, out int count)
         {
             List<DataRow> rows = new List<DataRow>();
+            count = dt.Rows.Count;
 
             if (method.EnablePaging)
             {
@@ -1006,60 +1031,55 @@ namespace CodeTorch.Web.HttpHandlers
                     limit = method.PagingLimitDefault;
                 }
 
-
-                //if we have a parameter we can use for offset
+                // Set offset from request if a parameter is provided
                 if (!String.IsNullOrEmpty(method.PagingOffsetParameter))
                 {
-                    //set offset from request
                     string offsetValue = context.Request[method.PagingOffsetParameter];
-                    if (!String.IsNullOrEmpty(offsetValue))
+                    if (!String.IsNullOrEmpty(offsetValue) && int.TryParse(offsetValue, out int parsedOffset))
                     {
-                        int.TryParse(offsetValue, out offset);
+                        offset = parsedOffset;
                     }
                 }
 
-                string limitValue = null;
-                //if we have a parameter we can use for limit
+                // Set limit from request if a parameter is provided
                 if (!String.IsNullOrEmpty(method.PagingLimitParameter))
                 {
-                    //set limit from request
-                    limitValue = context.Request[method.PagingLimitParameter];
-                    if (!String.IsNullOrEmpty(limitValue))
+                    string limitValue = context.Request[method.PagingLimitParameter];
+                    if (!String.IsNullOrEmpty(limitValue) && int.TryParse(limitValue, out int parsedLimit))
                     {
-                        int.TryParse(limitValue, out limit);
-
+                        limit = parsedLimit;
                     }
-
                 }
 
+                // Correct negative values for offset and limit
                 if (offset < 0)
                 {
                     offset = 0;
                 }
 
-                if (limit < 0)
+                if (limit <= 0)
                 {
-                    limit = dt.Rows.Count - offset;
-                }
-
-                if ((limit + offset) > dt.Rows.Count)
-                {
-                    limit = dt.Rows.Count - offset;
-
-                    if (limit < 0)
+                    if (method.EnableDefaultLimit)
                     {
-                        limit = 0;
+                        limit = method.PagingLimitDefault; // Default to a predefined limit if a non-positive limit is set
+                    }
+                    else
+                    { 
+                        limit = dt.Rows.Count - offset; // Default to the remaining rows if no limit is set
                     }
                 }
 
-                //now that we have limits and offsets
-                rows = dt.Select().ToList<DataRow>().Skip(offset).Take(limit).ToList<DataRow>();
 
+                // Calculate the number of rows that can be returned after the offset is applied
+                count = Math.Max(dt.Rows.Count - offset, 0); // Ensures count isn't negative
+                count = Math.Min(count, limit); // Ensures we do not exceed the limit
+
+                // Extract the subset of rows to return
+                rows = dt.Rows.Cast<DataRow>().Skip(offset).Take(count).ToList();
             }
             else
             {
                 rows = dt.Rows.Cast<DataRow>().ToList<DataRow>();
-
             }
             return rows;
         }
