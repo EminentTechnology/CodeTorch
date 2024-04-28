@@ -303,7 +303,6 @@ namespace CodeTorch.Web
 
         public static string GetProfileProperty(string PropertyName, List<string> profileProperties)
         {
-            string profileSessionKey = "CodeTorch.Profile";
             App app = CodeTorch.Core.Configuration.GetInstance().App;
             string retVal = "";
             int propertyIndex = Enumerable.Range(0, profileProperties.Count).First(i => profileProperties[i].ToLower() == PropertyName.ToLower());

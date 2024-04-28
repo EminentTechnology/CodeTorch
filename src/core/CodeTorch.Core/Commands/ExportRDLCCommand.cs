@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.UI.WebControls;
 using System.Xml.Serialization;
 
 namespace CodeTorch.Core.Commands
@@ -19,7 +15,6 @@ namespace CodeTorch.Core.Commands
         string _MarginLeft = "1in";
         string _MarginRight = "1in";
         string _MarginBottom = "1.25in";
-       
 
         public override string Type
         {
@@ -34,10 +29,6 @@ namespace CodeTorch.Core.Commands
         }
 
         List<ReportDataSource> _datasources = new List<ReportDataSource>();
-
-        
-
-
 
         [Category("Report")]
         public string ReportName { get; set; }

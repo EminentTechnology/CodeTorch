@@ -115,8 +115,6 @@ namespace CodeTorch.Core
         public static string RenderContent(Template template, string Content, Hashtable templateItems)
         {
             string retVal = String.Empty;
-            //List<ContentDataItem> 
-
             Eminent.CodeGenerator.Template t = new Eminent.CodeGenerator.Template();
 
             t.ClassName = "ContentTemplate";
@@ -130,8 +128,6 @@ namespace CodeTorch.Core
 
             t.ParseTemplate(Content);
 
-
-
             foreach (TemplateDataItem item in template.DataItems)
             {
                 Eminent.CodeGenerator.Property p = new Eminent.CodeGenerator.Property();
@@ -142,7 +138,6 @@ namespace CodeTorch.Core
             }
 
             Eminent.CodeGenerator.TemplateEngine engine = new Eminent.CodeGenerator.TemplateEngine();
-
 
             object templateObject = engine.Compile(t);
 

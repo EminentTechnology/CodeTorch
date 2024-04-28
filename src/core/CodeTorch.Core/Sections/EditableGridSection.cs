@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.ComponentModel;
-using System.Xml.Serialization;
 using System.Drawing.Design;
+using System.Xml.Serialization;
 
 namespace CodeTorch.Core
 {
     [Serializable]
     public class EditableGridSection: GridSection
     {
-        ScreenInputType _EntityInputType = ScreenInputType.QueryString;
         private List<Section> _Sections = new List<Section>();
 
         public override string Type

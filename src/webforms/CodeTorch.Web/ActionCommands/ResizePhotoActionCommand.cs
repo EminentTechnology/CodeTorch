@@ -2,28 +2,19 @@
 using CodeTorch.Core.Commands;
 using CodeTorch.Core.Services;
 using CodeTorch.Web.Data;
-using CodeTorch.Web.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace CodeTorch.Web.ActionCommands
 {
     public class ResizePhotoActionCommand : IActionCommandStrategy
     {
         public Templates.BasePage Page { get; set; }
-
-  
-
         public ActionCommand Command { get; set; }
 
         ResizePhotoCommand Me = null;
@@ -66,9 +57,7 @@ namespace CodeTorch.Web.ActionCommands
 
                 log.Error(ex);
             }
-
             return success;
-
         }
 
         private void DownloadResizedDocument()
@@ -77,7 +66,6 @@ namespace CodeTorch.Web.ActionCommands
 
             try
             {
-
                 DataCommandService dataCommandDB = DataCommandService.GetInstance();
                 PageDB pageDB = new PageDB();
 
@@ -129,17 +117,12 @@ namespace CodeTorch.Web.ActionCommands
                             Page.Response.Flush();
 
                         }
-
-
-
                         HttpContext.Current.ApplicationInstance.CompleteRequest();
-
                     }
                     else
                     {
                         throw new Exception("File Not Found");
                     }
-                    
                 }
             }
             catch (Exception ex)
@@ -148,10 +131,7 @@ namespace CodeTorch.Web.ActionCommands
 
                 log.Error(ex);
             }
-
-            
         }
-
 
         public System.Drawing.Image ScaleImage(System.Drawing.Image image, int maxWidth, int maxHeight)
         {
@@ -206,14 +186,15 @@ namespace CodeTorch.Web.ActionCommands
                     }
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 newImageData = origImageData;
             }
 
             if (newImageData == null)
+            {
                 newImageData = origImageData;
-
+            }
             return newImageData;
         }
 
@@ -254,6 +235,5 @@ namespace CodeTorch.Web.ActionCommands
             return format;
 
         }
-        
     }
 }

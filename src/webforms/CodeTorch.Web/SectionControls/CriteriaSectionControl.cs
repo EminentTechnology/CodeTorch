@@ -1,17 +1,15 @@
-﻿using System;
-using System.Linq;
+﻿using CodeTorch.Core;
+using CodeTorch.Web.Templates;
+using System;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
-using CodeTorch.Core;
-using CodeTorch.Web.Templates;
+using System.Web.UI.WebControls;
 
 namespace CodeTorch.Web.SectionControls
 {
     public class CriteriaSectionControl : BaseSectionControl
     {
-
         System.Web.UI.WebControls.PlaceHolder Criteria;
 
         BasePage page;
@@ -29,10 +27,6 @@ namespace CodeTorch.Web.SectionControls
             }
         }
 
-
-
-
-
         public override void RenderControl()
         {
             page = HttpContext.Current.Handler as BasePage;
@@ -44,62 +38,18 @@ namespace CodeTorch.Web.SectionControls
 
             //CodeTorch.Web.CriteriaFunctions.CriteriaButtonClickDelegate clickFunction = this.CriteriaButton_Click;
             RenderCriteria(page,  Me, this.Criteria);
-
-
-
-
-
         }
 
-
-
-      
 
         public override void PopulateControl()
         {
             base.PopulateControl();
-
-            //if (!String.IsNullOrEmpty(Me.SelectDataCommand))
-            //{
-
-            //    PageDB pageDB = new PageDB();
-            //    List<ScreenDataCommandParameter> parameters;
-            //    BasePage page = ((BasePage)this.Page);
-            //    DataCommandDB dataCommand = new DataCommandDB();
-
-            //    parameters = pageDB.GetPopulatedCommandParameters(Me.SelectDataCommand, (BasePage)this.Page);
-
-            //    DataTable data = dataCommand.GetDataForDataCommand(Me.SelectDataCommand, parameters);
-            //    if (data.Rows.Count > 0)
-            //    {
-            //        this.Content.Text = PopulateContent(Me.Content, data.Rows[0]);
-            //    }
-            //    else
-            //    {
-            //        this.Content.Text = Me.Content;
-            //    }
-            //}
-            //else
-            //{
-            //    this.Content.Text = Me.Content;
-            //}
-
         }
-
-       
-
-
-
-
-
 
         public void RenderCriteria(CodeTorch.Web.Templates.BasePage page,  CodeTorch.Core.CriteriaSection criteria, PlaceHolder CriteriaPlaceholder)
         {
-
-    
             int NoOfCriteriaFields = criteria.Widgets.Count;
             int RowCount = (NoOfCriteriaFields / criteria.ControlsPerRow);
-
      
             if ((NoOfCriteriaFields % criteria.ControlsPerRow) > 0)
             {
@@ -107,7 +57,6 @@ namespace CodeTorch.Web.SectionControls
             }
 
             Control row = null;
-            int CriteriaIndex = 0;
             for (int RowIndex = 0; RowIndex < RowCount; RowIndex++)
             {
                 //create row
@@ -158,29 +107,11 @@ namespace CodeTorch.Web.SectionControls
                     }
 
                     row.Controls.Add(column);
-
-                   
-
-
                     AddControl(page.Screen, Section, column, control);
 
-
                     ColumnIndex++;
-
-
                 }
-
-                
-
-               
-
-                
-
             }
-
         }
-
-
-   
     }
 }

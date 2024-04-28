@@ -1,12 +1,7 @@
-﻿using System;
+﻿using CodeTorch.Core;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using CodeTorch.Core;
 
 namespace CodeTorch.Designer.Forms
 {
@@ -14,20 +9,17 @@ namespace CodeTorch.Designer.Forms
     {
         App app;
         List<Core.Screen> screens;
-       
-        
+
         public GridUniqueNamerForm()
         {
             InitializeComponent();
 
             app = CodeTorch.Core.Configuration.GetInstance().App;
             screens = CodeTorch.Core.Configuration.GetInstance().Screens;
-            
         }
 
         private void GridUniqueNamerForm_Load(object sender, EventArgs e)
         {
-            
             progressBar.Maximum = 100;
             progressBar.Minimum = 0;
             progressBar.Value = 0;
@@ -38,8 +30,6 @@ namespace CodeTorch.Designer.Forms
             StartButton.Enabled = false;
             try
             {
-
-                
                 foreach (Core.Screen screen in screens)
                 {
 
@@ -53,10 +43,7 @@ namespace CodeTorch.Designer.Forms
                     Application.DoEvents();
                 }
 
-               
-
                 progressBar.Value = progressBar.Maximum;
-
                 MessageBox.Show("Grid Unique Code naming complete");
 
                 this.Close();
@@ -74,10 +61,7 @@ namespace CodeTorch.Designer.Forms
         private void ProcessScreen(Core.Screen screen)
         {
             Grid grid;
-            List<Section> sections;
             GridSection gridSection;
-
-
 
             foreach (Section section in screen.Sections)
             {

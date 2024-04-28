@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Compilation;
-using System.Collections;
-using System.Data;
-
-using System.Globalization;
-using System.Collections.Specialized;
-using System.Resources;
-
-using CodeTorch.Core;
+﻿using CodeTorch.Core;
 using CodeTorch.Core.Services;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Globalization;
+using System.Resources;
+using System.Web.Compilation;
 
 
 namespace CodeTorch.Resources.Web
@@ -23,14 +18,12 @@ namespace CodeTorch.Resources.Web
         private static object _SyncLock = new object();
         private DbResourceReader _ResourceReader = null;
 
-
         private DbResourceProvider()
         { }
 
         public DbResourceProvider(string virtualPath, string className)
         {
             _ResourceSetName = className;
-            //TODO: wwDbResourceConfiguration.LoadedProviders.Add(this);
         }
 
         void IDbResourceProvider.ClearResourceCache()
@@ -88,10 +81,9 @@ namespace CodeTorch.Resources.Web
         private IDictionary GetResourceSet(string CultureName, string ResourceSet)
         {
             if (CultureName == null)
+            {
                 CultureName = "";
-
-            string ResourceFilter = "";
-            
+            }
 
             Dictionary<string, object> hashTable = new Dictionary<string, object>();
             List<ResourceItem> items = null;
@@ -118,12 +110,9 @@ namespace CodeTorch.Resources.Web
 
                     hashTable.Add(item.Key, resourceValue);
                 }
-
-               
             }
             catch { }
-            
-
+ 
             return hashTable as IDictionary;
         }
 
@@ -162,16 +151,6 @@ namespace CodeTorch.Resources.Web
             {
                 // *** No entry there
                 value = "";
-
-                // *** DEPENDENCY HERE (#2): using wwDbResourceConfiguration and wwDbResourceDataManager to optionally
-                //                           add missing resource keys
-
-                // *** Add a key in the repository at least for the Invariant culture
-                // *** Something's referencing but nothing's there
-                //TODO - implement
-                //if (wwDbResourceConfiguration.Current.AddMissingResources)
-                //    new wwDbResourceDataManager().AddResource(ResourceKey, value.ToString(), "", this._ResourceSetName);
-
             }
 
             return value;

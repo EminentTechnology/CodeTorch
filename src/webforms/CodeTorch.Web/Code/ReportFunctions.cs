@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Reporting.WebForms;
-using System.Configuration;
-using System.Reflection;
-using System.IO;
-using CodeTorch.Core;
-using System.Collections;
-using System.Data;
+﻿using CodeTorch.Core;
 using CodeTorch.Core.Commands;
+using Microsoft.Reporting.WebForms;
+using System;
+using System.Collections;
+using System.Configuration;
+using System.Data;
+using System.IO;
+using System.Reflection;
 
 namespace CodeTorch.Web.Code
 {
@@ -25,37 +22,25 @@ namespace CodeTorch.Web.Code
 
             foreach (CodeTorch.Core.ReportDataSource dataSource in reportDefinition.ReportDataSources)
             {
-
                 DataTable data = (DataTable) dataItems[dataSource.Name];
 
                 Microsoft.Reporting.WebForms.ReportDataSource rds = new Microsoft.Reporting.WebForms.ReportDataSource(dataSource.Name, data);
                 localReport.DataSources.Add(rds);
-
             }
 
             localReport.Refresh();
-
             retVal = Export(localReport, reportDefinition, out mime, out ext);
 
             return retVal;
         }
-
-
-
 
         private static void LoadReportDefinition(LocalReport localReport, ExportRDLCCommand reportDefinition)
         {
             string ConfigResourceDLL = ConfigurationManager.AppSettings["APPBUILDER_CONFIG_DLL_NAMESPACE"];
             string configNamespace = ConfigurationManager.AppSettings["APPBUILDER_CONFIG_DLL_NAMESPACE"];
 
-            
-
-            
-
             Assembly assembly = Assembly.Load(ConfigResourceDLL);
-
             string reportPath = GetReportPath(reportDefinition.ReportName, reportDefinition.EnableLocalization, configNamespace);
-            
             Stream stream = assembly.GetManifestResourceStream(reportPath);
 
             if (stream != null)
@@ -82,7 +67,6 @@ namespace CodeTorch.Web.Code
                 {
                     reportPath = String.Format("{0}.{1}.rdlc", reportPath.Substring(0, reportPath.Length - 5), cultureSuffix);
                 }
-
             }
             return reportPath;
         }
@@ -115,8 +99,6 @@ namespace CodeTorch.Web.Code
 
                 if (!String.IsNullOrEmpty(reportDefinition.MarginBottom))
                     deviceInfo += String.Format("<MarginBottom>{0}</MarginBottom>", reportDefinition.MarginBottom);
-
-
 
                 deviceInfo += "</DeviceInfo>";
             }

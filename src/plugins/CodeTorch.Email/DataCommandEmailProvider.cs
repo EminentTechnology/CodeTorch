@@ -3,9 +3,6 @@ using CodeTorch.Core.Interfaces;
 using CodeTorch.Core.Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Transactions;
 
 namespace CodeTorch.Email
@@ -44,8 +41,6 @@ namespace CodeTorch.Email
 
         public void Send(EmailMessage message)
         {
-            string AddressID = null;
-
             using (TransactionScope rootScope = TransactionUtils.CreateTransactionScope())
             {
                 message.ID = Guid.NewGuid().ToString();
@@ -80,8 +75,6 @@ namespace CodeTorch.Email
 
                 rootScope.Complete();
             }
-
-               
         }
 
         public void InsertMailMessage(EmailMessage message)
@@ -117,7 +110,6 @@ namespace CodeTorch.Email
             userName = UserIdentityService.GetInstance().IdentityProvider.GetUserName();
             p = new ScreenDataCommandParameter(ParameterCreatedBy, userName);
             parameters.Add(p);
-
 
             //get data from data command
             sql.ExecuteDataCommand(DataCommandWMailInsertMailMessage, parameters);
@@ -163,8 +155,6 @@ namespace CodeTorch.Email
 
             p = new ScreenDataCommandParameter(ParameterDisplayName, address.DisplayName);
             parameters.Add(p);
-
-
 
             //get data from data command
             sql.ExecuteDataCommand(DataCommandMailInsertAddress, parameters);

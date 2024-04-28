@@ -1,17 +1,15 @@
+using Microsoft.CSharp;
+using Microsoft.VisualBasic;
 using System;
 using System.CodeDom.Compiler;
 using System.IO;
 using System.Reflection;
-using System.Runtime.Remoting;
 using System.Text;
-
-using Microsoft.CSharp;
-using Microsoft.VisualBasic;
 
 
 namespace Eminent.CodeGenerator
 {
-	public enum ScriptEngineLanguage
+    public enum ScriptEngineLanguage
 	{
 		CSharp,
 		VB
@@ -23,9 +21,6 @@ namespace Eminent.CodeGenerator
 	/// </summary>
 	public class ScriptEngine
 	{
-		
-		
-
 		protected Assembly Assembly = null;
 		protected ICodeCompiler Compiler = null;
 		protected CompilerResults Results = null;
@@ -704,7 +699,6 @@ namespace Eminent.CodeGenerator
 			string cstring = cSearchExpression;
 			string cb = cBeginDelim;
 			string ce = cEndDelim;
-			string lcRetVal = "";
 
 			if (nFlags == 1) 
 			{

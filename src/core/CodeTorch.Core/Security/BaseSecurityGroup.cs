@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.ComponentModel;
 using System.Xml.Serialization;
 
@@ -37,18 +36,8 @@ namespace CodeTorch.Core
                     }
                     break;
 
-                
-
                 case "role":
                     throw new NotSupportedException();
-                    //RoleSecurityGroup roleGroup = (RoleSecurityGroup)group;
-                    //RoleDB roleDB = new RoleDB();
-                    //DataTable role = roleDB.GetRoleByUserNameAndRoleName(null, app.AuthorizationMode.SupportsMultipleRoles, UserName, roleGroup.Role);
-                    //if (role.Rows.Count > 1)
-                    //{
-                    //    retVal = true;
-                    //}
-                    break;
 
             }
 

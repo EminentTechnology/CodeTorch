@@ -616,7 +616,6 @@ namespace CodeTorch.Core
                     }
                 }
 
-
                 retVal = Eminent.CodeGenerator.TemplateEngine.GenerateCode(templateObject);
                 
             }

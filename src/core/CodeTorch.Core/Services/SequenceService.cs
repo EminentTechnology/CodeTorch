@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data;
-
-using System.Data.Common;
-using CodeTorch.Core;
+﻿using System.Collections.Generic;
 
 namespace CodeTorch.Core.Services
 {
@@ -13,17 +6,8 @@ namespace CodeTorch.Core.Services
     {
         public void Save(Sequence sequence)
         {
-            int retVal;
-
             DataCommandService dataCommandDB = DataCommandService.GetInstance();
-
-            
-
-            
             List<ScreenDataCommandParameter> parameters = new List<ScreenDataCommandParameter>();
-
-            
-
             ScreenDataCommandParameter p = null;
 
             p = new ScreenDataCommandParameter();
@@ -47,13 +31,6 @@ namespace CodeTorch.Core.Services
             parameters.Add(p);
 
             dataCommandDB.ExecuteDataCommand(Configuration.GetInstance().App.SaveSequenceDataCommand, parameters);
-
-
-            
-
-
         }
-
-        
     }
 }

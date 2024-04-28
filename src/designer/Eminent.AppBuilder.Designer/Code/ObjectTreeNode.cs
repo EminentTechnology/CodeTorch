@@ -1,22 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using Telerik.WinControls.UI;
 
 namespace CodeTorch.Designer.Code
 {
-    class ObjectTreeNode: TreeNode
-    {
-        public object Object;
-
-        public override string ToString()
-        {
-            return Object.ToString();
-        }
-    }
-
     public class SolutionTreeNode : RadTreeNode
     {
         public object Object;
