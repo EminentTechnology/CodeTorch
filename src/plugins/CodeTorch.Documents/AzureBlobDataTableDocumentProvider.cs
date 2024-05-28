@@ -118,6 +118,7 @@ namespace CodeTorch.Documents
             BlobContainerClient containerClient = GetBlobContainerClient(authentionMethod, connectionString, containerName, accountName, accountKey);
 
             var blobClient = containerClient.GetBlobClient(blobName);
+            doc.Stream.Position = 0;
             var blobContentInfo = blobClient.Upload(doc.Stream);
 
             doc.Url = String.Format($"{accountName}.blob.core.windows.net/{containerName}/{blobName}", accountName, containerName, blobName);
