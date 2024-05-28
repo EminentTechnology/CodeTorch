@@ -31,11 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CodeTorch.Core, Version=4.2.159.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\CodeTorch.Core.4.2.159\lib\net48\CodeTorch.Core.dll</HintPath>
+    <Reference Include="CodeTorch.Core, Version=4.2.172.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\CodeTorch.Core.4.2.172\lib\net48\CodeTorch.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Eminent.CodeGenerator, Version=4.2.159.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\CodeTorch.Core.4.2.159\lib\net48\Eminent.CodeGenerator.dll</HintPath>
+    <Reference Include="Eminent.CodeGenerator, Version=4.2.172.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\CodeTorch.Core.4.2.172\lib\net48\Eminent.CodeGenerator.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\log4net.2.0.15\lib\net45\log4net.dll</HintPath>
