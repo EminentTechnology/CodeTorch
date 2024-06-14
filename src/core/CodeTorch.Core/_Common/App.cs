@@ -88,6 +88,10 @@ namespace CodeTorch.Core
         public string ResourceProviderClass { get; set; }
         public string ResourceProviderConfig { get; set; }
 
+        public string ServiceLogProviderAssembly { get; set; }
+        public string ServiceLogProviderClass { get; set; }
+        public string ServiceLogProviderConfig { get; set; }
+
         [Category("Data")]
         [TypeConverter("CodeTorch.Core.Design.ScreenDataCommandTypeConverter,CodeTorch.Core.Design")]
         public string LocalizationCommand { get; set; }

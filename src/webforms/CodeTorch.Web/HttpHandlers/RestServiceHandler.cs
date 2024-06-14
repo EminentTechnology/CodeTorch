@@ -4,6 +4,7 @@ using CodeTorch.Core.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Configuration;
 using System.Data;
 using System.IO;
@@ -39,6 +40,8 @@ namespace CodeTorch.Web.HttpHandlers
         public string EntityID { get; set; }
         public string EntityIDParameterName { get; set; }
 
+        readonly ServiceLogEntry logEntry = new ServiceLogEntry();
+
         public bool IsReusable
         {
             get { return true; }
@@ -51,7 +54,9 @@ namespace CodeTorch.Web.HttpHandlers
             App app = CodeTorch.Core.Configuration.GetInstance().App;
             StringBuilder builder = new StringBuilder();
             StringWriter writer = new StringWriter(builder);
-            
+            logEntry.ServiceLogId = Guid.NewGuid().ToString();
+            logEntry.RequestDate = DateTime.UtcNow;
+
             try
             {
                 if (Me == null)
@@ -62,9 +67,13 @@ namespace CodeTorch.Web.HttpHandlers
                     throw new ApplicationException("No service has been configured for this path");
                 }
 
+                logEntry.ApplicationName = app.Name;
+
+                CaptureRequestMetadataForServiceLog();
+
                 DataCommand requestCommand = null;
                 RestServiceMethodReturnTypeEnum returnType = RestServiceMethodReturnTypeEnum.None;
-  
+
                 //collect parameters
                 DataTable dt = null;
                 XmlDocument doc = null;
@@ -83,11 +92,12 @@ namespace CodeTorch.Web.HttpHandlers
 
                 if (method != null)
                 {
+                    CaptureRequestDataForServiceLog(method);
                     //pass parameters - minus dbcommand parameters to datacommand
                     DataCommandService dataCommandDB = DataCommandService.GetInstance();
 
                     if (String.IsNullOrEmpty(method.RequestDataCommand))
-                    { 
+                    {
                         throw new ApplicationException(String.Format("Request Data Command has not been configured for this service - {0}", Me.Name));
                     }
 
@@ -132,8 +142,6 @@ namespace CodeTorch.Web.HttpHandlers
                                             dt = dataCommandDB.GetDataForDataCommand(postMethod.ResponseDataCommand, parameters);
                                             break;
                                     }
-
-                                    
                                 }
                             }
 
@@ -162,10 +170,10 @@ namespace CodeTorch.Web.HttpHandlers
                                         default:
                                             dt = dataCommandDB.GetDataForDataCommand(putMethod.ResponseDataCommand, parameters);
                                             break;
-                                    } 
+                                    }
                                 }
                             }
-                            
+
                             break;
                         case DataCommandReturnType.Xml:
                             doc = dataCommandDB.GetXmlDataForDataCommand(method.RequestDataCommand, parameters);
@@ -196,7 +204,7 @@ namespace CodeTorch.Web.HttpHandlers
                     {
                         using (JsonWriter json = new JsonTextWriter(writer))
                         {
-                            DataColumnCollection columns = null; 
+                            DataColumnCollection columns = null;
 
                             switch (returnType)
                             {
@@ -229,17 +237,17 @@ namespace CodeTorch.Web.HttpHandlers
                             {
                                 case RestServiceMethodReturnTypeEnum.DataTable:
                                     columns = dt.Columns;
-                                    BuildXmlListResponse(app, context,method, requestCommand, dt, xml, columns);
+                                    BuildXmlListResponse(app, context, method, requestCommand, dt, xml, columns);
                                     break;
                                 case RestServiceMethodReturnTypeEnum.DataRow:
                                     columns = dt.Columns;
-                                    BuildXmlItemResponse(app,context, method, requestCommand, dt, xml, columns);
+                                    BuildXmlItemResponse(app, context, method, requestCommand, dt, xml, columns);
                                     break;
                                 case RestServiceMethodReturnTypeEnum.Xml:
                                 case RestServiceMethodReturnTypeEnum.Raw:
                                     BuildXmlObjectResponse(app, method, doc, xml);
                                     break;
-                                
+
                             }
                         }
                     }
@@ -247,20 +255,12 @@ namespace CodeTorch.Web.HttpHandlers
 
                 //perform any special post processing
 
-
-
-                //string url = ((System.Web.Routing.Route)(RouteData.Route)).Url;
-                //context.Response.Write("From the handler at " + DateTime.Now + " - " + Me.Name + " - " + url + " - " + HttpContext.Current.Request.HttpMethod);
-
-                
-                //context.Response.ContentType = "text/xml";
-                //context.Response.Write(dt.DataSet.GetXml());
-
-
                 context.Response.StatusCode = (int)HttpStatusCode.OK;
+                string response = builder.ToString();
+                context.Response.Write(response);
 
-                context.Response.Write(builder.ToString());
-
+                logEntry.ResponseHttpCode = context.Response.StatusCode;
+                logEntry.ResponseData = response;
             }
             catch (CodeTorchException cex)
             {
@@ -271,6 +271,9 @@ namespace CodeTorch.Web.HttpHandlers
                 exception.Message = cex.Message;
                 exception.MoreInfo = cex.MoreInfo;
                 exception.ErrorCode = cex.ErrorCode;
+
+                logEntry.ErrorMessage = cex.Message;
+                logEntry.ExtraInfo = (logEntry.ExtraInfo ?? string.Empty) + (cex.StackTrace ?? string.Empty);
 
                 context.Response.TrySkipIisCustomErrors = true;
                 context.Response.StatusCode = exception.Status;
@@ -284,16 +287,85 @@ namespace CodeTorch.Web.HttpHandlers
                 exception.Status = (int)HttpStatusCode.InternalServerError;
                 exception.Message = ex.Message;
 
+                logEntry.ErrorMessage = ex.Message;
+                logEntry.ExtraInfo = (logEntry.ExtraInfo ?? string.Empty) + (ex.StackTrace ?? string.Empty);
+
                 context.Response.TrySkipIisCustomErrors = true;
                 context.Response.StatusCode = exception.Status;
                 SerializeRestException(app, context, builder, writer, exception);
             }
+            finally
+            {
+                SetResponseCodes(logEntry, logEntry.ResponseHttpCode ?? 0);
+                logEntry.ResponseDate = DateTime.UtcNow;
+
+                IServiceLogProvider logProvider = ServiceLogService.GetInstance().ServiceLogProvider;
+                if (logProvider != null)
+                {
+                    logProvider.Log(logEntry);
+                }
+            }
         }
 
-        
+        private void CaptureRequestMetadataForServiceLog()
+        {
+            try
+            { 
+                logEntry.RequestUri = HttpContext.Current.Request.Url.AbsoluteUri;
+                logEntry.RequestIpAddress = HttpContext.Current.Request.UserHostAddress;
+                logEntry.RequestUserName = HttpContext.Current.User.Identity.Name;
+
+                logEntry.ServerHostName = Environment.MachineName;
+                logEntry.ServerIpAddress = HttpContext.Current.Request.ServerVariables["LOCAL_ADDR"];
+                logEntry.ServerUserName = Environment.UserName;
+                logEntry.TraceId = HttpContext.Current.Request.Headers["TraceId"] ?? Guid.NewGuid().ToString();
+                logEntry.Component = $"{HttpContext.Current.Request.HttpMethod} {Me.Resource}";
+            }
+            catch { }
+        }
+
+        private void CaptureRequestDataForServiceLog(BaseRestServiceMethod method)
+        {
+            try
+            {
+                // Parse the excluded parameters
+                var excludedParameters = method.ExcludeParametersFromLogging?.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                                                .Select(p => p.Trim())
+                                                .ToList() ?? new List<string>();
+                // Create a single instance of the converter with the excluded parameters
+                var converter = new NameValueCollectionConverter(excludedParameters);
+
+                if (logEntry.LogRequestHeaders)
+                {
+                    logEntry.RequestHeaders = JsonConvert.SerializeObject(HttpContext.Current.Request.Headers, converter);
+                }
+
+                logEntry.EntityId = EntityID; // TODO: Get EntityID from RouteData - it should be last url segment if multiple segments are present
+
+                var data = new RequestData();
+                data.QueryString = HttpContext.Current.Request.QueryString;
+                data.Form = HttpContext.Current.Request.Form;
+
+                // Serialize RequestData with exclusions
+                logEntry.RequestData = JsonConvert.SerializeObject(data, new JsonSerializerSettings
+                {
+                    Converters = new List<JsonConverter> { converter }
+                });
+
+            }
+            catch { }
+        }
+
+        class RequestData
+        {
+            public NameValueCollection QueryString { get; set; }
+
+            public NameValueCollection Form { get; set; }
+        }
 
         private void SerializeRestException(App app, HttpContext context, StringBuilder builder, StringWriter writer, RestServiceException exception)
         {
+            string response = null;
             if (Format.ToLower() == "json")
             {
                 if (
@@ -310,7 +382,8 @@ namespace CodeTorch.Web.HttpHandlers
                         Error = exception
                     };
 
-                    context.Response.Write(JsonConvert.SerializeObject(err));
+                    response = JsonConvert.SerializeObject(err);
+                    context.Response.Write(response);
                 }
             }
             else
@@ -348,10 +421,12 @@ namespace CodeTorch.Web.HttpHandlers
                         writer.Close();
                     }
                 }
-                
-                
-                context.Response.Write(builder.ToString());
+
+                response = builder.ToString();
+                context.Response.Write(response);
             }
+
+            logEntry.ResponseData = response;
         }
 
         private static void WriteJsonValue(DataCommand command, JsonWriter json, DataRow row, DataColumn col, List<string> rawJsonColumns)
@@ -1146,6 +1221,42 @@ namespace CodeTorch.Web.HttpHandlers
         public class StructuredError
         {
             public RestServiceException Error { get; set; }
+        }
+
+        public void SetResponseCodes(ServiceLogEntry log, int statusCode)
+        {
+            log.ResponseHttpCode = statusCode;
+            log.ResponseCode = ServiceLogResponseCodeType.Unknown;
+
+            if (log.ResponseHttpCode >= 200 && log.ResponseHttpCode < 300)
+            {
+                log.ResponseCode = ServiceLogResponseCodeType.Successful;
+            }
+
+            if (log.ResponseHttpCode >= 400 && log.ResponseHttpCode < 500)
+            {
+                log.ResponseCode = ServiceLogResponseCodeType.BadRequest;
+            }
+
+            if (log.ResponseHttpCode == 404 || log.ResponseHttpCode == 410)
+            {
+                log.ResponseCode = ServiceLogResponseCodeType.NotFound;
+            }
+
+            if (log.ResponseHttpCode >= 500 && log.ResponseHttpCode < 600)
+            {
+                log.ResponseCode = ServiceLogResponseCodeType.InternalServerError;
+            }
+
+            if (log.ResponseHttpCode == 401 || log.ResponseHttpCode == 403 || log.ResponseHttpCode == 407 || log.ResponseHttpCode == 511)
+            {
+                log.ResponseCode = ServiceLogResponseCodeType.Unauthorized;
+            }
+
+            if (log.ResponseHttpCode == 408 || log.ResponseHttpCode == 502 || log.ResponseHttpCode == 504)
+            {
+                log.ResponseCode = ServiceLogResponseCodeType.NetworkError;
+            }
         }
     }
 }

@@ -4,45 +4,45 @@ using System.Reflection;
 
 namespace CodeTorch.Core.Services
 {
-    public class LookupService
+    public class ServiceLogService
     {
-        static readonly LookupService instance = new LookupService();
+        static readonly ServiceLogService instance = new ServiceLogService();
 
-        public static LookupService GetInstance()
+        public static ServiceLogService GetInstance()
         {
             return instance;
         }
 
-        private LookupService()
+        private ServiceLogService()
         {
         }
 
-        ILookupProvider lookupProvider = null;
+        IServiceLogProvider serviceLogProvider = null;
 
-        public ILookupProvider LookupProvider
+        public IServiceLogProvider ServiceLogProvider
         {
             get
             {
-                if (lookupProvider == null)
+                if (serviceLogProvider == null)
                 {
-                    lookupProvider = GetProvider();
+                    serviceLogProvider = GetProvider();
                 }
-                return lookupProvider;
+                return serviceLogProvider;
             }
             set
             {
-                lookupProvider = value;
+                serviceLogProvider = value;
             }
         }
 
-        private ILookupProvider GetProvider()
+        private IServiceLogProvider GetProvider()
         {
-            ILookupProvider retVal = null;
+            IServiceLogProvider retVal = null;
             App app = Configuration.GetInstance().App;
 
-            string assemblyName = app.LookupProviderAssembly;
-            string className = app.LookupProviderClass;
-            string config = app.LookupProviderConfig;
+            string assemblyName = app.ServiceLogProviderAssembly;
+            string className = app.ServiceLogProviderClass;
+            string config = app.ServiceLogProviderConfig;
 
 
             if (!String.IsNullOrEmpty(assemblyName) && !String.IsNullOrEmpty(className))
@@ -59,7 +59,7 @@ namespace CodeTorch.Core.Services
                         {
 
                             ConstructorInfo constructor = type.GetConstructor(Type.EmptyTypes);
-                            retVal = constructor.Invoke(null) as ILookupProvider;
+                            retVal = constructor.Invoke(null) as IServiceLogProvider;
 
                             retVal.Initialize(config);
 
@@ -71,11 +71,6 @@ namespace CodeTorch.Core.Services
                 {
                     //silent error
                 }
-            }
-
-            if (retVal == null)
-            {
-                throw new Exception(String.Format("No valid lookup provider was found"));
             }
 
             return retVal;

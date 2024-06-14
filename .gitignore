@@ -17,7 +17,7 @@ artifacts/
 *.apk
 _ReSharper.*
 !lib/**
-/.vs
+.vs/
 Logs
 /*.log
 /src/webforms/CodeTorch.Web/.vs

@@ -69,6 +69,9 @@
     <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\log4net.2.0.15\lib\net45\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.configuration" />
@@ -114,8 +117,10 @@
     <Compile Include="ControlTypes\RadioButtonListControl.cs" />
     <Compile Include="Grid\ClientSelectGridColumn.cs" />
     <Compile Include="Grid\GridCommandItemDisplay.cs" />
+    <Compile Include="Interfaces\IServiceLogProvider.cs" />
     <Compile Include="Sections\MenuSection.cs" />
     <Compile Include="Sections\CustomSection.cs" />
+    <Compile Include="Services\ServiceLogService.cs" />
     <Compile Include="_Common\ConfigurationObjectFactory.cs" />
     <Compile Include="ConfigurationObjects\ControlTypeConfigurationObject.cs" />
     <Compile Include="ConfigurationObjects\SectionTypeConfigurationObject.cs" />
@@ -286,6 +291,7 @@
     <Compile Include="PageTemplates\PageTemplate.cs" />
     <Compile Include="ControlTypes\Misc\MultiComboDropDownListItem.cs" />
     <Compile Include="_Common\MessageBus.cs" />
+    <Compile Include="_Common\NameValueCollectionConverter.cs" />
     <Compile Include="_Common\PasswordMode.cs" />
     <Compile Include="Report\ReportDataSource.cs" />
     <Compile Include="_Common\DocumentType.cs" />
@@ -330,6 +336,7 @@
     <Compile Include="_Common\IScreenParameter.cs" />
     <Compile Include="_Common\ResourceItem.cs" />
     <Compile Include="_Common\Sequence.cs" />
+    <Compile Include="_Common\ServiceLogEntry.cs" />
     <Compile Include="_Common\Setting.cs" />
     <Compile Include="Templates\Template.cs" />
   </ItemGroup>

@@ -106,6 +106,8 @@ namespace CodeTorch.Core
 
         public RestServiceMethodReturnTypeEnum ReturnType { get; set; }
 
+        public string ExcludeParametersFromLogging { get; set; }
+
         public RestServiceResponseMode ResponseMode
         { 
             get { return _ResponseMode; }
