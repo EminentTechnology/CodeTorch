@@ -62,8 +62,6 @@ namespace CodeTorch.Core.Services
                             retVal = constructor.Invoke(null) as IServiceLogProvider;
 
                             retVal.Initialize(config);
-
-
                         }
                     }
                 }
