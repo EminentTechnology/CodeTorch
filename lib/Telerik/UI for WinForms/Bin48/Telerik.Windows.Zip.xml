@@ -20,6 +20,9 @@
         <member name="P:Telerik.Windows.Zip.BlockTransformBase.Header">
             <summary>Gets transformation header (if required).</summary>
         </member>
+        <member name="P:Telerik.Windows.Zip.BlockTransformBase.Footer">
+            <summary>Gets transformation footer (if required).</summary>
+        </member>
         <member name="P:Telerik.Windows.Zip.BlockTransformBase.InputBlockSize">
             <summary>Gets the input block size.</summary>
             <returns>The size of the input data blocks in bytes.</returns>
@@ -39,19 +42,29 @@
             Releases the resources used by the current instance of the ZipArchive class.
             </summary>
         </member>
-        <member name="M:Telerik.Windows.Zip.BlockTransformBase.CreateHeader">
+        <member name="M:Telerik.Windows.Zip.BlockTransformBase.CreateHeader(Telerik.Windows.Zip.CompressionSettings)">
             <summary>
             Creates transformation header to be written into the output stream.
             </summary>
         </member>
-        <member name="M:Telerik.Windows.Zip.BlockTransformBase.InitHeaderReading">
+        <member name="M:Telerik.Windows.Zip.BlockTransformBase.InitHeaderReading(Telerik.Windows.Zip.CompressionSettings)">
             <summary>
             Initialize reading of the transformation header.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.BlockTransformBase.InitFooterReading(System.Int32)">
+            <summary>
+            Initialize reading of the transformation footer.
             </summary>
         </member>
         <member name="M:Telerik.Windows.Zip.BlockTransformBase.ProcessHeader">
             <summary>
             Process transformation header has been read.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.BlockTransformBase.ProcessFooter">
+            <summary>
+            Process transformation footer has been read.
             </summary>
         </member>
         <member name="M:Telerik.Windows.Zip.BlockTransformBase.TransformBlock(System.Byte[],System.Int32,System.Int32,System.Byte[],System.Int32)">
@@ -172,6 +185,11 @@
             The file is compressed using LZMA algorithm.
             </summary>
         </member>
+        <member name="F:Telerik.Windows.Zip.CompressionMethod.Aes">
+            <summary>
+            The file is compressed using AE-x Encryption marker algorithm.
+            </summary>
+        </member>
         <member name="T:Telerik.Windows.Zip.CompressedStream">
             <summary>
             Represents stream which allows read/write compressed information from/to given input stream.
@@ -186,7 +204,7 @@
             <param name="settings">Compression settings.</param>
             <exception cref="T:System.ArgumentOutOfRangeException">Specified mode is not allowed for the given stream.</exception>
         </member>
-        <member name="M:Telerik.Windows.Zip.CompressedStream.#ctor(System.IO.Stream,Telerik.Windows.Zip.StreamOperationMode,Telerik.Windows.Zip.CompressionSettings,System.Boolean,Telerik.Windows.Zip.EncryptionSettings)">
+        <member name="M:Telerik.Windows.Zip.CompressedStream.#ctor(System.IO.Stream,Telerik.Windows.Zip.StreamOperationMode,Telerik.Windows.Zip.CompressionSettings,System.Boolean,Telerik.Windows.Zip.EncryptionSettingsBase)">
             <summary>
             Initializes a new instance of the CompressedStream class.
             </summary>
@@ -195,16 +213,6 @@
             <param name="settings">Compression settings.</param>
             <param name="useCrc32">Indicates whether the CRC32 (true) or Adler32 (false) checksum algorithm will be used.</param>
             <param name="encryptionSettings">Encryption settings.</param>
-            <exception cref="T:System.ArgumentOutOfRangeException">Specified mode is not allowed for the given stream.</exception>
-        </member>
-        <member name="M:Telerik.Windows.Zip.CompressedStream.#ctor(System.IO.Stream,Telerik.Windows.Zip.StreamOperationMode,Telerik.Windows.Zip.ICompressionAlgorithm,Telerik.Windows.Zip.IChecksumAlgorithm)">
-            <summary>
-            Initializes a new instance of the CompressedStream class.
-            </summary>
-            <param name="baseStream">The base input/output stream.</param>
-            <param name="mode">Stream operational mode.</param>
-            <param name="compressionAlgorithm">Compression algorithm.</param>
-            <param name="checksumAlgorithm">Checksum algorithm.</param>
             <exception cref="T:System.ArgumentOutOfRangeException">Specified mode is not allowed for the given stream.</exception>
         </member>
         <member name="E:Telerik.Windows.Zip.CompressedStream.ChecksumReady">
@@ -523,7 +531,7 @@
             </summary>
             <param name="settings">Deflate settings.</param>
         </member>
-        <member name="M:Telerik.Windows.Zip.DeflateCompressor.CreateHeader">
+        <member name="M:Telerik.Windows.Zip.DeflateCompressor.CreateHeader(Telerik.Windows.Zip.CompressionSettings)">
             <summary>
             Creates RFC 1950 (ZLIB Compressed Data Format Specification version 3.3) header
             to be written into the output stream.
@@ -788,7 +796,7 @@
             <summary>Gets the output block size.</summary>
             <returns>The size of the output data blocks in bytes.</returns>
         </member>
-        <member name="M:Telerik.Windows.Zip.DeflateDecompressor.InitHeaderReading">
+        <member name="M:Telerik.Windows.Zip.DeflateDecompressor.InitHeaderReading(Telerik.Windows.Zip.CompressionSettings)">
             <summary>
             Initialize reading of the transformation header.
             </summary>
@@ -1083,6 +1091,26 @@
             </summary>
             <param name="manager">Deflate compressor.</param>
         </member>
+        <member name="T:Telerik.Windows.Zip.EncryptionStrength">
+            <summary>
+            Specifies values for a type of the encryption strength.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Zip.EncryptionStrength.Aes128">
+            <summary>
+            AES-128 encryption.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Zip.EncryptionStrength.Aes192">
+            <summary>
+            AES-192 encryption.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Zip.EncryptionStrength.Aes256">
+            <summary>
+            AES-256 encryption.
+            </summary>
+        </member>
         <member name="T:Telerik.Windows.Zip.ICompressionAlgorithm">
             <summary>
             Interface which must be implemented by all implementations of the compression algorithm.
@@ -1149,7 +1177,7 @@
             <summary>Gets the output block size.</summary>
             <returns>The size of the output data blocks in bytes.</returns>
         </member>
-        <member name="M:Telerik.Windows.Zip.LzmaCompressor.CreateHeader">
+        <member name="M:Telerik.Windows.Zip.LzmaCompressor.CreateHeader(Telerik.Windows.Zip.CompressionSettings)">
             <summary>
             Creates transformation header to be written into the output stream.
             </summary>
@@ -1188,7 +1216,7 @@
             <summary>Gets the output block size.</summary>
             <returns>The size of the output data blocks in bytes.</returns>
         </member>
-        <member name="M:Telerik.Windows.Zip.LzmaDecompressor.InitHeaderReading">
+        <member name="M:Telerik.Windows.Zip.LzmaDecompressor.InitHeaderReading(Telerik.Windows.Zip.CompressionSettings)">
             <summary>
             Initialize reading of the transformation header.
             </summary>
@@ -1433,7 +1461,7 @@
             </summary>
             <param name="stream">Stream to delete.</param>
         </member>
-        <member name="M:Telerik.Windows.Zip.DefaultPlatformManager.GetCryptoProvider(Telerik.Windows.Zip.EncryptionSettings)">
+        <member name="M:Telerik.Windows.Zip.DefaultPlatformManager.GetCryptoProvider(Telerik.Windows.Zip.EncryptionSettingsBase)">
             <summary>
             Gets crypto provider initialized using given encryption settings.
             </summary>
@@ -1448,18 +1476,58 @@
             <param name="encoding">Encoding.</param>
             <returns>true if encoding is allowed in the ZIP file.</returns>
         </member>
+        <member name="T:Telerik.Windows.Zip.AesCryptoProvider">
+            <summary>
+            Crypto provider which implements AES encryption.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.AesCryptoProvider.#ctor">
+            <summary>
+            Initializes a new instance of the AesCryptoProvider class with Aes256 encryption strength.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.AesCryptoProvider.CreateDecryptor">
+            <summary>
+            Creates an decryptor object. 
+            </summary>
+            <returns>A decryptor object.</returns>
+        </member>
+        <member name="M:Telerik.Windows.Zip.AesCryptoProvider.CreateEncryptor">
+            <summary>
+            Creates an encryptor object.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.Windows.Zip.AesCryptoProvider.Initialize(Telerik.Windows.Zip.EncryptionSettingsBase)">
+            <summary>
+            Initialize crypto provider using given encryption settings.
+            </summary>
+            <param name="settings">Encryption settings.</param>
+        </member>
+        <member name="T:Telerik.Windows.Zip.AesCryptoStream">
+            <summary>
+            AES Cryptographic stream. Allows encrypt or decrypt information from the given input stream.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.AesCryptoTransformBase.Dispose(System.Boolean)">
+            <summary>
+            Releases the unmanaged resources used by the transform and optionally releases the managed resources. 
+            </summary>
+            <param name="disposing">Value which indicates whether both managed and unmanaged resources (true) on only unmanaged resources (false) should be released.</param>
+        </member>
         <member name="T:Telerik.Windows.Zip.CryptoStream">
             <summary>
             Cryptographic stream. Allows encrypt or decrypt information from the given input stream.
             </summary>
         </member>
-        <member name="M:Telerik.Windows.Zip.CryptoStream.#ctor(System.IO.Stream,Telerik.Windows.Zip.StreamOperationMode,Telerik.Windows.Zip.ICryptoProvider)">
+        <member name="M:Telerik.Windows.Zip.CryptoStream.#ctor(System.IO.Stream,Telerik.Windows.Zip.StreamOperationMode,Telerik.Windows.Zip.ICryptoProvider,Telerik.Windows.Zip.CompressionSettings)">
             <summary>
             Initializes a new instance of the CryptoStream class.
             </summary>
             <param name="input">Input stream.</param>
             <param name="mode">Stream operational mode.</param>
             <param name="cryptoProvider">Crypto provider.</param>
+            <param name="settings">Compression settings.</param>
             <exception cref="T:System.ArgumentOutOfRangeException">Specified mode is not allowed for the given stream.</exception>
         </member>
         <member name="M:Telerik.Windows.Zip.CryptoStream.Finalize">
@@ -1473,175 +1541,101 @@
             </summary>
             <param name="disposing">Value which indicates whether both managed and unmanaged resources (true) on only unmanaged resources (false) should be released.</param>
         </member>
-        <member name="T:Telerik.Windows.Zip.DefaultCryptoProvider">
+        <member name="T:Telerik.Windows.Zip.DecryptionSettings">
             <summary>
-            Crypto provider which implements traditional PKWARE encryption.
+            Creates a new instance of the <see cref="T:Telerik.Windows.Zip.DecryptionSettings" /> class.
             </summary>
         </member>
-        <member name="M:Telerik.Windows.Zip.DefaultCryptoProvider.CreateDecryptor">
+        <member name="E:Telerik.Windows.Zip.DecryptionSettings.PasswordRequired">
             <summary>
-            Creates an decryptor object. 
-            </summary>
-            <returns>A decryptor object.</returns>
-        </member>
-        <member name="M:Telerik.Windows.Zip.DefaultCryptoProvider.CreateEncryptor">
-            <summary>
-            Creates an encryptor object.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Telerik.Windows.Zip.DefaultCryptoProvider.Initialize(Telerik.Windows.Zip.EncryptionSettings)">
-            <summary>
-            Initialize crypto provider using given encryption settings.
-            </summary>
-            <param name="settings">Encryption settings.</param>
-        </member>
-        <member name="T:Telerik.Windows.Zip.DefaultCryptoTransformBase">
-            <summary>
-            Base class for the transformations which implements traditional PKWARE encryption/decryption.
+            Occurs when the password is required.
             </summary>
         </member>
-        <member name="M:Telerik.Windows.Zip.DefaultCryptoTransformBase.#ctor">
+        <member name="T:Telerik.Windows.Zip.EncryptionAlgorithm">
             <summary>
-            Initializes a new instance of the DefaultCryptoTransformBase class.
+            Specifies values for a type of the encryption algorithm.
             </summary>
         </member>
-        <member name="P:Telerik.Windows.Zip.DefaultCryptoTransformBase.CanReuseTransform">
-            <summary>Gets a value indicating whether the current transform can be reused.</summary>
-            <returns>true if the current transform can be reused; otherwise, false.</returns>
-        </member>
-        <member name="P:Telerik.Windows.Zip.DefaultCryptoTransformBase.CanTransformMultipleBlocks">
-            <summary>Gets a value indicating whether multiple blocks can be transformed.</summary>
-            <returns>true if multiple blocks can be transformed; otherwise, false.</returns>
-        </member>
-        <member name="P:Telerik.Windows.Zip.DefaultCryptoTransformBase.InputBlockSize">
-            <summary>Gets the input block size.</summary>
-            <returns>The size of the input data blocks in bytes.</returns>
-        </member>
-        <member name="P:Telerik.Windows.Zip.DefaultCryptoTransformBase.OutputBlockSize">
-            <summary>Gets the output block size.</summary>
-            <returns>The size of the output data blocks in bytes.</returns>
-        </member>
-        <member name="P:Telerik.Windows.Zip.DefaultCryptoTransformBase.EncodingByte">
+        <member name="F:Telerik.Windows.Zip.EncryptionAlgorithm.Unknown">
             <summary>
-            Gets encoding byte.
+            Unknown encryption algorithm.
             </summary>
         </member>
-        <member name="M:Telerik.Windows.Zip.DefaultCryptoTransformBase.CreateHeader">
+        <member name="F:Telerik.Windows.Zip.EncryptionAlgorithm.PKZIP">
             <summary>
-            Creates transformation header to be written into the output stream.
+            Traditional PKWARE encryption algorithm.
             </summary>
         </member>
-        <member name="M:Telerik.Windows.Zip.DefaultCryptoTransformBase.InitHeaderReading">
+        <member name="F:Telerik.Windows.Zip.EncryptionAlgorithm.AES">
             <summary>
-            Initialize reading of the transformation header.
+            Strong AES encryption algorithm.
             </summary>
-        </member>
-        <member name="M:Telerik.Windows.Zip.DefaultCryptoTransformBase.ProcessHeader">
-            <summary>
-            Process transformation header has been read.
-            </summary>
-        </member>
-        <member name="M:Telerik.Windows.Zip.DefaultCryptoTransformBase.Dispose(System.Boolean)">
-            <summary>
-            Releases the unmanaged resources used by the transform and optionally releases the managed resources. 
-            </summary>
-            <param name="disposing">Value which indicates whether both managed and unmanaged resources (true) on only unmanaged resources (false) should be released.</param>
-        </member>
-        <member name="M:Telerik.Windows.Zip.DefaultCryptoTransformBase.UpdateKeys(System.Byte)">
-            <summary>
-            Update encryption keys.
-            </summary>
-            <param name="byteValue">Byte.</param>
-        </member>
-        <member name="T:Telerik.Windows.Zip.DefaultDecryptor">
-            <summary>
-            Crypto transformation which implements traditional PKWARE decryption.
-            </summary>
-        </member>
-        <member name="M:Telerik.Windows.Zip.DefaultDecryptor.#ctor">
-            <summary>
-            Initializes a new instance of the DefaultDecryptor class.
-            </summary>
-        </member>
-        <member name="M:Telerik.Windows.Zip.DefaultDecryptor.TransformBlock(System.Byte[],System.Int32,System.Int32,System.Byte[],System.Int32)">
-            <summary>Transforms the specified region of the input byte array and copies the resulting transform to the specified region of the output byte array.</summary>
-            <returns>The number of bytes written.</returns>
-            <param name="inputBuffer">The input for which to compute the transform. </param>
-            <param name="inputOffset">The offset into the input byte array from which to begin using data. </param>
-            <param name="inputCount">The number of bytes in the input byte array to use as data. </param>
-            <param name="outputBuffer">The output to which to write the transform. </param>
-            <param name="outputOffset">The offset into the output byte array from which to begin writing data. </param>
-        </member>
-        <member name="M:Telerik.Windows.Zip.DefaultDecryptor.TransformFinalBlock(System.Byte[],System.Int32,System.Int32)">
-            <summary>Transforms the specified region of the specified byte array.</summary>
-            <returns>The computed transform.</returns>
-            <param name="inputBuffer">The input for which to compute the transform. </param>
-            <param name="inputOffset">The offset into the byte array from which to begin using data. </param>
-            <param name="inputCount">The number of bytes in the byte array to use as data. </param>
-        </member>
-        <member name="T:Telerik.Windows.Zip.DefaultEncryptionSettings">
-            <summary>
-            Encryption settings for the default cryptographic provider (traditional PKWARE encryption.
-            </summary>
-        </member>
-        <member name="M:Telerik.Windows.Zip.DefaultEncryptionSettings.#ctor">
-            <summary>
-            Initializes a new instance of the DefaultEncryptionSettings class.
-            </summary>
-        </member>
-        <member name="P:Telerik.Windows.Zip.DefaultEncryptionSettings.Password">
-            <summary>
-            Gets or sets password will be used for encryption/decryption.
-            </summary>
-        </member>
-        <member name="P:Telerik.Windows.Zip.DefaultEncryptionSettings.FileTime">
-            <summary>
-            Gets or sets last modification file date and time.
-            </summary>
-        </member>
-        <member name="T:Telerik.Windows.Zip.DefaultEncryptor">
-            <summary>
-            Crypto transformation which implements traditional PKWARE encryption.
-            </summary>
-        </member>
-        <member name="M:Telerik.Windows.Zip.DefaultEncryptor.#ctor">
-            <summary>
-            Initializes a new instance of the DefaultEncryptor class.
-            </summary>
-        </member>
-        <member name="M:Telerik.Windows.Zip.DefaultEncryptor.TransformBlock(System.Byte[],System.Int32,System.Int32,System.Byte[],System.Int32)">
-            <summary>Transforms the specified region of the input byte array and copies the resulting transform to the specified region of the output byte array.</summary>
-            <returns>The number of bytes written.</returns>
-            <param name="inputBuffer">The input for which to compute the transform. </param>
-            <param name="inputOffset">The offset into the input byte array from which to begin using data. </param>
-            <param name="inputCount">The number of bytes in the input byte array to use as data. </param>
-            <param name="outputBuffer">The output to which to write the transform. </param>
-            <param name="outputOffset">The offset into the output byte array from which to begin writing data. </param>
-        </member>
-        <member name="M:Telerik.Windows.Zip.DefaultEncryptor.TransformFinalBlock(System.Byte[],System.Int32,System.Int32)">
-            <summary>Transforms the specified region of the specified byte array.</summary>
-            <returns>The computed transform.</returns>
-            <param name="inputBuffer">The input for which to compute the transform. </param>
-            <param name="inputOffset">The offset into the byte array from which to begin using data. </param>
-            <param name="inputCount">The number of bytes in the byte array to use as data. </param>
         </member>
         <member name="T:Telerik.Windows.Zip.EncryptionSettings">
             <summary>
             Base class for the encryption settings.
             </summary>
         </member>
-        <member name="E:Telerik.Windows.Zip.EncryptionSettings.PropertyChanged">
+        <member name="T:Telerik.Windows.Zip.EncryptionSettingsBase">
+            <summary>
+            Base class for the encryption settings.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.EncryptionSettingsBase.#ctor">
+            <summary>
+            Creates a new instance of the <see cref="T:Telerik.Windows.Zip.EncryptionSettingsBase" /> class.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.EncryptionSettingsBase.#ctor(Telerik.Windows.Zip.EncryptionAlgorithm,System.Nullable{Telerik.Windows.Zip.EncryptionStrength})">
+            <summary>
+            Creates a new instance of the <see cref="T:Telerik.Windows.Zip.EncryptionSettingsBase" /> class.
+            </summary>
+            <param name="algorithm">The encryption algorithm.</param>
+            <param name="encryptionStrength">The encryption strength.</param>
+        </member>
+        <member name="E:Telerik.Windows.Zip.EncryptionSettingsBase.PropertyChanged">
             <summary>
             Occurs when a property value changes.
             </summary>
         </member>
-        <member name="P:Telerik.Windows.Zip.EncryptionSettings.Algorithm">
+        <member name="P:Telerik.Windows.Zip.EncryptionSettingsBase.Algorithm">
             <summary>
             Gets name of the algorithm will be used for encryption/decryption.
             </summary>
         </member>
-        <member name="M:Telerik.Windows.Zip.EncryptionSettings.OnPropertyChanged(System.String)">
+        <member name="P:Telerik.Windows.Zip.EncryptionSettingsBase.FileTime">
+            <summary>
+            Gets or sets last modification file date and time.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Zip.EncryptionSettingsBase.EncryptionAlgorithm">
+            <summary>
+            Gets name of the algorithm will be used for encryption/decryption.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.EncryptionSettingsBase.CreatePkzipPasswordEncryptionSettings">
+            <summary>
+            Creates a new instance of the <see cref="T:Telerik.Windows.Zip.PasswordEncryptionSettings" /> class.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.EncryptionSettingsBase.CreateAesPasswordEncryptionSettings">
+            <summary>
+            Creates a new instance of the <see cref="T:Telerik.Windows.Zip.PasswordEncryptionSettings" /> class.
+            The encryption strength is set to AES-256.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.EncryptionSettingsBase.CreateAesPasswordEncryptionSettings(Telerik.Windows.Zip.EncryptionStrength)">
+            <summary>
+            Creates a new instance of the <see cref="T:Telerik.Windows.Zip.PasswordEncryptionSettings" /> class.
+            </summary>
+            <param name="encryptionStrength">The encryption strength.</param>
+        </member>
+        <member name="M:Telerik.Windows.Zip.EncryptionSettingsBase.CreateDecryptionSettings">
+            <summary>
+            Creates a new instance of the <see cref="T:Telerik.Windows.Zip.DecryptionSettings" /> class.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.EncryptionSettingsBase.OnPropertyChanged(System.String)">
             <summary>
             Called when property value is changed.
             </summary>
@@ -1664,11 +1658,192 @@
             </summary>
             <returns>An encryptor object.</returns>
         </member>
-        <member name="M:Telerik.Windows.Zip.ICryptoProvider.Initialize(Telerik.Windows.Zip.EncryptionSettings)">
+        <member name="M:Telerik.Windows.Zip.ICryptoProvider.Initialize(Telerik.Windows.Zip.EncryptionSettingsBase)">
             <summary>
             Initialize crypto provider using given encryption settings.
             </summary>
             <param name="settings">Encryption settings.</param>
+        </member>
+        <member name="T:Telerik.Windows.Zip.DefaultCryptoProvider">
+            <summary>
+            Crypto provider which implements traditional PKWARE encryption.
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Zip.DefaultEncryptionSettings">
+            <summary>
+            Encryption settings for the default cryptographic provider (traditional PKWARE encryption).
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.DefaultEncryptionSettings.#ctor">
+            <summary>
+            Initializes a new instance of the DefaultEncryptionSettings class.
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Zip.PasswordEncryptionSettings">
+            <summary>
+            Password encryption settings for the cryptographic provider.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.PasswordEncryptionSettings.#ctor(Telerik.Windows.Zip.EncryptionAlgorithm,System.Nullable{Telerik.Windows.Zip.EncryptionStrength})">
+            <summary>
+            Creates a new instance of the <see cref="T:Telerik.Windows.Zip.PasswordEncryptionSettings" /> class.
+            </summary>
+            <param name="algorithm">The encryption algorithm.</param>
+            <param name="encryptionStrength">The encryption strength.</param>
+        </member>
+        <member name="P:Telerik.Windows.Zip.PasswordEncryptionSettings.Password">
+            <summary>
+            Gets or sets password will be used for encryption/decryption.
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Zip.PasswordRequiredEventArgs">
+            <summary>
+            Represents password needed event args.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.PasswordRequiredEventArgs.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.Windows.Zip.PasswordRequiredEventArgs" /> class.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Zip.PasswordRequiredEventArgs.Password">
+            <summary>
+            Gets or sets the password.
+            </summary>
+            <value>The password.</value>
+        </member>
+        <member name="T:Telerik.Windows.Zip.PkzipCryptoProvider">
+            <summary>
+            Crypto provider which implements traditional PKWARE encryption.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.PkzipCryptoProvider.CreateDecryptor">
+            <summary>
+            Creates an decryptor object. 
+            </summary>
+            <returns>A decryptor object.</returns>
+        </member>
+        <member name="M:Telerik.Windows.Zip.PkzipCryptoProvider.CreateEncryptor">
+            <summary>
+            Creates an encryptor object.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.Windows.Zip.PkzipCryptoProvider.Initialize(Telerik.Windows.Zip.EncryptionSettingsBase)">
+            <summary>
+            Initialize crypto provider using given encryption settings.
+            </summary>
+            <param name="settings">Encryption settings.</param>
+        </member>
+        <member name="T:Telerik.Windows.Zip.PkzipCryptoTransformBase">
+            <summary>
+            Base class for the transformations which implements traditional PKWARE encryption/decryption.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.PkzipCryptoTransformBase.#ctor">
+            <summary>
+            Initializes a new instance of the DefaultCryptoTransformBase class.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Zip.PkzipCryptoTransformBase.CanReuseTransform">
+            <summary>Gets a value indicating whether the current transform can be reused.</summary>
+            <returns>true if the current transform can be reused; otherwise, false.</returns>
+        </member>
+        <member name="P:Telerik.Windows.Zip.PkzipCryptoTransformBase.CanTransformMultipleBlocks">
+            <summary>Gets a value indicating whether multiple blocks can be transformed.</summary>
+            <returns>true if multiple blocks can be transformed; otherwise, false.</returns>
+        </member>
+        <member name="P:Telerik.Windows.Zip.PkzipCryptoTransformBase.InputBlockSize">
+            <summary>Gets the input block size.</summary>
+            <returns>The size of the input data blocks in bytes.</returns>
+        </member>
+        <member name="P:Telerik.Windows.Zip.PkzipCryptoTransformBase.OutputBlockSize">
+            <summary>Gets the output block size.</summary>
+            <returns>The size of the output data blocks in bytes.</returns>
+        </member>
+        <member name="P:Telerik.Windows.Zip.PkzipCryptoTransformBase.EncodingByte">
+            <summary>
+            Gets encoding byte.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.PkzipCryptoTransformBase.CreateHeader(Telerik.Windows.Zip.CompressionSettings)">
+            <summary>
+            Creates transformation header to be written into the output stream.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.PkzipCryptoTransformBase.InitHeaderReading(Telerik.Windows.Zip.CompressionSettings)">
+            <summary>
+            Initialize reading of the transformation header.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.PkzipCryptoTransformBase.ProcessHeader">
+            <summary>
+            Process transformation header has been read.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.PkzipCryptoTransformBase.Dispose(System.Boolean)">
+            <summary>
+            Releases the unmanaged resources used by the transform and optionally releases the managed resources. 
+            </summary>
+            <param name="disposing">Value which indicates whether both managed and unmanaged resources (true) on only unmanaged resources (false) should be released.</param>
+        </member>
+        <member name="M:Telerik.Windows.Zip.PkzipCryptoTransformBase.UpdateKeys(System.Byte)">
+            <summary>
+            Update encryption keys.
+            </summary>
+            <param name="byteValue">Byte.</param>
+        </member>
+        <member name="T:Telerik.Windows.Zip.PkzipDecryptor">
+            <summary>
+            Crypto transformation which implements traditional PKWARE decryption.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.PkzipDecryptor.#ctor">
+            <summary>
+            Initializes a new instance of the PkzipDecryptor class.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.PkzipDecryptor.TransformBlock(System.Byte[],System.Int32,System.Int32,System.Byte[],System.Int32)">
+            <summary>Transforms the specified region of the input byte array and copies the resulting transform to the specified region of the output byte array.</summary>
+            <returns>The number of bytes written.</returns>
+            <param name="inputBuffer">The input for which to compute the transform. </param>
+            <param name="inputOffset">The offset into the input byte array from which to begin using data. </param>
+            <param name="inputCount">The number of bytes in the input byte array to use as data. </param>
+            <param name="outputBuffer">The output to which to write the transform. </param>
+            <param name="outputOffset">The offset into the output byte array from which to begin writing data. </param>
+        </member>
+        <member name="M:Telerik.Windows.Zip.PkzipDecryptor.TransformFinalBlock(System.Byte[],System.Int32,System.Int32)">
+            <summary>Transforms the specified region of the specified byte array.</summary>
+            <returns>The computed transform.</returns>
+            <param name="inputBuffer">The input for which to compute the transform. </param>
+            <param name="inputOffset">The offset into the byte array from which to begin using data. </param>
+            <param name="inputCount">The number of bytes in the byte array to use as data. </param>
+        </member>
+        <member name="T:Telerik.Windows.Zip.PkzipEncryptor">
+            <summary>
+            Crypto transformation which implements traditional PKWARE encryption.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.PkzipEncryptor.#ctor">
+            <summary>
+            Initializes a new instance of the DefaultEncryptor class.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.PkzipEncryptor.TransformBlock(System.Byte[],System.Int32,System.Int32,System.Byte[],System.Int32)">
+            <summary>Transforms the specified region of the input byte array and copies the resulting transform to the specified region of the output byte array.</summary>
+            <returns>The number of bytes written.</returns>
+            <param name="inputBuffer">The input for which to compute the transform. </param>
+            <param name="inputOffset">The offset into the input byte array from which to begin using data. </param>
+            <param name="inputCount">The number of bytes in the input byte array to use as data. </param>
+            <param name="outputBuffer">The output to which to write the transform. </param>
+            <param name="outputOffset">The offset into the output byte array from which to begin writing data. </param>
+        </member>
+        <member name="M:Telerik.Windows.Zip.PkzipEncryptor.TransformFinalBlock(System.Byte[],System.Int32,System.Int32)">
+            <summary>Transforms the specified region of the specified byte array.</summary>
+            <returns>The computed transform.</returns>
+            <param name="inputBuffer">The input for which to compute the transform. </param>
+            <param name="inputOffset">The offset into the byte array from which to begin using data. </param>
+            <param name="inputCount">The number of bytes in the byte array to use as data. </param>
         </member>
         <member name="T:Telerik.Windows.Zip.IBlockTransform">
             <summary>
@@ -1686,6 +1861,9 @@
         <member name="P:Telerik.Windows.Zip.IBlockTransform.Header">
             <summary>Gets transformation header (if required).</summary>
         </member>
+        <member name="P:Telerik.Windows.Zip.IBlockTransform.Footer">
+            <summary>Gets transformation footer (if required).</summary>
+        </member>
         <member name="P:Telerik.Windows.Zip.IBlockTransform.InputBlockSize">
             <summary>Gets the input block size.</summary>
             <returns>The size of the input data blocks in bytes.</returns>
@@ -1694,19 +1872,29 @@
             <summary>Gets the output block size.</summary>
             <returns>The size of the output data blocks in bytes.</returns>
         </member>
-        <member name="M:Telerik.Windows.Zip.IBlockTransform.CreateHeader">
+        <member name="M:Telerik.Windows.Zip.IBlockTransform.CreateHeader(Telerik.Windows.Zip.CompressionSettings)">
             <summary>
             Creates transformation header to be written into the output stream.
             </summary>
         </member>
-        <member name="M:Telerik.Windows.Zip.IBlockTransform.InitHeaderReading">
+        <member name="M:Telerik.Windows.Zip.IBlockTransform.InitHeaderReading(Telerik.Windows.Zip.CompressionSettings)">
             <summary>
             Initialize reading of the transformation header.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.IBlockTransform.InitFooterReading(System.Int32)">
+            <summary>
+            Initialize reading of the transformation footer.
             </summary>
         </member>
         <member name="M:Telerik.Windows.Zip.IBlockTransform.ProcessHeader">
             <summary>
             Process transformation header has been read.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.IBlockTransform.ProcessFooter">
+            <summary>
+            Process transformation footer has been read.
             </summary>
         </member>
         <member name="M:Telerik.Windows.Zip.IBlockTransform.TransformBlock(System.Byte[],System.Int32,System.Int32,System.Byte[],System.Int32)">
@@ -1772,12 +1960,24 @@
             </summary>
             <param name="stream">Stream to delete.</param>
         </member>
-        <member name="M:Telerik.Windows.Zip.IPlatformManager.GetCryptoProvider(Telerik.Windows.Zip.EncryptionSettings)">
+        <member name="M:Telerik.Windows.Zip.IPlatformManager.GetCryptoProvider(Telerik.Windows.Zip.EncryptionSettingsBase)">
             <summary>
             Gets crypto provider initialized using given encryption settings.
             </summary>
             <param name="settings">Encryption settings.</param>
             <returns>Crypto provider.</returns>
+            <exception cref="T:System.NotSupportedException">Specified crypto algorithm is not supported.</exception>
+        </member>
+        <member name="M:Telerik.Windows.Zip.IPlatformManager.GetCryptoStream(Telerik.Windows.Zip.EncryptionSettingsBase,System.IO.Stream,Telerik.Windows.Zip.StreamOperationMode,Telerik.Windows.Zip.ICryptoProvider,Telerik.Windows.Zip.CompressionSettings)">
+            <summary>
+            Gets crypto stream initialized using given encryption settings.
+            </summary>
+            <param name="encryptionSettings">Encryption settings.</param>
+            <param name="baseStream">Stream.</param>
+            <param name="mode">Stream operation mode.</param>
+            <param name="cryptoProvider">Crypto provider.</param>
+            <param name="compressionSettings">Compression settings.</param>
+            <returns>Crypto stream.</returns>
             <exception cref="T:System.NotSupportedException">Specified crypto algorithm is not supported.</exception>
         </member>
         <member name="M:Telerik.Windows.Zip.IPlatformManager.IsEncodingSupported(System.Text.Encoding)">
@@ -1805,385 +2005,18 @@
             </summary>
             <param name="writer">Binary writer to write data to.</param>
         </member>
-        <member name="T:Telerik.Windows.Zip.CompressionType">
-            <summary>
-            Represents the compression types.
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Zip.CompressionType.Default">
-            <summary>
-            This is the default compression type which uses the deflate algorithm.
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Zip.CompressionType.Lzma">
-            <summary>
-            This compression type uses the LZMA algorithm.
-            </summary>
-        </member>
-        <member name="T:Telerik.Windows.Zip.ZipCompression">
-            <summary>
-            Represents the compression methods.
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Zip.ZipCompression.Default">
-            <summary>
-            This is the default compression method.
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Zip.ZipCompression.Stored">
-            <summary>
-            This is the no-compression method.
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Zip.ZipCompression.BestSpeed">
-            <summary>
-            This is the fastest compression method.
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Zip.ZipCompression.Method2">
-            <summary>
-            This is a custom compression method.
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Zip.ZipCompression.Method3">
-            <summary>
-            This is a custom compression method.
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Zip.ZipCompression.Method4">
-            <summary>
-            This is a custom compression method.        
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Zip.ZipCompression.Method5">
-            <summary>
-            This is a custom compression method.
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Zip.ZipCompression.Method6">
-            <summary>
-            This is a custom compression method.
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Zip.ZipCompression.Method7">
-            <summary>
-            This is a custom compression method.
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Zip.ZipCompression.Deflated">
-            <summary>
-            This is the the best compression method.
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Zip.ZipCompression.Deflate64">
-            <summary>
-            This is the the best compression method.
-            </summary>
-        </member>
-        <member name="T:Telerik.Windows.Zip.ZipInputStream">
-            <summary>
-            Represents a stream that can read from a compressed stream.
-            </summary>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipInputStream.#ctor(System.IO.Stream)">
-            <summary>
-            Initializes a new instance of the ZipInputStream class.
-            </summary>
-            <param name="baseStream">
-            The stream that will be decompressed.
-            </param>
-        </member>
-        <member name="P:Telerik.Windows.Zip.ZipInputStream.BaseStream">
-            <summary>
-            The stream that is decompressed.
-            </summary>
-        </member>
-        <member name="P:Telerik.Windows.Zip.ZipInputStream.UncompressedSize">
-            <summary>
-            Gets the uncompressed size of the stream.
-            </summary>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipInputStream.ReadByte">
-            <summary>
-            Reads a byte from the stream and advances the position within the stream
-            by one byte, or returns -1 if at the end of the stream.</summary>
-            <returns>The unsigned byte cast to an 32-bit integer, or -1 if at the end of the stream.
-            </returns>
-        </member>
-        <member name="T:Telerik.Windows.Zip.ZipOutputStream">
-            <summary>
-            Represents a stream that can write into a compressed stream.
-            </summary>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipOutputStream.#ctor(System.IO.Stream)">
-            <summary>
-            Initializes a new instance of the ZipOutputStream class.
-            </summary>
-            <param name="baseStream">
-            The stream that will be compressed.
-            </param>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipOutputStream.#ctor(System.IO.Stream,Telerik.Windows.Zip.CompressionMethod)">
-            <summary>
-            Initializes a new instance of the ZipOutputStream class.
-            </summary>
-            <param name="baseStream">
-            The stream that will be compressed.
-            </param>
-            /// <param name="method">
-            The compression method.
-            </param>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipOutputStream.#ctor(System.IO.Stream,Telerik.Windows.Zip.ZipCompression)">
-            <summary>
-            Initializes a new instance of the ZipOutputStream class.
-            </summary>
-            <param name="baseStream">
-            The stream that will be compressed.
-            </param>
-            /// <param name="compressionLevel">
-            The compression level.
-            </param>
-        </member>
-        <member name="P:Telerik.Windows.Zip.ZipOutputStream.BaseStream">
-            <summary>
-            The stream that is decompressed.
-            </summary>
-        </member>
-        <member name="P:Telerik.Windows.Zip.ZipOutputStream.UncompressedSize">
-            <summary>
-            Gets the uncompressed size of the stream.
-            </summary>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipOutputStream.WriteByte(System.Byte)">
-            <summary>
-            Writes a byte to the current position in the stream and advances the
-            position within the stream by one byte.
-            </summary>
-            <param name="value">The byte to write to the stream. </param>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipOutputStream.CreateDeflateSettings(Telerik.Windows.Zip.ZipCompression)">
-            <summary>
-            Create DeflateSettings for specified compression level.
-            </summary>
-            <param name="compressionLevel">Compression level.</param>
-            <returns>DeflateSettings.</returns>
-        </member>
-        <member name="T:Telerik.Windows.Zip.ZipPackage">
-            <summary>
-            Represents the ZipPackage class.
-            </summary>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipPackage.#ctor(System.IO.Stream,Telerik.Windows.Zip.ZipArchiveMode)">
-            <summary>
-            Initializes a new instance of the ZipPackage class from the specified stream.
-            </summary>
-            <param name="stream">The stream that contains the archive to be read.</param>
-            <param name="mode">Mode.</param>
-        </member>
-        <member name="P:Telerik.Windows.Zip.ZipPackage.FileName">
-            <summary>
-            Gets the file name for the ZipPackage.
-            </summary>
-        </member>
-        <member name="P:Telerik.Windows.Zip.ZipPackage.ZipPackageEntries">
-            <summary>
-            Gets the collection of entries that are currently in the zip archive.
-            </summary>
-            <exception cref="T:System.NotSupportedException">The zip archive does not support reading.</exception>
-            <exception cref="T:System.ObjectDisposedException">The zip archive has been disposed.</exception>
-            <exception cref="T:Telerik.Windows.Zip.InvalidDataException">The zip archive is corrupt, and its entries cannot be retrieved.</exception>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipPackage.Create(System.IO.Stream)">
-            <summary>
-            This method is used to create a ZipPackage from a stream.
-            </summary>
-            <param name="stream">Stream.</param>
-            <returns>ZipPackage instance.</returns>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipPackage.CreateFile(System.String)">
-            <summary>
-            This method is used to create a ZipPackage with the passed file name.
-            </summary>
-            <param name="fileName">File name.</param>
-            <returns>ZipPackage instance.</returns>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipPackage.IsZipFile(System.IO.Stream)">
-            <summary>
-            Checks whether the stream that represents a zip file is actually a zip file.
-            </summary>
-            <param name="stream">Stream.</param>
-            <returns>True if the stream represents a zip file.</returns>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipPackage.IsZipFile(System.String)">
-            <summary>
-            Checks whether the file with the passed file name is actually a zip file.
-            </summary>
-            <param name="fileName">File name.</param>
-            <returns>True if the file represents a zip file.</returns>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipPackage.Open(System.IO.Stream)">
-            <summary>
-            Opens zip archive from the Stream.
-            </summary>
-            <param name="stream">Stream.</param>
-            <returns>ZipPackage instance.</returns>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipPackage.OpenFile(System.String,System.IO.FileAccess)">
-            <summary>
-            This method is used to open a ZipPackage with the passed file name.
-            </summary>
-            <param name="fileName">File name.</param>
-            <param name="access">File access.</param>
-            <returns>ZipPackage instance.</returns>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipPackage.Add(System.String)">
-            <summary>
-            Adds a file with the passed file name in the ZipPackage.
-            </summary>
-            <param name="fileName">File name.</param>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipPackage.Add(System.String,Telerik.Windows.Zip.CompressionType)">
-            <summary>
-            Adds a file with the passed file name in the ZipPackage.
-            </summary>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipPackage.Add(System.Collections.Generic.IEnumerable{System.String})">
-            <summary>
-            Adds the files from the passed IEnumerable of file names in the ZipPackage.
-            </summary>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipPackage.Add(System.Collections.Generic.IEnumerable{System.String},Telerik.Windows.Zip.CompressionType)">
-            <summary>
-            Adds the files from the passed IEnumerable of file names in the ZipPackage.
-            </summary>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipPackage.Add(System.String,System.String)">
-            <summary>
-            Adds a file with the passed file name in the ZipPackage and associates it with the passed file name in zip.
-            </summary>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipPackage.Add(System.String,System.String,Telerik.Windows.Zip.CompressionType)">
-            <summary>
-            Adds a file with the passed file name in the ZipPackage and associates it with the passed file name in zip.
-            </summary>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipPackage.Add(System.String,System.String,System.DateTime)">
-            <summary>
-            Adds a file with the passed file name in the ZipPackage, associates it with the passed file name in zip and sets a date time for the entry.
-            </summary>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipPackage.Add(System.String,System.String,System.DateTime,Telerik.Windows.Zip.CompressionType)">
-            <summary>
-            Adds a file with the passed file name in the ZipPackage, associates it with the passed file name in zip and sets a date time for the entry.
-            </summary>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipPackage.AddStream(System.IO.Stream,System.String)">
-            <summary>
-            Adds a stream in the ZipPackage and associates it with the passed file name in zip.
-            </summary>
-            <param name="stream">Stream.</param>
-            <param name="fileNameInZip">File name in zip archive.</param>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipPackage.AddStream(System.IO.Stream,System.String,Telerik.Windows.Zip.CompressionType)">
-            <summary>
-            Adds a stream in the ZipPackage and associates it with the passed file name in zip.
-            </summary>
-            <param name="stream">Stream.</param>
-            <param name="fileNameInZip">File name in zip archive.</param>
-            <param name="compressionType">Compression type.</param>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipPackage.AddStream(System.IO.Stream,System.String,Telerik.Windows.Zip.ZipCompression,System.DateTime)">
-            <summary>
-            Adds a stream in the ZipPackage, compresses it with the passed compress method,
-            associates it with the passed file name in zip and sets a date time for the entry.
-            </summary>
-            <param name="stream">Stream.</param>
-            <param name="fileNameInZip">File name in zip archive.</param>
-            <param name="method">Compression level.</param>
-            <param name="dateTime">Date and time of file.</param>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipPackage.AddStream(System.IO.Stream,System.String,Telerik.Windows.Zip.ZipCompression,System.DateTime,Telerik.Windows.Zip.CompressionType)">
-            <summary>
-            Adds a stream in the ZipPackage and associates it with the passed file name in zip.
-            </summary>
-            <param name="stream">Stream.</param>
-            <param name="fileNameInZip">File name in zip archive.</param>
-            <param name="method">Compression level.</param>
-            <param name="dateTime">Date and time of file.</param>
-            <param name="compressionType">Compression type.</param>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipPackage.Close(System.Boolean)">
-            <summary>
-            Closes the ZipPackage.
-            </summary>
-            <param name="closeStream">If the parameter is set to true then closes the file.</param>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipPackage.IndexOf(System.String)">
-            <summary>
-            Gets the index of the entry in the list of entries of the ZipPackage.
-            </summary>
-            <param name="fileNameInZip">File name in zip archive.</param>
-            <returns>Index of entry or -1 when the entry is not found.</returns>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipPackage.RemoveEntry(Telerik.Windows.Zip.ZipPackageEntry)">
-            <summary>
-            Removes the passed entry from the ZipPackage.
-            </summary>
-        </member>
-        <member name="T:Telerik.Windows.Zip.ZipPackageEntry">
-            <summary>
-            Represents the ZipPackageEntry class.
-            </summary>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipPackageEntry.#ctor(Telerik.Windows.Zip.ZipArchiveEntry)">
-            <summary>
-            Initializes a new instance of the ZipPackageEntry class.
-            </summary>
-            <param name="entry">ZipArchiveEntry.</param>
-        </member>
-        <member name="P:Telerik.Windows.Zip.ZipPackageEntry.Attributes">
-            <summary>
-            Gets the file attributes for the entry.
-            </summary>
-        </member>
-        <member name="P:Telerik.Windows.Zip.ZipPackageEntry.CompressedSize">
-            <summary>
-            Gets the compressed size for the entry.
-            </summary>
-        </member>
-        <member name="P:Telerik.Windows.Zip.ZipPackageEntry.FileNameInZip">
-            <summary>
-            Gets the file name in the ZipPackage for the entry.
-            </summary>
-        </member>
-        <member name="P:Telerik.Windows.Zip.ZipPackageEntry.UncompressedSize">
-            <summary>
-            Gets the uncompressed size for the entry.
-            </summary>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipPackageEntry.OpenInputStream">
-            <summary>
-            Opens the entry from the zip archive.
-            </summary>
-            <returns>The stream that represents the contents of the entry.</returns>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipPackageEntry.Delete">
-            <summary>
-            Deletes the entry.
-            </summary>
-        </member>
         <member name="T:Telerik.Windows.Zip.OperationStream">
             <summary>
             Operational stream. Base class for cryptographic and compression streams.
             </summary>
         </member>
-        <member name="M:Telerik.Windows.Zip.OperationStream.#ctor(System.IO.Stream,Telerik.Windows.Zip.StreamOperationMode)">
+        <member name="M:Telerik.Windows.Zip.OperationStream.#ctor(System.IO.Stream,Telerik.Windows.Zip.StreamOperationMode,Telerik.Windows.Zip.CompressionSettings)">
             <summary>
-            Initializes a new instance of the OperationStream class.
+            Initializes a new instance of the <see cref="T:Telerik.Windows.Zip.OperationStream" /> class class.
             </summary>
             <param name="baseStream">The base input/output stream.</param>
             <param name="mode">Stream operational mode.</param>
+            <param name="settings">The compression settings.</param>
             <exception cref="T:System.ArgumentOutOfRangeException">Specified mode is not allowed for the given stream.</exception>
         </member>
         <member name="M:Telerik.Windows.Zip.OperationStream.Finalize">
@@ -2332,6 +2165,11 @@
             Read transformation header.
             </summary>
         </member>
+        <member name="M:Telerik.Windows.Zip.OperationStream.ReadTransformationFooter">
+            <summary>
+            Read transformation footer.
+            </summary>
+        </member>
         <member name="M:Telerik.Windows.Zip.OperationStream.WriteTransformationHeader">
             <summary>
             Write transformation header.
@@ -2361,6 +2199,33 @@
         <member name="F:Telerik.Windows.Zip.StreamOperationMode.Write">
             <summary>
             Write operation is allowed.
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Zip.TransformationFooter">
+            <summary>
+            Represents footer of the transformation.
+            The extra data succeeds the transformed data which provides
+            some additional information about transformation (compression or encryption).
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.TransformationFooter.#ctor">
+            <summary>
+            Initializes a new instance of the TransformationFooter class.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Zip.TransformationFooter.Buffer">
+            <summary>
+            Gets or sets buffer to store footer information.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Zip.TransformationFooter.BytesToRead">
+            <summary>
+            Gets or sets number of byte to read.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Zip.TransformationFooter.BytesToSkip">
+            <summary>
+            Gets or sets the actual encrypted file data to skip.
             </summary>
         </member>
         <member name="T:Telerik.Windows.Zip.TransformationHeader">
@@ -2676,7 +2541,7 @@
             <param name="entryNameEncoding">The encoding to use when reading or writing entry names in this archive. Specify a value for this parameter 
             only when an encoding is required for interoperability with zip archive tools and libraries that do not support UTF-8 encoding for entry names.</param>
         </member>
-        <member name="M:Telerik.Windows.Zip.ZipArchive.#ctor(System.IO.Stream,Telerik.Windows.Zip.ZipArchiveMode,System.Boolean,System.Text.Encoding,Telerik.Windows.Zip.CompressionSettings,Telerik.Windows.Zip.EncryptionSettings)">
+        <member name="M:Telerik.Windows.Zip.ZipArchive.#ctor(System.IO.Stream,Telerik.Windows.Zip.ZipArchiveMode,System.Boolean,System.Text.Encoding,Telerik.Windows.Zip.CompressionSettings,Telerik.Windows.Zip.EncryptionSettingsBase)">
             <summary>
             Initializes a new instance of the ZipArchive class.
             </summary>
@@ -2745,6 +2610,78 @@
             <summary>
             Gets start of the central directory.
             </summary>
+        </member>
+        <member name="M:Telerik.Windows.Zip.ZipArchive.Read(System.IO.Stream)">
+            <summary>
+            Opens an existing archive and returns a new instance of the <see cref="T:Telerik.Windows.Zip.ZipArchive" /> class.
+            </summary>
+            <param name="stream">The stream that contains the archive to be read.</param>
+        </member>
+        <member name="M:Telerik.Windows.Zip.ZipArchive.Read(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            Opens an existing archive and returns a new instance of the <see cref="T:Telerik.Windows.Zip.ZipArchive" /> class.
+            </summary>
+            <param name="stream">The stream that contains the archive to be read.</param>
+            <param name="entryNameEncoding">The encoding to use when reading or writing entry names in this archive. Specify a value for this parameter 
+            only when an encoding is required for interoperability with zip archive tools and libraries that do not support UTF-8 encoding for entry names.</param>
+        </member>
+        <member name="M:Telerik.Windows.Zip.ZipArchive.Read(System.IO.Stream,System.Text.Encoding,Telerik.Windows.Zip.CompressionSettings,Telerik.Windows.Zip.DecryptionSettings)">
+            <summary>
+            Opens an existing archive and returns a new instance of the <see cref="T:Telerik.Windows.Zip.ZipArchive" /> class.
+            </summary>
+            <param name="stream">The stream that contains the archive to be read.</param>
+            <param name="entryNameEncoding">The encoding to use when reading or writing entry names in this archive. Specify a value for this parameter 
+            only when an encoding is required for interoperability with zip archive tools and libraries that do not support UTF-8 encoding for entry names.</param>
+            <param name="compressionSettings">Compression settings.</param>
+            <param name="decryptionSettings">Decryption settings.</param>
+        </member>
+        <member name="M:Telerik.Windows.Zip.ZipArchive.Create(System.IO.Stream)">
+            <summary>
+            Creates a new instance of the <see cref="T:Telerik.Windows.Zip.ZipArchive" /> class.
+            </summary>
+            <param name="stream">The stream that contains the archive.</param>
+        </member>
+        <member name="M:Telerik.Windows.Zip.ZipArchive.Create(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            Creates a new instance of the <see cref="T:Telerik.Windows.Zip.ZipArchive" /> class.
+            </summary>
+            <param name="stream">The stream that contains the archive.</param>
+            <param name="entryNameEncoding">The encoding to use when reading or writing entry names in this archive. Specify a value for this parameter 
+            only when an encoding is required for interoperability with zip archive tools and libraries that do not support UTF-8 encoding for entry names.</param>
+        </member>
+        <member name="M:Telerik.Windows.Zip.ZipArchive.Create(System.IO.Stream,System.Text.Encoding,Telerik.Windows.Zip.CompressionSettings,Telerik.Windows.Zip.EncryptionSettings)">
+            <summary>
+            Creates a new instance of the <see cref="T:Telerik.Windows.Zip.ZipArchive" /> class.
+            </summary>
+            <param name="stream">The stream that contains the archive.</param>
+            <param name="entryNameEncoding">The encoding to use when reading or writing entry names in this archive. Specify a value for this parameter 
+            only when an encoding is required for interoperability with zip archive tools and libraries that do not support UTF-8 encoding for entry names.</param>
+            <param name="compressionSettings">Compression settings.</param>
+            <param name="encryptionSettings">Encryption settings.</param>
+        </member>
+        <member name="M:Telerik.Windows.Zip.ZipArchive.Update(System.IO.Stream)">
+            <summary>
+            Opens an existing archive for update and returns a new instance of the <see cref="T:Telerik.Windows.Zip.ZipArchive" /> class.
+            </summary>
+            <param name="stream">The stream that contains the archive to be read.</param>
+        </member>
+        <member name="M:Telerik.Windows.Zip.ZipArchive.Update(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            Opens an existing archive for update and returns a new instance of the <see cref="T:Telerik.Windows.Zip.ZipArchive" /> class.
+            </summary>
+            <param name="stream">The stream that contains the archive to be read.</param>
+            <param name="entryNameEncoding">The encoding to use when reading or writing entry names in this archive. Specify a value for this parameter 
+            only when an encoding is required for interoperability with zip archive tools and libraries that do not support UTF-8 encoding for entry names.</param>
+        </member>
+        <member name="M:Telerik.Windows.Zip.ZipArchive.Update(System.IO.Stream,System.Text.Encoding,Telerik.Windows.Zip.CompressionSettings,Telerik.Windows.Zip.DecryptionSettings)">
+            <summary>
+            Opens an existing archive for update and returns a new instance of the <see cref="T:Telerik.Windows.Zip.ZipArchive" /> class.
+            </summary>
+            <param name="stream">The stream that contains the archive to be read.</param>
+            <param name="entryNameEncoding">The encoding to use when reading or writing entry names in this archive. Specify a value for this parameter 
+            only when an encoding is required for interoperability with zip archive tools and libraries that do not support UTF-8 encoding for entry names.</param>
+            <param name="compressionSettings">Compression settings.</param>
+            <param name="decryptionSettings">Decryption settings.</param>
         </member>
         <member name="M:Telerik.Windows.Zip.ZipArchive.CreateEntry(System.String)">
             <summary>
@@ -2827,13 +2764,6 @@
             </summary>
             <param name="archive">Zip archive.</param>
             <param name="header">Central directory header correspondent to this entry.</param>
-        </member>
-        <member name="M:Telerik.Windows.Zip.ZipArchiveEntry.#ctor(Telerik.Windows.Zip.ZipArchive,System.String)">
-            <summary>
-            Initializes a new instance of the ZipArchiveEntry class.
-            </summary>
-            <param name="archive">Zip archive.</param>
-            <param name="entryName">Entry name.</param>
         </member>
         <member name="E:Telerik.Windows.Zip.ZipArchiveEntry.PropertyChanged">
             <summary>
@@ -3335,74 +3265,6 @@
             Implements parsing of extra field data.
             </summary>
             <param name="extraData">Extra field data.</param>
-        </member>
-        <member name="T:Telerik.Windows.Zip.EncryptionAlgorithmType">
-            <summary>
-            Represents identifier of the encryption algorithm described in the
-            ZIP File Format Specification v6.3.3, #7.2.3.2.
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Zip.EncryptionAlgorithmType.Unknown">
-            <summary>
-            Unknown algorithm.
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Zip.EncryptionAlgorithmType.Des">
-            <summary>
-            DES algorithm.
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Zip.EncryptionAlgorithmType.Rc2Old">
-            <summary>
-            RC2 algorithm.
-            The version needed to extract up to 5.2.
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Zip.EncryptionAlgorithmType.TripleDes168">
-            <summary>
-            3DES 168 bit algorithm.
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Zip.EncryptionAlgorithmType.TripleDes112">
-            <summary>
-            3DES 112 bit algorithm.
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Zip.EncryptionAlgorithmType.Aes128">
-            <summary>
-            AES 128 bit algorithm.
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Zip.EncryptionAlgorithmType.Aes192">
-            <summary>
-            AES 192 bit algorithm.
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Zip.EncryptionAlgorithmType.Aes256">
-            <summary>
-            AES 256 bit algorithm.
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Zip.EncryptionAlgorithmType.Rc2">
-            <summary>
-            RC2 algorithm.
-            The version needed to extract 5.2 and higher.
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Zip.EncryptionAlgorithmType.Blowfish">
-            <summary>
-            Blowfish algorithm.
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Zip.EncryptionAlgorithmType.Twofish">
-            <summary>
-            Twofish algorithm.
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Zip.EncryptionAlgorithmType.Rc4">
-            <summary>
-            RC4 algorithm.
-            </summary>
         </member>
         <member name="T:Telerik.Windows.Zip.ExtraFieldBase">
             <summary>

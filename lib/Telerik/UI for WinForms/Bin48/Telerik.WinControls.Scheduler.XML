@@ -504,7 +504,21 @@
             <param name="background">The background.</param>
             <returns>Default return is None</returns>
         </member>
+        <member name="M:Telerik.WinControls.UI.Scheduler.ICalendar.CalHelper.GetModernAppointmentBackgroundName(Telerik.WinControls.UI.AppointmentCategory)">
+            <summary>
+            Gets the name of the appoitment modern background.
+            </summary>
+            <param name="category">The background.</param>
+            <returns>Default return is None</returns>
+        </member>
         <member name="M:Telerik.WinControls.UI.Scheduler.ICalendar.CalHelper.GetAppointmentBackground(System.String)">
+            <summary>
+            Gets the appoitment background.
+            </summary>
+            <param name="backgroundName">Name of the background.</param>
+            <returns>Default return is None</returns>
+        </member>
+        <member name="M:Telerik.WinControls.UI.Scheduler.ICalendar.CalHelper.GetModernAppointmentBackground(System.String)">
             <summary>
             Gets the appoitment background.
             </summary>
@@ -526,16 +540,21 @@
             <param name="appointment">The appointment for which to get the reminder time span.</param>
             <returns>The reminder timespan of null if there is no such</returns>
         </member>
-        <member name="M:Telerik.WinControls.UI.Scheduler.ICalendar.CalHelper.RecurrenceRuleToString(Telerik.WinControls.UI.RecurrenceRule)">
+        <member name="M:Telerik.WinControls.UI.Scheduler.ICalendar.CalHelper.RecurrenceRuleToRruleString(Telerik.WinControls.UI.RecurrenceRule)">
             <summary>
-            Converts the <see cref="T:Telerik.WinControls.UI.RecurrenceRule"/> to string.
+            Converts the <see cref="T:Telerik.WinControls.UI.RecurrenceRule"/> to a RRULE string.
+            Note that the RRULE string representation cannot be converted back to <see cref="T:Telerik.WinControls.UI.RecurrenceRule"/>,
+            as it contains only part of the information held by the <see cref="T:Telerik.WinControls.UI.RecurrenceRule"/> object.
+            If you need to convert back the string representation, use the <see cref="M:Telerik.WinControls.UI.Scheduler.ICalendar.CalHelper.RecurrenceRuleToString(Telerik.WinControls.UI.RecurrenceRule)"/> method.
             </summary>
             <param name="rule">The recurrence rule.</param>
             <returns></returns>
         </member>
-        <member name="M:Telerik.WinControls.UI.Scheduler.ICalendar.CalHelper.RecurrenceRuleToString(Telerik.WinControls.UI.RecurrenceRule,System.Globalization.CultureInfo)">
+        <member name="M:Telerik.WinControls.UI.Scheduler.ICalendar.CalHelper.RecurrenceRuleToRruleString(Telerik.WinControls.UI.RecurrenceRule,System.Globalization.CultureInfo)">
             <summary>
-            Converts the <see cref="T:Telerik.WinControls.UI.RecurrenceRule"/> to string.
+            Note that the RRULE string representation cannot be converted back to <see cref="T:Telerik.WinControls.UI.RecurrenceRule"/>,
+            as it contains only part of the information held by the <see cref="T:Telerik.WinControls.UI.RecurrenceRule"/> object.
+            If you need to convert back the string representation, use the <see cref="M:Telerik.WinControls.UI.Scheduler.ICalendar.CalHelper.RecurrenceRuleToString(Telerik.WinControls.UI.RecurrenceRule,System.Globalization.CultureInfo)"/> method.
             </summary>
             <param name="rule">The recurrence rule.</param>
             <param name="culture"></param>
@@ -543,14 +562,29 @@
         </member>
         <member name="M:Telerik.WinControls.UI.Scheduler.ICalendar.CalHelper.RecurrenceRuleToStringEx(Telerik.WinControls.UI.RecurrenceRule)">
             <summary>
-            Converts the <see cref="T:Telerik.WinControls.UI.RecurrenceRule"/> to string in the format used by RadScheduler for ASP.NET AJAX.
+            Converts the <see cref="T:Telerik.WinControls.UI.RecurrenceRule"/> to string in the iCalendar format.
             </summary>
             <param name="rule">The recurrence rule.</param>
             <returns></returns>
         </member>
         <member name="M:Telerik.WinControls.UI.Scheduler.ICalendar.CalHelper.RecurrenceRuleToStringEx(Telerik.WinControls.UI.RecurrenceRule,System.Globalization.CultureInfo)">
             <summary>
-            Converts the <see cref="T:Telerik.WinControls.UI.RecurrenceRule"/> to string in the format used by RadScheduler for ASP.NET AJAX.
+            Obsolete! Use <see cref="M:Telerik.WinControls.UI.Scheduler.ICalendar.CalHelper.RecurrenceRuleToString(Telerik.WinControls.UI.RecurrenceRule,System.Globalization.CultureInfo)"/> instead.
+            </summary>
+            <param name="rule"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.WinControls.UI.Scheduler.ICalendar.CalHelper.RecurrenceRuleToString(Telerik.WinControls.UI.RecurrenceRule)">
+            <summary>
+            Converts the <see cref="T:Telerik.WinControls.UI.RecurrenceRule"/> to string in the iCalendar format.
+            </summary>
+            <param name="rule">The recurrence rule.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.WinControls.UI.Scheduler.ICalendar.CalHelper.RecurrenceRuleToString(Telerik.WinControls.UI.RecurrenceRule,System.Globalization.CultureInfo)">
+            <summary>
+            Converts the <see cref="T:Telerik.WinControls.UI.RecurrenceRule"/> to string in the iCalendar format.
             </summary>
             <param name="rule">The recurrence rule.</param>
             <param name="culture"></param>
@@ -881,6 +915,61 @@
             </summary>
             <param name="item">The item.</param>
             <param name="schedulerItem">The scheduler item.</param>
+        </member>
+        <member name="F:Telerik.WinControls.UI.AppointmentCategory.None">
+            <summary>
+            Specifies that no custom background fill is drawn.
+            </summary>
+        </member>
+        <member name="F:Telerik.WinControls.UI.AppointmentCategory.Yellow">
+            <summary>
+            Specifies that yellow fill should be drawn.
+            </summary>
+        </member>
+        <member name="F:Telerik.WinControls.UI.AppointmentCategory.Purple">
+            <summary>
+            Specifies that purple fill should be drawn.
+            </summary>
+        </member>
+        <member name="F:Telerik.WinControls.UI.AppointmentCategory.Green">
+            <summary>
+            Specifies that green fill should be drawn.
+            </summary>
+        </member>
+        <member name="F:Telerik.WinControls.UI.AppointmentCategory.Pink">
+            <summary>
+            Specifies that pink fill should be drawn.
+            </summary>
+        </member>
+        <member name="F:Telerik.WinControls.UI.AppointmentCategory.Blue">
+            <summary>
+            Specifies that blue fill should be drawn.
+            </summary>
+        </member>
+        <member name="F:Telerik.WinControls.UI.AppointmentCategory.Olive">
+            <summary>
+            Specifies that olive fill should be drawn.
+            </summary>
+        </member>
+        <member name="F:Telerik.WinControls.UI.AppointmentCategory.Gray">
+            <summary>
+            Specifies that gray fill should be drawn.
+            </summary>
+        </member>
+        <member name="F:Telerik.WinControls.UI.AppointmentCategory.Orange">
+            <summary>
+            Specifies that orange fill should be drawn.
+            </summary>
+        </member>
+        <member name="F:Telerik.WinControls.UI.AppointmentCategory.Lavender">
+            <summary>
+            Specifies that lavender fill should be drawn.
+            </summary>
+        </member>
+        <member name="F:Telerik.WinControls.UI.AppointmentCategory.Raspberry">
+            <summary>
+            Specifies that raspberry fill should be drawn.
+            </summary>
         </member>
         <member name="P:Telerik.WinControls.UI.AppointmentAddedEventArgs.IsCreatedInline">
             <summary>
@@ -6280,6 +6369,102 @@
             </summary>
             <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
         </member>
+        <member name="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles">
+            <summary>
+            Determines whether the appointments are painted with modern colors and borders. The default value is true.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadScheduler.ModernAppointmentBackColor">
+            <summary>
+            Gets or sets the back color of the appointment when it has the default <see cref="F:Telerik.WinControls.UI.AppointmentCategory.None"/> category. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadScheduler.ModernAppointmentBackColor2">
+            <summary>
+            Gets or sets the second back color of the appointment when it has a linear gradient in the default <see cref="F:Telerik.WinControls.UI.AppointmentCategory.None"/> category. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadScheduler.ModernAppointmentForeColor">
+            <summary>
+            Gets or sets the fore color of the appointment. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadScheduler.PaintModernApppointmentsBorders">
+            <summary>
+            Gets or sets whether the borders of the appointment element will be painted. 
+            This color is set via the <see cref="P:Telerik.WinControls.UI.RadScheduler.ModernAppointmentBorderColor"/> property and is applied only for appointments with modern styles. 
+            Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadScheduler.ModernAppointmentBorderColor">
+            <summary>
+            Gets or sets the border color of the appointment when it has the default <see cref="F:Telerik.WinControls.UI.AppointmentCategory.None"/> category. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadScheduler.ModernAppointmentYellowColor">
+            <summary>
+            Gets or sets the back color of the appointment when it has the <see cref="F:Telerik.WinControls.UI.AppointmentCategory.Yellow"/> category. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadScheduler.ModernAppointmentPurpleColor">
+            <summary>
+            Gets or sets the back color of the appointment when it has the <see cref="F:Telerik.WinControls.UI.AppointmentCategory.Purple"/> category. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadScheduler.ModernAppointmentGreenColor">
+            <summary>
+            Gets or sets the back color of the appointment when it has the <see cref="F:Telerik.WinControls.UI.AppointmentCategory.Green"/> category. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadScheduler.ModernAppointmentPinkColor">
+            <summary>
+            Gets or sets the back color of the appointment when it has the <see cref="F:Telerik.WinControls.UI.AppointmentCategory.Pink"/> category. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadScheduler.ModernAppointmentBlueColor">
+            <summary>
+            Gets or sets the back color of the appointment when it has the <see cref="F:Telerik.WinControls.UI.AppointmentCategory.Blue"/> category. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadScheduler.ModernAppointmentOliveColor">
+            <summary>
+            Gets or sets the back color of the appointment when it has the <see cref="F:Telerik.WinControls.UI.AppointmentCategory.Olive"/> category. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadScheduler.ModernAppointmentGrayColor">
+            <summary>
+            Gets or sets the back color of the appointment when it has the <see cref="F:Telerik.WinControls.UI.AppointmentCategory.Gray"/> category. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadScheduler.ModernAppointmentOrangeColor">
+            <summary>
+            Gets or sets the back color of the appointment when it has the <see cref="F:Telerik.WinControls.UI.AppointmentCategory.Orange"/> category. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadScheduler.ModernAppointmentLavenderColor">
+            <summary>
+            Gets or sets the back color of the appointment when it has the <see cref="F:Telerik.WinControls.UI.AppointmentCategory.Lavender"/> category. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadScheduler.ModernAppointmentRaspberryColor">
+            <summary>
+            Gets or sets the back color of the appointment when it has the <see cref="F:Telerik.WinControls.UI.AppointmentCategory.Raspberry"/> category. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
         <member name="P:Telerik.WinControls.UI.RadScheduler.AppointmentElementFactory">
             <summary>
             Gets or sets a factory class that is used when creating appointment elements.
@@ -8171,6 +8356,156 @@
             Fills the default backgrounds.
             </summary>
             <param name="backgrounds">The background collection in which to add the background objects.</param>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ShouldSerializeModernAppointmentBackColor">
+            <summary>
+            The property value is defined in the theme. It serializes only if it's set as Local.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ResetModernAppointmentBackColor">
+            <summary>
+            Resets the local property value and uses the value defined in the theme as default.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ShouldSerializeModernAppointmentBackColor2">
+            <summary>
+            The property value is defined in the theme. It serializes only if it's set as Local.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ResetModernAppointmentBackColor2">
+            <summary>
+            Resets the local property value and uses the value defined in the theme as default.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ShouldSerializeModernAppointmentForeColor">
+            <summary>
+            The property value is defined in the theme. It serializes only if it's set as Local.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ResetModernAppointmentForeColor">
+            <summary>
+            Resets the local property value and uses the value defined in the theme as default.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ShouldSerializePaintModernApppointmentsBorders">
+            <summary>
+            The property value is defined in the theme. It serializes only if it's set as Local.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ResetPaintModernApppointmentsBorders">
+            <summary>
+            Resets the local property value and uses the value defined in the theme as default.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ShouldSerializeModernAppointmentBorderColor">
+            <summary>
+            The property value is defined in the theme. It serializes only if it's set as Local.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ResetModernAppointmentBorderColor">
+            <summary>
+            Resets the local property value and uses the value defined in the theme as default.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ShouldSerializeModernAppointmentYellowColor">
+            <summary>
+            The property value is defined in the theme. It serializes only if it's set as Local.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ResetModernAppointmentYellowColor">
+            <summary>
+            Resets the local property value and uses the value defined in the theme as default.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ShouldSerializeModernAppointmentPurpleColor">
+            <summary>
+            The property value is defined in the theme. It serializes only if it's set as Local.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ResetModernAppointmentPurpleColor">
+            <summary>
+            Resets the local property value and uses the value defined in the theme as default.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ShouldSerializeModernAppointmentGreenColor">
+            <summary>
+            The property value is defined in the theme. It serializes only if it's set as Local.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ResetModernAppointmentGreenColor">
+            <summary>
+            Resets the local property value and uses the value defined in the theme as default.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ShouldSerializeModernAppointmentPinkColor">
+            <summary>
+            The property value is defined in the theme. It serializes only if it's set as Local.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ResetModernAppointmentPinkColor">
+            <summary>
+            Resets the local property value and uses the value defined in the theme as default.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ShouldSerializeModernAppointmentBlueColor">
+            <summary>
+            The property value is defined in the theme. It serializes only if it's set as Local.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ResetModernAppointmentBlueColor">
+            <summary>
+            Resets the local property value and uses the value defined in the theme as default.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ShouldSerializeModernAppointmentOliveColor">
+            <summary>
+            The property value is defined in the theme. It serializes only if it's set as Local.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ResetModernAppointmentOliveColor">
+            <summary>
+            Resets the local property value and uses the value defined in the theme as default.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ShouldSerializeModernAppointmentGrayColor">
+            <summary>
+            The property value is defined in the theme. It serializes only if it's set as Local.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ResetModernAppointmentGrayColor">
+            <summary>
+            Resets the local property value and uses the value defined in the theme as default.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ShouldSerializeModernAppointmentOrangeColor">
+            <summary>
+            The property value is defined in the theme. It serializes only if it's set as Local.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ResetModernAppointmentOrangeColor">
+            <summary>
+            Resets the local property value and uses the value defined in the theme as default.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ShouldSerializeModernAppointmentLavenderColor">
+            <summary>
+            The property value is defined in the theme. It serializes only if it's set as Local.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ResetModernAppointmentLavenderColor">
+            <summary>
+            Resets the local property value and uses the value defined in the theme as default.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ShouldSerializeModernAppointmentRaspberryColor">
+            <summary>
+            The property value is defined in the theme. It serializes only if it's set as Local.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadScheduler.ResetModernAppointmentRaspberryColor">
+            <summary>
+            Resets the local property value and uses the value defined in the theme as default.
+            </summary>
         </member>
         <member name="M:Telerik.WinControls.UI.RadScheduler.ShouldSerializeCulture">
             <summary>
@@ -11564,6 +11899,11 @@
             Sets the current active view to Day
             </summary>
         </member>
+        <member name="F:Telerik.WinControls.UI.RadSchedulerElement.PaintModernApppointmentsBordersProperty">
+            <summary>
+            Determines whether the border of the modern appointments when not in the Default state is painted.
+            </summary>
+        </member>
         <member name="M:Telerik.WinControls.UI.RadSchedulerElement.#ctor(Telerik.WinControls.UI.RadScheduler,Telerik.WinControls.UI.SchedulerView)">
             <summary>
             Initializes a new instance of the <see cref="T:Telerik.WinControls.UI.RadSchedulerElement"/> class.
@@ -11615,6 +11955,97 @@
         <member name="P:Telerik.WinControls.UI.RadSchedulerElement.DefaultDateTimeTitleColor">
             <summary>
             Gets or sets the default date time color of the appointment title
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadSchedulerElement.ModernAppointmentBackColor">
+            <summary>
+            Gets or sets the back color of the appointment when it has the default <see cref="F:Telerik.WinControls.UI.AppointmentCategory.None"/> category. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadSchedulerElement.ModernAppointmentBackColor2">
+            <summary>
+            Gets or sets the second back color of the appointment when it has a linear gradient in the default <see cref="F:Telerik.WinControls.UI.AppointmentCategory.None"/> category. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadSchedulerElement.ModernAppointmentForeColor">
+            <summary>
+            Gets or sets the fore color of the appointment. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadSchedulerElement.PaintModernApppointmentsBorders">
+            <summary>
+            Gets or sets whether the borders of the appointment element will be painted. 
+            This color is set via the <see cref="P:Telerik.WinControls.UI.RadSchedulerElement.ModernAppointmentBorderColor"/> property and is applied only for appointments with modern styles. 
+            Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadSchedulerElement.ModernAppointmentBorderColor">
+            <summary>
+            Gets or sets the border color of the appointment when it has the default <see cref="F:Telerik.WinControls.UI.AppointmentCategory.None"/> category. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadSchedulerElement.ModernAppointmentYellowColor">
+            <summary>
+            Gets or sets the back color of the appointment when it has the <see cref="F:Telerik.WinControls.UI.AppointmentCategory.Yellow"/> category. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadSchedulerElement.ModernAppointmentPurpleColor">
+            <summary>
+            Gets or sets the back color of the appointment when it has the <see cref="F:Telerik.WinControls.UI.AppointmentCategory.Purple"/> category. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadSchedulerElement.ModernAppointmentGreenColor">
+            <summary>
+            Gets or sets the back color of the appointment when it has the <see cref="F:Telerik.WinControls.UI.AppointmentCategory.Green"/> category. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadSchedulerElement.ModernAppointmentPinkColor">
+            <summary>
+            Gets or sets the back color of the appointment when it has the <see cref="F:Telerik.WinControls.UI.AppointmentCategory.Pink"/> category. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadSchedulerElement.ModernAppointmentBlueColor">
+            <summary>
+            Gets or sets the back color of the appointment when it has the <see cref="F:Telerik.WinControls.UI.AppointmentCategory.Blue"/> category. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadSchedulerElement.ModernAppointmentOliveColor">
+            <summary>
+            Gets or sets the back color of the appointment when it has the <see cref="F:Telerik.WinControls.UI.AppointmentCategory.Olive"/> category. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadSchedulerElement.ModernAppointmentGrayColor">
+            <summary>
+            Gets or sets the back color of the appointment when it has the <see cref="F:Telerik.WinControls.UI.AppointmentCategory.Gray"/> category. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadSchedulerElement.ModernAppointmentOrangeColor">
+            <summary>
+            Gets or sets the back color of the appointment when it has the <see cref="F:Telerik.WinControls.UI.AppointmentCategory.Orange"/> category. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadSchedulerElement.ModernAppointmentLavenderColor">
+            <summary>
+            Gets or sets the back color of the appointment when it has the <see cref="F:Telerik.WinControls.UI.AppointmentCategory.Lavender"/> category. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadSchedulerElement.ModernAppointmentRaspberryColor">
+            <summary>
+            Gets or sets the back color of the appointment when it has the <see cref="F:Telerik.WinControls.UI.AppointmentCategory.Raspberry"/> category. 
+            This color is applied only for appointments with modern styles. Check the <see cref="P:Telerik.WinControls.UI.RadScheduler.UseModernAppointmentStyles"/> property for more details.
             </summary>
         </member>
         <member name="P:Telerik.WinControls.UI.RadSchedulerElement.NavigatorsWidth">

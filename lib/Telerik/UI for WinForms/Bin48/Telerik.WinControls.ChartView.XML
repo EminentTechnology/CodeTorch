@@ -2913,6 +2913,26 @@
             Defines the name of the <see cref="P:Telerik.WinControls.UI.KnownPalette.Material"/> palette.
             </summary>
         </member>
+        <member name="F:Telerik.WinControls.UI.KnownPalette.CrystalPaletteName">
+            <summary>
+            Defines the name of the <see cref="P:Telerik.WinControls.UI.KnownPalette.Crystal"/> palette.
+            </summary>
+        </member>
+        <member name="F:Telerik.WinControls.UI.KnownPalette.VisualStudio2019PaletteName">
+            <summary>
+            Defines the name of the <see cref="P:Telerik.WinControls.UI.KnownPalette.VisualStudio2019"/> palette.
+            </summary>
+        </member>
+        <member name="F:Telerik.WinControls.UI.KnownPalette.Office2019PaletteName">
+            <summary>
+            Defines the name of the <see cref="P:Telerik.WinControls.UI.KnownPalette.Office2019"/> palette.
+            </summary>
+        </member>
+        <member name="F:Telerik.WinControls.UI.KnownPalette.Windows11PaletteName">
+            <summary>
+            Defines the name of the <see cref="P:Telerik.WinControls.UI.KnownPalette.Windows11"/> palette.
+            </summary>
+        </member>
         <member name="P:Telerik.WinControls.UI.KnownPalette.Arctic">
             <summary>
             Represents a <see cref="T:Telerik.WinControls.UI.ChartPalette"/> with 8 distinctive entires per series Family.
@@ -3006,6 +3026,26 @@
         <member name="P:Telerik.WinControls.UI.KnownPalette.Material">
             <summary>
             Represents a <see cref="T:Telerik.WinControls.UI.ChartPalette"/> with 8 distinctive entires per series family. 
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.KnownPalette.Crystal">
+            <summary>
+            Represents a <see cref="T:Telerik.WinControls.UI.ChartPalette"/> with 8 distinctive entires per series family. 
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.KnownPalette.VisualStudio2019">
+            <summary>
+            Represents a <see cref="T:Telerik.WinControls.UI.ChartPalette"/> with 8 distinctive entires per series family. 
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.KnownPalette.Office2019">
+            <summary>
+            Represents a <see cref="T:Telerik.WinControls.UI.ChartPalette"/> with 8 distinctive entires per series family. 
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.KnownPalette.Windows11">
+            <summary>
+            Represents a <see cref="T:Telerik.WinControls.UI.ChartPalette"/>  with 8 distinctive entires per series family.
             </summary>
         </member>
         <member name="M:Telerik.WinControls.UI.KnownPalette.LoadPalette(System.String)">

@@ -40517,17 +40517,7 @@
             
              @param timezone the timezone under which date calculations take place
         </member>
-        <member name="M:NPOI.Util.LocaleUtil.SetUserTimeZone(System.TimeZone)">
-             As time zone information is not stored in any format, it can be
-             set before any date calculations take place.
-             This setting is specific to the current thread.
-            
-             @param timezone the timezone under which date calculations take place
-        </member>
         <member name="M:NPOI.Util.LocaleUtil.GetUserTimeZoneInfo">
-            @return the time zone which is used for date calculations, defaults to UTC
-        </member>
-        <member name="M:NPOI.Util.LocaleUtil.GetUserTimeZone">
             @return the time zone which is used for date calculations, defaults to UTC
         </member>
         <member name="M:NPOI.Util.LocaleUtil.SetUserLocale(System.Globalization.CultureInfo)">

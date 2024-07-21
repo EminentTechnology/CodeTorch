@@ -41,23 +41,6 @@
             </summary>
             <value>The precision level.</value>
         </member>
-        <member name="T:Telerik.Windows.Documents.Flow.FormatProviders.Pdf.NumberingFieldsProvider">
-            <summary>
-            Represents fields` page numbering provider.
-            </summary>
-        </member>
-        <member name="M:Telerik.Windows.Documents.Flow.FormatProviders.Pdf.NumberingFieldsProvider.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:Telerik.Windows.Documents.Flow.FormatProviders.Pdf.NumberingFieldsProvider" /> class.
-            </summary>
-        </member>
-        <member name="M:Telerik.Windows.Documents.Flow.FormatProviders.Pdf.NumberingFieldsProvider.RegisterNumberingStyleConverter(Telerik.Windows.Documents.Flow.Model.Lists.NumberingStyle,Telerik.Windows.Documents.Flow.FormatProviders.Pdf.Utils.INumberingStyleConverter)">
-            <summary>
-            Registers the numbering style converter.
-            </summary>
-            <param name="numberingStyle">The numbering style.</param>
-            <param name="converter">The converter.</param>
-        </member>
         <member name="T:Telerik.Windows.Documents.Flow.FormatProviders.Pdf.PdfFormatProvider">
             <summary>
             Represents PDF format provider.
@@ -129,6 +112,23 @@
             </summary>
             <param name="number">The number.</param>
             <returns>The text representation of the given number.</returns>
+        </member>
+        <member name="T:Telerik.Windows.Documents.Flow.FormatProviders.Pdf.NumberingFieldsProvider">
+            <summary>
+            Represents fields` page numbering provider.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Documents.Flow.FormatProviders.Pdf.NumberingFieldsProvider.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.Windows.Documents.Flow.FormatProviders.Pdf.NumberingFieldsProvider" /> class.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Documents.Flow.FormatProviders.Pdf.NumberingFieldsProvider.RegisterNumberingStyleConverter(Telerik.Windows.Documents.Flow.Model.Lists.NumberingStyle,Telerik.Windows.Documents.Flow.FormatProviders.Pdf.Utils.INumberingStyleConverter)">
+            <summary>
+            Registers the numbering style converter.
+            </summary>
+            <param name="numberingStyle">The numbering style.</param>
+            <param name="converter">The converter.</param>
         </member>
     </members>
 </doc>

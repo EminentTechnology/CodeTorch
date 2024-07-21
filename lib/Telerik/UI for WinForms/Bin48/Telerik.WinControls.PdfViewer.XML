@@ -1002,7 +1002,7 @@
         <member name="T:Telerik.WinControls.UI.RadPdfViewer">
             <summary>
             RadPdfViewer is a control that can visualize PDF documents straight in your application. It comes with a predefined UI that is 
-            intuitive and provides the means for utilizing the feautres of the control. Using the UI you can easily zoom in and out, and scroll the document
+            intuitive and provides the means for utilizing the features of the control. Using the UI you can easily zoom in and out, and scroll the document
             in the viewer. You can also use pan. The control utilizes virtualization in order to guarantee good performance with larger documents.
             </summary>
         </member>
@@ -1168,13 +1168,12 @@
         </member>
         <member name="P:Telerik.WinControls.UI.RadPdfViewer.UsePdfProcessingModel">
             <summary>
-            When false, it fall-backs internally
-            to use the RadPdfViewer old model on document import.
+            The model from the PdfProcessing library is always used for rendering the PDF pages. As of R2 2023 setting this property will not have any effect. The property will be removed in R2 2024.
             </summary>
         </member>
         <member name="P:Telerik.WinControls.UI.RadPdfViewer.UsePdfProcessingModelDefaultValue">
             <summary>
-            Gets or sets the default value for UsePdfProcessingModel property.
+            The model from the PdfProcessing library is always used for rendering the PDF pages. As of R2 2023 setting this property will not have any effect.
             </summary>
         </member>
         <member name="P:Telerik.WinControls.UI.RadPdfViewer.UseBufferedPrinting">
@@ -1718,12 +1717,6 @@
             <summary>
             Gets the selected text.
             </summary>
-        </member>
-        <member name="M:Telerik.WinControls.UI.RadPdfViewerElement.GetSelectedTextAsync(System.Action{System.String})">
-            <summary>
-            Gets the selected text asynchroniously.
-            </summary>
-            <param name="callback">The callback that will be called when the text extraction completes.</param>
         </member>
         <member name="M:Telerik.WinControls.UI.RadPdfViewerElement.GetSelectedTextAsync">
             <summary>

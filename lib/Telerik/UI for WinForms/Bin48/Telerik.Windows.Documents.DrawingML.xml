@@ -5405,6 +5405,316 @@
             Specifies that vertical WordArt should be shown from right to left rather than left to right.
             </summary>
         </member>
+        <member name="T:Telerik.Windows.Documents.DrawingML.WordsProcessing.IRichTextContent">
+            <summary>
+            Specifies rich text content that can be hosted in a TextBoxContent element.
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Documents.DrawingML.WordsProcessing.LinkedTextBoxInfo">
+            <summary>
+            Specifies the textual contents of a shape that is not the first in the series of shapes for the same text box story.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.LinkedTextBoxInfo.Id">
+            <summary>
+            Gets or sets the identity of the text box story begun by a txbx element.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.LinkedTextBoxInfo.SequenceIndex">
+            <summary>
+            Gets or sets the position of the owning shape in the given text box story.
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Documents.DrawingML.WordsProcessing.NonVisualConnectorProperties">
+            <summary>
+            Specifies the non-visual drawing properties specific to a connector shape.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.NonVisualConnectorProperties.ConnectionShapeLocks">
+            <summary>
+            Gets or sets the behavior restrictions for a given connector shape.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.NonVisualConnectorProperties.ConnectorStart">
+            <summary>
+            Gets or sets the start destination of the connector shape.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.NonVisualConnectorProperties.ConnectorEnd">
+            <summary>
+            Gets or sets the end destination of the connector shape.
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Documents.DrawingML.WordsProcessing.NonVisualDrawingProperties">
+            <summary>
+            Specifies a set of non visual properties for a given shape.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.NonVisualDrawingProperties.Id">
+            <summary>
+            Gets or sets the shape id.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.NonVisualDrawingProperties.Description">
+            <summary>
+            Gets or sets description text.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.NonVisualDrawingProperties.Title">
+            <summary>
+            Gets or sets title text.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.NonVisualDrawingProperties.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.NonVisualDrawingProperties.Hidden">
+            <summary>
+            Gets or sets a value that indicates whether the shape is hidden.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.NonVisualDrawingProperties.HyperlinkHover">
+            <summary>
+            Gets or sets the hyperlink action that should be executed on hover.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.NonVisualDrawingProperties.HyperlinkOnClick">
+            <summary>
+            Gets or sets the hyperlink action that should be executed on mouse click.
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Documents.DrawingML.WordsProcessing.NonVisualShapeProperties">
+            <summary>
+            Specifies a set of non visual properties for a given shape.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.NonVisualShapeProperties.Locks">
+            <summary>
+            Gets or sets the behavior restrictions in effect.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.NonVisualShapeProperties.IsTextBox">
+            <summary>
+            Gets or sets a value which indicates whether the underlying shape is a text box.
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Documents.DrawingML.WordsProcessing.Shape">
+            <summary>
+            Represents a DrawingML shape that is used exclusively in WordsProcessing documents.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.Shape.Style">
+            <summary>
+            Gets or sets the shape style.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.Shape.ShapeProperties">
+            <summary>
+            Gets or sets the visual properties of the shape.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.Shape.TextBoxInfo">
+            <summary>
+            Gets or sets the properties of the underlying text box element.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.Shape.LinkedTextBoxInfo">
+            <summary>
+            Gets or sets reference to the first text box in a series of shapes that share common text box story.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.Shape.TextBodyProperties">
+            <summary>
+            Gets or sets the visual properties that describe the underlying text box element.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.Shape.NonVisualDrawingProperties">
+            <summary>
+            Gets or sets the non-visual drawing properties.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.Shape.NonVisualShapeProperties">
+            <summary>
+            Gets or sets the non-visual shape properties.
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Documents.DrawingML.WordsProcessing.ShapeStyle">
+            <summary>
+            Specifies the style information for a shape.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.ShapeStyle.LineReference">
+            <summary>
+            Gets or sets a reference to a line style within the style matrix.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.ShapeStyle.FillReference">
+            <summary>
+            Gets or sets a reference to a fill style within the style matrix.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.ShapeStyle.EffectReference">
+            <summary>
+            Gets or sets a reference to an effect style within the style matrix.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.ShapeStyle.FontReference">
+            <summary>
+            Gets or sets a reference to a font within the font collection.
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBodyProperties">
+            <summary>
+            Specifies a list of properties for a text body within a shape.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBodyProperties.Anchor">
+            <summary>
+            Gets or sets the anchoring position within the shape. 
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBodyProperties.AnchorCenter">
+            <summary>
+            Gets or sets a value that indicates whether the text box should be centered.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBodyProperties.CompatibleLineSpacing">
+            <summary>
+            Gets or sets a value that indicates whether the line spacing for this text body will be decided in a simplistic manner using the font scene.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBodyProperties.ForceAntiAlias">
+            <summary>
+            Gets or sets a value that indicates whether the font will be rendered anti aliased.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBodyProperties.FromWordArt">
+            <summary>
+            Gets or sets a value that indicates whether the text is converted from WordArt.        
+            </summary>
+            <remarks>
+            Use for compatibility only.
+            </remarks>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBodyProperties.BottomInset">
+            <summary>
+            Gets or sets the bottom inset of the bounding rectangle. Insets are used just as internal margins for text boxes within shapes.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBodyProperties.TopInset">
+            <summary>
+            Gets or sets the top inset of the bounding rectangle. Insets are used just as internal margins for text boxes within shapes.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBodyProperties.LeftInset">
+            <summary>
+            Gets or sets the left inset of the bounding rectangle. Insets are used just as internal margins for text boxes within shapes.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBodyProperties.RightInset">
+            <summary>
+            Gets or sets the right inset of the bounding rectangle. Insets are used just as internal margins for text boxes within shapes.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBodyProperties.NumberOfColumns">
+            <summary>
+            Gets or sets the number of columns of text in the bounding rectangle. 
+            </summary>
+            <remarks>
+            Only values in [1, 16] are accepted. Values out of bounds are coerced.
+            </remarks>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBodyProperties.HorizontalOverflow">
+            <summary>
+            Gets or sets an overflow type that describes whether the text can flow out of the bounding box horizontally. 
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBodyProperties.VerticalOverflow">
+            <summary>
+            Gets or sets an overflow type that describes whether the text can flow out of the bounding box vertically. 
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBodyProperties.Wrap">
+            <summary>
+            Gets or sets the current text wrapping type.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBodyProperties.Rotation">
+            <summary>
+            Gets or sets the rotation applied to the text within the bounding box. 
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBodyProperties.ColumnsRightToLeft">
+            <summary>
+            Gets or sets a value that indicates whether columns are used in a right-to-left order.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBodyProperties.SpaceBetweenColumns">
+            <summary>
+            Gets or sets the space between columns.
+            </summary>
+            <remarks>
+            Only values in [0, 27273042316900] are accepted. Values out of bounds are coerced.
+            </remarks>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBodyProperties.RespectParagraphSpacing">
+            <summary>
+            Gets or sets a value that indicates whether the before and after paragraph spacing defined by the user is to be respected.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBodyProperties.LockTextRotation">
+            <summary>
+            Gets or sets a value that indicates whether text should remain upright, regardless of the transform applied to it and the accompanying shape transform.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBodyProperties.VerticalText">
+            <summary>
+            Gets or sets a value that indicates whether the given text should be displayed vertically. 
+            It also specifies different vertical placement types.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBodyProperties.Text3DProperties">
+            <summary>
+            Gets or sets a value that indicates how text should be rendered in 3D scene.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBodyProperties.Scene3D">
+            <summary>
+            Gets or sets 3D scene properties for the shape.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBodyProperties.AutoFit">
+            <summary>
+            Gets or sets the auto-fit approach that will be used in the text box.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBodyProperties.PresetTextWarp">
+            <summary>
+            Gets or sets a text warp to be used on the text.
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBoxContent">
+            <summary>
+            Specifies a rich text content host for word processing shapes.
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBoxInfo">
+            <summary>
+            Represents a rich text element that can be embedded in a DrawingML shape.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBoxInfo.Id">
+            <summary>
+            Gets or sets the text box id.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Documents.DrawingML.WordsProcessing.TextBoxInfo.Content">
+            <summary>
+            Gets or sets the underlying rich text content.
+            </summary>
+        </member>
         <member name="T:Telerik.Windows.Documents.DrawingML.Picture">
             <summary>
             Specifies the existence of an image (binary large image or picture) and contains a reference to the image data.
@@ -12040,46 +12350,6 @@
             Specifies a shape outline fill.
             </summary>
         </member>
-        <member name="T:Telerik.Windows.Documents.Model.ShapeGradientFill">
-            <summary>
-            Specifies a shape gradient fill.
-            </summary>
-        </member>
-        <member name="M:Telerik.Windows.Documents.Model.ShapeGradientFill.#ctor(System.Windows.Media.GradientBrush)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Telerik.Windows.Documents.Model.ShapeGradientFill"/> class.
-            </summary>
-            <param name="brush">The brush of the fill.</param>
-        </member>
-        <member name="T:Telerik.Windows.Documents.Model.ShapeNoFill">
-            <summary>
-            Specifies a that the shape does not have a specific fill.
-            </summary>
-        </member>
-        <member name="T:Telerik.Windows.Documents.Model.ShapePatternFill">
-            <summary>
-            Specifies a pattern fill. A repeated pattern is used to fill the shape.
-            </summary>
-        </member>
-        <member name="M:Telerik.Windows.Documents.Model.ShapePatternFill.#ctor(Telerik.Windows.Documents.Model.DrawingML.PatternType,System.Windows.Media.Color,System.Windows.Media.Color)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Telerik.Windows.Documents.Model.ShapePatternFill"/> class.
-            </summary>
-            <param name="patternType">The pattern type of the fill.</param>
-            <param name="foreColor">The primary (foreground) color of the pattern fill.</param>
-            <param name="backColor">The secondary (background) color of the pattern fill.</param>
-        </member>
-        <member name="T:Telerik.Windows.Documents.Model.ShapeSolidFill">
-            <summary>
-            Specifies a solid color fill. The shape is filled entirely with the specified color.
-            </summary>
-        </member>
-        <member name="M:Telerik.Windows.Documents.Model.ShapeSolidFill.#ctor(System.Windows.Media.Color)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Telerik.Windows.Documents.Model.ShapeSolidFill"/> class.
-            </summary>
-            <param name="color">The solid color.</param>
-        </member>
         <member name="T:Telerik.Windows.Documents.Model.LineDashType">
             <summary>
             Specifies a preset line dash pattern.
@@ -12467,6 +12737,46 @@
             <summary>
             Top vertical alignment.
             </summary>
+        </member>
+        <member name="T:Telerik.Windows.Documents.Model.ShapeGradientFill">
+            <summary>
+            Specifies a shape gradient fill.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Documents.Model.ShapeGradientFill.#ctor(System.Windows.Media.GradientBrush)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.Windows.Documents.Model.ShapeGradientFill"/> class.
+            </summary>
+            <param name="brush">The brush of the fill.</param>
+        </member>
+        <member name="T:Telerik.Windows.Documents.Model.ShapeNoFill">
+            <summary>
+            Specifies a that the shape does not have a specific fill.
+            </summary>
+        </member>
+        <member name="T:Telerik.Windows.Documents.Model.ShapePatternFill">
+            <summary>
+            Specifies a pattern fill. A repeated pattern is used to fill the shape.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Documents.Model.ShapePatternFill.#ctor(Telerik.Windows.Documents.Model.DrawingML.PatternType,System.Windows.Media.Color,System.Windows.Media.Color)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.Windows.Documents.Model.ShapePatternFill"/> class.
+            </summary>
+            <param name="patternType">The pattern type of the fill.</param>
+            <param name="foreColor">The primary (foreground) color of the pattern fill.</param>
+            <param name="backColor">The secondary (background) color of the pattern fill.</param>
+        </member>
+        <member name="T:Telerik.Windows.Documents.Model.ShapeSolidFill">
+            <summary>
+            Specifies a solid color fill. The shape is filled entirely with the specified color.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Documents.Model.ShapeSolidFill.#ctor(System.Windows.Media.Color)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.Windows.Documents.Model.ShapeSolidFill"/> class.
+            </summary>
+            <param name="color">The solid color.</param>
         </member>
     </members>
 </doc>

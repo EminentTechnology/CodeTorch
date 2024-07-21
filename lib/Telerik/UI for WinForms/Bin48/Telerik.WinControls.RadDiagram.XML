@@ -164,6 +164,11 @@
             <param name="e">The event arguments.</param>
             <returns>[true] if the event should not be processed further, [false] otherwise.</returns>
         </member>
+        <member name="P:Telerik.WinControls.UI.RadDiagramRibbonBar.ShowLayoutModeButton">
+            <summary>
+            Gets or sets whether the toggle switch enabling the Simplified ribbon style is visible.
+            </summary>
+        </member>
         <member name="F:Telerik.WinControls.UI.RadDiagramRibbonBar.components">
             <summary> 
             Required designer variable.
@@ -257,7 +262,7 @@
         <member name="T:Telerik.WinControls.UI.RadDiagram">
             <summary>
             Represents the diagram control.
-            </summary>    
+            </summary>
         </member>
         <member name="M:Telerik.WinControls.UI.RadDiagram.BeginInit">
             <summary>Suspends layout during initialization.</summary>
@@ -5885,8 +5890,8 @@
         </member>
         <member name="F:Telerik.WinControls.UI.Diagrams.RadDiagramConnector.ActivationChangedEvent">
             <summary>
-            Occurs when [connector activation changed].
-            </summary>        
+            Identifies the ConnectorActivated routed event.
+            </summary>   
         </member>
         <member name="E:Telerik.WinControls.UI.Diagrams.RadDiagramConnector.OffsetChanged">
             <summary>
@@ -5926,11 +5931,6 @@
             Clones this instance.
             </summary>
             <returns></returns>
-        </member>
-        <member name="M:Telerik.WinControls.UI.Diagrams.RadDiagramConnector.ResetTheme">
-            <summary>
-            Resets the theme.
-            </summary>
         </member>
         <member name="M:Telerik.WinControls.UI.Diagrams.RadDiagramConnector.Serialize">
             <summary>
@@ -7269,6 +7269,11 @@
             Occurs when [group changed].
             </summary>
         </member>
+        <member name="E:Telerik.WinControls.UI.Diagrams.RadDiagramItem.PreviewBeginEdit">
+            <summary>
+            Occurs before the editing starts.
+            </summary>
+        </member>
         <member name="E:Telerik.WinControls.UI.Diagrams.RadDiagramItem.PreviewEndEdit">
             <summary>
             Occurs before the editing ends.
@@ -7504,6 +7509,11 @@
             The actual size of the item.
             </summary>;
         </member>
+        <member name="P:Telerik.WinControls.UI.Diagrams.RadDiagramItem.IsServiceManipulation">
+            <summary>
+            Gets whether any service is manipulating at the moment.
+            </summary>
+        </member>
         <member name="M:Telerik.WinControls.UI.Diagrams.RadDiagramItem.OnApplyTemplate">
             <summary>
             When overridden in a derived class, is invoked whenever application code or internal processes (such as a rebuilding layout pass) call <see cref="M:System.Windows.Controls.Control.ApplyTemplate"/>. In simplest terms, this means the method is called just before a UI element displays in an application. For more information, see Remarks.
@@ -7530,6 +7540,11 @@
         <member name="M:Telerik.WinControls.UI.Diagrams.RadDiagramItem.UpdateVisualStates">
             <summary>
             Updates the visual states.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.Diagrams.RadDiagramItem.RefreshIsSelectedInGroup">
+            <summary>
+            Refreshes the is selected in group property.
             </summary>
         </member>
         <member name="M:Telerik.WinControls.UI.Diagrams.RadDiagramItem.Initialize(Telerik.Windows.Diagrams.Core.IGraphServiceLocator,Telerik.Windows.Diagrams.Core.IGraphInternal)">
@@ -7566,11 +7581,12 @@
             <param name="oldValue">The old value of the IsSelected property.</param>
             <param name="newValue">The new value of the IsSelected property.</param>
         </member>
-        <member name="M:Telerik.WinControls.UI.Diagrams.RadDiagramItem.OnZIndexChanged(System.Int32)">
+        <member name="M:Telerik.WinControls.UI.Diagrams.RadDiagramItem.OnZIndexChanged(System.Int32,System.Int32)">
             <summary>
             Called when the ZIndex changes.
             </summary>
             <param name="newValue">The new value.</param>
+            <param name="oldValue">The old value.</param>
         </member>
         <member name="M:Telerik.WinControls.UI.Diagrams.RadDiagramItem.OnSizeChanged(Telerik.Windows.Diagrams.Core.Size,Telerik.Windows.Diagrams.Core.Size)">
             <summary>
@@ -7602,6 +7618,13 @@
             </summary>
             <param name="position">The position.</param>
             <returns></returns>
+        </member>
+        <member name="M:Telerik.WinControls.UI.Diagrams.RadDiagramItem.OnIsConnectorsManipulationEnabledChanged(System.Boolean,System.Boolean)">
+            <summary>
+            Called when connectors manipulation changes.
+            </summary>
+            <param name="newValue">The new value.</param>
+            <param name="oldValue">The old value.</param>
         </member>
         <member name="T:Telerik.WinControls.UI.Diagrams.RadDiagramShapeBase">
             <summary>
@@ -7828,6 +7851,16 @@
             <param name="finalSize">finalSize</param>
             <returns></returns>
         </member>
+        <member name="P:Telerik.WinControls.UI.DiagramListViewVisualItem.TextElement">
+            <summary>
+            The text element
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.DiagramListViewVisualItem.ShapeElement">
+            <summary>
+            The shape element.
+            </summary>
+        </member>
         <member name="P:Telerik.WinControls.UI.RadDiagramToolbox.Groups">
             <summary>
             Gets a collection containing the groups of the RadListView.
@@ -7836,6 +7869,60 @@
         <member name="P:Telerik.WinControls.UI.RadDiagramToolbox.Items">
             <summary>
             Gets or sets a collection of <see cref="T:Telerik.WinControls.UI.ListViewDataItem">ListViewDataItem</see> object which represent the items in RadListView.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadDiagramToolbox.AllowDragDrop">
+            <summary>
+            Gets or sets value indicating if the user can reorder items via drag and drop.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadDiagramToolbox.AllowDrop">
+            <summary>
+            Gets or sets a value indicating whether the control can accept data that the user drags onto it.
+            </summary>
+            <remarks>
+            Returns: true if drag-and-drop operations are allowed in the control; otherwise, false.
+            The default is false.
+            </remarks>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadDiagramToolbox.AllowEdit">
+            <summary>
+            Gets or sets value indicating whether editing is enabled.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadDiagramToolbox.EnableCustomGrouping">
+            <summary>
+            Gets or sets a value indicating whether custom grouping is enabled.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadDiagramToolbox.FullRowSelect">
+            <summary>
+            Gets or sets a value indicating whether the full row should be selected.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadDiagramToolbox.GroupIndent">
+            <summary>
+            Gets or sets the indent of the items when they are displayed in a group.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadDiagramToolbox.ItemSize">
+            <summary>
+            Gets or sets the default item size.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadDiagramToolbox.ItemSpacing">
+            <summary>
+            Gets or sets the space between the items.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadDiagramToolbox.ShowGroups">
+            <summary>
+            Gets or sets a value indicating whether the items should be shown in groups.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadDiagramToolbox.ViewType">
+            <summary>
+            Gets or sets the type of the view.
             </summary>
         </member>
         <member name="T:Telerik.WinControls.UI.Properties.RadDiagramResources">
@@ -9492,6 +9579,14 @@
             Occurs when AdditionContent is activated.
             </summary>
         </member>
+        <member name="M:Telerik.WinControls.UI.RadDiagramElement.Telerik#Windows#Diagrams#Core#IGraphInternal#IntersectingConnections(Telerik.Windows.Diagrams.Core.IConnection,System.Nullable{Telerik.Windows.Diagrams.Core.Rect})">
+            <summary>
+            Returns all intersecting connections that are below or above the given one.
+            </summary>
+            <param name="connection">The connection.</param>
+            <param name="bounds">The bounds. If null the connection's Bounds are used.</param>
+            <returns></returns>
+        </member>
         <member name="M:Telerik.WinControls.UI.RadDiagramElement.UpdateRectSelection(Telerik.Windows.Diagrams.Core.Rect)">
             <summary>
             Updates the rectangle selection.
@@ -10601,6 +10696,16 @@
             Identifies the BezierTensionProperty dependency property.
             </summary>
         </member>
+        <member name="F:Telerik.WinControls.UI.RadDiagramConnection.StartPointProperty">
+            <summary>
+            Identifies the StartPoint dependency property.
+            </summary>
+        </member>
+        <member name="F:Telerik.WinControls.UI.RadDiagramConnection.EndPointProperty">
+            <summary>
+            Identifies the EndPoint dependency property.
+            </summary>
+        </member>
         <member name="F:Telerik.WinControls.UI.RadDiagramConnection.IsAutoUpdateSuppressedProperty">
             <summary>
             Identifies the IsAutoUpdateSuppressedProperty.
@@ -10633,14 +10738,15 @@
         </member>
         <member name="P:Telerik.WinControls.UI.RadDiagramConnection.IsModified">
             <summary>
-            Gets or sets a value indicating whether the default Bezier definition (Bezier tangents) has been altered.
+            Gets or sets a value indicating whether the connection has been modified.
             </summary>
             <remarks>
               <list type="bullet">
-              <item> This property is set to <c>true</c> as soon as one of the Bezier handles has been manually modified. This means that the automatically calculated handle positions in function of the connector will be halted. You re-enable this auto-handle
+              <item> This property is set to <c>true</c> as soon as you add/remove intermediate points or manually move one of the Bezier handles. This means that the automatically calculated handle positions in function of the connector will be halted. You re-enable this auto-handle
             calculation by re-setting this property to <c>false</c>.
               </item>
-              <item> Setting this property has no effect if the <see cref="P:Telerik.WinControls.UI.RadDiagramConnection.ConnectionType" /> is not <see cref="F:Telerik.Windows.Diagrams.Core.ConnectionType.Bezier" />.</item>
+              <item> If this property is <c>true</c> the connection won't be routed and no automatic reflexive points will be added. You can re-enable this by re-setting this property to <c>false</c>.
+              </item>
               </list>
             </remarks>
         </member>
@@ -10659,7 +10765,7 @@
         </member>
         <member name="P:Telerik.WinControls.UI.RadDiagramConnection.Geometry">
             <summary>
-            Gets or sets the geometry.
+            Gets the geometry of the connection.
             </summary>
         </member>
         <member name="P:Telerik.WinControls.UI.RadDiagramConnection.ConnectionType">
@@ -10694,14 +10800,14 @@
             The target.
             </value>
         </member>
-        <member name="P:Telerik.WinControls.UI.RadDiagramConnection.StartPoint">
-            <summary>
-            Gets or sets the position of where this connection starts.
-            </summary>
-        </member>
         <member name="P:Telerik.WinControls.UI.RadDiagramConnection.EndPoint">
             <summary>
             Gets or sets the position of where this connection ends.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadDiagramConnection.StartPoint">
+            <summary>
+            Gets or sets the position of where this connection starts.
             </summary>
         </member>
         <member name="P:Telerik.WinControls.UI.RadDiagramConnection.SourceConnectorPosition">
@@ -10789,6 +10895,12 @@
             Gets or sets the editing point of the connection. This points indicates the position of the editing element.
             </summary>
         </member>
+        <member name="P:Telerik.WinControls.UI.RadDiagramConnection.IsGlindingConnectorPointsUpdateFinished">
+            <summary>
+            Updating Start/EndPoint when using GlidingConnectors and Routing might lead to circular dependency.
+            To avoid this we can separate the gliding connectors update process from routing update process.
+            </summary>
+        </member>
         <member name="M:Telerik.WinControls.UI.RadDiagramConnection.GetIsAutoUpdateSuppressed(Telerik.WinControls.RadObject)">
             <summary>
             Gets the IsUpdateNeeded.
@@ -10838,11 +10950,12 @@
             <param name="source">The source.</param>
             <param name="target">The target.</param>
         </member>
-        <member name="M:Telerik.WinControls.UI.RadDiagramConnection.FetchZConnections(System.Boolean)">
+        <member name="M:Telerik.WinControls.UI.RadDiagramConnection.FetchZConnections(System.Boolean,System.Nullable{Telerik.Windows.Diagrams.Core.Rect})">
             <summary>
-            Returns all connections below or above the given z-index.
+            Returns all connections below or above the current connection that intersect with the given bounds.
             </summary>
-            <param name="below">If set to <c>true</c> the connections below the given index will be returned, otherwise the ones above will be returned.</param>
+            <param name="below">If set to <c>true</c> the connections below current one will be returned, otherwise the ones above.</param>
+            <param name="bounds">The bounds. If null the connection's Bounds are used.</param>
             <returns></returns>
         </member>
         <member name="M:Telerik.WinControls.UI.RadDiagramConnection.SetBezierHandles(Telerik.Windows.Diagrams.Core.Point,Telerik.Windows.Diagrams.Core.Point)">
@@ -10875,19 +10988,15 @@
             <param name="end">The end point of the connection.</param>
             <param name="points">The intermediate connection points.</param>
         </member>
+        <member name="M:Telerik.WinControls.UI.RadDiagramConnection.RefreshIsSelectedInGroup">
+            <inheritdoc /> 
+        </member>
         <member name="M:Telerik.WinControls.UI.RadDiagramConnection.OnIsInEditModeChanged(System.Boolean,System.Boolean)">
             <summary>
             Called when IsInEditMode changes.
             </summary>
             <param name="oldIsInEditMode">The old value of the property.</param>
             <param name="isInEditMode">The current value of the property.</param>
-        </member>
-        <member name="M:Telerik.WinControls.UI.RadDiagramConnection.Initialize(Telerik.Windows.Diagrams.Core.IGraphServiceLocator,Telerik.Windows.Diagrams.Core.IGraphInternal)">
-            <summary>
-            Initializes the specified service locator and parent graph.
-            </summary>
-            <param name="serviceLocator">The service locator.</param>
-            <param name="graph">The diagram control.</param>
         </member>
         <member name="M:Telerik.WinControls.UI.RadDiagramConnection.OnStrokeThicknessChanged">
             <summary>
@@ -10907,6 +11016,9 @@
             </summary>
             <param name="oldValue">The old value of the IsSelected property.</param>
             <param name="newValue">The new value of the IsSelected property.</param>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadDiagramConnection.OnIsConnectorsManipulationEnabledChanged(System.Boolean,System.Boolean)">
+            <inheritdoc /> 
         </member>
         <member name="M:Telerik.WinControls.UI.RadDiagramConnection.UpdateDeferredGeometry(Telerik.Windows.Diagrams.Core.Point,Telerik.Windows.Diagrams.Core.Point,Telerik.Windows.Diagrams.Core.Point[])">
             <summary>
@@ -10975,6 +11087,20 @@
             <param name="newValue">The new value.</param>
             <param name="oldValue">The old value.</param>
         </member>
+        <member name="M:Telerik.WinControls.UI.RadDiagramConnection.OnStartPointChanged(Telerik.Windows.Diagrams.Core.Point,Telerik.Windows.Diagrams.Core.Point)">
+            <summary>
+            Called on start point changed.
+            </summary>
+            <param name="newValue">The new value.</param>
+            <param name="oldValue">The old value.</param>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadDiagramConnection.OnEndPointChanged(Telerik.Windows.Diagrams.Core.Point,Telerik.Windows.Diagrams.Core.Point)">
+            <summary>
+            Called on end point changed.
+            </summary>
+            <param name="newValue">The new value.</param>
+            <param name="oldValue">The old value.</param>
+        </member>
         <member name="M:Telerik.WinControls.UI.RadDiagramConnection.CreateSourceCapGeometry(Telerik.Windows.Diagrams.Core.Point,Telerik.Windows.Diagrams.Core.Point,Telerik.Windows.Diagrams.Core.Point@)">
             <summary>
             Creates the source cap geometry.
@@ -10992,6 +11118,13 @@
             <param name="endPoint">The end point.</param>
             <param name="baseLineEnd">The new end of the base line.</param>
             <returns></returns>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadDiagramConnection.OnZIndexChanged(System.Int32,System.Int32)">
+            <summary>
+            Called when the ZIndex changes.
+            </summary>
+            <param name="newValue">The new value.</param>
+            <param name="oldValue">The old value.</param>
         </member>
         <member name="M:Telerik.WinControls.UI.RadDiagramConnection.GetBezierAutoHandleOffset(Telerik.Windows.Diagrams.Core.IShape,System.String)">
             <summary>
@@ -11023,7 +11156,7 @@
             Will attempt to resolves the target connector on the basis of the set <see cref="P:Telerik.WinControls.UI.RadDiagramConnection.TargetConnectorPosition"/>.
             </summary>
         </member>
-        <member name="M:Telerik.WinControls.UI.RadDiagramConnection.EnsureConnectionPoints">
+        <member name="M:Telerik.WinControls.UI.RadDiagramConnection.EnsureBezierPoints">
             <summary>
             Ensures that, for the given <see cref="P:Telerik.WinControls.UI.RadDiagramConnection.ConnectionType" />, the intermediate connection points are present.
             </summary>
@@ -11067,10 +11200,10 @@
             </summary>
             <remarks>
             <list type="bullet">
-            <item> The parent shape container of a shape can be obtained through the GetParentContainer attached  property.</item> 
-            <item> This is a bindable items container, the items are not necessarily shapes or diagram items, they can be arbitrary objects. The container can be obtained through RadDiagram.GetContainerFromItem</item>
+            <item> The parent shape container of a shape can be obtained through the <see cref="M:Telerik.WinControls.UI.RadDiagramContainerShape.GetParentContainer(Telerik.WinControls.RadObject)"/>attached  property.</item> 
+            <item> This is a bindable items container, the items are not necessarily shapes or diagram items, they can be arbitrary objects. The container can be obtained through <see cref="!:RadDiagram.GetContainerFromItem"/>. </item>
             </list>
-            </remarks>    
+            </remarks>
         </member>
         <member name="F:Telerik.WinControls.UI.RadDiagramContainerShape.ItemsProperty">
             <summary>
@@ -11308,16 +11441,24 @@
             <param name="oldValue">The old value of the property.</param>
             <param name="newValue">The new value of the property.</param>
         </member>
-        <member name="M:Telerik.WinControls.UI.RadDiagramContainerShape.OnZIndexChanged(System.Int32)">
+        <member name="M:Telerik.WinControls.UI.RadDiagramContainerShape.OnZIndexChanged(System.Int32,System.Int32)">
             <summary>
             Called when the ZIndex changes.
             </summary>
             <param name="newValue">The new value.</param>
+            <param name="oldValue">The old value.</param>
         </member>
         <member name="M:Telerik.WinControls.UI.RadDiagramContainerShape.OnPropertyChanged(System.String)">
             <summary>
             Called when a property value changed.
             </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadDiagramContainerShape.OnSizeChanged(Telerik.Windows.Diagrams.Core.Size,Telerik.Windows.Diagrams.Core.Size)">
+            <summary>
+            Called when the size changes.
+            </summary>
+            <param name="newSize">The new size.</param>
+            <param name="oldSize">The old size.</param>
         </member>
         <member name="M:Telerik.WinControls.UI.RadDiagramContainerShape.OnPositionChanged(Telerik.Windows.Diagrams.Core.Point,Telerik.Windows.Diagrams.Core.Point)">
             <summary>
@@ -11563,7 +11704,7 @@
             Called when [geometry changed].
             </summary>
             <param name="oldGeometry">The old geometry.</param>
-            <param name="newGeometry">The new geometry.</param>
+            <param name="newGeometry">The new geometry.</param> 
         </member>
         <member name="T:Telerik.WinControls.UI.RadDiagramTextShape">
             <summary>
@@ -11659,760 +11800,23 @@
             
             </summary>
         </member>
-        <member name="T:Telerik.WinForms.Diagram.ColorEditor.KnownColors">
+        <member name="T:Telerik.Windows.Diagrams.Core.ReflexiveRouter">
             <summary>
-            A helper class containing named colors.
+            Represents a connection router for reflexive connections.
             </summary>
         </member>
-        <member name="M:Telerik.WinForms.Diagram.ColorEditor.KnownColors.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+        <member name="M:Telerik.Windows.Diagrams.Core.ReflexiveRouter.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Telerik.WinForms.Diagram.ColorEditor.KnownColors"/> class.
+            Initializes a new instance of the <see cref="T:Telerik.Windows.Diagrams.Core.ReflexiveRouter" /> class.
             </summary>
-            <param name="info">The info.</param>
-            <param name="context">The context.</param>
         </member>
-        <member name="M:Telerik.WinForms.Diagram.ColorEditor.KnownColors.#ctor">
+        <member name="M:Telerik.Windows.Diagrams.Core.ReflexiveRouter.GetRoutePoints(Telerik.Windows.Diagrams.Core.IConnection,System.Boolean)">
             <summary>
-            Initializes a new instance of the <see cref="T:Telerik.WinForms.Diagram.ColorEditor.KnownColors" /> class.
+            Gets the route points.
             </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.AliceBlue">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.AntiqueWhite">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Aqua">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Aquamarine">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Azure">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Beige">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Bisque">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Black">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.BlanchedAlmond">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Blue">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.BlueViolet">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Brown">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.BurlyWood">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.CadetBlue">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Chartreuse">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Chocolate">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Coral">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.CornflowerBlue">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Cornsilk">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Crimson">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Cyan">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkBlue">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkCyan">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkGoldenrod">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkGray">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkGreen">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkKhaki">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkMagenta">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkOliveGreen">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkOrange">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkOrchid">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkRed">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkSalmon">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkSeaGreen">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkSlateBlue">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkSlateGray">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkTurquoise">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkViolet">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DeepPink">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DeepSkyBlue">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DimGray">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DodgerBlue">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Firebrick">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.FloralWhite">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.ForestGreen">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Fuchsia">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Gainsboro">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.GhostWhite">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Gold">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Goldenrod">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Gray">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Green">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.GreenYellow">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Honeydew">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.HotPink">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.IndianRed">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Indigo">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Ivory">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Khaki">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Lavender">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LavenderBlush">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LawnGreen">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LemonChiffon">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LightBlue">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LightCoral">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LightCyan">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LightGoldenrodYellow">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LightGray">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LightGreen">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LightPink">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LightSalmon">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LightSeaGreen">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LightSkyBlue">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LightSlateGray">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LightSteelBlue">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LightYellow">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Lime">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LimeGreen">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Linen">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Magenta">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Maroon">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.MediumAquamarine">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.MediumBlue">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.MediumOrchid">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.MediumPurple">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.MediumSeaGreen">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.MediumSlateBlue">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.MediumSpringGreen">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.MediumTurquoise">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.MediumVioletRed">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.MidnightBlue">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.MintCream">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.MistyRose">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Moccasin">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.NavajoWhite">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Navy">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.OldLace">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Olive">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.OliveDrab">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Orange">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.OrangeRed">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Orchid">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.PaleGoldenrod">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.PaleGreen">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.PaleTurquoise">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.PaleVioletRed">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.PapayaWhip">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.PeachPuff">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Peru">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Pink">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Plum">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.PowderBlue">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Purple">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Red">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.RosyBrown">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.RoyalBlue">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.SaddleBrown">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Salmon">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.SandyBrown">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.SeaGreen">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.SeaShell">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Sienna">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Silver">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.SkyBlue">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.SlateBlue">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.SlateGray">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Snow">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.SpringGreen">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.SteelBlue">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Tan">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Teal">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Thistle">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Tomato">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Transparent">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Turquoise">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Violet">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Wheat">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.White">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.WhiteSmoke">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Yellow">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.YellowGreen">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:Telerik.Windows.Controls.Diagrams.RadDiagramPrintSettings">
-            <summary>
-            Encapsulates the diagram printing info.
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Controls.Diagrams.RadDiagramPrintSettings.Default">
-            <summary>
-            The default diagram print settings.
-            </summary>
-        </member>
-        <member name="M:Telerik.Windows.Controls.Diagrams.RadDiagramPrintSettings.#ctor(System.String,Telerik.Windows.Diagrams.Core.Thickness,System.Double)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Telerik.Windows.Controls.Diagrams.RadDiagramPrintSettings"/> class.
-            </summary>
-            <param name="title">The title of the printed document.</param>
-            <param name="pageMargin">The margin between page content and page edges.</param>
-            <param name="dpi">The resolution used during printing.</param>
-        </member>
-        <member name="P:Telerik.Windows.Controls.Diagrams.RadDiagramPrintSettings.Title">
-            <summary>
-            Gets the title of the printed document.
-            </summary>
-        </member>
-        <member name="P:Telerik.Windows.Controls.Diagrams.RadDiagramPrintSettings.PageMargin">
-            <summary>
-            Gets the margin between page content and page edges.
-            </summary>
-        </member>
-        <member name="P:Telerik.Windows.Controls.Diagrams.RadDiagramPrintSettings.Dpi">
-            <summary>
-            Gets the resolution used during printing.
-            </summary>
+            <param name="connection">The connection.</param>
+            <param name="showLastLine">Whether the last line segment should be shown.</param>
+            <returns></returns>
         </member>
         <member name="T:Telerik.Windows.Diagrams.Core.BaseCollection`1">
             <summary>
@@ -17412,6 +16816,11 @@
             Gets or sets the container margin.
             </summary>
         </member>
+        <member name="P:Telerik.Windows.Diagrams.Core.DiagramConstants.SelectionRectInflationValue">
+            <summary>
+            The margin around the selected shapes.
+            </summary>
+        </member>
         <member name="P:Telerik.Windows.Diagrams.Core.DiagramConstants.RotationAngleSnap">
             <summary>
             Gets or sets the snapping angle when rotating items.
@@ -17510,6 +16919,11 @@
         <member name="P:Telerik.Windows.Diagrams.Core.DiagramConstants.SegmentStep">
             <summary>
             Gets the segment step.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Diagrams.Core.DiagramConstants.MinimumShapeDistanceOnConnectionManipulationSnap">
+            <summary>
+            The minimum distance from a connection to a given shape so that snapping occurs.
             </summary>
         </member>
         <member name="T:Telerik.Windows.Diagrams.Core.Direction">
@@ -17699,6 +17113,11 @@
         <member name="F:Telerik.Windows.Diagrams.Core.ExecuteAction.Redo">
             <summary>
             Redo action.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Diagrams.Core.ExecuteAction.ClearUndoRedo">
+            <summary>
+            UndoRedoService cleared action.
             </summary>
         </member>
         <member name="T:Telerik.Windows.Diagrams.Core.GlidingStyle">
@@ -21368,6 +20787,14 @@
             </summary>
             <param name="point">The point.</param>
         </member>
+        <member name="M:Telerik.Windows.Diagrams.Core.IGraphInternal.IntersectingConnections(Telerik.Windows.Diagrams.Core.IConnection,System.Nullable{Telerik.Windows.Diagrams.Core.Rect})">
+            <summary>
+            Returns all intersecting connections that are below or above the given one.
+            </summary>
+            <param name="connection">The connection.</param>
+            <param name="bounds">The bounds. If null the connection's Bounds are used.</param>
+            <returns></returns>
+        </member>
         <member name="M:Telerik.Windows.Diagrams.Core.IGraphInternal.RaiseItemsChangingEvent(System.Collections.Specialized.NotifyCollectionChangedAction,System.Collections.IEnumerable,System.Collections.IEnumerable)">
             <summary>
             Raises the items changing event.
@@ -21550,9 +20977,15 @@
         </member>
         <member name="P:Telerik.Windows.Diagrams.Core.AStarRouter.ShapeCrossPenalty">
             <summary>
-            Gets or sets the penalty value for a connection which crosses a diagram shape.
+            Gets or sets the penalty value for a connection which crosses a diagram shapes other than its start or end shape.
             Note: This property has effect only when <see cref="P:Telerik.Windows.Diagrams.Core.AStarRouter.AvoidShapes"/> is True.
             Default value is 1.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Diagrams.Core.AStarRouter.StartOrEndShapeWallPenalty">
+            <summary>
+            Gets or sets the penalty value for a connection which crosses its start or end shape.
+            Default value is 3.
             </summary>
         </member>
         <member name="P:Telerik.Windows.Diagrams.Core.AStarRouter.AvoidConnectionOverlap">
@@ -23593,6 +23026,7 @@
             <summary>
             The service supporting the hit-testing when selecting diagram items through a selection rectangle or a click-select action.
             </summary>
+            <remarks>Note that this service can be customized and plugged into the <see cref="T:Telerik.Windows.Diagrams.Core.ServiceLocator"/>.</remarks>
         </member>
         <member name="P:Telerik.Windows.Diagrams.Core.IHitTestService.ShapeUnderMouse">
             <summary>
@@ -23610,6 +23044,12 @@
             </summary>
             <param name="point">The point.</param>
             <returns></returns>
+        </member>
+        <member name="M:Telerik.Windows.Diagrams.Core.IHitTestService.GetTopConnectionsUnderPoint(Telerik.Windows.Diagrams.Core.Point)">
+            <summary>
+            Gets the shapes under point.
+            </summary>
+            <param name="point">The point.</param>		
         </member>
         <member name="M:Telerik.Windows.Diagrams.Core.IHitTestService.GetShapesNearPoint(Telerik.Windows.Diagrams.Core.Point,System.Double)">
             <summary>
@@ -23859,6 +23299,12 @@
             <summary>
              Gets or sets the floating connection router.
             </summary>
+        </member>
+        <member name="P:Telerik.Windows.Diagrams.Core.IRoutingService.ReflexiveRouter">
+            <summary>
+            Gets or sets the reflexive router.
+            </summary>
+            <value>The reflexive router.</value>
         </member>
         <member name="P:Telerik.Windows.Diagrams.Core.IRoutingService.AutoUpdate">
             <summary>
@@ -24451,6 +23897,12 @@
             <summary>
             Gets or sets the floating connection router.
             </summary>
+        </member>
+        <member name="P:Telerik.Windows.Diagrams.Core.RoutingService.ReflexiveRouter">
+            <summary>
+            Gets or sets the reflexive router.
+            </summary>
+            <value>The reflexive router.</value>
         </member>
         <member name="P:Telerik.Windows.Diagrams.Core.RoutingService.AutoUpdate">
             <summary>
@@ -25686,11 +25138,6 @@
         <member name="F:Telerik.Windows.Diagrams.Core.ManipulationPointType.Last">
             <summary>
             The last manipulation point.
-            </summary>
-        </member>
-        <member name="F:Telerik.Windows.Diagrams.Core.ManipulationPointType.Corner">
-            <summary>
-            The corner point of a segmented line.
             </summary>
         </member>
         <member name="F:Telerik.Windows.Diagrams.Core.ManipulationPointType.SegmentHandle">
@@ -27150,6 +26597,11 @@
             <param name="startConnector">The start connector.</param>
             <param name="endConnector">The end connector.</param>
         </member>
+        <member name="M:Telerik.Windows.Diagrams.Core.ShapeUtilities.GetNearestFreeConnector(Telerik.Windows.Diagrams.Core.IConnection,Telerik.Windows.Diagrams.Core.Point,Telerik.Windows.Diagrams.Core.IShape)">
+            <summary>
+            Gets the closest connector position which is not already used.
+            </summary>
+        </member>
         <member name="M:Telerik.Windows.Diagrams.Core.ShapeUtilities.GetNearestConnector(Telerik.Windows.Diagrams.Core.IShape,Telerik.Windows.Diagrams.Core.Point)">
             <summary>
             Gets the closest connector position.
@@ -27259,6 +26711,7 @@
             <param name="realPoint">The real point.</param>
             <param name="rectangle">The rectangle which acts as a barycentric coordinate system.</param>
             <returns>The percentages wrapped in a Point.</returns>
+            <see cref="M:Telerik.Windows.Diagrams.Core.Utils.PointFromBarycentricPercentage(Telerik.Windows.Diagrams.Core.Point,Telerik.Windows.Diagrams.Core.Size)">The complementary method.</see>        
         </member>
         <member name="M:Telerik.Windows.Diagrams.Core.Utils.BetweenOrEqual(System.Double,System.Double,System.Double)">
             <summary>
@@ -27937,6 +27390,13 @@
             </summary>
             <returns>Returns <c>true</c> if a point (non-NaN values) is found, otherwise <c>false</c>.</returns>
         </member>
+        <member name="M:Telerik.Windows.Diagrams.Core.Utils.GetBounds(System.Collections.Generic.IList{Telerik.Windows.Diagrams.Core.Point})">
+            <summary>
+            Gets the enclosing bounds of the points collection.
+            </summary>
+            <param name="points">The points collection.</param>
+            <returns></returns>
+        </member>
         <member name="M:Telerik.Windows.Diagrams.Core.Utils.ApproximateEllipse(Telerik.Windows.Diagrams.Core.Rect,System.Double)">
             <summary>
             Approximates the ellipse defined by the given bounds.
@@ -27987,6 +27447,13 @@
             <param name="value">The value.</param>
             <returns></returns>
         </member>
+        <member name="M:Telerik.Windows.Diagrams.Core.Utils.ToInvariant(System.Single)">
+            <summary>
+            Converts the double to a string representation.
+            </summary>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
         <member name="M:Telerik.Windows.Diagrams.Core.Utils.ToInvariant(System.Int32)">
             <summary>
             Converts the integer to a string representation.
@@ -28013,6 +27480,7 @@
             Attempts to convert the given string to a list of points.
             </summary>
             <seealso cref="M:Telerik.Windows.Diagrams.Core.Utils.ToPoint(System.String)"/>
+            <seealso cref="M:Telerik.Windows.Diagrams.Core.Utils.ToInvariant(System.Collections.Generic.IList{Telerik.Windows.Diagrams.Core.Point})"/>
             <param name="points">The string representation of the points.</param>
             <returns>The points corresponding to the serialized form.</returns>
         </member>
@@ -30063,7 +29531,7 @@
         </member>
         <member name="P:Telerik.Windows.Diagrams.Core.UndoRedoService.RedoBufferSize">
             <summary>
-            Gets or sets the size of the redo buffer.
+            Gets or sets the size of the redo buffer. Must be non-negative integer.
             </summary>
             <value>
             The size of the redo buffer.
@@ -30071,7 +29539,7 @@
         </member>
         <member name="P:Telerik.Windows.Diagrams.Core.UndoRedoService.UndoBufferSize">
             <summary>
-            Gets or sets the size of the undo buffer.
+            Gets or sets the size of the undo buffer. Must be non-negative integer.
             </summary>
             <value>
             The size of the undo buffer.
@@ -30143,14 +29611,14 @@
             The name of the connection tool.
             </summary>
         </member>
-        <member name="F:Telerik.Windows.Diagrams.Core.ConnectionTool.activeConnection">
-            <summary>
-            The connection being manipulated (created).
-            </summary>
-        </member>
         <member name="M:Telerik.Windows.Diagrams.Core.ConnectionTool.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:Telerik.Windows.Diagrams.Core.ConnectionTool"/> class.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Diagrams.Core.ConnectionTool.ActiveConnection">
+            <summary>
+            The connection being manipulated (created).
             </summary>
         </member>
         <member name="P:Telerik.Windows.Diagrams.Core.ConnectionTool.ManipulationService">
@@ -30185,11 +29653,12 @@
         <member name="M:Telerik.Windows.Diagrams.Core.ConnectionTool.KeyDown(Telerik.Windows.Diagrams.Core.KeyArgs)">
             <inheritdoc />
         </member>
-        <member name="M:Telerik.Windows.Diagrams.Core.ConnectionTool.GetManipulationCommand(Telerik.Windows.Diagrams.Core.ManipulationEventArgs)">
+        <member name="M:Telerik.Windows.Diagrams.Core.ConnectionTool.GetManipulationCommand(Telerik.Windows.Diagrams.Core.ManipulationEventArgs,Telerik.Windows.Diagrams.Core.IGraphInternal)">
             <summary>
             Gets an undoable command for the given manipulation.
             </summary>
             <param name="manipulationArgs">The <see cref="T:Telerik.Windows.Diagrams.Core.ManipulationEventArgs" /> instance containing the event data.</param>
+            <param name="graph">The current graph.</param>
             <returns></returns>
         </member>
         <member name="T:Telerik.Windows.Diagrams.Core.ConnectionManipulationTool">
@@ -30836,6 +30305,11 @@
             <param name="item">The item.</param>
             <param name="container">The recycled container.</param>
         </member>
+        <member name="M:Telerik.Windows.Diagrams.Core.IContainerGeneratorInternal`1.ClearCache">
+            <summary>
+            Clears the recycled containers cache.
+            </summary>
+        </member>
         <member name="T:Telerik.Windows.Diagrams.Core.IContainerGeneratorInternal">
             <summary>
             The internal, extended version of the <see cref="T:Telerik.Windows.Diagrams.Core.IContainerGenerator"/> interface which is not pluggable in the <see cref="T:Telerik.Windows.Diagrams.Core.ServiceLocator"/>.
@@ -30906,6 +30380,11 @@
             </summary>
             <param name="item">The item.</param>
             <param name="container">The recycled container.</param>
+        </member>
+        <member name="M:Telerik.Windows.Diagrams.Core.IContainerGeneratorInternal.ClearCache">
+            <summary>
+            Clears the recycled containers cache.
+            </summary>
         </member>
         <member name="T:Telerik.Windows.Diagrams.Core.ISupportContainerGenerator`1">
             <summary>
@@ -31087,6 +30566,11 @@
             <param name="item">The item.</param>
             <param name="container">The recycled container.</param>
         </member>
+        <member name="M:Telerik.Windows.Diagrams.Core.GenericContainerGenerator`1.ClearCache">
+            <summary>
+            Clears the recycled containers cache.
+            </summary>
+        </member>
         <member name="M:Telerik.Windows.Diagrams.Core.GenericContainerGenerator`1.Telerik#Windows#Diagrams#Core#IContainerGeneratorInternal#RemoveContainer(System.Object)">
             <summary>
             Removes the container.
@@ -31160,6 +30644,11 @@
             </summary>
             <param name="item">The item.</param>
             <param name="container">The recycled container.</param>
+        </member>
+        <member name="M:Telerik.Windows.Diagrams.Core.GenericContainerGenerator`1.Telerik#Windows#Diagrams#Core#IContainerGeneratorInternal#ClearCache">
+            <summary>
+            Clears the recycled containers cache.
+            </summary>
         </member>
         <member name="M:Telerik.Windows.Diagrams.Core.GenericContainerGenerator`1.OnStatusChanged">
             <summary>
@@ -32361,6 +31850,761 @@
             <returns>
             A <see cref="T:System.String"/> that represents this instance.
             </returns>
+        </member>
+        <member name="T:Telerik.Windows.Controls.Diagrams.RadDiagramPrintSettings">
+            <summary>
+            Encapsulates the diagram printing info.
+            </summary>
+        </member>
+        <member name="F:Telerik.Windows.Controls.Diagrams.RadDiagramPrintSettings.Default">
+            <summary>
+            The default diagram print settings.
+            </summary>
+        </member>
+        <member name="M:Telerik.Windows.Controls.Diagrams.RadDiagramPrintSettings.#ctor(System.String,Telerik.Windows.Diagrams.Core.Thickness,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.Windows.Controls.Diagrams.RadDiagramPrintSettings"/> class.
+            </summary>
+            <param name="title">The title of the printed document.</param>
+            <param name="pageMargin">The margin between page content and page edges.</param>
+            <param name="dpi">The resolution used during printing.</param>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Diagrams.RadDiagramPrintSettings.Title">
+            <summary>
+            Gets the title of the printed document.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Diagrams.RadDiagramPrintSettings.PageMargin">
+            <summary>
+            Gets the margin between page content and page edges.
+            </summary>
+        </member>
+        <member name="P:Telerik.Windows.Controls.Diagrams.RadDiagramPrintSettings.Dpi">
+            <summary>
+            Gets the resolution used during printing.
+            </summary>
+        </member>
+        <member name="T:Telerik.WinForms.Diagram.ColorEditor.KnownColors">
+            <summary>
+            A helper class containing named colors.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinForms.Diagram.ColorEditor.KnownColors.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.WinForms.Diagram.ColorEditor.KnownColors"/> class.
+            </summary>
+            <param name="info">The info.</param>
+            <param name="context">The context.</param>
+        </member>
+        <member name="M:Telerik.WinForms.Diagram.ColorEditor.KnownColors.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.WinForms.Diagram.ColorEditor.KnownColors" /> class.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.AliceBlue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.AntiqueWhite">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Aqua">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Aquamarine">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Azure">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Beige">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Bisque">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Black">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.BlanchedAlmond">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Blue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.BlueViolet">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Brown">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.BurlyWood">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.CadetBlue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Chartreuse">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Chocolate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Coral">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.CornflowerBlue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Cornsilk">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Crimson">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Cyan">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkBlue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkCyan">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkGoldenrod">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkGray">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkGreen">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkKhaki">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkMagenta">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkOliveGreen">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkOrange">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkOrchid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkRed">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkSalmon">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkSeaGreen">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkSlateBlue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkSlateGray">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkTurquoise">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DarkViolet">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DeepPink">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DeepSkyBlue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DimGray">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.DodgerBlue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Firebrick">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.FloralWhite">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.ForestGreen">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Fuchsia">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Gainsboro">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.GhostWhite">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Gold">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Goldenrod">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Gray">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Green">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.GreenYellow">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Honeydew">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.HotPink">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.IndianRed">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Indigo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Ivory">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Khaki">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Lavender">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LavenderBlush">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LawnGreen">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LemonChiffon">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LightBlue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LightCoral">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LightCyan">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LightGoldenrodYellow">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LightGray">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LightGreen">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LightPink">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LightSalmon">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LightSeaGreen">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LightSkyBlue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LightSlateGray">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LightSteelBlue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LightYellow">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Lime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.LimeGreen">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Linen">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Magenta">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Maroon">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.MediumAquamarine">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.MediumBlue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.MediumOrchid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.MediumPurple">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.MediumSeaGreen">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.MediumSlateBlue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.MediumSpringGreen">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.MediumTurquoise">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.MediumVioletRed">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.MidnightBlue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.MintCream">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.MistyRose">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Moccasin">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.NavajoWhite">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Navy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.OldLace">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Olive">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.OliveDrab">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Orange">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.OrangeRed">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Orchid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.PaleGoldenrod">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.PaleGreen">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.PaleTurquoise">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.PaleVioletRed">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.PapayaWhip">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.PeachPuff">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Peru">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Pink">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Plum">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.PowderBlue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Purple">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Red">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.RosyBrown">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.RoyalBlue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.SaddleBrown">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Salmon">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.SandyBrown">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.SeaGreen">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.SeaShell">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Sienna">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Silver">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.SkyBlue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.SlateBlue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.SlateGray">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Snow">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.SpringGreen">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.SteelBlue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Tan">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Teal">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Thistle">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Tomato">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Transparent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Turquoise">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Violet">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Wheat">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.White">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.WhiteSmoke">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.Yellow">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Diagram.ColorEditor.KnownColors.YellowGreen">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:RadDiagram.Diagrams.Toolbox.RadDiagramToolboxControl">
             <summary>

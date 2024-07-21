@@ -1228,6 +1228,14 @@
             </summary>
             <param name="sheetName">Excel workbook.</param>
         </member>
+        <member name="M:Telerik.WinControls.Export.SpreadExportRenderer.ReplaceWorksheet(System.String)">
+            <summary>
+            Removes an existing worksheet from the workbook and creates a new one with the same name.
+            If there is no sheet with this name, only creates a new one.
+            </summary>
+            <param name="sheetName">The name of the sheet to be replaced.</param>
+            <returns>A value indicating whether a sheet with given name was removed.</returns>
+        </member>
         <member name="M:Telerik.WinControls.Export.SpreadExportRenderer.SetWorksheetRowHeight(System.Int32,System.Int32,System.Boolean)">
             <summary>
             Sets height of row in worksheet by given row index.

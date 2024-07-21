@@ -3049,6 +3049,16 @@
             </remarks>
             <seealso cref="P:Telerik.WinControls.UI.GridViewColumn.AllowGroup"/>
         </member>
+        <member name="P:Telerik.WinControls.UI.GridViewImageColumn.AllowFiltering">
+            <summary>
+            Gets or sets a value indicating whether the user can filter by this column.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.GridViewImageColumn.AllowSearching">
+            <summary>
+            Gets or sets a value indicating whether the user can search by this column.
+            </summary>
+        </member>
         <member name="P:Telerik.WinControls.UI.GridViewImageColumn.ReadOnly">
             <remarks>
             This property is overridden to always return true since this column cannot be edited.
@@ -3356,26 +3366,6 @@
             <param name="uniqueName">A string value referring to the unique name of the column.</param>
             <param name="fieldName">A string value referring to the field name to which the column is bound.</param>
         </member>
-        <member name="E:Telerik.WinControls.UI.GridViewSparklineColumn.PaintSparkFill">
-            <summary>
-            Fires when a spark line will be painted using the <see cref="T:System.Drawing.SolidBrush"/> class.
-            </summary>
-        </member>
-        <member name="E:Telerik.WinControls.UI.GridViewSparklineColumn.PaintSparkStroke">
-            <summary>
-            Fires when a spark line will be painted using the <see cref="T:System.Drawing.Pen"/> class.
-            </summary>
-        </member>
-        <member name="E:Telerik.WinControls.UI.GridViewSparklineColumn.SparkDataNeeded">
-            <summary>
-            Fires before adding data points to the <see cref="T:Telerik.WinControls.UI.SparkSeries"/>object. It is possible to cancel the event and bind the series.
-            </summary>
-        </member>
-        <member name="E:Telerik.WinControls.UI.GridViewSparklineColumn.SparklineElementExporting">
-            <summary>
-            Fires while exporting or printing the sparkline cell element, allows customization of the series.
-            </summary>
-        </member>
         <member name="P:Telerik.WinControls.UI.GridViewSparklineColumn.DataType">
             <summary>
             Gets or sets the data type of the column.
@@ -3423,7 +3413,7 @@
         </member>
         <member name="P:Telerik.WinControls.UI.GridViewSparklineColumn.AllowGroup">
             <remarks> 
-            This property is overriden to always return false since grouping by this column is not allowed.
+            This property is overridden to always return false since grouping by this column is not allowed.
             </remarks>
             <seealso cref="P:Telerik.WinControls.UI.GridViewColumn.AllowGroup"/>
         </member>
@@ -3446,7 +3436,7 @@
         </member>
         <member name="M:Telerik.WinControls.UI.GridViewSparklineColumn.RaiseOnSparkDataNeeded(System.Object,Telerik.WinControls.UI.SparkDataNeededEventArgs)">
             <summary>
-            Called before addin data points to the series.
+            Called before adding data points to the series.
             </summary>6
             <param name="sender">The sender which is the <see cref="T:Telerik.WinControls.UI.GridSparklineCellElement" /> object.</param>
             <param name="args">The <see cref="T:Telerik.WinControls.UI.SparkDataNeededEventArgs" /> instance containing the event data.</param>
@@ -3471,6 +3461,26 @@
             </summary>
             <param name="sender">The sender which is raising the event on the column.</param>
             <param name="args">The <see cref="T:Telerik.WinControls.UI.SparklineElementExportingEventArgs" /> instance containing the event data.</param>
+        </member>
+        <member name="E:Telerik.WinControls.UI.GridViewSparklineColumn.PaintSparkFill">
+            <summary>
+            Fires when a spark line will be painted using the <see cref="T:System.Drawing.SolidBrush"/> class.
+            </summary>
+        </member>
+        <member name="E:Telerik.WinControls.UI.GridViewSparklineColumn.PaintSparkStroke">
+            <summary>
+            Fires when a spark line will be painted using the <see cref="T:System.Drawing.Pen"/> class.
+            </summary>
+        </member>
+        <member name="E:Telerik.WinControls.UI.GridViewSparklineColumn.SparkDataNeeded">
+            <summary>
+            Fires before adding data points to the <see cref="T:Telerik.WinControls.UI.SparkSeries"/>object. It is possible to cancel the event and bind the series.
+            </summary>
+        </member>
+        <member name="E:Telerik.WinControls.UI.GridViewSparklineColumn.SparklineElementExporting">
+            <summary>
+            Fires while exporting or printing the sparkline cell element, allows customization of the series.
+            </summary>
         </member>
         <member name="T:Telerik.WinControls.UI.GridViewTextBoxColumn">
             <summary> 
@@ -4810,6 +4820,27 @@
             Gets the new value.
             </summary>
             <value>The new value.</value>
+        </member>
+        <member name="T:Telerik.WinControls.UI.GridViewAutoGeneratingColumnEventHandler">
+            <summary>
+            Represents the method that will handle the <see cref="E:Telerik.WinControls.UI.RadGridView.AutoGeneratingColumn"></see> event of a <see cref="T:Telerik.WinControls.UI.RadGridView"></see>.
+            </summary>
+        </member>
+        <member name="T:Telerik.WinControls.UI.GridViewAutoGeneratingColumnEventArgs">
+            <summary>
+            Provides data for RadGridView control <see cref="E:Telerik.WinControls.UI.RadGridView.AutoGeneratingColumn"/> event. Cancellable.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.GridViewAutoGeneratingColumnEventArgs.#ctor(Telerik.WinControls.UI.GridViewDataColumn)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.WinControls.UI.GridViewAutoGeneratingColumnEventArgs"/> class.
+            </summary>
+            <param name="column">The column.</param>
+        </member>
+        <member name="P:Telerik.WinControls.UI.GridViewAutoGeneratingColumnEventArgs.Column">
+            <summary>
+            Gets or sets the column.
+            </summary>
         </member>
         <member name="T:Telerik.WinControls.UI.GridViewBindingCompleteEventHandler">
             <summary>Represents the method that will handle the <see cref="E:Telerik.WinControls.UI.RadGridView.DataBindingComplete"></see> event of a <see cref="T:Telerik.WinControls.UI.RadGridView"></see>.</summary>
@@ -9629,7 +9660,7 @@
         </member>
         <member name="P:Telerik.WinControls.UI.GridViewTemplate.AllowColumnHeaderContextMenu">
             <summary>
-            Gets or sets a value indicating whether context menu is displayed when user rightclicks on a column header.
+            Gets or sets a value indicating whether context menu is displayed when user right-clicks on a column header.
             </summary>
         </member>
         <member name="P:Telerik.WinControls.UI.GridViewTemplate.AllowRowHeaderContextMenu">
@@ -9653,7 +9684,7 @@
         </member>
         <member name="P:Telerik.WinControls.UI.GridViewTemplate.AllowAutoSizeColumns">
             <summary>
-            Gets or sets a value indicating whether user can automatically resize a column to fit its content by doubleclicking the right border of header cell.
+            Gets or sets a value indicating whether user can automatically resize a column to fit its content by double-clicking the right border of header cell.
             </summary>                
             <seealso cref="P:Telerik.WinControls.UI.GridViewTemplate.Columns"/>
             <seealso cref="T:Telerik.WinControls.UI.GridViewDataColumn"/>
@@ -9697,7 +9728,7 @@
         </member>
         <member name="P:Telerik.WinControls.UI.GridViewTemplate.EnableCustomSorting">
             <summary>
-            Gets or sets a value indicating whether the data can be sorted programatically. 
+            Gets or sets a value indicating whether the data can be sorted programmatically. 
             </summary>
         </member>
         <member name="P:Telerik.WinControls.UI.GridViewTemplate.EnableGrouping">
@@ -9708,7 +9739,7 @@
         </member>
         <member name="P:Telerik.WinControls.UI.GridViewTemplate.EnableCustomGrouping">
             <summary>
-            Gets or sets a value indicating whether the data can be grouped programatically. 
+            Gets or sets a value indicating whether the data can be grouped programmatically. 
             </summary>
         </member>
         <member name="P:Telerik.WinControls.UI.GridViewTemplate.EnableFiltering">
@@ -9718,7 +9749,7 @@
         </member>
         <member name="P:Telerik.WinControls.UI.GridViewTemplate.EnableCustomFiltering">
             <summary>
-            Gets or sets a value indicating whether the data can be filtered programatically. 
+            Gets or sets a value indicating whether the data can be filtered programmatically. 
             </summary>
         </member>
         <member name="P:Telerik.WinControls.UI.GridViewTemplate.EnableHierarchyFiltering">
@@ -9734,7 +9765,7 @@
         </member>
         <member name="P:Telerik.WinControls.UI.GridViewTemplate.BottomPinnedRowsMode">
             <summary>
-            Gets or sets a value indicating how bottom pinned rows are layed out.
+            Gets or sets a value indicating how bottom pinned rows are laid out.
             </summary>
             <seealso cref="T:Telerik.WinControls.UI.GridViewBottomPinnedRowsMode"/>
         </member>
@@ -9797,13 +9828,13 @@
         </member>
         <member name="P:Telerik.WinControls.UI.GridViewTemplate.AddNewRowPosition">
             <summary>
-            Gets or sets a vlue indicating the location of the new row in the view template.
+            Gets or sets a value indicating the location of the new row in the view template.
             </summary>        
             <seealso cref="P:Telerik.WinControls.UI.GridViewTemplate.AllowAddNewRow"/>
         </member>
         <member name="P:Telerik.WinControls.UI.GridViewTemplate.SearchRowPosition">
             <summary>
-            Gets or sets a vlue indicating the location of the search row in the view template.
+            Gets or sets a value indicating the location of the search row in the view template.
             </summary>        
             <seealso cref="P:Telerik.WinControls.UI.GridViewTemplate.AllowSearchRow"/>
         </member>
@@ -9819,7 +9850,7 @@
         </member>
         <member name="P:Telerik.WinControls.UI.GridViewTemplate.ShowFilteringRow">
             <summary>
-            Gets or sets a value indicating wheter the filtering row should be visible.
+            Gets or sets a value indicating whether the filtering row should be visible.
             </summary>
         </member>
         <member name="P:Telerik.WinControls.UI.GridViewTemplate.ShowHeaderCellButtons">
@@ -9857,6 +9888,13 @@
             <summary>
             Gets or sets a value indicating whether summary rows will be shown for each group.
             The property is only relevant when the grid is grouped.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.GridViewTemplate.ShowCollapsedGroupSummaries">
+            <summary>
+            Indicates whether summary rows of collapsed groups will be visible.
+            If true the summary rows will not be hidden when the group is collapsed.
+            Note that the <see cref="T:Telerik.WinControls.UI.GridViewGroupRowInfo"/> has the same property and it has higher priority. If you need different behavior for different groups/group levels, you can use the <see cref="E:Telerik.WinControls.UI.RadGridView.CreateRowInfo"/> event and set the ShowCollapsedGroupSummaries of each group individually.
             </summary>
         </member>
         <member name="P:Telerik.WinControls.UI.GridViewTemplate.ShowParentGroupSummaries">
@@ -9974,7 +10012,7 @@
         </member>
         <member name="P:Telerik.WinControls.UI.GridViewTemplate.FilterPredicate">
             <summary>
-            Gets or sets the filter predicate used fpr filtering operation.
+            Gets or sets the filter predicate used for filtering operation.
             </summary>
             <value>The filter.</value>
         </member>
@@ -11853,14 +11891,13 @@
             Ends the cell copy.
             </summary>
         </member>
-        <member name="M:Telerik.WinControls.UI.MasterGridViewTemplate.CopySelected(Telerik.WinControls.UI.GridViewCellInfo[],System.String,System.Boolean,System.Boolean,System.Text.StringBuilder)">
+        <member name="M:Telerik.WinControls.UI.MasterGridViewTemplate.CopySelected(Telerik.WinControls.UI.GridViewCellInfo[],System.String,System.Boolean,System.Text.StringBuilder)">
             <summary>
             Copies the selected cells to the clipboard.
             </summary>
             <param name="cells">The cells whos content will be copied to the clipboard.</param>
             <param name="format">The clipboard format.</param>
             <param name="cut">Wheather cells values should be cut.</param>
-            <param name="cutOperation">True if performing a cut operation, otherwise false.</param> //This is needed as we copy data in several text formats but delete the actual cell value on the last iteration.
             <param name="content">The final content to be put into the clipboard.</param>
         </member>
         <member name="P:Telerik.WinControls.UI.MasterGridViewTemplate.ClipboardCutMode">
@@ -12099,6 +12136,23 @@
             Gets or sets text for the group row.
             </summary>
         </member>
+        <member name="P:Telerik.WinControls.UI.GridViewGroupRowInfo.ShowCollapsedGroupSummaries">
+            <summary>
+            Indicates whether summary rows of collapsed groups will be visible.
+            If true the summary rows will not be hidden when the group is collapsed.
+            Note that by default the value of this property is inherited from the ViewTemplate <see cref="P:Telerik.WinControls.UI.GridViewGroupRowInfo.ShowCollapsedGroupSummaries"/> property. If you need different behavior for different groups/group levels, you can use the <see cref="E:Telerik.WinControls.UI.RadGridView.CreateRowInfo"/> event and set the ShowCollapsedGroupSummaries of each group individually.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.GridViewGroupRowInfo.PinPosition">
+            <summary>
+            PinPosition property is not supported for GridViewGroupRowInfo.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.GridViewGroupRowInfo.IsPinned">
+            <summary>
+            IsPinned property is not supported for GridViewGroupRowInfo.
+            </summary>
+        </member>
         <member name="M:Telerik.WinControls.UI.GridViewGroupRowInfo.GetSummary">
             <summary>
             Gets the summary text for the row.
@@ -12112,7 +12166,7 @@
         </member>
         <member name="M:Telerik.WinControls.UI.GridViewGroupRowInfo.BuildSummaryRows">
             <summary>
-            Builds the summary rows.
+            Builds the summary rows if necessary - when groups or summaries are changed.
             </summary>
         </member>
         <member name="M:Telerik.WinControls.UI.GridViewGroupRowInfo.BuildTopSummaryRows">
@@ -12123,16 +12177,6 @@
         <member name="M:Telerik.WinControls.UI.GridViewGroupRowInfo.BuildBottomSummaryRows">
             <summary>
             Builds the bottom summary rows.
-            </summary>
-        </member>
-        <member name="P:Telerik.WinControls.UI.GridViewGroupRowInfo.PinPosition">
-            <summary>
-            PinPosition property is not supported for GridViewGroupRowInfo.
-            </summary>
-        </member>
-        <member name="P:Telerik.WinControls.UI.GridViewGroupRowInfo.IsPinned">
-            <summary>
-            IsPinned property is not supported for GridViewGroupRowInfo.
             </summary>
         </member>
         <member name="T:Telerik.WinControls.UI.GridViewHierarchyRowInfo">
@@ -13619,6 +13663,13 @@
             Gets or sets a value indicating whether the group panel will show scroll bars or it will expand to show all group headers.
             </summary>
         </member>
+        <member name="P:Telerik.WinControls.UI.RadGridView.ShowCollapsedGroupSummaries">
+            <summary>
+            Indicates whether summary rows of collapsed groups will be visible.
+            If true the summary rows will not be hidden when the group is collapsed.
+            Note that the <see cref="T:Telerik.WinControls.UI.GridViewGroupRowInfo"/> has the same property and it has higher priority. If you need different behavior for different groups/group levels, you can use the <see cref="E:Telerik.WinControls.UI.RadGridView.CreateRowInfo"/> event and set the ShowCollapsedGroupSummaries of each group individually.
+            </summary>
+        </member>
         <member name="P:Telerik.WinControls.UI.RadGridView.BackColor">
             <summary>
             RadGridView consists of multiple visual elements and separate settings are provided to customize their appearance.
@@ -14430,7 +14481,7 @@
         </member>
         <member name="M:Telerik.WinControls.UI.RadGridView.OnColumnChooserItemElementCreating(System.Object,Telerik.WinControls.UI.ColumnChooserItemElementCreatingEventArgs)">
             <summary>
-            Called when thecolumn chooser item element is creating.
+            Called when the column chooser item element is creating.
             </summary>
             <param name="sender">The sender.</param>
             <param name="e">The <see cref="T:Telerik.WinControls.UI.ColumnChooserItemElementCreatingEventArgs" /> instance containing the event data.</param>
@@ -14786,6 +14837,19 @@
             </summary>
             <param name="sender">The sender.</param>
             <param name="args">The <see cref="T:Telerik.WinControls.UI.GridViewCellEventArgs" /> instance containing the event data.</param>
+        </member>
+        <member name="E:Telerik.WinControls.UI.RadGridView.AutoGeneratingColumn">
+            <summary>
+            Fires each time a new column is automatically generated and is about to be added to the columns of <see cref="T:Telerik.WinControls.UI.RadGridView"/>.
+            Occurs one time for each public, non-static property in the bound data type when the DataSource property is changed and the AutoGenerateColumns property is true.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.RadGridView.OnAutoGeneratingColumn(System.Object,Telerik.WinControls.UI.GridViewAutoGeneratingColumnEventArgs)">
+            <summary>
+            Called when a new column is automatically generated.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:Telerik.WinControls.UI.GridViewAutoGeneratingColumnEventArgs"/> instance containing the event data.</param>
         </member>
         <member name="E:Telerik.WinControls.UI.RadGridView.ColumnWidthChanged">
             <summary>
@@ -15222,7 +15286,7 @@
         </member>
         <member name="M:Telerik.WinControls.UI.RadGridView.ClearSelection">
             <summary>
-            Clears the current selection by unselecting all selected cells (rows).
+            Clears the current selection by deselecting all selected cells (rows).
             </summary>
         </member>
         <member name="M:Telerik.WinControls.UI.RadGridView.SelectAll">
@@ -25252,6 +25316,20 @@
             </summary>
             <param name="args">The arguments for the PanGesture event.</param>
         </member>
+        <member name="M:Telerik.WinControls.UI.GroupPanelElement.ShouldMeasureChild(Telerik.WinControls.RadElement)">
+            <summary>
+            Gets a value indicating, whether a child will be measured during the MeasureOverride.
+            </summary>
+            <param name="child">The child.</param>
+            <returns>Whether the child will be measured in MeasureOverride.</returns>
+        </member>
+        <member name="M:Telerik.WinControls.UI.GroupPanelElement.ShouldArrangeChild(Telerik.WinControls.RadElement)">
+            <summary>
+            Gets a value indicating, whether a child will be arranged during the ArrangeOverride.
+            </summary>
+            <param name = "child" > The child.</param>
+            <returns>Whether the child will be arranged in ArrangeOverride.</returns>
+        </member>
         <member name="M:Telerik.WinControls.UI.GroupPanelElement.MeasureOverride(System.Drawing.SizeF)">
             <summary>
             Measures the space required by the <see cref="T:Telerik.WinControls.RadElement" />
@@ -27279,6 +27357,11 @@
             </summary>
             <value>The arrow position.</value>
         </member>
+        <member name="P:Telerik.WinControls.UI.GridHeaderCellElement.IsGridGrouped">
+            <summary>
+            Gets a value indicating whether the grid is grouped.
+            </summary>
+        </member>
         <member name="M:Telerik.WinControls.UI.GridHeaderCellElement.CanDragCore(System.Drawing.Point)">
             <summary>
             Determines whether the element may be dragged.
@@ -27351,7 +27434,7 @@
             </summary>
             <param name="contextMenuManager">The <see cref="T:Telerik.WinControls.UI.IContextMenuManager"/> to merge with.</param>
             <param name="parameters">merge parameters.</param>
-            <returns>The merged context menu, if successfull.</returns>
+            <returns>The merged context menu, if successful.</returns>
         </member>
         <member name="M:Telerik.WinControls.UI.GridHeaderCellElement.ShowContextMenu">
             <summary>
@@ -27470,6 +27553,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Telerik.WinControls.UI.GridHeaderCellElement.ToggleColumnSortOrder">
+            <summary>
+            Toggles the column sort order.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Telerik.WinControls.UI.GridHeaderCellElement.UpdateFilterButtonVisibility">
             <summary>
             Updates the filter button visibility.
@@ -27498,12 +27587,6 @@
             Occurs when some column property changes its value.
             </summary>
             <param name="e">An instance of RadPropertyChangedEventArgs</param>
-        </member>
-        <member name="M:Telerik.WinControls.UI.GridHeaderCellElement.OnMouseUp(System.Windows.Forms.MouseEventArgs)">
-            <summary>
-            Raises the <see cref="E:MouseUp" /> event.
-            </summary>
-            <param name="e">The <see cref="T:System.Windows.Forms.MouseEventArgs" /> instance containing the event data.</param>
         </member>
         <member name="M:Telerik.WinControls.UI.GridHeaderCellElement.OnZoomGesture(Telerik.WinControls.ZoomGestureEventArgs)">
             <summary>
@@ -39449,172 +39532,10 @@
             Represents the rows traverser in RadGridView
             </summary>
         </member>
-        <member name="M:Telerik.WinControls.UI.GridTraverser.#ctor(Telerik.WinControls.UI.IHierarchicalRow)">
+        <member name="T:Telerik.WinControls.UI.GridTraverser.TraversalModes">
             <summary>
-            Initializes a new instance of the <see cref="T:Telerik.WinControls.UI.GridTraverser" /> class.
+            Defines members on how to traverse the rows.
             </summary>
-            <param name="hierarchyRow">The hierarchy row.</param>
-        </member>
-        <member name="M:Telerik.WinControls.UI.GridTraverser.#ctor(Telerik.WinControls.UI.GridTraverser)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Telerik.WinControls.UI.GridTraverser" /> class.
-            </summary>
-            <param name="gridTraverser">The grid traverser.</param>
-        </member>
-        <member name="M:Telerik.WinControls.UI.GridTraverser.#ctor(Telerik.WinControls.UI.GridViewInfo)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Telerik.WinControls.UI.GridTraverser" /> class.
-            </summary>
-            <param name="viewInfo">The view info.</param>
-        </member>
-        <member name="M:Telerik.WinControls.UI.GridTraverser.#ctor(Telerik.WinControls.UI.GridViewInfo,Telerik.WinControls.UI.GridTraverser.TraversalModes)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Telerik.WinControls.UI.GridTraverser" /> class.
-            </summary>
-            <param name="viewInfo">The view info.</param>
-            <param name="type">The type.</param>
-        </member>
-        <member name="M:Telerik.WinControls.UI.GridTraverser.MovePrevious">
-            <summary>
-            Moves the previous.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Telerik.WinControls.UI.GridTraverser.MoveToEnd">
-            <summary>
-            Moves to end.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Telerik.WinControls.UI.GridTraverser.Current">
-            <summary>
-            Gets the element in the collection at the current position of the enumerator.
-            </summary>
-            <returns>The element in the collection at the current position of the enumerator.
-            </returns>
-            <value></value>
-        </member>
-        <member name="M:Telerik.WinControls.UI.GridTraverser.Dispose">
-            <summary>
-            Performs application-defined tasks associated with freeing, releasing,
-            or resetting unmanaged resources.
-            </summary>
-        </member>
-        <member name="M:Telerik.WinControls.UI.GridTraverser.MoveNext">
-            <summary>
-            Advances the enumerator to the next element of the collection.
-            </summary>
-            <exception cref="T:System.InvalidOperationException">The collection was modified
-            after the enumerator was created. </exception>
-            <returns>
-            true if the enumerator was successfully advanced to the next element;
-            false if the enumerator has passed the end of the collection.
-            </returns>
-        </member>
-        <member name="M:Telerik.WinControls.UI.GridTraverser.Reset">
-            <summary>
-            Sets the enumerator to its initial position, which is before the first
-            element in the collection.
-            </summary>
-            <exception cref="T:System.InvalidOperationException">The collection was modified
-            after the enumerator was created. </exception>
-        </member>
-        <member name="M:Telerik.WinControls.UI.GridTraverser.GetEnumerator">
-            <summary>
-            Returns an enumerator that iterates through a collection.
-            </summary>
-            <returns>
-            An <see cref="T:System.Collections.IEnumerator" /> object that can be
-            used to iterate through the collection.
-            </returns>
-        </member>
-        <member name="P:Telerik.WinControls.UI.GridTraverser.Position">
-            <summary>
-            Gets or sets the position.
-            </summary>
-            <value>The position.</value>
-        </member>
-        <member name="P:Telerik.WinControls.UI.GridTraverser.ProcessHierarchy">
-            <summary>
-            Gets or sets the process hierarchy.
-            </summary>
-            <value>The process hierarchy.</value>
-        </member>
-        <member name="P:Telerik.WinControls.UI.GridTraverser.TraversalMode">
-            <summary>
-            Gets or sets the traversal mode.
-            </summary>
-            <value>The traversal mode.</value>
-        </member>
-        <member name="P:Telerik.WinControls.UI.GridTraverser.Traverser">
-            <summary>
-            Gets the traverser.
-            </summary>
-            <value>The traverser.</value>
-        </member>
-        <member name="E:Telerik.WinControls.UI.GridTraverser.RowVisible">
-            <summary>
-            Occurs when the row is visible.
-            </summary>
-        </member>
-        <member name="M:Telerik.WinControls.UI.GridTraverser.OnRowVisible">
-            <summary>
-            Called when the row is visible.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Telerik.WinControls.UI.GridTraverser.CanStepInHierarchy">
-            <summary>
-            Determines whether this instance can step in hierarchy.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Telerik.WinControls.UI.GridTraverser.GetRowCount">
-            <summary>
-            Gets the row count.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Telerik.WinControls.UI.GridTraverser.GoToRow(Telerik.WinControls.UI.GridViewRowInfo)">
-            <summary>
-            Goes to row.
-            </summary>
-            <param name="row">The row.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Telerik.WinControls.UI.GridTraverser.GoToRowIndex(System.Int32)">
-            <summary>
-            Goes to the row at the specific index.
-            </summary>
-            <param name="rowIndex">Index of the row.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Telerik.WinControls.UI.GridTraverser.MoveForward(Telerik.WinControls.UI.GridViewRowInfo)">
-            <summary>
-            Moves the forward.
-            </summary>
-            <param name="row">The row.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Telerik.WinControls.UI.GridTraverser.MoveBackward(Telerik.WinControls.UI.GridViewRowInfo)">
-            <summary>
-            Moves the backward.
-            </summary>
-            <param name="row">The row.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Telerik.WinControls.UI.GridTraverser.CreateTraverser(Telerik.WinControls.UI.GridViewInfo)">
-            <summary>
-            Creates the traverser.
-            </summary>
-            <param name="viewInfo">The view info.</param>
-        </member>
-        <member name="M:Telerik.WinControls.UI.GridTraverser.IsNewRowVisible(Telerik.WinControls.UI.GridViewNewRowInfo)">
-            <summary>
-            Determines whether the new row visible.
-            </summary>
-            <param name="newRow">The new row.</param>
-            <returns></returns>
         </member>
         <member name="T:Telerik.WinControls.UI.GridTraverser.GridTraverserPosition">
             <summary>
@@ -39684,6 +39605,173 @@
             Serves as a hash function for a particular type.
             </summary>
             <returns>A hash code for the current <see cref="T:System.Object" />.</returns>
+        </member>
+        <member name="M:Telerik.WinControls.UI.GridTraverser.#ctor(Telerik.WinControls.UI.IHierarchicalRow)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.WinControls.UI.GridTraverser" /> class.
+            </summary>
+            <param name="hierarchyRow">The hierarchy row.</param>
+        </member>
+        <member name="M:Telerik.WinControls.UI.GridTraverser.#ctor(Telerik.WinControls.UI.GridTraverser)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.WinControls.UI.GridTraverser" /> class.
+            </summary>
+            <param name="gridTraverser">The grid traverser.</param>
+        </member>
+        <member name="M:Telerik.WinControls.UI.GridTraverser.#ctor(Telerik.WinControls.UI.GridViewInfo)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.WinControls.UI.GridTraverser" /> class.
+            </summary>
+            <param name="viewInfo">The view info.</param>
+        </member>
+        <member name="M:Telerik.WinControls.UI.GridTraverser.#ctor(Telerik.WinControls.UI.GridViewInfo,Telerik.WinControls.UI.GridTraverser.TraversalModes)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.WinControls.UI.GridTraverser" /> class.
+            </summary>
+            <param name="viewInfo">The view info.</param>
+            <param name="type">The type.</param>
+        </member>
+        <member name="P:Telerik.WinControls.UI.GridTraverser.Position">
+            <summary>
+            Gets or sets the position.
+            </summary>
+            <value>The position.</value>
+        </member>
+        <member name="P:Telerik.WinControls.UI.GridTraverser.ProcessHierarchy">
+            <summary>
+            Gets or sets the process hierarchy.
+            </summary>
+            <value>The process hierarchy.</value>
+        </member>
+        <member name="P:Telerik.WinControls.UI.GridTraverser.TraversalMode">
+            <summary>
+            Gets or sets the traversal mode.
+            </summary>
+            <value>The traversal mode.</value>
+        </member>
+        <member name="P:Telerik.WinControls.UI.GridTraverser.Traverser">
+            <summary>
+            Gets the traverser.
+            </summary>
+            <value>The traverser.</value>
+        </member>
+        <member name="M:Telerik.WinControls.UI.GridTraverser.MovePrevious">
+            <summary>
+            Moves the previous.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.WinControls.UI.GridTraverser.MoveToEnd">
+            <summary>
+            Moves to end.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Telerik.WinControls.UI.GridTraverser.Current">
+            <summary>
+            Gets the element in the collection at the current position of the enumerator.
+            </summary>
+            <returns>The element in the collection at the current position of the enumerator.
+            </returns>
+            <value></value>
+        </member>
+        <member name="M:Telerik.WinControls.UI.GridTraverser.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing,
+            or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.GridTraverser.MoveNext">
+            <summary>
+            Advances the enumerator to the next element of the collection.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">The collection was modified
+            after the enumerator was created. </exception>
+            <returns>
+            true if the enumerator was successfully advanced to the next element;
+            false if the enumerator has passed the end of the collection.
+            </returns>
+        </member>
+        <member name="M:Telerik.WinControls.UI.GridTraverser.Reset">
+            <summary>
+            Sets the enumerator to its initial position, which is before the first
+            element in the collection.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">The collection was modified
+            after the enumerator was created. </exception>
+        </member>
+        <member name="M:Telerik.WinControls.UI.GridTraverser.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator" /> object that can be
+            used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="M:Telerik.WinControls.UI.GridTraverser.GetRowCount">
+            <summary>
+            Gets the row count.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.WinControls.UI.GridTraverser.GoToRow(Telerik.WinControls.UI.GridViewRowInfo)">
+            <summary>
+            Goes to row.
+            </summary>
+            <param name="row">The row.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.WinControls.UI.GridTraverser.GoToRowIndex(System.Int32)">
+            <summary>
+            Goes to the row at the specific index.
+            </summary>
+            <param name="rowIndex">Index of the row.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.WinControls.UI.GridTraverser.MoveForward(Telerik.WinControls.UI.GridViewRowInfo)">
+            <summary>
+            Moves the forward.
+            </summary>
+            <param name="row">The row.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.WinControls.UI.GridTraverser.MoveBackward(Telerik.WinControls.UI.GridViewRowInfo)">
+            <summary>
+            Moves the backward.
+            </summary>
+            <param name="row">The row.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.WinControls.UI.GridTraverser.IsNewRowVisible(Telerik.WinControls.UI.GridViewNewRowInfo)">
+            <summary>
+            Determines whether the new row visible.
+            </summary>
+            <param name="newRow">The new row.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.WinControls.UI.GridTraverser.CanStepInHierarchy">
+            <summary>
+            Determines whether this instance can step in hierarchy.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.WinControls.UI.GridTraverser.CreateTraverser(Telerik.WinControls.UI.GridViewInfo)">
+            <summary>
+            Creates the traverser.
+            </summary>
+            <param name="viewInfo">The view info.</param>
+        </member>
+        <member name="E:Telerik.WinControls.UI.GridTraverser.RowVisible">
+            <summary>
+            Occurs when the row is visible.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.GridTraverser.OnRowVisible">
+            <summary>
+            Called when the row is visible.
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Telerik.WinControls.UI.GroupRowTraverser">
             <summary>
@@ -41443,7 +41531,7 @@
             <summary>
             Gets the current row.
             </summary>
-            <param name="getFirstPosibleIfNoCurrentAvailable">The get first posible if no current available.</param>
+            <param name="getFirstPossibleIfNoCurrentAvailable">The get first possible if no current available.</param>
             <returns></returns>
         </member>
         <member name="M:Telerik.WinControls.UI.RadMultiColumnComboBoxElement.SelectFirstRow">
@@ -42313,7 +42401,7 @@
         </member>
         <member name="P:Telerik.WinControls.Export.GridViewSpreadExport.ExportFormat">
             <summary>
-            Gets or sets the format of the exported file - PDF, XLSX, CSV or TXT.
+            Gets or sets the format of the exported file - XLSX, PDF, CSV, TXT or XLS.
             </summary>
             <value>
             The file extension.
@@ -42321,11 +42409,12 @@
         </member>
         <member name="P:Telerik.WinControls.Export.GridViewSpreadExport.FileExportMode">
             <summary>
-            Specifies whether a file will be exported as a new file, or if a file with the same name already exists at the specified path, a new sheet will be added to it.
+            Specifies how the file will be exported: as a new file, a new sheet in existing file or will override a sheet with given name.
             </summary>
             <value>
-            ExportAsNewSheetInExistingFile - will add a new sheet to the specified file, if it exists
-            ExportInNewFile - will create/override the specified file
+            <see cref="F:Telerik.WinControls.Export.FileExportMode.NewSheetInExistingFile"/> - will add a new sheet to the specified file, if it exists
+            <see cref="F:Telerik.WinControls.Export.FileExportMode.CreateOrOverrideFile"/> - will create/override the specified file
+            <see cref="F:Telerik.WinControls.Export.FileExportMode.CreateOrOverrideSheet"/> - will create/override the specified sheet
             </value>
         </member>
         <member name="P:Telerik.WinControls.Export.GridViewSpreadExport.ExportGroupedColumns">
@@ -42478,6 +42567,14 @@
             <summary>
             Cancels an asynchronous export operation.
             </summary>
+        </member>
+        <member name="M:Telerik.WinControls.Export.GridViewSpreadExport.GetNextHierarchyView(Telerik.WinControls.UI.GridViewHierarchyRowInfo,Telerik.WinControls.UI.GridViewInfo)">
+            <summary>
+            Gets the next available view in the child templates of a hierarchy row.
+            </summary>
+            <param name="hierarchyRow"></param>
+            <param name="currentView">If current view is null, returns the first available view.</param>
+            <returns></returns>
         </member>
         <member name="T:Telerik.WinControls.Export.SpreadStreamCellFormattingEventHandler">
             <summary>

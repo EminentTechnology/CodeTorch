@@ -259,181 +259,6 @@
             the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="T:Telerik.WinControls.UI.PivotGrid.Dialogs.PivotGridDialogsFactory">
-            <summary>
-            Represents the factory for the pivot dialogs.
-            </summary>
-        </member>
-        <member name="P:Telerik.WinControls.UI.PivotGrid.Dialogs.PivotGridDialogsFactory.DefaultPivotGridDialogsFactory">
-            <summary>
-            Gets the default pivot grid dialogs factory.
-            </summary>
-            <value>The default pivot grid dialogs factory.</value>
-        </member>
-        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.PivotGridDialogsFactory.CreateAggregateOptionsDialog">
-            <summary>
-            Creates the aggregate options dialog.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.PivotGridDialogsFactory.CreateCalculationOptionsDialog">
-            <summary>
-            Creates the calculation options dialog.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.PivotGridDialogsFactory.CreateNumberFormatOptionsDialog">
-            <summary>
-            Creates the number format options dialog.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.PivotGridDialogsFactory.CreateSortOptionsDialog">
-            <summary>
-            Creates the sort options dialog.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.PivotGridDialogsFactory.CreateLabelFilterOptionsDialog">
-            <summary>
-            Creates the label filter options dialog.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.PivotGridDialogsFactory.CreateValueFilterOptionsDialog">
-            <summary>
-            Creates the value filter options dialog.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.PivotGridDialogsFactory.CreateTop10FilterOptionsDialog">
-            <summary>
-            Creates the top10 filter options dialog.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="T:Telerik.WinControls.UI.PivotGrid.Dialogs.Top10FilterOptionsDialog">
-            <summary>
-            Represents the dialog for the top 10 filter options. 
-            </summary>
-        </member>
-        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.Top10FilterOptionsDialog.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:Telerik.WinControls.UI.PivotGrid.Dialogs.Top10FilterOptionsDialog" /> class.
-            </summary>
-        </member>
-        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.Top10FilterOptionsDialog.OnLoad(System.EventArgs)">
-            <summary>
-            Raises the <see cref="E:System.Windows.Forms.Form.Load" /> event.
-            </summary>
-            <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
-        </member>
-        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.Top10FilterOptionsDialog.OnThemeChanged">
-            <summary>
-            Called when the theme is changed.
-            </summary>
-        </member>
-        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.Top10FilterOptionsDialog.LoadSettings(Telerik.Pivot.Core.Filtering.ITopGroupsFilter,System.String,System.Collections.Generic.IEnumerable{System.String})">
-            <summary>
-            Loads the settings.
-            </summary>
-            <param name="filter">The filter.</param>
-            <param name="fieldName">Name of the field.</param>
-            <param name="aggregateNames">The aggregate names.</param>
-        </member>
-        <member name="P:Telerik.WinControls.UI.PivotGrid.Dialogs.Top10FilterOptionsDialog.SelectedFilter">
-            <summary>
-            Gets the selected filter.
-            </summary>
-            <value>The selected filter.</value>
-        </member>
-        <member name="F:Telerik.WinControls.UI.PivotGrid.Dialogs.Top10FilterOptionsDialog.components">
-            <summary>
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.Top10FilterOptionsDialog.Dispose(System.Boolean)">
-            <summary>
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.Top10FilterOptionsDialog.InitializeComponent">
-            <summary>
-            Required method for Designer support - do not modify
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="T:Telerik.WinControls.UI.PivotGrid.Dialogs.ValueFilterOptionsDialog">
-            <summary>
-            Represents the dialog for the value filter options. 
-            </summary>
-        </member>
-        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.ValueFilterOptionsDialog.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:Telerik.WinControls.UI.PivotGrid.Dialogs.ValueFilterOptionsDialog" /> class.
-            </summary>
-        </member>
-        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.ValueFilterOptionsDialog.OnLoad(System.EventArgs)">
-            <summary>
-            Raises the <see cref="E:System.Windows.Forms.Form.Load" /> event.
-            </summary>
-            <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
-        </member>
-        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.ValueFilterOptionsDialog.OnThemeChanged">
-            <summary>
-            Called when the theme is changed.
-            </summary>
-        </member>
-        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.ValueFilterOptionsDialog.LoadSettings(Telerik.Pivot.Core.Filtering.IValueGroupFilter,Telerik.Pivot.Core.Filtering.IValueGroupFilterHost,System.String,System.Collections.Generic.IEnumerable{System.String})">
-            <summary>
-            Loads the settings.
-            </summary>
-            <param name="filter">The filter.</param>
-            <param name="filterHost">The filter host.</param>
-            <param name="fieldName">Name of the field.</param>
-            <param name="aggregateNames">The aggregate names.</param>
-        </member>
-        <member name="P:Telerik.WinControls.UI.PivotGrid.Dialogs.ValueFilterOptionsDialog.SelectedFilter">
-            <summary>
-            Gets the selected filter.
-            </summary>
-            <value>The selected filter.</value>
-        </member>
-        <member name="F:Telerik.WinControls.UI.PivotGrid.Dialogs.ValueFilterOptionsDialog.components">
-            <summary>
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.ValueFilterOptionsDialog.Dispose(System.Boolean)">
-            <summary>
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.ValueFilterOptionsDialog.InitializeComponent">
-            <summary>
-            Required method for Designer support - do not modify
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="T:Telerik.WinControls.UI.PivotGrid.Dialogs.ValueSourceOption">
-            <summary>
-            Represents the value source option. 
-            </summary>
-        </member>
-        <member name="P:Telerik.WinControls.UI.PivotGrid.Dialogs.ValueSourceOption.DisplayName">
-            <summary>
-            Gets or sets the display name.
-            </summary>
-            <value>The display name.</value>
-        </member>
-        <member name="P:Telerik.WinControls.UI.PivotGrid.Dialogs.ValueSourceOption.AggregateIndex">
-            <summary>
-            Gets or sets the index of the aggregate.
-            </summary>
-            <value>The index of the aggregate.</value>
-        </member>
         <member name="T:Telerik.WinControls.UI.PivotGrid.Dialogs.IAggregateOptionsDialog">
             <summary>
             Represents a dialog for the aggregate options.
@@ -833,6 +658,59 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="T:Telerik.WinControls.UI.PivotGrid.Dialogs.PivotGridDialogsFactory">
+            <summary>
+            Represents the factory for the pivot dialogs.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.PivotGrid.Dialogs.PivotGridDialogsFactory.DefaultPivotGridDialogsFactory">
+            <summary>
+            Gets the default pivot grid dialogs factory.
+            </summary>
+            <value>The default pivot grid dialogs factory.</value>
+        </member>
+        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.PivotGridDialogsFactory.CreateAggregateOptionsDialog">
+            <summary>
+            Creates the aggregate options dialog.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.PivotGridDialogsFactory.CreateCalculationOptionsDialog">
+            <summary>
+            Creates the calculation options dialog.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.PivotGridDialogsFactory.CreateNumberFormatOptionsDialog">
+            <summary>
+            Creates the number format options dialog.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.PivotGridDialogsFactory.CreateSortOptionsDialog">
+            <summary>
+            Creates the sort options dialog.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.PivotGridDialogsFactory.CreateLabelFilterOptionsDialog">
+            <summary>
+            Creates the label filter options dialog.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.PivotGridDialogsFactory.CreateValueFilterOptionsDialog">
+            <summary>
+            Creates the value filter options dialog.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.PivotGridDialogsFactory.CreateTop10FilterOptionsDialog">
+            <summary>
+            Creates the top10 filter options dialog.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Telerik.WinControls.UI.PivotGrid.Dialogs.SortOptionsDialog">
             <summary>
             Represents the sort options dialog.
@@ -889,6 +767,128 @@
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
             </summary>
+        </member>
+        <member name="T:Telerik.WinControls.UI.PivotGrid.Dialogs.Top10FilterOptionsDialog">
+            <summary>
+            Represents the dialog for the top 10 filter options. 
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.Top10FilterOptionsDialog.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.WinControls.UI.PivotGrid.Dialogs.Top10FilterOptionsDialog" /> class.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.Top10FilterOptionsDialog.OnLoad(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:System.Windows.Forms.Form.Load" /> event.
+            </summary>
+            <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
+        </member>
+        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.Top10FilterOptionsDialog.OnThemeChanged">
+            <summary>
+            Called when the theme is changed.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.Top10FilterOptionsDialog.LoadSettings(Telerik.Pivot.Core.Filtering.ITopGroupsFilter,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Loads the settings.
+            </summary>
+            <param name="filter">The filter.</param>
+            <param name="fieldName">Name of the field.</param>
+            <param name="aggregateNames">The aggregate names.</param>
+        </member>
+        <member name="P:Telerik.WinControls.UI.PivotGrid.Dialogs.Top10FilterOptionsDialog.SelectedFilter">
+            <summary>
+            Gets the selected filter.
+            </summary>
+            <value>The selected filter.</value>
+        </member>
+        <member name="F:Telerik.WinControls.UI.PivotGrid.Dialogs.Top10FilterOptionsDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.Top10FilterOptionsDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.Top10FilterOptionsDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Telerik.WinControls.UI.PivotGrid.Dialogs.ValueFilterOptionsDialog">
+            <summary>
+            Represents the dialog for the value filter options. 
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.ValueFilterOptionsDialog.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.WinControls.UI.PivotGrid.Dialogs.ValueFilterOptionsDialog" /> class.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.ValueFilterOptionsDialog.OnLoad(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:System.Windows.Forms.Form.Load" /> event.
+            </summary>
+            <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
+        </member>
+        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.ValueFilterOptionsDialog.OnThemeChanged">
+            <summary>
+            Called when the theme is changed.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.ValueFilterOptionsDialog.LoadSettings(Telerik.Pivot.Core.Filtering.IValueGroupFilter,Telerik.Pivot.Core.Filtering.IValueGroupFilterHost,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Loads the settings.
+            </summary>
+            <param name="filter">The filter.</param>
+            <param name="filterHost">The filter host.</param>
+            <param name="fieldName">Name of the field.</param>
+            <param name="aggregateNames">The aggregate names.</param>
+        </member>
+        <member name="P:Telerik.WinControls.UI.PivotGrid.Dialogs.ValueFilterOptionsDialog.SelectedFilter">
+            <summary>
+            Gets the selected filter.
+            </summary>
+            <value>The selected filter.</value>
+        </member>
+        <member name="F:Telerik.WinControls.UI.PivotGrid.Dialogs.ValueFilterOptionsDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.ValueFilterOptionsDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Telerik.WinControls.UI.PivotGrid.Dialogs.ValueFilterOptionsDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Telerik.WinControls.UI.PivotGrid.Dialogs.ValueSourceOption">
+            <summary>
+            Represents the value source option. 
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.PivotGrid.Dialogs.ValueSourceOption.DisplayName">
+            <summary>
+            Gets or sets the display name.
+            </summary>
+            <value>The display name.</value>
+        </member>
+        <member name="P:Telerik.WinControls.UI.PivotGrid.Dialogs.ValueSourceOption.AggregateIndex">
+            <summary>
+            Gets or sets the index of the aggregate.
+            </summary>
+            <value>The index of the aggregate.</value>
         </member>
         <member name="T:Telerik.WinControls.UI.PivotReportFilterPopup">
             <summary>
@@ -5766,7 +5766,7 @@
         </member>
         <member name="P:Telerik.WinControls.Export.PivotGridSpreadExport.ExportFormat">
             <summary>
-            Gets or sets the format of the exported file - PDF, XLSX, CSV or TXT.
+            Gets or sets the format of the exported file - XLSX, PDF, CSV, TXT or XLS.
             </summary>
             <value>
             The file extension.
@@ -5774,11 +5774,12 @@
         </member>
         <member name="P:Telerik.WinControls.Export.PivotGridSpreadExport.FileExportMode">
             <summary>
-            Specifies whether a file will be exported as a new file, or if a file with the same name already exists at the specified path, a new sheet will be added to it.
+            Specifies how the file will be exported: as a new file, a new sheet in existing file or will override a sheet with given name.
             </summary>
             <value>
-            ExportAsNewSheetInExistingFile - will add a new sheet to the specified file, if it exists
-            ExportInNewFile - will create/override the specified file
+            <see cref="F:Telerik.WinControls.Export.FileExportMode.NewSheetInExistingFile"/> - will add a new sheet to the specified file, if it exists
+            <see cref="F:Telerik.WinControls.Export.FileExportMode.CreateOrOverrideFile"/> - will create/override the specified file
+            <see cref="F:Telerik.WinControls.Export.FileExportMode.CreateOrOverrideSheet"/> - will create/override the specified sheet
             </value>
         </member>
         <member name="P:Telerik.WinControls.Export.PivotGridSpreadExport.LayoutType">
@@ -6509,6 +6510,73 @@
             The underlying data extraction is in progress.
             </summary>
         </member>
+        <member name="T:Telerik.Pivot.Core.Fields.HierarchicalPropertyDescriptorFieldInfo">
+            <summary>
+            An <see cref="T:Telerik.Pivot.Core.Fields.IPivotFieldInfo"/> that uses <see cref="T:System.ComponentModel.PropertyDescriptor"/> to identify a property, which has child properties.
+            </summary>
+        </member>
+        <member name="M:Telerik.Pivot.Core.Fields.HierarchicalPropertyDescriptorFieldInfo.#ctor(System.ComponentModel.PropertyDescriptor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.Pivot.Core.Fields.HierarchicalPropertyDescriptorFieldInfo"/> class.
+            </summary>
+            <param name="propertyDescriptor">The property descriptor.</param>
+        </member>
+        <member name="P:Telerik.Pivot.Core.Fields.HierarchicalPropertyDescriptorFieldInfo.Children">
+            <inheritdoc />
+        </member>
+        <member name="P:Telerik.Pivot.Core.Fields.HierarchicalPropertyDescriptorFieldInfo.Parent">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Fields.HierarchicalPropertyDescriptorFieldInfo.GetValue(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="T:Telerik.Pivot.Core.Fields.HierarchicalPropertyInfoFieldInfo">
+            <summary>
+            An <see cref="T:Telerik.Pivot.Core.Fields.IPivotFieldInfo"/> that has child properties.
+            </summary>
+        </member>
+        <member name="M:Telerik.Pivot.Core.Fields.HierarchicalPropertyInfoFieldInfo.#ctor(System.Reflection.PropertyInfo,System.Func{System.Object,System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.Pivot.Core.Fields.HierarchicalPropertyInfoFieldInfo"/> class.
+            </summary>
+            <param name="propertyInfo">The property info.</param>
+            <param name="propertyAccess">The property access.</param>
+        </member>
+        <member name="P:Telerik.Pivot.Core.Fields.HierarchicalPropertyInfoFieldInfo.Children">
+            <inheritdoc />
+        </member>
+        <member name="P:Telerik.Pivot.Core.Fields.HierarchicalPropertyInfoFieldInfo.Parent">
+            <inheritdoc />
+        </member>
+        <member name="T:Telerik.Pivot.Core.Fields.IHierarchicalFieldInfo">
+            <summary>
+            Represents an abstraction of a property info with child properties.
+            </summary>
+        </member>
+        <member name="P:Telerik.Pivot.Core.Fields.IHierarchicalFieldInfo.Children">
+            <summary>
+            Gets the children of this property.
+            </summary>
+        </member>
+        <member name="P:Telerik.Pivot.Core.Fields.IHierarchicalFieldInfo.Parent">
+            <summary>
+            Gets the parent of this property.
+            </summary>
+        </member>
+        <member name="T:Telerik.Pivot.Core.Fields.EnumerableFieldDescriptionsExtractor">
+            <summary>
+            An <see cref="T:Telerik.Pivot.Core.Fields.IFieldInfoExtractor"/> for <see cref="T:System.Collections.IEnumerable"/> source.
+            </summary>
+        </member>
+        <member name="M:Telerik.Pivot.Core.Fields.EnumerableFieldDescriptionsExtractor.#ctor(System.Collections.IEnumerable)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.Pivot.Core.Fields.EnumerableFieldDescriptionsExtractor"/> class.
+            </summary>
+            <param name="source">The source.</param>
+        </member>
+        <member name="M:Telerik.Pivot.Core.Fields.EnumerableFieldDescriptionsExtractor.GetDescriptions">
+            <inheritdoc />
+        </member>
         <member name="T:Telerik.Pivot.Core.Fields.ContainerNode">
             <summary>
             Represents a node in <see cref="T:Telerik.Pivot.Core.Fields.FieldInfoNode"/> hierarchy.
@@ -6776,7 +6844,7 @@
         </member>
         <member name="T:Telerik.Pivot.Core.Fields.PropertyDescriptorFieldInfo">
             <summary>
-            An <see cref="T:Telerik.Pivot.Core.Fields.IPivotFieldInfo"/> that uses <see cref="T:System.ComponentModel.PropertyDescriptor"/> to identify a property.
+            An <see cref="T:Telerik.Pivot.Core.Fields.IPivotFieldInfo"/> that uses <see cref="P:Telerik.Pivot.Core.Fields.PropertyDescriptorFieldInfo.PropertyDescriptor"/> to identify a property.
             </summary>
         </member>
         <member name="M:Telerik.Pivot.Core.Fields.PropertyDescriptorFieldInfo.#ctor(System.ComponentModel.PropertyDescriptor)">
@@ -6784,6 +6852,11 @@
             Initializes a new instance of the <see cref="T:Telerik.Pivot.Core.Fields.PropertyDescriptorFieldInfo"/> class.
             </summary>
             <param name="propertyDescriptor">The property descriptor.</param>
+        </member>
+        <member name="P:Telerik.Pivot.Core.Fields.PropertyDescriptorFieldInfo.PropertyDescriptor">
+            <summary>
+            Gets the property descriptor for this field info.
+            </summary>
         </member>
         <member name="M:Telerik.Pivot.Core.Fields.PropertyDescriptorFieldInfo.GetValue(System.Object)">
             <inheritdoc />
@@ -6899,20 +6972,6 @@
             <param name="table">The table.</param>
         </member>
         <member name="M:Telerik.Pivot.Core.Fields.DataTableFieldDescriptionsExtractor.GetDescriptions">
-            <inheritdoc />
-        </member>
-        <member name="T:Telerik.Pivot.Core.Fields.EnumerableFieldDescriptionsExtractor">
-            <summary>
-            An <see cref="T:Telerik.Pivot.Core.Fields.IFieldInfoExtractor"/> for <see cref="T:System.Collections.IEnumerable"/> source.
-            </summary>
-        </member>
-        <member name="M:Telerik.Pivot.Core.Fields.EnumerableFieldDescriptionsExtractor.#ctor(System.Collections.IEnumerable)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Telerik.Pivot.Core.Fields.EnumerableFieldDescriptionsExtractor"/> class.
-            </summary>
-            <param name="source">The source.</param>
-        </member>
-        <member name="M:Telerik.Pivot.Core.Fields.EnumerableFieldDescriptionsExtractor.GetDescriptions">
             <inheritdoc />
         </member>
         <member name="T:Telerik.Pivot.Core.Fields.FieldDescriptionProviderBase">
@@ -7073,14 +7132,14 @@
             A base class for various FieldInfo classes presenting local sources. An implementation of <see cref="T:Telerik.Pivot.Core.Fields.IFieldDescriptionProvider"/>.
             </summary>
         </member>
-        <member name="P:Telerik.Pivot.Core.Fields.LocalFieldDescriptionsProviderBase.FormatDisplayNameAsFieldName">
-            <summary>
-            Format DisplayName as “ParentName.Name”
-            </summary>
-        </member>
         <member name="P:Telerik.Pivot.Core.Fields.LocalFieldDescriptionsProviderBase.CurrentState">
             <summary>
             Gets the object which FieldDescriptions are generated.
+            </summary>
+        </member>
+        <member name="P:Telerik.Pivot.Core.Fields.LocalFieldDescriptionsProviderBase.EnableHierarchy">
+            <summary>
+            Gets or sets a boolean value indicating whether field descriptions will be generated for nested properties of the objects.
             </summary>
         </member>
         <member name="M:Telerik.Pivot.Core.Fields.LocalFieldDescriptionsProviderBase.GenerateDescriptionsData">
@@ -7089,12 +7148,11 @@
             </summary>
             <returns>DescriptionsData instance.</returns>
         </member>
-        <member name="M:Telerik.Pivot.Core.Fields.LocalFieldDescriptionsProviderBase.GetFieldDescriptionHierarchy(System.Collections.Generic.IEnumerable{Telerik.Pivot.Core.Fields.IPivotFieldInfo},System.Boolean)">
+        <member name="M:Telerik.Pivot.Core.Fields.LocalFieldDescriptionsProviderBase.GetFieldDescriptionHierarchy(System.Collections.Generic.IEnumerable{Telerik.Pivot.Core.Fields.IPivotFieldInfo})">
             <summary>
             Gets the field description hierarchy.
             </summary>
             <param name="fieldInfos">Collection of <see cref="T:Telerik.Pivot.Core.Fields.IPivotFieldInfo"/> instances.</param>
-            <param name="formatDisplayNameAsName">Format DisplayName as “ParentName.Name”</param>
             <returns></returns>
         </member>
         <member name="M:Telerik.Pivot.Core.Fields.LocalFieldDescriptionsProviderBase.GetDescriptionsDataAsync(System.Object)">
@@ -7819,6 +7877,12 @@
         <member name="M:Telerik.Pivot.Core.Aggregates.AverageAggregate.MergeOverride(Telerik.Pivot.Core.Aggregates.AggregateValue)">
             <inheritdoc />
         </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.AverageAggregate.CreateInstanceCore">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.AverageAggregate.CloneCore(Telerik.Pivot.Core.Cloneable)">
+            <inheritdoc />
+        </member>
         <member name="T:Telerik.Pivot.Core.Aggregates.AverageDecimalAggregate">
             <summary>
             Represents an aggregate that computes the average of items. The sum used to compute the average is stored in a <see cref="T:System.Decimal"/> and the count in a <see cref="T:System.UInt32"/>.
@@ -7831,6 +7895,15 @@
             <inheritdoc />
         </member>
         <member name="M:Telerik.Pivot.Core.Aggregates.AverageDecimalAggregate.MergeOverride(Telerik.Pivot.Core.Aggregates.AggregateValue)">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.AverageDecimalAggregate.CreateInstanceCore">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.AverageDecimalAggregate.CloneCore(Telerik.Pivot.Core.Cloneable)">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.ConstantValueAggregate.CreateInstanceCore">
             <inheritdoc />
         </member>
         <member name="T:Telerik.Pivot.Core.Aggregates.CountAggregate">
@@ -7847,6 +7920,12 @@
         <member name="M:Telerik.Pivot.Core.Aggregates.CountAggregate.MergeOverride(Telerik.Pivot.Core.Aggregates.AggregateValue)">
             <inheritdoc />
         </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.CountAggregate.CreateInstanceCore">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.CountAggregate.CloneCore(Telerik.Pivot.Core.Cloneable)">
+            <inheritdoc />
+        </member>
         <member name="T:Telerik.Pivot.Core.Aggregates.CountDoubleAggregate">
             <summary>
             Represents an aggregate that counts items.
@@ -7859,6 +7938,12 @@
             <inheritdoc />
         </member>
         <member name="M:Telerik.Pivot.Core.Aggregates.CountDoubleAggregate.MergeOverride(Telerik.Pivot.Core.Aggregates.AggregateValue)">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.CountDoubleAggregate.CreateInstanceCore">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.CountDoubleAggregate.CloneCore(Telerik.Pivot.Core.Cloneable)">
             <inheritdoc />
         </member>
         <member name="T:Telerik.Pivot.Core.Aggregates.DoubleAggregateValue">
@@ -7881,6 +7966,9 @@
         <member name="M:Telerik.Pivot.Core.Aggregates.DoubleAggregateValue.MergeOverride(Telerik.Pivot.Core.Aggregates.AggregateValue)">
             <inheritdoc />
         </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.DoubleAggregateValue.CreateInstanceCore">
+            <inheritdoc />
+        </member>
         <member name="T:Telerik.Pivot.Core.Aggregates.MaxAggregate">
             <summary>
             Represents an aggregate that computes the maximum.
@@ -7893,6 +7981,12 @@
             <inheritdoc />
         </member>
         <member name="M:Telerik.Pivot.Core.Aggregates.MaxAggregate.MergeOverride(Telerik.Pivot.Core.Aggregates.AggregateValue)">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.MaxAggregate.CreateInstanceCore">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.MaxAggregate.CloneCore(Telerik.Pivot.Core.Cloneable)">
             <inheritdoc />
         </member>
         <member name="T:Telerik.Pivot.Core.Aggregates.MaxDecimalAggregate">
@@ -7909,6 +8003,12 @@
         <member name="M:Telerik.Pivot.Core.Aggregates.MaxDecimalAggregate.MergeOverride(Telerik.Pivot.Core.Aggregates.AggregateValue)">
             <inheritdoc />
         </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.MaxDecimalAggregate.CreateInstanceCore">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.MaxDecimalAggregate.CloneCore(Telerik.Pivot.Core.Cloneable)">
+            <inheritdoc />
+        </member>
         <member name="T:Telerik.Pivot.Core.Aggregates.MaxIntAggregate">
             <summary>
             Represents an aggregate that computes the maximum. The minimum value is stored in a <see cref="T:System.Int64"/>.
@@ -7921,6 +8021,12 @@
             <inheritdoc />
         </member>
         <member name="M:Telerik.Pivot.Core.Aggregates.MaxIntAggregate.MergeOverride(Telerik.Pivot.Core.Aggregates.AggregateValue)">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.MaxIntAggregate.CreateInstanceCore">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.MaxIntAggregate.CloneCore(Telerik.Pivot.Core.Cloneable)">
             <inheritdoc />
         </member>
         <member name="T:Telerik.Pivot.Core.Aggregates.MinAggregate">
@@ -7937,6 +8043,12 @@
         <member name="M:Telerik.Pivot.Core.Aggregates.MinAggregate.MergeOverride(Telerik.Pivot.Core.Aggregates.AggregateValue)">
             <inheritdoc />
         </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.MinAggregate.CreateInstanceCore">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.MinAggregate.CloneCore(Telerik.Pivot.Core.Cloneable)">
+            <inheritdoc />
+        </member>
         <member name="T:Telerik.Pivot.Core.Aggregates.MinDecimalAggregate">
             <summary>
             Represents an aggregate that computes the minimum. The minimum value is stored in a <see cref="T:System.Decimal"/>.
@@ -7949,6 +8061,12 @@
             <inheritdoc />
         </member>
         <member name="M:Telerik.Pivot.Core.Aggregates.MinDecimalAggregate.MergeOverride(Telerik.Pivot.Core.Aggregates.AggregateValue)">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.MinDecimalAggregate.CreateInstanceCore">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.MinDecimalAggregate.CloneCore(Telerik.Pivot.Core.Cloneable)">
             <inheritdoc />
         </member>
         <member name="T:Telerik.Pivot.Core.Aggregates.MinIntAggregate">
@@ -7965,6 +8083,12 @@
         <member name="M:Telerik.Pivot.Core.Aggregates.MinIntAggregate.MergeOverride(Telerik.Pivot.Core.Aggregates.AggregateValue)">
             <inheritdoc />
         </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.MinIntAggregate.CreateInstanceCore">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.MinIntAggregate.CloneCore(Telerik.Pivot.Core.Cloneable)">
+            <inheritdoc />
+        </member>
         <member name="T:Telerik.Pivot.Core.Aggregates.OlapAggregateValue">
             <summary>
             Represents an aggregate that was computed by a analysis server.
@@ -7977,6 +8101,12 @@
             <inheritdoc />
         </member>
         <member name="M:Telerik.Pivot.Core.Aggregates.OlapAggregateValue.MergeOverride(Telerik.Pivot.Core.Aggregates.AggregateValue)">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.OlapAggregateValue.CreateInstanceCore">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.OlapAggregateValue.CloneCore(Telerik.Pivot.Core.Cloneable)">
             <inheritdoc />
         </member>
         <member name="T:Telerik.Pivot.Core.Aggregates.ProductAggregate">
@@ -7993,6 +8123,12 @@
         <member name="M:Telerik.Pivot.Core.Aggregates.ProductAggregate.MergeOverride(Telerik.Pivot.Core.Aggregates.AggregateValue)">
             <inheritdoc />
         </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.ProductAggregate.CreateInstanceCore">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.ProductAggregate.CloneCore(Telerik.Pivot.Core.Cloneable)">
+            <inheritdoc />
+        </member>
         <member name="T:Telerik.Pivot.Core.Aggregates.StdDevAggregate">
             <summary>
             Represents an aggregate that estimates the standard deviation of a population based on a sample.
@@ -8001,12 +8137,18 @@
         <member name="M:Telerik.Pivot.Core.Aggregates.StdDevAggregate.GetValueOverride">
             <inheritdoc />
         </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.StdDevAggregate.CreateInstanceCore">
+            <inheritdoc />
+        </member>
         <member name="T:Telerik.Pivot.Core.Aggregates.StdDevPAggregate">
             <summary>
             Represents an aggregate that estimates the standard deviation of a population based on the entire population.
             </summary>
         </member>
         <member name="M:Telerik.Pivot.Core.Aggregates.StdDevPAggregate.GetValueOverride">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.StdDevPAggregate.CreateInstanceCore">
             <inheritdoc />
         </member>
         <member name="T:Telerik.Pivot.Core.Aggregates.SumAggregate">
@@ -8023,6 +8165,12 @@
         <member name="M:Telerik.Pivot.Core.Aggregates.SumAggregate.MergeOverride(Telerik.Pivot.Core.Aggregates.AggregateValue)">
             <inheritdoc />
         </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.SumAggregate.CreateInstanceCore">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.SumAggregate.CloneCore(Telerik.Pivot.Core.Cloneable)">
+            <inheritdoc />
+        </member>
         <member name="T:Telerik.Pivot.Core.Aggregates.SumDecimalAggregate">
             <summary>
             Represents an aggregate that computes the sum of items. The sum is aggregated in a <see cref="T:System.Decimal"/>.
@@ -8035,6 +8183,12 @@
             <inheritdoc />
         </member>
         <member name="M:Telerik.Pivot.Core.Aggregates.SumDecimalAggregate.MergeOverride(Telerik.Pivot.Core.Aggregates.AggregateValue)">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.SumDecimalAggregate.CreateInstanceCore">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.SumDecimalAggregate.CloneCore(Telerik.Pivot.Core.Cloneable)">
             <inheritdoc />
         </member>
         <member name="T:Telerik.Pivot.Core.Aggregates.SumIntAggregate">
@@ -8051,6 +8205,12 @@
         <member name="M:Telerik.Pivot.Core.Aggregates.SumIntAggregate.MergeOverride(Telerik.Pivot.Core.Aggregates.AggregateValue)">
             <inheritdoc />
         </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.SumIntAggregate.CreateInstanceCore">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.SumIntAggregate.CloneCore(Telerik.Pivot.Core.Cloneable)">
+            <inheritdoc />
+        </member>
         <member name="T:Telerik.Pivot.Core.Aggregates.VarAggregate">
             <summary>
             Represents an aggregate that estimates the variance based on a sample.
@@ -8064,6 +8224,9 @@
         <member name="M:Telerik.Pivot.Core.Aggregates.VarAggregate.GetValueOverride">
             <inheritdoc />
         </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.VarAggregate.CreateInstanceCore">
+            <inheritdoc />
+        </member>
         <member name="T:Telerik.Pivot.Core.Aggregates.VarianceAggregateBase">
             <summary>
             Represents an abstract aggregate class helping in variance estimation.
@@ -8073,6 +8236,9 @@
             <inheritdoc />
         </member>
         <member name="M:Telerik.Pivot.Core.Aggregates.VarianceAggregateBase.MergeOverride(Telerik.Pivot.Core.Aggregates.AggregateValue)">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.VarianceAggregateBase.CloneCore(Telerik.Pivot.Core.Cloneable)">
             <inheritdoc />
         </member>
         <member name="T:Telerik.Pivot.Core.Aggregates.VarPAggregate">
@@ -8086,6 +8252,9 @@
             </summary>
         </member>
         <member name="M:Telerik.Pivot.Core.Aggregates.VarPAggregate.GetValueOverride">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.VarPAggregate.CreateInstanceCore">
             <inheritdoc />
         </member>
         <member name="T:Telerik.Pivot.Core.Aggregates.AggregateValue">
@@ -8122,6 +8291,9 @@
             Merge the results of an <see cref="T:Telerik.Pivot.Core.Aggregates.AggregateValue"/> with the results in the current <see cref="T:Telerik.Pivot.Core.Aggregates.AggregateValue"/> instance.
             </summary>
             <param name="childAggregate">The <see cref="T:Telerik.Pivot.Core.Aggregates.AggregateValue"/> to merge.</param>
+        </member>
+        <member name="M:Telerik.Pivot.Core.Aggregates.AggregateValue.CloneCore(Telerik.Pivot.Core.Cloneable)">
+            <inheritdoc />
         </member>
         <member name="M:Telerik.Pivot.Core.Aggregates.AggregateValue.ToString">
             <inheritdoc />
@@ -9570,6 +9742,11 @@
         <member name="P:Telerik.Pivot.Core.LocalDataSourceProvider.Culture">
             <summary>
             Gets or sets the CultureInfo used for grouping and formatting.
+            </summary>
+        </member>
+        <member name="P:Telerik.Pivot.Core.LocalDataSourceProvider.EnableHierarchy">
+            <summary>
+            Gets or sets a boolean value indicating whether nested properties of the objects in the ItemsSource will be displayed in a hierarchy.
             </summary>
         </member>
         <member name="P:Telerik.Pivot.Core.LocalDataSourceProvider.FilterDescriptions">
@@ -12105,6 +12282,12 @@
         <member name="M:Telerik.Pivot.Queryable.Aggregates.QueryableAverageAggregate.MergeOverride(Telerik.Pivot.Core.Aggregates.AggregateValue)">
             <inheritdoc />
         </member>
+        <member name="M:Telerik.Pivot.Queryable.Aggregates.QueryableAverageAggregate.CreateInstanceCore">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Queryable.Aggregates.QueryableAverageAggregate.CloneCore(Telerik.Pivot.Core.Cloneable)">
+            <inheritdoc />
+        </member>
         <member name="T:Telerik.Pivot.Queryable.Aggregates.QueryableCountAggregate">
             <summary>
             Represents an aggregate that counts items.
@@ -12117,6 +12300,12 @@
             <inheritdoc />
         </member>
         <member name="M:Telerik.Pivot.Queryable.Aggregates.QueryableCountAggregate.MergeOverride(Telerik.Pivot.Core.Aggregates.AggregateValue)">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Queryable.Aggregates.QueryableCountAggregate.CreateInstanceCore">
+            <inheritdoc />
+        </member>
+        <member name="M:Telerik.Pivot.Queryable.Aggregates.QueryableCountAggregate.CloneCore(Telerik.Pivot.Core.Cloneable)">
             <inheritdoc />
         </member>
         <member name="T:Telerik.Pivot.Queryable.QueryablePropertyAggregateDescriptionBase">

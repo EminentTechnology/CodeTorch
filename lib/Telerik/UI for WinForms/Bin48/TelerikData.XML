@@ -49,6 +49,12 @@
             Get excel table element
             </summary>
         </member>
+        <member name="P:Telerik.WinControls.UI.Export.CSV.RowElement.RowDelimiter">
+            <summary>
+            Delimeter is added before the row. 
+            For the first row of the CSV file the delimeter must be set to null.
+            </summary>
+        </member>
         <member name="P:Telerik.WinControls.UI.Export.CSV.RowElement.InnerElements">
             <summary>
             This element cannot have inner elements.
@@ -60,6 +66,12 @@
             This element cannot have inner elements.
             Use Rows property 
             </summary>
+        </member>
+        <member name="M:Telerik.WinControls.UI.Export.ExportToCSV.#ctor(Telerik.WinControls.UI.RadGridView)">
+            <summary>
+            Create instance of exporter class with specified RadGridView to export 
+            </summary>
+            <param name="radGridView">RadGridView to export</param>
         </member>
         <member name="P:Telerik.WinControls.UI.Export.ExportToCSV.RowDelimiter">
             <summary>
@@ -79,11 +91,13 @@
         <member name="P:Telerik.WinControls.UI.Export.ExportToCSV.HiddenColumnOption">
             <summary>
             Set if hidden column would be exported.
+            Note that <see cref="F:Telerik.WinControls.UI.Export.HiddenOption.ExportAsHidden"/> is not relevant for CSV export.
             </summary>
         </member>
         <member name="P:Telerik.WinControls.UI.Export.ExportToCSV.HiddenRowOption">
             <summary>
-            Set if hidden rows would be exported
+            Set if hidden rows would be exported.
+            Note that <see cref="F:Telerik.WinControls.UI.Export.HiddenOption.ExportAsHidden"/> is not relevant for CSV export.
             </summary>
         </member>
         <member name="P:Telerik.WinControls.UI.Export.ExportToCSV.SummariesExportOption">
@@ -127,12 +141,6 @@
             Gets or sets the encoding used for the exported file. Default encoding is UTF8.
             </summary>
         </member>
-        <member name="M:Telerik.WinControls.UI.Export.ExportToCSV.#ctor(Telerik.WinControls.UI.RadGridView)">
-            <summary>
-            Create instance of exporter class with specified RadGridView to export 
-            </summary>
-            <param name="radGridView">RadGridView to export</param>
-        </member>
         <member name="E:Telerik.WinControls.UI.Export.ExportToCSV.ChildViewExporting">
             <summary>
             Occurs when a child view will be exported.
@@ -154,13 +162,12 @@
             </summary>
             <param name="fileName">Export file name</param>
         </member>
-        <member name="M:Telerik.WinControls.UI.Export.ExportToCSV.FileWriteElement(System.IO.FileStream,Telerik.WinControls.UI.Export.CSV.ElementBase,System.Int32)">
+        <member name="M:Telerik.WinControls.UI.Export.ExportToCSV.FileWriteElement(System.IO.Stream,Telerik.WinControls.UI.Export.CSV.ElementBase)">
             <summary>
             Write element to file and specify how many simbols to cut from the end
             </summary>
-            <param name="fileStream">File stream to use</param>
+            <param name="stream">File stream to use</param>
             <param name="csvElement">element to write</param>
-            <param name="cutLastSymbols">count how many symbols to cut at the end</param>
         </member>
         <member name="M:Telerik.WinControls.UI.Export.ExportToCSV.GetBytes(System.String)">
             <summary>

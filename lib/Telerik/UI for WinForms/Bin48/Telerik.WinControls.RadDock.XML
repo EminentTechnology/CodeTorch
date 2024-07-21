@@ -4689,6 +4689,13 @@
             </summary>
             <param name="closeAction">The action to be taken when closing a window.</param>
         </member>
+        <member name="M:Telerik.WinControls.UI.Docking.RadDock.RemoveAllToolWindows(Telerik.WinControls.UI.Docking.DockWindowCloseAction,Telerik.WinControls.UI.Docking.AllowedDockState)">
+            <summary>
+            Removes all ToolWindows with the specified DockState, using the specified close action.
+            </summary>
+            <param name="closeAction">The action to be taken when closing a window.</param>
+            <param name="allowedDockState">Specifies the DockState of the ToolWindows that will be removed. The enumeration flags can be combined.</param>
+        </member>
         <member name="M:Telerik.WinControls.UI.Docking.RadDock.CloseAllWindows">
             <summary>
             Calls the Close method for all currently registered windows, using each window's CloseAction.
@@ -4989,7 +4996,7 @@
             Raises the <see cref="E:Telerik.WinControls.UI.Docking.RadDock.SavedToXml">SavedToXml</see> event.
             </summary>
         </member>
-        <member name="M:Telerik.WinControls.UI.Docking.RadDock.LoadFromXml(System.String)">
+        <member name="M:Telerik.WinControls.UI.Docking.RadDock.LoadFromXml(System.String,System.Boolean)">
             <summary>
             Loads the docking layout configuration from a file. 
             This method will try to guess if the xml in the file was written with 
@@ -4997,8 +5004,9 @@
             read it successfully.
             </summary>
             <param name="fileName">Name of the file.</param>
+            <param name="clearDocking">if set to <c>true</c> removes the existing dock windows using the <see cref="F:Telerik.WinControls.UI.Docking.DockWindowCloseAction.CloseAndDispose"/> action.</param>
         </member>
-        <member name="M:Telerik.WinControls.UI.Docking.RadDock.LoadFromXml(System.IO.Stream)">
+        <member name="M:Telerik.WinControls.UI.Docking.RadDock.LoadFromXml(System.IO.Stream,System.Boolean)">
             <summary>
             Loads the docking layout configuration from a stream.
             This method will try to guess if the xml in the stream was written with 
@@ -5006,21 +5014,24 @@
             read it successfully.
             </summary>
             <param name="stream">The stream.</param>
+            <param name="clearDocking">if set to <c>true</c> removes the existing dock windows using the <see cref="F:Telerik.WinControls.UI.Docking.DockWindowCloseAction.CloseAndDispose"/> action.</param>
         </member>
-        <member name="M:Telerik.WinControls.UI.Docking.RadDock.LoadFromXml(System.IO.TextReader)">
+        <member name="M:Telerik.WinControls.UI.Docking.RadDock.LoadFromXml(System.IO.TextReader,System.Boolean)">
             <summary>
             Loads the docking layout configuration from a TextReader.
             Note that this is a new method and does not support loading xml 
             that was written using DockingManager.
             </summary>
             <param name="textReader">The text reader.</param>
+            <param name="clearDocking">if set to <c>true</c> removes the existing dock windows using the <see cref="F:Telerik.WinControls.UI.Docking.DockWindowCloseAction.CloseAndDispose"/> action.</param>
         </member>
-        <member name="M:Telerik.WinControls.UI.Docking.RadDock.LoadFromXmlCore(System.Xml.XmlReader,System.Boolean)">
+        <member name="M:Telerik.WinControls.UI.Docking.RadDock.LoadFromXmlCore(System.Xml.XmlReader,System.Boolean,System.Boolean)">
             <summary>
             Overrwrite this method to change the loading of docking layout configuration.
             </summary>
             <param name="reader">The XmlReader instance that will be used to load the layoiut configuration.</param>
             <param name="oldXmlFormat">if set to <c>true</c> the layout configuration is in the old DockingManager format.</param>
+            <param name="clearDocking">if set to <c>true</c> removes the existing dock windows using the <see cref="F:Telerik.WinControls.UI.Docking.DockWindowCloseAction.CloseAndDispose"/> action.</param>
         </member>
         <member name="M:Telerik.WinControls.UI.Docking.RadDock.CreateXmlWriterSettings">
             <summary>

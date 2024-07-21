@@ -757,6 +757,34 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="F:Telerik.WinForms.RichTextEditor.RichTextBoxUI.Dialogs.LineNumberingDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinForms.RichTextEditor.RichTextBoxUI.Dialogs.LineNumberingDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Telerik.WinForms.RichTextEditor.RichTextBoxUI.Dialogs.LineNumberingDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="E:Telerik.WinForms.RichTextEditor.RichTextBoxUI.Dialogs.LineNumberingDialogViewModel.PropertyChanged">
+            <summary>
+            Occurs when a property value changes.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinForms.RichTextEditor.RichTextBoxUI.Dialogs.LineNumberingDialogViewModel.OnPropertyChanged(System.String)">
+            <summary>
+            Executes when a property value changes.
+            </summary>
+            <param name="propertyName">The name of the property which is changed.</param>
+        </member>
         <member name="T:Telerik.WinForms.RichTextEditor.RichTextBoxUI.Dialogs.SectionColumnDataChangedEventArgs">
             <summary>
             EventArgs used when Telerik.Windows.Controls.RichTextBoxUI.Dialogs.SectionColumns.SectionColumnData changes its width or spacing after.
@@ -4233,6 +4261,11 @@
             Gets or sets the context menu.
             </summary>
         </member>
+        <member name="P:Telerik.WinForms.RichTextEditor.RadRichTextBox.LineNumberingDialog">
+            <summary>
+            Gets or sets a value representing the current line numbering dialog.
+            </summary>
+        </member>
         <member name="P:Telerik.WinForms.RichTextEditor.RadRichTextBox.SelectionMiniToolBar">
             <summary>
             Gets or sets the selection mini toolbar.
@@ -5411,6 +5444,23 @@
             </summary>
             <param name="value">true if the headers and footers will be different, otherwise false.</param>
         </member>
+        <member name="M:Telerik.WinForms.RichTextEditor.RadRichTextBox.ChangeSectionLineNumbering(Telerik.WinForms.Documents.Model.LineNumberings.LineNumbering)">
+            <summary>
+            Changes the line numberings for the selected sections.
+            </summary>
+            <param name="lineNumbering">The line numbering.</param>
+        </member>
+        <member name="M:Telerik.WinForms.RichTextEditor.RadRichTextBox.ChangeLineNumberingRestartType(Telerik.WinForms.Documents.Model.LineNumberings.LineNumberingRestartType)">
+            <summary>
+            Changes the restart type of line numberings for the selected sections.
+            </summary>
+            <param name="restartType">The line numbering restart type.</param>
+        </member>
+        <member name="M:Telerik.WinForms.RichTextEditor.RadRichTextBox.SuppressLineNumberingForCurrentParagraph(System.Collections.Generic.IEnumerable{Telerik.WinForms.Documents.Model.Paragraph})">
+            <summary>
+            Suppress the line numbering for selected paragraphs.
+            </summary>
+        </member>
         <member name="M:Telerik.WinForms.RichTextEditor.RadRichTextBox.ChangeDocumentIsStrictLineBreakingRuleEnabled(System.Boolean)">
             <summary>
             Sets a value indicating whether strict line brealing rule is enabled.
@@ -5565,6 +5615,11 @@
         <member name="M:Telerik.WinForms.RichTextEditor.RadRichTextBox.ShowWatermarkSettingsDialog">
             <summary>
             Shows the watermark settings dialog.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinForms.RichTextEditor.RadRichTextBox.ShowLineNumberingDialog">
+            <summary>
+            Show the line numbers dialog.
             </summary>
         </member>
         <member name="M:Telerik.WinForms.RichTextEditor.RadRichTextBox.ShowNotesDialog">
@@ -5813,7 +5868,7 @@
             <summary>
             Inserts the given column at the current caret position.
             </summary>
-            <param name="table">The table to insert.</param>
+            <remarks>The <see cref="T:Telerik.WinForms.Documents.Model.Table"/> instance inserted in the document is a cloning of the one passed for the <paramref name="table"/> parameter. Making subsequent changes to the <see cref="T:Telerik.WinForms.Documents.Model.Table"/> is not possible.</remarks>
             <param name="shouldInsertParagraphBeforeTable">Indicate whether a new paragraph should be inserted before the table.</param>
         </member>
         <member name="M:Telerik.WinForms.RichTextEditor.RadRichTextBox.DeleteTable">
@@ -8438,6 +8493,107 @@
         <member name="T:Telerik.WinForms.Documents.Model.IReadOnlyRangeMarker">
             <summary>
             Indicator interface for annotation markers denoting read-only ranges.
+            </summary>
+        </member>
+        <member name="T:Telerik.WinForms.Documents.Model.LineNumberings.LineNumbering">
+            <summary>
+            Represents line numbering class.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.Model.LineNumberings.LineNumbering.#ctor">
+            <summary>
+            Creating a new instance of the <see cref="T:Telerik.WinForms.Documents.Model.LineNumberings.LineNumbering"/> class with properties set to their default values.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.Model.LineNumberings.LineNumbering.#ctor(Telerik.WinForms.Documents.Model.LineNumberings.LineNumberingRestartType)">
+            <summary>
+            Creating a new instance of the <see cref="T:Telerik.WinForms.Documents.Model.LineNumberings.LineNumbering"/> class by passing the restart type and the rest of the properties set to their default values.
+            </summary>
+            <param name="restart">The line numbering restart type.</param>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.Model.LineNumberings.LineNumbering.#ctor(System.Int32,System.Double,System.Int32,Telerik.WinForms.Documents.Model.LineNumberings.LineNumberingRestartType)">
+            <summary>
+            Creating a new instance of the <see cref="T:Telerik.WinForms.Documents.Model.LineNumberings.LineNumbering"/> class.
+            </summary>
+            <param name="start">The line numbering starting value.</param>
+            <param name="distance">The distance between text and line numbering.</param>
+            <param name="countBy">The line number increments to display.</param>
+            <param name="restart">The line numbering restart type.</param>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.Model.LineNumberings.LineNumbering.#ctor(System.Int32)">
+            <summary>
+            Creating a new instance of the <see cref="T:Telerik.WinForms.Documents.Model.LineNumberings.LineNumbering"/> class by passing the count by and the rest of the properties set to their default values.
+            </summary>
+            <param name="countBy">The line number increments to display.</param>
+        </member>
+        <member name="P:Telerik.WinForms.Documents.Model.LineNumberings.LineNumbering.Start">
+            <summary>
+            Line numbering starting value.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Documents.Model.LineNumberings.LineNumbering.Distance">
+            <summary>
+            Distance between text and line numbering.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Documents.Model.LineNumberings.LineNumbering.CountBy">
+            <summary>
+            Line number increments to display.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Documents.Model.LineNumberings.LineNumbering.Restart">
+            <summary>
+            Line numbering restart position.
+            </summary>
+        </member>
+        <member name="T:Telerik.WinForms.Documents.Model.LineNumberings.LineNumberingRestartType">
+            <summary>
+            Represents the possible line numbering restart types.
+            </summary>
+        </member>
+        <member name="F:Telerik.WinForms.Documents.Model.LineNumberings.LineNumberingRestartType.NewPage">
+            <summary>
+            Denotes the new page type.
+            </summary>
+        </member>
+        <member name="F:Telerik.WinForms.Documents.Model.LineNumberings.LineNumberingRestartType.NewSection">
+            <summary>
+            Denotes the new section type.
+            </summary>
+        </member>
+        <member name="F:Telerik.WinForms.Documents.Model.LineNumberings.LineNumberingRestartType.Continuous">
+            <summary>
+            Denotes the continuous type.
+            </summary>
+        </member>
+        <member name="T:Telerik.WinForms.Documents.Model.LineNumberings.SectionLineNumberingSerializationData">
+            <summary>
+            This class supports XAML serialization infrastructure and is not intended to be used directly from your code.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Documents.Model.LineNumberings.SectionLineNumberingSerializationData.Start">
+            <summary>
+            This property supports XAML serialization infrastructure and is not intended to be used directly from your code.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Documents.Model.LineNumberings.SectionLineNumberingSerializationData.CountBy">
+            <summary>
+            This property supports XAML serialization infrastructure and is not intended to be used directly from your code.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Documents.Model.LineNumberings.SectionLineNumberingSerializationData.Distance">
+            <summary>
+            This property supports XAML serialization infrastructure and is not intended to be used directly from your code.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Documents.Model.LineNumberings.SectionLineNumberingSerializationData.Restart">
+            <summary>
+            This property supports XAML serialization infrastructure and is not intended to be used directly from your code.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.Model.LineNumberings.SectionLineNumberingSerializationData.Telerik#WinForms#Documents#Model#ISupportShouldSerialize#ShouldSerialize">
+            <summary>
+            This method supports XAML serialization infrastructure and is not intended to be used directly from your code.
             </summary>
         </member>
         <member name="T:Telerik.WinForms.Documents.Model.Merging.AppendDocumentOptions">
@@ -12097,6 +12253,24 @@
             </summary>
             <param name="sectionColumns">The section columns.</param>
         </member>
+        <member name="M:Telerik.WinForms.Documents.Model.IDocumentEditor.ChangeSectionLineNumbering(Telerik.WinForms.Documents.Model.LineNumberings.LineNumbering)">
+            <summary>
+            Changes the line numbering for the selected sections.
+            </summary>
+            <param name="lineNumbering">The line numbering.</param>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.Model.IDocumentEditor.ChangeLineNumberingRestartType(Telerik.WinForms.Documents.Model.LineNumberings.LineNumberingRestartType)">
+            <summary>
+            Changes the restart type of line numberings for the selected sections.
+            </summary>
+            <param name="restartType">The line numbering restart type.</param>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.Model.IDocumentEditor.SuppressLineNumberingForCurrentParagraph(System.Collections.Generic.IEnumerable{Telerik.WinForms.Documents.Model.Paragraph})">
+            <summary>
+            Suppress the line numbering for selected paragraphs.
+            </summary>
+            <param name="paragraphs">The paragraphs.</param>
+        </member>
         <member name="M:Telerik.WinForms.Documents.Model.IDocumentEditor.ChangeSectionColumns(Telerik.WinForms.Documents.Model.SectionColumnsLayout)">
             <summary>
             Changes the section columns for a given collection of <see cref="T:Telerik.WinForms.Documents.Model.Section"/> elements.
@@ -13561,6 +13735,12 @@
             </summary>
             <param name="value">If set to <c>true</c>, East Asian typography rules will be applied to determine which characters may begin and end each line.</param>
         </member>
+        <member name="M:Telerik.WinForms.Documents.Model.RadDocumentEditor.SuppressLineNumberingForCurrentParagraph(System.Collections.Generic.IEnumerable{Telerik.WinForms.Documents.Model.Paragraph})">
+            <summary>
+            Suppress the line numbering for selected paragraphs.
+            </summary>
+            <param name="paragraphs">The paragraphs.</param>
+        </member>
         <member name="M:Telerik.WinForms.Documents.Model.RadDocumentEditor.ChangeTableLayoutMode(Telerik.WinForms.Documents.Model.Table,Telerik.WinForms.Documents.Model.TableLayoutMode)">
             <summary>
             Changes the layout mode of the selected tables.
@@ -13787,6 +13967,18 @@
             Changes the section columns for a given collection of <see cref="T:Telerik.WinForms.Documents.Model.Section"/> elements.
             </summary>
             <param name="sectionColumnsLayout">The section columns layout.</param>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.Model.RadDocumentEditor.ChangeSectionLineNumbering(Telerik.WinForms.Documents.Model.LineNumberings.LineNumbering)">
+            <summary>
+            Changes the line numbering for a given collection of <see cref="T:Telerik.WinForms.Documents.Model.Section"/> elements.
+            </summary>
+            <param name="lineNumbering">The line numbering.</param>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.Model.RadDocumentEditor.ChangeLineNumberingRestartType(Telerik.WinForms.Documents.Model.LineNumberings.LineNumberingRestartType)">
+            <summary>
+            Changes the restart type of line numberings for the selected sections.
+            </summary>
+            <param name="restartType">The line numbering restart type.</param>
         </member>
         <member name="M:Telerik.WinForms.Documents.Model.RadDocumentEditor.ChangeDifferentOddAndEvenPagesHeaderFooter(System.Boolean)">
             <summary>
@@ -14141,6 +14333,11 @@
         <member name="F:Telerik.WinForms.Documents.Model.RadDocumentDefaultStyles.DefaultParagraphFontStyleName">
             <summary>
             The default paragraph font style name.
+            </summary>
+        </member>
+        <member name="F:Telerik.WinForms.Documents.Model.RadDocumentDefaultStyles.LineNumberingStyleDisplayName">
+            <summary>
+            The line numbering style display name.
             </summary>
         </member>
         <member name="F:Telerik.WinForms.Documents.Model.RadDocumentDefaultStyles.NormalStyleName">
@@ -17463,6 +17660,12 @@
             Represents built in styles version.
             </summary>
         </member>
+        <member name="P:Telerik.WinForms.Documents.Model.Styles.SectionProperties.LineNumbering">
+            <summary>
+            Gets or sets the line numbering in the <see cref="T:Telerik.WinForms.Documents.Model.Section"/>.
+            </summary>
+            <value>The line numbering.</value>
+        </member>
         <member name="M:Telerik.WinForms.Documents.Model.Styles.Stylesheet.ApplyStylesheetToRichTextBox(Telerik.WinForms.RichTextEditor.RadRichTextBox)">
             <summary>
             Suspends layout updates of RadRichtextBox, which has better performance and uses <see cref="M:Telerik.WinForms.Documents.Model.Styles.Stylesheet.ApplyStylesheetToDocument(Telerik.WinForms.Documents.Model.RadDocument)"/> to apply the stylesheet. 
@@ -18468,10 +18671,10 @@
         </member>
         <member name="P:Telerik.WinForms.Documents.Model.DocumentFragment.IsLastParagraphClosed">
             <summary>
-            Gets a value indicating whether the fragment ends with full paragraph.
+            Gets or sets a value indicating whether the fragment ends with full empty paragraph.
             </summary>
             <value>
-            	<c>true</c> if the fragment ends with full paragraph; otherwise, <c>false</c>.
+            <c>true</c> if the fragment ends with full empty paragraph; otherwise, <c>false</c>.
             </value>
         </member>
         <member name="P:Telerik.WinForms.Documents.Model.DocumentFragment.IsEmpty">
@@ -21295,6 +21498,12 @@
             </summary>
             <value>The outline level.</value>
         </member>
+        <member name="P:Telerik.WinForms.Documents.Model.Paragraph.SuppressLineNumbers">
+            <summary>
+            Gets or sets the value indicating whether the line numbering for the current <see cref="T:Telerik.WinForms.Documents.Model.Paragraph"/> is suppressed.
+            </summary>
+            <value>The line numbering.</value>
+        </member>
         <member name="P:Telerik.WinForms.Documents.Model.Paragraph.LineSpacing">
             <summary>
             Gets or sets the spacing between the different lines of the paragraph.
@@ -21463,6 +21672,17 @@
             <value>
             	<c>true</c> if first page header/footer is different; otherwise, <c>false</c>.
             </value>
+        </member>
+        <member name="P:Telerik.WinForms.Documents.Model.Section.LineNumbering">
+            <summary>
+            Gets or sets the line numbering in the <see cref="T:Telerik.WinForms.Documents.Model.Section"/>.
+            </summary>
+            <value>The line numbering.</value>
+        </member>
+        <member name="P:Telerik.WinForms.Documents.Model.Section.LineNumberingSerializationData">
+            <summary>
+            This property supports XAML serialization infrastructure and is not intended to be used directly from your code.
+            </summary>
         </member>
         <member name="P:Telerik.WinForms.Documents.Model.Section.Columns">
             <summary>
@@ -29946,17 +30166,17 @@
         </member>
         <member name="P:Telerik.WinForms.Documents.DocumentPosition.IsPositionAtParagraphStart">
             <summary>
-            Determines whether the DocumentPosition is at the start of a <see cref="T:Telerik.WinForms.Documents.Model.Paragraph"/>. 
+            Determines whether the DocumentPosition is at the start of a <see cref="T:Telerik.WinForms.Documents.Model.Paragraph"/>.
             </summary>
         </member>
         <member name="P:Telerik.WinForms.Documents.DocumentPosition.IsPositionAtParagraphEnd">
             <summary>
-            Determines whether the DocumentPosition is at the end of a <see cref="T:Telerik.WinForms.Documents.Model.Paragraph"/>. 
+            Determines whether the DocumentPosition is at the end of a <see cref="T:Telerik.WinForms.Documents.Model.Paragraph"/>.
             </summary>
         </member>
         <member name="P:Telerik.WinForms.Documents.DocumentPosition.IsPositionAtTableCellStart">
             <summary>
-            Determines whether the DocumentPosition is at the start of a <see cref="T:Telerik.WinForms.Documents.Model.TableCell"/>. 
+            Determines whether the DocumentPosition is at the start of a <see cref="T:Telerik.WinForms.Documents.Model.TableCell"/>.
             </summary>
         </member>
         <member name="P:Telerik.WinForms.Documents.DocumentPosition.IsPositionAtTableCellEnd">
@@ -29966,17 +30186,17 @@
         </member>
         <member name="P:Telerik.WinForms.Documents.DocumentPosition.IsPositionAtTableRowStart">
             <summary>
-            Determines whether the DocumentPosition is at the start of a <see cref="T:Telerik.WinForms.Documents.Model.TableRow"/>. 
+            Determines whether the DocumentPosition is at the start of a <see cref="T:Telerik.WinForms.Documents.Model.TableRow"/>.
             </summary>
         </member>
         <member name="P:Telerik.WinForms.Documents.DocumentPosition.IsPositionAtDocumentStart">
             <summary>
-            Determines whether the DocumentPosition is at the start of the document.  
+            Determines whether the DocumentPosition is at the start of the document.
             </summary>
         </member>
         <member name="P:Telerik.WinForms.Documents.DocumentPosition.IsPositionAtDocumentEnd">
             <summary>
-            Determines whether the DocumentPosition is at the end of the document.  
+            Determines whether the DocumentPosition is at the end of the document.
             </summary>
         </member>
         <member name="P:Telerik.WinForms.Documents.DocumentPosition.Location">
@@ -29994,25 +30214,25 @@
         </member>
         <member name="E:Telerik.WinForms.Documents.DocumentPosition.PositionChanged">
             <summary>
-            Occurs when the position is moved. 
+            Occurs when the position is moved.
             <para>For the caret position, this can be also achieved using the arrows keys or by clicking somewhere in the document.</para>
             </summary>
         </member>
         <member name="E:Telerik.WinForms.Documents.DocumentPosition.PositionChanging">
             <summary>
-            Occurs before the position is moved. 
+            Occurs before the position is moved.
             <para>For the caret position, this can be also achieved using the arrows keys or by clicking somewhere in the document.</para>
             </summary>
         </member>
         <member name="E:Telerik.WinForms.Documents.DocumentPosition.LocationChanged">
             <summary>
-            Occurs when changing the coordinates of a position. 
+            Occurs when changing the coordinates of a position.
             <para>For the caret position, this can be also achieved by typing, using the arrows keys or by clicking somewhere in the document.</para>
             </summary>
         </member>
         <member name="E:Telerik.WinForms.Documents.DocumentPosition.LocationChanging">
             <summary>
-            Occurs before changing the coordinates of a position. 
+            Occurs before changing the coordinates of a position.
             <para>For the caret position, this can be also achieved by typing, using the arrows keys or by clicking somewhere in the document.</para>
             </summary>
         </member>
@@ -30420,7 +30640,7 @@
         <member name="M:Telerik.WinForms.Documents.DocumentPosition.MoveToLastPositionInParagraph">
             <summary>
             Moves the position to the last position in the current paragraph.
-            </summary> 
+            </summary>
         </member>
         <member name="M:Telerik.WinForms.Documents.DocumentPosition.MoveToParagraphEnd">
             <summary>
@@ -30567,7 +30787,7 @@
             Returns a hash code for this instance.
             </summary>
             <returns>
-            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
             </returns>
         </member>
         <member name="M:Telerik.WinForms.Documents.DocumentPosition.op_GreaterThan(Telerik.WinForms.Documents.DocumentPosition,Telerik.WinForms.Documents.DocumentPosition)">
@@ -30704,7 +30924,7 @@
             <summary>
             Represents a wrapper of <see cref="T:Telerik.WinForms.Documents.FormatProviders.IDocumentFormatProvider"/> allowing the latter to be used in data binding scenarios.
             </summary>
-            <seealso cref="!:System.Windows.FrameworkElement" />
+            <seealso cref="T:System.Windows.FrameworkElement" />
         </member>
         <member name="M:Telerik.WinForms.Documents.FormatProviders.BinaryDataProviderBase.#ctor(Telerik.WinForms.Documents.FormatProviders.IDocumentFormatProvider,Telerik.WinControls.RadProperty)">
             <summary>
@@ -30840,7 +31060,7 @@
             <summary>
             Represents a wrapper of <see cref="T:Telerik.WinForms.Documents.FormatProviders.ITextBasedDocumentFormatProvider"/> allowing the latter to be used in data binding scenarios.
             </summary>
-            <seealso cref="!:System.Windows.FrameworkElement" />
+            <seealso cref="T:System.Windows.FrameworkElement" />
         </member>
         <member name="M:Telerik.WinForms.Documents.FormatProviders.DataProviderBase.#ctor(Telerik.WinForms.Documents.FormatProviders.ITextBasedDocumentFormatProvider,Telerik.WinControls.RadProperty)">
             <summary>
@@ -37548,6 +37768,48 @@
             The UriSource property is used instead of RawData. Bare in mind that this property may not be set on all images.
             </summary>
         </member>
+        <member name="T:Telerik.WinForms.Documents.FormatProviders.Xaml.PreProcessingXamlEventArgs">
+            <summary>
+            Event arguments for the PreProcessingXaml event. 
+            </summary>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.FormatProviders.Xaml.PreProcessingXamlEventArgs.#ctor(System.String)">
+            <summary>
+            Creates a new instance of the PreProcessingXamlEventArgs class. 
+            </summary>
+            <param name="xaml">The XAML that is being imported.</param>
+        </member>
+        <member name="P:Telerik.WinForms.Documents.FormatProviders.Xaml.PreProcessingXamlEventArgs.Xaml">
+            <summary>
+            Gets or sets the XAML that is being imported. Allows you to edit it before the import.  
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Documents.FormatProviders.Xaml.PreProcessingXamlEventArgs.SkipXamlValidation">
+            <summary>
+            Determines if the default validation (safety) check of the XAML should be skipped.
+            </summary>
+        </member>
+        <member name="T:Telerik.WinForms.Documents.FormatProviders.Xaml.UnverifiedXamlException">
+            <summary>
+            Represents errors that occur during Xaml verification.   
+            </summary>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.FormatProviders.Xaml.UnverifiedXamlException.#ctor(System.String)">
+            <summary>
+             Initializes a new instance of the UnverifiedXamlException class with a specified error message.
+            </summary>
+            <param name="message">The exception message</param>
+        </member>
+        <member name="P:Telerik.WinForms.Documents.FormatProviders.Xaml.XamlImportSettings.AllowedAssemblies">
+            <summary>
+            Gets the collection of the assemblies where the allowed types for the XAML import are.   
+            </summary>
+        </member>
+        <member name="E:Telerik.WinForms.Documents.FormatProviders.Xaml.XamlImportSettings.PreProcessingXaml">
+            <summary>
+            This event allows you to edit the Xaml before the import or cancel the import if you are not sure that the Xaml is safe.
+            </summary>
+        </member>
         <member name="T:Telerik.WinForms.Documents.FormatProviders.Xaml.XamlDataProvider">
             <summary>
             Represents a wrapper of <see cref="T:Telerik.WinForms.Documents.FormatProviders.Xaml.XamlFormatProvider"/> allowing the latter to be used in data binding scenarios.
@@ -38153,6 +38415,11 @@
         <member name="F:Telerik.WinForms.Documents.Layout.LayoutSpecialSymbols.VerticalTabulation">
             <summary>
             Vertical tab symbol (U+000B).
+            </summary>
+        </member>
+        <member name="F:Telerik.WinForms.Documents.Layout.LayoutSpecialSymbols.MiddleDot">
+            <summary>
+            Middle dot symbol (U+00B7).
             </summary>
         </member>
         <member name="P:Telerik.WinForms.Documents.Layout.ParagraphLineSegmentInfo.SingleSymbolGapsCount">
@@ -38824,6 +39091,16 @@
             </summary>
             <value>The location.</value>
         </member>
+        <member name="T:Telerik.WinForms.Documents.UI.Extensibility.CustomLineNumberingDialogAttribute">
+            <summary>
+            Attribute which should be applied to indicate whether the dialog is а CustomLineNumberingDialog.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.UI.Extensibility.CustomLineNumberingDialogAttribute.#ctor">
+            <summary>
+            Initialize a new instance of the <see cref="T:Telerik.WinForms.Documents.UI.Extensibility.CustomLineNumberingDialogAttribute"/> class.
+            </summary>
+        </member>
         <member name="P:Telerik.WinForms.Documents.UI.Extensibility.FontPropertiesDialogContext.DefaultStyle">
             <summary>
             Gets or sets the default style which will be used to fill in the dialog on Reset All
@@ -39090,6 +39367,38 @@
             Shows the dialog.
             </summary>
             <param name="protectDocumentCallback">The callback that will be used to remove the document protection.</param>
+            <param name="owner">The owner of the dialog.</param>
+        </member>
+        <member name="T:Telerik.WinForms.Documents.UI.Extensibility.ILineNumberingDialog">
+            <summary>
+            Provides functionality for showing dialogs for line numbers. 
+            </summary>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.UI.Extensibility.ILineNumberingDialog.ShowDialog(Telerik.WinForms.Documents.UI.Extensibility.LineNumberingDialogContext)">
+            <summary>
+            Show the dialog.
+            </summary>
+            <param name="context">The context which encapsulate the parameters needed for shown the dialog.</param>
+        </member>
+        <member name="T:Telerik.WinForms.Documents.UI.Extensibility.LineNumberingDialogContext">
+            <summary>
+            Represents class containing parameters used by LineNumberingDialog.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Documents.UI.Extensibility.LineNumberingDialogContext.Owner">
+            <summary>
+            Gets the owner of the LineNumberingDialog.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Documents.UI.Extensibility.LineNumberingDialogContext.ApplyLineNumberingCallback">
+            <summary>
+            Callback which is executed when dialog changes are applied.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.UI.Extensibility.LineNumberingDialogContext.#ctor(Telerik.WinForms.RichTextEditor.RadRichTextBox,System.Action{Telerik.WinForms.Documents.Model.LineNumberings.LineNumbering})">
+            <summary>
+            Initialize new instance of <see cref="T:Telerik.WinForms.Documents.UI.Extensibility.LineNumberingDialogContext"/> class.
+            </summary>
             <param name="owner">The owner of the dialog.</param>
         </member>
         <member name="T:Telerik.WinForms.Documents.UI.Extensibility.CustomSectionColumnsDialogAttribute">
@@ -39519,6 +39828,21 @@
             Shape editor.
             </summary>
         </member>
+        <member name="T:Telerik.WinForms.Documents.UI.LineNumberingDialogAttribute">
+            <summary>
+            Attribute which indicates that the dialog is LineNumberingDialog.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.UI.LineNumberingDialogAttribute.#ctor">
+            <summary>
+            Initialize a new instance of the <see cref="T:Telerik.WinForms.Documents.UI.LineNumberingDialogAttribute"/> class.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Documents.UI.LineNumberingDialogAttribute.IsDefault">
+            <summary>
+            Indicates whether the dialog is the default dialog.
+            </summary>
+        </member>
         <member name="T:Telerik.WinForms.Documents.UI.Mentions.MentionContext">
             <summary>
             Represents the context for working with mentions.
@@ -39725,6 +40049,99 @@
             <summary>
             Deprecated.
             </summary>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.UI.TextBlocks.IRadTextBlock.ClearFormattingProperties">
+            <summary>
+            Setting the formating properties to their default values.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.UI.TextBlocks.IRadTextBlock.SetFormattingProperties(Telerik.WinForms.Documents.Model.Styles.SpanProperties)">
+            <summary>
+            Setting the formating properties from the provided <see cref="T:Telerik.WinForms.Documents.Model.Styles.SpanProperties"/>.
+            </summary>
+            <param name="spanProperties">The properties.</param>
+        </member>
+        <member name="T:Telerik.WinForms.Documents.UI.UIProviders.LineNumberingUIProvider">
+            <summary>
+            Represents line numbering UI providers class.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.UI.UIProviders.LineNumberingUIProvider.#ctor(Telerik.WinForms.Documents.Layout.ParagraphLineInfo)">
+            <summary>
+            Creating a new instance of the <see cref="T:Telerik.WinForms.Documents.UI.UIProviders.LineNumberingUIProvider"/> class.
+            </summary>
+            <param name="info">The paragraph line info.</param>
+        </member>
+        <member name="P:Telerik.WinForms.Documents.UI.UIProviders.LineNumberingUIProvider.BoundingRectangle">
+            <summary>
+            Gets the line number bounding rectangle.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.UI.UIProviders.LineNumberingUIProvider.Arrange(Telerik.WinForms.Documents.UI.Layers.UILayerUpdateContext)">
+            <summary>
+            Arranges the line.
+            </summary>
+            <param name="uiLayerUpdateContext">The UI layer update context.</param>
+        </member>
+        <member name="T:Telerik.WinForms.Documents.UI.UIProviders.LineUIProviderBase">
+            <summary>
+            Represents base class for line UI providers.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.UI.UIProviders.LineUIProviderBase.#ctor(Telerik.WinForms.Documents.Layout.ParagraphLineInfo)">
+            <summary>
+            Creating a new instance of the <see cref="T:Telerik.WinForms.Documents.UI.UIProviders.LineUIProviderBase"/> class.
+            </summary>
+            <param name="info">The paragraph line info.</param>
+        </member>
+        <member name="P:Telerik.WinForms.Documents.UI.UIProviders.LineUIProviderBase.ContainingLayer">
+            <summary>
+            Gets or sets the containing UI layer.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Documents.UI.UIProviders.LineUIProviderBase.ParagraphLineInfo">
+            <summary>
+            Gets the paragraph line info.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Documents.UI.UIProviders.LineUIProviderBase.IsRemoved">
+            <summary>
+            Gets the value indicating whether the line is removed.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Documents.UI.UIProviders.LineUIProviderBase.IsInvalidated">
+            <summary>
+            Gets the value indicating whether the line is invalidated.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinForms.Documents.UI.UIProviders.LineUIProviderBase.BoundingRectangle">
+            <summary>
+            Gets the line bounding rectangle.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.UI.UIProviders.LineUIProviderBase.GetUIElements(Telerik.WinForms.Documents.UI.Layers.UILayerUpdateContext)">
+            <summary>
+            Gets the collection of UI elements.
+            </summary>
+            <param name="context">The UI layer update context.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.UI.UIProviders.LineUIProviderBase.Arrange(Telerik.WinForms.Documents.UI.Layers.UILayerUpdateContext)">
+            <summary>
+            Arranges the line.
+            </summary>
+            <param name="uiLayerUpdateContext">The UI layer update context.</param>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.UI.UIProviders.LineUIProviderBase.ReleaseElements">
+            <summary>
+            Releases the elements.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.UI.UIProviders.LineUIProviderBase.UpdateUI(Telerik.WinForms.Documents.UI.Layers.UILayerUpdateContext)">
+            <summary>
+            Updates the UI.
+            </summary>
+            <param name="uiLayerUpdateContext">The UI layer update context.</param>
         </member>
         <member name="P:Telerik.WinForms.Documents.UI.UIProviders.TableBordersUIProvider.IsProviderAssociatedToClonedBoxes">
             <summary>
@@ -40439,6 +40856,23 @@
             Deprecated.
             </summary>
         </member>
+        <member name="T:Telerik.WinForms.Documents.RichTextBoxCommands.InsertLineNumberingCommand">
+            <summary>
+            Represents a UI-friendly command for inserting a line numbering.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.RichTextBoxCommands.InsertLineNumberingCommand.#ctor(Telerik.WinForms.RichTextEditor.RadRichTextBox)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.WinForms.Documents.RichTextBoxCommands.InsertLineNumberingCommand"/> type.
+            </summary>
+            <param name="editor">The associated editor</param>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.RichTextBoxCommands.InsertLineNumberingCommand.ExecuteOverride(System.Object)">
+            <summary>
+            Represents the logic that is executed when it is evaluated whether the command can be triggered.
+            </summary>
+            <param name="parameter">The command parameter</param>
+        </member>
         <member name="T:Telerik.WinForms.Documents.RichTextBoxCommands.InsertNonBreakingSpaceCommand">
             <summary>
             Represents a UI-friendly command for inserting a non-breaking space.
@@ -40582,6 +41016,17 @@
             </summary>
             <param name="editor">The associated <see cref="T:Telerik.WinForms.RichTextEditor.RadRichTextBox"/>.</param>
         </member>
+        <member name="T:Telerik.WinForms.Documents.RichTextBoxCommands.ShowLineNumberingDialogCommand">
+            <summary>
+            The command which when executed, shows the ShowLineNumberingDialog.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.RichTextBoxCommands.ShowLineNumberingDialogCommand.#ctor(Telerik.WinForms.RichTextEditor.RadRichTextBox)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.WinForms.Documents.RichTextBoxCommands.ShowLineNumberingDialogCommand"/> class.
+            </summary>
+            <param name="editor">The RadRichTextBox which the ShowLineNumberingDialogCommand belongs.</param>
+        </member>
         <member name="T:Telerik.WinForms.Documents.RichTextBoxCommands.ShowSectionColumnsDialogCommand">
             <summary>
             The command which when executed, shows the SectionColumnDialog.
@@ -40592,6 +41037,17 @@
             Initializes a new instance of the <see cref="T:Telerik.WinForms.Documents.RichTextBoxCommands.ShowSectionColumnsDialogCommand"/> class.
             </summary>
             <param name="editor">The RadRichTextBox which the SectionColumnDialog belongs.</param>
+        </member>
+        <member name="T:Telerik.WinForms.Documents.RichTextBoxCommands.SuppressLineNumberingForCurrentParagraphCommand">
+            <summary>
+            The command which when executed, suppresses the line numbering for the current paragraph.
+            </summary>
+        </member>
+        <member name="M:Telerik.WinForms.Documents.RichTextBoxCommands.SuppressLineNumberingForCurrentParagraphCommand.#ctor(Telerik.WinForms.RichTextEditor.RadRichTextBox)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.WinForms.Documents.RichTextBoxCommands.SuppressLineNumberingForCurrentParagraphCommand"/> class.
+            </summary>
+            <param name="editor">The RadRichTextBox which the SuppressLineNumberingForCurrentParagraphCommand belongs.</param>
         </member>
         <member name="T:Telerik.WinForms.Documents.RichTextBoxCommands.TabCommandBehaviors">
             <summary>
@@ -40847,6 +41303,7 @@
             Gets or sets whether the Advanced selection mode is enabled.
             If so, when the cursor leaves the initial word the selection continues by expanding with a whole word every time
             until the cursor moves in the opposite direction. When the cursor returns to the initial word the selection continues to expand one character at a time.
+            More about this behavior can be learned in the documentation.
             </summary>
         </member>
         <member name="M:Telerik.WinForms.Documents.Selection.DocumentSelection.#ctor(Telerik.WinForms.Documents.Model.RadDocument)">
@@ -48447,6 +48904,16 @@
               Looks up a localized resource of type System.Byte[].
             </summary>
         </member>
+        <member name="P:Telerik.WinControls.UI.Properties.RichTextEditorRibbonBarResources.Line_Numbers">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.Properties.RichTextEditorRibbonBarResources.Line_NumbersDark">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
         <member name="P:Telerik.WinControls.UI.Properties.RichTextEditorRibbonBarResources.LineBreak32">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
@@ -48468,6 +48935,16 @@
             </summary>
         </member>
         <member name="P:Telerik.WinControls.UI.Properties.RichTextEditorRibbonBarResources.LineBreakModern32Svg">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.Properties.RichTextEditorRibbonBarResources.LineNumbersDarkSvg">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.Properties.RichTextEditorRibbonBarResources.LineNumbersSvg">
             <summary>
               Looks up a localized resource of type System.Byte[].
             </summary>
@@ -52133,6 +52610,12 @@
             Gets or sets the color of the border.
             </summary>
         </member>
+        <member name="M:Telerik.WinControls.UI.RadRichTextEditor.ShouldSerializeBorderColor">
+            <summary>
+            Determines whether the BorderColor property should be serialized.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="P:Telerik.WinControls.UI.RadRichTextEditor.IsContextMenuEnabled">
             <summary>
             Gets or sets a value indicating whether context menu is enabled.
@@ -53792,10 +54275,32 @@
             </summary>
             <param name="document">As instance of <see cref="T:Telerik.WinControls.UI.RadPrintDocument"/> used to control the print process.</param>
         </member>
+        <member name="P:Telerik.WinControls.UI.RichTextEditorRibbonBar.ApplicationMenuStyle">
+            <summary>
+            This property is not relevant for this class.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RichTextEditorRibbonBar.ApplicationMenuAnimantionType">
+            <summary>
+            This property is not relevant for this class.
+            </summary>
+        </member>
         <member name="P:Telerik.WinControls.UI.RichTextEditorRibbonBar.OpenedFileName">
             <summary>
             Gets or sets the file name of the file currently being opened.
             When this property is set, the Save button will not open the SaveFileDialog.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RichTextEditorRibbonBar.ShowLayoutModeButton">
+            <summary>
+            Gets or sets whether the toggle switch enabling the Simplified ribbon style is visible.
+            </summary>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RichTextEditorRibbonBar.EnableKeyMap">
+            <summary>
+            Gets or sets whether Key Map (Office 2007 like accelerator keys map)
+            is used for this specific control. Currently this option is implemented for 
+            the RadRibbonBar control only.
             </summary>
         </member>
         <member name="P:Telerik.WinControls.UI.RadRichTextEditorRuler.AutoSize">

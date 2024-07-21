@@ -584,6 +584,12 @@
             </summary>
             <value>The value.</value>
         </member>
+        <member name="P:Telerik.Documents.SpreadsheetStreaming.ICellImporter.FormulaValue">
+            <summary>
+            Gets the formula cached value.
+            </summary>
+            <value>The value.</value>
+        </member>
         <member name="P:Telerik.Documents.SpreadsheetStreaming.ICellImporter.ValueType">
             <summary>
             Gets the Value Type.
@@ -1330,40 +1336,6 @@
             <summary>
             The font of the headings of the document.
             </summary>
-        </member>
-        <member name="T:Telerik.Documents.SpreadsheetStreaming.CellContentSizeHelper">
-            <summary>
-            Represents a helper class for measuring the cell content size.
-            </summary>
-        </member>
-        <member name="M:Telerik.Documents.SpreadsheetStreaming.CellContentSizeHelper.GetCellContentSize(System.String,Telerik.Documents.SpreadsheetStreaming.SpreadCellFormat,System.Double)">
-            <summary>
-            The method calculates the cell content size based on the cell formatting. The result can be used to set the column width
-            so the values can fit in the columns.
-            </summary>
-            <param name="value">The cell value. If formula is passed the method will throw an ArgumentException.</param>
-            <param name="spreadCellFormat">The format of the cell.</param>
-            <param name="cellWidth">The width of the cell in pixels. This value is only respected if the value of the WrapText property
-            of the spreadCellFormat is true. The default column width is 65 pixels.</param>
-            <returns>The size of the cell content.</returns>
-        </member>
-        <member name="M:Telerik.Documents.SpreadsheetStreaming.CellContentSizeHelper.GetCellContentSize(System.String,System.String,System.String,System.Double,System.Boolean,System.Boolean,Telerik.Documents.SpreadsheetStreaming.SpreadHorizontalAlignment,System.Boolean,System.Int32,System.Double)">
-            <summary>
-            The method calculates the cell content size based on the cell formatting. The result can be used to set the column width
-            so the values can fit in the columns.
-            </summary>
-            <param name="value">The cell value. If formula is passed the method will throw an ArgumentException.</param>
-            <param name="cellValueFormat">The number format of the cell.</param>
-            <param name="fontFamily">The font family.</param>
-            <param name="fontSize">The size of the font in points.</param>
-            <param name="isBold">A value indicating whether the text is bold.</param>
-            <param name="isItalic">A value indicating whether the text is italic.</param>
-            <param name="horizontalAlignment">The horizontal alignment.</param>
-            <param name="isWrapped">A value indicating whether the text is wrapped.</param>
-            <param name="indent">The cell indent.</param>
-            <param name="cellWidth">The width of the cell in pixels. This value is only respected if the value of isWrapped is true.
-            The default column width is 65 pixels.</param>
-            <returns>The size of the cell content.</returns>
         </member>
         <member name="M:Telerik.Documents.SpreadsheetStreaming.Utilities.NameConverter.ConvertRowIndexToName(System.Int32)">
             <summary>
@@ -2446,6 +2418,40 @@
             <param name="stream">The stream.</param>
             <param name="exportMode">The export mode.</param>
             <returns>The workbook exporter.</returns>
+        </member>
+        <member name="T:Telerik.Documents.SpreadsheetStreaming.CellContentSizeHelper">
+            <summary>
+            Represents a helper class for measuring the cell content size.
+            </summary>
+        </member>
+        <member name="M:Telerik.Documents.SpreadsheetStreaming.CellContentSizeHelper.GetCellContentSize(System.String,Telerik.Documents.SpreadsheetStreaming.SpreadCellFormat,System.Double)">
+            <summary>
+            The method calculates the cell content size based on the cell formatting. The result can be used to set the column width
+            so the values can fit in the columns.
+            </summary>
+            <param name="value">The cell value. If formula is passed the method will throw an ArgumentException.</param>
+            <param name="spreadCellFormat">The format of the cell.</param>
+            <param name="cellWidth">The width of the cell in pixels. This value is only respected if the value of the WrapText property
+            of the spreadCellFormat is true. The default column width is 65 pixels.</param>
+            <returns>The size of the cell content.</returns>
+        </member>
+        <member name="M:Telerik.Documents.SpreadsheetStreaming.CellContentSizeHelper.GetCellContentSize(System.String,System.String,System.String,System.Double,System.Boolean,System.Boolean,Telerik.Documents.SpreadsheetStreaming.SpreadHorizontalAlignment,System.Boolean,System.Int32,System.Double)">
+            <summary>
+            The method calculates the cell content size based on the cell formatting. The result can be used to set the column width
+            so the values can fit in the columns.
+            </summary>
+            <param name="value">The cell value. If formula is passed the method will throw an ArgumentException.</param>
+            <param name="cellValueFormat">The number format of the cell.</param>
+            <param name="fontFamily">The font family.</param>
+            <param name="fontSize">The size of the font in points.</param>
+            <param name="isBold">A value indicating whether the text is bold.</param>
+            <param name="isItalic">A value indicating whether the text is italic.</param>
+            <param name="horizontalAlignment">The horizontal alignment.</param>
+            <param name="isWrapped">A value indicating whether the text is wrapped.</param>
+            <param name="indent">The cell indent.</param>
+            <param name="cellWidth">The width of the cell in pixels. This value is only respected if the value of isWrapped is true.
+            The default column width is 65 pixels.</param>
+            <returns>The size of the cell content.</returns>
         </member>
     </members>
 </doc>

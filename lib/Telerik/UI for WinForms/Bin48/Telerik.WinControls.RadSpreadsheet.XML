@@ -33851,11 +33851,21 @@
             Defines the disabled state.
             </summary>
         </member>
+        <member name="P:Telerik.WinControls.UI.RadSpreadsheetRibbonBar.ApplicationMenuStyle">
+            <summary>
+            This property is not relevant for this class.
+            </summary>
+        </member>
         <member name="P:Telerik.WinControls.UI.RadSpreadsheetRibbonBar.AssociatedSpreadsheet">
             <summary>
             Gets or sets the associated spreadsheet.
             </summary>
             <value>The associated spreadsheet.</value>
+        </member>
+        <member name="P:Telerik.WinControls.UI.RadSpreadsheetRibbonBar.ShowLayoutModeButton">
+            <summary>
+            Gets or sets whether the toggle switch enabling the Simplified ribbon style is visible.
+            </summary>
         </member>
         <member name="M:Telerik.WinControls.UI.RadSpreadsheetRibbonBar.UnbindCommands">
             <summary>

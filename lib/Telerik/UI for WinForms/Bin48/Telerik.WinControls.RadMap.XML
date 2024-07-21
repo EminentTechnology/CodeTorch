@@ -1753,7 +1753,7 @@
         </member>
         <member name="P:Telerik.WinControls.UI.Map.Bing.VehicleSpec.VehicleLength">
             <summary>
-            The lenght of the vehicle in the specified dimension units.
+            The length of the vehicle in the specified dimension units.
             </summary>
         </member>
         <member name="P:Telerik.WinControls.UI.Map.Bing.VehicleSpec.VehicleWeight">
