@@ -2,28 +2,61 @@
 using CodeTorch.Core.Interfaces;
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Threading.Tasks;
 
 namespace CodeTorch.ServiceLogs
 {
     public class ApplicationInsightsServiceLogProvider : IServiceLogProvider
     {
         private readonly TelemetryClient _telemetryClient;
+        private readonly TelemetryConfiguration _telemetryConfiguration;
         const string intentionallyNotLogged = "Intentionally Excluded From Logs";
+
+        log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public ApplicationInsightsServiceLogProvider()
         {
-            _telemetryClient = new TelemetryClient();
+            _telemetryConfiguration =  TelemetryConfiguration.CreateDefault();
+            _telemetryClient = new TelemetryClient(_telemetryConfiguration);
         }
 
         public void Initialize(string config)
         {
-            //ignores settings and looks to config file for application insights key
-            _telemetryClient.Context.InstrumentationKey = ConfigurationManager.AppSettings["ai:InstrumentationKey"];
-            
+            log.Info("ApplicationInsightsServiceLogProvider - Initializing");
+            log.Debug("ApplicationInsightsServiceLogProvider - ConnectionString: " + _telemetryConfiguration.ConnectionString);
+
+            string connectionString = _telemetryConfiguration.ConnectionString;
+            if (!string.IsNullOrEmpty(connectionString))
+            {
+                
+
+                // Extract the InstrumentationKey from the connection string
+                var connectionStringParts = connectionString.Split(';');
+                foreach (var part in connectionStringParts)
+                {
+                    if (part.StartsWith("InstrumentationKey=", StringComparison.OrdinalIgnoreCase))
+                    {
+                        _telemetryClient.Context.InstrumentationKey = part.Substring("InstrumentationKey=".Length);
+                        break;
+                    }
+                }
+
+                if (string.IsNullOrEmpty(_telemetryClient.Context.InstrumentationKey))
+                {
+                    log.Error("Application Insights InstrumentationKey is missing from ConnectionString.");
+                }
+                else
+                {
+                    log.Debug("ApplicationInsightsServiceLogProvider - InstrumentationKey: " + _telemetryClient.Context.InstrumentationKey);
+                }
+            }
+            else
+            {
+                log.Error("Application Insights connection string is not set in the configuration.");
+            }
         }
 
         public void Log(ServiceLogEntry entry)
@@ -116,7 +149,7 @@ namespace CodeTorch.ServiceLogs
             }
             catch (Exception ex)
             {
-                //TODO: log error
+                log.Error("Error while trying to log service logs to application insights", ex);
             }
         }
     }

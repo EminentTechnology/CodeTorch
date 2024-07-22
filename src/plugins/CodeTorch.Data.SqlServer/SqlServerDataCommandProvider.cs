@@ -1,15 +1,14 @@
+using CodeTorch.Core;
+using CodeTorch.Core.Interfaces;
+using Microsoft.Practices.EnterpriseLibrary.Data;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
-using System.Xml;
-using Microsoft.Practices.EnterpriseLibrary.Data;
-
 using System.Text;
-using CodeTorch.Core.Interfaces;
-using CodeTorch.Core;
-using System.Collections.Specialized;
+using System.Xml;
 
 namespace CodeTorch.Data.SqlServer
 {
@@ -29,9 +28,6 @@ namespace CodeTorch.Data.SqlServer
 
         public XmlDocument GetXmlData(DataConnection connection, DataCommand dataCommand, List<ScreenDataCommandParameter> parameters, string commandText)
         {
-
-
-            
             CommandType sqlCommandType = GetCommandType(dataCommand.Type);
             return GetXmlDocument(connection, dataCommand, parameters, sqlCommandType, commandText);
         }

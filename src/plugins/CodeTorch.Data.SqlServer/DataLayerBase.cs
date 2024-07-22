@@ -1,19 +1,18 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using System.Data;
-using System.Data.Common;
-using System.Xml;
-using System.Data.SqlClient;
+﻿using CodeTorch.Core;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
-using CodeTorch.Core;
+using System;
+using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Xml;
 
 namespace CodeTorch.Data.SqlServer
 {
     public abstract class DataLayerBase
     {
-
 
         private ConnectionInfo _ConnectionInfo = null;
         public ConnectionInfo ConnectionInfo
@@ -83,10 +82,7 @@ namespace CodeTorch.Data.SqlServer
                 throw new Exception(String.Format("Data Connection is not configured correctly"));
             }
 
-          
-
             return retVal;
-
         }
 
         public static DbCommand GetSqlStringCommand(string CommandText)
@@ -130,12 +126,9 @@ namespace CodeTorch.Data.SqlServer
         public static object GetParameterValue(DbCommand command, string ParameterName)
         {
             object retVal;
-
             retVal = command.Parameters[ParameterName].Value;
 
             return retVal;
-           
-
         }
 
         public static void AddOutParameter(DbCommand command, string ParameterName, DbType DBType, object value)
@@ -162,7 +155,6 @@ namespace CodeTorch.Data.SqlServer
         {
             if (value != null)
             {
-
                 System.Data.SqlClient.SqlParameter p = new System.Data.SqlClient.SqlParameter();
 
                 p.ParameterName = ParameterName;
@@ -170,15 +162,12 @@ namespace CodeTorch.Data.SqlServer
                 p.TypeName = TypeName;
                 p.Value = value;
 
-
-
                 command.Parameters.Add(p);
             }
         }
 
         public static DbConnection GetConnection(Database db, string connectionString)
         {
-
             DbConnection retVal = null;
 
             if (String.IsNullOrEmpty(connectionString))
@@ -244,8 +233,6 @@ namespace CodeTorch.Data.SqlServer
         {
             //declare variables
             DataTable ret = null;
-
-
 
             ret = ExecuteDataSet(db, tran, cmd).Tables[0];
 

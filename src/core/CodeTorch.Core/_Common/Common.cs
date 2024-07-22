@@ -18,8 +18,6 @@ namespace CodeTorch.Core
 
         public static void LogException(Exception ex, bool rethrow)
         {
-
-
             ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
             log.Error(ex);
 
@@ -27,9 +25,6 @@ namespace CodeTorch.Core
             {
                 throw ex;
             }
-
-
-
         }
 
         public static void LogInfo(string Message)

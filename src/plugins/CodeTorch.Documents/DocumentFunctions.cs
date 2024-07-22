@@ -1,10 +1,6 @@
 ﻿using CodeTorch.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CodeTorch.Core.Services;
+using System.Collections.Generic;
 
 namespace CodeTorch.Documents
 {

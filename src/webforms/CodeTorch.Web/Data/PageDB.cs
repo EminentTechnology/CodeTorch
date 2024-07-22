@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using CodeTorch.Core;
 using CodeTorch.Web.Templates;
-using CodeTorch.Core;
+using System;
+using System.Collections.Generic;
 using System.Web.UI;
 
 namespace CodeTorch.Web.Data
 {
     public class PageDB
     {
-     
- 
-      
-
         public List<ScreenDataCommandParameter> GetPopulatedCommandParameters(string DataCommandName, BasePage page)
         {
             return GetPopulatedCommandParameters(DataCommandName, page, null);
@@ -20,8 +15,7 @@ namespace CodeTorch.Web.Data
 
         public List<ScreenDataCommandParameter> GetPopulatedCommandParameters(string DataCommandName, BasePage page, Control Container)
         {
-            return GetPopulatedCommandParameters(DataCommandName, page, null, page.Screen.DataCommands);
-            
+            return GetPopulatedCommandParameters(DataCommandName, page, null, page.Screen.DataCommands); 
         }
 
         public List<ScreenDataCommandParameter> GetPopulatedCommandParameters(string DataCommandName, BasePage page, Control Container, List<ScreenDataCommand> datacommands)
@@ -49,16 +43,9 @@ namespace CodeTorch.Web.Data
 
                 }
             }
-
-
-
-
             return parameters;
-
         }
 
-
-      
         public List<ReportParameter> GetPopulatedReportParameters(BasePage page, List<ReportParameter> reportRarameters)
         {
             return GetPopulatedReportParameters(page, reportRarameters, null);
@@ -70,7 +57,6 @@ namespace CodeTorch.Web.Data
             string ErrorFormat = "Invalid {0} propery for Report Parameter {1} - {2}";
             List<ReportParameter> retVal = null;
 
-
             try
             {
                 if(reportRarameters != null)
@@ -81,7 +67,6 @@ namespace CodeTorch.Web.Data
                     lastParameterName = p.Name;
                     p.Value = Common.GetParameterInputValue(page, p, Container);
                 }
-                
             }
             catch (Exception ex)
             {
@@ -91,7 +76,6 @@ namespace CodeTorch.Web.Data
             }
 
             return retVal;
-            
         }
     }
 }
