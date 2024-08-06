@@ -29,7 +29,8 @@ namespace CodeTorch.Core
     public class App
     {
         private int schemaVersion = 1;
-        
+        private List<ServiceLogProviderItem> _serviceLogProviders = new List<ServiceLogProviderItem>();
+
         public int SchemaVersion 
         { 
             get
@@ -88,9 +89,21 @@ namespace CodeTorch.Core
         public string ResourceProviderClass { get; set; }
         public string ResourceProviderConfig { get; set; }
 
-        public string ServiceLogProviderAssembly { get; set; }
-        public string ServiceLogProviderClass { get; set; }
-        public string ServiceLogProviderConfig { get; set; }
+        
+
+        [XmlArray("ServiceLogProviders")]
+        [XmlArrayItem("ServiceLogProvider")]
+        public List<ServiceLogProviderItem> ServiceLogProviders
+        {
+            get
+            {
+                return _serviceLogProviders;
+            }
+            set
+            {
+                _serviceLogProviders = value;
+            }
+        }
 
         [Category("Data")]
         [TypeConverter("CodeTorch.Core.Design.ScreenDataCommandTypeConverter,CodeTorch.Core.Design")]
@@ -207,5 +220,13 @@ namespace CodeTorch.Core
 
         [XmlText]
         public string Value { get; set; }
+    }
+
+    [Serializable]
+    public class ServiceLogProviderItem
+    {
+        public string Assembly { get; set; }
+        public string Class { get; set; }
+        public string Config { get; set; }
     }
 }

@@ -120,6 +120,7 @@
     <Compile Include="Interfaces\IServiceLogProvider.cs" />
     <Compile Include="Sections\MenuSection.cs" />
     <Compile Include="Sections\CustomSection.cs" />
+    <Compile Include="Services\AppServiceLogProvider.cs" />
     <Compile Include="Services\ServiceLogService.cs" />
     <Compile Include="_Common\ConfigurationObjectFactory.cs" />
     <Compile Include="ConfigurationObjects\ControlTypeConfigurationObject.cs" />

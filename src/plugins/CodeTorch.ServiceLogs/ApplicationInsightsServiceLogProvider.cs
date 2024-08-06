@@ -31,8 +31,6 @@ namespace CodeTorch.ServiceLogs
             string connectionString = _telemetryConfiguration.ConnectionString;
             if (!string.IsNullOrEmpty(connectionString))
             {
-                
-
                 // Extract the InstrumentationKey from the connection string
                 var connectionStringParts = connectionString.Split(';');
                 foreach (var part in connectionStringParts)
